@@ -2,6 +2,12 @@
 
 def _lab_inputs(m, device, seed):
     """Synthetic routing resembling the judge's busiest-GPU normal distribution; experts 0-31 local."""
+    try:
+        import reference as _R
+        d = _R.generate_input(m, "ep8", seed, device=device)
+        return d
+    except Exception:
+        pass
     g = torch.Generator(device=device).manual_seed(seed)
     x = torch.randn((m, 4096), generator=g, device=device).to(torch.bfloat16)
     scores = torch.rand((m, 256), generator=g, device=device)
@@ -165,28 +171,25 @@ def _lab_cfgs(state):
     global _WM_CFG
     flush = torch.zeros(160 * 1024 * 1024 // 4, dtype=torch.float32, device="cuda")
     saved = _WM_CFG
-    lines = []
-    for m in (24, 32, 64, 128, 256):
-        data = _lab_inputs(m, "cuda", 100 + m)
-        nact = len(torch.unique(data["topk_ids"][data["topk_ids"] < 32]))
-        base = 0.0
-        row = [f"M={m} act={nact} marlin={base:.1f}"]
+    for m in _LAB_MS:
+        datas = [_lab_inputs(m, "cuda", 100 + 7 * m + s) for s in range(_LAB_SEEDS)]
+        nact = [len(torch.unique(d["topk_ids"][d["topk_ids"] < 32])) for d in datas]
+        row = [f"M={m} act={nact}"]
         for cfg in _LAB_CFGS:
-            if m > 16 and cfg[2] == 0 and True:
-                nmax_ok = False
-            else:
-                nmax_ok = True
-            if not nmax_ok:
+            if m > 16 and cfg[2] == 0:
                 continue
             _WM_CFG = [(10**9, cfg)]
             try:
-                t = _lab_time(lambda: kernel_fn(data, state), flush)
-                row.append(f"{cfg[0]}{cfg[1]}{cfg[2]}={t:.1f}")
-            except Exception as ex:  # unsupported combination
+                ts = [_lab_time(lambda: kernel_fn(d, state), flush) for d in datas]
+                row.append(f"{cfg[0]}{cfg[1]}{cfg[2]}=" + "/".join(f"{t:.0f}" for t in ts) + f"(avg {sum(ts)/len(ts):.1f})")
+            except Exception as ex:
                 row.append(f"{cfg}=ERR")
-        lines.append(" ".join(row))
-        print("LAB", lines[-1], flush=True)
+        print("LAB", " ".join(row), flush=True)
     _WM_CFG = saved
+
+
+_LAB_MS = (1, 8, 128, 256)
+_LAB_SEEDS = 4
 
 
 def _lab_persist(state):

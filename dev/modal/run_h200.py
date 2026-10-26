@@ -11,7 +11,10 @@ image = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_p
          .add_local_dir(f"{ROOT}/kernels", "/w/kernels")
          .add_local_dir(f"{ROOT}/experiments/attention_fp8_hybrid_v7", "/w/v7")
          .add_local_dir(f"{ROOT}/dev/wg2", "/w/wg2")
-         .add_local_dir(f"{ROOT}/dev/wg", "/w/wg"))
+         .add_local_dir(f"{ROOT}/dev/wg3", "/w/wg3")
+         .add_local_dir(f"{ROOT}/dev/wg4", "/w/wg4")
+         .add_local_dir(f"{ROOT}/dev/wg", "/w/wg")
+         .add_local_dir(f"{ROOT}/dev/modal", "/w/modal"))
 app = modal.App("muse-h200", image=image)
 
 @app.function(gpu="H200", timeout=1800)
@@ -42,7 +45,7 @@ o = m.kernel_fn(d, st); print(R.check_implementation(d, o, w))
     open("/w/run/drv.py", "w").write(drv_src.replace('__PROBLEM__', problem) if drv_src else drv)
     full = cmd or "python /w/run/drv.py"
     p = subprocess.run(full, shell=True, cwd="/w/run", capture_output=True, text=True)
-    return p.stdout[-20000:] + "\nSTDERR:\n" + p.stderr[-4000:]
+    return p.stdout[-900000:] + "\nSTDERR:\n" + p.stderr[-4000:]
 
 @app.local_entrypoint()
 def main(problem: str, file: str, cmd: str = "", drv: str = ""):
