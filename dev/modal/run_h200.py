@@ -8,11 +8,14 @@ image = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_p
          .apt_install("cuda-nsight-compute-12-8", "ninja-build", "libnuma1")
          .pip_install("torch==2.11.0", index_url="https://download.pytorch.org/whl/cu128")
          .pip_install("numpy", "triton")
-         .add_local_dir(f"{ROOT}/kernels", "/w/kernels"))
+         .add_local_dir(f"{ROOT}/kernels", "/w/kernels")
+         .add_local_dir(f"{ROOT}/experiments/attention_fp8_hybrid_v7", "/w/v7")
+         .add_local_dir(f"{ROOT}/dev/wg2", "/w/wg2")
+         .add_local_dir(f"{ROOT}/dev/wg", "/w/wg"))
 app = modal.App("muse-h200", image=image)
 
 @app.function(gpu="H200", timeout=1800)
-def run(problem: str, src: str, cmd: str = ""):
+def run(problem: str, src: str, cmd: str = "", drv_src: str = ""):
     import subprocess, sys, os
     os.makedirs("/w/run", exist_ok=True)
     open("/w/run/sub.py", "w").write(src)
@@ -36,11 +39,11 @@ st = m.prepare(w)
 d = R.generate_input(int(os.environ.get("BS","32")), "ep8", seed=1)
 o = m.kernel_fn(d, st); print(R.check_implementation(d, o, w))
 ''' % problem
-    open("/w/run/drv.py", "w").write(drv)
+    open("/w/run/drv.py", "w").write(drv_src.replace('__PROBLEM__', problem) if drv_src else drv)
     full = cmd or "python /w/run/drv.py"
     p = subprocess.run(full, shell=True, cwd="/w/run", capture_output=True, text=True)
     return p.stdout[-20000:] + "\nSTDERR:\n" + p.stderr[-4000:]
 
 @app.local_entrypoint()
-def main(problem: str, file: str, cmd: str = ""):
-    print(run.remote(problem, open(file).read(), cmd))
+def main(problem: str, file: str, cmd: str = "", drv: str = ""):
+    print(run.remote(problem, open(file).read(), cmd, open(drv).read() if drv else ""))
