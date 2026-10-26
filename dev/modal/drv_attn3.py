@@ -26,7 +26,7 @@ def timeit(fn, reps=12):
     ts.sort(); return ts[len(ts) // 2]
 LAYER = os.environ.get("LAYER", "full")
 for B in [int(x) for x in os.environ.get("BATCHES", "16,32").split(",")]:
-    d = R.generate_input(B, 80000, "tp8", LAYER, 3, q_len=1, spread="agentic" if B > 1 else "fixed", dist="coherent" if LAYER == "full" else "soft", page=1)
+    d = R.generate_input(B, 80000, "tp8", LAYER, 3, q_len=int(os.environ.get("QL","1")), spread="agentic" if B > 1 else "fixed", dist="coherent" if LAYER == "full" else "soft", page=1)
     res = []
     m._FD_POLICY = {('full', False): [(1, 64, 2, 32, 3)], ('sliding', False): [(1, 64, 2, 32, 3)]}
     base = m.kernel_fn(d).float().clone()

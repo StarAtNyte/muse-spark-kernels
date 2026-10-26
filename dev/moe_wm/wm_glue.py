@@ -10,7 +10,7 @@ def _wm_module():
     global _WM_MOD
     if _WM_MOD is None:
         from torch.utils.cpp_extension import load_inline
-        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish"],
+        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish", "wm_pf"],
                               extra_cuda_cflags=["-O3", "--use_fast_math"] + _WM_EXTRA, verbose=False)
         _WM_MOD.wm_set_pdl_t(int(_WM_PDL and torch.cuda.get_device_capability()[0] >= 9))
     return _WM_MOD
@@ -30,6 +30,8 @@ def prepare(weights):
 
 
 WM_MAX_TOKENS = 256
+_WM_PF = 0          # experts whose down-projection weights are prefetched into L2 during the gate/up GEMM
+_WM_PF_MINM = 1
 # (m upper bound) -> (tiles per warp, warps per CTA, cp.async ring)
 _WM_CFG = __WM_CFG__
 
@@ -65,6 +67,8 @@ def kernel_fn(data, state):
     nact = torch.empty(1, dtype=torch.int32, device=dev)
     lids = torch.empty(m * TOP_K, dtype=torch.int32, device=dev)
     mod.wm_route(ids, _WM_NOLS, 0, lmax, cnt, lst, act, nact, lids, woff, nch * 8)
+    if _WM_PF > 0 and m >= _WM_PF_MINM:
+        mod.wm_pf(wm["w2"], wm["s2"], act, nact, _WM_PF, 1)
     maxslots = min(m * TOP_K, 32 + (m * TOP_K) // (nch * 8))
     inter = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
     y = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
