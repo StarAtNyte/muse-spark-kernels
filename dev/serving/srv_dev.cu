@@ -960,6 +960,43 @@ static void launch(const void* W, const void* S, const float* GS, const void* X,
            reinterpret_cast<bf16*>(OUT), cnt, lst, act, nact, woff, lmax, g_persist);
 }
 
+
+// ---- L2 prefetch of the down-projection weights of the active experts (issued while the gate/up GEMM streams) ----
+__device__ __forceinline__ uint64_t pol_evict_last() {
+  uint64_t p;
+  asm volatile("createpolicy.fractional.L2::evict_last.b64 %0, 1.0;" : "=l"(p));
+  return p;
+}
+__device__ __forceinline__ void pf_l2(const void* ptr, uint32_t bytes, uint64_t pol) {
+#if defined(__CUDA_ARCH__) && __CUDA_ARCH__ >= 900
+  asm volatile("cp.async.bulk.prefetch.L2.global.L2::cache_hint [%0], %1, %2;" ::"l"(ptr), "r"(bytes), "l"(pol) : "memory");
+#endif
+}
+// W2 codes of one expert: RT1 * KC * 512 B = 8 MiB; scales RT1 * KCG * 256 B = 1 MiB. Slab = 8 KiB.
+__global__ void __launch_bounds__(128)
+wm_pf_kernel(const uint8_t* __restrict__ W2, const uint8_t* __restrict__ S2, const int* __restrict__ act,
+             const int* __restrict__ nact_p, int max_items, int slabs_code, int slabs_scale, size_t code_stride, size_t scale_stride) {
+  pdl_wait();
+  pdl_trigger();
+  const int nitems = min(__ldcg(nact_p), max_items);
+  const uint64_t pol = pol_evict_last();
+  const int per = slabs_code + slabs_scale;
+  const long total = (long)nitems * per;
+  for (long i = (long)blockIdx.x * blockDim.x + threadIdx.x; i < total; i += (long)gridDim.x * blockDim.x) {
+    const int it = (int)(i / per), r = (int)(i % per);
+    const int4 item = __ldcg(reinterpret_cast<const int4*>(act) + it);
+    if (item.z == 0 || item.y != 0) continue;   // one prefetch per expert (its first work item)
+    const size_t e = item.x;
+    if (r < slabs_code) pf_l2(W2 + e * code_stride + (size_t)r * 8192, 8192, pol);
+    else pf_l2(S2 + e * scale_stride + (size_t)(r - slabs_code) * 8192, 8192, pol);
+  }
+}
+extern "C" void wm_pf_c(const void* W2, const void* S2, const int* act, const int* nact, int max_items, int pdl, cudaStream_t st) {
+  constexpr size_t CODE = (size_t)RT1 * KC * 512, SCALE = (size_t)RT1 * KCG * 256;
+  launch_k(wm_pf_kernel, dim3(132), dim3(128), 0, st, pdl != 0, reinterpret_cast<const uint8_t*>(W2),
+           reinterpret_cast<const uint8_t*>(S2), act, nact, max_items, (int)(CODE / 8192), (int)((SCALE + 8191) / 8192), CODE, SCALE);
+}
+
 // cfg bits: nmax (1,2,4) | nt (2,4) | nw (4,8) | ring (0/1)
 extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, const void* W, const void* S, const float* GS,
                          const void* X, void* OUT, const int* cnt, const int* lst, const int* act, const int* nact,
@@ -978,7 +1015,7 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
     return 0;                                                                                             \
   }
 #define WM_ALL(T, N, W_, R) WM_D(0, T, N, W_, R) WM_D(1, T, N, W_, R)
-  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1)
+  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1) WM_ALL(2, 1, 2, 0)
 #undef WM_ALL
 #undef WM_D
   return 1;

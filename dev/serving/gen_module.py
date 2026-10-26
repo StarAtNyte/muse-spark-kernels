@@ -16,7 +16,7 @@ keep = """#define WM_D(M, T, N, W_, R)                                          
     return 0;                                                                                             \\
   }
 #define WM_ALL(T, N, W_, R) WM_D(0, T, N, W_, R) WM_D(1, T, N, W_, R)
-  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1)
+  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1) WM_ALL(2, 1, 2, 0)
 """
 cuda = cuda[:a] + keep + cuda[b:]
 import re as _re
