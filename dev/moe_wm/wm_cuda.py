@@ -110,16 +110,17 @@ __global__ void route_kernel(const int* __restrict__ ids, int npair, const int* 
     cnt[lane] = c;
     // work items: one per group of `grp` tokens of an expert, so a hot expert spreads over several CTAs
     const int groups = (c + grp - 1) / grp;
-    int scan = groups;
+    // longest-processing-time-first: experts with the most tokens (largest NCH) get the earliest work items
+    int start = 0, total = 0;
 #pragma unroll
-    for (int d = 1; d < 32; d <<= 1) {
-      const int v = __shfl_up_sync(0xffffffffu, scan, d);
-      if (lane >= d) scan += v;
+    for (int j = 0; j < 32; j++) {
+      const int cj = __shfl_sync(0xffffffffu, c, j), gj = __shfl_sync(0xffffffffu, groups, j);
+      if (cj > c || (cj == c && j < lane)) start += gj;
+      total += gj;
     }
-    const int start = scan - groups;
     for (int j = 0; j < groups; j++)
       reinterpret_cast<int4*>(act)[start + j] = make_int4(lane, j * grp, min(c - j * grp, grp), 1);
-    if (lane == 31) *nact = scan;
+    if (lane == 31) *nact = total;
   }
 }
 

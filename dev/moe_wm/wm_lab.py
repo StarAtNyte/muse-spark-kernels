@@ -123,7 +123,7 @@ def _lab_stress(state):
 
 def _lab(state):
     global _WM_DBG
-    _lab_run(state)
+    _lab_cfgs(state)
 
 
 def _lab_pdl(state):
@@ -166,7 +166,7 @@ def _lab_cfgs(state):
     flush = torch.zeros(160 * 1024 * 1024 // 4, dtype=torch.float32, device="cuda")
     saved = _WM_CFG
     lines = []
-    for m in (64, 128, 256, 1024):
+    for m in (12, 16, 24, 32, 48):
         data = _lab_inputs(m, "cuda", 100 + m)
         nact = len(torch.unique(data["topk_ids"][data["topk_ids"] < 32]))
         base = 0.0
