@@ -123,7 +123,7 @@ def _lab_stress(state):
 
 def _lab(state):
     global _WM_DBG
-    _lab_prof(state)
+    _lab_run(state)
 
 
 def _lab_pdl(state):
@@ -223,3 +223,12 @@ def _lab_prof(state):
             for ev in prof.key_averages():
                 if ev.device_time_total > 0:
                     print('LABP pdl=%d M=%d %s n=%d avg=%.1fus' % (pdl, m, ev.key[:40], ev.count, ev.device_time_total / max(ev.count, 1)), flush=True)
+
+
+def _lab_run(state):
+    global _WM_CFG
+    data = _lab_inputs(256, 'cuda', 356)
+    _WM_CFG = [(10**9, (4, 4, 4))]
+    for _ in range(3):
+        kernel_fn(data, state)
+    torch.cuda.synchronize()
