@@ -199,5 +199,19 @@ if use_attn:
                "        o = _fd_forward(data, q, qkv, fd[0], fd[1], variant=fd[2]).view(tokens, hq*d)\n"
                "    elif (cfg['window'] and batch <= 4) or (not cfg['window'] and length == 1):")
     src = src.replace(old_att, new_att, 1)
+
+if os.environ.get("USE_BC", "0") == "1":
+    sys.path.insert(0, "bf16c")
+    import bf16c_cuda as BC
+    import inspect as _inspect
+    pack_src = _inspect.getsource(BC.pack).replace("def pack(", "def _bc_pack(", 1)
+    bc_code = ("\n\n# ---- lossless 12-bit BF16 dense weights + swap-AB GEMV (own CUDA) ----\n_BC_CUDA = r'''" + BC.CUDA_SRC + BC.TORCH_GLUE +
+               "'''\n_BC_CPP = r'''" + BC.CPP_SRC + "'''\n\n" + pack_src + "\n" + open("bf16c/decoder_bc_glue.py").read())
+    old = '    if cfg is None:\n        return _b5(x.contiguous(), layer, n, state)\n'
+    if old not in src:
+        old = '    if cfg is None:\n        w = state["dense"][layer]\n        return _gemm(x, w[:n] if layer == "unpooler" else w)\n'
+    assert old in src
+    src = src.replace(old, '    if cfg is None and state.get("bc_pick") and layer != "router":\n        _pick = state["bc_pick"].get((layer, _bc_bucket(m)))\n        if _pick is not None and x.dtype == torch.bfloat16:\n            return _bc_run(state, layer, x.contiguous(), n, _pick)\n' + old, 1)
+    src = src + bc_code
 open(sys.argv[1] if len(sys.argv) > 1 else "decoder_all.py", "w").write(src)
 print("wrote")

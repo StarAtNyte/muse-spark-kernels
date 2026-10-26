@@ -1,0 +1,22 @@
+{
+  "name": "decoder_wm_v8",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder + compressed BF16 dense GEMV (tuned in prepare) + parallel precompile",
+  "sha256": "8dff88128fba94452979edb07c1363b024d7f321c09403a59cd15389f196cd31",
+  "created_at": 1793010718.6531506,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "received",
+  "job_id": "685ba3b8cd9f41ca"
+}
