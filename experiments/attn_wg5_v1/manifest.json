@@ -4,7 +4,7 @@
   "hypothesis": "own wgmma verify kernel (wg5) for full-layer q_len 8 batch>=8",
   "sha256": "913bceb4410891b2a600abc6214e9c22d3f13b95389f9d305392e0c16fed5d49",
   "created_at": 1793005769.8751369,
-  "decision": "archive_only",
+  "decision": "promote_globally",
   "limits_before": {
     "scored": {
       "per_day": 10,
@@ -17,6 +17,8 @@
       "left": 20
     }
   },
-  "status": "received",
-  "job_id": "cdf13472f3b94a09"
+  "status": "done",
+  "job_id": "cdf13472f3b94a09",
+  "updated_at": 1793006496.5272603,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
 }

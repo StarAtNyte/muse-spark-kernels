@@ -204,6 +204,399 @@ def _v7_kernel_fn(data):
 
 
 # ---- CUDA split-KV flash decode ----
+_WG_CUDA = r'''
+#include <cuda_fp16.h>
+#include <cuda_bf16.h>
+#include <cuda_runtime.h>
+#include <stdint.h>
+#define HD 64
+#define WT 64              // keys per tile
+
+__device__ __forceinline__ void cp16(void* sdst, const void* gsrc) {
+  asm volatile("cp.async.cg.shared.global [%0], [%1], 16;\n" ::"r"((uint32_t)__cvta_generic_to_shared(sdst)), "l"(gsrc));
+}
+__device__ __forceinline__ void cp_commit() { asm volatile("cp.async.commit_group;\n" ::); }
+template <int N> __device__ __forceinline__ void cp_wait() { asm volatile("cp.async.wait_group %0;\n" ::"n"(N)); }
+__device__ __forceinline__ uint32_t pack_h2(float a, float b) {
+  __half2 h = __floats2half2_rn(a, b);
+  return *reinterpret_cast<uint32_t*>(&h);
+}
+__device__ __forceinline__ uint32_t prmt(uint32_t a, uint32_t b, uint32_t sel) {
+  uint32_t r; asm("prmt.b32 %0, %1, %2, %3;" : "=r"(r) : "r"(a), "r"(b), "r"(sel)); return r;
+}
+__device__ __forceinline__ uint32_t cvt_fp8x2(uint32_t x) {   // low two e4m3 bytes -> f16x2
+  uint32_t r;
+  asm("{\n.reg .b16 a, b;\nmov.b32 {a, b}, %1;\ncvt.rn.f16x2.e4m3x2 %0, a;\n}" : "=r"(r) : "r"(x));
+  return r;
+}
+
+__device__ __forceinline__ void wg_qk(float* d, uint64_t da, uint64_t db, int accum) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("{\n.reg .pred p;\nsetp.ne.b32 p, %34, 0;\n"
+               "wgmma.mma_async.sync.aligned.m64n64k32.f32.e4m3.e4m3 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, %32, %33, p, 1, 1;\n}\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31])
+               : "l"(da), "l"(db), "r"(accum));
+#endif
+}
+
+__device__ __forceinline__ void wg_pv(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("{\n.reg .pred p;\nsetp.ne.b32 p, 1, 0;\nwgmma.mma_async.sync.aligned.m64n64k16.f32.f16.f16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, {%32,%33,%34,%35}, %36, p, 1, 1, 0;\n}\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31])
+               : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+}
+
+__device__ __forceinline__ float ex2f(float x) {
+  float y;
+  asm("ex2.approx.ftz.f32 %0, %1;" : "=f"(y) : "f"(x));
+  return y;
+}
+__device__ __forceinline__ void wg_pv72(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("{\n.reg .pred p;\nsetp.ne.b32 p, 1, 0;\nwgmma.mma_async.sync.aligned.m64n72k16.f32.f16.f16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,%34,%35}, {%36,%37,%38,%39}, %40, p, 1, 1, 1;\n}\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31]), "+f"(d[32]), "+f"(d[33]), "+f"(d[34]), "+f"(d[35])
+               : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+}
+__device__ __forceinline__ void wg_pvt(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("{\n.reg .pred p;\nsetp.ne.b32 p, 1, 0;\nwgmma.mma_async.sync.aligned.m64n64k16.f32.f16.f16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, {%32,%33,%34,%35}, %36, p, 1, 1, 1;\n}\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31])
+               : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+}
+
+
+__device__ __forceinline__ void wg_commit() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.commit_group.sync.aligned;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void wg_wait0() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.wait_group.sync.aligned 0;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void wg_qk128_nw(float* d, uint64_t da, uint64_t db, int accum);
+__device__ __forceinline__ void wg_qk128(float* d, uint64_t da, uint64_t db, int accum) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("{\n.reg .pred p;\nsetp.ne.b32 p, %66, 0;\n"
+               "wgmma.mma_async.sync.aligned.m64n128k32.f32.e4m3.e4m3 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,%34,%35,%36,%37,%38,%39,%40,%41,%42,%43,%44,%45,%46,%47,%48,%49,%50,%51,%52,%53,%54,%55,%56,%57,%58,%59,%60,%61,%62,%63}, %64, %65, p, 1, 1;\n}\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31]), "+f"(d[32]), "+f"(d[33]), "+f"(d[34]), "+f"(d[35]), "+f"(d[36]), "+f"(d[37]), "+f"(d[38]), "+f"(d[39]), "+f"(d[40]), "+f"(d[41]), "+f"(d[42]), "+f"(d[43]), "+f"(d[44]), "+f"(d[45]), "+f"(d[46]), "+f"(d[47]), "+f"(d[48]), "+f"(d[49]), "+f"(d[50]), "+f"(d[51]), "+f"(d[52]), "+f"(d[53]), "+f"(d[54]), "+f"(d[55]), "+f"(d[56]), "+f"(d[57]), "+f"(d[58]), "+f"(d[59]), "+f"(d[60]), "+f"(d[61]), "+f"(d[62]), "+f"(d[63])
+               : "l"(da), "l"(db), "r"(accum));
+#endif
+}
+__device__ __forceinline__ uint64_t mkdesc(const void* p, uint32_t lbo, uint32_t sbo) {
+  const uint32_t a = (uint32_t)__cvta_generic_to_shared(p);
+  return (uint64_t)((a >> 4) & 0x3FFF) | ((uint64_t)((lbo >> 4) & 0x3FFF) << 16) | ((uint64_t)((sbo >> 4) & 0x3FFF) << 32);
+}
+__device__ __forceinline__ void wg_fence() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.fence.sync.aligned;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void wg_commit_wait() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.commit_group.sync.aligned;\nwgmma.wait_group.sync.aligned 0;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void proxy_fence() { asm volatile("fence.proxy.async.shared::cta;\n" ::: "memory"); }
+
+// core-matrix layout of a [rows][64 byte] fp8 tile: 8 rows x 16 B cores, K cores 128 B apart, row groups 512 B apart
+__device__ __forceinline__ int core_off(int r, int chunk) { return (r >> 3) * 512 + chunk * 128 + (r & 7) * 16; }
+// vT: [d][key] f16, cores of 8 d-rows x 8 keys (16 B per row): key cores 128 B apart, d groups 1024 B apart
+__device__ __forceinline__ int vt_off(int d, int key) { return (d >> 3) * 1024 + (key >> 3) * 128 + (d & 7) * 16 + (key & 7) * 2; }
+
+__device__ __forceinline__ int vmn_off(int key, int d) { return (key >> 3) * 1152 + (d >> 3) * 128 + (key & 7) * 16 + (d & 7) * 2; }
+#define WS 3   // raw stages
+#define TILEB 8192   // bytes of a raw K or V tile
+__device__ __forceinline__ void wg_qk128_nw(float* d, uint64_t da, uint64_t db, int accum) { wg_qk128(d, da, db, accum); }
+
+
+__device__ __forceinline__ void wg_qk_first(float* d, uint64_t da, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.mma_async.sync.aligned.m64n64k32.f32.e4m3.e4m3 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, %32, %33, 0, 1, 1;\n"
+               : "=f"(d[0]), "=f"(d[1]), "=f"(d[2]), "=f"(d[3]), "=f"(d[4]), "=f"(d[5]), "=f"(d[6]), "=f"(d[7]), "=f"(d[8]), "=f"(d[9]), "=f"(d[10]), "=f"(d[11]), "=f"(d[12]), "=f"(d[13]), "=f"(d[14]), "=f"(d[15]), "=f"(d[16]), "=f"(d[17]), "=f"(d[18]), "=f"(d[19]), "=f"(d[20]), "=f"(d[21]), "=f"(d[22]), "=f"(d[23]), "=f"(d[24]), "=f"(d[25]), "=f"(d[26]), "=f"(d[27]), "=f"(d[28]), "=f"(d[29]), "=f"(d[30]), "=f"(d[31])
+               : "l"(da), "l"(db));
+#endif
+}
+__device__ __forceinline__ void wg_qk_acc(float* d, uint64_t da, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.mma_async.sync.aligned.m64n64k32.f32.e4m3.e4m3 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, %32, %33, 1, 1, 1;\n"
+               : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31])
+               : "l"(da), "l"(db));
+#endif
+}
+
+#define LAZY_TH 8.0f
+__global__ void __launch_bounds__(256, 2)
+wg5_partials(const uint8_t* __restrict__ Q, const uint8_t* __restrict__ KC, const uint8_t* __restrict__ VC,
+             const int* __restrict__ TABLE, const int* __restrict__ SEQLEN, const float* __restrict__ KS,
+             const float* __restrict__ VS, float* __restrict__ PART, float* __restrict__ LSE, int L, int HQ,
+             int table_n, int page, int window, int splits, int chunk, float sm_scale, int scaled, int dbg) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  extern __shared__ __align__(1024) uint8_t smem_raw[];
+  uint8_t* smem = (uint8_t*)(((uintptr_t)smem_raw + 1023) & ~(uintptr_t)1023);
+  const int tid = threadIdx.x, wgi = tid >> 7, tw = tid & 127, lane = tid & 31, warp = (tid >> 5) & 3;
+  const int g = lane >> 2, t = lane & 3;
+  const int split = blockIdx.x, kh = wgi, b = blockIdx.z;
+  const int prefix = SEQLEN[b];
+  const int first = window ? max(prefix - window + 1, 0) : 0;
+  const int begin = first + split * chunk;
+  const int end = min(begin + chunk, prefix + L);
+  const float key_scale = scaled ? KS[0] : 1.f, value_scale = scaled ? VS[0] : 1.f;
+  const float sc2 = sm_scale * key_scale * 1.4426950408889634f;
+  const long base_row = ((long)(b * 2 + kh) * splits + split) * 64;
+  const int n = end > begin ? end - begin : 0;
+  const int nst = (n + WT - 1) / WT;
+
+  uint8_t* qs = smem + wgi * 4096;
+  uint8_t* vt = smem + 8192 + wgi * 9216;
+  uint8_t* stages = smem + 8192 + 18432;
+  int* rows = reinterpret_cast<int*>(stages + WS * 16384);
+
+  const int pshift = __ffs(page) - 1, pmask = page - 1;
+  for (int i = tid; i < n; i += 256) {
+    const int tok = begin + i;
+    const int pg = tok >> pshift;
+    const int phys = (pg < table_n) ? TABLE[b * table_n + pg] : -1;
+    rows[i] = phys < 0 ? 0 : ((phys << pshift) + (tok & pmask));
+  }
+  for (int c = tw; c < 64 * 4; c += 128) {
+    const int r = c >> 2, ch = c & 3;
+    const int token = r >> 3, qh = kh * 8 + (r & 7);
+    uint4 v = make_uint4(0, 0, 0, 0);
+    if (token < L) v = *reinterpret_cast<const uint4*>(Q + ((long)(b * L + token) * HQ + qh) * HD + ch * 16);
+    *reinterpret_cast<uint4*>(qs + core_off(r, ch)) = v;
+  }
+  {
+    const uint32_t ad = (uint32_t)__cvta_generic_to_shared(vt + (tw >> 3) * 1152 + 1024 + (tw & 7) * 16);
+    if (tw < 64) asm volatile("st.shared.v4.u32 [%0], {%1,%2,%3,%4};" ::"r"(ad), "r"(0x3C003C00u), "r"(0x3C003C00u), "r"(0x3C003C00u), "r"(0x3C003C00u));
+  }
+  proxy_fence();
+  __syncthreads();
+
+  // ---- loop-invariant addressing ----
+  const uint32_t stages_s = (uint32_t)__cvta_generic_to_shared(stages);
+  const int ci = tid & 15;                   // 16-byte chunk within the key row (K 0-7, V 8-15)
+  const int cc = ci & 7;
+  const bool isv = ci >= 8;
+  const uint8_t* srcb = (isv ? VC : KC) + cc * 16;
+  uint32_t dst_off[4];
+  int key4[4];
+#pragma unroll
+  for (int i = 0; i < 4; i++) {
+    const int key = (tid >> 4) + 16 * i;
+    key4[i] = key;
+    dst_off[i] = isv ? (8192 + key * 128 + cc * 16) : ((cc >> 2) * 4096 + core_off(key, cc & 3));
+  }
+  auto issue = [&](int s, int stage) {
+    if (s < nst && !(dbg & 8)) {
+      const uint32_t base = stages_s + stage * 16384;
+#pragma unroll
+      for (int i = 0; i < 4; i++) {
+        const int li = s * WT + key4[i];
+        const long rr = li < n ? rows[li] : 0;
+        asm volatile("cp.async.cg.shared.global [%0], [%1], 16;\n" ::"r"(base + dst_off[i]), "l"(srcb + rr * 128));
+      }
+    }
+    cp_commit();
+  };
+  int wr_stage = 0;
+#pragma unroll
+  for (int s = 0; s < WS - 1; s++) { issue(s, wr_stage); wr_stage = wr_stage + 1 == WS ? 0 : wr_stage + 1; }
+
+  const uint64_t qd0 = mkdesc(qs, 128, 512), qd1 = mkdesc(qs + 256, 128, 512);
+  const uint64_t kd0 = mkdesc(stages + wgi * 4096, 128, 512);
+  const uint64_t vd0 = mkdesc(vt, 1152, 128);
+  // per-thread V conversion offsets (loop invariant)
+  // rotated chunk assignment: lanes take consecutive keys but different 16 B chunks, so both the smem loads and the stores are (nearly) conflict free
+  const int vkey = (tw & 31) + 32 * (tw >> 6);
+  const int vcb = ((tw >> 5) & 1) * 2;
+  uint32_t vsrc_off[2], vdst_off[4];
+#pragma unroll
+  for (int j = 0; j < 2; j++) {
+    const int cs = (vcb + j + vkey) & 3;
+    vsrc_off[j] = vkey * 128 + wgi * 64 + cs * 16;
+    vdst_off[2 * j] = (uint32_t)vmn_off(vkey, 16 * cs);
+    vdst_off[2 * j + 1] = (uint32_t)vmn_off(vkey, 16 * cs + 8);
+  }
+
+  float o[36];
+#pragma unroll
+  for (int i = 0; i < 36; i++) o[i] = 0.f;
+  float m_run[2] = {-INFINITY, -INFINITY};
+
+  int rd_stage = 0;
+#pragma unroll 1
+  for (int s = 0; s < nst; s++) {
+    cp_wait<WS - 2>();
+    if (!(dbg & 128)) { proxy_fence(); __syncthreads(); }
+    issue(s + WS - 1, wr_stage);
+    wr_stage = wr_stage + 1 == WS ? 0 : wr_stage + 1;
+    const uint8_t* vst = stages + rd_stage * 16384 + 8192;
+    const uint64_t kdesc = kd0 + (uint64_t)(rd_stage * 1024);
+    rd_stage = rd_stage + 1 == WS ? 0 : rd_stage + 1;
+
+    float sacc[32];
+    wg_fence();
+    wg_qk_first(sacc, qd0, kdesc);
+    wg_qk_acc(sacc, qd1, kdesc + 16);
+    wg_commit();
+    // V raw [key][d] fp8 -> MN-major f16 core layout; overlaps with the QK wgmma
+#pragma unroll
+    for (int h2 = 0; h2 < ((dbg & 16) ? 0 : 2); h2++) {
+      const uint4 u = *reinterpret_cast<const uint4*>(vst + vsrc_off[h2]);
+      const uint32_t w[4] = {u.x, u.y, u.z, u.w};
+#pragma unroll
+      for (int q4 = 0; q4 < 2; q4++) {
+        uint4 o4;
+        o4.x = cvt_fp8x2(w[2 * q4]); o4.y = cvt_fp8x2(w[2 * q4] >> 16);
+        o4.z = cvt_fp8x2(w[2 * q4 + 1]); o4.w = cvt_fp8x2(w[2 * q4 + 1] >> 16);
+        *reinterpret_cast<uint4*>(vt + vdst_off[2 * h2 + q4]) = o4;
+      }
+    }
+    proxy_fence();
+    wg_wait0();
+#pragma unroll
+    for (int i = 0; i < 32; i++) asm volatile("" : "+f"(sacc[i])::"memory");
+    asm volatile("bar.sync %0, 128;\n" ::"r"(1 + wgi) : "memory");
+
+    const int tb = begin + s * WT;
+    const bool full_vis = (tb + WT <= end) && (L == 1 || tb + WT - 1 <= prefix) && (!window || L == 1 || tb > prefix + L - 1 - window);
+    if (!full_vis) {
+#pragma unroll
+      for (int j = 0; j < 8; j++)
+#pragma unroll
+        for (int r = 0; r < 4; r++) {
+          const int row = warp * 16 + g + 8 * (r >> 1);
+          const int token = row >> 3;
+          const int col = tb + j * 8 + 2 * t + (r & 1);
+          const int pos = prefix + token;
+          const bool vis = (token < L) && (col < prefix + L) && (col < end) && (col <= pos) && (!window || col > pos - window);
+          if (!vis) sacc[4 * j + r] = -INFINITY;
+        }
+    }
+    float mx0 = -INFINITY, mx1 = -INFINITY;
+#pragma unroll
+    for (int j = 0; j < ((dbg & 64) ? 0 : 8); j++) {
+      mx0 = fmaxf(mx0, fmaxf(sacc[4 * j], sacc[4 * j + 1]));
+      mx1 = fmaxf(mx1, fmaxf(sacc[4 * j + 2], sacc[4 * j + 3]));
+    }
+    mx0 = fmaxf(mx0, __shfl_xor_sync(0xffffffffu, mx0, 1));
+    mx0 = fmaxf(mx0, __shfl_xor_sync(0xffffffffu, mx0, 2));
+    mx1 = fmaxf(mx1, __shfl_xor_sync(0xffffffffu, mx1, 1));
+    mx1 = fmaxf(mx1, __shfl_xor_sync(0xffffffffu, mx1, 2));
+    mx0 *= sc2; mx1 *= sc2;
+    // lazy rescale: the reference max only moves when a tile exceeds it by more than LAZY_TH (log2 domain), so p <= 2^LAZY_TH
+    if (__any_sync(0xffffffffu, mx0 > m_run[0] + LAZY_TH || mx1 > m_run[1] + LAZY_TH)) {
+      const float n0 = fmaxf(m_run[0], mx0), n1 = fmaxf(m_run[1], mx1);
+      const float s0 = n0 == -INFINITY ? 0.f : n0, s1 = n1 == -INFINITY ? 0.f : n1;
+      const float c0 = ex2f(m_run[0] - s0), c1 = ex2f(m_run[1] - s1);
+      m_run[0] = n0; m_run[1] = n1;
+#pragma unroll
+      for (int j = 0; j < 9; j++) {
+        o[4 * j] *= c0; o[4 * j + 1] *= c0;
+        o[4 * j + 2] *= c1; o[4 * j + 3] *= c1;
+      }
+    }
+    const float sf0 = m_run[0] == -INFINITY ? 0.f : m_run[0], sf1 = m_run[1] == -INFINITY ? 0.f : m_run[1];
+    uint32_t pa[8][2];
+#pragma unroll
+    for (int j = 0; j < 8; j++) {
+      const float p0 = (dbg & 32) ? sacc[4 * j] : ex2f(fmaf(sacc[4 * j], sc2, -sf0)), p1 = (dbg & 32) ? sacc[4 * j + 1] : ex2f(fmaf(sacc[4 * j + 1], sc2, -sf0));
+      const float p2 = (dbg & 32) ? sacc[4 * j + 2] : ex2f(fmaf(sacc[4 * j + 2], sc2, -sf1)), p3 = (dbg & 32) ? sacc[4 * j + 3] : ex2f(fmaf(sacc[4 * j + 3], sc2, -sf1));
+      pa[j][0] = pack_h2(p0, p1);
+      pa[j][1] = pack_h2(p2, p3);
+    }
+    wg_fence();
+    const uint64_t vd = vd0;
+#pragma unroll
+    for (int kk = 0; kk < 4; kk++)
+      if (!(dbg & 2)) wg_pv72(o, pa[2 * kk][0], pa[2 * kk][1], pa[2 * kk + 1][0], pa[2 * kk + 1][1], vd + (uint64_t)(kk * 144));
+    wg_commit_wait();
+#pragma unroll
+    for (int i = 0; i < 36; i++) asm volatile("" : "+f"(o[i])::"memory");
+  }
+  cp_wait<0>();
+#pragma unroll
+  for (int h = 0; h < 2; h++) {
+    const int row = warp * 16 + g + 8 * h;
+    const float ls = o[32 + 2 * h];
+    const float inv = ls > 0.f ? 1.f / ls : 1.f;
+#pragma unroll
+    for (int j = 0; j < 8; j++) {
+      PART[(base_row + row) * HD + j * 8 + 2 * t] = o[4 * j + 2 * h] * inv * value_scale;
+      PART[(base_row + row) * HD + j * 8 + 2 * t + 1] = o[4 * j + 2 * h + 1] * inv * value_scale;
+    }
+    if (t == 0) LSE[base_row + row] = ls > 0.f ? (m_run[h] + log2f(ls)) * 0.6931471805599453f : -INFINITY;
+  }
+#endif
+}
+
+extern "C" int wg5_run(const void* Q, const void* KC, const void* VC, const int* TABLE, const int* SEQLEN, const float* KS,
+                       const float* VS, float* PART, float* LSE, int B, int L, int HQ, int table_n, int page,
+                       int window, int splits, int chunk, float sm_scale, int scaled, int dbg, cudaStream_t st) {
+  const size_t rmax = ((chunk + 255) / 256) * 256;
+  const size_t dyn = 1024 + 8192 + 18432 + (size_t)WS * 16384 + rmax * 4;
+  cudaFuncSetAttribute(wg5_partials, cudaFuncAttributeMaxDynamicSharedMemorySize, (int)dyn);
+  dim3 grid(splits, 1, B);
+  wg5_partials<<<grid, 256, dyn, st>>>(reinterpret_cast<const uint8_t*>(Q), reinterpret_cast<const uint8_t*>(KC),
+                                       reinterpret_cast<const uint8_t*>(VC), TABLE, SEQLEN, KS, VS, PART, LSE, L, HQ,
+                                       table_n, page, window, splits, chunk, sm_scale, scaled, dbg);
+  return 0;
+}
+
+#include <torch/extension.h>
+#include <ATen/cuda/CUDAContext.h>
+extern "C" int wg5_run(const void*, const void*, const void*, const int*, const int*, const float*, const float*, float*, float*,
+                       int, int, int, int, int, int, int, int, float, int, int, cudaStream_t);
+void wg5_run_t(torch::Tensor q, torch::Tensor kc, torch::Tensor vc, torch::Tensor table, torch::Tensor seqlens, torch::Tensor ks,
+               torch::Tensor vs, torch::Tensor part, torch::Tensor lse, int64_t L, int64_t HQ, int64_t page,
+               int64_t window, int64_t splits, int64_t chunk, double sm_scale, int64_t scaled, int64_t dbg) {
+  int r = wg5_run(q.data_ptr(), kc.data_ptr(), vc.data_ptr(), table.data_ptr<int>(), seqlens.data_ptr<int>(), ks.data_ptr<float>(),
+                  vs.data_ptr<float>(), part.data_ptr<float>(), lse.data_ptr<float>(), (int)seqlens.numel(), (int)L, (int)HQ,
+                  (int)table.size(1), (int)page, (int)window, (int)splits, (int)chunk, (float)sm_scale, (int)scaled, (int)dbg,
+                  at::cuda::getCurrentCUDAStream());
+  TORCH_CHECK(r == 0, "wg5");
+}
+'''
+_WG_CPP = r'''void wg5_run_t(torch::Tensor q, torch::Tensor kc, torch::Tensor vc, torch::Tensor table, torch::Tensor seqlens, torch::Tensor ks,
+               torch::Tensor vs, torch::Tensor part, torch::Tensor lse, int64_t L, int64_t HQ, int64_t page,
+               int64_t window, int64_t splits, int64_t chunk, double sm_scale, int64_t scaled, int64_t dbg);'''
+
+_WG_MOD = None
+_WG_ON = True
+_WG_MINB = 8
+_WG_SPLITS = 16
+
+
+def _wg_module():
+    global _WG_MOD
+    if _WG_MOD is None:
+        from torch.utils.cpp_extension import load_inline
+        _WG_MOD = load_inline("muse_wg5_attn", _WG_CPP, cuda_sources=_WG_CUDA, functions=["wg5_run_t"],
+                              extra_cuda_cflags=["-O3", "-gencode=arch=compute_90a,code=sm_90a"], verbose=False)
+    return _WG_MOD
+
+
+def _wg_forward(data, q, qkv, splits):
+    cfg = data['config']
+    batch, length = cfg['batch'], cfg['q_len']
+    hq, hkv, d = cfg['num_q_heads'], cfg['num_kv_heads'], cfg['head_dim']
+    tokens = batch * length
+    span = data['page_table'].shape[1] * cfg['page_size']
+    chunk = triton.cdiv(triton.cdiv(span, splits), 64) * 64
+    partial = torch.empty((batch, hkv, splits, 64, d), device=qkv.device, dtype=torch.float32)
+    lse = torch.empty((batch, hkv, splits, 64), device=qkv.device, dtype=torch.float32)
+    _wg_module().wg5_run_t(q, data['k_cache'], data['v_cache'], data['page_table'], data['seq_lens'], data['k_scale'],
+                           data['v_scale'], partial, lse, length, hq, cfg['page_size'], 0, splits, chunk,
+                           cfg['sm_scale'] * cfg['qk_scale_factor'], int(cfg['kv_scale'] != 1.0), 0)
+    result = torch.empty((batch, length, hq * d), device=qkv.device, dtype=torch.bfloat16)
+    _merge_norm_gate[(tokens, hq)](partial, lse, qkv, result, hq, hkv, d, length, qkv.stride(0), splits, 64, num_warps=4)
+    return result
+
 _FD_CUDA = r'''
 #include <cuda_fp16.h>
 #include <cuda_bf16.h>
@@ -1342,6 +1735,224 @@ static void launch3(const void* Q, const void* KC, const void* VC, const int* TA
 }
 
 
+template <int S, int TS>
+__global__ void __launch_bounds__(128)
+fd3t_partials(const uint8_t* __restrict__ Q, const uint8_t* __restrict__ KC, const uint8_t* __restrict__ VC,
+             const int* __restrict__ TABLE, const int* __restrict__ SEQLEN, const float* __restrict__ KS,
+             const float* __restrict__ VS, float* __restrict__ PART, float* __restrict__ LSE, int HQ, int HKV,
+             int table_n, int page, int window, int splits, int chunk, float sm_scale, int scaled) {
+  extern __shared__ __align__(16) uint8_t smem[];
+  constexpr int BM = 16;
+  constexpr int SLOT = 2 * TS * RP3;
+  const int tid = threadIdx.x, lane = tid & 31, warp = tid >> 5;
+  const int g = lane >> 2, t = lane & 3;
+  const int split = blockIdx.x, b = blockIdx.z;
+  const int prefix = SEQLEN[b];
+  const int first = window ? max(prefix - window + 1, 0) : 0;
+  const int begin = first + split * chunk;
+  const int end = min(begin + chunk, prefix + 1);
+  const float key_scale = scaled ? KS[0] : 1.f, value_scale = scaled ? VS[0] : 1.f;
+  const float sc2 = sm_scale * key_scale * 1.4426950408889634f;
+  const int n = end > begin ? end - begin : 0;
+  const int nstages = (n + TS - 1) / TS;
+
+  int* rows = reinterpret_cast<int*>(smem);
+  const int rmax_rt = ((chunk + 31) / 32) * 32;
+  uint8_t* wbase = smem + rmax_rt * 4 + warp * (S * SLOT);
+  const int pshift = __ffs(page) - 1, pmask = page - 1;
+  for (int i = tid; i < n; i += 128) {
+    const int tok = begin + i;
+    const int pg = tok >> pshift;
+    const int phys = (pg < table_n) ? TABLE[b * table_n + pg] : -1;
+    rows[i] = phys < 0 ? 0 : ((phys << pshift) + (tok & pmask));
+  }
+  pdl_wait();
+  uint32_t q0[2][2], q2[2][2];
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++) {
+    const uint8_t* qp = Q + ((long)b * HQ + kh * 8 + g) * HD;
+#pragma unroll
+    for (int ks = 0; ks < 2; ks++) {
+      q0[kh][ks] = *reinterpret_cast<const uint32_t*>(qp + 32 * ks + 4 * t);
+      q2[kh][ks] = *reinterpret_cast<const uint32_t*>(qp + 32 * ks + 16 + 4 * t);
+    }
+  }
+  __syncthreads();
+
+  float o[2][8][2];
+  float m_run[2] = {-INFINITY, -INFINITY}, l_run[2] = {0.f, 0.f};
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++)
+#pragma unroll
+    for (int d = 0; d < 8; d++) o[kh][d][0] = o[kh][d][1] = 0.f;
+
+  const int my_stages = (nstages - warp + 3) / 4 > 0 ? (nstages - warp + 3) / 4 : 0;
+  auto issue = [&](int s) {
+    if (s < my_stages) {
+      uint8_t* slot = wbase + (s % S) * SLOT;
+      const int tb = (warp + 4 * s) * TS;
+      const int c = lane & 7;
+#pragma unroll
+      for (int i = 0; i < TS / 4; i++) {
+        const int tk = (lane >> 3) + 4 * i;
+        const int li = tb + tk;
+        const long rr = li < n ? rows[li] : 0;
+        const long goff = rr * 128 + c * 16;
+        cp16(slot + tk * RP3 + c * 16, KC + goff);
+        cp16(slot + TS * RP3 + tk * RP3 + c * 16, VC + goff);
+      }
+    }
+    cp_commit();
+  };
+#pragma unroll
+  for (int s = 0; s < S - 1; s++) issue(s);
+
+  const int srow = lane & 7, smat = lane >> 3;
+#pragma unroll 1
+  for (int s = 0; s < my_stages; s++) {
+    cp_wait<S - 2>();
+    __syncwarp();
+    issue(s + S - 1);
+    const uint8_t* slot = wbase + (s % S) * SLOT;
+    const uint8_t* kraw = slot;
+    const uint8_t* vraw = slot + TS * RP3;
+    const int tb = begin + (warp + 4 * s) * TS;
+    const bool full_vis = tb + TS <= end;
+#pragma unroll
+    for (int kh = 0; kh < 2; kh++) {
+      float sacc[TS / 8][4];
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++) {
+#pragma unroll
+        for (int r = 0; r < 4; r++) sacc[nt][r] = 0.f;
+        uint32_t k0, k1, k2, k3;
+        ldsm4(k0, k1, k2, k3, kraw + (nt * 8 + srow) * RP3 + kh * 64 + smat * 16);
+        mma_qk8(sacc[nt], q0[kh][0], q2[kh][0], k0, k1);
+        mma_qk8(sacc[nt], q0[kh][1], q2[kh][1], k2, k3);
+      }
+      float sv[TS / 8][2];
+      float mx = -INFINITY;
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++)
+#pragma unroll
+        for (int r = 0; r < 2; r++) {
+          float v = sacc[nt][r];
+          if (!full_vis && tb + nt * 8 + 2 * t + r >= end) v = -INFINITY;
+          sv[nt][r] = v;
+          mx = fmaxf(mx, v);
+        }
+      mx = fmaxf(mx, __shfl_xor_sync(0xffffffffu, mx, 1));
+      mx = fmaxf(mx, __shfl_xor_sync(0xffffffffu, mx, 2));
+      mx *= sc2;
+      const float newm = fmaxf(m_run[kh], mx);
+      const float safe = newm == -INFINITY ? 0.f : newm;
+      const float corr = exp2f(m_run[kh] - safe);
+      float rs = 0.f;
+      uint32_t pa[TS / 8];
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++) {
+        const float p0 = exp2f(fmaf(sv[nt][0], sc2, -safe)), p1 = exp2f(fmaf(sv[nt][1], sc2, -safe));
+        rs += p0 + p1;
+        pa[nt] = pack_h2(p0, p1);
+      }
+      rs += __shfl_xor_sync(0xffffffffu, rs, 1);
+      rs += __shfl_xor_sync(0xffffffffu, rs, 2);
+      l_run[kh] = l_run[kh] * corr + rs;
+      m_run[kh] = newm;
+      if (__any_sync(0xffffffffu, corr != 1.f)) {
+#pragma unroll
+        for (int d = 0; d < 8; d++) { o[kh][d][0] *= corr; o[kh][d][1] *= corr; }
+      }
+#pragma unroll
+      for (int kk = 0; kk < TS / 16; kk++) {
+#pragma unroll
+        for (int pr = 0; pr < 2; pr++) {
+          uint32_t r0, r1, r2, r3;
+          ldsm4t(r0, r1, r2, r3, vraw + (kk * 16 + (smat & 1) * 8 + srow) * RP3 + kh * 64 + pr * 32 + (smat >> 1) * 16);
+          const uint32_t bE0 = cvt2(prmt(r0, 0u, 0x4420u)), bE1 = cvt2(prmt(r1, 0u, 0x4420u));
+          const uint32_t bO0 = cvt2(prmt(r0, 0u, 0x4431u)), bO1 = cvt2(prmt(r1, 0u, 0x4431u));
+          const uint32_t cE0 = cvt2(prmt(r2, 0u, 0x4420u)), cE1 = cvt2(prmt(r3, 0u, 0x4420u));
+          const uint32_t cO0 = cvt2(prmt(r2, 0u, 0x4431u)), cO1 = cvt2(prmt(r3, 0u, 0x4431u));
+          float acc[4];
+          acc[0] = o[kh][4 * pr + 0][0]; acc[1] = o[kh][4 * pr + 0][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, bE0, bE1);
+          o[kh][4 * pr + 0][0] = acc[0]; o[kh][4 * pr + 0][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 1][0]; acc[1] = o[kh][4 * pr + 1][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, bO0, bO1);
+          o[kh][4 * pr + 1][0] = acc[0]; o[kh][4 * pr + 1][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 2][0]; acc[1] = o[kh][4 * pr + 2][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, cE0, cE1);
+          o[kh][4 * pr + 2][0] = acc[0]; o[kh][4 * pr + 2][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 3][0]; acc[1] = o[kh][4 * pr + 3][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, cO0, cO1);
+          o[kh][4 * pr + 3][0] = acc[0]; o[kh][4 * pr + 3][1] = acc[1];
+        }
+      }
+    }
+    __syncwarp();
+  }
+  cp_wait<0>();
+  __syncthreads();
+  pdl_trigger();
+
+  // merge the four warps for each kv head
+  float* sm_m = reinterpret_cast<float*>(smem);   // [2][4][8]
+  float* sm_l = sm_m + 64;                        // [2][4][8]
+  float* sm_o = sm_l + 64;                        // [2][4][8][64]
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++) {
+    if (t == 0) {
+      sm_m[(kh * 4 + warp) * 8 + g] = m_run[kh];
+      sm_l[(kh * 4 + warp) * 8 + g] = l_run[kh];
+    }
+#pragma unroll
+    for (int mm = 0; mm < 4; mm++)
+#pragma unroll
+      for (int cc = 0; cc < 2; cc++) {
+        sm_o[((kh * 4 + warp) * 8 + g) * 64 + 16 * mm + 2 * (2 * t + cc)] = o[kh][2 * mm][cc];
+        sm_o[((kh * 4 + warp) * 8 + g) * 64 + 16 * mm + 2 * (2 * t + cc) + 1] = o[kh][2 * mm + 1][cc];
+      }
+  }
+  __syncthreads();
+  for (int idx = tid; idx < 2 * 8 * HD; idx += 128) {
+    const int kh = idx / (8 * HD), rem = idx % (8 * HD);
+    const int row = rem / HD, d = rem % HD;
+    float mmx = -INFINITY;
+#pragma unroll
+    for (int w = 0; w < 4; w++) mmx = fmaxf(mmx, sm_m[(kh * 4 + w) * 8 + row]);
+    float ls = 0.f, acc = 0.f;
+    if (mmx != -INFINITY) {
+#pragma unroll
+      for (int w = 0; w < 4; w++) {
+        const float mw = sm_m[(kh * 4 + w) * 8 + row];
+        const float f = mw == -INFINITY ? 0.f : exp2f(mw - mmx);
+        ls += sm_l[(kh * 4 + w) * 8 + row] * f;
+        acc += sm_o[((kh * 4 + w) * 8 + row) * 64 + d] * f;
+      }
+    }
+    const float inv = ls > 0.f ? 1.f / ls : 1.f;
+    const long base_row = ((long)(b * HKV + kh) * splits + split) * BM;
+    PART[(base_row + row) * HD + d] = acc * inv * value_scale;
+    if (d == 0) LSE[base_row + row] = ls > 0.f ? (mmx + log2f(ls)) * 0.6931471805599453f : -INFINITY;
+  }
+}
+
+template <int S, int TS>
+static void launch3t(const void* Q, const void* KC, const void* VC, const int* TABLE, const int* SEQLEN, const float* KS,
+                    const float* VS, float* PART, float* LSE, int B, int HQ, int HKV, int table_n, int page, int window,
+                    int splits, int chunk, float sm_scale, int scaled, cudaStream_t st) {
+  constexpr int SLOT = 2 * TS * RP3;
+  size_t dyn = (size_t)(((chunk + 31) / 32) * 32) * 4 + (size_t)4 * S * SLOT;
+  const size_t merge = (size_t)(128 + 2 * 4 * 8 * 64) * sizeof(float);
+  if (merge > dyn) dyn = merge;
+  cudaFuncSetAttribute(fd3t_partials<S, TS>, cudaFuncAttributeMaxDynamicSharedMemorySize, (int)dyn);
+  dim3 grid(splits, 1, B);
+  launch_pdl(fd3t_partials<S, TS>, grid, dim3(128), dyn, st, reinterpret_cast<const uint8_t*>(Q), reinterpret_cast<const uint8_t*>(KC),
+                                         reinterpret_cast<const uint8_t*>(VC), TABLE, SEQLEN, KS, VS, PART, LSE, HQ, HKV,
+                                         table_n, page, window, splits, chunk, sm_scale, scaled);
+}
+
+
 // ---- fd3v: verify blocks (8 tokens x 8 heads = 64 query rows per KV head), both KV heads per CTA, 128 B row fetches ----
 // warp = (kv head, 32-row half); the four warps share each 64-token K/V tile; no cross-warp merge is needed.
 #define T3V 64
@@ -2181,6 +2792,9 @@ extern "C" int fd_run(int mt, int stages, int qk8, const void* Q, const void* KC
 #define FD3V(S_) if (mt == 4 && HKV == 2 && L == 8 && stages == 400 + S_) { launch3v<S_>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, L, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
   FD3V(2) FD3V(3) FD3V(4)
 #undef FD3V
+#define FD3T(S_) if (mt == 1 && HKV == 2 && stages == 700 + S_) { launch3t<S_, 16>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
+  FD3T(3) FD3T(4) FD3T(5) FD3T(6) FD3T(8)
+#undef FD3T
 #define FD3(S_) if (mt == 1 && HKV == 2 && stages == 300 + S_) { launch3<S_>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
   FD3(2) FD3(3) FD3(4)
 #undef FD3
@@ -2267,12 +2881,12 @@ def _fd_forward(data, q, qkv, stages, splits, block=16, qk8=0, variant=1):
     window = cfg['window']
     span = window + length - 1 if window else data['page_table'].shape[1] * cfg['page_size']
     chunk = triton.cdiv(triton.cdiv(span, splits), block) * block
-    if variant in (2, 3, 4, 5) and chunk > 4096:
+    if variant in (2, 3, 4, 5, 6) and chunk > 4096:
         raise ValueError('chunk too large for fd2')
     bm = max(16, triton.next_power_of_2(length * (hq // hkv)))
     partial = torch.empty((batch, hkv, splits, bm, d), device=qkv.device, dtype=torch.float32)
     lse = torch.empty((batch, hkv, splits, bm), device=qkv.device, dtype=torch.float32)
-    _fd_module().fd_run_t(bm // 16, stages + (500 if variant == 5 else 400 if variant == 4 else 100 if bm == 64 else 200 if variant == 2 else 300 if variant == 3 else 0), qk8, q, data['k_cache'], data['v_cache'], data['page_table'], data['seq_lens'],
+    _fd_module().fd_run_t(bm // 16, stages + (700 if variant == 6 else 500 if variant == 5 else 400 if variant == 4 else 100 if bm == 64 else 200 if variant == 2 else 300 if variant == 3 else 0), qk8, q, data['k_cache'], data['v_cache'], data['page_table'], data['seq_lens'],
                           data['k_scale'], data['v_scale'], partial, lse, length, hq, hkv, cfg['page_size'], window,
                           splits, chunk, cfg['sm_scale'] * cfg['qk_scale_factor'], int(scaled))
     result = torch.empty((batch, length, hq * d), device=qkv.device, dtype=torch.bfloat16)
@@ -2309,11 +2923,11 @@ def _fd_prepare(data):
 
 
 def _fd_fits(cfg, table_n, splits, variant):
-    if variant in (3, 4, 5) and cfg['num_kv_heads'] != 2:
+    if variant in (3, 4, 5, 6) and cfg['num_kv_heads'] != 2:
         return False
     if variant in (4, 5) and cfg['q_len'] != 8:
         return False
-    if variant not in (2, 3, 4, 5):
+    if variant not in (2, 3, 4, 5, 6):
         return True
     span = cfg['window'] + cfg['q_len'] - 1 if cfg['window'] else table_n * cfg['page_size']
     return -(-(-(-span // splits)) // 16) * 16 <= 4096
@@ -2337,6 +2951,10 @@ def kernel_fn(data):
     if _FD_LAB and not torch.cuda.is_current_stream_capturing() and not getattr(kernel_fn, '_labbed', False):
         kernel_fn._labbed = True
         _fd_lab()
+    if (_WG_ON and cfg['q_len'] == 8 and not cfg['window'] and cfg['batch'] >= _WG_MINB and cfg['num_kv_heads'] == 2
+            and cfg['num_q_heads'] == 16 and ctx_bound <= (1 << 20) + 64):
+        qkv, q = _fd_prepare(data)
+        return _wg_forward(data, q, qkv, _WG_SPLITS)
     if choice is None or ctx_bound > (1 << 20) + 64:
         return _v7_kernel_fn(data)
     stages, splits, variant = choice

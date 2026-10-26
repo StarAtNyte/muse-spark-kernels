@@ -173,26 +173,24 @@ wg5_partials(const uint8_t* __restrict__ Q, const uint8_t* __restrict__ KC, cons
 
   // ---- loop-invariant addressing ----
   const uint32_t stages_s = (uint32_t)__cvta_generic_to_shared(stages);
-  const int ci = tid & 15;                   // 16-byte chunk within the key row (K 0-7, V 8-15)
-  const int cc = ci & 7;
-  const bool isv = ci >= 8;
-  const uint8_t* srcb = (isv ? VC : KC) + cc * 16;
+  // lane = (8 consecutive keys) x (4 consecutive 16 B chunks): conflict-free smem writes, 64 B contiguous global reads per row
+  const int lkey = (lane & 7) + 8 * (tid >> 5);
+  const int lg = lane >> 3;
   uint32_t dst_off[4];
-  int key4[4];
 #pragma unroll
   for (int i = 0; i < 4; i++) {
-    const int key = (tid >> 4) + 16 * i;
-    key4[i] = key;
-    dst_off[i] = isv ? (8192 + key * 128 + cc * 16) : ((cc >> 2) * 4096 + core_off(key, cc & 3));
+    const int cc = (i & 1) * 4 + lg;
+    dst_off[i] = (i < 2) ? ((cc >> 2) * 4096 + core_off(lkey, cc & 3)) : (8192 + lkey * 128 + ((cc ^ (lkey & 7)) * 16));
   }
   auto issue = [&](int s, int stage) {
     if (s < nst && !(dbg & 8)) {
       const uint32_t base = stages_s + stage * 16384;
+      const int li = s * WT + lkey;
+      const long rr = li < n ? rows[li] : 0;
 #pragma unroll
       for (int i = 0; i < 4; i++) {
-        const int li = s * WT + key4[i];
-        const long rr = li < n ? rows[li] : 0;
-        asm volatile("cp.async.cg.shared.global [%0], [%1], 16;\n" ::"r"(base + dst_off[i]), "l"(srcb + rr * 128));
+        const uint8_t* src = ((i < 2) ? KC : VC) + rr * 128 + ((i & 1) * 4 + lg) * 16;
+        asm volatile("cp.async.cg.shared.global [%0], [%1], 16;\n" ::"r"(base + dst_off[i]), "l"(src));
       }
     }
     cp_commit();
@@ -211,8 +209,8 @@ wg5_partials(const uint8_t* __restrict__ Q, const uint8_t* __restrict__ KC, cons
   uint32_t vsrc_off[2], vdst_off[4];
 #pragma unroll
   for (int j = 0; j < 2; j++) {
-    const int cs = (vcb + j + vkey) & 3;
-    vsrc_off[j] = vkey * 128 + wgi * 64 + cs * 16;
+    const int cs = vcb + j;
+    vsrc_off[j] = vkey * 128 + (((cs + 4 * wgi) ^ (vkey & 7)) * 16);
     vdst_off[2 * j] = (uint32_t)vmn_off(vkey, 16 * cs);
     vdst_off[2 * j + 1] = (uint32_t)vmn_off(vkey, 16 * cs + 8);
   }

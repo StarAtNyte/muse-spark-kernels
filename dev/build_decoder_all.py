@@ -139,6 +139,10 @@ cpp = b.split("cpp = '''", 1)[1].split("'''\ndefault", 1)[0]
 attn_block = ("\n# ---- CUDA attention (fd2 / fused sliding) ----\n_FD_CUDA = r'''" + A.CUDA_SRC + glue_cuda + "'''\n_FD_CPP = r'''" + cpp + "'''\n" +
               glue_attn + "\n_SLIDE_STAGES = %d\n" % slide_stages)
 
+if os.environ.get("WG5", "0") == "1":
+    sys.path.insert(0, "wg5")
+    import wg5_block
+    attn_block += "\n" + wg5_block.block(os.environ.get("WG_MINB", "8"), os.environ.get("WG_SPLITS", "16")) + "\n"
 marker = "def _experts(x, topk_weights, topk_ids, state):"
 assert marker in src
 src = src.replace(marker, moe_block + attn_block + dense_block + "\n" + marker, 1)
@@ -189,6 +193,8 @@ if use_attn:
                "    fd = None if fused_slide else _fd_choice(cfg, data['page_table'].shape[1] * cfg['page_size'])\n"
                "    if fused_slide:\n"
                "        o = _slide_forward(data, _SLIDE_STAGES, qkv).view(tokens, hq*d)\n"
+               + ("    elif (cfg['q_len'] == 8 and not cfg['window'] and batch >= _WG_MINB and hkv == 2 and hq == 16 and cfg['page_size'] == 1):\n"
+                  "        o = _wg_forward(data, q, qkv, _WG_SPLITS).view(tokens, hq*d)\n" if os.environ.get("WG5", "0") == "1" else "") +
                "    elif fd is not None and cfg['page_size'] & (cfg['page_size'] - 1) == 0:\n"
                "        o = _fd_forward(data, q, qkv, fd[0], fd[1], variant=fd[2]).view(tokens, hq*d)\n"
                "    elif (cfg['window'] and batch <= 4) or (not cfg['window'] and length == 1):")

@@ -1,0 +1,22 @@
+{
+  "name": "decoder_wm_v4",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder with own wg5 verify attention for full layers batch>=8",
+  "sha256": "f9be4cac34b7e1e867d255d2ee80b6cf4b89a24c8a5c1811070a89b6e9345adf",
+  "created_at": 1793006550.5616896,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "received",
+  "job_id": "e0ed88264cc147b6"
+}

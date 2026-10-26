@@ -37,7 +37,7 @@ CPP = '''void wg5_run_t(torch::Tensor q, torch::Tensor kc, torch::Tensor vc, tor
                int64_t window, int64_t splits, int64_t chunk, double sm_scale, int64_t scaled, int64_t dbg);'''
 t0 = time.time()
 mod = load_inline("wg5_attn", CPP, cuda_sources=W.CUDA_SRC + GLUE, functions=["wg5_run_t"],
-                  extra_cuda_cflags=["-O3", "-gencode=arch=compute_90a,code=sm_90a"], verbose=False)
+                  extra_cuda_cflags=["-O3", "-lineinfo", "-gencode=arch=compute_90a,code=sm_90a"], verbose=False)
 print("compiled", time.time() - t0, flush=True)
 sys.path.insert(0, "/w/wg")
 import wg_cuda as W1
@@ -58,7 +58,7 @@ void wg_run_t(torch::Tensor q, torch::Tensor kc, torch::Tensor vc, torch::Tensor
 '''
 CPP1 = 'void wg_run_t(torch::Tensor q, torch::Tensor kc, torch::Tensor vc, torch::Tensor table, torch::Tensor seqlens, torch::Tensor ks, torch::Tensor vs, torch::Tensor part, torch::Tensor lse, int64_t L, int64_t HQ, int64_t HKV, int64_t page, int64_t window, int64_t splits, int64_t chunk, double sm_scale, int64_t scaled, int64_t dbg);'
 mod1 = load_inline("wg1_attn", CPP1, cuda_sources=W1.CUDA_SRC + GLUE1, functions=["wg_run_t"],
-                   extra_cuda_cflags=["-O3", "-gencode=arch=compute_90a,code=sm_90a"], verbose=False)
+                   extra_cuda_cflags=["-O3", "-lineinfo", "-gencode=arch=compute_90a,code=sm_90a"], verbose=False)
 
 def prepare(data):
     cfg = data['config']
