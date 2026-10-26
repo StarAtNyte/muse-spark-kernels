@@ -1015,7 +1015,7 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
     return 0;                                                                                             \
   }
 #define WM_ALL(T, N, W_, R) WM_D(0, T, N, W_, R) WM_D(1, T, N, W_, R)
-  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1) WM_ALL(2, 1, 2, 0)
+  WM_ALL(2, 1, 4, 0) WM_ALL(2, 2, 4, 0) WM_ALL(4, 4, 4, 1) WM_ALL(2, 1, 2, 0) WM_ALL(2, 2, 8, 0)
 #undef WM_ALL
 #undef WM_D
   return 1;

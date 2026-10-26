@@ -1192,6 +1192,43 @@ static void launch(const void* W, const void* S, const float* GS, const void* X,
            reinterpret_cast<bf16*>(OUT), cnt, lst, act, nact, woff, lmax, g_persist);
 }
 
+
+// ---- L2 prefetch of the down-projection weights of the active experts (issued while the gate/up GEMM streams) ----
+__device__ __forceinline__ uint64_t pol_evict_last() {
+  uint64_t p;
+  asm volatile("createpolicy.fractional.L2::evict_last.b64 %0, 1.0;" : "=l"(p));
+  return p;
+}
+__device__ __forceinline__ void pf_l2(const void* ptr, uint32_t bytes, uint64_t pol) {
+#if defined(__CUDA_ARCH__) && __CUDA_ARCH__ >= 900
+  asm volatile("cp.async.bulk.prefetch.L2.global.L2::cache_hint [%0], %1, %2;" ::"l"(ptr), "r"(bytes), "l"(pol) : "memory");
+#endif
+}
+// W2 codes of one expert: RT1 * KC * 512 B = 8 MiB; scales RT1 * KCG * 256 B = 1 MiB. Slab = 8 KiB.
+__global__ void __launch_bounds__(128)
+wm_pf_kernel(const uint8_t* __restrict__ W2, const uint8_t* __restrict__ S2, const int* __restrict__ act,
+             const int* __restrict__ nact_p, int max_items, int slabs_code, int slabs_scale, size_t code_stride, size_t scale_stride) {
+  pdl_wait();
+  pdl_trigger();
+  const int nitems = min(__ldcg(nact_p), max_items);
+  const uint64_t pol = pol_evict_last();
+  const int per = slabs_code + slabs_scale;
+  const long total = (long)nitems * per;
+  for (long i = (long)blockIdx.x * blockDim.x + threadIdx.x; i < total; i += (long)gridDim.x * blockDim.x) {
+    const int it = (int)(i / per), r = (int)(i % per);
+    const int4 item = __ldcg(reinterpret_cast<const int4*>(act) + it);
+    if (item.z == 0 || item.y != 0) continue;   // one prefetch per expert (its first work item)
+    const size_t e = item.x;
+    if (r < slabs_code) pf_l2(W2 + e * code_stride + (size_t)r * 8192, 8192, pol);
+    else pf_l2(S2 + e * scale_stride + (size_t)(r - slabs_code) * 8192, 8192, pol);
+  }
+}
+extern "C" void wm_pf_c(const void* W2, const void* S2, const int* act, const int* nact, int max_items, int pdl, cudaStream_t st) {
+  constexpr size_t CODE = (size_t)RT1 * KC * 512, SCALE = (size_t)RT1 * KCG * 256;
+  launch_k(wm_pf_kernel, dim3(132), dim3(128), 0, st, pdl != 0, reinterpret_cast<const uint8_t*>(W2),
+           reinterpret_cast<const uint8_t*>(S2), act, nact, max_items, (int)(CODE / 8192), (int)((SCALE + 8191) / 8192), CODE, SCALE);
+}
+
 // cfg bits: nmax (1,2,4) | nt (2,4) | nw (4,8) | ring (0/1)
 extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, const void* W, const void* S, const float* GS,
                          const void* X, void* OUT, const int* cnt, const int* lst, const int* act, const int* nact,
@@ -1237,6 +1274,7 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
 #ifdef WM_DBG_BUILD
   WM_DBGS(0, 2, 1, 4, 0) WM_DBGS(1, 2, 1, 4, 0) WM_DBGS(0, 2, 1, 4, 2) WM_DBGS(1, 2, 1, 4, 2) WM_DBGS(0, 2, 2, 4, 2) WM_DBGS(1, 2, 2, 4, 2)
   WM_DBGS(0, 4, 4, 4, 2) WM_DBGS(1, 4, 4, 4, 2) WM_DBGS(0, 2, 4, 4, 2) WM_DBGS(1, 2, 4, 4, 2)
+  WM_DBGS(0, 4, 4, 4, 1) WM_DBGS(1, 4, 4, 4, 1)
 #endif
 #undef WM_ALL
 #undef WM_D
@@ -1259,6 +1297,10 @@ extern "C" void wm_permx_c(const void*, void*, int, cudaStream_t);
 void wm_permx(torch::Tensor x, torch::Tensor xp) { wm_permx_c(x.data_ptr(), xp.data_ptr(), (int)x.size(0), at::cuda::getCurrentCUDAStream()); }
 extern "C" int wm_gemm_c(int, int, int, int, int, int, const void*, const void*, const float*, const void*, void*, const int*,
                          const int*, const int*, const int*, const int*, int, int, cudaStream_t);
+extern "C" void wm_pf_c(const void*, const void*, const int*, const int*, int, int, cudaStream_t);
+void wm_pf(torch::Tensor w2, torch::Tensor s2, torch::Tensor act, torch::Tensor nact, int64_t max_items, int64_t pdl) {
+  wm_pf_c(w2.data_ptr(), s2.data_ptr(), act.data_ptr<int>(), nact.data_ptr<int>(), (int)max_items, (int)pdl, at::cuda::getCurrentCUDAStream());
+}
 
 void wm_route(torch::Tensor ids, torch::Tensor ls, int64_t ls_val, int64_t lmax, torch::Tensor cnt, torch::Tensor lst,
               torch::Tensor act, torch::Tensor nact, torch::Tensor local_ids, torch::Tensor woff, int64_t grp) {
@@ -1279,6 +1321,7 @@ void wm_gemm_run(int64_t mode, int64_t nmax, int64_t nt, int64_t nw, int64_t rin
 _WM_CPP = r'''
 void wm_set_pdl_t(int64_t v);
 void wm_set_persist_t(int64_t v);
+void wm_pf(torch::Tensor w2, torch::Tensor s2, torch::Tensor act, torch::Tensor nact, int64_t max_items, int64_t pdl);
 void wm_permx(torch::Tensor x, torch::Tensor xp);
 void wm_finish(torch::Tensor y, torch::Tensor tw, torch::Tensor lids, torch::Tensor nw, torch::Tensor out, double eps);
 void wm_route(torch::Tensor ids, torch::Tensor ls, int64_t ls_val, int64_t lmax, torch::Tensor cnt, torch::Tensor lst,
@@ -1341,7 +1384,7 @@ def _wm_module():
     global _WM_MOD
     if _WM_MOD is None:
         from torch.utils.cpp_extension import load_inline
-        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish"],
+        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish", "wm_pf"],
                               extra_cuda_cflags=["-O3", "--use_fast_math"] + _WM_EXTRA, verbose=False)
         _WM_MOD.wm_set_pdl_t(int(_WM_PDL and torch.cuda.get_device_capability()[0] >= 9))
     return _WM_MOD
@@ -1361,8 +1404,10 @@ def prepare(weights):
 
 
 WM_MAX_TOKENS = 256
+_WM_PF = 0          # experts whose down-projection weights are prefetched into L2 during the gate/up GEMM
+_WM_PF_MINM = 1
 # (m upper bound) -> (tiles per warp, warps per CTA, cp.async ring)
-_WM_CFG = [(1,(2,4,0)),(8,(2,2,0)),(16,(2,4,0)),(32,(4,4,1)),(10**9,(4,4,4))]
+_WM_CFG = [(1,(2,4,0)),(8,(2,2,0)),(16,(2,8,0)),(32,(4,4,1)),(10**9,(4,4,4))]
 
 
 def _wm_cfg(m):
@@ -1384,7 +1429,9 @@ def kernel_fn(data, state):
     x = x.contiguous()
     nch = 1 if m <= 8 else 2 if m <= 16 else 4
     lmax = (m + 7) // 8 * 8
-    nt, nw, ring = _wm_cfg(m)
+    _c = _wm_cfg(m)
+    nt, nw, ring = _c[:3]
+    nt1 = _c[3] if len(_c) > 3 else nt
     dev = x.device
     ids = data["topk_ids"].contiguous()
     cnt = torch.empty(32, dtype=torch.int32, device=dev)
@@ -1394,11 +1441,13 @@ def kernel_fn(data, state):
     nact = torch.empty(1, dtype=torch.int32, device=dev)
     lids = torch.empty(m * TOP_K, dtype=torch.int32, device=dev)
     mod.wm_route(ids, _WM_NOLS, 0, lmax, cnt, lst, act, nact, lids, woff, nch * 8)
+    if _WM_PF > 0 and m >= _WM_PF_MINM:
+        mod.wm_pf(wm["w2"], wm["s2"], act, nact, _WM_PF, 1)
     maxslots = min(m * TOP_K, 32 + (m * TOP_K) // (nch * 8))
     inter = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
     y = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
     mod.wm_gemm_run(0, nch, nt, nw, ring, _WM_DBG, wm["w13"], wm["s13"], wm["gs13"], x, inter, cnt, lst, act, nact, woff, maxslots, lmax)
-    mod.wm_gemm_run(1, nch, nt, nw, ring, _WM_DBG, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
+    mod.wm_gemm_run(1, nch, nt1, nw, ring, _WM_DBG, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
     topk_weights = data["topk_weights"].to(torch.float32).contiguous()
     if _WM_FIN:
         out = torch.empty((m, 4096), dtype=torch.bfloat16, device=dev)

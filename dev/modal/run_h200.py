@@ -28,10 +28,22 @@ image_sgl = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", a
              .add_local_dir(f"{ROOT}/dev/modal", "/w/modal")
              .add_local_dir(f"{ROOT}/dev/wg", "/w/wg")
              .add_local_dir(f"{ROOT}/dev/wg5", "/w/wg5"))
+image_cute = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_python="3.12")
+              .apt_install("cuda-nsight-compute-12-8", "ninja-build", "libnuma1", "git")
+              .pip_install("torch==2.9.1", index_url="https://download.pytorch.org/whl/cu128")
+              .pip_install("numpy", "triton", "nvidia-cutlass-dsl")
+              .add_local_dir(f"{ROOT}/kernels", "/w/kernels")
+              .add_local_dir(f"{ROOT}/dev/modal", "/w/modal")
+              .add_local_dir(os.path.expanduser("~/agent-skills-src/cutlass/examples/python/CuTeDSL"), "/w/cute_examples"))
 app = modal.App("muse-h200", image=image)
 
 @app.function(gpu="H200", timeout=1800, image=image_sgl)
 def run_sgl(problem: str, src: str, cmd: str = "", drv_src: str = ""):
+    return _run(problem, src, cmd, drv_src)
+
+
+@app.function(gpu="H200", timeout=1800, image=image_cute)
+def run_cute(problem: str, src: str, cmd: str = "", drv_src: str = ""):
     return _run(problem, src, cmd, drv_src)
 
 
@@ -70,6 +82,6 @@ o = m.kernel_fn(d, st); print(R.check_implementation(d, o, w))
     return p.stdout[-900000:] + "\nSTDERR:\n" + p.stderr[-4000:]
 
 @app.local_entrypoint()
-def main(problem: str, file: str, cmd: str = "", drv: str = "", sgl: bool = False):
-    fn = run_sgl if sgl else run
+def main(problem: str, file: str, cmd: str = "", drv: str = "", sgl: bool = False, cute: bool = False):
+    fn = run_cute if cute else (run_sgl if sgl else run)
     print(fn.remote(problem, open(file).read(), cmd, open(drv).read() if drv else ""))

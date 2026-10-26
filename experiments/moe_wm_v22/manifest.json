@@ -1,0 +1,24 @@
+{
+  "name": "moe_wm_v22",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "M 9..16 uses 8-warp CTA",
+  "sha256": "994bff12c6678ce195b236d228993ef1d45ab374b63808a49eede3b63a890be3",
+  "created_at": 1793009506.770579,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 16,
+      "left": 4
+    }
+  },
+  "status": "done",
+  "job_id": "3fa3bbfe4a10455f",
+  "updated_at": 1793010533.3862534,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

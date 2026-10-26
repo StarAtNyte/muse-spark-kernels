@@ -347,6 +347,7 @@ __device__ __forceinline__ void wm_body(const uint4* __restrict__ Wq, const uint
     cp_wait<0>();
   } else {
     uint4* ring = smem + warp * (S * NTB * 32);
+    constexpr int GRP = RING == 8 ? 2 : RING == 9 ? 4 : 1;   // chunks fetched back to back (larger contiguous DRAM bursts per weight stream)
     auto issue = [&](int c) {
       if (c < CPW && !(DBG & 8)) {
 #pragma unroll
@@ -354,8 +355,24 @@ __device__ __forceinline__ void wm_body(const uint4* __restrict__ Wq, const uint
       }
       cp_commit();
     };
+    auto issue_group = [&](int gi) {
 #pragma unroll
-    for (int c = 0; c < S - 1; c++) issue(c);
+      for (int g = 0; g < GRP; g++) {
+        const int c = gi * GRP + g;
+        if (c < CPW && !(DBG & 8)) {
+#pragma unroll
+          for (int n = 0; n < NTB; n++) cp16(&ring[((c % S) * NTB + n) * 32 + lane], wsrc[n] + c * 32);
+        }
+      }
+      cp_commit();
+    };
+    if constexpr (GRP > 1) {
+      issue_group(0);
+      issue_group(1);
+    } else {
+#pragma unroll
+      for (int c = 0; c < S - 1; c++) issue(c);
+    }
 
     uint2 scur[NTB], snxt[NTB];
 #pragma unroll
@@ -380,8 +397,12 @@ __device__ __forceinline__ void wm_body(const uint4* __restrict__ Wq, const uint
 
 #pragma unroll 1
     for (int i = 0; i < CPW; i++) {
-      cp_wait<S - 2>();
-      issue(i + S - 1);
+      if constexpr (GRP > 1) {
+        if ((i % GRP) == 0) { cp_wait<1>(); issue_group(i / GRP + 2); }
+      } else {
+        cp_wait<S - 2>();
+        issue(i + S - 1);
+      }
 #pragma unroll
       for (int h = 0; h < NCH; h++) {
         if (xp[h] && i + 1 < CPW && !(DBG & 4)) {
@@ -460,15 +481,15 @@ wm_gemm(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const float*
     const int ntok = item.z;
     const int* l = lst + e * lmax + off;
     if (ntok <= 8) {
-      wm_body<MODE, NT, NT, 1, NW, RING, (RING == 2 ? ring2_stages<NT, 1>() : (NT == 8 ? 3 : NT == 4 ? 4 : 6)), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, 0, smem, bx);
+      wm_body<MODE, NT, NT, 1, NW, RING, (RING == 2 ? ring2_stages<NT, 1>() : RING == 8 ? 6 : RING == 9 ? 12 : (NT == 8 ? 3 : NT == 4 ? 4 : 6)), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, 0, smem, bx);
     } else if (NMAX >= 2 && ntok <= 16) {
 #pragma unroll 1
       for (int tb = 0; tb < NT; tb += (RING == 3 ? 4 : 2))
-        wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 2 ? 2 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 2 ? 2 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, tb, smem, bx);
+        wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 2 ? 2 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 2 ? 2 : 1)>() : RING == 3 ? 4 : RING == 8 ? 6 : RING == 9 ? 12 : 6), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, tb, smem, bx);
     } else if (NMAX >= 4) {
 #pragma unroll 1
       for (int tb = 0; tb < NT; tb += (RING == 3 ? 4 : 2))
-        wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 4 ? 4 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 4 ? 4 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, tb, smem, bx);
+        wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 4 ? 4 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 4 ? 4 : 1)>() : RING == 3 ? 4 : RING == 8 ? 6 : RING == 9 ? 12 : 6), DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, tb, smem, bx);
     }
   }
   }
@@ -949,6 +970,8 @@ static void launch(const void* W, const void* S, const float* GS, const void* X,
   if (g_persist) { const unsigned cap = 132u * (unsigned)g_persist; const unsigned tot = grid.x * grid.y; grid = dim3(tot < cap ? tot : cap, 1); }
   int dyn = NW * NT * 6 * 512 > 49152 ? 49152 : NW * NT * 6 * 512;
   if (NT == 8) dyn = NW * 3 * 8 * 512 + 1024;
+  if (RING == 8) dyn = NW * NT * 6 * 512;
+  if (RING == 9) dyn = NW * NT * 12 * 512;
   if (RING == 3) { const int d3 = NW * 4 * 4 * 512; dyn = d3 > dyn ? d3 : dyn; if (NW * NT * 4 * 512 > dyn) dyn = NW * NT * 4 * 512; }
   if (RING == 2) {
     int per = ring2_stages<NT, 1>() * (NT + 2);
@@ -1040,6 +1063,8 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
   WM_ALL(4, 4, 4, 3) WM_ALL(4, 2, 4, 3) WM_ALL(4, 1, 4, 3) WM_ALL(8, 4, 4, 3) WM_ALL(8, 2, 4, 3)
   WM_ALL(4, 1, 2, 1) WM_ALL(4, 2, 2, 1) WM_ALL(4, 4, 2, 1) WM_ALL(2, 1, 2, 0) WM_ALL(2, 2, 2, 0) WM_ALL(2, 1, 2, 1)
   WM_ALL(2, 1, 4, 2) WM_ALL(2, 2, 4, 2) WM_ALL(2, 4, 4, 2) WM_ALL(4, 1, 4, 2) WM_ALL(4, 2, 4, 2) WM_ALL(4, 4, 4, 2)
+  WM_ALL(4, 1, 4, 8) WM_ALL(4, 2, 4, 8) WM_ALL(4, 4, 4, 8) WM_ALL(2, 1, 4, 8) WM_ALL(2, 2, 4, 8) WM_ALL(2, 4, 4, 8) WM_ALL(2, 1, 8, 8) WM_ALL(2, 2, 8, 8) WM_ALL(2, 1, 2, 8)
+  WM_ALL(4, 1, 4, 9) WM_ALL(4, 2, 4, 9) WM_ALL(4, 4, 4, 9) WM_ALL(2, 1, 4, 9) WM_ALL(2, 2, 4, 9) WM_ALL(2, 4, 4, 9)
   WM_ALL(2, 1, 8, 2) WM_ALL(2, 2, 8, 2) WM_ALL(2, 4, 8, 2)
 #ifdef WM_DBG_BUILD
   WM_DBGS(0, 2, 1, 4, 0) WM_DBGS(1, 2, 1, 4, 0) WM_DBGS(0, 2, 1, 4, 2) WM_DBGS(1, 2, 1, 4, 2) WM_DBGS(0, 2, 2, 4, 2) WM_DBGS(1, 2, 2, 4, 2)

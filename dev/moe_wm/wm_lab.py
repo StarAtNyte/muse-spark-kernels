@@ -129,7 +129,7 @@ def _lab_stress(state):
 
 def _lab(state):
     global _WM_DBG
-    _lab_pf(state)
+    _lab_cfgs(state)
 
 
 def _lab_pdl(state):

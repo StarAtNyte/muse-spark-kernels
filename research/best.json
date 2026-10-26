@@ -1,22 +1,16 @@
 {
   "muse_bf16_proj": {
-    "experiment": "bf16_hybrid_v5",
-    "job_id": "8c1cc35a00be4e05",
-    "sha256": "82b83e69811ba1f5888b138e3fc8630b2f011b0e463af61cd3dcbfcfc0b3a0d4",
-    "speedup": 1.1688975804636585,
+    "experiment": "bf16c_v1",
+    "job_id": "5599a49bc7204354",
+    "sha256": "46f3850ab0e8ab8c5f1d89213580f26be41a4d0312128b89888b81e9477a5ff8",
+    "speedup": 1.1828780959828054,
     "speedup_ci": [
-      1.1513641167567037,
-      1.1864310441706134
+      1.1651349245430633,
+      1.2006212674225474
     ],
     "tests": 9,
     "timed_cases": 30,
-    "public_submission": "3ee947021eae43b9",
-    "public_speedup": 1.1742994562024376,
-    "public_speedup_ci": [
-      1.156684964359401,
-      1.1919139480454741
-    ],
-    "public_status": "done"
+    "public_submission": "b2e959e036ad4661"
   },
   "muse_attention_decode": {
     "experiment": "attn_wg5_v1",
@@ -45,16 +39,16 @@
     "public_submission": "7b274a6af2524ba3"
   },
   "muse_moe_w4a16": {
-    "experiment": "moe_wm_v21",
-    "job_id": "619cae06742544d9",
-    "sha256": "a6f1db4aae728590ebb566bc28026172dba34766fc323cbe095e519791be709a",
-    "speedup": 1.8979630239652432,
+    "experiment": "moe_wm_v22",
+    "job_id": "3fa3bbfe4a10455f",
+    "sha256": "994bff12c6678ce195b236d228993ef1d45ab374b63808a49eede3b63a890be3",
+    "speedup": 1.9165561691684272,
     "speedup_ci": [
-      1.8694935786057645,
-      1.9264324693247217
+      1.8878078266309009,
+      1.9453045117059533
     ],
     "tests": 5,
     "timed_cases": 6,
-    "public_submission": "cbd6d39daa23403e"
+    "public_submission": "e820618c11e04fc7"
   }
 }
