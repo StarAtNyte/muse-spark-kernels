@@ -129,7 +129,7 @@ def _lab_stress(state):
 
 def _lab(state):
     global _WM_DBG
-    _lab_cfgs(state)
+    _lab_dbg(state)
 
 
 def _lab_pdl(state):
@@ -152,14 +152,15 @@ def _lab_dbg(state):
     global _WM_CFG, _WM_DBG
     flush = torch.zeros(160 * 1024 * 1024 // 4, dtype=torch.float32, device='cuda')
     saved = _WM_CFG
-    for m, cfg in ((64, (4, 4, 4)), (128, (4, 4, 4)), (256, (4, 4, 4))):
-        data = _lab_inputs(m, 'cuda', 100 + m)
+    for m, cfg in ((32, (4, 4, 1)),):
+        datas = [_lab_inputs(m, 'cuda', 100 + 7 * m + s) for s in range(3)]
         _WM_CFG = [(10**9, cfg)]
         row = [f'DBG M={m} cfg={cfg}']
-        for d in (0, 32):
+        for d in (0, 1, 2, 4, 8, 3, 11, 9):
             _WM_DBG = d
             try:
-                row.append(f'd{d}=' + format(_lab_time(lambda: kernel_fn(data, state), flush), '.1f'))
+                ts = [_lab_time(lambda: kernel_fn(dd, state), flush) for dd in datas]
+                row.append(f'd{d}=' + '/'.join(f'{t:.0f}' for t in ts))
             except Exception as ex:
                 row.append(f'd{d}=ERR')
         print('LAB', ' '.join(row), flush=True)

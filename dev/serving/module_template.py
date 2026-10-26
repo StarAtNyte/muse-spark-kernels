@@ -60,7 +60,7 @@ def _get_module():
 
 
 # (max tokens) -> (tiles per CTA, warps per CTA, ring variant, 8-token groups per work item); chosen on the H200 for the kernel benchmark (batch sizes 1..256)
-_CFG = [(8, (2, 4, 0, 1)), (16, (2, 4, 0, 2)), (32, (4, 4, 1, 4)), (10**9, (4, 4, 4, 4))]
+_CFG = [(1, (2, 4, 0, 1)), (8, (2, 2, 0, 1)), (16, (2, 4, 0, 2)), (32, (4, 4, 1, 4)), (10**9, (4, 4, 4, 4))]
 
 
 def _cfg(m: int):

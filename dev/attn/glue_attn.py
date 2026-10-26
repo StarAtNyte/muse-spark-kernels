@@ -29,12 +29,12 @@ def _fd_forward(data, q, qkv, stages, splits, block=16, qk8=0, variant=1):
     window = cfg['window']
     span = window + length - 1 if window else data['page_table'].shape[1] * cfg['page_size']
     chunk = triton.cdiv(triton.cdiv(span, splits), block) * block
-    if variant in (2, 3, 4, 5) and chunk > 4096:
+    if variant in (2, 3, 4, 5, 6) and chunk > 4096:
         raise ValueError('chunk too large for fd2')
     bm = max(16, triton.next_power_of_2(length * (hq // hkv)))
     partial = torch.empty((batch, hkv, splits, bm, d), device=qkv.device, dtype=torch.float32)
     lse = torch.empty((batch, hkv, splits, bm), device=qkv.device, dtype=torch.float32)
-    _fd_module().fd_run_t(bm // 16, stages + (500 if variant == 5 else 400 if variant == 4 else 100 if bm == 64 else 200 if variant == 2 else 300 if variant == 3 else 0), qk8, q, data['k_cache'], data['v_cache'], data['page_table'], data['seq_lens'],
+    _fd_module().fd_run_t(bm // 16, stages + (700 if variant == 6 else 500 if variant == 5 else 400 if variant == 4 else 100 if bm == 64 else 200 if variant == 2 else 300 if variant == 3 else 0), qk8, q, data['k_cache'], data['v_cache'], data['page_table'], data['seq_lens'],
                           data['k_scale'], data['v_scale'], partial, lse, length, hq, hkv, cfg['page_size'], window,
                           splits, chunk, cfg['sm_scale'] * cfg['qk_scale_factor'], int(scaled))
     result = torch.empty((batch, length, hq * d), device=qkv.device, dtype=torch.bfloat16)
@@ -71,11 +71,11 @@ def _fd_prepare(data):
 
 
 def _fd_fits(cfg, table_n, splits, variant):
-    if variant in (3, 4, 5) and cfg['num_kv_heads'] != 2:
+    if variant in (3, 4, 5, 6) and cfg['num_kv_heads'] != 2:
         return False
     if variant in (4, 5) and cfg['q_len'] != 8:
         return False
-    if variant not in (2, 3, 4, 5):
+    if variant not in (2, 3, 4, 5, 6):
         return True
     span = cfg['window'] + cfg['q_len'] - 1 if cfg['window'] else table_n * cfg['page_size']
     return -(-(-(-span // splits)) // 16) * 16 <= 4096

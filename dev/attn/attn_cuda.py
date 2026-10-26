@@ -1138,6 +1138,224 @@ static void launch3(const void* Q, const void* KC, const void* VC, const int* TA
 }
 
 
+template <int S, int TS>
+__global__ void __launch_bounds__(128)
+fd3t_partials(const uint8_t* __restrict__ Q, const uint8_t* __restrict__ KC, const uint8_t* __restrict__ VC,
+             const int* __restrict__ TABLE, const int* __restrict__ SEQLEN, const float* __restrict__ KS,
+             const float* __restrict__ VS, float* __restrict__ PART, float* __restrict__ LSE, int HQ, int HKV,
+             int table_n, int page, int window, int splits, int chunk, float sm_scale, int scaled) {
+  extern __shared__ __align__(16) uint8_t smem[];
+  constexpr int BM = 16;
+  constexpr int SLOT = 2 * TS * RP3;
+  const int tid = threadIdx.x, lane = tid & 31, warp = tid >> 5;
+  const int g = lane >> 2, t = lane & 3;
+  const int split = blockIdx.x, b = blockIdx.z;
+  const int prefix = SEQLEN[b];
+  const int first = window ? max(prefix - window + 1, 0) : 0;
+  const int begin = first + split * chunk;
+  const int end = min(begin + chunk, prefix + 1);
+  const float key_scale = scaled ? KS[0] : 1.f, value_scale = scaled ? VS[0] : 1.f;
+  const float sc2 = sm_scale * key_scale * 1.4426950408889634f;
+  const int n = end > begin ? end - begin : 0;
+  const int nstages = (n + TS - 1) / TS;
+
+  int* rows = reinterpret_cast<int*>(smem);
+  const int rmax_rt = ((chunk + 31) / 32) * 32;
+  uint8_t* wbase = smem + rmax_rt * 4 + warp * (S * SLOT);
+  const int pshift = __ffs(page) - 1, pmask = page - 1;
+  for (int i = tid; i < n; i += 128) {
+    const int tok = begin + i;
+    const int pg = tok >> pshift;
+    const int phys = (pg < table_n) ? TABLE[b * table_n + pg] : -1;
+    rows[i] = phys < 0 ? 0 : ((phys << pshift) + (tok & pmask));
+  }
+  pdl_wait();
+  uint32_t q0[2][2], q2[2][2];
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++) {
+    const uint8_t* qp = Q + ((long)b * HQ + kh * 8 + g) * HD;
+#pragma unroll
+    for (int ks = 0; ks < 2; ks++) {
+      q0[kh][ks] = *reinterpret_cast<const uint32_t*>(qp + 32 * ks + 4 * t);
+      q2[kh][ks] = *reinterpret_cast<const uint32_t*>(qp + 32 * ks + 16 + 4 * t);
+    }
+  }
+  __syncthreads();
+
+  float o[2][8][2];
+  float m_run[2] = {-INFINITY, -INFINITY}, l_run[2] = {0.f, 0.f};
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++)
+#pragma unroll
+    for (int d = 0; d < 8; d++) o[kh][d][0] = o[kh][d][1] = 0.f;
+
+  const int my_stages = (nstages - warp + 3) / 4 > 0 ? (nstages - warp + 3) / 4 : 0;
+  auto issue = [&](int s) {
+    if (s < my_stages) {
+      uint8_t* slot = wbase + (s % S) * SLOT;
+      const int tb = (warp + 4 * s) * TS;
+      const int c = lane & 7;
+#pragma unroll
+      for (int i = 0; i < TS / 4; i++) {
+        const int tk = (lane >> 3) + 4 * i;
+        const int li = tb + tk;
+        const long rr = li < n ? rows[li] : 0;
+        const long goff = rr * 128 + c * 16;
+        cp16(slot + tk * RP3 + c * 16, KC + goff);
+        cp16(slot + TS * RP3 + tk * RP3 + c * 16, VC + goff);
+      }
+    }
+    cp_commit();
+  };
+#pragma unroll
+  for (int s = 0; s < S - 1; s++) issue(s);
+
+  const int srow = lane & 7, smat = lane >> 3;
+#pragma unroll 1
+  for (int s = 0; s < my_stages; s++) {
+    cp_wait<S - 2>();
+    __syncwarp();
+    issue(s + S - 1);
+    const uint8_t* slot = wbase + (s % S) * SLOT;
+    const uint8_t* kraw = slot;
+    const uint8_t* vraw = slot + TS * RP3;
+    const int tb = begin + (warp + 4 * s) * TS;
+    const bool full_vis = tb + TS <= end;
+#pragma unroll
+    for (int kh = 0; kh < 2; kh++) {
+      float sacc[TS / 8][4];
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++) {
+#pragma unroll
+        for (int r = 0; r < 4; r++) sacc[nt][r] = 0.f;
+        uint32_t k0, k1, k2, k3;
+        ldsm4(k0, k1, k2, k3, kraw + (nt * 8 + srow) * RP3 + kh * 64 + smat * 16);
+        mma_qk8(sacc[nt], q0[kh][0], q2[kh][0], k0, k1);
+        mma_qk8(sacc[nt], q0[kh][1], q2[kh][1], k2, k3);
+      }
+      float sv[TS / 8][2];
+      float mx = -INFINITY;
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++)
+#pragma unroll
+        for (int r = 0; r < 2; r++) {
+          float v = sacc[nt][r];
+          if (!full_vis && tb + nt * 8 + 2 * t + r >= end) v = -INFINITY;
+          sv[nt][r] = v;
+          mx = fmaxf(mx, v);
+        }
+      mx = fmaxf(mx, __shfl_xor_sync(0xffffffffu, mx, 1));
+      mx = fmaxf(mx, __shfl_xor_sync(0xffffffffu, mx, 2));
+      mx *= sc2;
+      const float newm = fmaxf(m_run[kh], mx);
+      const float safe = newm == -INFINITY ? 0.f : newm;
+      const float corr = exp2f(m_run[kh] - safe);
+      float rs = 0.f;
+      uint32_t pa[TS / 8];
+#pragma unroll
+      for (int nt = 0; nt < TS / 8; nt++) {
+        const float p0 = exp2f(fmaf(sv[nt][0], sc2, -safe)), p1 = exp2f(fmaf(sv[nt][1], sc2, -safe));
+        rs += p0 + p1;
+        pa[nt] = pack_h2(p0, p1);
+      }
+      rs += __shfl_xor_sync(0xffffffffu, rs, 1);
+      rs += __shfl_xor_sync(0xffffffffu, rs, 2);
+      l_run[kh] = l_run[kh] * corr + rs;
+      m_run[kh] = newm;
+      if (__any_sync(0xffffffffu, corr != 1.f)) {
+#pragma unroll
+        for (int d = 0; d < 8; d++) { o[kh][d][0] *= corr; o[kh][d][1] *= corr; }
+      }
+#pragma unroll
+      for (int kk = 0; kk < TS / 16; kk++) {
+#pragma unroll
+        for (int pr = 0; pr < 2; pr++) {
+          uint32_t r0, r1, r2, r3;
+          ldsm4t(r0, r1, r2, r3, vraw + (kk * 16 + (smat & 1) * 8 + srow) * RP3 + kh * 64 + pr * 32 + (smat >> 1) * 16);
+          const uint32_t bE0 = cvt2(prmt(r0, 0u, 0x4420u)), bE1 = cvt2(prmt(r1, 0u, 0x4420u));
+          const uint32_t bO0 = cvt2(prmt(r0, 0u, 0x4431u)), bO1 = cvt2(prmt(r1, 0u, 0x4431u));
+          const uint32_t cE0 = cvt2(prmt(r2, 0u, 0x4420u)), cE1 = cvt2(prmt(r3, 0u, 0x4420u));
+          const uint32_t cO0 = cvt2(prmt(r2, 0u, 0x4431u)), cO1 = cvt2(prmt(r3, 0u, 0x4431u));
+          float acc[4];
+          acc[0] = o[kh][4 * pr + 0][0]; acc[1] = o[kh][4 * pr + 0][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, bE0, bE1);
+          o[kh][4 * pr + 0][0] = acc[0]; o[kh][4 * pr + 0][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 1][0]; acc[1] = o[kh][4 * pr + 1][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, bO0, bO1);
+          o[kh][4 * pr + 1][0] = acc[0]; o[kh][4 * pr + 1][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 2][0]; acc[1] = o[kh][4 * pr + 2][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, cE0, cE1);
+          o[kh][4 * pr + 2][0] = acc[0]; o[kh][4 * pr + 2][1] = acc[1];
+          acc[0] = o[kh][4 * pr + 3][0]; acc[1] = o[kh][4 * pr + 3][1]; acc[2] = 0.f; acc[3] = 0.f;
+          mma_f16(acc, pa[2 * kk], 0u, pa[2 * kk + 1], 0u, cO0, cO1);
+          o[kh][4 * pr + 3][0] = acc[0]; o[kh][4 * pr + 3][1] = acc[1];
+        }
+      }
+    }
+    __syncwarp();
+  }
+  cp_wait<0>();
+  __syncthreads();
+  pdl_trigger();
+
+  // merge the four warps for each kv head
+  float* sm_m = reinterpret_cast<float*>(smem);   // [2][4][8]
+  float* sm_l = sm_m + 64;                        // [2][4][8]
+  float* sm_o = sm_l + 64;                        // [2][4][8][64]
+#pragma unroll
+  for (int kh = 0; kh < 2; kh++) {
+    if (t == 0) {
+      sm_m[(kh * 4 + warp) * 8 + g] = m_run[kh];
+      sm_l[(kh * 4 + warp) * 8 + g] = l_run[kh];
+    }
+#pragma unroll
+    for (int mm = 0; mm < 4; mm++)
+#pragma unroll
+      for (int cc = 0; cc < 2; cc++) {
+        sm_o[((kh * 4 + warp) * 8 + g) * 64 + 16 * mm + 2 * (2 * t + cc)] = o[kh][2 * mm][cc];
+        sm_o[((kh * 4 + warp) * 8 + g) * 64 + 16 * mm + 2 * (2 * t + cc) + 1] = o[kh][2 * mm + 1][cc];
+      }
+  }
+  __syncthreads();
+  for (int idx = tid; idx < 2 * 8 * HD; idx += 128) {
+    const int kh = idx / (8 * HD), rem = idx % (8 * HD);
+    const int row = rem / HD, d = rem % HD;
+    float mmx = -INFINITY;
+#pragma unroll
+    for (int w = 0; w < 4; w++) mmx = fmaxf(mmx, sm_m[(kh * 4 + w) * 8 + row]);
+    float ls = 0.f, acc = 0.f;
+    if (mmx != -INFINITY) {
+#pragma unroll
+      for (int w = 0; w < 4; w++) {
+        const float mw = sm_m[(kh * 4 + w) * 8 + row];
+        const float f = mw == -INFINITY ? 0.f : exp2f(mw - mmx);
+        ls += sm_l[(kh * 4 + w) * 8 + row] * f;
+        acc += sm_o[((kh * 4 + w) * 8 + row) * 64 + d] * f;
+      }
+    }
+    const float inv = ls > 0.f ? 1.f / ls : 1.f;
+    const long base_row = ((long)(b * HKV + kh) * splits + split) * BM;
+    PART[(base_row + row) * HD + d] = acc * inv * value_scale;
+    if (d == 0) LSE[base_row + row] = ls > 0.f ? (mmx + log2f(ls)) * 0.6931471805599453f : -INFINITY;
+  }
+}
+
+template <int S, int TS>
+static void launch3t(const void* Q, const void* KC, const void* VC, const int* TABLE, const int* SEQLEN, const float* KS,
+                    const float* VS, float* PART, float* LSE, int B, int HQ, int HKV, int table_n, int page, int window,
+                    int splits, int chunk, float sm_scale, int scaled, cudaStream_t st) {
+  constexpr int SLOT = 2 * TS * RP3;
+  size_t dyn = (size_t)(((chunk + 31) / 32) * 32) * 4 + (size_t)4 * S * SLOT;
+  const size_t merge = (size_t)(128 + 2 * 4 * 8 * 64) * sizeof(float);
+  if (merge > dyn) dyn = merge;
+  cudaFuncSetAttribute(fd3t_partials<S, TS>, cudaFuncAttributeMaxDynamicSharedMemorySize, (int)dyn);
+  dim3 grid(splits, 1, B);
+  launch_pdl(fd3t_partials<S, TS>, grid, dim3(128), dyn, st, reinterpret_cast<const uint8_t*>(Q), reinterpret_cast<const uint8_t*>(KC),
+                                         reinterpret_cast<const uint8_t*>(VC), TABLE, SEQLEN, KS, VS, PART, LSE, HQ, HKV,
+                                         table_n, page, window, splits, chunk, sm_scale, scaled);
+}
+
+
 // ---- fd3v: verify blocks (8 tokens x 8 heads = 64 query rows per KV head), both KV heads per CTA, 128 B row fetches ----
 // warp = (kv head, 32-row half); the four warps share each 64-token K/V tile; no cross-warp merge is needed.
 #define T3V 64
@@ -1977,6 +2195,9 @@ extern "C" int fd_run(int mt, int stages, int qk8, const void* Q, const void* KC
 #define FD3V(S_) if (mt == 4 && HKV == 2 && L == 8 && stages == 400 + S_) { launch3v<S_>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, L, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
   FD3V(2) FD3V(3) FD3V(4)
 #undef FD3V
+#define FD3T(S_) if (mt == 1 && HKV == 2 && stages == 700 + S_) { launch3t<S_, 16>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
+  FD3T(3) FD3T(4) FD3T(5) FD3T(6) FD3T(8)
+#undef FD3T
 #define FD3(S_) if (mt == 1 && HKV == 2 && stages == 300 + S_) { launch3<S_>(Q, KC, VC, TABLE, SEQLEN, KS, VS, PART, LSE, B, HQ, HKV, table_n, page, window, splits, chunk, sm_scale, scaled, st); return 0; }
   FD3(2) FD3(3) FD3(4)
 #undef FD3

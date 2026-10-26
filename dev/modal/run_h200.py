@@ -13,13 +13,33 @@ image = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_p
          .add_local_dir(f"{ROOT}/dev/wg2", "/w/wg2")
          .add_local_dir(f"{ROOT}/dev/wg3", "/w/wg3")
          .add_local_dir(f"{ROOT}/dev/wg4", "/w/wg4")
+         .add_local_dir(f"{ROOT}/dev/wg5", "/w/wg5")
+         .add_local_dir(f"{ROOT}/dev/wg6", "/w/wg6")
          .add_local_dir(f"{ROOT}/dev/wg", "/w/wg")
          .add_local_dir(f"{ROOT}/dev/modal", "/w/modal")
          .add_local_dir(f"{ROOT}/dev/bw", "/w/bw"))
+image_sgl = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_python="3.12")
+             .apt_install("cuda-nsight-compute-12-8", "ninja-build", "libnuma1")
+             .pip_install("torch==2.9.1", index_url="https://download.pytorch.org/whl/cu128")
+             .pip_install("numpy", "triton", "sgl-kernel")
+             .add_local_dir(f"{ROOT}/kernels", "/w/kernels")
+             .add_local_dir(f"{ROOT}/experiments/attention_fp8_hybrid_v7", "/w/v7")
+             .add_local_dir(f"{ROOT}/dev/modal", "/w/modal")
+             .add_local_dir(f"{ROOT}/dev/wg", "/w/wg")
+             .add_local_dir(f"{ROOT}/dev/wg5", "/w/wg5"))
 app = modal.App("muse-h200", image=image)
+
+@app.function(gpu="H200", timeout=1800, image=image_sgl)
+def run_sgl(problem: str, src: str, cmd: str = "", drv_src: str = ""):
+    return _run(problem, src, cmd, drv_src)
+
 
 @app.function(gpu="H200", timeout=1800)
 def run(problem: str, src: str, cmd: str = "", drv_src: str = ""):
+    return _run(problem, src, cmd, drv_src)
+
+
+def _run(problem: str, src: str, cmd: str = "", drv_src: str = ""):
     import subprocess, sys, os
     os.makedirs("/w/run", exist_ok=True)
     open("/w/run/sub.py", "w").write(src)
@@ -49,5 +69,6 @@ o = m.kernel_fn(d, st); print(R.check_implementation(d, o, w))
     return p.stdout[-900000:] + "\nSTDERR:\n" + p.stderr[-4000:]
 
 @app.local_entrypoint()
-def main(problem: str, file: str, cmd: str = "", drv: str = ""):
-    print(run.remote(problem, open(file).read(), cmd, open(drv).read() if drv else ""))
+def main(problem: str, file: str, cmd: str = "", drv: str = "", sgl: bool = False):
+    fn = run_sgl if sgl else run
+    print(fn.remote(problem, open(file).read(), cmd, open(drv).read() if drv else ""))

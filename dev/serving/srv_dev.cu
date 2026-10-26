@@ -108,16 +108,17 @@ __global__ void route_kernel(const int* __restrict__ ids, int npair, const int* 
     cnt[lane] = c;
     // work items: one per group of `grp` tokens of an expert, so a hot expert spreads over several CTAs
     const int groups = (c + grp - 1) / grp;
-    int scan = groups;
+    // longest-processing-time-first: experts with the most tokens (largest NCH) get the earliest work items
+    int start = 0, total = 0;
 #pragma unroll
-    for (int d = 1; d < 32; d <<= 1) {
-      const int v = __shfl_up_sync(0xffffffffu, scan, d);
-      if (lane >= d) scan += v;
+    for (int j = 0; j < 32; j++) {
+      const int cj = __shfl_sync(0xffffffffu, c, j), gj = __shfl_sync(0xffffffffu, groups, j);
+      if (cj > c || (cj == c && j < lane)) start += gj;
+      total += gj;
     }
-    const int start = scan - groups;
     for (int j = 0; j < groups; j++)
       reinterpret_cast<int4*>(act)[start + j] = make_int4(lane, j * grp, min(c - j * grp, grp), 1);
-    if (lane == 31) *nact = scan;
+    if (lane == 31) *nact = total;
   }
 }
 
@@ -132,6 +133,10 @@ __device__ __forceinline__ void cp16z(void* sdst, const void* gsrc, uint32_t nby
 template <int NTB_, int NCH_>
 __host__ __device__ constexpr int ring2_stages() {
   return (14336 / (512 * (NTB_ + 2 * NCH_))) > 6 ? 6 : ((14336 / (512 * (NTB_ + 2 * NCH_))) < 3 ? 3 : (14336 / (512 * (NTB_ + 2 * NCH_))));
+}
+__device__ __forceinline__ void cp8(void* sdst, const void* gsrc) {
+  const uint32_t d = static_cast<uint32_t>(__cvta_generic_to_shared(sdst));
+  asm volatile("cp.async.ca.shared.global [%0], [%1], 8;\n" ::"r"(d), "l"(gsrc));
 }
 __device__ __forceinline__ void cp_commit() { asm volatile("cp.async.commit_group;\n" ::); }
 template <int N>
@@ -485,8 +490,10 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
   constexpr int RPT = (XSLOTS + 127) / 128;
   const int tid = threadIdx.x, lane = tid & 31, warp = tid >> 5;
   const int g = lane >> 2, t = lane & 3;
-  uint4* wring = smem;                       // [S][4][NTB][32]
-  uint4* xring = smem + S * 4 * NTB * 32;    // [S][XSLOTS]
+  constexpr int SOFF = 3 * 4 * NTB * 16;     // scale ring: [3][4][NTB][32] uint2, in uint4 units
+  uint2* sring = reinterpret_cast<uint2*>(smem);
+  uint4* wring = smem + SOFF;                // [S][4][NTB][32]
+  uint4* xring = wring + S * 4 * NTB * 32;   // [S][XSLOTS]
 
   const uint4* wsrc[NTB];
   const uint2* ssrc[NTB];
@@ -524,7 +531,14 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 #pragma unroll
       for (int r = 0; r < 4; r++) acc[n][c][r] = 0.f;
 
+  auto issue_sc = [&](int g) {
+    if (g < KCG && !(DBG & 32)) {
+#pragma unroll
+      for (int n = 0; n < NTB; n++) cp8(&sring[(((g % 3) * 4 + warp) * NTB + n) * 32 + lane], ssrc[n] + g * 32);
+    }
+  };
   auto issue = [&](int c) {
+    if ((c & 3) == 0) issue_sc((c >> 2) + 1);
     if (c < KC) {
 #pragma unroll
       for (int n = 0; n < NTB; n++) { if constexpr (!(DBG & 8)) cp16(&wring[(((c % S) * 4 + warp) * NTB + n) * 32 + lane], wsrc[n] + c * 32); }
@@ -534,14 +548,9 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
     }
     cp_commit();
   };
+  issue_sc(0);
 #pragma unroll
   for (int c = 0; c < S - 1; c++) issue(c);
-  uint2 scur[NTB], snxt[NTB];
-#pragma unroll
-  for (int n = 0; n < NTB; n++) {
-    scur[n] = __ldg(ssrc[n]);
-    snxt[n] = __ldg(ssrc[n] + 32);
-  }
 #pragma unroll 1
   for (int i = 0; i < KC; i++) {
     cp_wait<S - 2>();
@@ -557,8 +566,9 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 #pragma unroll
     for (int n = 0; n < NTB; n++) {
       const uint4 wv = wring[(((i % S) * 4 + warp) * NTB + n) * 32 + lane];
-      const uint32_t s0 = scale2(scur[n].x, cq);
-      const uint32_t s1 = scale2(scur[n].y, cq);
+      const uint2 sc = (DBG & 32) ? make_uint2(0x38383838u, 0x38383838u) : sring[((((i >> 2) % 3) * 4 + warp) * NTB + n) * 32 + lane];
+      const uint32_t s0 = scale2(sc.x, cq);
+      const uint32_t s1 = scale2(sc.y, cq);
       const uint32_t ww[4] = {wv.x, wv.y, wv.z, wv.w};
 #pragma unroll
       for (int ks = 0; ks < 4; ks++) {
@@ -574,13 +584,6 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
         }
       }
     }
-    if (cq == 3) {
-#pragma unroll
-      for (int n = 0; n < NTB; n++) {
-        scur[n] = snxt[n];
-        if ((i >> 2) + 2 < KCG) snxt[n] = __ldg(ssrc[n] + ((i >> 2) + 2) * 32);
-      }
-    }
   }
   cp_wait<0>();
   if constexpr (DBG & 2) acc[0][0][0] = __uint_as_float(sink);
@@ -591,8 +594,8 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 #pragma unroll
     for (int r = 0; r < 4; r++) {
       const int col = c * 8 + 2 * t + (r & 1);
-      if (col >= ntok) continue;
-      const int p = __ldcg(lst + col);
+      if (col >= ntok || (DBG & 16)) continue;
+      const int p = (DBG & 64) ? col * 7 : __ldcg(lst + col);
       const int row = g + 8 * (r >> 1);
 #pragma unroll
       for (int n = 0; n < NTB; n++) {
@@ -609,7 +612,7 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 }
 
 template <int MODE, int NTB, int NMAX, int S, int DBG>
-__global__ void __launch_bounds__(128, 3)
+__global__ void __launch_bounds__(128, (S <= 3 ? 4 : 3))
 wm_gemm_rs(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const float* __restrict__ GS,
            const bf16* __restrict__ X, bf16* __restrict__ OUT, const int* __restrict__ lst,
            const int* __restrict__ act, int lmax) {
@@ -630,7 +633,7 @@ template <int MODE, int NTB, int NMAX, int S, int DBG>
 static void launch_rs(const void* W, const void* Sc, const float* GS, const void* X, void* OUT, const int* lst,
                       const int* act, int maxslots, int lmax, int pdl, cudaStream_t st) {
   dim3 grid((MODE == 0 ? 512 : 256) / (4 * NTB), (unsigned)maxslots);
-  const int dyn = S * (4 * NTB * 512 + NMAX * 2 * 32 * 16);
+  const int dyn = S * (4 * NTB * 512 + NMAX * 2 * 32 * 16) + 3 * 4 * NTB * 256;
   cudaFuncSetAttribute(wm_gemm_rs<MODE, NTB, NMAX, S, DBG>, cudaFuncAttributeMaxDynamicSharedMemorySize, dyn);
   launch_k(wm_gemm_rs<MODE, NTB, NMAX, S, DBG>, grid, dim3(128), (size_t)dyn, st, pdl != 0, reinterpret_cast<const uint4*>(W),
            reinterpret_cast<const uint2*>(Sc), GS, reinterpret_cast<const bf16*>(X), reinterpret_cast<bf16*>(OUT), lst, act, lmax);
