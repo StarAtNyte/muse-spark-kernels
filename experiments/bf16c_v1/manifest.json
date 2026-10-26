@@ -1,0 +1,22 @@
+{
+  "name": "bf16c_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "lossless 12-bit BF16 weights + swap-AB GEMV chosen by prepare-time timing",
+  "sha256": "46f3850ab0e8ab8c5f1d89213580f26be41a4d0312128b89888b81e9477a5ff8",
+  "created_at": 1793008950.7553034,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "5599a49bc7204354"
+}
