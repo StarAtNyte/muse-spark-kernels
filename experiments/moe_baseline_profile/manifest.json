@@ -1,0 +1,23 @@
+{
+  "name": "moe_baseline_profile",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Profile unchanged pinned SGLang Marlin pipeline across all MoE workloads to identify whether routing, W4A16 GEMMs, activation, or expert normalization dominates",
+  "sha256": "66abb265321ae0116a7db60d90ae8d320dca1060484105a37ea6eb23509d24d6",
+  "created_at": 1792735355.094738,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "c761669d797940e1",
+  "updated_at": 1792762467.5112278
+}

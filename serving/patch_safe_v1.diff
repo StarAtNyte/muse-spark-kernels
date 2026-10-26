@@ -1,0 +1,136 @@
+diff --git a/python/sglang/kernels/ops/muse_spark_v12/fused_post_expert_norm_weighted_sum_triton.py b/python/sglang/kernels/ops/muse_spark_v12/fused_post_expert_norm_weighted_sum_triton.py
+index b2092f6..9132a7a 100644
+--- a/python/sglang/kernels/ops/muse_spark_v12/fused_post_expert_norm_weighted_sum_triton.py
++++ b/python/sglang/kernels/ops/muse_spark_v12/fused_post_expert_norm_weighted_sum_triton.py
+@@ -74,7 +74,19 @@ def fused_post_expert_norm_weighted_sum(
+     out = torch.empty((tokens, hidden), dtype=x.dtype, device=x.device)
+     if tokens == 0:
+         return out
+-    if tokens < _MIN_TOKENS_FOR_FUSED:
++    small_hopper_fusion = (
++        tokens < _MIN_TOKENS_FOR_FUSED
++        and x.is_cuda
++        and x.dtype == torch.bfloat16
++        and (topk, hidden) == (8, 4096)
++        and apply_norm
++        and weight_first
++        and norm_weight is not None
++        and norm_weight.dtype == torch.bfloat16
++        and slot_expert_ids is not None
++        and torch.cuda.get_device_capability(x.device)[0] == 9
++    )
++    if tokens < _MIN_TOKENS_FOR_FUSED and not small_hopper_fusion:
+         y = x
+         if slot_expert_ids is not None:
+             y = torch.where(
+diff --git a/python/sglang/kernels/ops/muse_spark_v12/fused_split_router.py b/python/sglang/kernels/ops/muse_spark_v12/fused_split_router.py
+new file mode 100644
+index 0000000..18f9197
+--- /dev/null
++++ b/python/sglang/kernels/ops/muse_spark_v12/fused_split_router.py
+@@ -0,0 +1,58 @@
++"""Fused Hopper BF16 hi/lo router GEMM with FP32 accumulation.
++
++Uses the router's existing weight representation. Intended for decode and
++short verify batches; larger prefill batches retain the cuBLAS path.
++"""
++
++import torch
++import triton
++import triton.language as tl
++
++
++@triton.jit
++def _matmul(X, W, LO, P, M: tl.constexpr, N: tl.constexpr, K: tl.constexpr,
++            BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,
++            SPLIT: tl.constexpr, ROUTER: tl.constexpr, WN: tl.constexpr):
++    mi = tl.program_id(0) * BM + tl.arange(0, BM)
++    ni = tl.program_id(1) * BN + tl.arange(0, BN)
++    s = tl.program_id(2)
++    ki = s * (K // SPLIT) + tl.arange(0, BK)
++    acc = tl.full((BM, BN), 0, tl.float32)
++    for i in range(K // SPLIT // BK):
++        kk = ki + i * BK
++        a = tl.load(X + mi[:, None] * K + kk[None, :], mi[:, None] < M, 0)
++        b = tl.load(W + kk[:, None] * WN + ni[None, :], ni[None, :] < N, 0)
++        acc = tl.dot(a, b, acc)
++        if ROUTER:
++            lo = tl.load(LO + kk[:, None] * WN + ni[None, :], ni[None, :] < N, 0)
++            acc = tl.dot(a, lo, acc)
++    tl.store(P + s * M * N + mi[:, None] * N + ni[None, :], acc,
++             (mi[:, None] < M) & (ni[None, :] < N))
++
++
++
++@triton.jit
++def _finish(P, Y, SIZE: tl.constexpr, SPLIT: tl.constexpr, B: tl.constexpr):
++    idx = tl.program_id(0) * B + tl.arange(0, B)
++    sums = tl.full((B,), 0, tl.float32)
++    for s in range(SPLIT):
++        sums += tl.load(P + s * SIZE + idx, idx < SIZE, 0)
++    tl.store(Y + idx, sums, idx < SIZE)
++
++
++
++def fused_split_router(x, hi, lo):
++    """Return FP32 x @ (hi + lo), with transposed contiguous BF16 weights."""
++    m, k = x.shape
++    n = hi.shape[1]
++    bm, bn, bk = (16 if m <= 32 else 32), 64, 128
++    tiles = triton.cdiv(m, bm) * triton.cdiv(n, bn)
++    split = min(16, triton.next_power_of_2(triton.cdiv(256, tiles)))
++    output = torch.empty((m, n), device=x.device, dtype=torch.float32)
++    partial = torch.empty((split, m, n), device=x.device, dtype=torch.float32)
++    _matmul[(triton.cdiv(m, bm), triton.cdiv(n, bn), split)](
++        x, hi, lo, partial, m, n, k, bm, bn, bk, split, True, n,
++        num_warps=4, num_stages=3,
++    )
++    _finish[(triton.cdiv(m * n, 512),)](partial, output, m * n, split, 512)
++    return output
+diff --git a/python/sglang/srt/layers/muse_spark_fp4_moe.py b/python/sglang/srt/layers/muse_spark_fp4_moe.py
+index 97b1474..b5bb4e3 100644
+--- a/python/sglang/srt/layers/muse_spark_fp4_moe.py
++++ b/python/sglang/srt/layers/muse_spark_fp4_moe.py
+@@ -478,6 +478,16 @@ class MuseSpark1xFp4Experts(nn.Module):
+             if num_tokens * topk / self.num_local_experts / block_size_m < 0.9:
+                 break
+ 
++        if (
++            32 <= num_tokens <= 512
++            and (size_k, size_n, topk, self.num_local_experts) == (4096, 4096, 8, 32)
++            and expert_map is not None
++            and hidden_states.is_cuda
++            and hidden_states.dtype == torch.bfloat16
++            and torch.cuda.get_device_capability(hidden_states.device)[0] == 9
++        ):
++            block_size_m = 16
++
+         if num_tokens == 1 and topk <= 32 and expert_map is None:
+             from sglang.kernels.ops.moe.moe_align_single_token import (
+                 moe_align_single_token,
+diff --git a/python/sglang/srt/models/muse_spark.py b/python/sglang/srt/models/muse_spark.py
+index 312b342..571803d 100644
+--- a/python/sglang/srt/models/muse_spark.py
++++ b/python/sglang/srt/models/muse_spark.py
+@@ -30,6 +30,7 @@ from sglang.kernels.ops.muse_spark_v12.fused_norm_residual import (
+     FusedPostNormResidualPreNorm,
+ )
+ from sglang.kernels.ops.muse_spark_v12.fused_qk_norm import FusedQKNorm
++from sglang.kernels.ops.muse_spark_v12.fused_split_router import fused_split_router
+ from sglang.kernels.ops.muse_spark_v12.gemm_ag import (
+     gemm_ag,
+     gemm_ag_supported,
+@@ -284,6 +285,13 @@ class MuseSpark1xRouter(nn.Module):
+     def forward_split2(self, hidden_states: torch.Tensor) -> torch.Tensor:
+         self._build_split2()
+         x = hidden_states.to(torch.bfloat16)
++        if (
++            _split_bf16_router_supported()
++            and 8 < x.shape[0] <= 256
++            and self.weight.shape == (256, 8192)
++            and x.is_contiguous()
++        ):
++            return fused_split_router(x, self._split2_hi, self._split2_lo)
+         acc = torch.mm(x, self._split2_hi, out_dtype=torch.float32)
+         acc += torch.mm(x, self._split2_lo, out_dtype=torch.float32)
+         return acc

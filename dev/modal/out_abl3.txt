@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Xs2Jwwza86GBR12rki2Gey
+Building image im-SkPElvHzOT8YkOgkWjd4zD
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install numpy triton
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting numpy
+  Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Requirement already satisfied: triton in ./usr/local/lib/python3.12/site-packages (3.6.0)
+Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 840.3 MB/s  0:00:00
+Installing collected packages: numpy
+Successfully installed numpy-2.5.4
+Saving image...
+Image saved, took 829.10ms
+
+Built image im-SkPElvHzOT8YkOgkWjd4zD in 3.90s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+LAB DBG M=64 cfg=(4, 4, 4) d0=224.2 d16=169.1 d32=206.0 d48=171.0 d15=107.1 d31=15.8 d63=15.8
+LAB DBG M=128 cfg=(4, 4, 4) d0=249.9 d16=190.4 d32=218.3 d48=186.0 d15=111.6 d31=16.1 d63=15.9
+LAB DBG M=256 cfg=(4, 4, 4) d0=355.9 d16=207.5 d32=296.7 d48=206.3 d15=153.1 d31=19.8 d63=19.7
+(False, 'expected a tensor, got MagicMock')
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Xs2Jwwza86GBR12rki2Gey

@@ -1,0 +1,24 @@
+{
+  "name": "attention_all_splitkv_v4",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Correct FP8 masked-load zero typing in all-key split-KV candidate; preserve paged GQA reuse, dynamic context loop bounds, and fused merge/norm/gate",
+  "sha256": "f2269178298eb3f0ba3df999c135c8520e20d4307212e85772a8c4a59fed8b3c",
+  "created_at": 1792736300.6643126,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "eb6de29d0a314bef",
+  "updated_at": 1792762455.0235915,
+  "decision_reason": "Full correctness passed; aggregate 1.019x loses to fused-FA3 best, preserve measured shape-local wins for hybrid"
+}

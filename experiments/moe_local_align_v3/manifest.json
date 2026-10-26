@@ -1,0 +1,24 @@
+{
+  "name": "moe_local_align_v3",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Align already-local expert IDs using 32 buckets instead of 256 and omit invalid-route blocks; preserve GEMM tiling, activation, and normalization for isolated routing-overhead measurement",
+  "sha256": "589aaa8b1b10ecfdda6efba817e7486926d7737d502a020a95a703164c7cd9b0",
+  "created_at": 1792736793.914827,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "2382392969184ca3",
+  "updated_at": 1792762470.1537988,
+  "decision_reason": "1.00056x is parity within noise; no demonstrated speedup"
+}

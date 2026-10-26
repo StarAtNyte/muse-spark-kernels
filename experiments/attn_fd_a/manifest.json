@@ -1,0 +1,22 @@
+{
+  "name": "attn_fd_a",
+  "problem": "muse_attention_decode",
+  "hypothesis": "CUDA split-KV flash decode for full decode and sliding batch<=4, default configs",
+  "sha256": "819024bdc943aa836eee975f7018d5f8eb72e6006c48a41ff026b94b3d76a086",
+  "created_at": 1792848202.5546,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    }
+  },
+  "status": "received",
+  "job_id": "95816f4cbeca4a54"
+}

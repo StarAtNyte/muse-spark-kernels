@@ -1,0 +1,22 @@
+{
+  "name": "attn_wg_a",
+  "problem": "muse_attention_decode",
+  "hypothesis": "attention: fd2 decode + wgmma verify (MN-major V) for full verify B>=16 and sliding B16",
+  "sha256": "dce44b3647c6d6b18d0f70ef2ccf6807b709c332f8893e1873582f508d1515cd",
+  "created_at": 1792948236.3560247,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "8deef0c71c4e49a3"
+}

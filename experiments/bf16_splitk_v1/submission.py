@@ -1,0 +1,90 @@
+# okc: problem=muse_bf16_proj
+"""Starter: the projections in plain PyTorch, correct but slow.
+
+Implement kernel_fn, and prepare to repack the weights (called once, untimed)."""
+
+from typing import TypedDict
+
+import torch
+import triton
+import triton.language as tl
+
+
+class Weights(TypedDict):
+    qkv_gate: torch.Tensor  # bfloat16 [2304, 8192]
+    o: torch.Tensor         # bfloat16 [8192, 1024]
+    pooler: torch.Tensor    # bfloat16 [4096, 8192]
+    unpooler: torch.Tensor  # bfloat16 [8192, 4096]
+    router: torch.Tensor    # float32 [256, 8192]
+
+
+class Config(TypedDict):
+    m: int
+    n: int      # output width; the unpooler's is 1024 up to 8 tokens (this GPU's slice), else 8192
+    k: int
+    layer: str  # which weight: "qkv_gate", "o", "pooler", "unpooler" or "router"
+
+
+class Inputs(TypedDict):
+    x: torch.Tensor  # bfloat16 [m, k]
+    config: Config
+
+
+@triton.jit
+def _matmul(X, W, LO, P, M: tl.constexpr, N: tl.constexpr, K: tl.constexpr,
+            BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,
+            SPLIT: tl.constexpr, ROUTER: tl.constexpr):
+    mi = tl.program_id(0) * BM + tl.arange(0, BM)
+    ni = tl.program_id(1) * BN + tl.arange(0, BN)
+    s = tl.program_id(2)
+    ki = s * (K // SPLIT) + tl.arange(0, BK)
+    acc = tl.full((BM, BN), 0, tl.float32)
+    for i in range(K // SPLIT // BK):
+        kk = ki + i * BK
+        a = tl.load(X + mi[:, None] * K + kk[None, :], mi[:, None] < M, 0)
+        b = tl.load(W + ni[None, :] * K + kk[:, None], ni[None, :] < N, 0)
+        acc = tl.dot(a, b, acc)
+        if ROUTER:
+            lo = tl.load(LO + ni[None, :] * K + kk[:, None], ni[None, :] < N, 0)
+            acc = tl.dot(a, lo, acc)
+    tl.store(P + s * M * N + mi[:, None] * N + ni[None, :], acc,
+             (mi[:, None] < M) & (ni[None, :] < N))
+
+
+@triton.jit
+def _finish(P, Y, SIZE: tl.constexpr, SPLIT: tl.constexpr, B: tl.constexpr):
+    idx = tl.program_id(0) * B + tl.arange(0, B)
+    sums = tl.full((B,), 0, tl.float32)
+    for s in range(SPLIT):
+        sums += tl.load(P + s * SIZE + idx, idx < SIZE, 0)
+    tl.store(Y + idx, sums, idx < SIZE)
+
+
+def prepare(weights: Weights):
+    state = dict(weights)
+    hi = weights['router'].to(torch.bfloat16)
+    state['router_hi'] = hi
+    state['router_lo'] = (weights['router'] - hi.float()).to(torch.bfloat16)
+    return state
+
+
+def kernel_fn(data: Inputs, weights: Weights) -> torch.Tensor:
+    """Return x @ W[:n].T, where W is weights[config["layer"]]: bfloat16, or float32 for the router."""
+    x = data['x']
+    layer = data['config']['layer']
+    m, k = x.shape
+    n = data['config']['n']
+    router = layer == 'router'
+    if m > 32 and not router:
+        return x @ weights[layer][:n].T
+    w = weights['router_hi'] if router else weights[layer]
+    lo = weights['router_lo'] if router else w
+    split = 8
+    partial = torch.empty((split, m, n), device=x.device, dtype=torch.float32)
+    result = torch.empty((m, n), device=x.device,
+                         dtype=torch.float32 if router else torch.bfloat16)
+    _matmul[(triton.cdiv(m, 16), triton.cdiv(n, 64), split)](
+        x, w, lo, partial, m, n, k, 16, 64, 64, split, router,
+        num_warps=4)
+    _finish[(triton.cdiv(m*n, 512),)](partial, result, m*n, split, 512)
+    return result

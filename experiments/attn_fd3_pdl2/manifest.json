@@ -1,0 +1,24 @@
+{
+  "name": "attn_fd3_pdl2",
+  "problem": "muse_attention_decode",
+  "hypothesis": "PDL only for batch 1",
+  "sha256": "6fefccf0094819f723fd15c89690ca6e55c7fe51973b9098a4b28fbe4dd66188",
+  "created_at": 1792967703.0210876,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "bcd7c93aef39456d",
+  "updated_at": 1792968063.6880744,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

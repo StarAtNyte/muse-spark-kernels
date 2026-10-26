@@ -1,0 +1,11 @@
+{
+  "name": "bf16_splitk_v1",
+  "problem": "muse_bf16_proj",
+  "job_id": "3f1954adb1044e31",
+  "sha256": "77f11d6d65a1572f2eea6693ffe117a80ab24876ec829d1014932eaf539978d3",
+  "hypothesis": "Split-K BF16 tensor-core GEMM and fused router hi/lo; cuBLAS for larger dense batches",
+  "status": "done",
+  "decision": "archive_only",
+  "updated_at": 1792762462.0825372,
+  "decision_reason": "Correct but only 1.035754x with dense shape regressions"
+}

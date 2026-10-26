@@ -1,0 +1,23 @@
+{
+  "name": "moe_m8_midbatch_v8",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Test Marlin M8 tiles in the 32-64 token regime where local expert batches are small, retaining the validated fused reduction and larger-batch M16 paths",
+  "sha256": "7a1733a859ad748f5098d3a627157b66729132a2558351510dc9703a15cd8810",
+  "created_at": 1792764074.2555804,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "9d1bc7f8348d46d3",
+  "updated_at": 1792842527.2686923
+}

@@ -1,0 +1,24 @@
+{
+  "name": "attention_splitkv_v2",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Replace sliding-window FA3 with exact paged grouped-query split-KV attention; merge partials with BF16 rounding, RMS normalization and sigmoid gating in one kernel; retain FA3 for full contexts",
+  "sha256": "554d19c6dd15d5a8fc19fbfc113fa40aa533ccd324939aee73e35a329bf87be2",
+  "created_at": 1792735297.0975115,
+  "decision": "reject_compile_failure",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "c29a12701caf42ee",
+  "updated_at": 1792762458.6810846,
+  "decision_reason": "Masked FP8 loads use integer zero; fixed in new immutable v4 candidate"
+}

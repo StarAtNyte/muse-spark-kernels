@@ -1,0 +1,24 @@
+LABAC B=2 L=1 full variant=1 stages=4 splits=8 qk8=0 relerr_vs_v7=8.12e-04
+LABAC B=2 L=1 full variant=1 stages=4 splits=8 qk8=1 relerr_vs_v7=8.12e-04
+LABAC B=2 L=1 full variant=2 stages=3 splits=16 qk8=0 relerr_vs_v7=7.67e-04
+LABAC B=2 L=1 full variant=2 stages=2 splits=8 qk8=0 relerr_vs_v7=8.00e-04
+LABAC B=3 L=1 sliding variant=1 stages=4 splits=8 qk8=0 relerr_vs_v7=1.04e-03
+LABAC B=3 L=1 sliding variant=1 stages=4 splits=8 qk8=1 relerr_vs_v7=1.04e-03
+LABAC B=3 L=1 sliding variant=2 stages=3 splits=16 qk8=0 relerr_vs_v7=1.03e-03
+LABAC B=3 L=1 sliding variant=2 stages=2 splits=8 qk8=0 relerr_vs_v7=1.04e-03
+LABAC B=2 L=8 full variant=1 stages=4 splits=8 qk8=0 relerr_vs_v7=2.07e-03
+LABAC B=2 L=8 full variant=1 stages=4 splits=8 qk8=1 relerr_vs_v7=2.07e-03
+LABAC B=2 L=8 sliding variant=1 stages=4 splits=8 qk8=0 relerr_vs_v7=1.71e-03
+LABAC B=2 L=8 sliding variant=1 stages=4 splits=8 qk8=1 relerr_vs_v7=1.71e-03
+LABA B=1 L=1 sliding v7=15.3 11.0:s4/p16/v20 11.0:s2/p16/v20 11.0:s3/p16/v20 11.8:s4/p8/v20 11.9:s3/p8/v20 12.4:s4/p16/v11 12.6:s2/p8/v20
+LABA B=1 L=1 full v7=28.4 20.9:s2/p128/v20 21.6:s4/p128/v20 22.0:s3/p128/v20 23.0:s3/p64/v20 23.3:s4/p64/v20 26.0:s2/p64/v20 28.8:s3/p128/v11
+LABA B=16 L=1 sliding v7=25.4 15.1:s3/p4/v20 15.3:s2/p8/v20 15.4:s2/p4/v20 15.8:s2/p16/v20 15.9:s4/p4/v20 16.3:s3/p8/v20 16.4:s4/p8/v20
+LABA B=16 L=1 full v7=188.4 159.2:s2/p64/v20 162.8:s3/p64/v20 164.2:s4/p64/v20 164.8:s3/p32/v20 168.8:s4/p32/v20 170.4:s2/p32/v20 172.9:s2/p128/v20
+LABA B=32 L=1 sliding v7=30.8 19.3:s2/p4/v20 19.4:s3/p2/v20 19.9:s3/p4/v20 20.1:s4/p2/v20 20.8:s4/p4/v20 21.0:s2/p8/v20 21.5:s2/p2/v20
+LABA B=32 L=1 full v7=361.0 294.4:s3/p32/v20 295.3:s2/p64/v20 295.5:s2/p32/v20 298.3:s4/p64/v20 298.6:s4/p32/v20 299.6:s3/p64/v20 306.6:s3/p32/v11
+LABA B=1 L=8 sliding v7=17.9 18.8:s4/p16/v10 19.0:s3/p16/v10 27.8:s4/p8/v10 28.7:s3/p8/v10 43.6:s3/p4/v10 44.2:s4/p4/v10 77.8:s3/p2/v10
+LABA B=1 L=8 full v7=33.1 59.8:s3/p128/v10 60.2:s4/p128/v10 96.2:s3/p64/v10 96.4:s4/p64/v10 175.6:s4/p32/v10 176.0:s3/p32/v10 339.6:s4/p16/v10
+LABA B=16 L=8 sliding v7=27.1 28.3:s3/p16/v10 28.6:s4/p16/v10 32.5:s4/p8/v10 32.9:s3/p8/v10 46.3:s4/p4/v10 46.6:s3/p4/v10 79.7:s4/p2/v10
+LABA B=16 L=8 full v7=243.8 427.6:s4/p64/v10 428.8:s3/p64/v10 455.3:s4/p128/v10 457.8:s3/p128/v10 512.4:s4/p32/v10 514.8:s3/p32/v10 528.4:s4/p16/v10
+LABA B=32 L=8 sliding v7=32.8 40.6:s3/p8/v10 41.2:s4/p8/v10 47.0:s4/p16/v10 47.9:s3/p16/v10 52.8:s4/p4/v10 53.2:s3/p4/v10 82.5:s4/p2/v10
+LABA B=32 L=8 full v7=465.9 812.6:s4/p32/v10 815.4:s3/p32/v10 836.3:s4/p64/v10 840.5:s3/p64/v10 886.7:s4/p128/v10 891.2:s3/p128/v10 994.6:s4/p16/v10

@@ -1,0 +1,23 @@
+{
+  "name": "attention_all_splitkv_v3",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Replace the bandwidth-limited full-context FA3 path with all-key paged GQA split-KV attention, balanced over 256-512 CTAs with dynamic per-request loop bounds and fused output merge/norm/gate",
+  "sha256": "389e89cbfcf708fd3ead8286d78652c97ba3f7c6c55895fe89722335fd37917b",
+  "created_at": 1792736162.8113575,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "314d01393cc24fa4",
+  "updated_at": 1792762454.072912
+}

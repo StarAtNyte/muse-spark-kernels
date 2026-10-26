@@ -1,0 +1,65 @@
+okc run 693e411738cc464e on muse_moe_w4a16
+submission  /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_wm_lab_rs3/submission.py
+status      ok
+passed      true
+speedup     1.7550765705184663
+speedup_ci  [1.7287504219606893 1.7814027190762431]
+score_us    7662.628643049565
+tests       5/5 passed
+
+scored shapes (µs; speed of light is the reference's bound)
+case                                                         sglang      yours  speedup        sol  
+bs=1 load=decode 1 sharding=ep8                               76.74      30.54   2.512x      11.42  
+bs=16 load=decode 16 sharding=ep8                            188.00     107.62   1.747x      52.52  
+bs=32 load=decode 32 sharding=ep8                            212.59     160.71   1.323x      70.76  
+bs=8 load=verify 1 sharding=ep8                              142.85      78.01   1.831x      37.32  
+bs=128 load=verify 16 sharding=ep8                           460.93     260.50   1.769x     101.34  
+bs=256 load=verify 32 sharding=ep8                           621.18     399.76   1.554x     108.94  
+
+profile 0: bs=1 load=decode 1 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      13.0 µs  48.9%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...       8.9 µs  33.3%      1
+_post_expert_norm_weighted_sum_kernel                              3.1 µs  11.5%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.7 µs   6.4%      1
+total                                                             26.7 µs
+
+profile 1: bs=16 load=decode 16 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      50.9 µs  60.6%      1
+void wm_gemm<1, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      27.9 µs  33.3%      1
+_post_expert_norm_weighted_sum_kernel                              3.5 µs   4.2%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.6 µs   1.9%      1
+total                                                             83.9 µs
+
+profile 2: bs=32 load=decode 32 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      89.5 µs  62.4%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      47.7 µs  33.3%      1
+_post_expert_norm_weighted_sum_kernel                              4.7 µs   3.3%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.6 µs   1.1%      1
+total                                                            143.5 µs
+
+profile 3: bs=8 load=verify 1 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      57.8 µs  60.2%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      31.7 µs  33.0%      1
+_post_expert_norm_weighted_sum_kernel                              5.0 µs   5.2%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.5 µs   1.6%      1
+total                                                             96.0 µs
+
+profile 4: bs=128 load=verify 16 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...     179.8 µs  63.6%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      96.2 µs  34.0%      1
+_post_expert_norm_weighted_sum_kernel                              5.1 µs   1.8%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   0.7%      1
+total                                                            282.9 µs
+
+profile 5: bs=256 load=verify 32 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...     264.4 µs  65.4%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...     131.4 µs  32.5%      1
+_post_expert_norm_weighted_sum_kernel                              5.8 µs   1.4%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       2.4 µs   0.6%      1
+total                                                            404.0 µs

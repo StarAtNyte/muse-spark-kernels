@@ -1,0 +1,23 @@
+{
+  "name": "attention_fp8_qk_v6",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use native FP8 QK tensor-core products on already-FP8 Q and K, avoiding their lossless BF16 widening; preserve BF16 softmax-weighted-value multiplication and all-key attention",
+  "sha256": "76abbe870f37dc4cb1bf38d9a42c01c8a494a20dea84d05364c7759a1346c421",
+  "created_at": 1792762195.1954908,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "ca9e327f05c04b3d",
+  "updated_at": 1792764901.6134543
+}

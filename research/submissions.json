@@ -1,0 +1,168 @@
+[
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "b42a0772e39546b1",
+    "experiment": "bf16_hybrid_v4",
+    "sha256": "1d5f7da0618ef34d6b39c9530969d014dcc1c7430c4e3db348d0037bf17bcc73",
+    "submitted_at": 1792736161.7749908,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.1062603455001123
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "c701dd346ce94bdc",
+    "experiment": "attention_fused_io_v1",
+    "sha256": "3229da8b4452add0e07ad245c0b85a47d10f6ce043524cbd1a7449f737fcc20e",
+    "submitted_at": 1792736161.7749975,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.13052423574474
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "3ee947021eae43b9",
+    "experiment": "bf16_hybrid_v5",
+    "sha256": "82b83e69811ba1f5888b138e3fc8630b2f011b0e463af61cd3dcbfcfc0b3a0d4",
+    "submitted_at": 1792736959.0574896,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.1742994562024376
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "15fdc2d1955549b9",
+    "experiment": "moe_fused_small_reduce_v1",
+    "sha256": "111567a047900da5d6d52510c4be77d35a786b78174932b860bcb8536a44cb32",
+    "submitted_at": 1792761963.4413147,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.146518712372283
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "4026b7baf4e04652",
+    "experiment": "decode_fused_pipeline_v2",
+    "sha256": "463d8f7e239bb5673f62b833c63f8d224f6c2c5dc92f480adf3034e21d43dc70",
+    "submitted_at": 1792761964.5728946,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.0961933124610634
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "33168954e1684bad",
+    "experiment": "moe_hybrid_v5",
+    "sha256": "ce776e62553fdb3ba03aee46a7a321a808f261c1da96e8a7aab2257f22481c00",
+    "submitted_at": 1792763983.8069046,
+    "status": "queued",
+    "passed": null,
+    "speedup": null
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "2c0559f533d145dc",
+    "experiment": "attention_hybrid_v5",
+    "sha256": "d86368c0b9aa248580cb00c73e719d9d47f578fe57a794ea88435d17bdbe6bb8",
+    "submitted_at": 1792764635.6428301,
+    "status": "queued",
+    "passed": null,
+    "speedup": null
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "b9b6263e128341ad",
+    "experiment": "attention_fp8_hybrid_v7",
+    "sha256": "a393b88779c163ed458f1c7415ed317a429518ce16821114617ca99a2af476fc",
+    "submitted_at": 1792842539.0008857,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "c3a588380db54444",
+    "experiment": "decode_attention_hybrid_v4",
+    "sha256": "a2b6e0a0f190a86cc3d6c48a553464af9de075357c001305bc53827a12608bdb",
+    "submitted_at": 1792842549.2910116,
+    "status": "received"
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "a925c611492f4514",
+    "experiment": "moe_wm_v13A",
+    "sha256": "94bfbf5e55fd48e5e6c0c0fe20e5c1fb9efcbee73120404f9c80625d45565e05",
+    "submitted_at": 1792847332.807382,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "ca477dc1c34b4d2f",
+    "experiment": "decoder_wm_v5",
+    "sha256": "f21bf92ce7a341af102f736bcc423278ed41bfc5713f03b2af9440127fc9d3eb",
+    "submitted_at": 1792849359.1717465,
+    "status": "received"
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "f718960df31f43cf",
+    "experiment": "moe_wm_v15B",
+    "sha256": "ed4d273e00789956c4ea57af3e3fa8d56a973070a4ec63a5a096e7c458777ae6",
+    "submitted_at": 1792851709.9659445,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "cd8449632ad4413f",
+    "experiment": "decoder_all_v1",
+    "sha256": "3794e650d4fdc8ae1c027441ce7774c982ed85d2345d9f68ac3a6f6e8c4b5da3",
+    "submitted_at": 1792856527.19602,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "ce9f7943e10a44bb",
+    "experiment": "attn_fd2_c",
+    "sha256": "576417235a0be637309c80b82f714c06c007b5555a209e04e91c711d76b8eaf3",
+    "submitted_at": 1792857154.1937847,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "5a367aaff50643f2",
+    "experiment": "attn_fd3_b",
+    "sha256": "8c1200d42155b0dd636f9488dc5fe623660d363451a1cfedb5b70080fbaaf4d0",
+    "submitted_at": 1792965286.9771318,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "186ae75eb54549a1",
+    "experiment": "attn_fd3_pdl2",
+    "sha256": "6fefccf0094819f723fd15c89690ca6e55c7fe51973b9098a4b28fbe4dd66188",
+    "submitted_at": 1792968068.6961424,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "94ea7f80a8164ac6",
+    "experiment": "decoder_b5_b",
+    "sha256": "6643c576723f187856b6796fe92200e63f020c794f840dbd9b761ccb177876e3",
+    "submitted_at": 1792968503.5924304,
+    "status": "received"
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "9e8bc97e9d984b78",
+    "experiment": "moe_wm_v18b",
+    "sha256": "e24be53cb99398e9b50fcdf16bc55110198228a627311102f125c6f3e9e4b13a",
+    "submitted_at": 1792970203.838748,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "8b4fa22273404a44",
+    "experiment": "decoder_b5_rs",
+    "sha256": "2417abf54714fdf28e4c312b50b1de1d04a2e3ada94c8399ebd0813c6fc9271f",
+    "submitted_at": 1792970521.0909538,
+    "status": "received"
+  }
+]

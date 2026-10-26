@@ -1,0 +1,238 @@
+[
+  {
+    "kernel": "_w4_gate_up",
+    "m": 128,
+    "wgmma_instructions": 8,
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "97a80c7ea082975f2a542cda1b42390fc93115c7dc5c07329a7c593ab69aeb3d",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_w4_gate_up",
+      "num_ctas": 1,
+      "num_stages": 2,
+      "num_warps": 4,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 16384,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _w4_gate_up:\n  REG:254 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:608 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "kernel": "_w4_gate_up",
+    "m": 257,
+    "wgmma_instructions": 8,
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "38c694b2f20690cfc6c6c2f50b036e862287ddcb2bf38c868db2928e32c74360",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_w4_gate_up",
+      "num_ctas": 1,
+      "num_stages": 2,
+      "num_warps": 4,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 16384,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _w4_gate_up:\n  REG:254 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:608 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "kernel": "_w4_down",
+    "m": 128,
+    "wgmma_instructions": 4,
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "309e752fea962175a5f892ba7943df8e61f700068720db3d00f0c941c5887501",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_w4_down",
+      "num_ctas": 1,
+      "num_stages": 2,
+      "num_warps": 4,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 12288,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _w4_down:\n  REG:234 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:608 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "kernel": "_w4_down",
+    "m": 257,
+    "wgmma_instructions": 4,
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "352aabae40581f9bf34cf24fb31003a115eb2c2d51017081636684523f751c5c",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_w4_down",
+      "num_ctas": 1,
+      "num_stages": 2,
+      "num_warps": 4,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 12288,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _w4_down:\n  REG:234 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:608 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  }
+]

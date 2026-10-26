@@ -1,0 +1,24 @@
+{
+  "name": "moe_singleton_v7",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Use exact packed-FP4 vector GEMV for one-token decode, fuse gate/up with BF16 SwiGLU and local-ID mapping, and retain the validated reduction/M16 dispatch at other batch sizes",
+  "sha256": "ed5b8886afc36822f58f38b3643fb973b6c250f7f470c3ee76f447dc59234442",
+  "created_at": 1792762603.7516947,
+  "decision": "reject_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "52f4f669d02647e1",
+  "updated_at": 1792765037.8409636,
+  "decision_reason": "Correct but 1.0796x aggregate loses to hybrid v5 1.2652x"
+}

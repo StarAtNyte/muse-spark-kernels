@@ -1,0 +1,22 @@
+{
+  "name": "decoder_pf_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder_all_v1 + side-stream L2 prefetch of o and pooler weights during attention",
+  "sha256": "ad2fcd1b6b0d4ac35815cc27c6b44b405493c87fb1eee96d8dbc267bcda28f91",
+  "created_at": 1792858084.634809,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    }
+  },
+  "status": "received",
+  "job_id": "50452a68d4434d55"
+}

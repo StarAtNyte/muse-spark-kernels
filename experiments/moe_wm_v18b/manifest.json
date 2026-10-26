@@ -1,0 +1,24 @@
+{
+  "name": "moe_wm_v18b",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "row-split path only for M>32",
+  "sha256": "e24be53cb99398e9b50fcdf16bc55110198228a627311102f125c6f3e9e4b13a",
+  "created_at": 1792970028.850477,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "37461895725d49a0",
+  "updated_at": 1792970197.3081257,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

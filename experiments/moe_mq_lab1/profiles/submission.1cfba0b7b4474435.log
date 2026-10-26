@@ -1,0 +1,7 @@
+LABM replica_equal w13,s13,w2,s2 = [True, True, True, True] dtypes torch.int32 torch.float8_e4m3fn torch.bfloat16 (32, 256, 16384) (32, 256, 8192) (32,)
+LABM m=1 marlin=61.9 mq_s3=ERR mq_s4=117.5 mq_s6=120.6
+LABM m=8 marlin=125.8 mq_s3=ERR mq_s4=204.1 mq_s6=209.1
+LABM m=16 marlin=106.4 mq_s3=ERR mq_s4=205.2 mq_s6=208.7
+LABM m=32 marlin=232.0 mq_s3=275.2 mq_s4=268.8 mq_s6=301.2
+LABM m=128 marlin=327.4 mq_s3=350.9 mq_s4=346.9 mq_s6=394.8
+LABM m=256 marlin=479.5 mq_s3=418.0 mq_s4=411.6 mq_s6=451.2

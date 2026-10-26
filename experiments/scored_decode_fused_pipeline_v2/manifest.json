@@ -1,0 +1,25 @@
+{
+  "name": "scored_decode_fused_pipeline_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Compose validated fused router with fused QK/RoPE/FP8/cache preprocessing and small-batch fused expert normalization; preserve stock BF16 QK rounding, FA3, selected experts, and FP32 small-batch routing",
+  "sha256": "463d8f7e239bb5673f62b833c63f8d224f6c2c5dc92f480adf3034e21d43dc70",
+  "created_at": 1792737294.1436563,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "updated_at": 1792763252.1891093,
+  "parent_experiment": "decode_fused_pipeline_v2",
+  "mode": "run",
+  "job_id": "4026b7baf4e04652"
+}

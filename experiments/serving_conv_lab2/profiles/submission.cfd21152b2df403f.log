@@ -1,0 +1,11 @@
+LABV module compile+build 39.2s
+LABV marlin w13 equal True w2 equal True s13 equal True s2 equal True gs13 equal True gs2 equal True
+LABV marlin_view (both matrices) us=2469.8
+LABV m=256 err=5.87e-03 marlin=476.9 wm=356.5 conv_extra=2469.8
+LABV m=512 err=5.85e-03 marlin=657.0 wm=402.5 conv_extra=2469.8
+LABV m=1024 err=5.86e-03 marlin=1091.8 wm=593.3 conv_extra=2469.8
+LABV m=2048 err=5.87e-03 marlin=2392.1 wm=1128.0 conv_extra=2469.8
+LABV m=4096 err=5.80e-03 marlin=5330.8 wm=2498.7 conv_extra=2469.8
+LABV m=8192 err=5.88e-03 marlin=11018.8 wm=4972.0 conv_extra=2469.8
+LABV kernel wm_to_marlin_w(unsigned int const*, unsigned int*, int, int) us=2200.4
+LABV kernel wm_to_marlin_s(unsigned char const*, unsigned char*, int, in us=431.8

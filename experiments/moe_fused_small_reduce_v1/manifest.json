@@ -1,0 +1,24 @@
+{
+  "name": "moe_fused_small_reduce_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Replace measured 30-40us small-batch PyTorch expert normalization/reduction fallback with the fused Triton reduction; preserve Marlin GEMMs and larger-batch path",
+  "sha256": "111567a047900da5d6d52510c4be77d35a786b78174932b860bcb8536a44cb32",
+  "created_at": 1792736639.5612981,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "7c48aa5ad79c4601",
+  "updated_at": 1792762468.4818494,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

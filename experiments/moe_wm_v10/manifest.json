@@ -1,0 +1,22 @@
+{
+  "name": "moe_wm_v10",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Weight-major CUDA W4A16 MoE (swap-AB mma, fused route+SiLU, denormal-trick FP4 decode) for bs<=32; Marlin v5 otherwise",
+  "sha256": "abfcf532118c47bbdede804bd879a049849f1ce71f07b7fafcde58c18d690243",
+  "created_at": 1792844053.3744223,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "e6df54fe2a8443a1"
+}

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-xjppi8ov/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-xjppi8ov/run/submission.py", line 1576, in kernel_fn
+    return _fd_forward(data, q, qkv, stages, splits, variant=variant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-xjppi8ov/run/submission.py", line 1514, in _fd_forward
+    raise ValueError('chunk too large for fd2')
+ValueError: chunk too large for fd2
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-xjppi8ov/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-xjppi8ov/run/submission.py", line 1576, in kernel_fn
+    return _fd_forward(data, q, qkv, stages, splits, variant=variant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-xjppi8ov/run/submission.py", line 1514, in _fd_forward
+    raise ValueError('chunk too large for fd2')
+ValueError: chunk too large for fd2

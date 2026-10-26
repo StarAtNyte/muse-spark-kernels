@@ -1,0 +1,24 @@
+{
+  "name": "attention_fused_io_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Fuse QK normalization, interleaved RoPE, FP8 query conversion, and scaled FP8 cache stores into one launch; retain FA3 all-key attention and SGLang output normalization",
+  "sha256": "3229da8b4452add0e07ad245c0b85a47d10f6ce043524cbd1a7449f737fcc20e",
+  "created_at": 1792734966.8706064,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "9ba7233d35414c89",
+  "updated_at": 1792762457.0545175,
+  "decision_reason": "Full official correctness and timing passed; selected as current best validated implementation"
+}

@@ -1,0 +1,37 @@
+LABD route ok m=8
+LABD permx ok
+LABD gemm0 ok
+LABD gemm1 ok
+LABD m=8 y relerr vs rs path 9.982e-01
+LABD route ok m=40
+LABD permx ok
+LABD gemm0 ok
+LABD gemm1 ok
+LABD m=40 y relerr vs rs path 9.974e-01
+LABD route ok m=100
+LABD permx ok
+LABD gemm0 ok
+LABD gemm1 ok
+LABD m=100 y relerr vs rs path 9.956e-01
+LABD route ok m=753
+LABD permx ok
+LABD ERR m=753 CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDA
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-un9tj4ap/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-un9tj4ap/run/worker.py", line 323, in _setup_op
+    sync()
+  File "/opt/sglang/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1281, in synchronize
+    return torch._C._cuda_synchronize()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+The CUDA driver logged these messages, which may provide useful details:
+Sticky error detected
+Returning 700 (CUDA_ERROR_ILLEGAL_ADDRESS) from cuCtxSynchronize_v2
+
+

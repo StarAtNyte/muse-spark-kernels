@@ -1,0 +1,23 @@
+{
+  "name": "moe_marlin_m16_v2",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Reduce Marlin expert-alignment M tiles from adaptive 48/64 to 16 at larger batches to reduce padding under skewed local routing; isolate GEMM tiling change from small-batch reduction work",
+  "sha256": "2841ebd3f06603006b002ee0023d94f9f7eb768005db5080ced6a9746da12843",
+  "created_at": 1792736685.875291,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "8bf6b00f456e4952",
+  "updated_at": 1792762470.973511
+}

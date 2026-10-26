@@ -1,0 +1,41 @@
+LABV module compile+build 43.5s
+LABV marlin w13 equal True w2 equal True s13 equal True s2 equal True gs13 equal True gs2 equal True
+LABV marlin_view (both matrices) us=2471.0
+LABV m=753 marlin=954.7 err_vs_marlin=4.85e-04 t4n4=542.1(5e-04) wg=ERR wg2=ERR
+LABV FAILED Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-o9li10wr/run/submission.py", line 328, in prepare
+    _conv_lab(state, weights)
+  File "/tmp/muse_moe_w4a16-o9li10wr/run/submission.py", line 258, in _conv_lab
+    x, ids, tw = _lab_in(m, dev, 100 + m)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-o9li10wr/run/submission.py", line 289, in _lab_in
+    g = torch.Generator(device=device).manual_seed(seed)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+The CUDA driver logged these messages, which may provide useful details:
+Sticky error detected
+Returning 700 (CUDA_ERROR_ILLEGAL_ADDRESS) from cuStreamIsCapturing
+
+
+
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-o9li10wr/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-o9li10wr/run/worker.py", line 323, in _setup_op
+    sync()
+  File "/opt/sglang/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1281, in synchronize
+    return torch._C._cuda_synchronize()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+The CUDA driver logged these messages, which may provide useful details:
+Sticky error detected
+Returning 700 (CUDA_ERROR_ILLEGAL_ADDRESS) from cuCtxSynchronize_v2
+
+

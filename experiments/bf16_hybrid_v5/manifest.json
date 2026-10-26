@@ -1,0 +1,24 @@
+{
+  "name": "bf16_hybrid_v5",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Integrate measured transposed hi/lo router and small pooler wins with singleton dense GEMV; restore cuBLAS for larger dense matrices instead of promoting v3 globally",
+  "sha256": "82b83e69811ba1f5888b138e3fc8630b2f011b0e463af61cd3dcbfcfc0b3a0d4",
+  "created_at": 1792735477.247752,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "8c1cc35a00be4e05",
+  "updated_at": 1792762461.2959201,
+  "decision_reason": "All official cases pass and aggregate interval exceeds v4"
+}

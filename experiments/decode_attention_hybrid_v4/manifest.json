@@ -1,0 +1,24 @@
+{
+  "name": "decode_attention_hybrid_v4",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Compose validated shape-dispatched split-KV attention with the fused whole-layer pipeline and validated Marlin M16 regime; retain FA3 where custom attention regresses",
+  "sha256": "a2b6e0a0f190a86cc3d6c48a553464af9de075357c001305bc53827a12608bdb",
+  "created_at": 1792764803.223709,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "0dd0d5d2f7aa4430",
+  "updated_at": 1792842525.5629368,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

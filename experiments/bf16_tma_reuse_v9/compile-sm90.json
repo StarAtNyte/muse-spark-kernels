@@ -1,0 +1,346 @@
+[
+  {
+    "constants": {
+      "M": 128,
+      "N": 2304,
+      "K": 8192,
+      "BM": 128,
+      "BN": 64,
+      "BK": 64,
+      "SPLIT": 8
+    },
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "49c0bc66b52a3ee1b284def76f361b1a145af7a8d144f985678a1db85cb5a10c",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_tma_matmul",
+      "num_ctas": 1,
+      "num_stages": 4,
+      "num_warps": 8,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 98336,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            128,
+            64
+          ],
+          "fp4_padded": false
+        },
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            64,
+            64
+          ],
+          "fp4_padded": false
+        }
+      ],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _tma_matmul:\n  REG:58 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "constants": {
+      "M": 128,
+      "N": 4096,
+      "K": 8192,
+      "BM": 128,
+      "BN": 64,
+      "BK": 64,
+      "SPLIT": 4
+    },
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "665a8e240066044ec5bf37994c6438a5b42d2d071cfaf03f28dedeaa97b313e9",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_tma_matmul",
+      "num_ctas": 1,
+      "num_stages": 4,
+      "num_warps": 8,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 98336,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            128,
+            64
+          ],
+          "fp4_padded": false
+        },
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            64,
+            64
+          ],
+          "fp4_padded": false
+        }
+      ],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _tma_matmul:\n  REG:58 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "constants": {
+      "M": 256,
+      "N": 8192,
+      "K": 4096,
+      "BM": 128,
+      "BN": 64,
+      "BK": 64,
+      "SPLIT": 1
+    },
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "6e56592f7d5116dbb7a8609a475816fc90a210009ea8d49d638189bd095ef324",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_tma_matmul",
+      "num_ctas": 1,
+      "num_stages": 4,
+      "num_warps": 8,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 98336,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            128,
+            64
+          ],
+          "fp4_padded": false
+        },
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            64,
+            64
+          ],
+          "fp4_padded": false
+        }
+      ],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _tma_matmul:\n  REG:58 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  },
+  {
+    "constants": {
+      "M": 130,
+      "N": 8192,
+      "K": 4096,
+      "BM": 128,
+      "BN": 64,
+      "BK": 64,
+      "SPLIT": 1
+    },
+    "metadata": {
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "arch": "sm90",
+      "backend_name": "cuda",
+      "debug": false,
+      "default_dot_input_precision": "tf32",
+      "deprecated_fp8_dot_operand_dtypes": [
+        "fp8e4b15"
+      ],
+      "enable_fp_fusion": true,
+      "enable_reflect_ftz": true,
+      "extern_libs": [
+        [
+          "libdevice",
+          "/home/nitiz/Projects/Self/Challenges/muse-spark/.venv/lib/python3.12/site-packages/triton/backends/nvidia/lib/libdevice.10.bc"
+        ]
+      ],
+      "global_scratch_align": 1,
+      "global_scratch_size": 0,
+      "hash": "e737249c25eacec9e5655830c4ed5d5568de905bdaffd399b58a90e531974bc8",
+      "instrumentation_mode": "",
+      "ir_override": null,
+      "launch_cooperative_grid": false,
+      "launch_pdl": false,
+      "max_num_imprecise_acc_default": 1073741824,
+      "maxnreg": null,
+      "name": "_tma_matmul",
+      "num_ctas": 1,
+      "num_stages": 4,
+      "num_warps": 8,
+      "profile_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "ptx_options": null,
+      "ptx_version": null,
+      "sanitize_overflow": true,
+      "shared": 98336,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e4nv",
+        "fp8e5"
+      ],
+      "target": "GPUTarget(backend='cuda', arch=90, warp_size=32)",
+      "tensordesc_meta": [
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            128,
+            64
+          ],
+          "fp4_padded": false
+        },
+        {
+          "swizzle": 3,
+          "elem_size": 2,
+          "elem_type": 10,
+          "block_size": [
+            64,
+            64
+          ],
+          "fp4_padded": false
+        }
+      ],
+      "tmem_size": 0,
+      "triton_version": "3.6.0",
+      "warp_size": 32
+    },
+    "resources": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _tma_matmul:\n  REG:58 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n"
+  }
+]

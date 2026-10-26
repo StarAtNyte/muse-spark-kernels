@@ -1,0 +1,23 @@
+{
+  "name": "bf16_skinny_v7",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Use row-major BF16 weights and a single BM32 tile for small batches, with fewer split-K partitions on wide outputs; preserve validated singleton, router and larger-batch cuBLAS paths",
+  "sha256": "4ee9c2a2b2e5823964032ecd81eabccae769f37982b00f8a9f4c41e0d2377187",
+  "created_at": 1792763045.940184,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "6dc8a03e41354b9b",
+  "updated_at": 1792765508.7814813
+}

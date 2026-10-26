@@ -1,0 +1,25 @@
+{
+  "name": "scored_decoder_b5_b",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder: fd3 attention + BF16 v5 gemv/pooler dense paths (fixed placeholders)",
+  "sha256": "6643c576723f187856b6796fe92200e63f020c794f840dbd9b761ccb177876e3",
+  "created_at": 1792968215.4342208,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "received",
+  "updated_at": 1792968501.2668781,
+  "parent_experiment": "decoder_b5_b",
+  "mode": "run",
+  "job_id": "94ea7f80a8164ac6"
+}

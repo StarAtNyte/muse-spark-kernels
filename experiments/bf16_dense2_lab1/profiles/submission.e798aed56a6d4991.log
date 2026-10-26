@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2906, in _run_ninja_build
+    subprocess.run(
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 2.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/muse_bf16_proj-nep8k1s0/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_bf16_proj-nep8k1s0/run/worker.py", line 322, in _setup_op
+    state["prep"] = prepare(weights)
+                    ^^^^^^^^^^^^^^^^
+  File "/tmp/muse_bf16_proj-nep8k1s0/run/submission.py", line 864, in prepare
+    state['dense_mod'] = _dense_module()
+                         ^^^^^^^^^^^^^^^
+  File "/tmp/muse_bf16_proj-nep8k1s0/run/submission.py", line 855, in _dense_module
+    _DMOD = load_inline("muse_dense_bf16", _DENSE_CPP, cuda_sources=_DENSE_CUDA, functions=["dense_gemm", "dense_cgemm", "dense_set_pdl_t", "dense_set_pf_t", "dense_set_dbg_t", "dense2_gemm", "probe_t"],
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2398, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2555, in _write_ninja_file_and_build_library
+    _run_ninja_build(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2923, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error building extension 'muse_dense_bf16': [1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o 
+FAILED: [code=2] cuda.cuda.o 
+ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o 
+/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu(438): error: declaration is incompatible with previous "smem" (declared at line 72)
+                                   uint8_t smem[];
+                                           ^
+
+1 error detected in the compilation of "/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu".
+[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/main.cpp -o main.o 
+ninja: build stopped: subcommand failed.
+

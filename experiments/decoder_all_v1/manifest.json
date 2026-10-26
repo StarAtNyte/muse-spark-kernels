@@ -1,0 +1,24 @@
+{
+  "name": "decoder_all_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder: hardened wm MoE v17 + fd2 attention decode",
+  "sha256": "3794e650d4fdc8ae1c027441ce7774c982ed85d2345d9f68ac3a6f6e8c4b5da3",
+  "created_at": 1792855686.6054761,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "200b0557b79d456a",
+  "updated_at": 1792856524.6141908,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

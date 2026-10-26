@@ -1,0 +1,86 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-t7oMFtasyERJi3MAOLL24V
+Building image im-TQeyBjTTl6vSUhP386TzvH
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install numpy sgl-kernel triton
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting numpy
+  Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting sgl-kernel
+  Downloading sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl.metadata (18 kB)
+Requirement already satisfied: triton in ./usr/local/lib/python3.12/site-packages (3.6.0)
+Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 175.6 MB/s  0:00:00
+Downloading sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl (535.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 535.6/535.6 MB 139.5 MB/s  0:00:04
+Installing collected packages: sgl-kernel, numpy
+
+Successfully installed numpy-2.5.4 sgl-kernel-0.3.21
+Saving image...
+Image saved, took 2.27s
+
+Built image im-TQeyBjTTl6vSUhP386TzvH in 30.09s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 5, in <module>
+    spec = importlib.util.spec_from_file_location("sub", "/w/run/sub.py"); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/w/run/sub.py", line 18, in <module>
+    from sgl_kernel.scalar_type import scalar_types
+  File "/usr/local/lib/python3.12/site-packages/sgl_kernel/__init__.py", line 5, in <module>
+    common_ops = _load_architecture_specific_ops()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sgl_kernel/load_utils.py", line 188, in _load_architecture_specific_ops
+    raise ImportError(error_msg)
+ImportError: 
+[sgl_kernel] CRITICAL: Could not load any common_ops library!
+
+Attempted locations:
+1. Architecture-specific pattern: /usr/local/lib/python3.12/site-packages/sgl_kernel/sm90/common_ops.* - found files: ['/usr/local/lib/python3.12/site-packages/sgl_kernel/sm90/common_ops.abi3.so']
+2. Fallback pattern: /usr/local/lib/python3.12/site-packages/sgl_kernel/common_ops.* - found files: []
+3. Standard Python import: common_ops - failed
+
+GPU Info:
+- Compute capability: 90
+- Expected variant: SM90 (Hopper/H100 with fast math optimization)
+
+Please ensure sgl_kernel is properly installed with:
+pip install --upgrade sgl_kernel
+
+Error details from previous import attempts:
+- ImportError: libnuma.so.1: cannot open shared object file: No such file or directory
+- ModuleNotFoundError: No module named 'common_ops'
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-t7oMFtasyERJi3MAOLL24V

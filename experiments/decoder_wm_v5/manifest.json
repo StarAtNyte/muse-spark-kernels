@@ -1,0 +1,24 @@
+{
+  "name": "decoder_wm_v5",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder v4 + weight-major CUDA experts (wm config A) for T<=256",
+  "sha256": "f21bf92ce7a341af102f736bcc423278ed41bfc5713f03b2af9440127fc9d3eb",
+  "created_at": 1792847574.4113817,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    }
+  },
+  "status": "done",
+  "job_id": "5baaa3bf62684513",
+  "updated_at": 1792849356.8632567,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

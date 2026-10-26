@@ -1,0 +1,18 @@
+LABW chk B=2 full splits=4 relerr_vs_v7=7.23e-04 finite=1
+LABW chk B=2 full splits=8 relerr_vs_v7=6.98e-04 finite=1
+LABW chk B=2 sliding splits=4 relerr_vs_v7=8.16e-04 finite=1
+LABW chk B=2 sliding splits=8 relerr_vs_v7=7.68e-04 finite=1
+LABW chk B=1 sliding splits=4 relerr_vs_v7=1.47e-03 finite=1
+LABW chk B=1 sliding splits=8 relerr_vs_v7=1.47e-03 finite=1
+LABW ablate B=1 sliding p16 d1=14.6 d2=14.9 d4=14.9 d8=14.3 d3=13.9 d15=12.6
+LABW B=1 L=8 sliding v7=17.7 15.4:p16 18.4:p8 24.6:p4 37.3:p2
+LABW ablate B=1 full p128 d1=27.5 d2=31.2 d4=32.3 d8=29.3 d3=26.0 d15=21.8
+LABW B=1 L=8 full v7=32.8 33.0:p128 41.8:p64 68.4:p32 126.5:p16
+LABW ablate B=16 sliding p8 d1=24.4 d2=24.6 d4=25.7 d8=22.0 d3=23.8 d15=18.8
+LABW B=16 L=8 sliding v7=25.5 25.7:p8 26.4:p4 27.6:p16 37.5:p2
+LABW ablate B=16 full p64 d1=191.7 d2=233.1 d4=230.4 d8=205.6 d3=187.7 d15=108.9
+LABW B=16 L=8 full v7=241.3 243.8:p64 252.3:p128 262.3:p16 275.7:p32
+LABW ablate B=32 sliding p4 d1=32.0 d2=33.8 d4=33.9 d8=29.1 d3=32.5 d15=22.6
+LABW B=32 L=8 sliding v7=32.1 34.9:p4 39.1:p8 39.4:p2 42.5:p16
+LABW ablate B=32 full p64 d1=360.6 d2=446.2 d4=446.6 d8=400.4 d3=354.8 d15=211.0
+LABW B=32 L=8 full v7=456.4 471.1:p64 480.1:p32 508.0:p128 511.6:p16

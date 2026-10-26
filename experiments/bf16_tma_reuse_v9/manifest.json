@@ -1,0 +1,23 @@
+{
+  "name": "bf16_tma_reuse_v9",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Reduce repeated weight loading with BM128/BN64 TMA tiles and eight warps, retaining the validated small-batch and router routes; test deeper load staging on larger projections",
+  "sha256": "4def747eed0c311d14bc63bb799bf6c9e213a830a1b112ddf4e8c906b01fbb41",
+  "created_at": 1792766488.1908092,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "done",
+  "job_id": "dcae816b7c904d66",
+  "updated_at": 1792842524.3221052
+}

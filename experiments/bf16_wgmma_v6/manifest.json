@@ -1,0 +1,24 @@
+{
+  "name": "bf16_wgmma_v6",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Use BM64 to select Hopper WGMMA for larger dense batches; preserve measured singleton and router routes, and split K only to reach roughly 256 CTAs",
+  "sha256": "50a4a7eb423f445c08329f1e66832d986b8bf46b9187789431e39a6c75bb455a",
+  "created_at": 1792737165.9513083,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "f791d84962934074",
+  "updated_at": 1792762463.831881,
+  "decision_reason": "WGMMA selected correctly but aggregate 1.068x loses to validated v5 1.169x"
+}

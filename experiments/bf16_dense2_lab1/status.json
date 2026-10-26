@@ -1,0 +1,88 @@
+{
+  "board": "muse_bf16_proj",
+  "call_id": "sfo3b:kc-e798aed56a6d4991",
+  "cluster": "sfo3b",
+  "content_hash": "ca3caa6ae942470c5294a706c470230aea31ba8f4edc4d9a7791273790a6bebb",
+  "created_at": 1792970896.364324,
+  "dedicated": false,
+  "duplicate_of": null,
+  "finished_at": 1792970951.4277608,
+  "id": "e798aed56a6d4991",
+  "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/bf16_dense2_lab1/profiles/submission.e798aed56a6d4991.log"
+  },
+  "payload_ref": "muse_bf16_proj/ca3caa6ae942470c5294a706c470230aea31ba8f4edc4d9a7791273790a6bebb.py",
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+        "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d",
+        "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2906, in _run_ninja_build\n    subprocess.run(\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 2.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-nep8k1s0/run/worker.py\", line 423, in child_main\n    send(_setup_op(msg, module, state, sync, perf))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-nep8k1s0/run/worker.py\", line 322, in _setup_op\n    state[\"prep\"] = prepare(weights)\n                    ^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-nep8k1s0/run/submission.py\", line 864, in prepare\n    state['dense_mod'] = _dense_module()\n                         ^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-nep8k1s0/run/submission.py\", line 855, in _dense_module\n    _DMOD = load_inline(\"muse_dense_bf16\", _DENSE_CPP, cuda_sources=_DENSE_CUDA, functions=[\"dense_gemm\", \"dense_cgemm\", \"dense_set_pdl_t\", \"dense_set_pf_t\", \"dense_set_dbg_t\", \"dense2_gemm\", \"probe_t\"],\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2295, in load_inline\n    return _jit_compile(\n           ^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2398, in _jit_compile\n    _write_ninja_file_and_build_library(\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2555, in _write_ninja_file_and_build_library\n    _run_ninja_build(\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2923, in _run_ninja_build\n    raise RuntimeError(message) from e\nRuntimeError: Error building extension 'muse_dense_bf16': [1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o \nFAILED: [code=2] cuda.cuda.o \nccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o \n/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu(438): error: declaration is incompatible with previous \"smem\" (declared at line 72)\n                                   uint8_t smem[];\n                                           ^\n\n1 error detected in the compilation of \"/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu\".\n[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/main.cpp -o main.o \nninja: build stopped: subcommand failed.\n\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 120.31,
+        "power.limit": 700,
+        "temperature.gpu": 34
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 138.92,
+        "power.limit": 700,
+        "temperature.gpu": 34
+      },
+      "node": "n-wsbc7j2d6xnjjdziaz2kmgurhe"
+    },
+    "passed": false,
+    "records": [
+      {
+        "baseline_copies": 16,
+        "baseline_prepare_pad": 29573632,
+        "copies": null,
+        "error": "RuntimeError: Error building extension 'muse_dense_bf16': [1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o \nFAILED: [code=2] cuda.cuda.o \nccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_dense_bf16 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu -o cuda.cuda.o \n/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu(438): error: declaration is incompatible with previous \"smem\" (declared at line 72)\n                                   uint8_t smem[];\n                                           ^\n\n1 error detected in the compilation of \"/tmp/muse_bf16_proj-nep8k1s0/sandbox/cache/torch_extensions/muse_dense_bf16/cuda.cu\".\n[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NA",
+        "event": "setup",
+        "first": "submission",
+        "prepare_pad": null,
+        "prepare_s": null,
+        "status": "fail"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
+  "started_at": 1792970907.83468,
+  "status": "done",
+  "team": "StarAtNyte"
+}

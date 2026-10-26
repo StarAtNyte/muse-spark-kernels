@@ -1,0 +1,24 @@
+{
+  "name": "moe_wgmma_native_v4",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Native WGMMA MoE at larger batches with exact FP4-to-BF16 bit decoding, FP8 block scales and FP32 global scaling; fuse gate/up and BF16 SwiGLU, preserve expert selection and output normalization",
+  "sha256": "b04ccf1b39ba3ac7d507a73b9d7022b09523bc4c5c9a359fc7497000721416b6",
+  "created_at": 1792762044.0519624,
+  "decision": "reject_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "769e726bc944456a",
+  "updated_at": 1792763561.5035093,
+  "decision_reason": "Full correctness passed but 0.5807x aggregate; native gate/up and down take 1.57ms and 0.93ms at large verify workloads"
+}

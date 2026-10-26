@@ -1,0 +1,23 @@
+{
+  "name": "decode_fused_router_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Measure end-to-end benefit of validated fused Hopper router within the unchanged layer, preserving FP32 router-input path at <=8 tokens and router/pooler stream overlap",
+  "sha256": "376a259eff4ca5e4e01c3553709236d274e659688de28a985c204cdbb62e63a7",
+  "created_at": 1792735871.1144676,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "2674829a37f040b2",
+  "updated_at": 1792762466.7931716
+}

@@ -1,0 +1,23 @@
+{
+  "name": "bf16_dense_abl",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "dense kernel ablation: loads vs compute, pure read BW",
+  "sha256": "b6fc4fde908a489254d0db36df04185d90e05b82f4d961917652c637cafe2b22",
+  "created_at": 1792970652.4077566,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "6e893f1f17e14833",
+  "updated_at": 1792970783.5573568
+}

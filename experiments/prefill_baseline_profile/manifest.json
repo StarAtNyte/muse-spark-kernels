@@ -1,0 +1,23 @@
+{
+  "name": "prefill_baseline_profile",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Profile the pinned prefill layer to measure whether large-token grouped NVFP4 GEMMs dominate and establish a baseline for serving time-to-first-token optimization",
+  "sha256": "4989732e775b756a7799e9d5fff7537ab2de28218d6f8435d07d4149956d2baa",
+  "created_at": 1792763802.5365307,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "a12664711e9a4297",
+  "updated_at": 1792842529.2245219
+}

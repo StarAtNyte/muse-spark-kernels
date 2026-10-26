@@ -1,0 +1,24 @@
+{
+  "name": "attention_fp8_hybrid_v7",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Integrate validated native FP8 QK decode wins with FA3 fallback for larger verify workloads; retain custom small-window latency path and bound the small-batch verify path by context size",
+  "sha256": "a393b88779c163ed458f1c7415ed317a429518ce16821114617ca99a2af476fc",
+  "created_at": 1792764997.964681,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "6e7717bfd5e04527",
+  "updated_at": 1792842523.5504391,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

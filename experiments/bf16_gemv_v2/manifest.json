@@ -1,0 +1,24 @@
+{
+  "name": "bf16_gemv_v2",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "One-token FP32 vector FMA reduction reads row-major original weights once and removes split-K workspace and merge launch; all other shapes match v1",
+  "sha256": "f9e27bc5f01145a6ecc2249af403829eb1275c429bee59f95e69f96901932838",
+  "created_at": 1792734775.2295086,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "22bdb0294f8c4816",
+  "updated_at": 1792762459.5637755,
+  "decision_reason": "Retain singleton dense route as proposal; router regression prevents global promotion"
+}

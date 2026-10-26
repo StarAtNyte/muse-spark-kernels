@@ -1,0 +1,26 @@
+{
+  "name": "scored_attn_fd3_b",
+  "problem": "muse_attention_decode",
+  "hypothesis": "fd3 policy without fd2 dbg branches",
+  "sha256": "8c1200d42155b0dd636f9488dc5fe623660d363451a1cfedb5b70080fbaaf4d0",
+  "created_at": 1792964885.664285,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "received",
+  "updated_at": 1792965282.0071797,
+  "decision_reason": "Full official coverage passed; current best validated aggregate",
+  "parent_experiment": "attn_fd3_b",
+  "mode": "run",
+  "job_id": "5a367aaff50643f2"
+}

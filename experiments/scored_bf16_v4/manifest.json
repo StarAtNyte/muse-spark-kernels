@@ -1,0 +1,26 @@
+{
+  "name": "scored_bf16_v4",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Integrate measured singleton dense GEMV wins while retaining fused hi/lo router; restore cuBLAS for o, unpooler, qkv and non-winning pooler batches",
+  "sha256": "1d5f7da0618ef34d6b39c9530969d014dcc1c7430c4e3db348d0037bf17bcc73",
+  "created_at": 1792735173.1336544,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "b42a0772e39546b1",
+  "updated_at": 1792762473.493368,
+  "decision_reason": "Full official correctness and timing passed; selected as current best validated implementation",
+  "parent_experiment": "bf16_hybrid_v4",
+  "mode": "run"
+}

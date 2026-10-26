@@ -1,0 +1,237 @@
+okc run 4a153a4a87dc4f06 on muse_bf16_proj
+submission  /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/bf16_dense_lab3/submission.py
+status      ok
+passed      true
+speedup     0.6542857266187369
+speedup_ci  [0.6444714407194558 0.6641000125180179]
+score_us    7383.31863811999
+tests       9/9 passed
+
+scored shapes (µs; speed of light is the reference's bound)
+case                                                         sglang      yours  speedup        sol  
+layer=qkv_gate load=decode 1 m=1                              14.27      16.34   0.874x       7.87  
+layer=o load=decode 1 m=1                                      7.04       7.28   0.966x       3.50  
+layer=pooler load=decode 1 m=1                                21.52      20.56   1.046x      13.99  
+layer=unpooler load=decode 1 m=1                               7.02       5.99   1.173x       1.75  
+layer=router load=decode 1 m=1                                10.29       6.72   1.532x       1.75  
+layer=qkv_gate load=decode 16 m=16                            14.11      18.66   0.756x       7.93  
+layer=o load=decode 16 m=16                                    6.82       7.78   0.876x       3.56  
+layer=pooler load=decode 16 m=16                              21.50      22.33   0.963x      14.06  
+layer=unpooler load=decode 16 m=16                            18.62      19.95   0.934x      14.06  
+layer=router load=decode 16 m=16                              15.14       7.90   1.915x       1.81  
+layer=qkv_gate load=decode 32 m=32                            14.22      19.57   0.727x       8.00  
+layer=o load=decode 32 m=32                                    6.78       8.55   0.794x       3.62  
+layer=pooler load=decode 32 m=32                              22.03      23.59   0.934x      14.14  
+layer=unpooler load=decode 32 m=32                            18.53      20.79   0.891x      14.14  
+layer=router load=decode 32 m=32                              14.98       7.78   1.924x       1.86  
+layer=qkv_gate load=verify 1 m=8                              14.51      17.75   0.817x       7.90  
+layer=o load=verify 1 m=8                                      6.74       7.41   0.908x       3.53  
+layer=pooler load=verify 1 m=8                                21.54      21.79   0.988x      14.02  
+layer=unpooler load=verify 1 m=8                               7.20       6.78   1.062x       1.76  
+layer=router load=verify 1 m=8                                26.21       7.47   3.510x       1.78  
+layer=qkv_gate load=verify 16 m=128                           17.34      58.53   0.296x       8.42  
+layer=o load=verify 16 m=128                                   7.55      24.30   0.311x       3.99  
+layer=pooler load=verify 16 m=128                             24.77      85.30   0.290x      14.64  
+layer=unpooler load=verify 16 m=128                           19.98      80.58   0.248x      14.64  
+layer=router load=verify 16 m=128                             16.45      19.54   0.842x       2.21  
+layer=qkv_gate load=verify 32 m=256                           19.63     114.92   0.171x       9.77  
+layer=o load=verify 32 m=256                                   9.49      44.37   0.214x       4.48  
+layer=pooler load=verify 32 m=256                             31.02     167.46   0.185x      17.37  
+layer=unpooler load=verify 32 m=256                           24.22     158.92   0.152x      17.37  
+layer=router load=verify 32 m=256                             17.57      34.76   0.505x       2.68  
+
+profile 0: layer=qkv_gate load=decode 1 m=1
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      10.4 µs  88.8%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.3 µs  11.2%      1
+total                                                             11.7 µs
+
+profile 1: layer=o load=decode 1 m=1
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...       5.2 µs 100.0%      1
+total                                                              5.2 µs
+
+profile 2: layer=pooler load=decode 1 m=1
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      19.3 µs  60.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      12.7 µs  39.6%      1
+total                                                             32.0 µs
+GPU busy (kernels overlap: PDL or streams)                        20.6 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 3: layer=unpooler load=decode 1 m=1
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 1, 4, 4, 0>(uint4 const*, __nv_bfloa...       2.9 µs  71.3%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.2 µs  28.7%      1
+total                                                              4.1 µs
+
+profile 4: layer=router load=decode 1 m=1
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...       3.6 µs  69.5%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.6 µs  30.5%      1
+total                                                              5.2 µs
+
+profile 5: layer=qkv_gate load=decode 16 m=16
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      13.7 µs  69.9%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       5.9 µs  30.1%      1
+total                                                             19.6 µs
+GPU busy (kernels overlap: PDL or streams)                        14.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 6: layer=o load=decode 16 m=16
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...       5.9 µs 100.0%      1
+total                                                              5.9 µs
+
+profile 7: layer=pooler load=decode 16 m=16
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      21.3 µs  75.7%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       6.8 µs  24.3%      1
+total                                                             28.1 µs
+GPU busy (kernels overlap: PDL or streams)                        23.3 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 8: layer=unpooler load=decode 16 m=16
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...      19.7 µs 100.0%      1
+total                                                             19.7 µs
+
+profile 9: layer=router load=decode 16 m=16
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...       4.2 µs  71.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.7 µs  28.6%      1
+total                                                              5.8 µs
+
+profile 10: layer=qkv_gate load=decode 32 m=32
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      14.8 µs  70.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       6.2 µs  29.6%      1
+total                                                             21.1 µs
+GPU busy (kernels overlap: PDL or streams)                        16.3 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 11: layer=o load=decode 32 m=32
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...       7.0 µs 100.0%      1
+total                                                              7.0 µs
+
+profile 12: layer=pooler load=decode 32 m=32
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      22.9 µs  58.1%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      16.5 µs  41.9%      1
+total                                                             39.5 µs
+GPU busy (kernels overlap: PDL or streams)                        24.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 13: layer=unpooler load=decode 32 m=32
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...      21.3 µs 100.0%      1
+total                                                             21.3 µs
+
+profile 14: layer=router load=decode 32 m=32
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...       5.0 µs  73.8%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.8 µs  26.2%      1
+total                                                              6.7 µs
+
+profile 15: layer=qkv_gate load=verify 1 m=8
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      11.3 µs  75.1%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       3.7 µs  24.9%      1
+total                                                             15.0 µs
+GPU busy (kernels overlap: PDL or streams)                        12.4 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 16: layer=o load=verify 1 m=8
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...       5.3 µs 100.0%      1
+total                                                              5.3 µs
+
+profile 17: layer=pooler load=verify 1 m=8
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      20.4 µs  59.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      14.0 µs  40.6%      1
+total                                                             34.4 µs
+GPU busy (kernels overlap: PDL or streams)                        22.1 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 18: layer=unpooler load=verify 1 m=8
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 1, 4, 4, 0>(uint4 const*, __nv_bfloa...       3.2 µs  71.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.3 µs  28.6%      1
+total                                                              4.5 µs
+
+profile 19: layer=router load=verify 1 m=8
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...       4.1 µs  71.9%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       1.6 µs  28.1%      1
+total                                                              5.7 µs
+
+profile 20: layer=qkv_gate load=verify 16 m=128
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      52.6 µs  73.0%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      19.5 µs  27.0%      1
+total                                                             72.0 µs
+GPU busy (kernels overlap: PDL or streams)                        54.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 21: layer=o load=verify 16 m=128
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...      22.5 µs 100.0%      1
+total                                                             22.5 µs
+
+profile 22: layer=pooler load=verify 16 m=128
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      83.7 µs  51.4%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      79.2 µs  48.6%      1
+total                                                            162.9 µs
+GPU busy (kernels overlap: PDL or streams)                        87.7 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 23: layer=unpooler load=verify 16 m=128
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...      80.6 µs 100.0%      1
+total                                                             80.6 µs
+
+profile 24: layer=router load=verify 16 m=128
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      14.5 µs  68.1%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...       6.8 µs  31.9%      1
+total                                                             21.3 µs
+GPU busy (kernels overlap: PDL or streams)                        16.2 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 25: layer=qkv_gate load=verify 32 m=256
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...     111.6 µs  71.3%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      45.0 µs  28.7%      1
+total                                                            156.5 µs
+GPU busy (kernels overlap: PDL or streams)                       115.5 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 26: layer=o load=verify 32 m=256
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...      43.9 µs 100.0%      1
+total                                                             43.9 µs
+
+profile 27: layer=pooler load=verify 32 m=256
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...     161.9 µs  50.2%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...     160.4 µs  49.8%      1
+total                                                            322.3 µs
+GPU busy (kernels overlap: PDL or streams)                       168.7 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 28: layer=unpooler load=verify 32 m=256
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 1>(uint4 const*, __nv_bfloa...     159.2 µs 100.0%      1
+total                                                            159.2 µs
+
+profile 29: layer=router load=verify 32 m=256
+kernel                                                           GPU time  share  calls
+void dense_kernel<1, 4, 4, 4, 0>(uint4 const*, __nv_bfloa...      26.5 µs  56.8%      1
+reduce_kernel(float const*, void*, int, int, int, int, in...      20.2 µs  43.2%      1
+total                                                             46.7 µs
+GPU busy (kernels overlap: PDL or streams)                        28.4 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more

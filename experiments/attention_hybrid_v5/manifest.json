@@ -1,0 +1,24 @@
+{
+  "name": "attention_hybrid_v5",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use validated split-KV only for small-batch sliding windows and single-token full-context decode; retain FA3 for slower verify and sliding regimes",
+  "sha256": "d86368c0b9aa248580cb00c73e719d9d47f578fe57a794ea88435d17bdbe6bb8",
+  "created_at": 1792762192.8345428,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "bbd722c637134459",
+  "updated_at": 1792764583.2575953,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

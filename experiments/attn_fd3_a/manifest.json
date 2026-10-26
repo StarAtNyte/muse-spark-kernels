@@ -1,0 +1,22 @@
+{
+  "name": "attn_fd3_a",
+  "problem": "muse_attention_decode",
+  "hypothesis": "fd2 -> fd3 (both kv heads per CTA) for full decode B>=2",
+  "sha256": "0f8231f21b59c26a4f42c467f0b1c4d7830c128866fd1aec8b9e45534c01341f",
+  "created_at": 1792964508.3845959,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "received",
+  "job_id": "4f16b7d676314b80"
+}

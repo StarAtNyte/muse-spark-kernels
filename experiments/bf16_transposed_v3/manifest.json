@@ -1,0 +1,24 @@
+{
+  "name": "bf16_transposed_v3",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Repack weights to contiguous K,N, use larger K tiles, choose split-K to expose about 256 CTAs, and eliminate merge for sufficiently parallel GEMMs",
+  "sha256": "6dd6f6e8b002af3eeeb0ac902bd3ffa0eb7bbc7b75e79e923a1abf50b504c689",
+  "created_at": 1792734806.3967195,
+  "decision": "reject_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "6128e66277164905",
+  "updated_at": 1792762463.0459218,
+  "decision_reason": "0.845123x aggregate; retain router and small pooler route proposals for separate integration check"
+}
