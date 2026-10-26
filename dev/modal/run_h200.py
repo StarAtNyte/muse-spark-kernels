@@ -14,7 +14,8 @@ image = (modal.Image.from_registry("nvidia/cuda:12.8.1-devel-ubuntu22.04", add_p
          .add_local_dir(f"{ROOT}/dev/wg3", "/w/wg3")
          .add_local_dir(f"{ROOT}/dev/wg4", "/w/wg4")
          .add_local_dir(f"{ROOT}/dev/wg", "/w/wg")
-         .add_local_dir(f"{ROOT}/dev/modal", "/w/modal"))
+         .add_local_dir(f"{ROOT}/dev/modal", "/w/modal")
+         .add_local_dir(f"{ROOT}/dev/bw", "/w/bw"))
 app = modal.App("muse-h200", image=image)
 
 @app.function(gpu="H200", timeout=1800)

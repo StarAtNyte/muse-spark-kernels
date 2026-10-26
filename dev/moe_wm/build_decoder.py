@@ -49,7 +49,9 @@ def _experts_wm(x, topk_weights, local_mod_ids, state):
     x = x.contiguous()
     nch = 1 if m <= 8 else 2 if m <= 16 else 4
     lmax = (m + 7) // 8 * 8
-    nt, nw, ring = _wm_cfg(m)
+    _c = _wm_cfg(m)
+    nt, nw, ring = _c[:3]
+    nt1 = _c[3] if len(_c) > 3 else nt
     dev = x.device
     ids = local_mod_ids.to(torch.int32).contiguous()
     cnt = torch.empty(32, dtype=torch.int32, device=dev)
@@ -63,7 +65,7 @@ def _experts_wm(x, topk_weights, local_mod_ids, state):
     inter = torch.empty((m * TOP_K, D_EXPERT), dtype=torch.bfloat16, device=dev)
     y = torch.empty((m * TOP_K, D_EXPERT), dtype=torch.bfloat16, device=dev)
     mod.wm_gemm_run(0, nch, nt, nw, ring, _WM_DBG, wm["w13"], wm["s13"], wm["gs13"], x, inter, cnt, lst, act, nact, woff, maxslots, lmax)
-    mod.wm_gemm_run(1, nch, nt, nw, ring, _WM_DBG, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
+    mod.wm_gemm_run(1, nch, nt1, nw, ring, _WM_DBG, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
     topk_weights = topk_weights.to(torch.float32).contiguous()
     if _WM_FIN:
         out = torch.empty((m, D_EXPERT), dtype=torch.bfloat16, device=dev)

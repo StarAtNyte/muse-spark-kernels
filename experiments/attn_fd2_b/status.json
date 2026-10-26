@@ -1,0 +1,312 @@
+{
+  "board": "muse_attention_decode",
+  "call_id": "nyc3:kc-0194b7cdf42c4ef5",
+  "cluster": "nyc3",
+  "content_hash": "0e905e5e934a5ce5228e326cbe5fab700326cd4a9c17515340dcd4a3934e6f51",
+  "created_at": 1792855690.4044662,
+  "dedicated": false,
+  "duplicate_of": null,
+  "finished_at": 1792856491.0984645,
+  "id": "0194b7cdf42c4ef5",
+  "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_fd2_b/profiles/submission.0194b7cdf42c4ef5.log"
+  },
+  "payload_ref": "muse_attention_decode/0e905e5e934a5ce5228e326cbe5fab700326cd4a9c17515340dcd4a3934e6f51.py",
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "1d519ebf2014fef91b41ffea9bcd7e9c5066784ef5a2a5e2cf06a8cec554d188",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_attention_decode/baseline.py": "37f51207283f85a65eb393b1dfb1344759d7df0bdec5450e34d24e7139f56ecc",
+        "problems/muse_attention_decode/reference.py": "386f7f67a1d788501e8fb9005d340423d098a0946e23810ba10878228c11a37b",
+        "problems/muse_attention_decode/task.yml": "645f889fbbd52d1d731bf5eb53356aa7ef6eea8fab3073f0a2a3dd582fe6e4bb"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/submission.py\", line 1576, in kernel_fn\n    return _fd_forward(data, q, qkv, stages, splits, variant=variant)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/submission.py\", line 1514, in _fd_forward\n    raise ValueError('chunk too large for fd2')\nValueError: chunk too large for fd2\nTraceback (most recent call last):\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/submission.py\", line 1576, in kernel_fn\n    return _fd_forward(data, q, qkv, stages, splits, variant=variant)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_attention_decode-xjppi8ov/run/submission.py\", line 1514, in _fd_forward\n    raise ValueError('chunk too large for fd2')\nValueError: chunk too large for fd2\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 120.07,
+        "power.limit": 700,
+        "temperature.gpu": 32
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 134.27,
+        "power.limit": 700,
+        "temperature.gpu": 33
+      },
+      "node": "n-i3rdb5ks34a6fp3m52rhc7cstu"
+    },
+    "passed": false,
+    "records": [
+      {
+        "case": {
+          "batch": 1,
+          "ctx": 10,
+          "heads": "tp8",
+          "layer": "sliding",
+          "seed": 9110141149346798132
+        },
+        "event": "test",
+        "index": 0,
+        "message": "relative L2 error 2.629e-02 (worst row 2.629e-02) [bound 0.080: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 3,
+          "ctx": 2047,
+          "heads": "tp8",
+          "layer": "sliding",
+          "seed": 9110353365540689967
+        },
+        "event": "test",
+        "index": 1,
+        "message": "relative L2 error 6.793e-02 (worst row 8.016e-02) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 5,
+          "ctx": 5000,
+          "heads": "tp8",
+          "layer": "sliding",
+          "page": 1,
+          "q_len": 8,
+          "seed": 9110565581734581803,
+          "spread": "mixed"
+        },
+        "event": "test",
+        "index": 2,
+        "message": "relative L2 error 7.448e-02 (worst row 1.250e-01) [bound 0.150: 2.5 x the reference's 0.074 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 3000,
+          "heads": "tp8",
+          "layer": "full",
+          "seed": 9110777797928473640
+        },
+        "event": "test",
+        "index": 3,
+        "message": "relative L2 error 8.408e-02 (worst row 9.990e-02) [bound 0.150: 2.5 x the reference's 0.084 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 8,
+          "ctx": 8192,
+          "heads": "dp",
+          "layer": "full",
+          "seed": 9110990014122365478,
+          "spread": "mixed"
+        },
+        "event": "test",
+        "index": 4,
+        "message": "relative L2 error 8.692e-02 (worst row 9.194e-02) [bound 0.150: 2.5 x the reference's 0.087 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 2,
+          "ctx": 100000,
+          "heads": "tp8",
+          "layer": "full",
+          "page": 1,
+          "q_len": 8,
+          "seed": 9111202230316257317
+        },
+        "event": "test",
+        "index": 5,
+        "message": "relative L2 error 8.935e-02 (worst row 1.117e-01) [bound 0.150: 2.5 x the reference's 0.089 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 6000,
+          "dist": "edges",
+          "heads": "tp8",
+          "layer": "sliding",
+          "page": 1,
+          "seed": 9111414446510149157
+        },
+        "event": "test",
+        "index": 6,
+        "message": "relative L2 error 6.101e-02 (worst row 6.958e-02) [bound 0.150: 2.5 x the reference's 0.061 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 6000,
+          "dist": "edges",
+          "heads": "tp8",
+          "layer": "full",
+          "q_len": 8,
+          "seed": 9111626662704040998
+        },
+        "event": "test",
+        "index": 7,
+        "message": "relative L2 error 8.686e-02 (worst row 1.312e-01) [bound 0.150: 2.5 x the reference's 0.087 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 1,
+          "ctx": 1048576,
+          "heads": "tp8",
+          "layer": "full",
+          "q_len": 8,
+          "seed": 9111838878897932840
+        },
+        "event": "test",
+        "index": 8,
+        "message": "relative L2 error 8.970e-02 (worst row 1.206e-01) [bound 0.150: 2.5 x the reference's 0.090 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 3,
+          "ctx": 4000,
+          "heads": "tp8",
+          "kv_scale": 0.015625,
+          "layer": "sliding",
+          "page": 1,
+          "q_len": 8,
+          "seed": 9113112176061283913
+        },
+        "event": "test",
+        "index": 9,
+        "message": "relative L2 error 8.300e-02 (worst row 1.093e-01) [bound 0.150: 2.5 x the reference's 0.083 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 2,
+          "ctx": 9000,
+          "heads": "tp8",
+          "kv_scale": 0.015625,
+          "layer": "full",
+          "seed": 9113324392255175762
+        },
+        "event": "test",
+        "index": 10,
+        "message": "relative L2 error 7.870e-02 (worst row 9.279e-02) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 80000,
+          "dist": "soft",
+          "heads": "tp8",
+          "layer": "full",
+          "seed": 9112051095091824683,
+          "spread": "mixed"
+        },
+        "event": "test",
+        "index": 11,
+        "message": "ValueError: chunk too large for fd2",
+        "status": "fail"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 6000,
+          "dist": "soft",
+          "heads": "tp8",
+          "layer": "sliding",
+          "page": 1,
+          "q_len": 8,
+          "seed": 9112263311285716527
+        },
+        "event": "test",
+        "index": 12,
+        "message": "relative L2 error 6.076e-02 (worst row 1.019e-01) [bound 0.150: 2.5 x the reference's 0.061 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 2,
+          "ctx": 20000,
+          "dist": "soft",
+          "heads": "dp",
+          "layer": "full",
+          "q_len": 8,
+          "seed": 9112475527479608372
+        },
+        "event": "test",
+        "index": 13,
+        "message": "relative L2 error 7.091e-02 (worst row 7.740e-02) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "batch": 4,
+          "ctx": 80000,
+          "dist": "coherent",
+          "heads": "tp8",
+          "layer": "full",
+          "page": 1,
+          "seed": 9112687743673500218,
+          "spread": "mixed"
+        },
+        "event": "test",
+        "index": 14,
+        "message": "ValueError: chunk too large for fd2",
+        "status": "fail"
+      },
+      {
+        "case": {
+          "batch": 2,
+          "ctx": 20000,
+          "dist": "coherent",
+          "heads": "dp",
+          "layer": "full",
+          "q_len": 8,
+          "seed": 9112899959867392065
+        },
+        "event": "test",
+        "index": 15,
+        "message": "relative L2 error 3.822e-02 (worst row 4.933e-02) [bound 0.110: 2.5 x the reference's 0.038 with FP8 E4M3 queries + 0.015]",
+        "status": "pass"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
+  "started_at": 1792856415.3821566,
+  "status": "done",
+  "team": "StarAtNyte"
+}

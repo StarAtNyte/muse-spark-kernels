@@ -316,13 +316,13 @@ static void launch_k(void (*kern)(KArgs...), dim3 grid, dim3 block, size_t smem,
 
 __global__ void route_kernel(const int* __restrict__ ids, int npair, const int* __restrict__ ls_ptr, int ls_val, int lmax,
                              int* __restrict__ cnt, int* __restrict__ lst, int* __restrict__ act,
-                             int* __restrict__ nact, int* __restrict__ local_ids, int* __restrict__ woff, int grp) {
+                             int* __restrict__ nact, int* __restrict__ local_ids, int* __restrict__ woff, int grp, int nslots) {
   __shared__ int s_cnt[32];
   pdl_wait();
   const int ls = ls_ptr ? *ls_ptr : ls_val;
   pdl_trigger();
   if (threadIdx.x < 32) s_cnt[threadIdx.x] = 0;
-  if (threadIdx.x < 128) reinterpret_cast<int4*>(act)[threadIdx.x] = make_int4(0, 0, 0, 0);  // work items {expert, offset, tokens, 0}
+  for (int i = threadIdx.x; i < nslots; i += blockDim.x) reinterpret_cast<int4*>(act)[i] = make_int4(0, 0, 0, 0);  // work items {expert, offset, tokens, 0}
   __syncthreads();
   for (int p = threadIdx.x; p < npair; p += blockDim.x) {
     int e = (ids[p] - ls) & 255;  // experts are ordered mod 256 starting at this GPU's first expert
@@ -340,16 +340,17 @@ __global__ void route_kernel(const int* __restrict__ ids, int npair, const int* 
     cnt[lane] = c;
     // work items: one per group of `grp` tokens of an expert, so a hot expert spreads over several CTAs
     const int groups = (c + grp - 1) / grp;
-    int scan = groups;
+    // longest-processing-time-first: experts with the most tokens (largest NCH) get the earliest work items
+    int start = 0, total = 0;
 #pragma unroll
-    for (int d = 1; d < 32; d <<= 1) {
-      const int v = __shfl_up_sync(0xffffffffu, scan, d);
-      if (lane >= d) scan += v;
+    for (int j = 0; j < 32; j++) {
+      const int cj = __shfl_sync(0xffffffffu, c, j), gj = __shfl_sync(0xffffffffu, groups, j);
+      if (cj > c || (cj == c && j < lane)) start += gj;
+      total += gj;
     }
-    const int start = scan - groups;
     for (int j = 0; j < groups; j++)
       reinterpret_cast<int4*>(act)[start + j] = make_int4(lane, j * grp, min(c - j * grp, grp), 1);
-    if (lane == 31) *nact = scan;
+    if (lane == 31) *nact = total;
   }
 }
 
@@ -364,6 +365,10 @@ __device__ __forceinline__ void cp16z(void* sdst, const void* gsrc, uint32_t nby
 template <int NTB_, int NCH_>
 __host__ __device__ constexpr int ring2_stages() {
   return (14336 / (512 * (NTB_ + 2 * NCH_))) > 6 ? 6 : ((14336 / (512 * (NTB_ + 2 * NCH_))) < 3 ? 3 : (14336 / (512 * (NTB_ + 2 * NCH_))));
+}
+__device__ __forceinline__ void cp8(void* sdst, const void* gsrc) {
+  const uint32_t d = static_cast<uint32_t>(__cvta_generic_to_shared(sdst));
+  asm volatile("cp.async.ca.shared.global [%0], [%1], 8;\n" ::"r"(d), "l"(gsrc));
 }
 __device__ __forceinline__ void cp_commit() { asm volatile("cp.async.commit_group;\n" ::); }
 template <int N>
@@ -397,11 +402,11 @@ __device__ __forceinline__ void wm_epilogue(float (&acc)[NTB][NCH][4], float* re
         float s2 = 0.f;
 #pragma unroll
         for (int w = 0; w < NW; w++) s2 += red[(((w * NTB + n + 1) * NCH + c) * 4 + r) * 32 + li];
-        const float gate = bfr(s * gs), up = bfr(s2 * gs);
+        const float gate = bfr(bfr(s * 256.0f) * gs), up = bfr(bfr(s2 * 256.0f) * gs);
         const float sil = gate / (1.0f + __expf(-gate));
         OUT[(size_t)p * ID + (bx * (nt / 2) + ((tbase + n) >> 1)) * 16 + row] = __float2bfloat16(sil * up);
       } else {
-        OUT[(size_t)p * HD + (bx * nt + tbase + n) * 16 + row] = __float2bfloat16(s * gs);
+        OUT[(size_t)p * HD + (bx * nt + tbase + n) * 16 + row] = __float2bfloat16(bfr(s * 256.0f) * gs);
       }
     }
   }
@@ -654,7 +659,7 @@ __device__ __forceinline__ void wm_body(const uint4* __restrict__ Wq, const uint
 
   if constexpr (DBG & 2) acc[0][0][0] = __uint_as_float(sink);
   __syncthreads();  // the ring is dead; the same smem holds the cross-warp reduction
-  wm_epilogue<NTB, NCH, NW>(acc, red, GS[e] * 256.0f, lst, ntok, tbase, MODE, NT, OUT, bx);
+  wm_epilogue<NTB, NCH, NW>(acc, red, GS[e], lst, ntok, tbase, MODE, NT, OUT, bx);
 }
 
 #ifndef WM_MINB
@@ -717,8 +722,10 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
   constexpr int RPT = (XSLOTS + 127) / 128;
   const int tid = threadIdx.x, lane = tid & 31, warp = tid >> 5;
   const int g = lane >> 2, t = lane & 3;
-  uint4* wring = smem;                       // [S][4][NTB][32]
-  uint4* xring = smem + S * 4 * NTB * 32;    // [S][XSLOTS]
+  constexpr int SOFF = 3 * 4 * NTB * 16;     // scale ring: [3][4][NTB][32] uint2, in uint4 units
+  uint2* sring = reinterpret_cast<uint2*>(smem);
+  uint4* wring = smem + SOFF;                // [S][4][NTB][32]
+  uint4* xring = wring + S * 4 * NTB * 32;   // [S][XSLOTS]
 
   const uint4* wsrc[NTB];
   const uint2* ssrc[NTB];
@@ -756,7 +763,14 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 #pragma unroll
       for (int r = 0; r < 4; r++) acc[n][c][r] = 0.f;
 
+  auto issue_sc = [&](int g) {
+    if (g < KCG && !(DBG & 32)) {
+#pragma unroll
+      for (int n = 0; n < NTB; n++) cp8(&sring[(((g % 3) * 4 + warp) * NTB + n) * 32 + lane], ssrc[n] + g * 32);
+    }
+  };
   auto issue = [&](int c) {
+    if ((c & 3) == 0) issue_sc((c >> 2) + 1);
     if (c < KC) {
 #pragma unroll
       for (int n = 0; n < NTB; n++) { if constexpr (!(DBG & 8)) cp16(&wring[(((c % S) * 4 + warp) * NTB + n) * 32 + lane], wsrc[n] + c * 32); }
@@ -766,14 +780,9 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
     }
     cp_commit();
   };
+  issue_sc(0);
 #pragma unroll
   for (int c = 0; c < S - 1; c++) issue(c);
-  uint2 scur[NTB], snxt[NTB];
-#pragma unroll
-  for (int n = 0; n < NTB; n++) {
-    scur[n] = __ldg(ssrc[n]);
-    snxt[n] = __ldg(ssrc[n] + 32);
-  }
 #pragma unroll 1
   for (int i = 0; i < KC; i++) {
     cp_wait<S - 2>();
@@ -789,8 +798,9 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
 #pragma unroll
     for (int n = 0; n < NTB; n++) {
       const uint4 wv = wring[(((i % S) * 4 + warp) * NTB + n) * 32 + lane];
-      const uint32_t s0 = scale2(scur[n].x, cq);
-      const uint32_t s1 = scale2(scur[n].y, cq);
+      const uint2 sc = (DBG & 32) ? make_uint2(0x38383838u, 0x38383838u) : sring[((((i >> 2) % 3) * 4 + warp) * NTB + n) * 32 + lane];
+      const uint32_t s0 = scale2(sc.x, cq);
+      const uint32_t s1 = scale2(sc.y, cq);
       const uint32_t ww[4] = {wv.x, wv.y, wv.z, wv.w};
 #pragma unroll
       for (int ks = 0; ks < 4; ks++) {
@@ -806,42 +816,35 @@ __device__ __forceinline__ void wm_body_rs(const uint4* __restrict__ Wq, const u
         }
       }
     }
-    if (cq == 3) {
-#pragma unroll
-      for (int n = 0; n < NTB; n++) {
-        scur[n] = snxt[n];
-        if ((i >> 2) + 2 < KCG) snxt[n] = __ldg(ssrc[n] + ((i >> 2) + 2) * 32);
-      }
-    }
   }
   cp_wait<0>();
   if constexpr (DBG & 2) acc[0][0][0] = __uint_as_float(sink);
 
-  const float gs = GS[e] * 256.0f;
+  const float gs = GS[e];
 #pragma unroll
   for (int c = 0; c < NCH; c++)
 #pragma unroll
     for (int r = 0; r < 4; r++) {
       const int col = c * 8 + 2 * t + (r & 1);
-      if (col >= ntok) continue;
-      const int p = __ldcg(lst + col);
+      if (col >= ntok || (DBG & 16)) continue;
+      const int p = (DBG & 64) ? col * 7 : __ldcg(lst + col);
       const int row = g + 8 * (r >> 1);
 #pragma unroll
       for (int n = 0; n < NTB; n++) {
         if (MODE == 0) {
           if (n & 1) continue;
-          const float gate = bfr(acc[n][c][r] * gs), up = bfr(acc[n + 1][c][r] * gs);
+          const float gate = bfr(bfr(acc[n][c][r] * 256.0f) * gs), up = bfr(bfr(acc[n + 1][c][r] * 256.0f) * gs);
           const float sil = gate / (1.0f + __expf(-gate));
           OUT[(size_t)p * ID + (bx * (NTC / 2) + ((warp * NTB + n) >> 1)) * 16 + row] = __float2bfloat16(sil * up);
         } else {
-          OUT[(size_t)p * HD + (bx * NTC + warp * NTB + n) * 16 + row] = __float2bfloat16(acc[n][c][r] * gs);
+          OUT[(size_t)p * HD + (bx * NTC + warp * NTB + n) * 16 + row] = __float2bfloat16(bfr(acc[n][c][r] * 256.0f) * gs);
         }
       }
     }
 }
 
 template <int MODE, int NTB, int NMAX, int S, int DBG>
-__global__ void __launch_bounds__(128, 3)
+__global__ void __launch_bounds__(128, (S <= 3 ? 4 : 3))
 wm_gemm_rs(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const float* __restrict__ GS,
            const bf16* __restrict__ X, bf16* __restrict__ OUT, const int* __restrict__ lst,
            const int* __restrict__ act, int lmax) {
@@ -854,16 +857,229 @@ wm_gemm_rs(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const flo
   const int* l = lst + e * lmax + item.y;
   if (ntok <= 8) wm_body_rs<MODE, NTB, 1, S, DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, smem, blockIdx.x);
   else if (NMAX >= 2 && ntok <= 16) wm_body_rs<MODE, NTB, (NMAX >= 2 ? 2 : 1), S, DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, smem, blockIdx.x);
-  else if (NMAX >= 4) wm_body_rs<MODE, NTB, (NMAX >= 4 ? 4 : 1), S, DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, smem, blockIdx.x);
+  else if (NMAX >= 4 && (NMAX < 8 || ntok <= 32)) wm_body_rs<MODE, NTB, (NMAX >= 4 ? 4 : 1), S, DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, smem, blockIdx.x);
+  else if (NMAX >= 8) wm_body_rs<MODE, NTB, (NMAX >= 8 ? 8 : 1), S, DBG>(Wq, Sq, GS, X, OUT, l, e, ntok, smem, blockIdx.x);
 }
 
 template <int MODE, int NTB, int NMAX, int S, int DBG>
 static void launch_rs(const void* W, const void* Sc, const float* GS, const void* X, void* OUT, const int* lst,
                       const int* act, int maxslots, int lmax, int pdl, cudaStream_t st) {
   dim3 grid((MODE == 0 ? 512 : 256) / (4 * NTB), (unsigned)maxslots);
-  const int dyn = S * (4 * NTB * 512 + NMAX * 2 * 32 * 16);
+  const int dyn = S * (4 * NTB * 512 + NMAX * 2 * 32 * 16) + 3 * 4 * NTB * 256;
   cudaFuncSetAttribute(wm_gemm_rs<MODE, NTB, NMAX, S, DBG>, cudaFuncAttributeMaxDynamicSharedMemorySize, dyn);
   launch_k(wm_gemm_rs<MODE, NTB, NMAX, S, DBG>, grid, dim3(128), (size_t)dyn, st, pdl != 0, reinterpret_cast<const uint4*>(W),
+           reinterpret_cast<const uint2*>(Sc), GS, reinterpret_cast<const bf16*>(X), reinterpret_cast<bf16*>(OUT), lst, act, lmax);
+}
+
+
+// ---- wgmma (Hopper) building blocks ----
+__device__ __forceinline__ uint64_t wg_desc(const void* p, uint32_t lbo, uint32_t sbo) {
+  const uint32_t a = (uint32_t)__cvta_generic_to_shared(p);
+  return (uint64_t)((a >> 4) & 0x3FFF) | ((uint64_t)((lbo >> 4) & 0x3FFF) << 16) | ((uint64_t)((sbo >> 4) & 0x3FFF) << 32);
+}
+__device__ __forceinline__ void wg_fence() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.fence.sync.aligned;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void wg_commit_wait() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("wgmma.commit_group.sync.aligned;\nwgmma.wait_group.sync.aligned 0;\n" ::: "memory");
+#endif
+}
+__device__ __forceinline__ void proxy_fence() {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+  asm volatile("fence.proxy.async.shared::cta;\n" ::: "memory");
+#endif
+}
+template <int N> struct WgN;
+
+template <> struct WgN<32> {
+  static __device__ __forceinline__ void mma(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+    asm volatile("wgmma.mma_async.sync.aligned.m64n32k16.f32.bf16.bf16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15}, {%16,%17,%18,%19}, %20, 1, 1, 1, 0;\n"
+                 : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15])
+                 : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+  }
+};
+template <> struct WgN<64> {
+  static __device__ __forceinline__ void mma(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+    asm volatile("wgmma.mma_async.sync.aligned.m64n64k16.f32.bf16.bf16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31}, {%32,%33,%34,%35}, %36, 1, 1, 1, 0;\n"
+                 : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31])
+                 : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+  }
+};
+template <> struct WgN<128> {
+  static __device__ __forceinline__ void mma(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint64_t db) {
+#if defined(__CUDA_ARCH_FEAT_SM90_ALL)
+    asm volatile("wgmma.mma_async.sync.aligned.m64n128k16.f32.bf16.bf16 {%0,%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16,%17,%18,%19,%20,%21,%22,%23,%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,%34,%35,%36,%37,%38,%39,%40,%41,%42,%43,%44,%45,%46,%47,%48,%49,%50,%51,%52,%53,%54,%55,%56,%57,%58,%59,%60,%61,%62,%63}, {%64,%65,%66,%67}, %68, 1, 1, 1, 0;\n"
+                 : "+f"(d[0]), "+f"(d[1]), "+f"(d[2]), "+f"(d[3]), "+f"(d[4]), "+f"(d[5]), "+f"(d[6]), "+f"(d[7]), "+f"(d[8]), "+f"(d[9]), "+f"(d[10]), "+f"(d[11]), "+f"(d[12]), "+f"(d[13]), "+f"(d[14]), "+f"(d[15]), "+f"(d[16]), "+f"(d[17]), "+f"(d[18]), "+f"(d[19]), "+f"(d[20]), "+f"(d[21]), "+f"(d[22]), "+f"(d[23]), "+f"(d[24]), "+f"(d[25]), "+f"(d[26]), "+f"(d[27]), "+f"(d[28]), "+f"(d[29]), "+f"(d[30]), "+f"(d[31]), "+f"(d[32]), "+f"(d[33]), "+f"(d[34]), "+f"(d[35]), "+f"(d[36]), "+f"(d[37]), "+f"(d[38]), "+f"(d[39]), "+f"(d[40]), "+f"(d[41]), "+f"(d[42]), "+f"(d[43]), "+f"(d[44]), "+f"(d[45]), "+f"(d[46]), "+f"(d[47]), "+f"(d[48]), "+f"(d[49]), "+f"(d[50]), "+f"(d[51]), "+f"(d[52]), "+f"(d[53]), "+f"(d[54]), "+f"(d[55]), "+f"(d[56]), "+f"(d[57]), "+f"(d[58]), "+f"(d[59]), "+f"(d[60]), "+f"(d[61]), "+f"(d[62]), "+f"(d[63])
+                 : "r"(a0), "r"(a1), "r"(a2), "r"(a3), "l"(db));
+#endif
+  }
+};
+// position of natural k inside its 64-chunk after the 'fragment order' permutation the wgmma path reads its activations in
+__device__ __forceinline__ int wg_perm_k(int k) {
+  const int c = k >> 6, kl = k & 63;
+  const int t = kl >> 4, ks = (kl >> 2) & 3, p = (kl >> 1) & 1, h = kl & 1;
+  return c * 64 + (ks * 2 + p) * 8 + t * 2 + h;
+}
+__global__ void wm_permx_kernel(const bf16* __restrict__ X, bf16* __restrict__ Xp, int ld) {
+  pdl_wait();
+  pdl_trigger();
+  const size_t base = (size_t)blockIdx.x * ld;
+  for (int k = threadIdx.x; k < ld; k += blockDim.x) Xp[base + wg_perm_k(k)] = X[base + k];
+}
+extern "C" void wm_permx_c(const void* X, void* Xp, int M, cudaStream_t st) {
+  launch_k(wm_permx_kernel, dim3(M), dim3(256), 0, st, g_pdl != 0, reinterpret_cast<const bf16*>(X), reinterpret_cast<bf16*>(Xp), 4096);
+}
+
+// ---- wgmma row-split variant: a warpgroup owns 64 weight rows (one 16-row tile per warp, decoded into registers) and up to
+// 128 tokens; B (activations) lives in shared memory in core-matrix layout ----
+template <int MODE, int NCH, int S>
+__device__ __forceinline__ void wm_body_wg(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const float* __restrict__ GS,
+                                           const bf16* __restrict__ X, bf16* __restrict__ OUT, const int* __restrict__ lst, int e,
+                                           int ntok, uint8_t* smem_raw, const int bx) {
+  constexpr int RT = MODE == 0 ? RT0 : RT1;
+  constexpr int XW = MODE == 0 ? HD : ID;
+  constexpr int N = NCH * 8;
+  constexpr int NG = MODE == 0 ? 2 : 1;                  // weight tiles per warp: gate + up (MODE 0)
+  constexpr int XST = N * 128;                           // bytes of one x stage (N tokens x 64 k bf16)
+  const int tid = threadIdx.x, lane = tid & 31, warp = tid >> 5;
+  const int g = lane >> 2, t = lane & 3;
+  uint8_t* xring = smem_raw;                             // [S][N tokens in core layout]
+  uint4* wring = reinterpret_cast<uint4*>(smem_raw + S * XST);   // [S][4 warps][NG][32 lanes]: one uint4 (4 ks words) per lane
+  const uint4* wsrc[NG];
+  const uint2* ssrc[NG];
+#pragma unroll
+  for (int q = 0; q < NG; q++) {
+    // MODE 0: gate tile bx*4+warp, up tile RT0/2 + same; MODE 1: tile bx*4+warp
+    const int tile = MODE == 0 ? (q == 0 ? bx * 4 + warp : RT0 / 2 + bx * 4 + warp) : bx * 4 + warp;
+    wsrc[q] = Wq + ((size_t)e * RT + tile) * KC * 32 + lane;
+    ssrc[q] = Sq + ((size_t)e * RT + tile) * KCG * 32 + lane;
+  }
+  // x staging: granule id = tid + 128 * u : token = id >> 3, k chunk = id & 7
+  const bf16* xb[NCH / 2];
+  bool xok[NCH / 2];
+#pragma unroll
+  for (int u = 0; u < NCH / 2; u++) {
+    const int id = tid + 128 * u;
+    const int col = id >> 3;
+    xok[u] = col < ntok;
+    xb[u] = X;
+    if (xok[u]) {
+      const int p = __ldcg(lst + col);
+      xb[u] = X + (size_t)(MODE == 0 ? (p >> 3) : p) * XW + (id & 7) * 8;
+    }
+  }
+  auto issue = [&](int c) {
+    if (c < KC) {
+#pragma unroll
+      for (int q = 0; q < NG; q++) cp16(&wring[(((c % S) * 4 + warp) * NG + q) * 32 + lane], wsrc[q] + c * 32);
+#pragma unroll
+      for (int u = 0; u < NCH / 2; u++) {
+        const int id = tid + 128 * u;
+        cp16z(xring + (c % S) * XST + (id >> 6) * 1024 + (id & 7) * 128 + ((id >> 3) & 7) * 16, xb[u] + c * 64, xok[u] ? 16u : 0u);
+      }
+    }
+    cp_commit();
+  };
+  float acc[NG][N / 2];
+#pragma unroll
+  for (int q = 0; q < NG; q++)
+#pragma unroll
+    for (int i = 0; i < N / 2; i++) acc[q][i] = 0.f;
+#pragma unroll
+  for (int c = 0; c < S - 1; c++) issue(c);
+  uint2 scur[NG], snxt[NG];
+#pragma unroll
+  for (int q = 0; q < NG; q++) {
+    scur[q] = __ldg(ssrc[q]);
+    snxt[q] = __ldg(ssrc[q] + 32);
+  }
+#pragma unroll 1
+  for (int i = 0; i < KC; i++) {
+    cp_wait<S - 2>();
+    proxy_fence();
+    __syncthreads();
+    issue(i + S - 1);
+    const int cq = i & 3;
+    uint32_t a[NG][4][4];
+#pragma unroll
+    for (int q = 0; q < NG; q++) {
+      const uint32_t s0 = scale2(scur[q].x, cq);
+      const uint32_t s1 = scale2(scur[q].y, cq);
+      const uint4 wv = wring[(((i % S) * 4 + warp) * NG + q) * 32 + lane];
+      const uint32_t ww[4] = {wv.x, wv.y, wv.z, wv.w};
+#pragma unroll
+      for (int ks = 0; ks < 4; ks++) {
+        a[q][ks][0] = hmul(dec<0>(ww[ks]), s0);
+        a[q][ks][1] = hmul(dec<1>(ww[ks]), s1);
+        a[q][ks][2] = hmul(dec<2>(ww[ks]), s0);
+        a[q][ks][3] = hmul(dec<3>(ww[ks]), s1);
+      }
+    }
+    wg_fence();
+#pragma unroll
+    for (int ks = 0; ks < 4; ks++)
+#pragma unroll
+      for (int q = 0; q < NG; q++) WgN<N>::mma(acc[q], a[q][ks][0], a[q][ks][1], a[q][ks][2], a[q][ks][3], wg_desc(xring + (i % S) * XST + ks * 256, 128, 1024));
+    wg_commit_wait();
+    if (cq == 3) {
+#pragma unroll
+      for (int q = 0; q < NG; q++) {
+        scur[q] = snxt[q];
+        if ((i >> 2) + 2 < KCG) snxt[q] = __ldg(ssrc[q] + ((i >> 2) + 2) * 32);
+      }
+    }
+  }
+  cp_wait<0>();
+  const float gs = GS[e];
+#pragma unroll
+  for (int jb = 0; jb < N / 8; jb++)
+#pragma unroll
+    for (int r = 0; r < 4; r++) {
+      const int col = jb * 8 + 2 * t + (r & 1);
+      if (col >= ntok) continue;
+      const int p = __ldcg(lst + col);
+      const int row = warp * 16 + g + 8 * (r >> 1);
+      if (MODE == 0) {
+        const float gate = bfr(bfr(acc[0][jb * 4 + r] * 256.0f) * gs), up = bfr(bfr(acc[1][jb * 4 + r] * 256.0f) * gs);
+        const float sil = gate / (1.0f + __expf(-gate));
+        OUT[(size_t)p * ID + wg_perm_k(bx * 64 + row)] = __float2bfloat16(sil * up);
+      } else {
+        OUT[(size_t)p * HD + bx * 64 + row] = __float2bfloat16(bfr(acc[0][jb * 4 + r] * 256.0f) * gs);
+      }
+    }
+}
+
+template <int MODE, int NMAX, int S>
+__global__ void __launch_bounds__(128, 2)
+wm_gemm_wg(const uint4* __restrict__ Wq, const uint2* __restrict__ Sq, const float* __restrict__ GS, const bf16* __restrict__ X,
+           bf16* __restrict__ OUT, const int* __restrict__ lst, const int* __restrict__ act, int lmax) {
+  extern __shared__ __align__(16) uint8_t smem_wg[];
+  pdl_wait();
+  pdl_trigger();
+  const int4 item = __ldcg(reinterpret_cast<const int4*>(act) + blockIdx.y);
+  if (item.z == 0) return;
+  const int e = item.x, ntok = item.z;
+  const int* l = lst + e * lmax + item.y;
+  if (ntok <= 32) wm_body_wg<MODE, 4, S>(Wq, Sq, GS, X, OUT, l, e, ntok, smem_wg, blockIdx.x);
+  else if (NMAX >= 8 && ntok <= 64) wm_body_wg<MODE, (NMAX >= 8 ? 8 : 4), S>(Wq, Sq, GS, X, OUT, l, e, ntok, smem_wg, blockIdx.x);
+  else if (NMAX >= 16) wm_body_wg<MODE, (NMAX >= 16 ? 16 : 4), S>(Wq, Sq, GS, X, OUT, l, e, ntok, smem_wg, blockIdx.x);
+}
+
+template <int MODE, int NMAX, int S>
+static void launch_wg(const void* W, const void* Sc, const float* GS, const void* X, void* OUT, const int* lst, const int* act,
+                      int maxslots, int lmax, int pdl, cudaStream_t st) {
+  dim3 grid(64, (unsigned)maxslots);
+  constexpr int NG = MODE == 0 ? 2 : 1;
+  const int dyn = S * (NMAX * 8 * 128 + 4 * NG * 512);
+  cudaFuncSetAttribute(wm_gemm_wg<MODE, NMAX, S>, cudaFuncAttributeMaxDynamicSharedMemorySize, dyn);
+  launch_k(wm_gemm_wg<MODE, NMAX, S>, grid, dim3(128), (size_t)dyn, st, pdl != 0, reinterpret_cast<const uint4*>(W),
            reinterpret_cast<const uint2*>(Sc), GS, reinterpret_cast<const bf16*>(X), reinterpret_cast<bf16*>(OUT), lst, act, lmax);
 }
 
@@ -951,9 +1167,9 @@ extern "C" void wm_finish_c(const void* Y, const float* TW, const int* lids, con
 }
 
 extern "C" void wm_route_c(const int* ids, int npair, const int* ls_ptr, int ls_val, int lmax, int* cnt, int* lst,
-                           int* act, int* nact, int* local_ids, int* woff, int grp, cudaStream_t st) {
+                           int* act, int* nact, int* local_ids, int* woff, int grp, int nslots, cudaStream_t st) {
   const int pdl = g_pdl;
-  launch_k(route_kernel, dim3(1), dim3(1024), 0, st, pdl != 0, ids, npair, ls_ptr, ls_val, lmax, cnt, lst, act, nact, local_ids, woff, grp);
+  launch_k(route_kernel, dim3(1), dim3(1024), 0, st, pdl != 0, ids, npair, ls_ptr, ls_val, lmax, cnt, lst, act, nact, local_ids, woff, grp, nslots);
 }
 
 template <int MODE, int NT, int NMAX, int NW, int RING, int DBG>
@@ -981,18 +1197,22 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
                          const void* X, void* OUT, const int* cnt, const int* lst, const int* act, const int* nact,
                          const int* woff, int maxslots, int lmax, cudaStream_t st) {
   const int pdl = g_pdl;
+#define WM_WG(M, N_, S_) if (mode == M && ring == 7 && nmax == N_ && nt == S_ && dbg == 0) { launch_wg<M, N_, S_>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }
+#undef WM_WG
 #define WM_RS(M, T, N, S_) \
   if (mode == M && ring == 4 && nt == T && nmax == N && dbg == 0) { launch_rs<M, T, N, S_, 0>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }
   WM_RS(0, 4, 4, 4) WM_RS(1, 4, 4, 4) WM_RS(0, 4, 2, 4) WM_RS(1, 4, 2, 4) WM_RS(0, 4, 1, 4) WM_RS(1, 4, 1, 4)
   WM_RS(0, 2, 4, 4) WM_RS(1, 2, 4, 4) WM_RS(0, 2, 2, 4) WM_RS(1, 2, 2, 4) WM_RS(0, 2, 1, 4) WM_RS(1, 2, 1, 4)
+  WM_RS(0, 2, 8, 4) WM_RS(1, 2, 8, 4) WM_RS(0, 2, 8, 3) WM_RS(1, 2, 8, 3) WM_RS(0, 4, 8, 3) WM_RS(1, 4, 8, 3)
 #undef WM_RS
 #define WM_RS(M, T, N, S_, R_) \
   if (mode == M && ring == R_ && nt == T && nmax == N && dbg == 0) { launch_rs<M, T, N, S_, 0>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }
   WM_RS(0, 4, 4, 6, 5) WM_RS(1, 4, 4, 6, 5) WM_RS(0, 2, 4, 6, 5) WM_RS(1, 2, 4, 6, 5) WM_RS(0, 4, 4, 8, 6) WM_RS(1, 4, 4, 8, 6) WM_RS(0, 2, 4, 8, 6) WM_RS(1, 2, 4, 8, 6)
   WM_RS(0, 4, 2, 6, 5) WM_RS(1, 4, 2, 6, 5) WM_RS(0, 4, 1, 6, 5) WM_RS(1, 4, 1, 6, 5)
+  WM_RS(0, 4, 4, 3, 8) WM_RS(1, 4, 4, 3, 8) WM_RS(0, 2, 4, 3, 8) WM_RS(1, 2, 4, 3, 8) WM_RS(0, 2, 8, 3, 9) WM_RS(1, 2, 8, 3, 9) WM_RS(0, 2, 4, 3, 9) WM_RS(1, 2, 4, 3, 9)
 #undef WM_RS
 #define WM_RSD(M, D) if (mode == M && ring == 4 && nt == 4 && nmax == 4 && dbg == D) { launch_rs<M, 4, 4, 4, D>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }
-  WM_RSD(0, 1) WM_RSD(1, 1) WM_RSD(0, 2) WM_RSD(1, 2) WM_RSD(0, 8) WM_RSD(1, 8) WM_RSD(0, 4) WM_RSD(1, 4) WM_RSD(0, 15) WM_RSD(1, 15) WM_RSD(0, 3) WM_RSD(1, 3)
+  WM_RSD(0, 1) WM_RSD(1, 1) WM_RSD(0, 2) WM_RSD(1, 2) WM_RSD(0, 8) WM_RSD(1, 8) WM_RSD(0, 4) WM_RSD(1, 4) WM_RSD(0, 15) WM_RSD(1, 15) WM_RSD(0, 3) WM_RSD(1, 3) WM_RSD(0, 16) WM_RSD(1, 16) WM_RSD(0, 32) WM_RSD(1, 32) WM_RSD(0, 48) WM_RSD(1, 48) WM_RSD(0, 63) WM_RSD(1, 63) WM_RSD(0, 31) WM_RSD(1, 31) WM_RSD(0, 64) WM_RSD(1, 64)
 #undef WM_RSD
 #define WM_D(M, T, N, W_, R)                                                                             \
   if (mode == M && nt == T && nmax == N && nw == W_ && ring == R && dbg == 0) {                           \
@@ -1025,7 +1245,7 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
 
 #include <torch/extension.h>
 #include <ATen/cuda/CUDAContext.h>
-extern "C" void wm_route_c(const int*, int, const int*, int, int, int*, int*, int*, int*, int*, int*, int, cudaStream_t);
+extern "C" void wm_route_c(const int*, int, const int*, int, int, int*, int*, int*, int*, int*, int*, int, int, cudaStream_t);
 extern "C" void wm_set_pdl(int);
 void wm_set_pdl_t(int64_t v) { wm_set_pdl((int)v); }
 extern "C" void wm_set_persist(int);
@@ -1035,6 +1255,8 @@ void wm_finish(torch::Tensor y, torch::Tensor tw, torch::Tensor lids, torch::Ten
   wm_finish_c(y.data_ptr(), tw.data_ptr<float>(), lids.data_ptr<int>(), nw.data_ptr(), out.data_ptr(), (int)out.size(0), (float)eps,
               at::cuda::getCurrentCUDAStream());
 }
+extern "C" void wm_permx_c(const void*, void*, int, cudaStream_t);
+void wm_permx(torch::Tensor x, torch::Tensor xp) { wm_permx_c(x.data_ptr(), xp.data_ptr(), (int)x.size(0), at::cuda::getCurrentCUDAStream()); }
 extern "C" int wm_gemm_c(int, int, int, int, int, int, const void*, const void*, const float*, const void*, void*, const int*,
                          const int*, const int*, const int*, const int*, int, int, cudaStream_t);
 
@@ -1042,7 +1264,7 @@ void wm_route(torch::Tensor ids, torch::Tensor ls, int64_t ls_val, int64_t lmax,
               torch::Tensor act, torch::Tensor nact, torch::Tensor local_ids, torch::Tensor woff, int64_t grp) {
   wm_route_c(ids.data_ptr<int>(), (int)ids.numel(), ls.numel() ? ls.data_ptr<int>() : nullptr, (int)ls_val, (int)lmax, cnt.data_ptr<int>(),
              lst.data_ptr<int>(), act.data_ptr<int>(), nact.data_ptr<int>(), local_ids.data_ptr<int>(), woff.data_ptr<int>(), (int)grp,
-             at::cuda::getCurrentCUDAStream());
+             (int)(act.numel() / 4), at::cuda::getCurrentCUDAStream());
 }
 
 void wm_gemm_run(int64_t mode, int64_t nmax, int64_t nt, int64_t nw, int64_t ring, int64_t dbg, torch::Tensor W, torch::Tensor S, torch::Tensor GS, torch::Tensor X,
@@ -1057,6 +1279,7 @@ void wm_gemm_run(int64_t mode, int64_t nmax, int64_t nt, int64_t nw, int64_t rin
 _WM_CPP = r'''
 void wm_set_pdl_t(int64_t v);
 void wm_set_persist_t(int64_t v);
+void wm_permx(torch::Tensor x, torch::Tensor xp);
 void wm_finish(torch::Tensor y, torch::Tensor tw, torch::Tensor lids, torch::Tensor nw, torch::Tensor out, double eps);
 void wm_route(torch::Tensor ids, torch::Tensor ls, int64_t ls_val, int64_t lmax, torch::Tensor cnt, torch::Tensor lst,
               torch::Tensor act, torch::Tensor nact, torch::Tensor local_ids, torch::Tensor woff, int64_t grp);
@@ -1139,7 +1362,7 @@ def prepare(weights):
 
 WM_MAX_TOKENS = 256
 # (m upper bound) -> (tiles per warp, warps per CTA, cp.async ring)
-_WM_CFG = [(1,(2,4,0)),(8,(2,4,0)),(16,(2,4,0)),(32,(4,4,1)),(10**9,(4,4,4))]
+_WM_CFG = [(1,(2,4,0)),(8,(2,2,0)),(16,(2,4,0)),(32,(4,4,1)),(10**9,(4,4,4))]
 
 
 def _wm_cfg(m):

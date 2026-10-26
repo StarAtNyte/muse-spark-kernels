@@ -1,0 +1,24 @@
+{
+  "name": "decoder_wm_v3",
+  "problem": "muse_decode_layer",
+  "hypothesis": "decoder with LPT route, scale ring, judge-tuned MoE configs",
+  "sha256": "41f7cd0d8f7ba07f5be2c400ed68d8a127843051b7fb7a609884edb952c55a62",
+  "created_at": 1793002424.1876705,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "70fa84a60f7c412e",
+  "updated_at": 1793003184.0343723,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

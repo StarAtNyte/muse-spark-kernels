@@ -1,0 +1,88 @@
+{
+  "board": "muse_moe_w4a16",
+  "call_id": "nyc3:kc-e6df54fe2a8443a1",
+  "cluster": "nyc3",
+  "content_hash": "68311cd51fb339d781f5c361340cf06d314901739eafb3dc7cfb486dc52caf47",
+  "created_at": 1792844054.1075897,
+  "dedicated": false,
+  "duplicate_of": null,
+  "finished_at": 1792844542.3121707,
+  "id": "e6df54fe2a8443a1",
+  "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_wm_v10/profiles/submission.e6df54fe2a8443a1.log"
+  },
+  "payload_ref": "muse_moe_w4a16/68311cd51fb339d781f5c361340cf06d314901739eafb3dc7cfb486dc52caf47.py",
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "afcead6a6ff090aa50fe9bc907f0fa8f4ba73d95fa92af93ec260b5e8ff00f00",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_moe_w4a16/baseline.py": "4fc48bd9cdfd749863c93a2dbf4e556e0c38fb04acc4fa48a53ef34cbf6c92a1",
+        "problems/muse_moe_w4a16/reference.py": "a7e0b4fa86aa477a4e7bb5745b2b258954d72636b6da153bd239a717927cba44",
+        "problems/muse_moe_w4a16/task.yml": "cc6870087c1a115e69f40093478553e0a03c1b3e92f527c2e55c4115e2db42ad"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2906, in _run_ninja_build\n    subprocess.run(\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/tmp/muse_moe_w4a16-7pwaktaz/run/worker.py\", line 423, in child_main\n    send(_setup_op(msg, module, state, sync, perf))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-7pwaktaz/run/worker.py\", line 322, in _setup_op\n    state[\"prep\"] = prepare(weights)\n                    ^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-7pwaktaz/run/submission.py\", line 555, in prepare\n    mod = _wm_module()\n          ^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-7pwaktaz/run/submission.py\", line 548, in _wm_module\n    _WM_MOD = load_inline(\"muse_wm_moe\", _WM_CPP, cuda_sources=_WM_CUDA, functions=[\"wm_route\", \"wm_gemm_run\"],\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2295, in load_inline\n    return _jit_compile(\n           ^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2398, in _jit_compile\n    _write_ninja_file_and_build_library(\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2555, in _write_ninja_file_and_build_library\n    _run_ninja_build(\n  File \"/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py\", line 2923, in _run_ninja_build\n    raise RuntimeError(message) from e\nRuntimeError: Error building extension 'muse_wm_moe': [1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_wm_moe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu -o cuda.cuda.o \nFAILED: [code=1] cuda.cuda.o \nccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_wm_moe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu -o cuda.cuda.o \nIn file included from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/ir/ir.h:19,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/function_impl.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/method.h:8,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/object.h:6,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/module.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/serialize/input-archive.h:6,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/serialize/archive.h:4,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/data/samplers/serialize.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/data/samplers.h:9,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/data/datasets/chunk.h:7,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/data/datasets.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/data.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include/torch/all.h:10,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/extension.h:6,\n                 from /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu:241:\n/opt/sglang/lib/python3.12/site-packages/torch/include/ATen/core/interned_strings.h:351:1: error: macro \"L\" requires 2 arguments, but only 1 given\n  351 | FORALL_NS_SYMBOLS(DEFINE_SYMBOL)\n      | ^~~~~~\n/tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu:236: note: macro \"L\" defined here\n  236 | #define L(M, N) if (mode == M && nch == N) { launch<M, N>(W, S, GS, X, OUT, cnt, lst, act, nact, maxslots, st); return 0; }\n      | \n[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_wm_moe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/main.cpp -o main.o \nninja: build stopped: subcommand failed.\n\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 124.8,
+        "power.limit": 700,
+        "temperature.gpu": 34
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 143.03,
+        "power.limit": 700,
+        "temperature.gpu": 34
+      },
+      "node": "n-f4g3z3c7dpp5uvibsnaa266yoh"
+    },
+    "passed": false,
+    "records": [
+      {
+        "baseline_copies": 4,
+        "baseline_prepare_pad": 14750720,
+        "copies": null,
+        "error": "RuntimeError: Error building extension 'muse_wm_moe': [1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_wm_moe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu -o cuda.cuda.o \nFAILED: [code=1] cuda.cuda.o \nccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_wm_moe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 --use_fast_math -std=c++20 -c /tmp/muse_moe_w4a16-7pwaktaz/sandbox/cache/torch_extensions/muse_wm_moe/cuda.cu -o cuda.cuda.o \nIn file included from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/ir/ir.h:19,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/function_impl.h:5,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/method.h:8,\n                 from /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/jit/api/object.h:6,\n                 from /opt/sgla",
+        "event": "setup",
+        "first": "baseline",
+        "prepare_pad": null,
+        "prepare_s": null,
+        "status": "fail"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
+  "started_at": 1792844492.0422678,
+  "status": "done",
+  "team": "StarAtNyte"
+}

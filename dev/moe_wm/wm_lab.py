@@ -188,7 +188,7 @@ def _lab_cfgs(state):
     _WM_CFG = saved
 
 
-_LAB_MS = (1, 8, 128, 256)
+_LAB_MS = (8, 16, 32)
 _LAB_SEEDS = 4
 
 
@@ -230,8 +230,11 @@ def _lab_prof(state):
 
 def _lab_run(state):
     global _WM_CFG
-    data = _lab_inputs(256, 'cuda', 356)
-    _WM_CFG = [(10**9, (4, 4, 4))]
+    import os
+    m = int(os.environ.get("LABM", "32"))
+    cfgs = {1: (2, 4, 0), 8: (2, 4, 0), 16: (2, 4, 0), 32: (4, 4, 1), 128: (4, 4, 4), 256: (4, 4, 4)}
+    data = _lab_inputs(m, 'cuda', 100 + 7 * m)
+    _WM_CFG = [(10**9, cfgs[m])]
     for _ in range(3):
         kernel_fn(data, state)
     torch.cuda.synchronize()
