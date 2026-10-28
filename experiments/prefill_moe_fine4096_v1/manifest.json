@@ -1,0 +1,15 @@
+{
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Use coarse expert remainder tiles for B4/T753 while preserving fine tiles for T16384.",
+  "sha256": "db3afa2842491c6fe70cbe7941eddfb10d337ae0b4840c5ba7206b88b08859f8",
+  "job_id": "b399b11823e54e91",
+  "status": "done",
+  "passed": true,
+  "speedup": 1.7833694602722348,
+  "speedup_ci": [
+    1.7566189183681513,
+    1.8101200021763182
+  ],
+  "decision": "reject_no_gain",
+  "reason": "B4 sliding expert profile 774.6 us versus parent 744.6 us; aggregate below parent check with overlapping CI."
+}
