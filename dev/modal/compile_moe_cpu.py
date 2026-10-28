@@ -19,7 +19,7 @@ torch.cuda.get_device_capability = lambda *a, **k: (9, 0)
 spec = importlib.util.spec_from_file_location("candidate", "/w/run/sub.py")
 m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
 print("COMPILE_START", flush=True)
-m._ext()
+m._ext(tuple(m.MAIN_DEFINES) + ("-DOKC_PRMTSC=1",))
 print("COMPILE_DONE", flush=True)
 '''
     open("/w/run/driver.py", "w").write(driver)
