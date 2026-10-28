@@ -1,0 +1,27 @@
+{
+  "name": "attention_infraax_bn128_transfer_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Transfer Infraax's independently measured BN128 verify-full attention kernel and compare it against our already faster public H200 kernel.",
+  "upstream": "https://github.com/infraax/okc-kernel-challenge",
+  "upstream_commit": "896b816dc5fd418e1f167578eb35680b116b68f3",
+  "source_path": "kernels/muse_attention_decode/sonnet_v5.py",
+  "license": "Apache-2.0",
+  "sha256": "9f90e9c40d9c208fa605a62008585941194c06c7853f6b325af96a4209efd3f1",
+  "decision": "reject_transfer_regression",
+  "hardware": "NVIDIA H200",
+  "method": "CUDA graph paired replay, 256 MiB L2 flush, alternating order, 20 pairs per seed, 3 seeds per batch",
+  "results": {
+    "batch16": [
+      {"seed": 539, "ours_us": 109.79200154542923, "candidate_us": 171.50399833917618, "ours_over_candidate": 0.6398629096598607, "reference_pass": true, "relative_l2_vs_ours": 0.045062094926834106},
+      {"seed": 1427, "ours_us": 109.8720021545887, "candidate_us": 171.10399901866913, "ours_over_candidate": 0.640265580045092, "reference_pass": true, "relative_l2_vs_ours": 0.04268702119588852},
+      {"seed": 7919, "ours_us": 110.60800030827522, "candidate_us": 171.82400077581406, "ours_over_candidate": 0.6438649188272093, "reference_pass": true, "relative_l2_vs_ours": 0.045749880373477936}
+    ],
+    "batch32": [
+      {"seed": 539, "ours_us": 193.7120035290718, "candidate_us": 330.3840011358261, "ours_over_candidate": 0.5869513931787007, "reference_pass": true, "relative_l2_vs_ours": 0.04350466653704643},
+      {"seed": 1427, "ours_us": 191.48800522089005, "candidate_us": 330.22400736808777, "ours_over_candidate": 0.5798849799574557, "reference_pass": true, "relative_l2_vs_ours": 0.04440562054514885},
+      {"seed": 7919, "ours_us": 191.8880045413971, "candidate_us": 329.52000200748444, "ours_over_candidate": 0.5804685976335444, "reference_pass": true, "relative_l2_vs_ours": 0.049227505922317505}
+    ]
+  },
+  "modal_app": "ap-1ZXV7BOecTyAFQoJPzGV50",
+  "decision_reason": "The complete candidate passes reference but is 1.56x slower at verify-16 full and 1.71x slower at verify-32 full than our public source. The published BN128 improvement was relative to a slower parent and does not transfer."
+}

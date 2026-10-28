@@ -856,3 +856,17 @@ The profile still attributes 207 us / 40% of GPU time to MoE on verify-32 full,
 so the next decoder experiment should change the WGS dataflow or reduce its
 critical-path traffic, rather than transfer this gather constant. Exact source,
 status, and analysis: `experiments/decoder_wgs_gathb7_check_v1/`.
+
+## Infraax BN128 verify-attention transfer screen (2026-10-28)
+
+The [Infraax campaign report](https://github.com/infraax/okc-kernel-challenge)
+describes a BN128 / three-stage full-verify path that beat its BN64 parent by
+13–16%. We screened its complete Apache-2.0 `sonnet_v5.py` implementation
+against our public attention kernel on Modal H200, using paired CUDA graphs,
+256 MiB cache flushes, alternating order, and three seeds per batch. It passed
+the official reference checker, but was **1.56x slower** at verify-16 full
+(171.1–171.8 us vs 109.8–110.6 us) and **1.71x slower** at verify-32 full
+(329.5–330.4 us vs 191.5–193.7 us). The larger-tile result is relative to its
+own slower kernel and does not transfer to our implementation. Reject without
+an official check. Candidate, license, driver, raw values, and analysis are in
+`experiments/attention_infraax_bn128_transfer_v1/`.

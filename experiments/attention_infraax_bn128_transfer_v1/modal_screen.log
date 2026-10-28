@@ -1,0 +1,10 @@
+Modal run: `modal run dev/modal/run_h200.py --problem muse_attention_decode --file /tmp/okc-infraax/kernels/muse_attention_decode/sonnet_v5.py --drv dev/modal/drv_attention_infraax_pair.py`
+
+RESULT {"batch": 16, "seed": 539, "official_check": true, "relative_error": 0.045062094926834106, "paired_speedup": 0.6398629096598607, "baseline_us": 109.79200154542923, "candidate_us": 171.50399833917618}
+RESULT {"batch": 16, "seed": 1427, "official_check": true, "relative_error": 0.04268702119588852, "paired_speedup": 0.640265580045092, "baseline_us": 109.8720021545887, "candidate_us": 171.10399901866913}
+RESULT {"batch": 16, "seed": 7919, "official_check": true, "relative_error": 0.045749880373477936, "paired_speedup": 0.6438649188272093, "baseline_us": 110.60800030827522, "candidate_us": 171.82400077581406}
+RESULT {"batch": 32, "seed": 539, "official_check": true, "relative_error": 0.04350466653704643, "paired_speedup": 0.5869513931787007, "baseline_us": 193.7120035290718, "candidate_us": 330.3840011358261}
+RESULT {"batch": 32, "seed": 1427, "official_check": true, "relative_error": 0.04440562054514885, "paired_speedup": 0.5798849799574557, "baseline_us": 191.48800522089005, "candidate_us": 330.22400736808777}
+RESULT {"batch": 32, "seed": 7919, "official_check": true, "relative_error": 0.049227505922317505, "paired_speedup": 0.5804685976335444, "baseline_us": 191.8880045413971, "candidate_us": 329.52000200748444}
+
+Modal app: `ap-1ZXV7BOecTyAFQoJPzGV50`
