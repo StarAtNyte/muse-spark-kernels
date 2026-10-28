@@ -44,7 +44,7 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Projections | 1.5346x | #63 | 1.5410x | 1.6367x | d2dd2aec03f94dbf |
 | Attention | 2.5806x | #58 | 2.5880x | 3.0316x | 0d181df6ffc2480b |
 | MoE | 2.3263x | #67 | 2.3352x | 2.6853x | a834a3c9bf6e44f6 |
-| Whole decoder layer | 2.0746x | #90 | 2.1240x | 2.3986x | 2a5a87f725fd47d2 |
+| Whole decoder layer | 2.0746x | #90 | 2.1263x | 2.3986x | 2a5a87f725fd47d2 |
 | Prefill layer | — | Unranked | 1.7818x | 2.0252x | No submission |
 
 Overall rank is **#90**. Prefill is a separate board and does not count toward
