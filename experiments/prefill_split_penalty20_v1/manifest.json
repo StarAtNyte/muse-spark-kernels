@@ -1,0 +1,9 @@
+{
+  "name": "prefill_split_penalty20_v1",
+  "problem": "muse_prefill_layer",
+  "parent": "kernels/muse_prefill_layer/submission.py",
+  "hypothesis": "Raise attention split penalty from 0.02 to 0.20 to reduce merge traffic; full check measures lost parallelism against saved merge work.",
+  "sha256": "d775cc88bb4f55993f2606f20ddc0dc8191de7b5067aa62b4ad4607fcb115992",
+  "job_id": "2f13c4c92c8f4549",
+  "status": "pending"
+}
