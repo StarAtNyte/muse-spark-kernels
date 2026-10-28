@@ -1,0 +1,98 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ReEnw2Rb6cmZczsVpeuETL
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+RESULT {"batch": 16, "layer": "o", "seed": 419, "base_us": 10.847999714314938, "candidate_us": 10.863999836146832, "base_over_candidate": 0.9910846943442999}
+RESULT {"batch": 16, "layer": "o", "seed": 7919, "base_us": 11.008000001311302, "candidate_us": 10.688000358641148, "base_over_candidate": 1.0301664958664847}
+RESULT {"batch": 32, "layer": "o", "seed": 419, "base_us": 11.568000074476004, "candidate_us": 11.231999844312668, "base_over_candidate": 1.021429976257373}
+RESULT {"batch": 32, "layer": "o", "seed": 7919, "base_us": 11.359999887645245, "candidate_us": 11.168000288307667, "base_over_candidate": 1.0172911143823333}
+RESULT {"batch": 8, "layer": "pooler", "seed": 419, "base_us": 19.98399943113327, "candidate_us": 22.816000506281853, "base_over_candidate": 0.8833849491650398}
+RESULT {"batch": 8, "layer": "pooler", "seed": 7919, "base_us": 19.888000562787056, "candidate_us": 22.86399994045496, "base_over_candidate": 0.8716479720739128}
+RESULT {"batch": 16, "layer": "pooler", "seed": 419, "base_us": 22.23999984562397, "candidate_us": 22.656000219285488, "base_over_candidate": 0.9858432801957377}
+RESULT {"batch": 16, "layer": "pooler", "seed": 7919, "base_us": 22.304000332951546, "candidate_us": 22.86399994045496, "base_over_candidate": 0.9810694296288831}
+
+STDERR:
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.54 sk2=13.09 torch=18.5 -> cgemv
+[okc] tune o m=1: cgemv=8.99 sk2=9.28 torch=10.56 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.37 torch=25.66 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.26 sgemv=7.71 sk2=8.26 torch=10.78 -> cgemv
+[okc] tune router m=1: rgemv=7.46 sk2=8.58 torch=19.74 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.76 torch=18.05 -> sk2
+[okc] tune o m=16: sk2=9.38 torch=10.46 -> sk2
+[okc] tune pooler m=16: sk2=18.4 torch=25.6 -> sk2
+[okc] tune unpooler m=16: sk2=18.08 torch=22.53 -> sk2
+[okc] tune router m=16: sk2=8.64 torch=20.29 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.46 torch=18.4 -> sk2
+[okc] tune o m=32: sk2=9.57 torch=10.5 -> sk2
+[okc] tune pooler m=32: sk2=19.04 torch=26.05 -> sk2
+[okc] tune unpooler m=32: sk2=18.98 torch=23.01 -> sk2
+[okc] tune router m=32: sk2=9.18 torch=20.58 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.57 torch=18.4 -> sk2
+[okc] tune o m=8: sk2=9.5 torch=10.37 -> sk2
+[okc] tune pooler m=8: sk2=18.4 torch=25.44 -> sk2
+[okc] tune unpooler m=8: sk2=8.06 torch=11.23 -> sk2
+[okc] tune router m=8: sk2=8.64 torch=19.39 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.27 torch=20.9 -> gqx
+[okc] tune o m=128: torch=10.94 torchT=11.14 -> torch
+[okc] tune pooler m=128: gq=25.02 torch=28.45 -> gq
+[okc] tune unpooler m=128: torch=24.03 torchT=22.85 -> torchT
+[okc] tune router m=128: rk=10.11 wide=12.74 gemm=13.6 torch=21.31 -> rk
+[okc] tune o m=256: torch=12.9 torchT=12.74 -> torchT
+[okc] tune unpooler m=256: torch=28.45 torchT=27.58 -> torchT
+[okc] tune router m=256: rk=10.78 wide=13.66 gemm=17.47 torch=22.27 -> rk
+[okc] disabled: []
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.7 sk2=13.44 torch=19.07 -> cgemv
+[okc] tune o m=1: cgemv=8.96 sk2=9.38 torch=10.4 -> cgemv
+[okc] tune pooler m=1: cgemv=17.57 sk2=18.37 torch=26.02 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.42 sgemv=7.65 sk2=8.06 torch=11.2 -> cgemv
+[okc] tune router m=1: rgemv=7.52 sk2=8.64 torch=19.23 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.76 torch=18.3 -> sk2
+[okc] tune o m=16: sk2=9.31 torch=10.34 -> sk2
+[okc] tune pooler m=16: sk2=18.34 torch=25.76 -> sk2
+[okc] tune unpooler m=16: sk2=18.02 torch=22.69 -> sk2
+[okc] tune router m=16: sk2=8.67 torch=20.19 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.69 torch=18.78 -> sk2
+[okc] tune o m=32: sk2=9.6 torch=10.53 -> sk2
+[okc] tune pooler m=32: sk2=19.3 torch=26.21 -> sk2
+[okc] tune unpooler m=32: sk2=19.17 torch=22.98 -> sk2
+[okc] tune router m=32: sk2=9.12 torch=20.83 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.63 torch=18.43 -> sk2
+[okc] tune o m=8: sk2=9.34 torch=10.18 -> sk2
+[okc] tune pooler m=8: sk2=18.34 torch=25.38 -> sk2
+[okc] tune unpooler m=8: sk2=8.06 torch=11.3 -> sk2
+[okc] tune router m=8: sk2=8.64 torch=19.58 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.24 torch=21.28 -> gqx
+[okc] tune o m=128: torch=11.17 torchT=11.1 -> torchT
+[okc] tune pooler m=128: gq=24.8 torch=28.64 -> gq
+[okc] tune unpooler m=128: torch=24.26 torchT=22.98 -> torchT
+[okc] tune router m=128: rk=9.76 wide=12.51 gemm=13.73 torch=21.02 -> rk
+[okc] tune o m=256: torch=13.09 torchT=12.96 -> torchT
+[okc] tune unpooler m=256: torch=28.64 torchT=27.78 -> torchT
+[okc] tune router m=256: rk=10.66 wide=13.7 gemm=17.5 torch=22.27 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ReEnw2Rb6cmZczsVpeuETL

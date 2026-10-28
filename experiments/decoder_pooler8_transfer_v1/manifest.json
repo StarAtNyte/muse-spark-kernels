@@ -1,0 +1,24 @@
+{
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer faster M8 standalone pooler into the decoder, pairing it with the existing router; measure loss of fused launch or overlap.",
+  "parent": "kernels/muse_decode_layer/submission.py",
+  "sha256": "9a1036a244fe1bc8f455d657d5d1623b833cbf1a657a04b1480d63f0297a4be1",
+  "check_job": "0b2fb472b69241fa",
+  "status": "done",
+  "driver": "dev/modal/drv_projection_vjeux_pair_decoder.py",
+  "paired_base_over_vjeux": [
+    0.8833849492,
+    0.8716479721
+  ],
+  "passed": true,
+  "check_speedup": 2.0708126830498266,
+  "check_ci": [
+    2.039750492804079,
+    2.1018748732955737
+  ],
+  "decision": "reject_integrated_regression",
+  "verify1_sliding_us": 118.59,
+  "parent_verify1_sliding_us": 109.07,
+  "verify1_full_us": 122.28,
+  "parent_verify1_full_us": 117.75
+}

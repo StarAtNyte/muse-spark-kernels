@@ -959,3 +959,7 @@ Transferred the prior scored projection stack output kernel for T=1/8 into the c
 The [Auto-research-agent PR #6](https://github.com/rohanarun/Auto-research-agent/pull/6) offers general starter guidance: fused QK/RoPE/cache writes, staged NVFP4 unpack, and concurrent router projections. Our current attention and MoE paths already implement the first two and decoder has fused/concurrent routes. Component results still require whole-layer checks because streams and PDL affect the critical path.
 
 The scored decoder transfer `1c4e4524414c407f` passed at **2.08743x** (95% CI [2.05612, 2.11875]), improving the prior published **2.0746x**. Live decoder rank **#95**, #50 at **2.1360x**, overall **#95** (2026-10-28 snapshot). Exact scored source, result and profiles: `experiments/scored_decoder_projection_o_small_v1/`.
+
+## Decoder M8 pooler transfer (2026-10-28)
+
+CUDA 13 paired screens found our standalone M8 pooler 12–13% faster than vjeux over two seeds, but transferring it with a separate router into the decoder passed check `0b2fb472b69241fa` at only **2.07081x** (95% CI [2.03975, 2.10187]) vs parent check **2.08690x**. Verify-1 sliding was **118.59 vs 109.07 us**, full **122.28 vs 117.75 us**. Reject; preserve the decoder route. Exact source, paired log, driver and judge profiles: `experiments/decoder_pooler8_transfer_v1/` and `dev/modal/drv_projection_vjeux_pair_decoder.py`.
