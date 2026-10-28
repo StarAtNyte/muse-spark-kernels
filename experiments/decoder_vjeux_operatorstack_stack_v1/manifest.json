@@ -1,0 +1,15 @@
+{
+  "name": "decoder_vjeux_operatorstack_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Compose measured M32/M128 operatorstack expert routes with the stronger vjeux WGS decoder base; retain WGS for all other shapes.",
+  "parent": "experiments/decoder_vjeux_public_check_v1/submission.py",
+  "source": "experiments/scored_decoder_stack_m128_fullverify4_repeat_v1/submission.py",
+  "license": "MIT for transferred operatorstack kernels; Apache-2.0 vjeux base",
+  "sha256": "bcc74e1568000f1a3e1bac398118a54d1fafa34dfe8ed9f197d7f1198d2eb2fb",
+  "decision": "reject_regression",
+  "check_job_id": "a246d52c81b642a7",
+  "passed": true,
+  "speedup": 1.8532714131691217,
+  "speedup_ci": [1.8254723419715848, 1.8810704843666584],
+  "reason": "Correctness passed, but full-layer score regressed substantially versus the 2.0746x vjeux public baseline; do not submit."
+}

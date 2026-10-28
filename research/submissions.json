@@ -204,5 +204,312 @@
     "sha256": "994bff12c6678ce195b236d228993ef1d45ab374b63808a49eede3b63a890be3",
     "submitted_at": 1793010542.966172,
     "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "3659bd2bb1bb471f",
+    "experiment": "attention_ptx_merge_v1",
+    "sha256": "3f55081f7353d30fdb756df51943b2e7558c3e4463f0884d6547ee32acd825cb",
+    "submitted_at": 1793014894.7060215,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "79b879a926b14de9",
+    "experiment": "attention_verify_onehead_s2",
+    "sha256": "e6167cea08ed566e7644b72b98f3700be89930817b93c5aebec78f88401ee816",
+    "submitted_at": 1793031110.9483292,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "009d713f9a7b4307",
+    "experiment": "attention_verify_small128",
+    "sha256": "375242e65328a1d5776eb59b2b5e7a09676809031c6b8206b78ec1f72268f59e",
+    "submitted_at": 1793033239.7263663,
+    "status": "received"
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "3635720da43d4d58",
+    "experiment": "projection_router_direct_v1",
+    "sha256": "ce8bab35b4602d3e46c4c849650996fa3f0004d60200d92734cbbd2a97de426a",
+    "submitted_at": 1793038240.8315399,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "07e873299b754f80",
+    "experiment": "attention_transpose_selected",
+    "sha256": "0597abd272a11144e3c028f821602ecf3f055236542ce24575262362148b1fe6",
+    "submitted_at": 1793039916.0146592,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "15211631065242e0",
+    "experiment": "decoder_transpose_selected",
+    "sha256": "71347189df2e045aa8d4e342cd5d13239fc8791aa465dd3bfbf53b9cd0d58448",
+    "submitted_at": 1793040407.1147723,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "966fde6359c343d3",
+    "experiment": "attention_fp8p_cluster_v1",
+    "sha256": "4823f74b7fb8f4c8247f92a6a4c884f492750aaa3c7f74f86fc402a2864b9a02",
+    "submitted_at": 1793078809.1201184,
+    "status": "done",
+    "speedup": 1.7308386342365931,
+    "speedup_ci": [
+      1.7048760547230442,
+      1.7568012137501419
+    ],
+    "score_us": 2175.9971874334615
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "08d8cf0e6cb54ca8",
+    "experiment": "moe_bucket_row_m256_v1",
+    "sha256": "cc0a11862ff7d7a74db5b5289ad5a4376b5de5cee7ae981bed28beaede1e278e",
+    "submitted_at": 1793093795.1940994,
+    "status": "done",
+    "speedup": 1.9336267768042414,
+    "speedup_ci": [
+      1.9046223751521778,
+      1.9626311784563049
+    ],
+    "score_us": 6955.065042193255
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "642e499d9d8b475a",
+    "experiment": "decoder_pre_norm_overlap_v1",
+    "sha256": "225e947eb03af75b9cef8c4c398103373bae99102eedc4759876d91dc627a077",
+    "submitted_at": 1793098259.5500865,
+    "status": "done",
+    "speedup": 1.5467587609078337,
+    "speedup_ci": [
+      1.523557379494216,
+      1.569960142321451
+    ],
+    "score_us": 14624.323179345398
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "658927e88d4f4221",
+    "experiment": "projection_nathen_v18",
+    "sha256": "6a8f153a5cb6331c97c279bb732df4d3d8ea4b780be63daff310d398d9a80f06",
+    "submitted_at": 1793098620.1284661,
+    "status": "done",
+    "speedup": 1.5176841446072515,
+    "speedup_ci": [
+      1.4949188824381427,
+      1.54044940677636
+    ],
+    "score_us": 3183.0074901718904
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "6cfa2796327a4496",
+    "experiment": "decoder_public_projection_router_v2",
+    "sha256": "eca36c047514202813ddf2219c3f8507ab8865c9cf0a9de8ec9f8d4dee771f11",
+    "submitted_at": 1793108299.0072587,
+    "status": "done",
+    "speedup": 1.6473079752503683,
+    "speedup_ci": [
+      1.6225983556216128,
+      1.6720175948791236
+    ],
+    "score_us": 13731.676371300286
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "bf038389a64745fa",
+    "experiment": "attention_operatorstack_v1",
+    "sha256": "bf4a894e0f83577ca876105b05fc0467b6213ef86cee98d894f9590936d9280d",
+    "submitted_at": 1793119406.442866,
+    "status": "done",
+    "speedup": 1.7821934818145286,
+    "speedup_ci": [
+      1.7554605795873106,
+      1.814129284075899
+    ],
+    "score_us": 2113.2946778401224
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "df660fdeb1c241a7",
+    "experiment": "decoder_stack_v3",
+    "sha256": "1aac7a8e9c7b4318a236ff63cfc3849656ca4bbe1fa0d866be25b1002ca28e12",
+    "submitted_at": 1793119687.800064,
+    "status": "done",
+    "speedup": 1.7155856216851488,
+    "speedup_ci": [
+      1.6898518373598717,
+      1.741319406010426
+    ],
+    "score_us": 13185.176953034274
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "b34f8afca2b14db6",
+    "experiment": "attention_hybrid_verify_v2",
+    "sha256": "353743e6b08c054f7597f856f2b5d8e6dd04dcfe76f71541fbdd71df4932ca08",
+    "submitted_at": 1793119796.2601235,
+    "status": "done",
+    "speedup": 1.8672354966054887,
+    "speedup_ci": [
+      1.8392269641564063,
+      1.9031696048876752
+    ],
+    "score_us": 2017.0460591858316
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "a4b30b80345f499f",
+    "experiment": "moe_hybrid_m32_m128_v2",
+    "sha256": "d9184158a250bd6abe796fe52dd1fc52bd8b5ca15381855e24e40f5fa36ae8e4",
+    "submitted_at": 1793120373.2320142,
+    "status": "done",
+    "speedup": 1.9697822630811526,
+    "speedup_ci": [
+      1.9402355291349354,
+      1.9993289970273695
+    ],
+    "score_us": 6827.4043543085445
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "bd527bad057f4a6c",
+    "experiment": "attention_fullverify_split4_b32_v1",
+    "sha256": "aa1256f27082523dca6db9c9a5c7f2547509a44f48f18b37c4a3084de0db9d86",
+    "submitted_at": 1793136452.2252896,
+    "status": "done",
+    "score": 1.8684813158549356,
+    "speedup_ci": [
+      1.8404540961171116,
+      1.8965085355927596
+    ]
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "0dc7807a48754dfc",
+    "experiment": "decoder_stack_verify_bucket_v2",
+    "sha256": "c2ececd7c9af01b6c575ecb02f2bf1faf1d48f8242056bfe9e3df0d273206a68",
+    "submitted_at": 1793139826.3305357,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7204333856168732,
+    "speedup_ci": [
+      1.69462688483262,
+      1.7462398864011262
+    ]
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "d2dd2aec03f94dbf",
+    "experiment": "projection_stack_pool_unpool_v1",
+    "sha256": "b8f85e80b0b75ea75eb452d60bab7e49840c3151206712b72b72894661544b69",
+    "submitted_at": 1793140943.4574661,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.5345576789857185,
+    "score_us": 3148.00809780768
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "02a5d46d93f24780",
+    "experiment": "decoder_stack_cluster_sliding_v1",
+    "sha256": "775b0cc661b7407015b930a820ba0ea8f2dfedec5a1ec0c5d2d9083a0caa7423",
+    "submitted_at": 1793141274.8758192,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7084773836344118
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "f2718c5a01d54be8",
+    "experiment": "decoder_moe_hybrid_m32_v1",
+    "sha256": "9b528c6a0efa361881eb6655c750710e58fcbf03dab46572f131c50ac2a9a6d3",
+    "submitted_at": 1793144165.2331967,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7344236646771358,
+    "speedup_ci": [
+      1.7084073097069787,
+      1.7604400196472927
+    ]
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "59a0e628dd2142b9",
+    "experiment": "decoder_projection_stack_m256_m128_v1",
+    "sha256": "1cbebc6fd727d2c87c40073b6a585f99ec399641d3628d0fae364197dd65c431",
+    "submitted_at": 1793145275.3971813,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7317626049036743,
+    "speedup_ci": [
+      1.7057861658301192,
+      1.7577390439772291
+    ]
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "97f2d048d0674de9",
+    "experiment": "decoder_m128_operatorstack_stack_v3",
+    "sha256": "e39992a27f901ab359dc3a25cb17684dac4ad253caf5dd100c8d4afada0df7a7",
+    "submitted_at": 1793151029.632704,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7382092260901238
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "62c58c7e3c3d4305",
+    "experiment": "decoder_stack_m128_fullverify4_repeat_v1",
+    "sha256": "841aa48059c1ff7635d59ffbe31a9b71e90bc665c13dc7e7784180f14ec8c63e",
+    "submitted_at": 1793158274.2859533,
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7469483559774144,
+    "speedup_ci": [
+      1.720744130637753,
+      1.7731525813170754
+    ]
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "0d181df6ffc2480b",
+    "experiment": "attention_vjeux_public_check_v1",
+    "sha256": "ffc1c6bb4e95aa30390858eab4c43dbd592b2884b4fe3e54412282eaafdbebaa",
+    "submitted_at": 1793161648.464828,
+    "status": "done",
+    "passed": true,
+    "speedup": 2.5806379601901,
+    "score_us": 1459.4453224746642
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "a834a3c9bf6e44f6",
+    "experiment": "moe_vjeux_public_check_v1",
+    "sha256": "42ddf34e542c77b35906365338928c2de41600fb83db19425274b31015997073",
+    "submitted_at": 1793161858.4302747,
+    "status": "done",
+    "passed": true,
+    "speedup": 2.32631182330589,
+    "score_us": 5781.0392679380875
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "2a5a87f725fd47d2",
+    "experiment": "decoder_vjeux_public_check_v1",
+    "sha256": "a1875397e330a6a12f26aae756130eb77720c9958cf2fc89166e4dd4a820e9d2",
+    "submitted_at": 1793161863.52804,
+    "status": "done",
+    "passed": true,
+    "speedup": 2.074612918619454,
+    "score_us": 10903.383371897935
   }
 ]

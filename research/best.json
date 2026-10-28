@@ -1,54 +1,54 @@
 {
   "muse_bf16_proj": {
-    "experiment": "bf16c_v1",
-    "job_id": "5599a49bc7204354",
-    "sha256": "46f3850ab0e8ab8c5f1d89213580f26be41a4d0312128b89888b81e9477a5ff8",
-    "speedup": 1.1828780959828054,
+    "experiment": "projection_stack_pool_unpool_v1",
+    "job_id": "d2dd2aec03f94dbf",
+    "sha256": "b8f85e80b0b75ea75eb452d60bab7e49840c3151206712b72b72894661544b69",
+    "speedup": 1.5345576789857185,
     "speedup_ci": [
-      1.1651349245430633,
-      1.2006212674225474
+      1.5115393138009328,
+      1.5575760441705042
     ],
     "tests": 9,
     "timed_cases": 30,
-    "public_submission": "b2e959e036ad4661"
+    "public_submission": "d2dd2aec03f94dbf"
   },
   "muse_attention_decode": {
-    "experiment": "attn_wg5_v1",
-    "job_id": "cdf13472f3b94a09",
-    "sha256": "913bceb4410891b2a600abc6214e9c22d3f13b95389f9d305392e0c16fed5d49",
-    "speedup": 1.5460455687240349,
+    "experiment": "attention_vjeux_public_check_v1",
+    "job_id": "101c4ba595534e48",
+    "sha256": "ffc1c6bb4e95aa30390858eab4c43dbd592b2884b4fe3e54412282eaafdbebaa",
+    "speedup": 2.5731285410493276,
     "speedup_ci": [
-      1.5228548851931742,
-      1.5713339771922579
+      2.5345316129335878,
+      2.623874914895143
     ],
     "tests": 16,
     "timed_cases": 12,
-    "public_submission": "2073d6ba1f7e4551"
+    "public_submission": "0d181df6ffc2480b"
   },
   "muse_decode_layer": {
-    "experiment": "decoder_wm_v3",
-    "job_id": "70fa84a60f7c412e",
-    "sha256": "41f7cd0d8f7ba07f5be2c400ed68d8a127843051b7fb7a609884edb952c55a62",
-    "speedup": 1.516715395333216,
+    "experiment": "decoder_vjeux_public_check_v1",
+    "job_id": "f8542d44da634655",
+    "sha256": "a1875397e330a6a12f26aae756130eb77720c9958cf2fc89166e4dd4a820e9d2",
+    "speedup": 2.090913674082692,
     "speedup_ci": [
-      1.4939646644032176,
-      1.539466126263214
+      2.0595499689714516,
+      2.1222773791939322
     ],
     "tests": 13,
     "timed_cases": 12,
-    "public_submission": "7b274a6af2524ba3"
+    "public_submission": "2a5a87f725fd47d2"
   },
   "muse_moe_w4a16": {
-    "experiment": "moe_wm_v22",
-    "job_id": "3fa3bbfe4a10455f",
-    "sha256": "994bff12c6678ce195b236d228993ef1d45ab374b63808a49eede3b63a890be3",
-    "speedup": 1.9165561691684272,
+    "experiment": "moe_vjeux_public_check_v1",
+    "job_id": "de2c6cad047f4f59",
+    "sha256": "42ddf34e542c77b35906365338928c2de41600fb83db19425274b31015997073",
+    "speedup": 2.3260820114811405,
     "speedup_ci": [
-      1.8878078266309009,
-      1.9453045117059533
+      2.291190781308923,
+      2.3609732416533573
     ],
     "tests": 5,
     "timed_cases": 6,
-    "public_submission": "e820618c11e04fc7"
+    "public_submission": "a834a3c9bf6e44f6"
   }
 }

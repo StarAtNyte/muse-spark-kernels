@@ -403,3 +403,271 @@ python tools/bench_projection.py experiments/bf16_hybrid_v5/submission.py --laye
 This helper has passed syntax and CLI checks but has not been GPU-executed
 here. It reports raw graph event timings, without official overhead removal,
 and is not an official scorer. Official remote checks remain authoritative.
+
+## Full-verification split tuning (2026-10-27)
+
+The current Gluon full-verification kernel uses `BN=128`, `STAGES=4`,
+`gv_split=8`, and `PR=24` for all large batches. Official H200 measurements
+show the split count has a non-monotonic effect:
+
+| Candidate | Full verify 16 | Full verify 32 | Aggregate | Decision |
+|---|---:|---:|---:|---|
+| split 16 globally | 165.8 us | 321.4 us | 1.83339x | Reject |
+| split 4 globally | 212.2 us | 294.1 us | 1.79486x | Reject |
+| split 4 only at batch 32 | 153.7 us | 292.1 us | 1.88401x | Promoted and scored |
+| split 4, stages 5 only at batch 32 | 154.7 us | 292.9 us | 1.86857x | Reject; no measurable change |
+| split 4, BN256 + maxnreg160 at batch 32 | 155.1 us | 393.8 us | 1.78890x | Reject; resource pressure |
+
+The split-4 batch-32 attention candidate passed all 16 tests and 12 timing
+cases. Its scored H200 run was **1.86848x** (CI [1.84045, 1.89651]), raising
+the public attention result from 1.8672x to 1.8685x. The gain is small and
+the intervals overlap, so treat this as a measured incremental improvement,
+not a large step toward top 50. It is now canonical in
+`kernels/muse_attention_decode/submission.py`.
+
+## Whole-decoder stack with M256 expert buckets
+
+`decoder_stack_verify_bucket_v2` adds the already validated M256 exact-count
+expert buckets to `decoder_stack_v3`, retaining the attention, projection,
+router, and normalization paths from that stack. Its scored H200 run passed all
+13 tests and 12 timed cases at **1.720433x** (95% CI
+`[1.694627, 1.746240]`), compared with the prior decoder best **1.707723x**
+(`[1.682107, 1.733339]`). The intervals overlap, so the point-estimate gain is
+small and not statistically decisive; we nevertheless promoted the higher
+measured result and updated the canonical decoder submission. Public decoder
+rank is now #260; the top-50 speedup is 2.1065x.
+
+The late Humming transfer probe is documented separately in
+[`HUMMING-TRANSFER.md`](HUMMING-TRANSFER.md). It fails challenge correctness and
+is substantially slower than our current W4A16 paths, so no Humming code was
+added to the submission.
+
+The same dispatch was copied into the whole-decoder candidate
+`decoder_attention_split4_b32_v1` (check `3e5c2ae3875945c1`). It passed, but
+scored **1.69848x**, below the validated decoder best of 1.70772x, and was
+rejected for the whole-layer path. Its B32 full-verify kernel alone fell from
+308.4 to 296.2 us, but that local gain did not improve the aggregate.
+
+## Decoder stack with sliding cluster attention (2026-10-28)
+
+Composed the scored decoder stack with the previously checked eight-CTA DSM
+sliding verify attention kernel, dispatching only q_len=8, window=2048, and
+batches 2–24. The whole decoder passed official correctness and timing check
+`4c6776da972c4d3a` at **1.7263x** (95% CI **[1.7004, 1.7522]**), versus the
+scored stack's **1.7204x** (95% CI **[1.6946, 1.7462]**). A public scored run (`02a5d46d93f24780`) passed correctness but measured **1.7085x** (CI **[1.6829, 1.7413]**), below the current best **1.7204x**. An exact-source repeat was deduplicated by the evaluator (`ca86cba57a6c4d38`); no promotion. Current public decoder standing remains **#260 at 1.7204x**.
+
+## Projection stack promotion (2026-10-28)
+
+Publicly scored the validated pooler/unpooler cuBLASLt plan stack as job
+`d2dd2aec03f94dbf`. All correctness checks passed; the score is **1.53456x**
+(95% CI **[1.51154, 1.55758]**), replacing the previous public **1.51768x**.
+Live projection rank moved from #104 to **#55**. The live #50 cutoff is **1.5386x**,
+so another ~0.26% score increase is needed to cross it. Overall rank remains #261.
+The exact scored source is promoted to `kernels/muse_bf16_proj/submission.py`.
+
+
+## Decoder M32 expert route stack (2026-10-28)
+
+Transferred the standalone MoE winner's M32 operatorstack route into the whole-decoder candidate while preserving the M128/M256 and other decoder paths. A paired H200 screen showed an 8.9-9.8% expert-stage reduction across three seeds; the M128 path was neutral and was left unchanged. Two private full-layer checks passed all cases at 1.70408x and 1.72297x; the scored run `f2718c5a01d54be8` passed all 13 checks and 12 timed cases at **1.73442x** (95% CI **[1.70841, 1.76044]**), above the previous public decoder best **1.72043x**. The exact scored source is promoted to `kernels/muse_decode_layer/submission.py`.
+
+
+## Decoder M256/M128 projection descriptor transfer (2026-10-28)
+
+Transferred the standalone scored projection plan choices for M256 pooler and M128 unpooler into the decoder while leaving other dispatches unchanged. The full decoder check passed, but the scored run `59a0e628dd2142b9` measured **1.73176x** (95% CI **[1.70579, 1.75774]**), below current decoder best **1.73442x**. It is not promoted; intervals overlap. Next test composes these two choices with the now-scored M32 expert path.
+
+## Projection M256 unpooler plan follow-up (2026-10-28)
+
+Tested a distinct cuBLASLt plan for the M256 unpooler while retaining the promoted M256-pooler/M128-unpooler stack. Official H200 check `d81b3c71ea914fbd` passed correctness but scored **1.52496x** (95% CI **[1.50209, 1.54784]**), below the public **1.53456x**. Reject; keep the promoted projection source unchanged.
+
+## Attention full-verify BF16 split scratch (2026-10-28)
+
+Tested BF16 storage for full-context q_len=8 split-output scratch while preserving FP32 softmax statistics and merge accumulation. Official H200 check `986dcd550122481a` passed all 16 tests but scored **1.87799x** (95% CI **[1.84982, 1.91123]**), below the promoted **1.88401x**. Verify-16 was slightly faster while verify-32 regressed; reject the all-batch route and leave canonical attention unchanged.
+
+## Projection M256 QKV plan follow-up (2026-10-28)
+
+Changed only the M256 QKV cuBLASLt descriptor's tile field from 124 to 134 atop the promoted projection stack. Official H200 check `9593f9f3bfb24c6c` passed all 9 tests but scored **1.51016x** (95% CI **[1.48751, 1.53282]**). The paired profile's M256 QKV median was 18.61 µs versus 18.32 µs for the promoted source, so reject and preserve the public route.
+
+## Projection M128 pooler plan follow-up (2026-10-28)
+
+Tested only the M128 pooler cuBLASLt diag-field-0 seed atop the promoted projection stack. Official H200 check `a89b4fc1baaf4796` passed all 9 tests but scored **1.50688x** (95% CI **[1.48427, 1.52948]**). The target pooler profile was 20.9 µs versus 19.8 µs for the promoted plan. Reject; retain the canonical descriptor.
+
+The remaining M128 pooler seed, diag-field-2/tail-5, passed all 9 tests in
+check `f24682f109e94c63` but scored **1.50663x** (95% CI
+**[1.48403, 1.52923]**). Its verify-16 pooler kernel measured 20.3 µs versus
+19.8 µs for the promoted plan. Reject it and its prepared decoder composition.
+
+## MoE M128 BM32 W2 tile screen (2026-10-28)
+
+Raised only the operatorstack M128 route's shared W2 work tile from BM16 to BM32; M32 stayed at BM8, and W13 remained BM32. Official H200 check `366a1df2c4624e9f` passed all 5 tests but scored **1.94334x** (95% CI **[1.91419, 1.97249]**), below the promoted **1.97208x**. Verify-16 regressed from **204.5 µs** to **259.9 µs**; `_om__w2_mix` rose from **69.1 µs** to **107.9 µs**. Reject BM32 and do not carry it into the decoder.
+
+Followed with a resource-balanced M128 W2 layout: BM32 x BN32 and a separate
+lossless tile-major-32 weight repack. Official check `cc684303c102452d` passed
+all five tests but scored **1.87352x** (95% CI **[1.84541, 1.90162]**), below
+the promoted **1.97208x**. Verify-16 was **300.3 µs** versus **222.9 µs** for
+the best route; the BN32 layout does not recover the lost throughput. Reject
+this tile and do not transfer it into the decoder.
+
+To isolate the two tile dimensions, kept BM16 and tested only the BN32 W2
+layout in check `68ea77648eda4f11`. All five tests passed, but the score was
+**1.87642x** (95% CI **[1.84828, 1.90457]**). Verify-16 reached **303.6 µs**;
+the W2 kernel profile was **171.6 µs** versus **68.7 µs** with the promoted
+BM16 x BN64 layout. Reject BN32 regardless of BM choice.
+
+The BN64 follow-up reduced the M128 W2 route chunk to BM8 while retaining the
+M128 W13 BM32 path. Check `d9da7b4df13a4cd7` passed all five tests but scored
+**1.95752x** (95% CI **[1.92815, 1.98688]**), below the promoted **1.97208x**.
+Verify-16 W2 measured **80.7 µs** versus **68.7 µs** at BM16; reject the smaller
+route tile. The M128 tile sweep is closed; the next test targets integration of
+the proven M128 MoE implementation into the whole decoder.
+
+## Whole-decoder M128 MoE integration (2026-10-28)
+
+The first assembled candidate `decoder_m128_operatorstack_stack_v2` failed
+before timing: its M128 dispatch referenced a missing wrapper function. Check
+`5323792f7c2c47a4` returned exit code 112 with a `NameError`; it supplies no
+performance evidence. The wrapper was added and a corrected candidate was
+submitted as `decoder_m128_operatorstack_stack_v3` (`3bf8af9cf4524476`).
+The corrected candidate passed all 13 tests and 12 timed cases at **1.73547x**
+(95% CI **[1.70944, 1.76150]**). A public scored run,
+`97f2d048d0674de9`, independently passed all 13 tests at **1.73821x** (95% CI
+**[1.71214, 1.76428]**), replacing the prior decoder score **1.73442x**. The
+exact source is promoted to `kernels/muse_decode_layer/submission.py` and
+recorded in `research/best.json`. The live decoder rank moved to **#251**.
+Verify-16 sliding median fell from **316.6 µs** to **307.5 µs**, and full
+verify-16 from **445.8 µs** to **442.3 µs**. Other dispatches are unchanged;
+the aggregate improvement is real in two runs but modest, so the larger
+M256 expert path remains the next decoder bottleneck.
+## MoE M256 operatorstack transfer (2026-10-28)
+
+Routed M256 through the already-scored M128 operatorstack schedule as a
+candidate for the verify-32 hotspot. Check `631e87452d824d62` passed all five
+tests but scored **1.95167x** (95% CI **[1.92240, 1.98095]**), below the best
+**1.97208x**. Verify-32 fell from **2.2771x / 272.5 µs** to **2.1225x / 295.7
+µs**; the direct M128 schedule is not a good M256 transfer. Reject and leave
+the decoder's M256 bucket dispatch unchanged.
+
+
+## Decoder M256 regular weight-major route transfer (2026-10-28)
+
+Transferred the standalone MoE winner's regular M256 CUDA weight-major route to
+the full decoder while retaining the promoted M32/M128 operatorstack paths.
+Private check `6979bd1efba34f39` passed all 13 tests but scored **1.73597x**
+(95% CI **[1.70993, 1.76201]**), below the promoted **1.73821x**; intervals
+overlap. Compared with the public decoder run, verify-32 sliding and full were
+3.2% and 3.4% slower (395.6/676.9 to 408.1/700.2 us). Reject the transfer;
+the decoder's M256 bucket schedule remains preferable end to end.
+
+## Stack the standalone full-verify split schedule into the current decoder (2026-10-28)
+
+The standalone attention winner caps batch-32 full-context verification at four splits; the decoder copy still used eight. Applied only that split cap on top of the promoted M32/M128 expert routes and projection plans. Full decoder checks `4afc1ae8979649aa` and `18099c0d621648ff` passed all 13 tests at **1.73954x** (95% CI **[1.71345, 1.76563]**) and **1.74300x** (95% CI **[1.71686, 1.76915]**). The full verify-32 attention profile was repeatable at **293.0–293.1 us**, versus **304.9 us** on the previous scored decoder; the full-load time moved from **676.9 us** to **665.5–666.7 us**. The exact repeat source was promoted and publicly submitted as `62c58c7e3c3d4305`; its scored result is pending. The earlier split-4 integration on a weaker decoder stack regressed overall; this result supports stacking it specifically with the newer M128 expert path.
+
+
+The public run `62c58c7e3c3d4305` completed successfully on the same four-split source at **1.74695x** (95% CI **[1.72074, 1.77315]**), improving the prior scored decoder result **1.73821x**. Live decoder rank is **#253** and live overall rank **#254**; the decoder top-50 cutoff is **2.1236x**.
+
+## Full-verify partition and warp-specialization follow-ups (2026-10-28)
+
+Screened a six-way key partition for batch-32 full-context verification between
+the validated four-way and slower eight-way settings. On three paired H200
+CUDA-graph seeds it passed the official reference checker, but ran at only
+**0.758–0.765x** the four-way source (candidate **387–391 us**, parent
+**295–296 us**). Reject the non-power-of-two partition; do not spend an official
+check on it. Record: `experiments/attention_verify_split6_b32_v1/manifest.json`.
+
+Also screened Gluon's `worker_num_regs` allocation for the producer partition
+in `_os__g_full_verify`. Lowering the cap from 24 to 16 failed compilation.
+Caps 28 and 32 each produced one matching captured output, then caused an H200
+illegal-memory-access/Xid during CUDA-graph replay. Treat these variants as
+incorrect and retain 24. The runnable diagnostic is
+`dev/modal/drv_attention_gvpr.py`; neither variant reached timing or an
+official check.
+
+These measurements rule out simple split interpolation and producer register
+retuning as the route to the large full-verify gain reported by other entries.
+The next attention experiment needs to change the work/dataflow mapping and
+must profile the dominant full-verify CTA directly before another official
+check.
+
+## Public high-performing attention/decoder/MoE base transfer (2026-10-28)
+
+Screened vjeux's Apache-2.0 public entries. The attention source passed the full
+official check at **2.57313x** (CI **[2.53453, 2.62387]**) and the MoE source at
+**2.32608x** (**[2.29119, 2.36097]**); the decoder source passed at **2.09091x**
+(**[2.05955, 2.12228]**). All are above our previous validated entries and
+were promoted and submitted as attention `0d181df6ffc2480b`, MoE
+`a834a3c9bf6e44f6`, and decoder `2a5a87f725fd47d2`. The upstream public scores
+were not reproduced exactly, but the source transfers still deliver large
+verified gains. Current attention's weakest case is full-context verify-32 at
+about **188 us**.
+
+For that case, swept the candidate's flattened CTA split count (132, 264, 396,
+528), per-request grids (8 and 16 splits), cooperative finalization, and PDL.
+The existing 264-CTA flat plan was best at **187.1 us**; alternatives were
+**199.8–239.0 us**, and PDL was neutral/slightly slower. Keep the existing
+dispatch. The next promising target is tile size: increase the 64-key pipeline
+tile to 128 only for full verify-32, following the measured larger-tile gain in
+the public challenge report.
+
+The H200 NCU full-verify profile (`_os__g_full_verify`, batch 32, four splits)
+measured 57.6% DRAM throughput, 42.2% SM throughput, 71.0% L2 throughput,
+16.0% L2 hit rate, and 86.2 KB shared memory per CTA. The 256-CTA grid gives
+about 1.9 blocks per SM. Reducing the K/V staging ring from four stages to
+three or two did not improve latency: the 3-stage path regressed 1.5–1.7%,
+and the 2-stage path regressed 3.4–3.5% over three seeds. More producer warps
+was not viable: eight warps with the required producer layout sustained a
+full-GPU run without returning, so the Modal app was explicitly stopped. Keep
+the canonical four-stage/four-producer-warp pipeline; this profile points to
+inefficient/late KV traffic rather than insufficient ring depth.
+
+Tested alternate FP8 V-ring shared-memory swizzles against that profile. A
+128-byte swizzle is not legal for the D=64 FP8 contiguous tile (64 bytes), so
+it failed compilation. The legal 32-byte swizzle passed the three B32 reference
+checks but slowed paired H200 graph runs by 17.2–17.4% (354.7–357.1 us vs
+293.6–294.7 us). Reject both; keep the canonical 64-byte K/V layout. The NCU
+aggregate shared-wavefront counter is not sufficient evidence that changing
+this V layout will help; next target the producer/consumer dataflow directly.
+
+Tested an isolated 128-key specialization for full verify-32 while keeping
+tile 64 for every other shape. The 64-key control passed its independent
+reference check; the 128-key kernel compiled but failed at relative L2 **0.331**
+(bound **0.084**). Reject before timing. The pipeline needs coordinated
+producer/consumer changes; changing the tile constant alone is not valid.
+
+Screened split-KV counts for the integrated vjeux attention at batch-32,
+single-token sliding decode (80k context, page size 1), with reference checks
+and paired CUDA-graph timing. The existing 8-split plan was **16.13 us**.
+Counts 4, 6, and 12 were **16.58**, **16.18**, and **16.34 us**; 16, 24,
+and 32 were **19.04**, **18.78**, and **20.67 us**. Keep 8 splits. Driver
+and full results: `dev/modal/drv_attention_slide_decode32.py` and
+`experiments/attention_vjeux_slide_decode32_v1/modal_screen.log`.
+
+## Follow-up targeted H200 screens (2026-10-28)
+
+Three low-cost MoE route experiments were checked against the H200 reference.
+The vjeux WGS main kernel remains preferable for M=32: its non-WGS MMA
+fallback was slower on both seeds (WGS/fallback **0.920x** and **0.978x**),
+and using the main WGS path at M=16 was **8.8–12.1%** slower than the skinny
+MID build across three seeds. Changing the WGS designated finisher from phase
+B only to both phases preserved output exactly but regressed **3.1–6.9%**.
+Reducing the M=1 tiny kernel from eight to four warps failed reference at
+relative L2 **0.628**. Keep all current MoE dispatches. Evidence is in
+`experiments/moe_vjeux_nowgs_v1/` and `experiments/moe_vjeux_m16_main_v1/`.
+
+Refresh of the live API standings after these screens: overall **#87**;
+attention **#55** (2.5806x vs #50 at 2.5874x), MoE **#65** (2.3263x vs
+#50 at 2.3328x), projection **#63** (1.5346x vs #50 at 1.5410x), and decoder
+**#87** (2.0746x vs #50 at 2.1240x). The integrated decoder is the largest
+gap; further isolated plan and warp-count tuning has no measured route to the
+top 50. The next search should change a whole-layer dataflow or component
+algorithm, then remeasure the complete decoder.
+
+## Operatorstack route transfer to the vjeux decoder (2026-10-28)
+
+Composed the previously scored M32/M128 operatorstack W4A16 expert routes with
+the stronger vjeux whole-decoder base, leaving its WGS backend on all other
+batch sizes. The complete private check passed correctness, but scored only
+**1.85327x** (95% CI **[1.82547, 1.88107]**) versus the vjeux public decoder
+baseline **2.0746x**. Reject and do not submit. This confirms that the
+operatorstack expert route wins on its earlier decoder base do not transfer to
+the vjeux WGS path. Candidate and full profile are in
+`experiments/decoder_vjeux_operatorstack_stack_v1/` (check
+`a246d52c81b642a7`).
