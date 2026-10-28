@@ -925,3 +925,7 @@ A fourth activation slot alone exceeds H200 shared memory, so a paired screen ex
 ## WGS commit-group size screen (2026-10-28)
 
 On H200, changing `OKC_WGSGS` from 2 to 1 passed all six reference checks bitwise but was **0.3–1.9% slower** across M32/M128/M256 and two seeds. Retain group size 2. Exact driver, parent, and raw log: `experiments/moe_wgs_gs1_v1/`; the inherited `gath2_us` label denotes the GS=1 candidate.
+
+## WGS early split-fixup screen (2026-10-28)
+
+Moving `OKC_WGSFCI` from 3 to 0 passed all six H200 reference checks bitwise. Paired base/candidate ratios ranged **0.992–1.006x**, with mixed signs; no reliable gain. Keep 3. Exact driver, parent and raw log are in `experiments/moe_wgs_fci0_v1/`; the inherited `gath2_us` label denotes FCI=0.

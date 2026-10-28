@@ -1,0 +1,19 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Move deferred split-unit fixup earlier to change its overlap with WGMMA.",
+  "change": "OKC_WGSFCI 3 -> 0",
+  "driver": "dev/modal/drv_moe_wgs_fci0.py",
+  "modal_app": "ap-7UXSfOV3ArOZTf5tYAQvMN",
+  "reference_passed": true,
+  "relative_l2": 0,
+  "base_over_candidate": [
+    1.0009468071,
+    1.0057577903,
+    0.999095611,
+    1.0017566184,
+    0.997944258,
+    0.9924733293
+  ],
+  "decision": "reject_inconclusive",
+  "note": "Inherited gath2_us label denotes the FCI=0 candidate."
+}
