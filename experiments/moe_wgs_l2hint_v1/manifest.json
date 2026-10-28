@@ -1,0 +1,9 @@
+{
+  "name": "moe_wgs_l2hint_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Removing the explicit TMA L2 cache hint on WGS weight copies may improve cache residency and reduce memory pressure for the scored large-weight path.",
+  "decision": "rejected",
+  "result": "All six output comparisons passed reference. Disabling the explicit TMA L2 cache hint regressed every batch/seed pair, by up to 5.5% at batch 256. Keep the current hint.",
+  "change": "Compile the WGS main kernel with OKC_L2H=0; dataflow and layouts unchanged."
+}

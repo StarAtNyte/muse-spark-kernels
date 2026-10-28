@@ -708,3 +708,12 @@ shared-memory use. All six outputs passed reference checks. It regressed 3-5%
 at batch 32, 5-10% at batch 128, and 12-18% at batch 256, consistent with
 less weight reuse and extra scheduling overhead outweighing the smaller tile.
 Reject; keep `FT_T=64`. Exact times: `experiments/moe_wgs_ft32_v1/`.
+
+## MoE WGS TMA cache-hint follow-up (2026-10-28)
+
+Given the high L2 traffic in the Nsight profile, disabled the explicit TMA L2
+cache hint for WGS weight copies. All six H200 reference comparisons were
+bitwise identical, but CUDA-graph timings regressed on every batch/seed pair:
+0.3-0.9% at batch 32, 2.3-3.2% at batch 128, and 3.1-5.5% at batch 256.
+Reject; preserve the current cache hint. Exact measurements are in
+`experiments/moe_wgs_l2hint_v1/`.

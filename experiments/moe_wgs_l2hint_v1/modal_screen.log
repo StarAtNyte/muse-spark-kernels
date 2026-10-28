@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed all six batch/seed pairs; outputs were bitwise identical.
+Baseline source: kernels/muse_moe_w4a16/submission.py. Candidate compiles the WGS main kernel with OKC_L2H=0, removing the explicit TMA L2 cache hint from weight copies.
+
+batch seed baseline_us candidate_us baseline/candidate relative_l2
+32 419 134.624 136.160 0.99663 0
+32 7919 154.864 157.200 0.99145 0
+128 419 197.072 202.256 0.97715 0
+128 7919 192.448 199.120 0.96770 0
+256 419 233.360 246.064 0.94545 0
+256 7919 216.704 224.208 0.96864 0
+
+Decision: reject. The current explicit cache hint is faster across all batches and seeds.
