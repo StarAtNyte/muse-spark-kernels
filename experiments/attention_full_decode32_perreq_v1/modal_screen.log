@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed every candidate on both seeds.
+Current route: flat, 264 CTAs. Candidate path: per-request split-KV for B=32, q_len=1, full context.
+
+seed plan base_us candidate_us speedup
+539 per-request 8 splits, nc=4 180.368 187.888 0.95956
+539 per-request 16 splits, nc=1 180.304 224.848 0.80210
+539 per-request 4 splits, nc=1 180.624 247.440 0.73053
+1427 per-request 8 splits, nc=4 177.344 183.840 0.96216
+1427 per-request 16 splits, nc=1 177.968 220.992 0.80463
+1427 per-request 4 splits, nc=1 178.480 245.120 0.72821
+
+Decision: reject. Flat partitioning is substantially faster for full decode B=32; retain current routing.

@@ -728,3 +728,13 @@ app to cap spend. Treat this as inconclusive, not a kernel regression; the
 candidate and full stop record are in
 `experiments/moe_wgs_ft128_nx1_v1/`. Any follow-up needs a bounded compile step
 before allocating another H200.
+
+## Full-context decode-32 attention partition follow-up (2026-10-28)
+
+The full-verify B32 per-request split screen had already favored the flat
+partition, but the decode kernel uses q_len 1 and a different CTA shape. Tested
+per-request split-KV on this separate high-share shape. On two paired H200
+seeds, the default 8-split per-request plan was 3.8-4.0% slower than the
+current flat 264-CTA plan; 16 splits were about 20% slower and 4 splits about
+27% slower. All candidate outputs passed reference. Keep the flat plan. Logs
+and source are in `experiments/attention_full_decode32_perreq_v1/`.

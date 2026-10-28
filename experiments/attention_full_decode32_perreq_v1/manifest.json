@@ -1,0 +1,9 @@
+{
+  "name": "attention_full_decode32_perreq_v1",
+  "problem": "muse_attention_decode",
+  "parent": "scored_attention_vjeux_public_check_v1",
+  "hypothesis": "Full-context q_len-1 decode at batch 32 may benefit from per-request split-KV, avoiding the flat kernel's virtual-segment mapping; the previous per-request screen covered q_len-8 verify only.",
+  "decision": "rejected",
+  "result": "Reference checks passed on both seeds. Per-request 8 splits regressed about 4%; 16 splits regressed about 20%; 4 splits regressed about 27%. Keep the 264-CTA flat plan.",
+  "change": "For B=32, q_len=1, full context only, skip flat launch and use the existing per-request split heuristic."
+}
