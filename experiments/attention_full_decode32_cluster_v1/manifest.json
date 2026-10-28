@@ -1,0 +1,9 @@
+{
+  "name": "attention_full_decode32_cluster_v1",
+  "problem": "muse_attention_decode",
+  "parent": "scored_attention_vjeux_public_check_v1",
+  "hypothesis": "Clustered split-KV for B32 full q_len-1 may use Hopper DSMEM to combine local split outputs and increase key-level parallelism without the global flat partition.",
+  "decision": "rejected",
+  "result": "All tested cluster variants passed reference. They were 14-24% slower than flat 264 CTAs on both seeds; keep flat reduction for full decode B=32.",
+  "change": "Compare several per-request cluster grids against the current flat 264-CTA route."
+}

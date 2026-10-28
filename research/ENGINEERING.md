@@ -758,3 +758,13 @@ q_len 1; q_len 8 uses 600. Tested 600 for the batch-32 full-context decode
 shape against the current 400 on three paired H200 seeds. All reference checks
 passed, but results were neutral (speed ratios 1.0016x, 1.0003x, 0.9952x).
 Keep 400. Evidence: `experiments/attention_full_decode32_segk600_v1/`.
+
+## Full-context decode-32 clustered split-KV attempt (2026-10-28)
+
+Tested Hopper DSMEM cluster reductions as an alternative to the full-decode
+flat global partition at B32, q_len 1. All four cluster configurations passed
+reference on two H200 seeds, but were 14-24% slower than flat 264 CTAs. The
+cluster path does not amortize its synchronization and local reduction costs
+for this workload. Reject; keep flat. Plans and timings are in
+`experiments/attention_full_decode32_cluster_v1/` and the driver is
+`dev/modal/drv_attention_full_decode32_cluster.py`.

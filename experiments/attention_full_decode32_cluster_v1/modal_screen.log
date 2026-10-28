@@ -1,0 +1,14 @@
+Modal H200 paired CUDA-graph screen; all cluster candidates passed reference checks on both seeds.
+Current route: flat=1, 264 CTAs.
+
+seed plan base_us candidate_us speedup
+539 cluster cs8/splits32/ncl4/nc4 179.632 208.320 0.86042
+539 cluster cs8/splits16/ncl2/nc2 180.000 234.896 0.76718
+539 cluster cs16/splits32/ncl2/nc2 180.432 230.080 0.78218
+539 cluster cs4/splits16/ncl4/nc4 180.384 231.264 0.77868
+1427 cluster cs8/splits32/ncl4/nc4 177.984 206.816 0.86076
+1427 cluster cs8/splits16/ncl2/nc2 178.368 229.600 0.77531
+1427 cluster cs16/splits32/ncl2/nc2 178.240 225.936 0.78847
+1427 cluster cs4/splits16/ncl4/nc4 178.672 227.488 0.78487
+
+Decision: reject. DSMEM cluster reduction loses to the flat plan on full decode B=32; retain the flat route.
