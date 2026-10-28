@@ -943,3 +943,5 @@ The scored projection hybrid `beb3e26afb2544c9` passed at **1.53951x** (95% CI [
 ## Four-route projection hybrid (2026-10-28)
 
 CUDA 13 H200 paired screens favored vjeux M1 unpooler by **4.3%** and M256 router by **10.0%** across two seeds; M1 qkv, M1 router and M8 unpooler were neutral or slower. The hybrid adding those two shapes passed check `4759f26857a74c46` at **1.52412x** (95% CI [1.50126, 1.54698]), versus **1.52701x** parent check; target M1 unpooler was **3.58 vs 3.95 us** and M256 router **6.73 vs 8.21 us**. The aggregate intervals overlap, and the exact checked source was submitted as `4ed546f6ab2748cb` (pending). Source, check, and paired logs: `experiments/projection_vjeux_stack_four_routes_v1/`.
+
+The scored four-route projection submission `4ed546f6ab2748cb` passed at **1.51826x** (95% CI [1.49549, 1.54103]), below the public **1.53951x**. Restored the prior scored hybrid as canonical. Source, result and profiles: `experiments/scored_projection_four_routes_v1/`.

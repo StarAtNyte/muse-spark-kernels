@@ -7230,6 +7230,6 @@ def prepare(weights):
     return state
 def kernel_fn(data, state):
     cfg = data["config"]
-    if (cfg["m"], cfg["layer"]) in ((32, "pooler"), (128, "router"), (1, "unpooler"), (256, "router")):
+    if (cfg["m"], cfg["layer"]) in ((32, "pooler"), (128, "router")):
         return _hybrid_vjeux.kernel_fn(data, state["vjeux_hybrid"])
     return _hybrid_base_kernel(data, state)
