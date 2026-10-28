@@ -5,5 +5,13 @@
   "hypothesis": "Raise attention split penalty from 0.02 to 0.20 to reduce merge traffic; full check measures lost parallelism against saved merge work.",
   "sha256": "d775cc88bb4f55993f2606f20ddc0dc8191de7b5067aa62b4ad4607fcb115992",
   "job_id": "2f13c4c92c8f4549",
-  "status": "pending"
+  "status": "done",
+  "passed": true,
+  "speedup": 1.8039581492074255,
+  "speedup_ci": [
+    1.776898776969314,
+    1.8310175214455366
+  ],
+  "decision": "reject_no_scored_dispatch_change",
+  "reason": "For scored shapes, base grid 64 selects two splits for both penalties, base 256 selects one, and the 16384-token shapes bypass splitting. Score difference is run variation."
 }

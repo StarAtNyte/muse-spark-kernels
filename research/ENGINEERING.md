@@ -885,3 +885,7 @@ pending. Exact source, judge profile, and status are in
 Job `68ac9af85a3a4e3d` passed at **1.78740x** (95% CI [1.76059, 1.81421]). The board displayed #50 at 1.7847x, but did not yet return our row. Rank is unconfirmed. The scored source, status and profile are in `experiments/scored_prefill_vjeux_v1/`.
 
 The leaderboard subsequently published this result at **#49**, with #50 at 1.7847x (snapshot 2026-10-28).
+
+## Prefill attention split penalty screen (2026-10-28)
+
+Check `2f13c4c92c8f4549` passed at **1.80396x** (95% CI [1.77690, 1.83102]). The 0.20 penalty selects the same scored-shape split counts as 0.02: B1/T753 uses two, B4/T753 uses one, and T16384 bypasses splitting. Therefore the score change from the parent check 1.79783x is timing variation, not a measured improvement. Reject and keep the scored source. Exact candidate and status: `experiments/prefill_split_penalty20_v1/`.
