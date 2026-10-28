@@ -929,3 +929,7 @@ On H200, changing `OKC_WGSGS` from 2 to 1 passed all six reference checks bitwis
 ## WGS early split-fixup screen (2026-10-28)
 
 Moving `OKC_WGSFCI` from 3 to 0 passed all six H200 reference checks bitwise. Paired base/candidate ratios ranged **0.992–1.006x**, with mixed signs; no reliable gain. Keep 3. Exact driver, parent and raw log are in `experiments/moe_wgs_fci0_v1/`; the inherited `gath2_us` label denotes FCI=0.
+
+## Vjeux public projection shape screen (2026-10-28)
+
+Official check `84bf7ad63c6c4d0a` passed at **1.49235x** (95% CI [1.46996, 1.51474]). Separate-run comparisons against our 1.53456x public source suggest M32 qkv/pooler/unpooler and M128 router may be faster, but are not paired. The Modal paired attempt failed before measurement because our parent links `libcublasLt.so.13` and the CUDA 12.8 image lacks it. No shape was promoted. Candidate, full check, driver and setup failure are in `experiments/projection_vjeux_public_screen_v1/` and `dev/modal/drv_projection_vjeux_pair.py`. Next run requires a compatible cuBLASLt 13 environment.

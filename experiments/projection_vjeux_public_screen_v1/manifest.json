@@ -1,0 +1,17 @@
+{
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Check vjeux public projection source and compare per-shape timings against our published stack for integration candidates.",
+  "upstream": "https://github.com/vjeux/okc-2026",
+  "license": "Apache-2.0",
+  "sha256": "c1dd241c0c08b42fddfa7bc9656d0f596b59bb13005c50c0db4418d9f2f1dc7e",
+  "job_id": "84bf7ad63c6c4d0a",
+  "status": "done",
+  "passed": true,
+  "speedup": 1.4923498801742114,
+  "speedup_ci": [
+    1.4699646319715982,
+    1.5147351283768244
+  ],
+  "decision": "per_shape_pair_inconclusive",
+  "reason": "Separate judge runs suggest M32 qkv/pooler/unpooler and M128 router may improve, but paired Modal setup failed because the parent requires libcublasLt.so.13 and image only provides 12."
+}

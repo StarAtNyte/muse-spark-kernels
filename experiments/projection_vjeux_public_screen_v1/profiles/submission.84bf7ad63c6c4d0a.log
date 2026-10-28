@@ -1,0 +1,30 @@
+[okc] tune qkv_gate m=1: cgemv=12.38 sk2=12.9 torch=17.7 -> cgemv
+[okc] tune o m=1: cgemv=8.51 sk2=9.18 torch=9.95 -> cgemv
+[okc] tune pooler m=1: cgemv=17.06 sk2=17.79 torch=24.67 -> cgemv
+[okc] tune unpooler m=1: cgemv=6.88 sgemv=7.1 sk2=7.71 torch=10.18 -> cgemv
+[okc] tune router m=1: rgemv=6.98 sk2=8.19 torch=17.66 -> rgemv
+[okc] tune qkv_gate m=16: sk2=12.86 torch=17.38 -> sk2
+[okc] tune o m=16: sk2=9.25 torch=9.86 -> sk2
+[okc] tune pooler m=16: sk2=17.92 torch=24.77 -> sk2
+[okc] tune unpooler m=16: sk2=17.38 torch=22.11 -> sk2
+[okc] tune router m=16: sk2=8.16 torch=18.24 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.43 torch=17.41 -> sk2
+[okc] tune o m=32: sk2=9.15 torch=9.98 -> sk2
+[okc] tune pooler m=32: sk2=18.69 torch=25.31 -> sk2
+[okc] tune unpooler m=32: sk2=18.14 torch=22.37 -> sk2
+[okc] tune router m=32: sk2=8.74 torch=18.53 -> sk2
+[okc] tune qkv_gate m=8: sk2=12.77 torch=17.86 -> sk2
+[okc] tune o m=8: sk2=9.12 torch=9.79 -> sk2
+[okc] tune pooler m=8: sk2=17.73 torch=24.8 -> sk2
+[okc] tune unpooler m=8: sk2=7.78 torch=10.24 -> sk2
+[okc] tune router m=8: sk2=8.32 torch=18.02 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.02 torch=20.45 -> gqx
+[okc] tune o m=128: torch=10.62 torchT=10.66 -> torch
+[okc] tune pooler m=128: gq=25.25 torch=28.13 -> gq
+[okc] tune unpooler m=128: torch=23.9 torchT=22.59 -> torchT
+[okc] tune router m=128: rk=9.44 wide=12.19 gemm=13.34 torch=19.55 -> rk
+[okc] tune o m=256: torch=12.67 torchT=12.35 -> torchT
+[okc] tune pooler m=256: torch=34.72 cutlass=30.69 -> cutlass
+[okc] tune unpooler m=256: torch=27.78 torchT=27.55 -> torchT
+[okc] tune router m=256: rk=10.34 wide=13.22 gemm=17.09 torch=20.7 -> rk
+[okc] disabled: []
