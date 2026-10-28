@@ -1,5 +1,18 @@
 # H200 optimization notebook
 
+## Experiment record standard
+
+Keep a durable record for every optimization screen, including experiments
+that fail to compile or pass correctness. Each `experiments/<name>/` record
+should preserve the candidate source (or an exact source hash and retrieval
+path), manifest/configuration, launch command or driver, raw logs, and a short
+analysis. The analysis should state the hypothesis, hardware and measurement
+method, correctness result, per-shape timings and seeds when available, the
+decision (keep, reject, or inconclusive), and the next action. Never promote a
+partial screen as a leaderboard result; only report public scores with their
+job ID and rank snapshot date. Summarize durable decisions here and keep the
+current score and technique progression in `README.md`.
+
 ## Objective and evidence
 
 Optimize the geometric mean of six load speedups, where each load is the
