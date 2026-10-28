@@ -41,15 +41,15 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5395x | #61 | 1.5455x | 1.6367x | beb3e26afb2544c9 |
-| Attention | 2.5806x | #60 | 2.5883x | 3.0316x | 0d181df6ffc2480b |
-| MoE | 2.3290x | #63 | 2.3400x | 2.6853x | 88e09ad35c814c29 |
-| Whole decoder layer | 2.0926x | #85 | 2.1360x | 2.3986x | 6cf1be8d60e84ac7 |
-| Prefill layer | 1.7874x | #49 | 1.7847x | 2.0252x | 68ac9af85a3a4e3d |
+| Projections | 1.5395x | #64 | 1.5459x | 1.6367x | beb3e26afb2544c9 |
+| Attention | 2.5806x | #71 | 2.6057x | 3.0316x | 0d181df6ffc2480b |
+| MoE | 2.3290x | #76 | 2.3519x | 2.6853x | 88e09ad35c814c29 |
+| Whole decoder layer | 2.0926x | #87 | 2.1373x | 2.4029x | 6cf1be8d60e84ac7 |
+| Prefill layer | 1.7874x | #60 | 1.7940x | 2.0302x | 68ac9af85a3a4e3d |
 
-Overall rank is **#85**. Prefill is a separate board and does not count toward
+Overall rank is **#87**. Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
-is #49. Its current top-50 cutoff is 1.7847x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
+is #60. Its current top-50 cutoff is 1.7940x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
 operatorstack transfer passed correctness but scored only **1.8533x**, so it
 was rejected and not submitted. See `research/ENGINEERING.md` and
@@ -63,16 +63,16 @@ ranks were not returned in the public job records, so they are left blank.
 
 | Problem | Score progression | Main technique | Current file | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Then add the paired vjeux M32 pooler and M128 router routes. Job `beb3e26afb2544c9`. | `kernels/muse_bf16_proj/submission.py` | #61 |
-| Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #60 |
-| MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #63 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0874x → **2.0926x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path, then transfer small output projections and gather batch 7. Job `6cf1be8d60e84ac7`. | `kernels/muse_decode_layer/submission.py` | #85 |
-| Prefill layer | **1.7874x** | Validated vjeux prefill implementation; public job `68ac9af85a3a4e3d`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #49 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Then add the paired vjeux M32 pooler and M128 router routes. Job `beb3e26afb2544c9`. | `kernels/muse_bf16_proj/submission.py` | #64 |
+| Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #71 |
+| MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #76 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0874x → **2.0926x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path, then transfer small output projections and gather batch 7. Job `6cf1be8d60e84ac7`. | `kernels/muse_decode_layer/submission.py` | #87 |
+| Prefill layer | **1.7874x** | Validated vjeux prefill implementation; public job `68ac9af85a3a4e3d`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #60 |
 
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run. The latest MoE
 submission improved the live rank from #71 to #63; its 2.3290x score remains
-below the current top-50 cutoff of 2.3400x.
+below the current top-50 cutoff of 2.3519x.
 
 ### Latest validation against the published kernels (2026-10-28)
 
@@ -122,12 +122,12 @@ Attention backend: attributed MIT implementation from [team bigboateng](https://
 
 Latest prefill progress: the vjeux public candidate passed the full H200 check
 at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
-`68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its live rank is #49. The exact candidate
+`68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its live rank is #60. The exact candidate
 and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
 
 Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` passed at 1.78568x; the public best remains 1.7874x.
 
-Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` passed at 1.53951x, rank #61.
+Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` passed at 1.53951x, then rank #61.
 
 Projection four-route hybrid adds paired-winning M1 unpooler and M256 router routes; check `4759f26857a74c46` passed at 1.52412x and scored job `4ed546f6ab2748cb` passed at 1.51826x; public best remains 1.53951x.
 
@@ -135,6 +135,6 @@ The isolated vjeux M256 router candidate passed check `593651829e0e4b78`; scored
 
 Decoder T=1/8 output-projection transfer passed check `7ec7babbe7044aa6` at 2.08690x; scored job `1c4e4524414c407f` passed at 2.08743x, rank #95.
 
-Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.08859x; scored job `6cf1be8d60e84ac7` passed at 2.09262x, rank #85.
+Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.08859x; scored job `6cf1be8d60e84ac7` passed at 2.09262x, then rank #85.
 
 MoE shape-selected natural unit order passed check `72c6e933f69b4bad` at 2.32986x; scored job `6ae96ed05c124b5f` passed at 2.32168x; published MoE best remains 2.32905x.
