@@ -126,3 +126,5 @@ at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
 and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
 
 Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` passed at 1.78568x; the public best remains 1.7874x.
+
+Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` is pending. The published best remains 1.5346x until scoring finishes.

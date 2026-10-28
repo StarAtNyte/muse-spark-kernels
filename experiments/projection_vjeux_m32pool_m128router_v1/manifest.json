@@ -1,0 +1,19 @@
+{
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Use vjeux routes at M32 pooler and M128 router after paired H200 wins; retain prior scored source elsewhere.",
+  "sha256": "d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9",
+  "check_job": "9073ae3d3963489d",
+  "check_passed": true,
+  "check_speedup": 1.5270066531675128,
+  "check_ci": [
+    1.5041015533700002,
+    1.5499117529650255
+  ],
+  "prepare_s": 153.32591923,
+  "scored_job": "beb3e26afb2544c9",
+  "decision": "promoted_pending_scored",
+  "initial_packaging_rejection": {
+    "sha256": "27d0f446ea0cd55186ac96992691b15251a0beed1fb04252f985f979f1d2a104",
+    "reason": "static check: edits loaded modules; fixed by removing sys.modules registration"
+  }
+}

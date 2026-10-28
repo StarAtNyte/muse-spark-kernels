@@ -1,0 +1,355 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jkm5IwWmn7tI16qFP5SO1t
+Building image im-Tn9HZcGACCcUU8FtWoxvQc
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM nvidia/cuda:13.0.2-devel-ubuntu22.04
+Getting image source signatures
+Copying blob sha256:4fa36ac1ac4a7aee3f3ae96e3900c2aeb11c95a010cafded606ae279723b1cb8
+Copying blob sha256:2cf9fba20a140514a62685ab7fa7ff09d7318516ef05c7977f971c43dc0858db
+Copying blob sha256:0e0a2c237a999a7fa40dfdf77e0f8d5810bbc041b4012e71593f89081fc10709
+Copying blob sha256:b292e77f42ed5b74949d02ae9b889fefa83bdfa9d1330f31ea1bf08e619d8df7
+Copying blob sha256:3b4044f7c5bb766810403061a08d4a4c914f32a6d774d45344dcf35ac7e0ddeb
+Copying blob sha256:7437a365e9bf512fbe594276f6bfd891348178e216aa8969b33bf4e489a2bd6e
+Copying blob sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447
+Copying blob sha256:31e49ca9b3e8ab302ea74020bb081a06bcc5c70b47fab3d98840859ba4ce5514
+Copying blob sha256:526d5438c009ab7178af1646fed10ff6f47a73f5a1ae7b9f49e63e4ade7e3ae6
+Copying blob sha256:985bc931ec2d999bea5fc666a278150ad7d4efcfe742b3caabec63ea31883e30
+Copying blob sha256:6cc4408408d9eaebd06d70c21c21fbe5b4cba9f8cfe1bbccbde39892822644af
+Copying config sha256:81fbd4f8ce0600bcd52ff646be1e636df958538f023f29b0c084b5d830aaa70c
+Writing manifest to image destination
+Unpacking OCI image
+   • unpacking rootfs ...     
+   • ... done                 
+   • unpacked image rootfs: /tmp/task-data/ta-01M60TSVJJ38C3MGB7XQ7KXSAB/registry-unpackBzq7i7
+Copied image in 3.44s
+
+=> Step 1: COPY /python/. /usr/local
+
+=> Step 2: RUN ln -s /usr/local/bin/python3 /usr/local/bin/python
+
+=> Step 3: ENV TERMINFO_DIRS=/etc/terminfo:/lib/terminfo:/usr/share/terminfo:/usr/lib/terminfo
+
+=> Step 4: COPY /modal_requirements.txt /modal_requirements.txt
+
+=> Step 5: RUN python -m pip install --upgrade pip wheel uv
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Requirement already satisfied: pip in /usr/local/lib/python3.12/site-packages (23.3.2)
+Collecting pip
+  Downloading http://pypi-mirror.modal.local:5555/simple/pip/pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting wheel
+  Downloading http://pypi-mirror.modal.local:5555/simple/wheel/wheel-0.48.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting uv
+  Downloading http://pypi-mirror.modal.local:5555/simple/uv/uv-0.13.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting packaging>=24.0 (from wheel)
+  Downloading http://pypi-mirror.modal.local:5555/simple/packaging/packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pip/pip-26.2.2-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 157.9 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/wheel/wheel-0.48.0-py3-none-any.whl (33 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/uv/uv-0.13.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.3/17.3 MB 155.6 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/packaging/packaging-26.3-py3-none-any.whl (129 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 164.9 MB/s eta 0:00:00
+Installing collected packages: uv, pip, packaging, wheel
+  Attempting uninstall: pip
+    Found existing installation: pip 23.3.2
+    Uninstalling pip-23.3.2:
+      Successfully uninstalled pip-23.3.2
+Successfully installed packaging-26.3 pip-26.2.2 uv-0.13.6 wheel-0.48.0
+
+=> Step 6: RUN uv pip install --system --compile-bytecode --no-cache --no-deps -r /modal_requirements.txt
+Using Python 3.12.1 environment at: /usr/local
+Resolved 15 packages in 104ms
+Downloading aiohttp (1.2MiB)
+   Building grpclib==0.4.7
+ Downloaded aiohttp
+      Built grpclib==0.4.7
+Prepared 15 packages in 904ms
+Installed 15 packages in 33ms
+Bytecode compiled 212 files in 146ms
+ + aiohappyeyeballs==2.4.3
+ + aiohttp==3.10.8
+ + aiosignal==1.3.1
+ + attrs==24.2.0
+ + certifi==2024.8.30
+ + frozenlist==1.4.1
+ + grpclib==0.4.7
+ + h2==4.1.0
+ + hpack==4.0.0
+ + hyperframe==6.0.1
+ + idna==3.10
+ + multidict==6.1.0
+ + protobuf==5.29.6
+ + typing-extensions==4.12.2
+ + yarl==1.13.1
+
+=> Step 7: RUN rm /modal_requirements.txt
+Saving image...
+Image saved, took 4.77s
+
+Built image im-Tn9HZcGACCcUU8FtWoxvQc in 58.90s
+
+
+Building image im-c3pQxg84cJOIpaAYsxwiBu
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN apt-get update
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:3 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease [1578 B]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:6 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  Packages [3150 kB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7955 kB]
+Get:8 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1325 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [4430 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [96.8 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [8289 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4792 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [104 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1629 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.9 kB]
+Fetched 52.2 MB in 2s (21.1 MB/s)
+Reading package lists...
+
+=> Step 2: RUN apt-get install -y ninja-build libnuma1
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  python3
+The following NEW packages will be installed:
+  libnuma1 ninja-build
+0 upgraded, 2 newly installed, 0 to remove and 102 not upgraded.
+Need to get 134 kB of archives.
+After this operation, 431 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 libnuma1 amd64 2.0.14-3ubuntu2 [22.5 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ninja-build amd64 1.10.1-1 [111 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 134 kB in 1s (243 kB/s)
+Selecting previously unselected package libnuma1:amd64.
+(Reading database ... 
+[1A(Reading database ... 5%
+[1A(Reading database ... 10%
+[1A(Reading database ... 15%
+[1A(Reading database ... 20%
+[1A(Reading database ... 25%
+[1A(Reading database ... 30%
+[1A(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%
+[1A(Reading database ... 75%
+[1A(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%
+[1A(Reading database ... 100%(Reading database ... 15269 files and directories currently installed.)
+Preparing to unpack .../libnuma1_2.0.14-3ubuntu2_amd64.deb ...
+Unpacking libnuma1:amd64 (2.0.14-3ubuntu2) ...
+Selecting previously unselected package ninja-build.
+Preparing to unpack .../ninja-build_1.10.1-1_amd64.deb ...
+Unpacking ninja-build (1.10.1-1) ...
+Setting up ninja-build (1.10.1-1) ...
+Setting up libnuma1:amd64 (2.0.14-3ubuntu2) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.11) ...
+Saving image...
+Image saved, took 3.24s
+
+Built image im-c3pQxg84cJOIpaAYsxwiBu in 14.10s
+
+
+Building image im-0zwWamklU6acEZIXRZNpvP
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu130
+Looking in indexes: https://download.pytorch.org/whl/cu130
+Collecting torch==2.11.0
+  Downloading torch-2.11.0%2Bcu130-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (29 kB)
+Collecting filelock (from torch==2.11.0)
+  Downloading filelock-3.32.3-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./usr/local/lib/python3.12/site-packages (from torch==2.11.0) (4.12.2)
+Requirement already satisfied: setuptools<82 in ./usr/local/lib/python3.12/site-packages (from torch==2.11.0) (69.0.3)
+Collecting sympy>=1.13.3 (from torch==2.11.0)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch==2.11.0)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch==2.11.0)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch==2.11.0)
+  Downloading fsspec-2026.7.0-py3-none-any.whl.metadata (10 kB)
+Collecting cuda-toolkit==13.0.2 (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading cuda_toolkit-13.0.2-py2.py3-none-any.whl (2.4 kB)
+Collecting cuda-bindings<14,>=13.0.3 (from torch==2.11.0)
+  Downloading cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (2.5 kB)
+Collecting nvidia-cudnn-cu13==9.19.0.56 (from torch==2.11.0)
+  Downloading nvidia_cudnn_cu13-9.19.0.56-py3-none-manylinux_2_27_x86_64.whl (366.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 366.1/366.1 MB 200.9 MB/s  0:00:01
+Collecting nvidia-cusparselt-cu13==0.8.0 (from torch==2.11.0)
+  Downloading nvidia_cusparselt_cu13-0.8.0-py3-none-manylinux2014_x86_64.whl (169.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 169.9/169.9 MB 210.1 MB/s  0:00:00
+Collecting nvidia-nccl-cu13==2.28.9 (from torch==2.11.0)
+  Downloading nvidia_nccl_cu13-2.28.9-py3-none-manylinux_2_18_x86_64.whl (196.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.5/196.5 MB 243.7 MB/s  0:00:00
+Collecting nvidia-nvshmem-cu13==3.4.5 (from torch==2.11.0)
+  Downloading nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (60.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 MB 134.1 MB/s  0:00:00
+Collecting triton==3.6.0 (from torch==2.11.0)
+  Downloading triton-3.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cublas==13.1.0.3.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cublas-13.1.0.3-py3-none-manylinux_2_27_x86_64.whl (423.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 250.8 MB/s  0:00:01
+Collecting nvidia-cuda-runtime==13.0.96.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 320.7 MB/s  0:00:00
+Collecting nvidia-cufft==12.0.0.61.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (214.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 MB 223.1 MB/s  0:00:00
+Collecting nvidia-cufile==1.15.1.6.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 273.6 MB/s  0:00:00
+Collecting nvidia-cuda-cupti==13.0.85.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl (10.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 314.2 MB/s  0:00:00
+Collecting nvidia-curand==10.4.0.35.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl (59.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 MB 286.2 MB/s  0:00:00
+Collecting nvidia-cusolver==12.0.4.66.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl (200.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.9/200.9 MB 263.2 MB/s  0:00:00
+Collecting nvidia-cusparse==12.6.3.3.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (145.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 145.9/145.9 MB 238.3 MB/s  0:00:00
+Collecting nvidia-nvjitlink==13.0.88.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_nvjitlink-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (40.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.7/40.7 MB 231.0 MB/s  0:00:00
+Collecting nvidia-cuda-nvrtc==13.0.88.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (90.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 MB 247.4 MB/s  0:00:00
+Collecting nvidia-nvtx==13.0.85.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch==2.11.0)
+  Downloading nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl (148 kB)
+Collecting cuda-pathfinder>=1.4.2 (from cuda-bindings<14,>=13.0.3->torch==2.11.0)
+  Downloading cuda_pathfinder-1.6.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.11.0)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.11.0)
+  Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Downloading torch-2.11.0%2Bcu130-cp312-cp312-manylinux_2_28_x86_64.whl (531.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 531.1/531.1 MB 238.1 MB/s  0:00:02
+Downloading triton-3.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (188.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.3/188.3 MB 254.0 MB/s  0:00:00
+Downloading cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (6.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB 216.8 MB/s  0:00:00
+Downloading cuda_pathfinder-1.6.0-py3-none-any.whl (54 kB)
+Downloading fsspec-2026.7.0-py3-none-any.whl (206 kB)
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 220.0 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 200.3 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 217.0 MB/s  0:00:00
+Downloading filelock-3.32.3-py3-none-any.whl (98 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Installing collected packages: nvidia-cusparselt-cu13, mpmath, cuda-toolkit, triton, sympy, nvidia-nvtx, nvidia-nvshmem-cu13, nvidia-nvjitlink, nvidia-nccl-cu13, nvidia-curand, nvidia-cufile, nvidia-cuda-runtime, nvidia-cuda-nvrtc, nvidia-cuda-cupti, nvidia-cublas, networkx, MarkupSafe, fsspec, filelock, cuda-pathfinder, nvidia-cusparse, nvidia-cufft, nvidia-cudnn-cu13, jinja2, cuda-bindings, nvidia-cusolver, torch
+
+Successfully installed MarkupSafe-3.0.3 cuda-bindings-13.3.1 cuda-pathfinder-1.6.0 cuda-toolkit-13.0.2 filelock-3.32.3 fsspec-2026.7.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 nvidia-cublas-13.1.0.3 nvidia-cuda-cupti-13.0.85 nvidia-cuda-nvrtc-13.0.88 nvidia-cuda-runtime-13.0.96 nvidia-cudnn-cu13-9.19.0.56 nvidia-cufft-12.0.0.61 nvidia-cufile-1.15.1.6 nvidia-curand-10.4.0.35 nvidia-cusolver-12.0.4.66 nvidia-cusparse-12.6.3.3 nvidia-cusparselt-cu13-0.8.0 nvidia-nccl-cu13-2.28.9 nvidia-nvjitlink-13.0.88 nvidia-nvshmem-cu13-3.4.5 nvidia-nvtx-13.0.85 sympy-1.14.0 torch-2.11.0+cu130 triton-3.6.0
+Saving image...
+Image saved, took 3.00s
+
+Built image im-0zwWamklU6acEZIXRZNpvP in 75.45s
+
+
+Building image im-LimBZSDvlkVTYOqFSBOBEM
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install numpy triton
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting numpy
+  Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Requirement already satisfied: triton in ./usr/local/lib/python3.12/site-packages (3.6.0)
+Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 525.8 MB/s  0:00:00
+Installing collected packages: numpy
+Successfully installed numpy-2.5.4
+Saving image...
+Image saved, took 560.99ms
+
+Built image im-LimBZSDvlkVTYOqFSBOBEM in 6.90s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+RESULT {"batch": 32, "layer": "qkv_gate", "seed": 419, "base_us": 16.64000004529953, "candidate_us": 17.616000026464462, "base_over_candidate": 0.948686650768036}
+RESULT {"batch": 32, "layer": "qkv_gate", "seed": 7919, "base_us": 16.896000131964684, "candidate_us": 17.472000792622566, "base_over_candidate": 0.9634695458344165}
+RESULT {"batch": 32, "layer": "pooler", "seed": 419, "base_us": 27.583999559283257, "candidate_us": 23.96799996495247, "base_over_candidate": 1.1505347733950035}
+RESULT {"batch": 32, "layer": "pooler", "seed": 7919, "base_us": 27.456000447273254, "candidate_us": 23.951999843120575, "base_over_candidate": 1.1456246685718394}
+RESULT {"batch": 32, "layer": "unpooler", "seed": 419, "base_us": 21.856000646948814, "candidate_us": 23.024000227451324, "base_over_candidate": 0.950450544826851}
+RESULT {"batch": 32, "layer": "unpooler", "seed": 7919, "base_us": 21.727999672293663, "candidate_us": 22.911999374628067, "base_over_candidate": 0.9427454709255336}
+RESULT {"batch": 128, "layer": "router", "seed": 419, "base_us": 11.55199995264411, "candidate_us": 11.152000166475773, "base_over_candidate": 1.0348058829660376}
+RESULT {"batch": 128, "layer": "router", "seed": 7919, "base_us": 11.392000131309032, "candidate_us": 10.991999879479408, "base_over_candidate": 1.0365542753512371}
+
+STDERR:
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.48 sk2=13.15 torch=18.4 -> cgemv
+[okc] tune o m=1: cgemv=8.86 sk2=9.18 torch=10.53 -> cgemv
+[okc] tune pooler m=1: cgemv=17.5 sk2=18.21 torch=25.73 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.26 sgemv=7.58 sk2=8.06 torch=10.88 -> cgemv
+[okc] tune router m=1: rgemv=7.33 sk2=8.61 torch=19.74 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.5 torch=18.14 -> sk2
+[okc] tune o m=16: sk2=9.31 torch=10.4 -> sk2
+[okc] tune pooler m=16: sk2=18.46 torch=25.6 -> sk2
+[okc] tune unpooler m=16: sk2=17.95 torch=22.46 -> sk2
+[okc] tune router m=16: sk2=8.51 torch=20.35 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.59 torch=18.46 -> sk2
+[okc] tune o m=32: sk2=9.47 torch=10.46 -> sk2
+[okc] tune pooler m=32: sk2=19.2 torch=25.95 -> sk2
+[okc] tune unpooler m=32: sk2=18.98 torch=22.88 -> sk2
+[okc] tune router m=32: sk2=9.06 torch=20.67 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.54 torch=18.43 -> sk2
+[okc] tune o m=8: sk2=9.41 torch=10.11 -> sk2
+[okc] tune pooler m=8: sk2=18.24 torch=25.31 -> sk2
+[okc] tune unpooler m=8: sk2=7.97 torch=11.33 -> sk2
+[okc] tune router m=8: sk2=8.58 torch=19.58 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.27 torch=20.96 -> gqx
+[okc] tune o m=128: torch=10.78 torchT=10.85 -> torch
+[okc] tune pooler m=128: gq=24.93 torch=28.64 -> gq
+[okc] tune unpooler m=128: torch=24.06 torchT=22.82 -> torchT
+[okc] tune router m=128: rk=9.6 wide=12.51 gemm=13.44 torch=21.15 -> rk
+[okc] tune o m=256: torch=12.67 torchT=12.61 -> torchT
+[okc] tune unpooler m=256: torch=28.32 torchT=27.74 -> torchT
+[okc] tune router m=256: rk=10.37 wide=13.34 gemm=17.25 torch=22.05 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jkm5IwWmn7tI16qFP5SO1t

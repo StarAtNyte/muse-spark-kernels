@@ -12,6 +12,25 @@
     1.4699646319715982,
     1.5147351283768244
   ],
-  "decision": "per_shape_pair_inconclusive",
-  "reason": "Separate judge runs suggest M32 qkv/pooler/unpooler and M128 router may improve, but paired Modal setup failed because the parent requires libcublasLt.so.13 and image only provides 12."
+  "decision": "paired_shapes_promising",
+  "reason": "Separate judge runs suggest M32 qkv/pooler/unpooler and M128 router may improve, but paired Modal setup failed because the parent requires libcublasLt.so.13 and image only provides 12.",
+  "cuda13_pair": {
+    "pooler32": [
+      1.1505347734,
+      1.1456246686
+    ],
+    "router128": [
+      1.034805883,
+      1.0365542754
+    ],
+    "qkv32": [
+      0.9486866508,
+      0.9634695458
+    ],
+    "unpooler32": [
+      0.9504505448,
+      0.9427454709
+    ]
+  },
+  "note": "Modal CUDA 13; FlashInfer headers unavailable; candidate and parent each passed reference."
 }
