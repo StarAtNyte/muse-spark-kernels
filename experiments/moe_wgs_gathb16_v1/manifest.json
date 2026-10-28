@@ -1,0 +1,26 @@
+{
+  "name": "moe_wgs_gathb16_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Batching 16 activation rows in the WGS gather could expose more independent global loads than the current batch of 8; correctness and paired CUDA-graph timing decide whether the extra live state is worthwhile.",
+  "change": "Compile-time OKC_GATHB 8 -> 16; no other kernel or schedule changes.",
+  "status": "done",
+  "decision": "reject",
+  "driver": "dev/modal/drv_moe_wgs_gathb16.py",
+  "screen": {
+    "device": "H200",
+    "batches": [
+      32,
+      128,
+      256
+    ],
+    "seeds": [
+      419,
+      7919
+    ],
+    "timing": "paired CUDA graph replays; 16 alternating samples per variant and seed",
+    "correctness": "reference check on both variants at every batch and seed"
+  },
+  "sha256": "d4aa76d543c86dba7a5aa9432f1a61b2a3c41bcb8f404564aaa6cfceacf95fcf",
+  "result": "Reference checks passed bitwise on all six points. GATHB=16 regressed every paired H200 timing by 2.46\u20133.44%; keep 8."
+}

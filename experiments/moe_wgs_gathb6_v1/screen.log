@@ -1,0 +1,16 @@
+Modal app: ap-e8HSrtWkKzi2wTDj0ae2ZI
+Device: NVIDIA H200
+Driver: dev/modal/drv_moe_wgs_gathb16.py (GATHB=6)
+Candidate: OKC_GATHB 8 -> 6; all other source and defines unchanged.
+Correctness: reference check passed on both variants; relative L2 was 0 for all six batch/seed points.
+Method: paired CUDA graph replay; 16 alternating samples per variant per point; 64 MiB flush buffer.
+
+RESULT {"batch":32,"seed":419,"base_us":134.51199978590012,"gath6_us":133.56800377368927,"base_over_candidate":1.0021305767594892,"relative_l2":0.0}
+RESULT {"batch":32,"seed":7919,"base_us":152.75199711322784,"gath6_us":153.1039997935295,"base_over_candidate":1.0008231146049706,"relative_l2":0.0}
+RESULT {"batch":128,"seed":419,"base_us":195.98399847745895,"gath6_us":194.97600197792053,"base_over_candidate":1.002950537181114,"relative_l2":0.0}
+RESULT {"batch":128,"seed":7919,"base_us":192.01599806547165,"gath6_us":191.6159987449646,"base_over_candidate":1.0009170999586006,"relative_l2":0.0}
+RESULT {"batch":256,"seed":419,"base_us":232.88000375032425,"gath6_us":232.16000199317932,"base_over_candidate":1.0022016056519427,"relative_l2":0.0}
+RESULT {"batch":256,"seed":7919,"base_us":217.67999976873398,"gath6_us":216.97600185871124,"base_over_candidate":1.0040113490762779,"relative_l2":0.0}
+Decision: run one official private check. Promote or score only if its aggregate clears the public best.
+
+Official check: job 3de84f7864e442fe passed 5/5 tests; speedup 2.3262814704747306x, 95% CI [2.2913872484176094, 2.3611756925318512], score time 5781.114697722081 us. Decision: tied with public best within noise; reject and do not submit.

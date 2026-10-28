@@ -1,0 +1,14 @@
+Modal app: ap-BnctzbNxsJxYai8EPi8Pdf
+Device: NVIDIA H200
+Driver: dev/modal/drv_moe_wgs_gathb16.py (GATHB=4)
+Candidate: OKC_GATHB 8 -> 4; all other source and defines unchanged.
+Correctness: reference check passed on both variants; relative L2 was 0 for all six batch/seed points.
+Method: paired CUDA graph replay; 16 alternating samples per variant per point; 64 MiB flush buffer.
+
+RESULT {"batch":32,"seed":419,"base_us":133.98399949073792,"gath4_us":132.9760029911995,"base_over_candidate":1.005864509555483,"relative_l2":0.0}
+RESULT {"batch":32,"seed":7919,"base_us":153.82400155067444,"gath4_us":153.87199819087982,"base_over_candidate":1.002506939982541,"relative_l2":0.0}
+RESULT {"batch":128,"seed":419,"base_us":195.79200446605682,"gath4_us":195.11999934911728,"base_over_candidate":1.0067663878396198,"relative_l2":0.0}
+RESULT {"batch":128,"seed":7919,"base_us":191.1199986934662,"gath4_us":190.89599698781967,"base_over_candidate":1.0008369899946237,"relative_l2":0.0}
+RESULT {"batch":256,"seed":419,"base_us":231.05600476264954,"gath4_us":230.48000037670135,"base_over_candidate":1.0037576741535197,"relative_l2":0.0}
+RESULT {"batch":256,"seed":7919,"base_us":214.39999341964722,"gath4_us":214.30400013923645,"base_over_candidate":0.9991835986580997,"relative_l2":0.0}
+Decision: candidate has a small mixed paired delta. Run a single complete official private check; promote only if the aggregate clears the current best beyond its uncertainty.

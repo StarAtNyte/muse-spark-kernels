@@ -1,0 +1,37 @@
+{
+  "name": "moe_wgs_gathb4_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "The 8-row gather batch may trade too much register state for memory parallelism; testing 4 rows checks whether a smaller batch reduces exposed gather latency.",
+  "change": "Compile-time OKC_GATHB 8 -> 4; no other source or schedule changes.",
+  "status": "done",
+  "decision": "reject_official_check",
+  "driver": "dev/modal/drv_moe_wgs_gathb16.py (GATHB=4)",
+  "screen": {
+    "device": "H200",
+    "batches": [
+      32,
+      128,
+      256
+    ],
+    "seeds": [
+      419,
+      7919
+    ],
+    "timing": "paired CUDA graph replays; 16 alternating samples per variant and seed",
+    "correctness": "reference check on both variants at every batch and seed"
+  },
+  "sha256": "5384fb80268a46abbf1422b55da4086bc774e2d8411dcb5f0f76a7f2e5142184",
+  "result": "The official check passed all tests, but aggregate speedup 2.32375x did not clear the current 2.3263x public best. Keep GATHB=8; do not submit.",
+  "official_check": {
+    "job_id": "80016f149b434e86",
+    "passed": true,
+    "speedup": 2.3237493043248247,
+    "speedup_ci": [
+      2.2888930647599524,
+      2.3586055438896967
+    ],
+    "score_us": 5787.414320026023,
+    "tests": "5/5"
+  }
+}

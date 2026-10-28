@@ -1,0 +1,14 @@
+Modal app: ap-R5Ap6JwMQFHXPtzSTjslyD
+Device: NVIDIA H200
+Driver: dev/modal/drv_moe_wgs_gathb16.py
+Candidate: OKC_GATHB 8 -> 16; all other source and defines unchanged.
+Correctness: reference check passed on both variants; relative L2 was 0 for all six batch/seed points.
+Method: paired CUDA graph replay; 16 alternating samples per variant per point; 64 MiB flush buffer.
+
+RESULT {"batch":32,"seed":419,"base_us":133.88799875974655,"gath16_us":137.34400272369385,"base_over_gath16":0.971590879731667,"relative_l2":0.0}
+RESULT {"batch":32,"seed":7919,"base_us":153.47200632095337,"gath16_us":157.98399597406387,"base_over_gath16":0.9719234480309555,"relative_l2":0.0}
+RESULT {"batch":128,"seed":419,"base_us":194.2880004644394,"gath16_us":199.61600005626678,"base_over_gath16":0.9708293881280117,"relative_l2":0.0}
+RESULT {"batch":128,"seed":7919,"base_us":190.20799547433853,"gath16_us":195.35999745130515,"base_over_gath16":0.9753796293109452,"relative_l2":0.0}
+RESULT {"batch":256,"seed":419,"base_us":229.16799783706665,"gath16_us":235.84000021219254,"base_over_gath16":0.9714692285002158,"relative_l2":0.0}
+RESULT {"batch":256,"seed":7919,"base_us":212.39999681711197,"gath16_us":219.67999637126923,"base_over_gath16":0.9665696072784893,"relative_l2":0.0}
+Decision: reject. Keep GATHB=8.

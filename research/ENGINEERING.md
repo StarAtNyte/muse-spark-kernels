@@ -781,3 +781,31 @@ cluster path does not amortize its synchronization and local reduction costs
 for this workload. Reject; keep flat. Plans and timings are in
 `experiments/attention_full_decode32_cluster_v1/` and the driver is
 `dev/modal/drv_attention_full_decode32_cluster.py`.
+
+## WGS activation-gather batch micro-search (2026-10-28)
+
+Screened `OKC_GATHB=16`, 4, and 6 against the current value 8 using paired
+H200 CUDA graphs at M=32/128/256, two seeds each. The 16-row variant passed
+bitwise reference checks but regressed 2.6–3.4% on all six points. Four rows
+was within noise (five points 0.05–0.76% faster, one 0.03% slower); its full
+private check passed but scored 2.32375x, below the 2.3263x public best. Six
+rows was 0.08–0.40% faster on all six paired points and passed the full private
+check at 2.32628x (95% CI [2.29139, 2.36118]), effectively tied with the public
+best. The CI overlaps the incumbent, so do not promote or submit either small
+batch tweak; keep 8. Exact candidates, raw screens, judge profiles, and drivers
+are under `experiments/moe_wgs_gathb{4,6,16}_v1/` and
+`dev/modal/drv_moe_wgs_gathb16.py`.
+
+The recent [MoE tile-overlap report](https://www.nikolassapalidis.tech/writing/gpu-kernel-challenge)
+describes starting the down-projection tile as soon as its corresponding
+gate/up tile is ready, with per-tile counters and PDL. This mechanism is
+already present in our WGS path: phase-A epilogues release `doneAs[j, stage]`,
+and the phase-B producer waits on those counters before TMA-loading that
+activation tile. Avoid a duplicate port; the next MoE improvement needs to
+reduce WGS memory traffic or improve whole-layer overlap.
+
+Live API refresh later on 2026-10-28: overall #94; projections #64
+(1.5346x; top-50 1.5450x), attention #60 (2.5806x; top-50 2.5883x), MoE #71
+(2.3263x; top-50 2.3400x), and decoder #94 (2.0746x; top-50 2.1292x).
+The decoder remains the largest top-50 gap, 2.63%; the MoE score gap is
+0.59%. The README holds the same live snapshot.
