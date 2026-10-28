@@ -1,0 +1,18 @@
+{
+  "name": "prefill_full_short_single_split_v1",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Run full_short attention in one split to eliminate partials and the separate merge; assess the cost of less parallelism on the full layer.",
+  "parent": "kernels/muse_prefill_layer/submission.py",
+  "sha256": "36d763919306b0476c2b6352ce79188b317affd17e161ee23f0e189a9ea28100",
+  "job_id": "87cb6bd7900f4a39",
+  "status": "done",
+  "passed": true,
+  "speedup": 1.708193670198911,
+  "speedup_ci": [
+    1.6825707651459274,
+    1.7338165752518946
+  ],
+  "decision": "reject_regression",
+  "target_us": 1230.2797409043974,
+  "parent_target_us": 922.1387112940633
+}
