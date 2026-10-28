@@ -45,9 +45,12 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Attention | 2.5806x | #58 | 2.5880x | 3.0316x | 0d181df6ffc2480b |
 | MoE | 2.3263x | #67 | 2.3352x | 2.6853x | a834a3c9bf6e44f6 |
 | Whole decoder layer | 2.0746x | #90 | 2.1240x | 2.3986x | 2a5a87f725fd47d2 |
+| Prefill layer | — | Unranked | 1.7818x | 2.0252x | No submission |
 
-Overall rank is **#90**. Leaderboard snapshot refreshed 2026-10-28; ranks and
-cutoffs can move as new runs are scored. The latest stacked M32/M128
+Overall rank is **#90**. Prefill is a separate board and does not count toward
+overall rank; we have not submitted a prefill run. Its current top-50 cutoff is
+1.7818x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
+as new runs are scored. The latest stacked M32/M128
 operatorstack transfer passed correctness but scored only **1.8533x**, so it
 was rejected and not submitted. See `research/ENGINEERING.md` and
 `experiments/decoder_vjeux_operatorstack_stack_v1/` for the score and profile.
@@ -64,6 +67,7 @@ ranks were not returned in the public job records, so they are left blank.
 | Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #58 |
 | MoE | 1.1465x → **2.3263x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel and shape dispatch. Job `a834a3c9bf6e44f6`. | `kernels/muse_moe_w4a16/submission.py` | #67 |
 | Whole decoder | 1.0962x → 1.7469x → **2.0746x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path. Job `2a5a87f725fd47d2`. | `kernels/muse_decode_layer/submission.py` | #90 |
+| Prefill layer | No scored run | Not started; separate leaderboard, excluded from overall rank. Top-50 cutoff shown above. | `kernels/muse_prefill_layer/submission.py` | Unranked |
 
 This snapshot was refreshed 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run.
