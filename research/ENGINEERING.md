@@ -913,3 +913,7 @@ Check `b399b11823e54e91` raised `FINE_MIN_T` from 2048 to 4096, choosing coarse 
 ## Long-prefill expert ordering (2026-10-28)
 
 Check `64ef8d86191240e6` used order 2 for T >= 8192 to interleave small expert tiles. It passed at **1.79352x** (95% CI [1.76662, 1.82042]), versus parent **1.79783x**. Long-case expert profiles varied in both directions between the two runs, so no consistent gain is established. Retain order 1. Exact candidate, status and profiles: `experiments/prefill_moe_large_order2_v1/`.
+
+## WGS two-slot activation ring (2026-10-28)
+
+A paired H200 screen changed `OKC_WGSNX` from 3 to 2 on the current standalone MoE kernel. All six reference checks passed with bitwise-identical output, but the two-slot variant was **2.7–5.0% slower** at M32/M128/M256 over two seeds. Retain three slots in MoE and decoder. Exact driver, parent source, and raw Modal log are in `experiments/moe_wgs_nx2_v1/`; its `gath2_us` output label refers to WGSNX=2.

@@ -1,0 +1,20 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Reduce WGS activation ring from three slots to two and assess whether smaller shared-memory use beats the lost pipeline overlap.",
+  "driver": "dev/modal/drv_moe_wgs_nx2.py",
+  "change": "CUDA_SRC OKC_WGSNX 3 -> 2",
+  "hardware": "NVIDIA H200",
+  "modal_app": "ap-HgOj8cM5tj9sI59eOpTqw0",
+  "reference_passed": true,
+  "relative_l2": 0,
+  "base_over_candidate": [
+    0.9629519501,
+    0.9727276609,
+    0.9650558808,
+    0.9584040108,
+    0.9518883761,
+    0.9499562497
+  ],
+  "decision": "reject_regression",
+  "note": "The driver output label gath2_us is inherited from the gather-batch screen; it refers to the two-slot WGSNX candidate."
+}
