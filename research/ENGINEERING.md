@@ -883,3 +883,5 @@ pending. Exact source, judge profile, and status are in
 ## Scored prefill result (2026-10-28)
 
 Job `68ac9af85a3a4e3d` passed at **1.78740x** (95% CI [1.76059, 1.81421]). The board displayed #50 at 1.7847x, but did not yet return our row. Rank is unconfirmed. The scored source, status and profile are in `experiments/scored_prefill_vjeux_v1/`.
+
+The leaderboard subsequently published this result at **#49**, with #50 at 1.7847x (snapshot 2026-10-28).
