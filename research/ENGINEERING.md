@@ -620,7 +620,11 @@ dispatch. The next promising target is tile size: increase the 64-key pipeline
 tile to 128 only for full verify-32, following the measured larger-tile gain in
 the public challenge report.
 
-The H200 NCU full-verify profile (`_os__g_full_verify`, batch 32, four splits)
+The following H200 NCU full-verify profile (`_os__g_full_verify`, batch 32, four splits)
+and associated stage/swizzle experiments concern the earlier operatorstack
+implementation, not the current vjeux attention kernel. For the current
+kernel's profile see `experiments/attention_current_verify32_ncu_v1/analysis.md`.
+The older profile
 measured 57.6% DRAM throughput, 42.2% SM throughput, 71.0% L2 throughput,
 16.0% L2 hit rate, and 86.2 KB shared memory per CTA. The 256-CTA grid gives
 about 1.9 blocks per SM. Reducing the K/V staging ring from four stages to
