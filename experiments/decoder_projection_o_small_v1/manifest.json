@@ -1,0 +1,21 @@
+{
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer the scored projection stack output kernel for token counts 1 and 8 into the current whole-decoder source, preserving the BF16 output boundary.",
+  "parent": "kernels/muse_decode_layer/submission.py",
+  "projection_source": "experiments/scored_projection_stack_pool_unpool_v1/submission.py",
+  "sha256": "fc381d7c31b744b067c979f64a5846fe6de59697f597cb6bcc29f91c1d7bd7f9",
+  "check_job": "7ec7babbe7044aa6",
+  "status": "done",
+  "first_failure_job": "2aa7fe3fdfc34305",
+  "first_failure_sha256": "ed727e695c4d41387b98962e5cb0129cc9195c17e334dbd2fd27389e811e622b",
+  "first_failure_reason": "prepare tuner accessed projection_transfer before installation",
+  "passed": true,
+  "check_speedup": 2.086900194444132,
+  "check_ci": [
+    2.05559669152747,
+    2.118203697360794
+  ],
+  "prepare_s": 158.964762395,
+  "scored_job": "1c4e4524414c407f",
+  "decision": "promoted_pending_scored"
+}

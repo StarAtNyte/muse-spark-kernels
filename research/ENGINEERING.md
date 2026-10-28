@@ -951,3 +951,9 @@ The scored four-route projection submission `4ed546f6ab2748cb` passed at **1.518
 Check `593651829e0e4b78` added only the paired-winning vjeux M256 router. It passed at **1.51882x** (95% CI [1.49604, 1.54161]); target router measured **7.01 us** versus **8.21 us** in the parent check. The aggregate intervals overlap, so the exact checked candidate was submitted as `df44909a5b3540ff` to measure the combined score. Source, check and profiles: `experiments/projection_vjeux_router256_v1/`.
 
 The isolated M256 router scored submission `df44909a5b3540ff` passed at **1.52297x** (95% CI [1.50012, 1.54581]), below the existing **1.53951x**. Restored the prior scored hybrid as canonical. Exact scored source, status and profiles: `experiments/scored_projection_router256_v1/`.
+
+## Small output-projection transfer to decoder (2026-10-28)
+
+Transferred the prior scored projection stack output kernel for T=1/8 into the current decoder, preserving the BF16 output. Initial check `2aa7fe3fdfc34305` failed during preparation because the decoder tuner called the wrapper before the transfer state was installed. A guard fixed initialization; check `7ec7babbe7044aa6` passed at **2.08690x** (95% CI [2.05560, 2.11820]), prepare **158.96s**, versus parent check **2.09091x**. Decode-1 sliding output projection profile decreased from about **6.0 to 5.1 us**, but full-score intervals overlap. Submitted exact checked source as `1c4e4524414c407f` (pending). Both checks, source and profiles: `experiments/decoder_projection_o_small_v1/`.
+
+The [Auto-research-agent PR #6](https://github.com/rohanarun/Auto-research-agent/pull/6) offers general starter guidance: fused QK/RoPE/cache writes, staged NVFP4 unpack, and concurrent router projections. Our current attention and MoE paths already implement the first two and decoder has fused/concurrent routes. Component results still require whole-layer checks because streams and PDL affect the critical path.
