@@ -967,3 +967,5 @@ CUDA 13 paired screens found our standalone M8 pooler 12–13% faster than vjeux
 ## Decoder projection and WGS gather stack (2026-10-28)
 
 Combined the scored small output projection transfer with standalone MoE gather batch 7. Check `9ace173c90844588` passed at **2.08859x** (95% CI [2.05726, 2.11992]), versus parent check **2.08690x**; intervals overlap. Submitted exact checked source as `6cf1be8d60e84ac7` (pending), supported by the standalone paired screen and scored MoE gain. Candidate, status, and profiles: `experiments/decoder_projection_stack_gathb7_v1/`.
+
+The scored decoder projection/gather stack `6cf1be8d60e84ac7` passed at **2.09262x** (95% CI [2.06123, 2.12401]), improving the prior public **2.08743x**. Live decoder and overall ranks are **#85** (previously #95); decoder #50 is **2.1360x** (2026-10-28 snapshot). Exact scored source, result and profiles: `experiments/scored_decoder_projection_gathb7_v1/`.
