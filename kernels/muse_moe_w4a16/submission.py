@@ -3055,6 +3055,7 @@ void okc_set_pdl(int64_t on);
 # ------------------------------------------------------------------ extension
 # Compiled extensions, keyed by their define tuple. This caches compiled
 # code only -- never weights, activations, or outputs.
+ALT_SRCS["wgsreord0"] = CUDA_SRC.replace("#define OKC_WGSREORD 1", "#define OKC_WGSREORD 0", 1)
 _EXTS = {}
 
 
@@ -3293,6 +3294,8 @@ def prepare(weights):
     for d in (TINY_DEFINES, TINY2_DEFINES, MID_DEFINES):
         if d and (state["sfx"] or "-DOKC_WGS=1" not in tuple(d)):  # the WGS build needs the PRMT scale decode
             mods.append(tuple(d) + state["sfx"])
+    if state["sfx"]:
+        mods.append(tuple(_main_defines(state["sfx"])) + state["sfx"] + ("@wgsreord0",))
     for d in mods:
         _ext(d)
     torch.cuda.synchronize()
@@ -3338,6 +3341,8 @@ def kernel_fn(data, state):
         ext = _ext(tuple(TINY2_DEFINES) + sfx)  # (the WGS build needs the PRMT scale decode: else MID/MAIN)
     elif MID_DEFINES and M <= MID_MAX_M:
         ext = _ext(tuple(MID_DEFINES) + sfx)
+    elif M <= 32 and sfx:
+        ext = _ext(tuple(_main_defines(sfx)) + sfx + ("@wgsreord0",))
     else:
         ext = _ext(tuple(_main_defines(sfx)) + sfx)
     for m0 in range(0, M, CHUNK_TOKENS):

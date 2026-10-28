@@ -1,0 +1,23 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Disable phase-A trailing partial-unit reordering and test the paired M32 gain against the full MoE workload.",
+  "sha256": "9432eb1cfcef040f01d426b7db9ef38103f8fe0cc5858d5f68f766b88db48f90",
+  "check_job": "2019b1e02a46416c",
+  "status": "done",
+  "modal_app": "ap-IHkL94ryt0NQ4nROsZYUWT",
+  "paired_ratios": [
+    1.0134376898,
+    1.0045482118,
+    1.0015760373,
+    1.0028678341,
+    0.9873389492,
+    1.0021847816
+  ],
+  "passed": true,
+  "check_speedup": 2.333382013661627,
+  "check_ci": [
+    2.2983812834567026,
+    2.368382743866551
+  ],
+  "decision": "test_m32_only"
+}

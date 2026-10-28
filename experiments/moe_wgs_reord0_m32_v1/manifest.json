@@ -1,0 +1,18 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Use phase-A natural unit order only for 17\u201332 tokens, retaining the scored reordering for larger WGS calls.",
+  "sha256": "95d43e9ab0c00b5b403f3b5c16512c4ddbcc04d69551f716aa29d90c17642afa",
+  "parent": "kernels/muse_moe_w4a16/submission.py",
+  "check_job": "72c6e933f69b4bad",
+  "status": "done",
+  "paired_source": "experiments/moe_wgs_reord0_v1/modal_screen.log",
+  "passed": true,
+  "check_speedup": 2.329856641352716,
+  "check_ci": [
+    2.2949087917324253,
+    2.3648044909730066
+  ],
+  "prepare_s": 212.05486642,
+  "scored_job": "6ae96ed05c124b5f",
+  "decision": "promoted_pending_scored"
+}
