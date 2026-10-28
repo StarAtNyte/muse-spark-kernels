@@ -921,3 +921,7 @@ A paired H200 screen changed `OKC_WGSNX` from 3 to 2 on the current standalone M
 ## Balanced WGS ring screen (2026-10-28)
 
 A fourth activation slot alone exceeds H200 shared memory, so a paired screen exchanged one weight slot for an activation slot: `WGS_NS=2`, `OKC_WGSNX=4`. All six H200 reference checks passed bitwise, but the variant was **2.3–7.1% slower** across M32/M128/M256. Retain the three-weight/three-activation schedule. Driver, parent source and raw Modal log: `experiments/moe_wgs_w2x4_v1/` and `dev/modal/drv_moe_wgs_w2x4.py`. The inherited `gath2_us` label denotes the balanced ring candidate.
+
+## WGS commit-group size screen (2026-10-28)
+
+On H200, changing `OKC_WGSGS` from 2 to 1 passed all six reference checks bitwise but was **0.3–1.9% slower** across M32/M128/M256 and two seeds. Retain group size 2. Exact driver, parent, and raw log: `experiments/moe_wgs_gs1_v1/`; the inherited `gath2_us` label denotes the GS=1 candidate.

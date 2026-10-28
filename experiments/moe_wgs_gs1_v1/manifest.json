@@ -1,0 +1,19 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Commit one K step per WGMMA group to test register-pressure and overlap effects.",
+  "change": "OKC_WGSGS 2 -> 1",
+  "driver": "dev/modal/drv_moe_wgs_gs1.py",
+  "modal_app": "ap-U7DCktvyvMfKR8WJJjC2IO",
+  "reference_passed": true,
+  "relative_l2": 0,
+  "base_over_candidate": [
+    0.99235329,
+    0.9967699528,
+    0.9925778859,
+    0.9883702798,
+    0.9854753049,
+    0.9805973695
+  ],
+  "decision": "reject_regression",
+  "note": "Inherited gath2_us label denotes WGSGS=1 candidate."
+}
