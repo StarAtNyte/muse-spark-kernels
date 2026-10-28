@@ -949,3 +949,5 @@ The scored four-route projection submission `4ed546f6ab2748cb` passed at **1.518
 ## Isolated projection M256 router transfer (2026-10-28)
 
 Check `593651829e0e4b78` added only the paired-winning vjeux M256 router. It passed at **1.51882x** (95% CI [1.49604, 1.54161]); target router measured **7.01 us** versus **8.21 us** in the parent check. The aggregate intervals overlap, so the exact checked candidate was submitted as `df44909a5b3540ff` to measure the combined score. Source, check and profiles: `experiments/projection_vjeux_router256_v1/`.
+
+The isolated M256 router scored submission `df44909a5b3540ff` passed at **1.52297x** (95% CI [1.50012, 1.54581]), below the existing **1.53951x**. Restored the prior scored hybrid as canonical. Exact scored source, status and profiles: `experiments/scored_projection_router256_v1/`.
