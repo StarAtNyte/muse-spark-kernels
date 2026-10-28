@@ -1,0 +1,23 @@
+{
+  "name": "decoder_moe_hybrid_m32_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the standalone MoE winner\u2019s M32 operatorstack route into the full decoder layer. Modal H200 component comparisons showed 8.9-9.8% faster M32 across three seeds with reference checks passing; leave M128, M256 bucket, attention, projections, and all other dispatches unchanged.",
+  "sha256": "daafdc72c0763f18dac57cde31aad430fbb4c7b7f54459bd16aff99874b5d90c",
+  "created_at": 1793143204.3406816,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 5,
+      "left": 5
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "7a1a0c204b974be6",
+  "updated_at": 1793143666.7997346
+}

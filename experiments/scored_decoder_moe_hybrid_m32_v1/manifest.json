@@ -1,0 +1,21 @@
+{
+  "name": "scored_decoder_moe_hybrid_m32_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the standalone MoE winner M32 operatorstack route into the full decoder layer; preserve M128, M256 bucket, attention, projection, and all other paths.",
+  "sha256": "9b528c6a0efa361881eb6655c750710e58fcbf03dab46572f131c50ac2a9a6d3",
+  "source_check_jobs": [
+    "7a1a0c204b974be6",
+    "79acbe62d51e417a"
+  ],
+  "scored_job_id": "f2718c5a01d54be8",
+  "decision": "promote_globally",
+  "created_at": 1793144198.4085913,
+  "decision_reason": "Official scored H200 run passed all 13 tests and measured 1.7344237x, above the previous public decoder best of 1.7204334x.",
+  "speedup": 1.7344236646771358,
+  "speedup_ci": [
+    1.7084073097069787,
+    1.7604400196472927
+  ],
+  "score_us": 13041.96919165698,
+  "updated_at": 1793144692.9272718
+}

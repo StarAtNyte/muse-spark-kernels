@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-yMVNUuRy35VGGuOVwyUi9O
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+GPU NVIDIA H200 CuTe /usr/local/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py
+RESULT {"layer": "pooler", "batch": 128, "tile": [128, 128], "splits": 1, "baseline_us": 32.6399989426136, "candidate_us": 48.43199998140335, "paired_speedup": 0.6683272508613712}
+RESULT {"layer": "pooler", "batch": 128, "tile": [128, 128], "splits": 2, "baseline_us": 32.416000962257385, "candidate_us": 33.92000123858452, "paired_speedup": 0.9528017806668572}
+RESULT {"layer": "pooler", "batch": 128, "tile": [128, 128], "splits": 4, "baseline_us": 32.56000019609928, "candidate_us": 33.344000577926636, "paired_speedup": 0.9763064997426204}
+RESULT {"layer": "pooler", "batch": 128, "tile": [128, 256], "splits": 2, "baseline_us": 32.92800113558769, "candidate_us": 56.17599934339523, "paired_speedup": 0.5896187211560164}
+FAIL pooler 128 256 128 2 ValueError CTA tile shape M must be 64/128
+RESULT {"layer": "pooler", "batch": 128, "tile": [128, 64], "splits": 2, "baseline_us": 32.59200043976307, "candidate_us": 35.711999982595444, "paired_speedup": 0.9239651651233407}
+RESULT {"layer": "pooler", "batch": 256, "tile": [128, 128], "splits": 1, "baseline_us": 38.60799968242645, "candidate_us": 51.53600126504898, "paired_speedup": 0.7530398432132723}
+RESULT {"layer": "pooler", "batch": 256, "tile": [128, 128], "splits": 2, "baseline_us": 38.60799968242645, "candidate_us": 41.471999138593674, "paired_speedup": 0.9242911083953973}
+RESULT {"layer": "pooler", "batch": 256, "tile": [128, 128], "splits": 4, "baseline_us": 38.19199837744236, "candidate_us": 45.45599967241287, "paired_speedup": 0.841440706574903}
+RESULT {"layer": "pooler", "batch": 256, "tile": [128, 256], "splits": 2, "baseline_us": 38.15999999642372, "candidate_us": 52.8159998357296, "paired_speedup": 0.73114889490662}
+FAIL pooler 256 256 128 2 ValueError CTA tile shape M must be 64/128
+RESULT {"layer": "pooler", "batch": 256, "tile": [128, 64], "splits": 2, "baseline_us": 37.99999877810478, "candidate_us": 53.360000252723694, "paired_speedup": 0.7187190754262185}
+RESULT {"layer": "unpooler", "batch": 128, "tile": [128, 128], "splits": 1, "baseline_us": 29.392000287771225, "candidate_us": 35.599999129772186, "paired_speedup": 0.8240079166198802}
+RESULT {"layer": "unpooler", "batch": 128, "tile": [128, 128], "splits": 2, "baseline_us": 29.24799919128418, "candidate_us": 33.67999941110611, "paired_speedup": 0.8707894417576141}
+RESULT {"layer": "unpooler", "batch": 128, "tile": [128, 128], "splits": 4, "baseline_us": 29.215999878942966, "candidate_us": 38.047999143600464, "paired_speedup": 0.7691336833922913}
+RESULT {"layer": "unpooler", "batch": 128, "tile": [128, 256], "splits": 2, "baseline_us": 29.16800044476986, "candidate_us": 47.120001167058945, "paired_speedup": 0.6240165268282083}
+FAIL unpooler 128 256 128 2 ValueError CTA tile shape M must be 64/128
+RESULT {"layer": "unpooler", "batch": 128, "tile": [128, 64], "splits": 2, "baseline_us": 29.37600016593933, "candidate_us": 38.62399980425835, "paired_speedup": 0.7597396595819249}
+RESULT {"layer": "unpooler", "batch": 256, "tile": [128, 128], "splits": 1, "baseline_us": 33.344000577926636, "candidate_us": 42.25600138306618, "paired_speedup": 0.7872365225203757}
+RESULT {"layer": "unpooler", "batch": 256, "tile": [128, 128], "splits": 2, "baseline_us": 33.45600143074989, "candidate_us": 46.78399860858917, "paired_speedup": 0.7207505573348852}
+RESULT {"layer": "unpooler", "batch": 256, "tile": [128, 128], "splits": 4, "baseline_us": 33.24799984693527, "candidate_us": 54.4000007212162, "paired_speedup": 0.6193958471675878}
+RESULT {"layer": "unpooler", "batch": 256, "tile": [128, 256], "splits": 2, "baseline_us": 33.424001187086105, "candidate_us": 41.74399934709072, "paired_speedup": 0.8055651839151023}
+FAIL unpooler 256 256 128 2 ValueError CTA tile shape M must be 64/128
+RESULT {"layer": "unpooler", "batch": 256, "tile": [128, 64], "splits": 2, "baseline_us": 34.064000472426414, "candidate_us": 60.32000109553337, "paired_speedup": 0.5675754983642449}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-yMVNUuRy35VGGuOVwyUi9O

@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-eeSkNnW4mZvAIkCqTsQcVV
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200
+RESULT {"batch": 128, "seed": 101, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.938373321080453, "baseline_us": 237.72800713777542, "candidate_us": 253.4400075674057}
+RESULT {"batch": 128, "seed": 419, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9916694496415182, "baseline_us": 230.1120012998581, "candidate_us": 230.38399964571}
+RESULT {"batch": 128, "seed": 2387, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 1.0129657364517686, "baseline_us": 220.20799666643143, "candidate_us": 217.56799519062042}
+RESULT {"batch": 128, "seed": 7919, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 1.0266749405629854, "baseline_us": 222.04799950122833, "candidate_us": 218.59200298786163}
+RESULT {"batch": 128, "seed": 15241, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9392939792227418, "baseline_us": 209.35999602079391, "candidate_us": 223.26400130987167}
+RESULT {"batch": 128, "seed": 49157, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9769773296381923, "baseline_us": 221.02400660514832, "candidate_us": 226.6400009393692}
+RESULT {"batch": 256, "seed": 101, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9520926192895607, "baseline_us": 250.20800530910492, "candidate_us": 262.60799169540405}
+RESULT {"batch": 256, "seed": 419, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9910509012929476, "baseline_us": 296.80000245571136, "candidate_us": 299.1520017385483}
+RESULT {"batch": 256, "seed": 2387, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9868469929327123, "baseline_us": 299.904003739357, "candidate_us": 304.160013794899}
+RESULT {"batch": 256, "seed": 7919, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9617708722989593, "baseline_us": 281.5840095281601, "candidate_us": 292.9279953241348}
+RESULT {"batch": 256, "seed": 15241, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9871565634508167, "baseline_us": 307.6160103082657, "candidate_us": 311.6479963064194}
+RESULT {"batch": 256, "seed": 49157, "cfg": [4, 4, 4, 2], "relative_error": 0.0, "speedup": 0.9320847385061313, "baseline_us": 248.03200364112854, "candidate_us": 266.9599950313568}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-eeSkNnW4mZvAIkCqTsQcVV

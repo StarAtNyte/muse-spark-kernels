@@ -1,0 +1,23 @@
+{
+  "name": "moe_hybrid_rebias_interleave",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Stack the current best M32/M128 hybrid MoE dispatch with exact prepare-time E4M3 scale rebias, retaining its M8 interleaved layout. The previous rebias-only candidate disabled interleaving, so this isolates whether byte rebias composes with the winner.",
+  "sha256": "2cab80f34e64a0e80eaddaacd7a1f1bd742a5921a393095fa65f1b9e61e69b93",
+  "created_at": 1793130634.3386517,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 13,
+      "left": 7
+    }
+  },
+  "status": "done",
+  "job_id": "cc86721bc4cf4fb4",
+  "updated_at": 1793130799.8008463
+}

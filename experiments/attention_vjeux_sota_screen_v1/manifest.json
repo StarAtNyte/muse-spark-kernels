@@ -1,0 +1,19 @@
+{
+  "name": "attention_vjeux_sota_screen_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Screen a current public high-performing attention implementation (vjeux scored 2.6104x) against our promoted route. Then stack our proven PTX merge and dispatch where compatible.",
+  "sha256": "b3a75ce4fa697cec2c597b5026839fa3df07e80a19bce654f8c885bfe43d4a5c",
+  "upstream": "https://github.com/vjeux/okc-2026",
+  "license": "Apache-2.0",
+  "created_at": 1793160839.6656494,
+  "decision": "advance_official_check",
+  "status": "done",
+  "paired_h200_decode": {
+    "sliding_speedups": [1.2662, 1.2368, 1.3256, 1.3266, 1.3468, 1.3843],
+    "full_speedups": [1.3048, 1.3287, 1.0782, 1.0724, 1.0684, 1.0802],
+    "reference_checked_shapes": 12,
+    "gpu": "NVIDIA H200"
+  },
+  "decision_reason": "Corrected driver checked each source against the official reference; paired graph timing beat canonical in all 12 decode shape/seed pairs. Separate exact-source official full-workload check launched as job 101c4ba595534e48. The first diagnostic driver incorrectly required outputs to match each other and was discarded.",
+  "parent": "kernels/muse_attention_decode/submission.py"
+}

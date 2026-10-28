@@ -1,0 +1,110 @@
+[
+  {
+    "batch": 16,
+    "layer": "qkv_gate",
+    "seed": 173,
+    "algorithm": 0,
+    "speedup": 0.9970717373563994,
+    "baseline_us": 21.71199955046177,
+    "candidate_us": 21.79200015962124
+  },
+  {
+    "batch": 16,
+    "layer": "qkv_gate",
+    "seed": 2387,
+    "algorithm": 0,
+    "speedup": 0.9773196226136568,
+    "baseline_us": 21.43999934196472,
+    "candidate_us": 21.856000646948814
+  },
+  {
+    "batch": 16,
+    "layer": "qkv_gate",
+    "seed": 7919,
+    "algorithm": 0,
+    "speedup": 0.994089393307249,
+    "baseline_us": 21.664000116288662,
+    "candidate_us": 21.743999794125557
+  },
+  {
+    "batch": 32,
+    "layer": "pooler",
+    "seed": 173,
+    "algorithm": 1,
+    "speedup": 1.0413647377713662,
+    "baseline_us": 31.840000301599503,
+    "candidate_us": 30.62400035560131
+  },
+  {
+    "batch": 32,
+    "layer": "pooler",
+    "seed": 2387,
+    "algorithm": 1,
+    "speedup": 1.0257973570444332,
+    "baseline_us": 31.520001590251923,
+    "candidate_us": 30.672000721096992
+  },
+  {
+    "batch": 32,
+    "layer": "pooler",
+    "seed": 7919,
+    "algorithm": 1,
+    "speedup": 1.0290523605766173,
+    "baseline_us": 31.90400078892708,
+    "candidate_us": 30.848000198602676
+  },
+  {
+    "batch": 32,
+    "layer": "unpooler",
+    "seed": 173,
+    "algorithm": 5,
+    "speedup": 0.995506106074861,
+    "baseline_us": 28.28799933195114,
+    "candidate_us": 28.255999088287354
+  },
+  {
+    "batch": 32,
+    "layer": "unpooler",
+    "seed": 2387,
+    "algorithm": 5,
+    "speedup": 0.9898381772828297,
+    "baseline_us": 28.176000341773033,
+    "candidate_us": 28.672000393271446
+  },
+  {
+    "batch": 32,
+    "layer": "unpooler",
+    "seed": 7919,
+    "algorithm": 5,
+    "speedup": 0.9697810177075838,
+    "baseline_us": 28.192000463604927,
+    "candidate_us": 29.91999965161085
+  },
+  {
+    "batch": 128,
+    "layer": "pooler",
+    "seed": 173,
+    "algorithm": 0,
+    "speedup": 1.0186143022039378,
+    "baseline_us": 32.59200043976307,
+    "candidate_us": 32.03199990093708
+  },
+  {
+    "batch": 128,
+    "layer": "pooler",
+    "seed": 2387,
+    "algorithm": 0,
+    "speedup": 0.9995073280861184,
+    "baseline_us": 32.62399882078171,
+    "candidate_us": 32.48000144958496
+  },
+  {
+    "batch": 128,
+    "layer": "pooler",
+    "seed": 7919,
+    "algorithm": 0,
+    "speedup": 1.0147801034888042,
+    "baseline_us": 32.287999987602234,
+    "candidate_us": 31.840000301599503
+  }
+]

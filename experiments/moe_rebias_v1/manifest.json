@@ -1,0 +1,23 @@
+{
+  "name": "moe_rebias_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Pre-scale BF16 storage passed all 5 shapes but inflated scale-buffer traffic and missed aggregate. Instead re-encode E4M3 scale exponent in the same 8 bits during prepare (source exponent e becomes e-1; source subnormals use sentinel 15), then use integer bit construction to recover exactly scale*2^119 as BF16 at runtime. This removes float conversion without increasing weight traffic.",
+  "sha256": "e2f3af2c70d5ea31abd0b8c1791f419ae1eac11b26665b6c4a88058e46933af4",
+  "created_at": 1793127543.5118146,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 9,
+      "left": 11
+    }
+  },
+  "status": "done",
+  "job_id": "27f07d1e244945a4",
+  "updated_at": 1793134350.9092581
+}

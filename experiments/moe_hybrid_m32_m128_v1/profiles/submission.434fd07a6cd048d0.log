@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-epoljan2/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-epoljan2/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_moe_w4a16-epoljan2/run/submission.py", line 1393, in kernel_fn
+    return _om_kernel_fn(data,state['operatorstack'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-epoljan2/run/submission.py", line 1358, in _om_kernel_fn
+    _om__route2[1,](ids, local, sorted_pairs, work, nwork, work13, nwork13, P, ls, LOCAL=L, BM=bm, BM2=bm13, P_BLOCK=p_block, W_MAX=w_max, W_MAX2=w_max13, num_warps=16 if p_block >= 1024 else 4)
+  File "/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py", line 374, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py", line 741, in run
+    bound_args, specialization, options = binder(*args, **kwargs)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dynamic_func() missing 1 required positional argument: '_om_BM'

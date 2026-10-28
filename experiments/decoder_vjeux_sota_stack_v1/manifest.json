@@ -1,0 +1,12 @@
+{
+  "name": "decoder_vjeux_sota_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the public vjeux whole-decoder source (2.10188x) as a fresh top-tier base; then route our verified M32/M128 MoE and projection stacks only where they beat its selected routes.",
+  "sha256": "a1875397e330a6a12f26aae756130eb77720c9958cf2fc89166e4dd4a820e9d2",
+  "upstream": "https://github.com/vjeux/okc-2026",
+  "license": "Apache-2.0",
+  "created_at": 1793161349.1869016,
+  "decision": "prepared_for_h200_screen",
+  "status": "prepared",
+  "parent": "kernels/muse_decode_layer/submission.py"
+}

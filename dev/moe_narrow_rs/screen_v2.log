@@ -1,0 +1,80 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-15FhsQ4xSla709lHCZ6Y5n
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 128 419 (2, 2) True relative L2 error 5.504e-03 (worst row 5.944e-03) bit_equal True
+RESULT {"batch": 128, "seed": 419, "tiles": [2, 2], "baseline_us": 221.91999852657318, "candidate_us": 227.60000079870224, "ratio": 0.9750439268356916}
+CHECK 128 419 (2, 4) True relative L2 error 5.504e-03 (worst row 5.944e-03) bit_equal True
+RESULT {"batch": 128, "seed": 419, "tiles": [2, 4], "baseline_us": 223.23200106620789, "candidate_us": 232.52800107002258, "ratio": 0.9600220190212045}
+CHECK 128 419 (4, 2) True relative L2 error 5.504e-03 (worst row 5.944e-03) bit_equal True
+RESULT {"batch": 128, "seed": 419, "tiles": [4, 2], "baseline_us": 222.1279963850975, "candidate_us": 224.65600073337555, "ratio": 0.9887472209065169}
+CHECK 128 7919 (2, 2) True relative L2 error 5.478e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 128, "seed": 7919, "tiles": [2, 2], "baseline_us": 227.64800488948822, "candidate_us": 240.1919960975647, "ratio": 0.9477751489979659}
+CHECK 128 7919 (2, 4) True relative L2 error 5.478e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 128, "seed": 7919, "tiles": [2, 4], "baseline_us": 228.92799973487854, "candidate_us": 235.104002058506, "ratio": 0.973730764812372}
+CHECK 128 7919 (4, 2) True relative L2 error 5.478e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 128, "seed": 7919, "tiles": [4, 2], "baseline_us": 227.90400683879852, "candidate_us": 240.55999517440796, "ratio": 0.947389472108886}
+CHECK 128 15241 (2, 2) True relative L2 error 5.491e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 128, "seed": 15241, "tiles": [2, 2], "baseline_us": 243.13600361347198, "candidate_us": 255.8239996433258, "ratio": 0.9504034177890126}
+CHECK 128 15241 (2, 4) True relative L2 error 5.491e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 128, "seed": 15241, "tiles": [2, 4], "baseline_us": 242.38400161266327, "candidate_us": 261.695995926857, "ratio": 0.9262044715441831}
+CHECK 128 15241 (4, 2) True relative L2 error 5.491e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 128, "seed": 15241, "tiles": [4, 2], "baseline_us": 249.32799488306046, "candidate_us": 250.67200511693954, "ratio": 0.9946383712323515}
+CHECK 256 419 (2, 2) True relative L2 error 5.487e-03 (worst row 6.021e-03) bit_equal True
+RESULT {"batch": 256, "seed": 419, "tiles": [2, 2], "baseline_us": 289.3120050430298, "candidate_us": 317.79201328754425, "ratio": 0.910381611073576}
+CHECK 256 419 (2, 4) True relative L2 error 5.487e-03 (worst row 6.021e-03) bit_equal True
+RESULT {"batch": 256, "seed": 419, "tiles": [2, 4], "baseline_us": 287.84000873565674, "candidate_us": 312.4319911003113, "ratio": 0.9212885265748638}
+CHECK 256 419 (4, 2) True relative L2 error 5.487e-03 (worst row 6.021e-03) bit_equal True
+RESULT {"batch": 256, "seed": 419, "tiles": [4, 2], "baseline_us": 287.85599768161774, "candidate_us": 289.4720137119293, "ratio": 0.9944173669516813}
+CHECK 256 7919 (2, 2) True relative L2 error 5.476e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 256, "seed": 7919, "tiles": [2, 2], "baseline_us": 289.92000222206116, "candidate_us": 331.66399598121643, "ratio": 0.874137698800688}
+CHECK 256 7919 (2, 4) True relative L2 error 5.476e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 256, "seed": 7919, "tiles": [2, 4], "baseline_us": 289.93599116802216, "candidate_us": 322.4800080060959, "ratio": 0.8990820639105834}
+CHECK 256 7919 (4, 2) True relative L2 error 5.476e-03 (worst row 6.078e-03) bit_equal True
+RESULT {"batch": 256, "seed": 7919, "tiles": [4, 2], "baseline_us": 290.0319993495941, "candidate_us": 295.55200040340424, "ratio": 0.9813230800458945}
+CHECK 256 15241 (2, 2) True relative L2 error 5.486e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 256, "seed": 15241, "tiles": [2, 2], "baseline_us": 277.53598988056183, "candidate_us": 311.0719919204712, "ratio": 0.8921921519424892}
+CHECK 256 15241 (2, 4) True relative L2 error 5.486e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 256, "seed": 15241, "tiles": [2, 4], "baseline_us": 278.3360034227371, "candidate_us": 307.888001203537, "ratio": 0.9040170527422932}
+CHECK 256 15241 (4, 2) True relative L2 error 5.486e-03 (worst row 5.935e-03) bit_equal True
+RESULT {"batch": 256, "seed": 15241, "tiles": [4, 2], "baseline_us": 278.30399572849274, "candidate_us": 285.5840027332306, "ratio": 0.9745083515355787}
+NARROW_RS_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-15FhsQ4xSla709lHCZ6Y5n

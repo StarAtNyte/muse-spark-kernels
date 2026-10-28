@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ObmGsKB6rPoa5WHY2jnOij
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"batch": 3, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.0707091403588487, "baseline_us": 42.89599880576134, "candidate_us": 40.111999958753586}
+RESULT {"batch": 3, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0610130487670193, "baseline_us": 43.535999953746796, "candidate_us": 41.00799933075905}
+RESULT {"batch": 16, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.0783856425755283, "baseline_us": 140.52800089120865, "candidate_us": 130.38399815559387}
+RESULT {"batch": 16, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0769496988798468, "baseline_us": 139.5840048789978, "candidate_us": 129.66400384902954}
+RESULT {"batch": 32, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.06229242380393, "baseline_us": 230.0639972090721, "candidate_us": 216.5279984474182}
+RESULT {"batch": 32, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0657450458081494, "baseline_us": 229.48800027370453, "candidate_us": 215.31199663877487}
+RESULT {"batch": 33, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.0673467606424434, "baseline_us": 233.34400355815887, "candidate_us": 218.87999773025513}
+RESULT {"batch": 33, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0676904048701168, "baseline_us": 231.9839969277382, "candidate_us": 217.67999976873398}
+CHECK 4 6000 64 1.0 False malformed output
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 72, in <module>
+    raise AssertionError(message)
+AssertionError: malformed output
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ObmGsKB6rPoa5WHY2jnOij

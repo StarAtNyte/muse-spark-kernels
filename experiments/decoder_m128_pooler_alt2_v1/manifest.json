@@ -1,0 +1,9 @@
+{
+  "name": "decoder_m128_pooler_alt2_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "If the standalone M128 pooler diag2/tail5 plan wins, stack exactly that single plan change into the scored decoder source and preserve every other current path.",
+  "sha256": "4c652c51034bc8df26aa60856b8f3ee9c4a0fadc0f77997163f6618dfdc7a388",
+  "created_at": "2026-10-28T00:54:43.530856+00:00",
+  "decision": "reject_dependency",
+  "decision_reason": "The required standalone projection plan scored 1.50663x, below the promoted 1.53456x; do not run this decoder composition."
+}

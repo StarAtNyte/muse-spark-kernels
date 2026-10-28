@@ -1,0 +1,24 @@
+{
+  "name": "projection_unpool128_alt1_confirm",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Fresh official confirmation of the M128 verify unpooler cuBLASLt descriptor that improved its kernel profile from 19.1 to 18.8 us and scored 1.529986x in the first complete check.",
+  "sha256": "a3f16f733360ad5a0fa4c2c44247712476e6f0a756299f6053f671b18370f257",
+  "created_at": 1793123560.2120998,
+  "decision": "duplicate_no_rerun",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "duplicate",
+  "job_id": "d17a3dde204b4813",
+  "updated_at": 1793123589.3710334,
+  "decision_reason": "The checker deduplicated the identical SHA to the original job; no independent timing was run."
+}

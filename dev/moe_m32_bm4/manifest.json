@@ -1,0 +1,15 @@
+{
+  "name": "moe_m32_bm4",
+  "problem": "muse_moe_w4a16",
+  "parent": "experiments/scored_moe_hybrid_m32_m128_v2/submission.py",
+  "change": "Use BM=4 only for M=32; preserve every other dispatch and source path.",
+  "decision": "reject_end_to_end",
+  "modal_gpu": "NVIDIA H200",
+  "triton": "3.8.0",
+  "official_quota_used": false,
+  "results": [
+    {"seed": 419, "winner_us": 143.12, "candidate_us": 148.768, "ratio": 0.9620348326461515, "bit_equal": true},
+    {"seed": 7919, "winner_us": 159.76, "candidate_us": 172.208, "ratio": 0.9277153314666501, "bit_equal": true},
+    {"seed": 15241, "winner_us": 154.272, "candidate_us": 159.12, "ratio": 0.9695324072394058, "bit_equal": true}
+  ]
+}

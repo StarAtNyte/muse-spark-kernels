@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1FilvqUUGqx2Quao5BGna4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpgq9a5dv0/kernel.cu(65): warning #550-D: variable \"g_persist\" was set but never used\n  static int g_persist = 0;\n             ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "ptxas info    : 0 bytes gmem\nptxas info    : Compiling entry function '_Z9wm_bucketILi1ELi4EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi1ELi4EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 159 registers, used 1 barriers\nptxas info    : Compile time = 78.969 ms\nptxas info    : Compiling entry function '_Z9wm_bucketILi1ELi2EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi1ELi2EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 124 registers, used 1 barriers\nptxas info    : Compile time = 93.443 ms\nptxas info    : Compiling entry function '_Z9wm_bucketILi1ELi1EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi1ELi1EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 98 registers, used 1 barriers\nptxas info    : Compile time = 142.532 ms\nptxas info    : Compiling entry function '_Z9wm_bucketILi0ELi4EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi0ELi4EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 160 registers, used 1 barriers\nptxas info    : Compile time = 134.867 ms\nptxas info    : Compiling entry function '_Z9wm_bucketILi0ELi2EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi0ELi2EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 126 registers, used 1 barriers\nptxas info    : Compile time = 109.855 ms\nptxas info    : Compiling entry function '_Z9wm_bucketILi0ELi1EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i' for 'sm_90a'\nptxas info    : Function properties for _Z9wm_bucketILi0ELi1EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_SD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 96 registers, used 1 barriers\nptxas info    : Compile time = 151.976 ms\nptxas info    : Compiling entry function '_Z12wm_pf_kernelPKhS0_PKiS2_iiimm' for 'sm_90a'\nptxas info    : Function properties for _Z12wm_pf_kernelPKhS0_PKiS2_iiimm\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 26 registers, used 0 barriers\nptxas info    : Compile time = 8.927 ms\nptxas info    : Compiling entry function '_Z16wm_finish_kernelPK13__nv_bfloat16PKfPKiS1_PS_f' for 'sm_90a'\nptxas info    : Function properties for _Z16wm_finish_kernelPK13__nv_bfloat16PKfPKiS1_PS_f\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 64 registers, used 1 barriers, 32 bytes smem\nptxas info    : Compile time = 55.205 ms\nptxas info    : Compiling entry function '_Z15wm_permx_kernelPK13__nv_bfloat16PS_i' for 'sm_90a'\nptxas info    : Function properties for _Z15wm_permx_kernelPK13__nv_bfloat16PS_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 12 registers, used 0 barriers\nptxas info    : Compile time = 2.264 ms\nptxas info    : Compiling entry function '_Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii' for 'sm_90a'\nptxas info    : Function properties for _Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 55 registers, used 1 barriers, 128 bytes smem\nptxas info    : Compile time = 41.265 ms\n"
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1FilvqUUGqx2Quao5BGna4

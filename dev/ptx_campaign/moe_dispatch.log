@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IzblOUk1VG2vndb6fM7w0M
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200
+RESULT {"batch": 16, "seed": 419, "cfg": [4, 4, 1], "relative_error": 0.00017476223001722246, "speedup": 0.8903149078188628, "baseline_us": 118.04799735546112, "candidate_us": 132.54400342702866}
+RESULT {"batch": 16, "seed": 419, "cfg": [2, 4, 1], "relative_error": 0.00017476223001722246, "speedup": 0.7689020819988475, "baseline_us": 118.67200210690498, "candidate_us": 154.56000715494156}
+RESULT {"batch": 16, "seed": 419, "cfg": [2, 8, 1], "relative_error": 0.0, "speedup": 0.8641360947876583, "baseline_us": 119.50400099158287, "candidate_us": 138.17600160837173}
+RESULT {"batch": 16, "seed": 419, "cfg": [4, 4, 4], "relative_error": 0.0005927574238739908, "speedup": 0.7440779908452932, "baseline_us": 119.19999867677689, "candidate_us": 160.40000319480896}
+RESULT {"batch": 16, "seed": 419, "cfg": [2, 4, 4], "relative_error": 0.0005927574238739908, "speedup": 0.7641303926736382, "baseline_us": 119.23199892044067, "candidate_us": 156.68800473213196}
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 19, in <module>
+    raise AssertionError((batch, seed, cfg, error))
+AssertionError: (16, 419, (4, 4, 5), 0.013414241373538971)
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IzblOUk1VG2vndb6fM7w0M

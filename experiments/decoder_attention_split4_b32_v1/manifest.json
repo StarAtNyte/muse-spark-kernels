@@ -1,0 +1,25 @@
+{
+  "name": "decoder_attention_split4_b32_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the attention winner (split=4 only for B32 full verification) into the validated whole-decoder pipeline; retain split=8 for all other shapes and preserve existing projection/router/norm overlap and Marlin routes.",
+  "sha256": "0eda4060dd5ca49156e2f6df98727d611b73410104525597fccdce68bc86fe2f",
+  "created_at": 1793136912.4050486,
+  "decision": "reject_global",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 10,
+      "left": 10
+    }
+  },
+  "status": "done",
+  "job_id": "3e5c2ae3875945c1",
+  "updated_at": 1793137473.5608885,
+  "measured_speedup": 1.6984819115903769,
+  "note": "Passed correctness but aggregate below decoder best 1.70772x; retain as rejected end-to-end composition."
+}

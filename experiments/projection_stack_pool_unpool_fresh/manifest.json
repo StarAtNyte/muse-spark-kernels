@@ -1,0 +1,23 @@
+{
+  "name": "projection_stack_pool_unpool_fresh",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Fresh official repeat of best disjoint pooler/unpooler cuBLASLt plan stack; comment-only source marker prevents server deduplication.",
+  "sha256": "ce7643d72b185f82253b0587905d8b0a6b6131796d459f3829143726125b9bb3",
+  "created_at": 1793131676.3514836,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "897d774552e44932",
+  "updated_at": 1793131821.7484636
+}

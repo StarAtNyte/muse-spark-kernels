@@ -1,0 +1,11 @@
+{
+  "name": "projection_stack_m128_pooler_alt_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Retain the full promoted descriptor stack and change only the M128 pooler cuBLASLt descriptor diag field from 4 to the distinct search seed 0. This isolates the M128 pooler plan, whose 19.8us verify-16 GEMM has not been individually confirmed.",
+  "sha256": "6268e6d72b695763e38275829a996bdb8d6d382accff873849aef140b7431817",
+  "created_at": "2026-10-28T00:34:06.220722+00:00",
+  "decision": "reject",
+  "job_id": "a89b4fc1baaf4796",
+  "status": "done",
+  "decision_reason": "Official H200 check passed all 9 correctness tests but scored 1.50688x (95% CI [1.48427, 1.52948]), below the promoted 1.53456x. The target M128 pooler profile was 20.9us versus 19.8us for the promoted descriptor; reject and preserve the canonical plan."
+}

@@ -1,0 +1,46 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PHXL2F68gealEZWFTmTEWA
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_gluon_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENVIRONMENT 2.9.1+cu128 3.8.0
+CHECK 8 512 1.0 True relative L2 error 7.488e-02 (worst row 1.148e-01) [bound 0.150: 2.5 x the reference's 0.075 with FP8 E4M3 queries + 0.015]
+CHECK 9 9000 0.015625 True relative L2 error 6.929e-02 (worst row 9.463e-02) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+CHECK 8 96 1.0 True relative L2 error 5.949e-02 (worst row 8.617e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+TIMED_CHECK 16 419 True relative L2 error 2.970e-02 (worst row 6.802e-02) [bound 0.085: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 419, "error": 0.010987079702317715, "ratio": 0.784829799312657, "baseline_us": 156.49600327014923, "candidate_us": 199.48799908161163}
+TIMED_CHECK 16 7919 True relative L2 error 3.334e-02 (worst row 6.006e-02) [bound 0.095: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 7919, "error": 0.010321615263819695, "ratio": 0.7879587666199327, "baseline_us": 157.05600380897522, "candidate_us": 199.5519995689392}
+TIMED_CHECK 16 15241 True relative L2 error 2.979e-02 (worst row 5.813e-02) [bound 0.087: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 15241, "error": 0.011024896055459976, "ratio": 0.7874563240653568, "baseline_us": 156.40000253915787, "candidate_us": 198.97600263357162}
+TIMED_CHECK 32 419 True relative L2 error 2.948e-02 (worst row 6.130e-02) [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 419, "error": 0.011093552224338055, "ratio": 0.8289778476308931, "baseline_us": 315.5200034379959, "candidate_us": 380.6400001049042}
+TIMED_CHECK 32 7919 True relative L2 error 3.500e-02 (worst row 6.583e-02) [bound 0.099: 2.5 x the reference's 0.034 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 7919, "error": 0.010234286077320576, "ratio": 0.8198714528435491, "baseline_us": 313.60000371932983, "candidate_us": 382.86399841308594}
+TIMED_CHECK 32 15241 True relative L2 error 2.926e-02 (worst row 6.176e-02) [bound 0.084: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 15241, "error": 0.01054367609322071, "ratio": 0.8317079716295355, "baseline_us": 314.92799520492554, "candidate_us": 378.60800325870514}
+GLUON_FP8P_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PHXL2F68gealEZWFTmTEWA

@@ -1,0 +1,24 @@
+{
+  "name": "attention_fp8p_cluster_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Combine independently validated full-context FP8 P/V joint-layout attention (all official tests, 1.71123x aggregate) with Hopper DSM sliding verify branch for batch2..24 (all official tests, target verify16 sliding22.40->19.70us). Branches act on disjoint config regimes and preserve all other production dispatch. Test whether their case gains survive combined official aggregate.",
+  "sha256": "4823f74b7fb8f4c8247f92a6a4c884f492750aaa3c7f74f86fc402a2864b9a02",
+  "created_at": 1793077871.6038427,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "7a6f649cc26f4e6b",
+  "updated_at": 1793078796.1015394,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

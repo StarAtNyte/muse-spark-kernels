@@ -1,0 +1,24 @@
+{
+  "name": "projection_128_lt_stack",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Stack two shape-level H200 cuBLASLt route improvements: alternate M128 verify pooler plan plus the recorded M128 unpooler plan; all other optimized v18 routes remain unchanged.",
+  "sha256": "63b7c28ea3ee2694b1c3a15fd60a3760dccbacf92080e90bc474a5cda6272323",
+  "created_at": 1793123776.0084074,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "47d6734c1cfb4dca",
+  "updated_at": 1793123942.306351,
+  "decision_reason": "Both M128 pooler and unpooler alternate descriptors passed, but aggregate 1.524x did not reproduce at 1.519x; per-case paired timings show no consistent combined gain."
+}

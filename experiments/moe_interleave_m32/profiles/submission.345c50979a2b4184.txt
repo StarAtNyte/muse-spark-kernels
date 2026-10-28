@@ -1,0 +1,72 @@
+okc run 345c50979a2b4184 on muse_moe_w4a16
+submission  /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_interleave_m32/submission.py
+status      ok
+passed      true
+speedup     1.9625126135262894
+speedup_ci  [1.933074924323395 1.9919503027291836]
+score_us    6852.69480935229
+tests       5/5 passed
+
+scored shapes (µs; speed of light is the reference's bound)
+case                                                         sglang      yours  speedup        sol  
+bs=1 load=decode 1 sharding=ep8                               77.44      31.29   2.475x      11.42  
+bs=16 load=decode 16 sharding=ep8                            189.89     104.66   1.814x      52.52  
+bs=32 load=decode 32 sharding=ep8                            212.83     149.00   1.428x      70.76  
+bs=8 load=verify 1 sharding=ep8                              144.43      77.18   1.871x      37.32  
+bs=128 load=verify 16 sharding=ep8                           466.24     221.69   2.103x     101.34  
+bs=256 load=verify 32 sharding=ep8                           613.66     271.16   2.263x     108.94  
+
+profile 0: bs=1 load=decode 1 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      12.7 µs  47.9%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...       9.1 µs  34.2%      1
+_post_expert_norm_weighted_sum_kernel                              2.9 µs  10.9%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   7.0%      1
+total                                                             26.5 µs
+
+profile 1: bs=16 load=decode 16 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 2, 8, 0, 0>(uint4 const*, uint2 const*...      49.3 µs  61.4%      1
+void wm_gemm<1, 2, 2, 8, 0, 0>(uint4 const*, uint2 const*...      24.8 µs  30.9%      1
+_post_expert_norm_weighted_sum_kernel                              4.3 µs   5.3%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   2.3%      1
+total                                                             80.3 µs
+
+profile 2: bs=32 load=decode 32 sharding=ep8
+kernel                                                           GPU time  share  calls
+_om__w2                                                          127.7 µs  94.3%      2
+_post_expert_norm_weighted_sum_kernel                              4.9 µs   3.6%      1
+_om__route                                                         2.8 µs   2.1%      1
+total                                                            135.3 µs
+
+profile 3: bs=8 load=verify 1 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      55.4 µs  60.5%      1
+void wm_gemm<1, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      29.9 µs  32.7%      1
+_post_expert_norm_weighted_sum_kernel                              4.4 µs   4.8%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   2.0%      1
+total                                                             91.5 µs
+GPU busy (kernels overlap: PDL or streams)                        86.0 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+
+profile 4: bs=128 load=verify 16 sharding=ep8
+kernel                                                           GPU time  share  calls
+_om__w13_mix                                                     131.9 µs  61.7%      1
+_om__w2_mix                                                       70.5 µs  33.0%      1
+_om__route2                                                        6.3 µs   2.9%      1
+_post_expert_norm_weighted_sum_kernel                              5.0 µs   2.3%      1
+total                                                            213.7 µs
+
+profile 5: bs=256 load=verify 32 sharding=ep8
+kernel                                                           GPU time  share  calls
+void wm_bucket<1, 2>(uint4 const*, uint2 const*, float co...     187.4 µs  23.1%      1
+void wm_bucket<1, 4>(uint4 const*, uint2 const*, float co...     166.8 µs  20.6%      1
+void wm_bucket<1, 1>(uint4 const*, uint2 const*, float co...     129.0 µs  15.9%      1
+void wm_bucket<0, 1>(uint4 const*, uint2 const*, float co...     126.6 µs  15.6%      1
+void wm_bucket<0, 2>(uint4 const*, uint2 const*, float co...      97.6 µs  12.0%      1
+void wm_bucket<0, 4>(uint4 const*, uint2 const*, float co...      94.9 µs  11.7%      1
+_post_expert_norm_weighted_sum_kernel                              5.7 µs   0.7%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       3.0 µs   0.4%      1
+total                                                            811.0 µs
+GPU busy (kernels overlap: PDL or streams)                       362.3 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more

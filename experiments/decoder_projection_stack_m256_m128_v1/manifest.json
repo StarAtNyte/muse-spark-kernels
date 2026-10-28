@@ -1,0 +1,23 @@
+{
+  "name": "decoder_projection_stack_m256_m128_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer only the two cuBLASLt descriptors that improved the scored standalone projection stack into matching whole-decoder operations: M256 pooler and M128 unpooler. Preserve every other route; these are the exact token shapes in decoder verify32 and verify16.",
+  "sha256": "1cbebc6fd727d2c87c40073b6a585f99ec399641d3628d0fae364197dd65c431",
+  "created_at": 1793144779.5061417,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 6,
+      "left": 4
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 14,
+      "left": 6
+    }
+  },
+  "status": "done",
+  "job_id": "f2034621e7474f7f",
+  "updated_at": 1793145271.964507
+}

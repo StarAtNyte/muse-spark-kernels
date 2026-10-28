@@ -1,0 +1,23 @@
+{
+  "name": "decoder_moe_hybrid_m32_v3",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Independent official repeat of the full decoder check for the M32 operatorstack integration; prior run passed all correctness cases but its aggregate point estimate was inside the existing winner CI despite faster M32 subcases.",
+  "sha256": "9b528c6a0efa361881eb6655c750710e58fcbf03dab46572f131c50ac2a9a6d3",
+  "created_at": 1793143698.0142195,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 5,
+      "left": 5
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 13,
+      "left": 7
+    }
+  },
+  "status": "done",
+  "job_id": "79acbe62d51e417a",
+  "updated_at": 1793144149.1866443
+}

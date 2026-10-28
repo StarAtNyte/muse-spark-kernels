@@ -1,0 +1,11 @@
+{
+  "name": "attention_fullverify_vswizzle128_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Change only the FP8 V staging shared-memory swizzle from 64B to 128B to reduce the 19% excessive shared wavefronts seen in NCU; retain K layout, four pipeline stages, four producer warps, and all arithmetic.",
+  "sha256": "23eeaaddbde399008a2c19d931a4eb3f35807fa550fc341df18942b572abc5ba",
+  "created_at": 1793160467.199213,
+  "decision": "reject_compile",
+  "status": "done",
+  "decision_reason": "Compilation rejects 128-byte swizzle because D=64 FP8 contiguous tile has only 64 bytes; no source/runtime measurement produced.",
+  "parent": "kernels/muse_attention_decode/submission.py"
+}

@@ -1,0 +1,80 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZnGdLSCf0pClc5GlSyM9zt
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+BASE_CHECK 128 419 True relative L2 error 5.504e-03 (worst row 5.944e-03)
+ABLATION {"batch": 128, "seed": 419, "mode": 0, "dbg": 1, "baseline_us": 137.24800199270248, "ablated_us": 128.81600111722946, "ratio": 1.065457713345716}
+ABLATION {"batch": 128, "seed": 419, "mode": 0, "dbg": 2, "baseline_us": 137.79200613498688, "ablated_us": 134.5279961824417, "ratio": 1.0242626817106428}
+ABLATION {"batch": 128, "seed": 419, "mode": 0, "dbg": 3, "baseline_us": 138.047993183136, "ablated_us": 123.9360012114048, "ratio": 1.1138651548685967}
+ABLATION {"batch": 128, "seed": 419, "mode": 0, "dbg": 32, "baseline_us": 138.22399824857712, "ablated_us": 123.11999872326851, "ratio": 1.1226770604445604}
+ABLATION {"batch": 128, "seed": 419, "mode": 1, "dbg": 1, "baseline_us": 81.93599805235863, "ablated_us": 83.02399888634682, "ratio": 0.9868953453389113}
+ABLATION {"batch": 128, "seed": 419, "mode": 1, "dbg": 2, "baseline_us": 81.07199892401695, "ablated_us": 79.95199784636497, "ratio": 1.0140084188991019}
+ABLATION {"batch": 128, "seed": 419, "mode": 1, "dbg": 3, "baseline_us": 81.79200068116188, "ablated_us": 77.45600119233131, "ratio": 1.0559801619252693}
+ABLATION {"batch": 128, "seed": 419, "mode": 1, "dbg": 32, "baseline_us": 81.7599967122078, "ablated_us": 77.56800204515457, "ratio": 1.0540428341136459}
+BASE_CHECK 128 7919 True relative L2 error 5.478e-03 (worst row 6.078e-03)
+ABLATION {"batch": 128, "seed": 7919, "mode": 0, "dbg": 1, "baseline_us": 138.8000026345253, "ablated_us": 127.68000364303589, "ratio": 1.0870927214458608}
+ABLATION {"batch": 128, "seed": 7919, "mode": 0, "dbg": 2, "baseline_us": 139.3119990825653, "ablated_us": 133.92000645399094, "ratio": 1.0402627865047693}
+ABLATION {"batch": 128, "seed": 7919, "mode": 0, "dbg": 3, "baseline_us": 138.59199732542038, "ablated_us": 121.19999900460243, "ratio": 1.1434983371588765}
+ABLATION {"batch": 128, "seed": 7919, "mode": 0, "dbg": 32, "baseline_us": 139.45599645376205, "ablated_us": 125.23199617862701, "ratio": 1.1135811989680846}
+ABLATION {"batch": 128, "seed": 7919, "mode": 1, "dbg": 1, "baseline_us": 84.72000062465668, "ablated_us": 85.07199957966805, "ratio": 0.9958623406438011}
+ABLATION {"batch": 128, "seed": 7919, "mode": 1, "dbg": 2, "baseline_us": 84.1439999639988, "ablated_us": 81.4720019698143, "ratio": 1.032796518185161}
+ABLATION {"batch": 128, "seed": 7919, "mode": 1, "dbg": 3, "baseline_us": 84.75199714303017, "ablated_us": 77.82399654388428, "ratio": 1.0890213932310615}
+ABLATION {"batch": 128, "seed": 7919, "mode": 1, "dbg": 32, "baseline_us": 84.84799787402153, "ablated_us": 76.9599974155426, "ratio": 1.102494811894132}
+BASE_CHECK 256 419 True relative L2 error 5.487e-03 (worst row 6.021e-03)
+ABLATION {"batch": 256, "seed": 419, "mode": 0, "dbg": 1, "baseline_us": 175.87200552225113, "ablated_us": 165.55199772119522, "ratio": 1.0623369572286028}
+ABLATION {"batch": 256, "seed": 419, "mode": 0, "dbg": 2, "baseline_us": 175.32799392938614, "ablated_us": 166.62400215864182, "ratio": 1.0522373227025077}
+ABLATION {"batch": 256, "seed": 419, "mode": 0, "dbg": 3, "baseline_us": 175.90400576591492, "ablated_us": 153.3920019865036, "ratio": 1.146761261916329}
+ABLATION {"batch": 256, "seed": 419, "mode": 0, "dbg": 32, "baseline_us": 176.09599977731705, "ablated_us": 161.1040011048317, "ratio": 1.0930578916083526}
+ABLATION {"batch": 256, "seed": 419, "mode": 1, "dbg": 1, "baseline_us": 120.67200243473053, "ablated_us": 97.48799726366997, "ratio": 1.2378139445039185}
+ABLATION {"batch": 256, "seed": 419, "mode": 1, "dbg": 2, "baseline_us": 120.89599668979645, "ablated_us": 105.48799857497215, "ratio": 1.1460639913826174}
+ABLATION {"batch": 256, "seed": 419, "mode": 1, "dbg": 3, "baseline_us": 120.06399780511856, "ablated_us": 90.2240015566349, "ratio": 1.330732352075436}
+ABLATION {"batch": 256, "seed": 419, "mode": 1, "dbg": 32, "baseline_us": 120.7360029220581, "ablated_us": 105.92000186443329, "ratio": 1.1398791616014865}
+BASE_CHECK 256 7919 True relative L2 error 5.476e-03 (worst row 6.078e-03)
+ABLATION {"batch": 256, "seed": 7919, "mode": 0, "dbg": 1, "baseline_us": 175.50399899482727, "ablated_us": 166.4159968495369, "ratio": 1.054610147565965}
+ABLATION {"batch": 256, "seed": 7919, "mode": 0, "dbg": 2, "baseline_us": 176.09599977731705, "ablated_us": 158.9759960770607, "ratio": 1.107689236883018}
+ABLATION {"batch": 256, "seed": 7919, "mode": 0, "dbg": 3, "baseline_us": 175.4399985074997, "ablated_us": 149.1840034723282, "ratio": 1.1759973886211041}
+ABLATION {"batch": 256, "seed": 7919, "mode": 0, "dbg": 32, "baseline_us": 175.51999539136887, "ablated_us": 158.1440046429634, "ratio": 1.1098744829918445}
+ABLATION {"batch": 256, "seed": 7919, "mode": 1, "dbg": 1, "baseline_us": 121.37600034475327, "ablated_us": 98.81599992513657, "ratio": 1.2283031132276985}
+ABLATION {"batch": 256, "seed": 7919, "mode": 1, "dbg": 2, "baseline_us": 121.5520016849041, "ablated_us": 101.28000006079674, "ratio": 1.2001579937987599}
+ABLATION {"batch": 256, "seed": 7919, "mode": 1, "dbg": 3, "baseline_us": 120.36800011992455, "ablated_us": 87.79199793934822, "ratio": 1.3710588999589883}
+ABLATION {"batch": 256, "seed": 7919, "mode": 1, "dbg": 32, "baseline_us": 121.16799876093864, "ablated_us": 106.30399733781815, "ratio": 1.1398254232706315}
+DIAGNOSTIC_COMPLETE_NO_CANDIDATE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZnGdLSCf0pClc5GlSyM9zt

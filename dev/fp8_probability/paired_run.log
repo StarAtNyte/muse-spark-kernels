@@ -1,0 +1,64 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-60nyku6jiNxLnJqAuszwWX
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EARLY_CHECK 8 True relative L2 error 8.317e-02 (worst row 1.354e-01) [bound 0.150: 2.5 x the reference's 0.083 with FP8 E4M3 queries + 0.015]
+EARLY_CHECK 9 True relative L2 error 6.985e-02 (worst row 9.526e-02) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+TIMED_CHECK 8 113 True relative L2 error 3.039e-02 (worst row 6.353e-02) [bound 0.090: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 8, "seed": 113, "error": 0.007317417301237583, "speedup": 0.8460557389280045, "baseline_us": 126.46400183439255, "candidate_us": 149.75999295711517}
+TIMED_CHECK 8 7919 True relative L2 error 3.312e-02 (worst row 5.221e-02) [bound 0.096: 2.5 x the reference's 0.033 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 8, "seed": 7919, "error": 0.007273987866938114, "speedup": 0.8450659545247092, "baseline_us": 127.4079978466034, "candidate_us": 150.94399452209473}
+TIMED_CHECK 8 3613 True relative L2 error 3.159e-02 (worst row 6.611e-02) [bound 0.093: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 8, "seed": 3613, "error": 0.007459630258381367, "speedup": 0.8466309692313753, "baseline_us": 126.76800042390823, "candidate_us": 149.99999850988388}
+TIMED_CHECK 16 113 True relative L2 error 2.840e-02 (worst row 6.467e-02) [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 113, "error": 0.007380350027233362, "speedup": 0.9049846984369878, "baseline_us": 179.45600301027298, "candidate_us": 198.16000014543533}
+TIMED_CHECK 16 7919 True relative L2 error 3.276e-02 (worst row 6.633e-02) [bound 0.095: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 7919, "error": 0.007249885704368353, "speedup": 0.9033902425775262, "baseline_us": 179.1679933667183, "candidate_us": 197.56799936294556}
+TIMED_CHECK 16 3613 True relative L2 error 2.987e-02 (worst row 6.993e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 3613, "error": 0.007494191639125347, "speedup": 0.9046076259089115, "baseline_us": 178.8480058312416, "candidate_us": 197.28000462055206}
+TIMED_CHECK 32 113 True relative L2 error 2.824e-02 (worst row 7.079e-02) [bound 0.085: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 113, "error": 0.005360268987715244, "speedup": 0.8362012771560687, "baseline_us": 334.8959982395172, "candidate_us": 399.6479958295822}
+TIMED_CHECK 32 7919 True relative L2 error 3.394e-02 (worst row 6.967e-02) [bound 0.099: 2.5 x the reference's 0.034 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 7919, "error": 0.005340559873729944, "speedup": 0.8325425882830289, "baseline_us": 332.99198746681213, "candidate_us": 399.4880020618439}
+TIMED_CHECK 32 3613 True relative L2 error 2.934e-02 (worst row 6.180e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 3613, "error": 0.0054568396881222725, "speedup": 0.8331019256552025, "baseline_us": 333.74400436878204, "candidate_us": 399.8720049858093}
+FP8P_NATIVE_VERIFY_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-60nyku6jiNxLnJqAuszwWX

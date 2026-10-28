@@ -1,0 +1,144 @@
+{
+  "board": "muse_moe_w4a16",
+  "call_id": "sfo3b:kc-e6b8cfd1e0224932",
+  "cluster": "sfo3b",
+  "content_hash": "551dfaa28ded1ff0e59f7ca6c7778b77dcef18f56ec65183b89a9742f3b7b35e",
+  "created_at": 1793126395.3898306,
+  "dedicated": false,
+  "duplicate_of": null,
+  "finished_at": 1793126522.3217506,
+  "id": "e6b8cfd1e0224932",
+  "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_bk512_v1/profiles/submission.e6b8cfd1e0224932.log"
+  },
+  "payload_ref": "muse_moe_w4a16/551dfaa28ded1ff0e59f7ca6c7778b77dcef18f56ec65183b89a9742f3b7b35e.py",
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "afcead6a6ff090aa50fe9bc907f0fa8f4ba73d95fa92af93ec260b5e8ff00f00",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_moe_w4a16/baseline.py": "4fc48bd9cdfd749863c93a2dbf4e556e0c38fb04acc4fa48a53ef34cbf6c92a1",
+        "problems/muse_moe_w4a16/reference.py": "a7e0b4fa86aa477a4e7bb5745b2b258954d72636b6da153bd239a717927cba44",
+        "problems/muse_moe_w4a16/task.yml": "cc6870087c1a115e69f40093478553e0a03c1b3e92f527c2e55c4115e2db42ad"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/language/_core.py\", line 99, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/language/core.py\", line 2282, in reshape\n    return _semantic.reshape(input, shape, can_reorder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/language/_semantic.py\", line 221, in reshape\n    value = super().reshape(input, dst_shape, can_reorder)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/language/semantic.py\", line 644, in reshape\n    raise ValueError(\"reshape() cannot change total number of elements in tensor\")\nValueError: reshape() cannot change total number of elements in tensor\n\nThe above exception was the direct cause of the following exception:\n\ntriton.compiler.errors.CompilationError: at 2:9:\ndef _om__x_tile(xv, _om_BM: _om_gl.constexpr, _om_BK: _om_gl.constexpr, _om_B_L: _om_gl.constexpr):\n    xb = _om_gl.reshape(_om_gl.permute(_om_gl.reshape(xv, [_om_BM, 4, 8, 2, 2, 2]), (2, 3, 4, 1, 5, 0)), [_om_BK, _om_BM])\n         ^\nreshape() cannot change total number of elements in tensor\n\nThe above exception was the direct cause of the following exception:\n\ntriton.compiler.errors.CompilationError: at 12:11:\ndef _om__x_shared(x_ptr, off, msk, k0, x_s, _om_BM: _om_gl.constexpr, _om_BK: _om_gl.constexpr):\n    xg = _om_gl.load(x_ptr + off + k0, mask=msk, other=0.0)\n    _om_gl.barrier()\n    x_s.store(xg)\n    _om_gl.barrier()\n    if _om_BM == 8:\n        xv = _om_gl.reshape(x_s.load(_om_LX2_8), [_om_BM, 4, 64])\n    elif _om_BM == 32:\n        xv = _om_gl.reshape(x_s.load(_om_LX2_32), [_om_BM, 4, 64])\n    else:\n        xv = _om_gl.reshape(x_s.load(_om_LX2), [_om_BM, 4, 64])\n    return _om__x_tile(xv, _om_BM, _om_BK, _om_B_L)\n           ^\n\nThe above exception was the direct cause of the following exception:\n\ntriton.compiler.errors.CompilationError: at 68:21:\n                acc_u = _om__mma_chunk(u2, v2, xb_s, 2, acc_u, _om_BN, a_l, HOP)\n                acc_u = _om__mma_chunk(u3, v3, xb_s, 3, acc_u, _om_BN, a_l, HOP)\n            elif HOP:\n                acc_g = _om_warpgroup_mma(_om__decode_tile(wg, sg, _om_BN, _om_BK, _om_L3, a_l), xb_s.permute((1, 0)), acc_g)\n                acc_u = _om_warpgroup_mma(_om__decode_tile(wu, su, _om_BN, _om_BK, _om_L3, a_l), xb_s.permute((1, 0)), acc_u)\n            else:\n                xb = xb_s.permute((1, 0)).load(_om_B_L)\n                acc_g = _om_mma_v2(_om__decode_tile(wg, sg, _om_BN, _om_BK, _om_L3, _om_A_L), xb, acc_g)\n                acc_u = _om_mma_v2(_om__decode_tile(wu, su, _om_BN, _om_BK, _om_L3, _om_A_L), xb, acc_u)\n        else:\n            if XS:\n                xb = _om__x_shared(x_ptr, xoff, xmsk, k0, x_s, _om_BM, _om_BK)\n                     ^\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/tmp/muse_moe_w4a16-lpfeui3i/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-lpfeui3i/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_moe_w4a16-lpfeui3i/run/submission.py\", line 1393, in kernel_fn\n    return _om_kernel_fn(data,state['operatorstack'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-lpfeui3i/run/submission.py\", line 1369, in _om_kernel_fn\n    _om__w13_mix[I // _om_BN, w_max13](x, state['w13'], state['w13_sf'], state['w13_gs'], sorted_pairs, work13, nwork13, inter, K=H, I=I, _om_BN=_om_BN, _om_BK=_om_BK, _om_BM=bm13, XS=M >= _om_XS_MIN_M, SMB=smb, HOP=state['hopper'] and smb, CHK=True, PF=M <= _om_PF_MAX_M, num_warps=_om_NUM_WARPS, **_om__w13_regcap(M))\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py\", line 374, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py\", line 757, in run\n    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py\", line 902, in _do_compile\n    kernel = self.compile(src, target=target, options=options.__dict__)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/compiler/compiler.py\", line 307, in compile\n    module = src.make_ir(target, options, codegen_fns, module_map, context)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/_runtime.py\", line 40, in make_ir\n    module = ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntriton.compiler.errors.CompilationError: at 10:12:\ndef _om__w13_mix(x_ptr, w_ptr, sf_ptr, gs_ptr, sorted_ptr, work_ptr, nwork_ptr, out_ptr, K: _om_gl.constexpr, I: _om_gl.constexpr, _om_BN: _om_gl.constexpr, _om_BK: _om_gl.constexpr, _om_BM: _om_gl.constexpr, XS: _om_gl.constexpr, SMB: _om_gl.constexpr=False, HOP: _om_gl.constexpr=False, CHK: _om_gl.constexpr=False, PF: _om_gl.constexpr=False):\n    pid_n = _om_gl.program_id(0)\n    pid_w = _om_gl.program_id(1)\n    active = pid_w < _om_gl.load(nwork_ptr)\n    e = _om_gl.load(work_ptr + pid_w * 3 + 0)\n    r0 = _om_gl.load(work_ptr + pid_w * 3 + 1)\n    r1 = _om_gl.load(work_ptr + pid_w * 3 + 2)\n    if active:\n        if r1 - r0 <= 8:\n            _om__w13_item(x_ptr, w_ptr, sf_ptr, gs_ptr, sorted_ptr, out_ptr, e, r0, r1, pid_n, K=K, I=I, _om_BN=_om_BN, _om_BK=_om_BK, _om_BM=8, XS=XS, SMB=SMB, HOP=HOP, CHK=CHK, PF=PF)\n            ^\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 124,
+        "power.limit": 700,
+        "temperature.gpu": 39
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 129.17,
+        "power.limit": 700,
+        "temperature.gpu": 41
+      },
+      "node": "n-scsqx5dijepif7d54nrfvvircu"
+    },
+    "passed": false,
+    "records": [
+      {
+        "baseline_copies": 4,
+        "baseline_prepare_pad": 7021056,
+        "copies": 1,
+        "error": null,
+        "event": "setup",
+        "first": "baseline",
+        "prepare_pad": 2811392,
+        "prepare_s": 77.878131301,
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 4,
+          "seed": 5090207041825279335,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 0,
+        "message": "relative L2 error 5.476e-03 (worst row 5.665e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 33,
+          "seed": 5090312964376439858,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 1,
+        "message": "relative L2 error 5.469e-03 (worst row 5.773e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 257,
+          "seed": 5090524809478760907,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 2,
+        "message": "relative L2 error 5.542e-03 (worst row 5.881e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 128,
+          "dist": "skewed",
+          "seed": 5090630732029921433,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 3,
+        "message": "CompilationError: at 10:12:\ndef _om__w13_mix(x_ptr, w_ptr, sf_ptr, gs_ptr, sorted_ptr, work_ptr, nwork_ptr, out_ptr, K: _om_gl.constexpr, I: _om_gl.constexpr, _om_BN: _om_gl.constexpr, _om_BK: _om_gl.constexpr, _om_BM: _om_gl.constexpr, XS: _om_gl.constexpr, SMB: _om_gl.constexpr=False, HOP: _om_gl.constexpr=False, CHK: _om_gl.constexpr=False, PF: _om_gl.constexpr=False):\n    pid_n = _om_gl.program_id(0)\n    pid_w = _om_gl.program_id(1)\n    active = pid_w < _om_gl.load(nwork_ptr)\n    e = _om_gl.load(work_ptr + pid_w * 3 + 0)\n    r0 = _om_gl.load(work_ptr + pid_w * 3 + 1)\n    r1 = _om_gl.load(work_ptr + pid_w * 3 + 2)\n    if active:\n        if r1 - r0 <= 8:\n            _om__w13_item(x_ptr, w_ptr, sf_ptr, gs_ptr, sorted_ptr, out_ptr, e, r0, r1, pid_n, K=K, I=I, _om_BN=_om_BN, _om_BK=_om_BK, _om_BM=8, XS=XS, SMB=SMB, HOP=HOP, CHK=CHK, PF=PF)\n            ^",
+        "status": "fail"
+      },
+      {
+        "case": {
+          "bs": 1,
+          "seed": 5090736654581081960,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 4,
+        "message": "relative L2 error 5.624e-03 (worst row 5.624e-03)",
+        "status": "pass"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
+  "started_at": 1793126403.3019392,
+  "status": "done",
+  "team": "StarAtNyte"
+}

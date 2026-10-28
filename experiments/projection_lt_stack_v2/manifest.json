@@ -1,0 +1,24 @@
+{
+  "name": "projection_lt_stack_v2",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Stack the repeatable M128 verify pooler/unpooler plan changes with a recorded alternative M256 qkv cuBLASLt descriptor; isolate the large qkv route while retaining all other v18 dispatches.",
+  "sha256": "000bc88c0d74b57952a68c466ed8dfd766862a2b58cb47a2a9151a3beb752932",
+  "created_at": 1793124112.7528358,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "11d610c508004575",
+  "updated_at": 1793124257.6278255,
+  "decision_reason": "Adding the M256 qkv alternative lowered aggregate to 1.516x; its verify-32 qkv kernel profile was 18.3 us vs 17.6 us prior."
+}

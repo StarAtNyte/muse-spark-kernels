@@ -1,0 +1,26 @@
+{
+  "name": "moe_m128_bm16_bn32_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Isolate BN32 under the proven BM16 schedule for the M128 W2 tile; preserve all other routes and exact arithmetic.",
+  "sha256": "e98daf26ef4913e6a177d01b6bf6830f76b415ecd8d764a1e7a52b46e32ac134",
+  "created_at": 1793149237.1885989,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "68ea77648eda4f11",
+  "speedup": 1.876423955851622,
+  "speedup_ci": [1.8482775965138476, 1.9045703151893962],
+  "tests": 5,
+  "decision_reason": "All tests passed, but the M128 BM16xBN32 W2 tile regressed the aggregate score. Verify-16 rose to 303.6 us from 222.9 us; the W2 kernel profile was 171.6 us versus 68.7 us. Reject BN32 and do not integrate it."
+}

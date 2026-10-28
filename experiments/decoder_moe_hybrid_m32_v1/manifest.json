@@ -1,0 +1,21 @@
+{
+  "name": "decoder_moe_hybrid_m32_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer the official MoE operatorstack M32 route into the full decoder stack while preserving its existing M256 bucket and all other dispatch; Modal H200 showed 8-10% expert-stage wins on three seeds, so validate full-layer composition.",
+  "sha256": "29f19d83eba27fa719b4c05d91356c7fc534e4385e6d1793c0fb91b674cb5128",
+  "created_at": 1793142781.4703975,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 5,
+      "left": 5
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "prepared"
+}

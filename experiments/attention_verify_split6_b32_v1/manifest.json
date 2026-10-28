@@ -1,0 +1,21 @@
+{
+  "name": "attention_verify_split6_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use six rather than four key splits for batch-32 full-context verify, testing a middle point between the verified split-4 winner and slower split-8 baseline; no math or dtype changes.",
+  "sha256": "a7fb154a6d4ca4b43506646497cd9f59a4a9b0d303b357d551bbc1176717e9ae",
+  "created_at": 1793159336.3146555,
+  "decision": "reject_h200",
+  "parent": "kernels/muse_attention_decode/submission.py",
+  "status": "done",
+  "screen": {
+    "device": "NVIDIA H200",
+    "batch": 32,
+    "q_len": 8,
+    "seeds": [313, 9587, 3613],
+    "reference_checks": "passed all 3; worst-row errors 0.0595–0.0777 below bounds 0.082–0.087",
+    "paired_speedup_vs_split4": [0.7584, 0.7648, 0.7624],
+    "baseline_us": [295.52, 294.78, 296.21],
+    "candidate_us": [391.10, 386.86, 388.67]
+  },
+  "decision_reason": "Six-way partition passed reference accuracy but was consistently about 31% slower than the split-4 source in paired H200 CUDA-graph measurements. Reject without spending an official check."
+}

@@ -1,0 +1,59 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zIFw3a32G3aF8OPhww0UpQ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 8 full True relative L2 error 8.310e-02 (worst row 1.338e-01) [bound 0.150: 2.5 x the reference's 0.083 with FP8 E4M3 queries + 0.015]
+CHECK 9 full True relative L2 error 6.975e-02 (worst row 9.486e-02) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+CHECK 3 sliding True relative L2 error 6.890e-02 (worst row 9.259e-02) [bound 0.150: 2.5 x the reference's 0.069 with FP8 E4M3 queries + 0.015]
+RESULT {"layer": "full", "batch": 16, "bn": 64, "splits": 8, "relative_error": 0.010293057188391685, "speedup": 0.39261649809160615, "baseline_us": 178.75199764966965, "candidate_us": 454.97599244117737}
+RESULT {"layer": "full", "batch": 16, "bn": 64, "splits": 16, "relative_error": 0.007249786984175444, "speedup": 0.4011481712716143, "baseline_us": 177.59999632835388, "candidate_us": 442.81600415706635}
+RESULT {"layer": "full", "batch": 16, "bn": 64, "splits": 32, "relative_error": 0.005290776025503874, "speedup": 0.4554257041904138, "baseline_us": 178.19199711084366, "candidate_us": 391.08799397945404}
+RESULT {"layer": "full", "batch": 16, "bn": 128, "splits": 8, "relative_error": 0.010295367799699306, "speedup": 0.5003575966335221, "baseline_us": 178.91200631856918, "candidate_us": 357.36000537872314}
+RESULT {"layer": "full", "batch": 16, "bn": 128, "splits": 16, "relative_error": 0.007247733883559704, "speedup": 0.5046797619914262, "baseline_us": 178.24000120162964, "candidate_us": 353.2159924507141}
+RESULT {"layer": "full", "batch": 16, "bn": 128, "splits": 32, "relative_error": 0.005293095484375954, "speedup": 0.5023799467592984, "baseline_us": 178.44799906015396, "candidate_us": 355.1200032234192}
+RESULT {"layer": "full", "batch": 32, "bn": 64, "splits": 8, "relative_error": 0.010243629105389118, "speedup": 0.38454968234776865, "baseline_us": 333.0080062150955, "candidate_us": 867.4719929695129}
+RESULT {"layer": "full", "batch": 32, "bn": 64, "splits": 16, "relative_error": 0.007343134377151728, "speedup": 0.4388150445995219, "baseline_us": 333.7920010089874, "candidate_us": 758.0959796905518}
+RESULT {"layer": "full", "batch": 32, "bn": 64, "splits": 32, "relative_error": 0.005340587813407183, "speedup": 0.47110633159897264, "baseline_us": 333.6799889802933, "candidate_us": 707.9840004444122}
+RESULT {"layer": "full", "batch": 32, "bn": 128, "splits": 8, "relative_error": 0.010248910635709763, "speedup": 0.4822652425053716, "baseline_us": 331.4879983663559, "candidate_us": 688.3520185947418}
+RESULT {"layer": "full", "batch": 32, "bn": 128, "splits": 16, "relative_error": 0.00734690623357892, "speedup": 0.48847167658555773, "baseline_us": 331.39200508594513, "candidate_us": 678.2079935073853}
+RESULT {"layer": "full", "batch": 32, "bn": 128, "splits": 32, "relative_error": 0.00534458551555872, "speedup": 0.4966622051775586, "baseline_us": 332.6239883899689, "candidate_us": 669.1040098667145}
+FP8P_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zIFw3a32G3aF8OPhww0UpQ

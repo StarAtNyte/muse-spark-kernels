@@ -1,0 +1,24 @@
+{
+  "name": "decoder_stack_v3",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack validated projection/router/norm overlap with shape-dispatched native cluster and MIT bigboateng Gluon attention; fixed CUDA text losslessly compressed under server 1000000-byte limit",
+  "sha256": "1aac7a8e9c7b4318a236ff63cfc3849656ca4bbe1fa0d866be25b1002ca28e12",
+  "created_at": 1793119129.2505958,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "bf77d2d63ce54a6a",
+  "updated_at": 1793119668.4734035,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

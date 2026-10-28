@@ -1,0 +1,24 @@
+{
+  "name": "projection_nathen_v18",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Independent reproduction of MIT-licensed Nathen Fernandes public v18 at upstream 86aff75e6aca72511bf9b41b6dc190bf1e763373. Algorithm unchanged, full upstream copyright retained. Published 1.5186x score offers ~21% latency headroom against our 1.2036x public result.",
+  "sha256": "6a8f153a5cb6331c97c279bb732df4d3d8ea4b780be63daff310d398d9a80f06",
+  "created_at": 1793098216.1491115,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "575f2c20ec7f4236",
+  "updated_at": 1793108276.8398468,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

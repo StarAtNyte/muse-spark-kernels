@@ -1,0 +1,12 @@
+{
+  "name": "moe_vjeux_m16_main_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "For M=16 only, test the WGS main kernel instead of the skinny split kernel.",
+  "status": "done",
+  "decision": "reject_performance",
+  "decision_reason": "The M=16 WGS main kernel was 8.8–12.1% slower across three H200 seeds, with reference checks passing. Keep the existing MID dispatch.",
+  "parent": "experiments/moe_vjeux_public_check_v1/submission.py",
+  "screen": "experiments/moe_vjeux_m16_main_v1/modal_screen.log",
+  "official_check": false,
+  "public_submission": false
+}

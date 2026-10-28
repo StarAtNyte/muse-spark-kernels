@@ -1,0 +1,23 @@
+{
+  "name": "moe_split_w13_fixed_v2",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Repair the M32 split-K candidate: the grid used four K partitions but omitted SPLIT=ks, leaving the kernel constexpr at its default 1. Consequently every CTA recomputed full K and raced on partition 0 while partial partitions remained uninitialized. Pass the matching constexpr and recheck exact M32 replay correctness and aggregate timing.",
+  "sha256": "a6d84b7f4b4552657c277c162039bf9196935bccb0b959bf8d1d7e7c1c6d4d63",
+  "created_at": 1793130335.505462,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "b47b31f6a31f44f9",
+  "updated_at": 1793134350.9875002
+}

@@ -1,0 +1,37 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sVAu19jeP4a1FF12kbem30
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_gluon_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200 sfx ('-DOKC_PRMTSC=1',)
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 66, in <module>
+    gc, oc = capture(data, variant_defines)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/drv.py", line 48, in capture
+    raise AssertionError(("reference", defines, msg))
+AssertionError: ('reference', ('-DOKC_NW=4', '-DOKC_TINY=1', '-DOKC_EPI4=0', '-DOKC_FAST1=2', '-DOKC_L2H=0', '-DOKC_NACC=4', '-DOKC_UWARP=0', '-DOKC_WS=1', '-DOKC_WSB=1', '-DOKC_WSBL=2', '-DOKC_WSBLK=2', '-DOKC_FINPF=1'), 'relative L2 error 6.275e-01 > 0.015')
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sVAu19jeP4a1FF12kbem30

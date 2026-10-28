@@ -1,0 +1,25 @@
+{
+  "name": "scored_attention_fullverify_split4_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use split=4 only for batch-32 full verification, where the prior profile improved 306.3 to 292.4us; preserve split=8 for batch 16 and all other shapes.",
+  "sha256": "aa1256f27082523dca6db9c9a5c7f2547509a44f48f18b37c4a3084de0db9d86",
+  "created_at": 1793135996.1294537,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 10,
+      "left": 10
+    }
+  },
+  "status": "done",
+  "updated_at": 1793136901.7582912,
+  "parent_experiment": "attention_fullverify_split4_b32_v1",
+  "mode": "run",
+  "job_id": "bd527bad057f4a6c"
+}

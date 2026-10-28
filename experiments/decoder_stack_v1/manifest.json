@@ -1,0 +1,21 @@
+{
+  "name": "decoder_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack native FP8/cluster and MIT bigboateng Gluon attention with our validated Nathen projection adapter, native FP32 router and pre-norm overlap; remove unused legacy attention only",
+  "sha256": "b37946727551298cf57a99a42f10bf680130bb4ff348770d57ddefaae2834ac1",
+  "created_at": 1793119057.3219593,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "prepared"
+}

@@ -1,0 +1,112 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zPdQuIFIvINiDhrxnVNWU2
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 1 5011 0 PASS 1.1528190668741445e-07
+RESULT {"batch": 1, "seed": 5011, "cfg": 0, "error": 1.1528190668741445e-07, "speedup": 1.0028571647147144, "baseline_us": 11.264000087976456, "candidate_us": 11.19999960064888}
+CHECK 1 5011 1 PASS 1.1240551600621984e-07
+RESULT {"batch": 1, "seed": 5011, "cfg": 1, "error": 1.1240551600621984e-07, "speedup": 1.0658682399929662, "baseline_us": 11.31199998781085, "candidate_us": 10.65600011497736}
+CHECK 1 5011 2 PASS 1.1240551600621984e-07
+RESULT {"batch": 1, "seed": 5011, "cfg": 2, "error": 1.1240551600621984e-07, "speedup": 1.199680499447771, "baseline_us": 11.93600008264184, "candidate_us": 9.983999654650688}
+CHECK 1 5011 3 PASS 1.0548745876803878e-07
+RESULT {"batch": 1, "seed": 5011, "cfg": 3, "error": 1.0548745876803878e-07, "speedup": 1.2525253208231935, "baseline_us": 11.90400030463934, "candidate_us": 9.503999724984169}
+CHECK 1 5011 4 PASS 1.0548745876803878e-07
+RESULT {"batch": 1, "seed": 5011, "cfg": 4, "error": 1.0548745876803878e-07, "speedup": 1.2918814469499813, "baseline_us": 12.032000347971916, "candidate_us": 9.279999881982803}
+CHECK 2 5011 0 PASS 1.1337671423916618e-07
+RESULT {"batch": 2, "seed": 5011, "cfg": 0, "error": 1.1337671423916618e-07, "speedup": 1.463990681833858, "baseline_us": 18.688000738620758, "candidate_us": 12.83199992030859}
+CHECK 2 5011 1 PASS 1.0995802313118475e-07
+RESULT {"batch": 2, "seed": 5011, "cfg": 1, "error": 1.0995802313118475e-07, "speedup": 1.6046607574552927, "baseline_us": 18.73599924147129, "candidate_us": 11.727999895811081}
+CHECK 2 5011 2 PASS 1.0995802313118475e-07
+RESULT {"batch": 2, "seed": 5011, "cfg": 2, "error": 1.0995802313118475e-07, "speedup": 1.3981510945020217, "baseline_us": 18.76799948513508, "candidate_us": 13.520000036805868}
+CHECK 2 5011 3 PASS 1.0527774207957918e-07
+RESULT {"batch": 2, "seed": 5011, "cfg": 3, "error": 1.0527774207957918e-07, "speedup": 1.4469420147895633, "baseline_us": 18.76799948513508, "candidate_us": 12.959999963641167}
+CHECK 4 5011 0 PASS 1.1038655145512166e-07
+RESULT {"batch": 4, "seed": 5011, "cfg": 0, "error": 1.1038655145512166e-07, "speedup": 1.453428074222051, "baseline_us": 19.007999449968338, "candidate_us": 13.248000293970108}
+CHECK 4 5011 1 PASS 1.0437475594926582e-07
+RESULT {"batch": 4, "seed": 5011, "cfg": 1, "error": 1.0437475594926582e-07, "speedup": 1.5487709681695914, "baseline_us": 18.94400082528591, "candidate_us": 12.335999868810177}
+CHECK 4 5011 2 PASS 1.0437475594926582e-07
+RESULT {"batch": 4, "seed": 5011, "cfg": 2, "error": 1.0437475594926582e-07, "speedup": 1.3126376580474446, "baseline_us": 18.96000001579523, "candidate_us": 14.479999896138906}
+CHECK 4 5011 3 PASS 9.771153486326511e-08
+RESULT {"batch": 4, "seed": 5011, "cfg": 3, "error": 9.771153486326511e-08, "speedup": 1.355093696665167, "baseline_us": 19.007999449968338, "candidate_us": 14.015999622642994}
+CHECK 8 5011 0 PASS 1.1210854466980891e-07
+RESULT {"batch": 8, "seed": 5011, "cfg": 0, "error": 1.1210854466980891e-07, "speedup": 1.9583041092080822, "baseline_us": 27.888000011444092, "candidate_us": 14.287999831140041}
+CHECK 8 5011 1 PASS 1.0181186382851592e-07
+RESULT {"batch": 8, "seed": 5011, "cfg": 1, "error": 1.0181186382851592e-07, "speedup": 2.109101151940337, "baseline_us": 27.936000376939774, "candidate_us": 13.295999728143215}
+CHECK 8 5011 2 PASS 1.0181186382851592e-07
+RESULT {"batch": 8, "seed": 5011, "cfg": 2, "error": 1.0181186382851592e-07, "speedup": 1.7008017732682787, "baseline_us": 27.936000376939774, "candidate_us": 16.55999943614006}
+CHECK 8 5011 3 PASS 1.0103765646363172e-07
+RESULT {"batch": 8, "seed": 5011, "cfg": 3, "error": 1.0103765646363172e-07, "speedup": 1.7920469482037023, "baseline_us": 27.999999932944775, "candidate_us": 15.584000386297703}
+CHECK 1 49157 0 PASS 1.2286275818951253e-07
+RESULT {"batch": 1, "seed": 49157, "cfg": 0, "error": 1.2286275818951253e-07, "speedup": 1.0206511809200458, "baseline_us": 11.775999795645475, "candidate_us": 11.552000418305397}
+CHECK 1 49157 1 PASS 1.152250206359895e-07
+RESULT {"batch": 1, "seed": 49157, "cfg": 1, "error": 1.152250206359895e-07, "speedup": 1.0791520442902534, "baseline_us": 11.744000017642975, "candidate_us": 10.928000323474407}
+CHECK 1 49157 2 PASS 1.152250206359895e-07
+RESULT {"batch": 1, "seed": 49157, "cfg": 2, "error": 1.152250206359895e-07, "speedup": 1.1993222554072198, "baseline_us": 11.744000017642975, "candidate_us": 9.855999611318111}
+CHECK 1 49157 3 PASS 1.0655225679556679e-07
+RESULT {"batch": 1, "seed": 49157, "cfg": 3, "error": 1.0655225679556679e-07, "speedup": 1.2324407098569339, "baseline_us": 11.711999773979187, "candidate_us": 9.503999724984169}
+CHECK 1 49157 4 PASS 1.0655225679556679e-07
+RESULT {"batch": 1, "seed": 49157, "cfg": 4, "error": 1.0655225679556679e-07, "speedup": 1.245297751203769, "baseline_us": 11.727999895811081, "candidate_us": 9.424000047147274}
+CHECK 2 49157 0 PASS 1.094589308081595e-07
+RESULT {"batch": 2, "seed": 49157, "cfg": 0, "error": 1.094589308081595e-07, "speedup": 1.4860051674481132, "baseline_us": 18.751999363303185, "candidate_us": 12.608000077307224}
+CHECK 2 49157 1 PASS 1.0298592201252177e-07
+RESULT {"batch": 2, "seed": 49157, "cfg": 1, "error": 1.0298592201252177e-07, "speedup": 1.6153845723316125, "baseline_us": 18.60800012946129, "candidate_us": 11.568000074476004}
+CHECK 2 49157 2 PASS 1.0298592201252177e-07
+RESULT {"batch": 2, "seed": 49157, "cfg": 2, "error": 1.0298592201252177e-07, "speedup": 1.3894230382426436, "baseline_us": 18.559999763965607, "candidate_us": 13.36000021547079}
+CHECK 2 49157 3 PASS 1.0055669719122307e-07
+RESULT {"batch": 2, "seed": 49157, "cfg": 3, "error": 1.0055669719122307e-07, "speedup": 1.4603927385498263, "baseline_us": 18.719999119639397, "candidate_us": 12.83199992030859}
+CHECK 4 49157 0 PASS 1.0747203305072617e-07
+RESULT {"batch": 4, "seed": 49157, "cfg": 0, "error": 1.0747203305072617e-07, "speedup": 1.4656019193939767, "baseline_us": 19.007999449968338, "candidate_us": 12.959999963641167}
+CHECK 4 49157 1 PASS 1.0989000287509043e-07
+RESULT {"batch": 4, "seed": 49157, "cfg": 1, "error": 1.0989000287509043e-07, "speedup": 1.5481769937260026, "baseline_us": 18.96000001579523, "candidate_us": 12.240000069141388}
+CHECK 4 49157 2 PASS 1.0989000287509043e-07
+RESULT {"batch": 4, "seed": 49157, "cfg": 2, "error": 1.0989000287509043e-07, "speedup": 1.3284788997019827, "baseline_us": 19.039999693632126, "candidate_us": 14.384000096470118}
+CHECK 4 49157 3 PASS 1.0194892752224405e-07
+RESULT {"batch": 4, "seed": 49157, "cfg": 3, "error": 1.0194892752224405e-07, "speedup": 1.3868829459989929, "baseline_us": 18.928000703454018, "candidate_us": 13.648000080138445}
+CHECK 8 49157 0 PASS 1.1418441658861411e-07
+RESULT {"batch": 8, "seed": 49157, "cfg": 0, "error": 1.1418441658861411e-07, "speedup": 1.9749266101368514, "baseline_us": 27.759999968111515, "candidate_us": 14.112000353634357}
+CHECK 8 49157 1 PASS 1.0332522748512929e-07
+RESULT {"batch": 8, "seed": 49157, "cfg": 1, "error": 1.0332522748512929e-07, "speedup": 2.102564182579649, "baseline_us": 27.82400045543909, "candidate_us": 13.21600005030632}
+CHECK 8 49157 2 PASS 1.0332522748512929e-07
+RESULT {"batch": 8, "seed": 49157, "cfg": 2, "error": 1.0332522748512929e-07, "speedup": 1.707100553673087, "baseline_us": 27.728000655770302, "candidate_us": 16.303999349474907}
+CHECK 8 49157 3 PASS 1.0325466348604095e-07
+RESULT {"batch": 8, "seed": 49157, "cfg": 3, "error": 1.0325466348604095e-07, "speedup": 1.7882886911437126, "baseline_us": 27.759999968111515, "candidate_us": 15.503999777138233}
+DECODER_FP32_ROUTER_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zPdQuIFIvINiDhrxnVNWU2

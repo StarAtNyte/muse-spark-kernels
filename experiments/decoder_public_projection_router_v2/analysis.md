@@ -1,0 +1,290 @@
+# decoder_public_projection_router_v2
+
+Job: `f0a4978fa68d4929`
+Correctness: True; official speedup: 1.63962x; CI: [1.615028662722869, 1.664217352958083]
+
+| Load | Layer | Baseline µs | Candidate µs | Speedup | Floor µs |
+|---|---|---:|---:|---:|---:|
+| decode 1 | sliding | 171.50 | 89.99 | 1.906x | 40.02 |
+| decode 1 | full | 181.30 | 97.84 | 1.853x | 44.18 |
+| decode 16 | sliding | 256.26 | 155.47 | 1.648x | 76.72 |
+| decode 16 | full | 433.52 | 244.45 | 1.773x | 137.46 |
+| decode 32 | sliding | 253.04 | 192.80 | 1.312x | 84.51 |
+| decode 32 | full | 609.17 | 360.29 | 1.691x | 208.10 |
+| verify 1 | sliding | 260.93 | 142.46 | 1.832x | 62.29 |
+| verify 1 | full | 269.57 | 154.82 | 1.741x | 66.44 |
+| verify 16 | sliding | 497.46 | 318.55 | 1.562x | 126.61 |
+| verify 16 | full | 664.03 | 488.47 | 1.359x | 188.68 |
+| verify 32 | sliding | 696.98 | 420.31 | 1.658x | 143.81 |
+| verify 32 | full | 1056.98 | 777.33 | 1.360x | 267.18 |
+
+| Load | Baseline ms | Candidate ms | Speedup | Ideal roofline bound |
+|---|---:|---:|---:|---:|
+| decode 1 | 10.790 | 5.705 | 1.891x | 4.235x |
+| decode 16 | 18.724 | 11.063 | 1.693x | 3.269x |
+| decode 32 | 21.387 | 14.634 | 1.461x | 2.963x |
+| verify 1 | 16.316 | 9.030 | 1.807x | 4.153x |
+| verify 16 | 33.507 | 22.469 | 1.491x | 3.789x |
+| verify 32 | 48.973 | 31.772 | 1.541x | 4.497x |
+
+Recomputed geometric mean across loads: 1.639623x.
+Roofline bounds omit launch, merge, redundant traffic, and other costs.
+
+## Official profiler reports
+
+### decode 1: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void v18s_gemv<1, 1, 1, 1, 0, 0, 1024, 0, 4096, 8192, 2, ...      13.6 µs  15.4%      1
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      13.4 µs  15.1%      1
+void v18d_native_gemv<1, 1, 1, 2, 2, 0, 256, 0, 2304, 819...       9.6 µs  10.8%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...       8.5 µs   9.7%      1
+void smallm2_gemv<1, 1, 1, 2, 0, 0, 1024, 0, 8192, 1024, ...       5.1 µs   5.8%      1
+void fd2_partials<3>(unsigned char const*, unsigned char ...       4.8 µs   5.5%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.5 µs   5.1%      1
+void fp32_router<1, 512, 2>(float const*, float const*, f...       4.2 µs   4.7%      1
+void smtrace_gemv<1, 1, 1, 2, 2, 0, 256, 1, 1024, 4096, 1...       3.9 µs   4.4%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.6 µs   4.1%      1
+_post_expert_norm_weighted_sum_kernel                              3.1 µs   3.5%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.8 µs   3.1%      1
+... 8 more
+total                                                             88.4 µs
+```
+
+### decode 1: full
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      22.2 µs  19.6%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      17.2 µs  15.2%      1
+void v18s_gemv<1, 1, 1, 1, 0, 0, 1024, 0, 4096, 8192, 2, ...      13.7 µs  12.1%      1
+void fd2_partials<2>(unsigned char const*, unsigned char ...      12.3 µs  10.9%      1
+void v18d_native_gemv<1, 1, 1, 2, 2, 0, 256, 0, 2304, 819...       9.5 µs   8.4%      1
+void smallm2_gemv<1, 1, 1, 2, 0, 0, 1024, 0, 8192, 1024, ...       5.1 µs   4.5%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.4 µs   3.9%      1
+void fp32_router<1, 512, 2>(float const*, float const*, f...       4.2 µs   3.7%      1
+void smtrace_gemv<1, 1, 1, 2, 2, 0, 256, 1, 1024, 4096, 1...       4.0 µs   3.5%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.6 µs   3.2%      1
+_post_expert_norm_weighted_sum_kernel                              3.6 µs   3.1%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.8 µs   2.5%      1
+... 8 more
+total                                                            113.3 µs
+GPU busy (kernels overlap: PDL or streams)                       106.5 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### decode 16: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      46.0 µs  30.2%      1
+void wm_gemm<1, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      24.7 µs  16.2%      1
+void dd_cap2_b_cpssm_gemv<1, 2, 1, 2, 0, 0, 256, 0, 4096,...      14.9 µs   9.8%      1
+void dd_cap2_b_cpssm_gemv<1, 2, 1, 2, 0, 0, 256, 0, 8192,...      14.0 µs   9.2%      1
+void r3_qkv16_qkv_gate_push_d9_cap6_a_m32x_q_gemv<1, 2, 1...       9.9 µs   6.5%      1
+void trans_decode<3>(unsigned char const*, unsigned char ...       6.7 µs   4.4%      1
+void m16trace_59fcb5b72994_gemv<1, 2, 1, 1, 0, 0, 256, 0,...       5.5 µs   3.6%      1
+_matmul                                                            5.1 µs   3.3%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.8 µs   2.5%      1
+_post_expert_norm_weighted_sum_kernel                              3.8 µs   2.5%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.5 µs   2.3%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.7 µs   1.7%      1
+... 7 more
+total                                                            152.3 µs
+```
+
+### decode 16: full
+
+```text
+kernel                                                           GPU time  share  calls
+void trans_decode<3>(unsigned char const*, unsigned char ...      91.4 µs  38.5%      1
+void wm_gemm<0, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      46.3 µs  19.5%      1
+void wm_gemm<1, 2, 2, 4, 0, 0>(uint4 const*, uint2 const*...      23.7 µs  10.0%      1
+void dd_cap2_b_cpssm_gemv<1, 2, 1, 2, 0, 0, 256, 0, 4096,...      15.7 µs   6.6%      1
+void dd_cap2_b_cpssm_gemv<1, 2, 1, 2, 0, 0, 256, 0, 8192,...      13.9 µs   5.8%      1
+void r3_qkv16_qkv_gate_push_d9_cap6_a_m32x_q_gemv<1, 2, 1...      10.8 µs   4.6%      1
+void m16trace_59fcb5b72994_gemv<1, 2, 1, 1, 0, 0, 256, 0,...       5.5 µs   2.3%      1
+_matmul                                                            5.2 µs   2.2%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.7 µs   1.6%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.5 µs   1.5%      1
+_post_expert_norm_weighted_sum_kernel                              3.4 µs   1.4%      1
+_merge_norm_gate                                                   2.8 µs   1.2%      1
+... 7 more
+total                                                            237.6 µs
+```
+
+### decode 32: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      56.3 µs  30.4%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      35.7 µs  19.3%      1
+void r3_pool32_pooler_d9_cap2_a_m32x_gemv<1, 4, 1, 1, 0, ...      17.7 µs   9.5%      1
+void m32w_gemm<32, 64, 4, 2, 2, true, 1>(CUtensorMap_st, ...      15.4 µs   8.3%      1
+void m32x_q_gemv<1, 4, 1, 1, 5, 0, 128, 0, 2304, 8192, 1,...      11.6 µs   6.2%      1
+void trans_decode<3>(unsigned char const*, unsigned char ...       9.6 µs   5.2%      1
+void r3_o32_o_direct_a_ol_projection<32, 128, 8, 1, 1, 1,...       6.3 µs   3.4%      1
+_matmul                                                            5.4 µs   2.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.1 µs   2.2%      1
+_post_expert_norm_weighted_sum_kernel                              4.0 µs   2.2%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.7 µs   2.0%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.8 µs   1.5%      1
+... 7 more
+total                                                            185.2 µs
+GPU busy (kernels overlap: PDL or streams)                       182.3 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### decode 32: full
+
+```text
+kernel                                                           GPU time  share  calls
+void trans_decode<3>(unsigned char const*, unsigned char ...     179.2 µs  49.1%      1
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      64.0 µs  17.5%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      38.8 µs  10.6%      1
+void r3_pool32_pooler_d9_cap2_a_m32x_gemv<1, 4, 1, 1, 0, ...      16.8 µs   4.6%      1
+void m32w_gemm<32, 64, 4, 2, 2, true, 1>(CUtensorMap_st, ...      15.6 µs   4.3%      1
+void m32x_q_gemv<1, 4, 1, 1, 5, 0, 128, 0, 2304, 8192, 1,...      11.8 µs   3.2%      1
+void r3_o32_o_direct_a_ol_projection<32, 128, 8, 1, 1, 1,...       6.0 µs   1.7%      1
+_matmul                                                            5.6 µs   1.5%      1
+_post_expert_norm_weighted_sum_kernel                              4.8 µs   1.3%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.1 µs   1.1%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.6 µs   1.0%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.8 µs   0.8%      1
+... 7 more
+total                                                            365.3 µs
+GPU busy (kernels overlap: PDL or streams)                       360.6 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 1: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      38.6 µs  28.2%      1
+void wm_gemm<1, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      22.7 µs  16.5%      1
+void smallm2_gemv<1, 1, 1, 1, 0, 0, 1024, 0, 4096, 8192, ...      13.5 µs   9.8%      1
+void qs_literal_owner5_decode5_gemv<1, 1, 1, 2, 5, 0, 256...       9.3 µs   6.8%      1
+_sliding_partials                                                  9.1 µs   6.6%      1
+void fp32_router<8, 256, 1>(float const*, float const*, f...       7.8 µs   5.7%      1
+void v18s_gemv<1, 1, 1, 2, 0, 0, 256, 0, 8192, 1024, 1, 8...       5.2 µs   3.8%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.5 µs   3.3%      1
+void smtrace_gemv<1, 1, 1, 2, 2, 0, 512, 8, 1024, 4096, 1...       4.2 µs   3.1%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.7 µs   2.7%      1
+_post_expert_norm_weighted_sum_kernel                              3.6 µs   2.6%      1
+void sglang::muse_spark::routing_kernel<sglang::muse_spar...       2.5 µs   1.8%      1
+... 8 more
+total                                                            137.0 µs
+```
+
+### verify 1: full
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      56.6 µs  30.6%      1
+void wm_gemm<1, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      32.4 µs  17.5%      1
+void cutlass::device_kernel<flash::enable_sm90_or_later<f...      18.1 µs   9.8%      1
+void smallm2_gemv<1, 1, 1, 1, 0, 0, 1024, 0, 4096, 8192, ...      13.9 µs   7.5%      1
+void qs_literal_owner5_decode5_gemv<1, 1, 1, 2, 5, 0, 256...       9.5 µs   5.1%      1
+void fp32_router<8, 256, 1>(float const*, float const*, f...       7.7 µs   4.2%      1
+void cutlass::device_kernel<flash::FlashAttnFwdCombine<cu...       7.2 µs   3.9%      1
+void v18s_gemv<1, 1, 1, 2, 0, 0, 256, 0, 8192, 1024, 1, 8...       5.3 µs   2.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.5 µs   2.5%      1
+_post_expert_norm_weighted_sum_kernel                              4.2 µs   2.3%      1
+void smtrace_gemv<1, 1, 1, 2, 2, 0, 512, 8, 1024, 4096, 1...       4.2 µs   2.3%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       3.7 µs   2.0%      1
+... 10 more
+total                                                            184.9 µs
+GPU busy (kernels overlap: PDL or streams)                       177.5 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 16: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm_rs<1, 4, 4, 4, 0>(uint4 const*, uint2 const*...     130.0 µs  34.7%      1
+void wm_gemm_rs<0, 4, 4, 4, 0>(uint4 const*, uint2 const*...     124.6 µs  33.3%      1
+nvjet_sm90_tst_64x64_64x13_1x1_v_bz_coopB_NNN                     23.0 µs   6.1%      1
+nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT                           19.9 µs   5.3%      1
+void cutlass::device_kernel<flash::enable_sm90_or_later<f...      14.0 µs   3.8%      1
+void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 53...      14.0 µs   3.8%      1
+_matmul                                                            7.3 µs   2.0%      1
+void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_s...       7.1 µs   1.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.7 µs   1.3%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.3 µs   1.1%      1
+_post_expert_norm_weighted_sum_kernel                              4.3 µs   1.1%      1
+void cutlass::device_kernel<flash::FlashAttnFwdCombine<cu...       4.2 µs   1.1%      1
+... 9 more
+total                                                            374.5 µs
+GPU busy (kernels overlap: PDL or streams)                       333.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 16: full
+
+```text
+kernel                                                           GPU time  share  calls
+void cutlass::device_kernel<flash::enable_sm90_or_later<f...     187.5 µs  34.7%      1
+void wm_gemm_rs<0, 4, 4, 4, 0>(uint4 const*, uint2 const*...     126.2 µs  23.4%      1
+void wm_gemm_rs<1, 4, 4, 4, 0>(uint4 const*, uint2 const*...     120.7 µs  22.4%      1
+nvjet_sm90_tst_64x64_64x13_1x1_v_bz_coopB_NNN                     22.4 µs   4.1%      1
+nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT                           19.7 µs   3.6%      1
+void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 53...      13.8 µs   2.6%      1
+_matmul                                                            7.3 µs   1.4%      1
+void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_s...       6.8 µs   1.3%      1
+_post_expert_norm_weighted_sum_kernel                              4.8 µs   0.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.8 µs   0.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 256, ...       4.4 µs   0.8%      1
+void cutlass::device_kernel<flash::FlashAttnFwdCombine<cu...       4.1 µs   0.8%      1
+... 9 more
+total                                                            540.0 µs
+GPU busy (kernels overlap: PDL or streams)                       494.8 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 32: sliding
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm_rs<0, 4, 4, 4, 0>(uint4 const*, uint2 const*...     173.3 µs  37.6%      1
+void wm_gemm_rs<1, 4, 4, 4, 0>(uint4 const*, uint2 const*...     131.5 µs  28.5%      1
+nvjet_sm90_tst_128x64_64x8_1x1_v_bz_NNN                           28.8 µs   6.2%      1
+nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN                    23.6 µs   5.1%      1
+nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN                           20.6 µs   4.5%      1
+void cutlass::device_kernel<flash::enable_sm90_or_later<f...      20.1 µs   4.4%      1
+_matmul                                                           10.8 µs   2.3%      1
+void rl_early_projection<256, 64, 5, 7, 1, 1, 1>(CUtensor...       8.8 µs   1.9%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 512, ...       8.4 µs   1.8%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 512, ...       7.5 µs   1.6%      1
+_post_expert_norm_weighted_sum_kernel                              5.4 µs   1.2%      1
+void cutlass::device_kernel<flash::FlashAttnFwdCombine<cu...       4.6 µs   1.0%      1
+... 9 more
+total                                                            461.3 µs
+GPU busy (kernels overlap: PDL or streams)                       432.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 32: full
+
+```text
+kernel                                                           GPU time  share  calls
+void cutlass::device_kernel<flash::enable_sm90_or_later<f...     374.8 µs  45.4%      1
+void wm_gemm_rs<0, 4, 4, 4, 0>(uint4 const*, uint2 const*...     169.4 µs  20.5%      1
+void wm_gemm_rs<1, 4, 4, 4, 0>(uint4 const*, uint2 const*...     116.3 µs  14.1%      1
+_matmul                                                           37.3 µs   4.5%      1
+nvjet_sm90_tst_128x64_64x8_1x1_v_bz_NNN                           29.2 µs   3.5%      1
+nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN                    23.4 µs   2.8%      1
+nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN                           20.0 µs   2.4%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 512, ...       8.5 µs   1.0%      1
+void rl_early_projection<256, 64, 5, 7, 1, 1, 1>(CUtensor...       8.4 µs   1.0%      1
+void sglang::muse_spark_norm_residual_kernel<8192l, 512, ...       7.4 µs   0.9%      1
+_post_expert_norm_weighted_sum_kernel                              5.6 µs   0.7%      1
+void cutlass::device_kernel<flash::FlashAttnFwdCombine<cu...       4.4 µs   0.5%      1
+... 9 more
+total                                                            826.2 µs
+GPU busy (kernels overlap: PDL or streams)                       767.7 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+

@@ -1,0 +1,11 @@
+"""Capture the batch-32 MoE CUDA-graph kernels with Nsight Compute metrics."""
+exec(open('/w/modal/drv_moe_ptx.py').read().split('for name, cuda, flags in variants:')[0])
+data=R.generate_input(32,'ep8',20491)
+graph,out=capture(data,base_mod)
+assert torch.isfinite(out).all().item()
+torch.cuda.synchronize()
+torch.cuda.profiler.start()
+graph.replay()
+torch.cuda.synchronize()
+torch.cuda.profiler.stop()
+print('NCU_CAPTURE_DONE',out.shape,flush=True)

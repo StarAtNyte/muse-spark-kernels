@@ -1,0 +1,22 @@
+{
+  "name": "decoder_full_stack_m32_lt_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Combine the publicly scored M32 MoE route winner (decoder score 1.73442x) with the exact M256 pooler/M128 unpooler cuBLASLt descriptors measured in the standalone projection winner. This tests the composition of two disjoint end-to-end techniques.",
+  "sha256": "1cbebc6fd727d2c87c40073b6a585f99ec399641d3628d0fae364197dd65c431",
+  "created_at": 1793145823.8589702,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "71abb5bce1834203"
+}

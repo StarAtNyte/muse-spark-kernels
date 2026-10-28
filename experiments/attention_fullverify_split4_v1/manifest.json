@@ -1,0 +1,25 @@
+{
+  "name": "attention_fullverify_split4_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Reduce only the 80K full-verification split count from 8 to 4 to reduce partial reduction overhead while retaining 1-2 H200 CTA waves; all other routes unchanged.",
+  "sha256": "cbd2ca45f6610713a4f40bb0234a0a77255757e3ccbcd64cb5da391881a4aa36",
+  "created_at": 1793135531.4242072,
+  "decision": "reject_global",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 9,
+      "left": 11
+    }
+  },
+  "status": "done",
+  "job_id": "e3573ee956c84b92",
+  "updated_at": 1793135983.8793104,
+  "measured_speedup": 1.7948627800122265,
+  "note": "Batch16 regressed; batch32 full verify improved from prior 306.3us to 292.4us, motivating a batch32-only follow-up."
+}

@@ -1,0 +1,62 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Jbrvq052qAirItVGSoyzKC
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+METADATA_REPLAY_CHECK 0 PASS
+METADATA_REPLAY_CHECK 1 PASS
+CHECK 16 173 0 True relative L2 error 2.909e-02 (worst row 6.027e-02) [bound 0.086: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "mode": 0, "speedup": 0.419573670806163, "baseline_us": 171.2159961462021, "whole_sorted_us": 407.4240028858185, "sort_only_us": 242.2720044851303, "presorted_attention_us": 169.5839986205101}
+CHECK 16 173 1 True relative L2 error 2.909e-02 (worst row 6.027e-02) [bound 0.086: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "mode": 1, "speedup": 0.6656604472685486, "baseline_us": 172.19199985265732, "whole_sorted_us": 258.6880028247833, "sort_only_us": 93.80799904465675, "presorted_attention_us": 169.6000024676323}
+CHECK 16 2387 0 True relative L2 error 3.032e-02 (worst row 6.133e-02) [bound 0.089: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "mode": 0, "speedup": 0.41494812493991384, "baseline_us": 171.83999717235565, "whole_sorted_us": 414.20799493789673, "sort_only_us": 249.88799542188644, "presorted_attention_us": 170.23999989032745}
+CHECK 16 2387 1 True relative L2 error 3.032e-02 (worst row 6.133e-02) [bound 0.089: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "mode": 1, "speedup": 0.66867161076855, "baseline_us": 171.9999983906746, "whole_sorted_us": 257.6479911804199, "sort_only_us": 93.36000308394432, "presorted_attention_us": 170.6719994544983}
+CHECK 32 173 0 True relative L2 error 3.022e-02 (worst row 6.563e-02) [bound 0.090: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "mode": 0, "speedup": 0.5666015181056696, "baseline_us": 321.79200649261475, "whole_sorted_us": 567.3760175704956, "sort_only_us": 254.5120120048523, "presorted_attention_us": 317.82400608062744}
+CHECK 32 173 1 True relative L2 error 3.022e-02 (worst row 6.563e-02) [bound 0.090: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "mode": 1, "speedup": 0.7033048010524299, "baseline_us": 320.3839957714081, "whole_sorted_us": 455.8880031108856, "sort_only_us": 147.2959965467453, "presorted_attention_us": 316.96000695228577}
+CHECK 32 2387 0 True relative L2 error 3.124e-02 (worst row 7.739e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "mode": 0, "speedup": 0.5678240270932299, "baseline_us": 325.3760039806366, "whole_sorted_us": 572.6560056209564, "sort_only_us": 253.07199358940125, "presorted_attention_us": 322.03200459480286}
+CHECK 32 2387 1 True relative L2 error 3.124e-02 (worst row 7.739e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "mode": 1, "speedup": 0.7056266530574388, "baseline_us": 323.5360085964203, "whole_sorted_us": 459.1200053691864, "sort_only_us": 144.00000125169754, "presorted_attention_us": 320.6399977207184}
+PHYSICAL_ORDER_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Jbrvq052qAirItVGSoyzKC

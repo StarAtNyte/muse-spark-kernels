@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sKZaJpBHRKaC0w7Zgc7VwQ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200
+COMPILED l1_ca 99.76852464675903
+RESULT {"variant": "l1_ca", "batch": 1, "seed": 419, "speedup": 0.9920373543103338, "baseline_us": 47.280000522732735, "candidate_us": 47.839999198913574, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 1, "seed": 2387, "speedup": 0.9874966022899219, "baseline_us": 47.21600003540516, "candidate_us": 47.887999564409256, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 8, "seed": 419, "speedup": 1.009885942492402, "baseline_us": 76.65599882602692, "candidate_us": 76.22399926185608, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 8, "seed": 2387, "speedup": 1.0000027505853575, "baseline_us": 98.36800023913383, "candidate_us": 98.30400347709656, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 16, "seed": 419, "speedup": 1.0018889899274486, "baseline_us": 119.19999867677689, "candidate_us": 118.75200271606445, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 16, "seed": 2387, "speedup": 1.006950806960187, "baseline_us": 82.8159973025322, "candidate_us": 82.35200121998787, "relative_error": 0.0}
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 111, in <module>
+    if not torch.isfinite(result).all().item() or error > 0.001:
+           ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: isfinite(): argument 'input' (position 1) must be Tensor, not MagicMock
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sKZaJpBHRKaC0w7Zgc7VwQ

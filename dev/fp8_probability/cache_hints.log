@@ -1,0 +1,80 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-JP5plFulhGFTa1V1jW4AUp
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+COMPILED h64
+COMPILED h128
+COMPILED interleave
+COMPILED h128_interleave
+CHECK h64 16 587 True relative L2 error 2.723e-02 (worst row 5.378e-02) [bound 0.081: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h64", "batch": 16, "seed": 587, "error": 0.0, "speedup": 0.9968487371632184, "baseline_us": 171.37599736452103, "candidate_us": 172.19199985265732}
+CHECK h128 16 587 True relative L2 error 2.723e-02 (worst row 5.378e-02) [bound 0.081: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128", "batch": 16, "seed": 587, "error": 0.0, "speedup": 1.0001872322839898, "baseline_us": 171.58399522304535, "candidate_us": 171.50399833917618}
+CHECK interleave 16 587 True relative L2 error 2.723e-02 (worst row 5.378e-02) [bound 0.081: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "interleave", "batch": 16, "seed": 587, "error": 0.0, "speedup": 0.997341143851309, "baseline_us": 173.2799932360649, "candidate_us": 173.95200580358505}
+CHECK h128_interleave 16 587 True relative L2 error 2.723e-02 (worst row 5.378e-02) [bound 0.081: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128_interleave", "batch": 16, "seed": 587, "error": 0.0, "speedup": 1.0066970159857123, "baseline_us": 172.83199727535248, "candidate_us": 171.79200053215027}
+CHECK h64 16 2417 True relative L2 error 3.242e-02 (worst row 6.104e-02) [bound 0.093: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h64", "batch": 16, "seed": 2417, "error": 0.0, "speedup": 1.0009200816254515, "baseline_us": 173.23199659585953, "candidate_us": 173.39199781417847}
+CHECK h128 16 2417 True relative L2 error 3.242e-02 (worst row 6.104e-02) [bound 0.093: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128", "batch": 16, "seed": 2417, "error": 0.0, "speedup": 1.0011084572475797, "baseline_us": 173.61599951982498, "candidate_us": 173.07200282812119}
+CHECK interleave 16 2417 True relative L2 error 3.242e-02 (worst row 6.104e-02) [bound 0.093: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "interleave", "batch": 16, "seed": 2417, "error": 0.0, "speedup": 0.9975028684827638, "baseline_us": 172.33599722385406, "candidate_us": 172.7999970316887}
+CHECK h128_interleave 16 2417 True relative L2 error 3.242e-02 (worst row 6.104e-02) [bound 0.093: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128_interleave", "batch": 16, "seed": 2417, "error": 0.0, "speedup": 1.0046344721059683, "baseline_us": 173.50400239229202, "candidate_us": 172.2560003399849}
+CHECK h64 32 587 True relative L2 error 2.703e-02 (worst row 7.796e-02) [bound 0.082: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h64", "batch": 32, "seed": 587, "error": 0.0, "speedup": 1.0025017491192123, "baseline_us": 326.9599974155426, "candidate_us": 326.31999254226685}
+CHECK h128 32 587 True relative L2 error 2.703e-02 (worst row 7.796e-02) [bound 0.082: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128", "batch": 32, "seed": 587, "error": 0.0, "speedup": 1.0044424365241391, "baseline_us": 326.1599987745285, "candidate_us": 324.2720067501068}
+CHECK interleave 32 587 True relative L2 error 2.703e-02 (worst row 7.796e-02) [bound 0.082: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "interleave", "batch": 32, "seed": 587, "error": 0.0, "speedup": 1.0008775209354366, "baseline_us": 327.95199751853943, "candidate_us": 326.52799785137177}
+CHECK h128_interleave 32 587 True relative L2 error 2.703e-02 (worst row 7.796e-02) [bound 0.082: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128_interleave", "batch": 32, "seed": 587, "error": 0.0, "speedup": 1.0094121206890079, "baseline_us": 328.12799513339996, "candidate_us": 325.1359909772873}
+CHECK h64 32 2417 True relative L2 error 3.099e-02 (worst row 7.385e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h64", "batch": 32, "seed": 2417, "error": 0.0, "speedup": 0.999655456403836, "baseline_us": 322.60800898075104, "candidate_us": 323.0240046977997}
+CHECK h128 32 2417 True relative L2 error 3.099e-02 (worst row 7.385e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128", "batch": 32, "seed": 2417, "error": 0.0, "speedup": 1.0116261601060001, "baseline_us": 323.40800762176514, "candidate_us": 319.16800141334534}
+CHECK interleave 32 2417 True relative L2 error 3.099e-02 (worst row 7.385e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "interleave", "batch": 32, "seed": 2417, "error": 0.0, "speedup": 1.0056013983279954, "baseline_us": 324.2399990558624, "candidate_us": 322.9919970035553}
+CHECK h128_interleave 32 2417 True relative L2 error 3.099e-02 (worst row 7.385e-02) [bound 0.092: 2.5 x the reference's 0.031 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "h128_interleave", "batch": 32, "seed": 2417, "error": 0.0, "speedup": 1.013078353396358, "baseline_us": 322.6879984140396, "candidate_us": 318.01600754261017}
+FP8P_CACHE_HINTS_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-JP5plFulhGFTa1V1jW4AUp

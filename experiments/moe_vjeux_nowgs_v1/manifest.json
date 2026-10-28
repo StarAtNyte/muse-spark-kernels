@@ -1,0 +1,13 @@
+{
+  "name": "moe_vjeux_nowgs_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Try the proven conventional MMA fallback schedule instead of the WGS main schedule for M=32 decode.",
+  "sha256": "38ec82f2179a29876b8a52489548be84995d8b8f7ea36e5f9a07dc3822299642",
+  "status": "done",
+  "decision": "reject_performance",
+  "screen_only": true,
+  "decision_reason": "The fallback was slower on both seeds (WGS/fallback 0.920 and 0.978); it does not merit an official check. Related WGS stream-finisher and warp-count screens are recorded in modal_screen.log, wgsdfin3_screen.log, and tiny_nw4_screen.log.",
+  "parent": "experiments/moe_vjeux_public_check_v1/submission.py",
+  "official_check": false,
+  "public_submission": false
+}

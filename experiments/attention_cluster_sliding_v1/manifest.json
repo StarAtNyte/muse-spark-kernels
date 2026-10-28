@@ -1,0 +1,23 @@
+{
+  "name": "attention_cluster_sliding_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Own eight-CTA Hopper DSM sliding-verification attention merges partials and performs BF16 rounding/RMS/gating in the attention kernel, removing global partial writes and separate merge. Restricted q_len8 window2048 batch2..24. Local twelve task checks passed and batch16 full pipeline ~25us; local FA3 comparison used a norm/gate proxy, so official timing resolves benefit.",
+  "sha256": "d8300d1a61e74436d4e485d3f4bf6f438d37ac1875979a24f5fe224880eaed08",
+  "created_at": 1793076826.3353639,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "4448135fa8d44951",
+  "updated_at": 1793077789.1571941
+}

@@ -1,0 +1,24 @@
+{
+  "name": "projection_router_direct_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Exact FP32 single-token router GEMV with BN1/BK1024/eight warps avoids BF16 hi/lo matmul padding and reduction overhead; thirty local comparisons/reference checks show29 percent paired improvement for this regime.",
+  "sha256": "ce8bab35b4602d3e46c4c849650996fa3f0004d60200d92734cbbd2a97de426a",
+  "created_at": 1793038074.656127,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "ee2cc07a65484f18",
+  "updated_at": 1793038228.2328742,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

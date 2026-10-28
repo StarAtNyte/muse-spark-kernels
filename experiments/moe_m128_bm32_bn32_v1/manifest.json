@@ -1,0 +1,14 @@
+{
+  "name": "moe_m128_bm32_bn32_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Follow up the BM32/BN64 failure with a resource-balanced W2 tile for M128 only. Use BM32, BN32, BK256, and a separate lossless W2 tile-major repack at BN32; this keeps the accumulator element count near the validated BM16xBN64 design while halving rows per W2 weight tile. W13, M32, decode paths, arithmetic, and precision stay unchanged.",
+  "sha256": "615520557bf085a665a9e9b5e7841ed434c082c5f93838f1ef01cbb7acc5f59b",
+  "created_at": "2026-10-28T00:51:16.555245+00:00",
+  "decision": "reject",
+  "job_id": "cc684303c102452d",
+  "status": "done",
+  "speedup": 1.873515698175717,
+  "speedup_ci": [1.8454129627030813, 1.9016184336483526],
+  "tests": 5,
+  "decision_reason": "All tests passed, but aggregate score regressed from 1.9720839x. Verify-16 rose from 222.9 us to 300.3 us; reject the M128 BM32xBN32 W2 tile and do not integrate into the decoder."
+}

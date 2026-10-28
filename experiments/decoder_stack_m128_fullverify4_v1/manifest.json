@@ -1,0 +1,23 @@
+{
+  "name": "decoder_stack_m128_fullverify4_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Compose the current promoted decoder stack with its standalone attention winner\u2019s batch-32 full-context verification schedule, reducing only that dispatch from 8 splits to 4; preserve every other route.",
+  "sha256": "defe0b86ea79e809740cbb82c133c00be94c3ac8229e6c2158ee16803f6ac8be",
+  "created_at": 1793153006.0241034,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "4afc1ae8979649aa",
+  "updated_at": 1793153535.9849586
+}

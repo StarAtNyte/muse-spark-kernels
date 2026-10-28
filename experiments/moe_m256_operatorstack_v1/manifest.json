@@ -1,0 +1,26 @@
+{
+  "name": "moe_m256_operatorstack_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Route M256/verify-32 through the validated operatorstack M128 GEMM schedule, reusing its lossless weight layouts and dynamic expert tiles; preserve current M32/M128 dispatches and all exact arithmetic.",
+  "sha256": "fd13e7a2f9e4fb2bdfcb669472f06d8001be688974c47df6f9169344f9f4ae4e",
+  "created_at": 1793151676.2755556,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "631e87452d824d62",
+  "speedup": 1.9516726016261872,
+  "speedup_ci": [1.9223975126017943, 1.9809476906505799],
+  "tests": 5,
+  "decision_reason": "All tests passed, but routing M256 through the M128 operatorstack schedule reduced verify-32 from the winner's 2.2771x to 2.1225x (295.7 us vs 272.5 us). Preserve the current M256 bucket path; do not integrate this candidate into the decoder."
+}

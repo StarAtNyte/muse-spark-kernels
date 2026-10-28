@@ -1,0 +1,122 @@
+[
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 64,
+    "splits": 8,
+    "relative_error": 0.010293057188391685,
+    "speedup": 0.39261649809160615,
+    "baseline_us": 178.75199764966965,
+    "candidate_us": 454.97599244117737
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 64,
+    "splits": 16,
+    "relative_error": 0.007249786984175444,
+    "speedup": 0.4011481712716143,
+    "baseline_us": 177.59999632835388,
+    "candidate_us": 442.81600415706635
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 64,
+    "splits": 32,
+    "relative_error": 0.005290776025503874,
+    "speedup": 0.4554257041904138,
+    "baseline_us": 178.19199711084366,
+    "candidate_us": 391.08799397945404
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 128,
+    "splits": 8,
+    "relative_error": 0.010295367799699306,
+    "speedup": 0.5003575966335221,
+    "baseline_us": 178.91200631856918,
+    "candidate_us": 357.36000537872314
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 128,
+    "splits": 16,
+    "relative_error": 0.007247733883559704,
+    "speedup": 0.5046797619914262,
+    "baseline_us": 178.24000120162964,
+    "candidate_us": 353.2159924507141
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "bn": 128,
+    "splits": 32,
+    "relative_error": 0.005293095484375954,
+    "speedup": 0.5023799467592984,
+    "baseline_us": 178.44799906015396,
+    "candidate_us": 355.1200032234192
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 64,
+    "splits": 8,
+    "relative_error": 0.010243629105389118,
+    "speedup": 0.38454968234776865,
+    "baseline_us": 333.0080062150955,
+    "candidate_us": 867.4719929695129
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 64,
+    "splits": 16,
+    "relative_error": 0.007343134377151728,
+    "speedup": 0.4388150445995219,
+    "baseline_us": 333.7920010089874,
+    "candidate_us": 758.0959796905518
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 64,
+    "splits": 32,
+    "relative_error": 0.005340587813407183,
+    "speedup": 0.47110633159897264,
+    "baseline_us": 333.6799889802933,
+    "candidate_us": 707.9840004444122
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 128,
+    "splits": 8,
+    "relative_error": 0.010248910635709763,
+    "speedup": 0.4822652425053716,
+    "baseline_us": 331.4879983663559,
+    "candidate_us": 688.3520185947418
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 128,
+    "splits": 16,
+    "relative_error": 0.00734690623357892,
+    "speedup": 0.48847167658555773,
+    "baseline_us": 331.39200508594513,
+    "candidate_us": 678.2079935073853
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "bn": 128,
+    "splits": 32,
+    "relative_error": 0.00534458551555872,
+    "speedup": 0.4966622051775586,
+    "baseline_us": 332.6239883899689,
+    "candidate_us": 669.1040098667145
+  }
+]

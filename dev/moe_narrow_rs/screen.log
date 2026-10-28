@@ -1,0 +1,84 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zgZdYt7h5JMY56T2fACp69
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_cute.
+├── ✓ Created Function run.
+└── ✓ Created Function run_sgl.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 29, in <module>
+    data=R.generate_input(bs,'ep8',seed);gb,ob=capture(data,(4,4))
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/w/run/drv.py", line 24, in capture
+    state['tiles']=tiles;sub.narrow_forward(data,state);torch.cuda.synchronize();g=torch.cuda.CUDAGraph()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 38, in narrow_forward
+  File "<string>", line 9, in _finish_experts
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 370, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 710, in run
+    bound_args, specialization, options = binder(*args, **kwargs)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in dynamic_func
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/__init__.py", line 1, in <module>
+    from . import nvidia
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/nvidia/__init__.py", line 1, in <module>
+    from . import hopper
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/nvidia/hopper.py", line 4, in <module>
+    from triton.experimental.gluon.language._layouts import NVMMASharedLayout
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/__init__.py", line 135, in <module>
+    from . import nvidia
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/nvidia/__init__.py", line 1, in <module>
+    from . import blackwell
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/nvidia/blackwell/__init__.py", line 11, in <module>
+    from . import tma
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/nvidia/blackwell/tma.py", line 2, in <module>
+    from triton.experimental.gluon.language.nvidia.hopper.tma import (
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/nvidia/hopper/__init__.py", line 3, in <module>
+    from ..ampere import async_copy, mma_v2
+  File "/usr/local/lib/python3.12/site-packages/triton/experimental/gluon/language/nvidia/ampere/__init__.py", line 7, in <module>
+    from . import async_copy, mbarrier
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 990, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1123, in get_code
+  File "<frozen importlib._bootstrap_external>", line 752, in _compile_bytecode
+ValueError: bad marshal data (unknown type code)
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zgZdYt7h5JMY56T2fACp69

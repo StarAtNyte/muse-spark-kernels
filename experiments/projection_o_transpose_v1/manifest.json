@@ -1,0 +1,24 @@
+{
+  "name": "projection_o_transpose_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "For O projection at M16 and M32, compute row-major W @ X.T and return the transposed output view. This changes cuBLAS operand orientation without repacking BF16 weights or adding a transpose kernel. Preserve the specialized M8 route and every other dispatch.",
+  "sha256": "49fcd98a50a373213a6ff759d4af2c55dc0bceb760928746f1e20400c79196e1",
+  "created_at": 1793134094.6429822,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 13,
+      "left": 7
+    }
+  },
+  "status": "done",
+  "job_id": "5831d2fd6aac44ff",
+  "updated_at": 1793134265.3867989,
+  "decision_reason": "Official H200 checker passed correctness but scored 1.5152x (95% CI 1.4925\u20131.5379), below the current 1.5177x public result. The PyTorch row-major W@X.T cuBLAS dispatch regressed O decode-16/32 to 1.012x/1.019x; the external reported gain came from a tuned custom layout/kernel, not this generic matmul. Keep current specialized kernels."
+}

@@ -1,0 +1,11 @@
+{
+  "name": "attention_vjeux_tile128_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Specialize only full-context q_len=8 batch 32 to a 128-key pipeline tile; preserve the public-scored 64-key implementation for every other shape. Target the measured 188 us full-verify-32 bottleneck.",
+  "sha256": "77a9618ec65f02fda5c122e0a8185e55642f2071f3807cb72bf7e720155bd3ac",
+  "created_at": 1793161890.402464,
+  "decision": "reject_correctness",
+  "status": "done",
+  "decision_reason": "The tile-128 specialization compiles but fails the official reference check on full verify-32 (relative L2 0.331 vs bound 0.084); no timing or official check was attempted. Keep the public-scored tile-64 path.",
+  "parent": "experiments/attention_vjeux_public_check_v1/submission.py"
+}

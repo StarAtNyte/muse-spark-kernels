@@ -1,0 +1,23 @@
+{
+  "name": "attention_fp8p_joint_serial",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Match pinned SGLang FA3 FP8 P/V precision with FP32 unquantized softmax sums and offset8. Joint within16-key P/V permutation removes operand warp shuffles; exact byte transpose uses stmatrix before QK to avoid CUDA12.8 PTXAS crash. Native PV primitive matches PyTorch FP8 GEMM; all representative reference tests and five-seed graph comparisons pass, full verify batch16/32 locally3..4 percent faster. Decode/small-verify unchanged; aggregate gain uncertain until official test.",
+  "sha256": "5d01b6ec0ed162e1f069231749f7d7a949444cc692882a5d43ca283a2f369942",
+  "created_at": 1793075560.8047938,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "cf508e81d0ae4849",
+  "updated_at": 1793076455.9166586
+}

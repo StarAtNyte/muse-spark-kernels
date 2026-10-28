@@ -1,0 +1,24 @@
+{
+  "name": "attention_fullverify_bn256_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "For batch-32 full verification only, use BN=256 atop split=4 to halve the number of long-context WGMMA loop iterations and amortize synchronization; preserve all other dispatches.",
+  "sha256": "5bd70cae866a94390965db1958144fa69a3f152ab9f1a471121928ab396e4b7a",
+  "created_at": 1793138053.9804156,
+  "decision": "reject_compile",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "done",
+  "job_id": "72c1f96378ad4836",
+  "updated_at": 1793138385.435061,
+  "note": "Compilation reached timed batch-32 full verification but ptxas required >=154 registers; current maxnreg=128. Testing same tile with cap 160."
+}

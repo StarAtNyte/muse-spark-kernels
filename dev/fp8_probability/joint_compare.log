@@ -1,0 +1,78 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-79csj8x7Jc7AN9cOQNPeI9
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+COMPILED stx2
+CHECK stx2 8 True relative L2 error 8.317e-02 (worst row 1.354e-01) [bound 0.150: 2.5 x the reference's 0.083 with FP8 E4M3 queries + 0.015]
+CHECK stx2 9 True relative L2 error 6.985e-02 (worst row 9.526e-02) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+COMPILED serial
+CHECK serial 8 True relative L2 error 8.317e-02 (worst row 1.354e-01) [bound 0.150: 2.5 x the reference's 0.083 with FP8 E4M3 queries + 0.015]
+CHECK serial 9 True relative L2 error 6.985e-02 (worst row 9.526e-02) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+TIMED_CHECK stx2 8 113 True relative L2 error 3.039e-02 (worst row 6.353e-02) [bound 0.090: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 8, "seed": 113, "error": 0.007317417301237583, "speedup": 1.0316339863053767, "baseline_us": 126.16000324487686, "candidate_us": 122.28799983859062}
+TIMED_CHECK serial 8 113 True relative L2 error 3.039e-02 (worst row 6.353e-02) [bound 0.090: 2.5 x the reference's 0.030 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 8, "seed": 113, "error": 0.007317417301237583, "speedup": 1.0581453089169548, "baseline_us": 126.71999633312225, "candidate_us": 119.80800330638885}
+TIMED_CHECK stx2 16 113 True relative L2 error 2.840e-02 (worst row 6.467e-02) [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 16, "seed": 113, "error": 0.007380350027233362, "speedup": 1.0149517654888742, "baseline_us": 179.27999794483185, "candidate_us": 176.7200008034706}
+TIMED_CHECK serial 16 113 True relative L2 error 2.840e-02 (worst row 6.467e-02) [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 16, "seed": 113, "error": 0.007380350027233362, "speedup": 1.0348537696844238, "baseline_us": 179.1359931230545, "candidate_us": 173.8400012254715}
+TIMED_CHECK stx2 16 7919 True relative L2 error 3.276e-02 (worst row 6.633e-02) [bound 0.095: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 16, "seed": 7919, "error": 0.007249885704368353, "speedup": 1.023100849827638, "baseline_us": 180.1759973168373, "candidate_us": 176.2240007519722}
+TIMED_CHECK serial 16 7919 True relative L2 error 3.276e-02 (worst row 6.633e-02) [bound 0.095: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 16, "seed": 7919, "error": 0.007249885704368353, "speedup": 1.0388245077310736, "baseline_us": 180.2079975605011, "candidate_us": 173.5680028796196}
+TIMED_CHECK stx2 16 3613 True relative L2 error 2.987e-02 (worst row 6.993e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 16, "seed": 3613, "error": 0.007494191639125347, "speedup": 1.013728303808684, "baseline_us": 179.00799959897995, "candidate_us": 176.35200172662735}
+TIMED_CHECK serial 16 3613 True relative L2 error 2.987e-02 (worst row 6.993e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 16, "seed": 3613, "error": 0.007494191639125347, "speedup": 1.0417163732035704, "baseline_us": 179.407998919487, "candidate_us": 172.2240000963211}
+TIMED_CHECK stx2 32 113 True relative L2 error 2.824e-02 (worst row 7.079e-02) [bound 0.085: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 32, "seed": 113, "error": 0.005360268987715244, "speedup": 1.0223717292466172, "baseline_us": 335.6480002403259, "candidate_us": 327.5519907474518}
+TIMED_CHECK serial 32 113 True relative L2 error 2.824e-02 (worst row 7.079e-02) [bound 0.085: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 32, "seed": 113, "error": 0.005360268987715244, "speedup": 1.040151805775623, "baseline_us": 334.8959982395172, "candidate_us": 322.1599906682968}
+TIMED_CHECK stx2 32 7919 True relative L2 error 3.394e-02 (worst row 6.967e-02) [bound 0.099: 2.5 x the reference's 0.034 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 32, "seed": 7919, "error": 0.005340559873729944, "speedup": 1.0176118938048164, "baseline_us": 336.559996008873, "candidate_us": 330.28800785541534}
+TIMED_CHECK serial 32 7919 True relative L2 error 3.394e-02 (worst row 6.967e-02) [bound 0.099: 2.5 x the reference's 0.034 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 32, "seed": 7919, "error": 0.005340559873729944, "speedup": 1.028968446496722, "baseline_us": 332.8000009059906, "candidate_us": 323.10399413108826}
+TIMED_CHECK stx2 32 3613 True relative L2 error 2.934e-02 (worst row 6.180e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stx2", "batch": 32, "seed": 3613, "error": 0.0054568396881222725, "speedup": 1.017361865414397, "baseline_us": 336.91200613975525, "candidate_us": 332.0160061120987}
+TIMED_CHECK serial 32 3613 True relative L2 error 2.934e-02 (worst row 6.180e-02) [bound 0.088: 2.5 x the reference's 0.029 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "serial", "batch": 32, "seed": 3613, "error": 0.0054568396881222725, "speedup": 1.0289003161484622, "baseline_us": 335.58399975299835, "candidate_us": 324.94398951530457}
+FP8P_JOINT_COMPARE_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-79csj8x7Jc7AN9cOQNPeI9

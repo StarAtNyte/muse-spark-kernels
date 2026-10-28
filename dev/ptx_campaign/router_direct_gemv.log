@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZkYjg1Vpw5Z6jTNEWj0GCD
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+GPU NVIDIA H200
+RESULT {"seed": 173, "bn": 1, "bk": 512, "warps": 4, "speedup": 1.126689962345302, "baseline_us": 11.90400030463934, "candidate_us": 10.575999971479177}
+RESULT {"seed": 173, "bn": 1, "bk": 1024, "warps": 4, "speedup": 0.9248119702957124, "baseline_us": 11.96799986064434, "candidate_us": 12.848000042140484}
+RESULT {"seed": 173, "bn": 1, "bk": 2048, "warps": 4, "speedup": 1.1154422324298325, "baseline_us": 12.655999977141619, "candidate_us": 11.200000066310167}
+RESULT {"seed": 173, "bn": 2, "bk": 512, "warps": 4, "speedup": 0.9073665369770088, "baseline_us": 12.848000042140484, "candidate_us": 14.272000174969435}
+RESULT {"seed": 173, "bn": 2, "bk": 1024, "warps": 4, "speedup": 0.806772550260682, "baseline_us": 12.575999833643436, "candidate_us": 15.552000142633915}
+RESULT {"seed": 173, "bn": 2, "bk": 2048, "warps": 4, "speedup": 0.9570566502661633, "baseline_us": 12.624000199139118, "candidate_us": 13.055999763309956}
+RESULT {"seed": 173, "bn": 4, "bk": 1024, "warps": 4, "speedup": 0.35889327699509554, "baseline_us": 12.655999977141619, "candidate_us": 35.37600114941597}
+RESULT {"seed": 173, "bn": 4, "bk": 2048, "warps": 4, "speedup": 0.7642631136343485, "baseline_us": 12.59199995547533, "candidate_us": 16.335999593138695}
+RESULT {"seed": 173, "bn": 1, "bk": 1024, "warps": 8, "speedup": 1.3025885606441483, "baseline_us": 12.624000199139118, "candidate_us": 9.632000233978033}
+RESULT {"seed": 173, "bn": 2, "bk": 1024, "warps": 8, "speedup": 1.1497653573204105, "baseline_us": 12.62399973347783, "candidate_us": 10.960000101476908}
+RESULT {"seed": 2387, "bn": 1, "bk": 512, "warps": 4, "speedup": 1.1493440545068188, "baseline_us": 12.496000155806541, "candidate_us": 10.912000201642513}
+RESULT {"seed": 2387, "bn": 1, "bk": 1024, "warps": 4, "speedup": 0.9620329383093585, "baseline_us": 12.480000033974648, "candidate_us": 13.040000107139349}
+RESULT {"seed": 2387, "bn": 1, "bk": 2048, "warps": 4, "speedup": 1.1086019020433118, "baseline_us": 12.527999933809042, "candidate_us": 11.264000087976456}
+RESULT {"seed": 2387, "bn": 2, "bk": 512, "warps": 4, "speedup": 0.8724832267202073, "baseline_us": 12.496000155806541, "candidate_us": 14.303999952971935}
+RESULT {"seed": 2387, "bn": 2, "bk": 1024, "warps": 4, "speedup": 0.7992040918712682, "baseline_us": 12.575999833643436, "candidate_us": 15.583999920636415}
+RESULT {"seed": 2387, "bn": 2, "bk": 2048, "warps": 4, "speedup": 0.9653465581910211, "baseline_us": 12.527999933809042, "candidate_us": 13.007999863475561}
+RESULT {"seed": 2387, "bn": 4, "bk": 1024, "warps": 4, "speedup": 0.3553054066385035, "baseline_us": 12.672000098973513, "candidate_us": 35.440001636743546}
+RESULT {"seed": 2387, "bn": 4, "bk": 2048, "warps": 4, "speedup": 0.7680897983926936, "baseline_us": 12.463999912142754, "candidate_us": 16.224000602960587}
+RESULT {"seed": 2387, "bn": 1, "bk": 1024, "warps": 8, "speedup": 1.2882819989515184, "baseline_us": 12.480000033974648, "candidate_us": 9.696000255644321}
+RESULT {"seed": 2387, "bn": 2, "bk": 1024, "warps": 8, "speedup": 1.143073299686571, "baseline_us": 12.496000155806541, "candidate_us": 10.879999957978725}
+RESULT {"seed": 7919, "bn": 1, "bk": 512, "warps": 4, "speedup": 1.1384818481299281, "baseline_us": 12.41600001230836, "candidate_us": 10.943999979645014}
+RESULT {"seed": 7919, "bn": 1, "bk": 1024, "warps": 4, "speedup": 0.9285189730893911, "baseline_us": 12.287999968975782, "candidate_us": 13.215999584645033}
+RESULT {"seed": 7919, "bn": 1, "bk": 2048, "warps": 4, "speedup": 1.13088236565522, "baseline_us": 12.35199999064207, "candidate_us": 10.960000101476908}
+RESULT {"seed": 7919, "bn": 2, "bk": 512, "warps": 4, "speedup": 0.8657790932202171, "baseline_us": 12.44799979031086, "candidate_us": 14.368000440299511}
+RESULT {"seed": 7919, "bn": 2, "bk": 1024, "warps": 4, "speedup": 0.7979166630021219, "baseline_us": 12.223999947309494, "candidate_us": 15.359999611973763}
+RESULT {"seed": 7919, "bn": 2, "bk": 2048, "warps": 4, "speedup": 0.9600975035424849, "baseline_us": 12.415999546647072, "candidate_us": 12.927999719977379}
+RESULT {"seed": 7919, "bn": 4, "bk": 1024, "warps": 4, "speedup": 0.35415359160518534, "baseline_us": 12.480000033974648, "candidate_us": 35.34400090575218}
+RESULT {"seed": 7919, "bn": 4, "bk": 2048, "warps": 4, "speedup": 0.7711002537144347, "baseline_us": 12.35199999064207, "candidate_us": 16.1920003592968}
+RESULT {"seed": 7919, "bn": 1, "bk": 1024, "warps": 8, "speedup": 1.287606208999493, "baseline_us": 12.272000312805176, "candidate_us": 9.648000355809927}
+RESULT {"seed": 7919, "bn": 2, "bk": 1024, "warps": 8, "speedup": 1.1363636053278272, "baseline_us": 12.384000234305859, "candidate_us": 10.944000445306301}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZkYjg1Vpw5Z6jTNEWj0GCD

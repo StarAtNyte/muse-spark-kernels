@@ -1,0 +1,11 @@
+{
+  "name": "moe_m128_bm32_w2_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "For the operatorstack M128 route, raise the shared work/W2 token tile from BM16 to BM32, leaving W13 on its existing separate BM32 route, all formats/math unchanged, and M32 (BM8) untouched. At 128 tokens the average is ~32 routed token rows per local expert; one W2 tile per expert may avoid the current two BM16 tiles and repeated weight-stream setup.",
+  "sha256": "22a9c719686c7b9c64eae14d0cd359432a5bee1b17367e9c150c5afa52f46b39",
+  "created_at": "2026-10-28T00:37:53.075080+00:00",
+  "decision": "reject",
+  "job_id": "366a1df2c4624e9f",
+  "status": "done",
+  "decision_reason": "Official H200 check passed all 5 correctness cases but scored 1.94334x (95% CI [1.91419, 1.97249]), below the promoted 1.97208x. The target verify-16 path regressed 204.5us to 259.9us; _om__w2_mix rose 69.1us to 107.9us. Reject BM32."
+}

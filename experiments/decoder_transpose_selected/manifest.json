@@ -1,0 +1,24 @@
+{
+  "name": "decoder_transpose_selected",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate official attention winner f75e704b61404709 (1.709688x, all16 tests+12 timings pass): dense transposed all-key FP8 QK/FP16 PV with three-stage cp.async for q_len1 batch8..64. Retain decoder projections, expert paths, batch1 and verification unchanged; reuse original QKV preparation and merge norm gate.",
+  "sha256": "71347189df2e045aa8d4e342cd5d13239fc8791aa465dd3bfbf53b9cd0d58448",
+  "created_at": 1793039925.0089874,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "95f251028c7b4043",
+  "updated_at": 1793040388.5477839,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

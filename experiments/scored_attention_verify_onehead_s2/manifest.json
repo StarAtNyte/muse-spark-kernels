@@ -1,0 +1,25 @@
+{
+  "name": "scored_attention_verify_onehead_s2",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Independent 128-thread KV-head CTAs, XOR-swizzled V staging, two stages and batch-aware split policy reduce verification synchronization and footprint; Modal gains 5.6 percent at batch16 and 8.9 percent at batch32.",
+  "sha256": "e6167cea08ed566e7644b72b98f3700be89930817b93c5aebec78f88401ee816",
+  "created_at": 1793023284.614377,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "updated_at": 1793031691.163638,
+  "parent_experiment": "attention_verify_onehead_s2",
+  "mode": "run",
+  "job_id": "79b879a926b14de9"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "attention_fullverify_stages5_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "On top of the promoted B32 split-4 route, increase the full-verify shared-memory pipeline depth from 4 to 5 only at batch 32 to hide additional HBM latency; preserve all other configs.",
+  "sha256": "4598771b4e381013518d2b942c0b37f00c7d7a983022dd6c93e251395e9fea10",
+  "created_at": 1793137501.0160627,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 11,
+      "left": 9
+    }
+  },
+  "status": "done",
+  "job_id": "73979b25946b4792",
+  "updated_at": 1793138052.8828013,
+  "measured_speedup": 1.8685653103470052,
+  "note": "Statistically unchanged versus promoted split4 B32 (1.86848x); full-verify B32 profile was slightly slower."
+}

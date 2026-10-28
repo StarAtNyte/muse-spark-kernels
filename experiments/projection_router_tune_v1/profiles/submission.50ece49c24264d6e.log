@@ -1,0 +1,22 @@
+BCPICK qkv_gate 1 (1, 16, 4) base=17.3 best=16.7
+BCPICK qkv_gate 8 None base=18.5 best=17.9
+BCPICK qkv_gate 16 None base=18.8 best=18.2
+BCPICK qkv_gate 32 None base=18.9 best=18.3
+BCPICK o 1 None base=12.2 best=11.8
+BCPICK o 8 None base=11.9 best=11.6
+BCPICK o 16 None base=11.8 best=11.5
+BCPICK o 32 None base=12.1 best=11.7
+BCPICK pooler 1 (1, 16, 4) base=21.7 best=20.6
+BCPICK pooler 8 (1, 16, 4) base=23.1 best=22.0
+BCPICK pooler 16 None base=23.2 best=22.5
+BCPICK pooler 32 None base=25.9 best=25.1
+BCPICK unpooler 1 (1, 32, 3) base=11.6 best=10.9
+BCPICK unpooler 8 (1, 32, 3) base=12.4 best=11.4
+BCPICK unpooler 16 None base=22.1 best=21.5
+BCPICK unpooler 32 None base=22.3 best=21.6
+ROUTERPICK 1 None base=12.32 best=11.95
+ROUTERPICK 8 None base=12.86 best=12.48
+ROUTERPICK 16 None base=12.67 best=12.29
+ROUTERPICK 32 None base=12.45 best=12.07
+ROUTERPICK 128 None base=14.05 best=13.63
+ROUTERPICK 256 None base=17.31 best=16.79

@@ -1,0 +1,23 @@
+{
+  "name": "attention_fullverify_split16_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Increase only full-verification split count from 8 to 16 to raise H200 CTA parallelism on batch 16/32 at 80K context; retain all other dispatches.",
+  "sha256": "a03492c3ec84a9a696bd8195f4afa60d5def3a1708e19e023dc07514849dd7dc",
+  "created_at": 1793135078.2080588,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "done",
+  "job_id": "8c7347b84b1b4e70",
+  "updated_at": 1793135525.6872573
+}

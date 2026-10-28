@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lNX7CIOxYlLs5Pg9DIm1mJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "/tmp/tmpbc5werew/kernel.cu(403): error: \"token\" has already been declared in the current scope\n    int token=row>>3,qh=kh*8+(row&7);\n        ^\n\n/tmp/tmpbc5werew/kernel.cu(175): warning #177-D: variable \"base_row\" was declared but never referenced\n    const long base_row = ((long)(b * 2 + kh) * splits + split) * 64;\n               ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmpbc5werew/kernel.cu(257): warning #550-D: variable \"vsrc_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n             ^\n\n/tmp/tmpbc5werew/kernel.cu(257): warning #550-D: variable \"vdst_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n                          ^\n\n1 error detected in the compilation of \"/tmp/tmpbc5werew/kernel.cu\".\n"
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lNX7CIOxYlLs5Pg9DIm1mJ

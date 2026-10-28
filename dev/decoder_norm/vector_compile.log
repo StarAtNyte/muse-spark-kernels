@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E0sK5qhVBMzuokJfx3PIfy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmp8mck2nkc/kernel.cu(17): warning #177-D: variable \"MASK\" was declared but never referenced\n  constexpr uint32_t MASK = 0x81C081C0u;\n                     ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmp8mck2nkc/kernel.cu(65): warning #550-D: variable \"g_persist\" was set but never used\n  static int g_persist = 0;\n             ^\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "ptxas info    : 0 bytes gmem\nptxas info    : Compiling entry function '_Z17norm_route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_iiPK13__nv_bfloat16S4_PS2_i' for 'sm_90a'\nptxas info    : Function properties for _Z17norm_route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_iiPK13__nv_bfloat16S4_PS2_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 63 registers, used 1 barriers, 256 bytes smem\nptxas info    : Compile time = 43.466 ms\nptxas info    : Compiling entry function '_Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii' for 'sm_90a'\nptxas info    : Function properties for _Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 52 registers, used 1 barriers, 128 bytes smem\nptxas info    : Compile time = 19.015 ms\n"
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E0sK5qhVBMzuokJfx3PIfy

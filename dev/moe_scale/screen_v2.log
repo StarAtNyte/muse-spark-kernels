@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PyCgMxrCkY9i7OopQ89uoe
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+COMPILED base
+COMPILED prmt
+
+STDERR:
+/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(470): error: operand types are incompatible ("void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, bf16 *, const int *, int, int, int, uint4 *, int)" (aka "void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, __nv_bfloat16 *, const int *, int, int, int, uint4 *, int)") and "int")
+        wm_body<MODE, NT, NT, 1, NW, RING, (RING == 2 ? ring2_stages<NT, 1>() : (NT == 8 ? 3 : NT == 4 ? 4 : 6)), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, 0, smem, bx);
+               ^
+
+/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(470): warning #174-D: expression has no effect
+        wm_body<MODE, NT, NT, 1, NW, RING, (RING == 2 ? ring2_stages<NT, 1>() : (NT == 8 ? 3 : NT == 4 ? 4 : 6)), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, 0, smem, bx);
+                                                                                                                       ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(474): error: operand types are incompatible ("void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, bf16 *, const int *, int, int, int, uint4 *, int)" (aka "void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, __nv_bfloat16 *, const int *, int, int, int, uint4 *, int)") and "int")
+          wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 2 ? 2 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 2 ? 2 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, tb, smem, bx);
+                 ^
+
+/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(474): warning #174-D: expression has no effect
+          wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 2 ? 2 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 2 ? 2 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, tb, smem, bx);
+                                                                                                                                                               ^
+
+/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(478): error: operand types are incompatible ("void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, bf16 *, const int *, int, int, int, uint4 *, int)" (aka "void (*)(const uint4 *, const uint4 *, const float *, const bf16 *, __nv_bfloat16 *, const int *, int, int, int, uint4 *, int)") and "int")
+          wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 4 ? 4 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 4 ? 4 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, tb, smem, bx);
+                 ^
+
+/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu(478): warning #174-D: expression has no effect
+          wm_body<MODE, NT, (RING == 3 ? 4 : 2), (NMAX >= 4 ? 4 : 1), NW, RING, (RING == 2 ? ring2_stages<2, (NMAX >= 4 ? 4 : 1)>() : RING == 3 ? 4 : 6), DBG>(Wq, reinterpret_cast<const uint4*>(Sq), GS, X, OUT, l, e, ntok, tb, smem, bx);
+                                                                                                                                                               ^
+
+29 errors detected in the compilation of "/root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/cuda.cu".
+[2/3] c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_scale_expanded -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -fPIC -std=c++17 -c /root/.cache/torch_extensions/py312_cu128/muse_scale_expanded/main.cpp -o main.o 
+ninja: build stopped: subcommand failed.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PyCgMxrCkY9i7OopQ89uoe

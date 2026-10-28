@@ -1,0 +1,24 @@
+{
+  "name": "projection_128_lt_stack_repeat",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Independent official timing repeat of the combined M128 pooler and unpooler cuBLASLt route plan stack; only a comment differs.",
+  "sha256": "175fbdf9d22cbf27cc39e027978600220df87d539e8ebb21510c54e085af0c79",
+  "created_at": 1793123954.418756,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "f4dc4cc10dcd4e5a",
+  "updated_at": 1793124481.5015676,
+  "decision_reason": "Independent full check scored 1.519x; verify-16 pooler/unpooler paired latency did not improve consistently."
+}

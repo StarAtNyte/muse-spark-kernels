@@ -1,0 +1,86 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ku2EcCCLDdvKv5ZAcv5r5X
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+BASE_COMPILE_SECONDS 64.5830066204071
+READY NVIDIA H200
+COMPILED adaptive_weight_cg 63.13728880882263
+ROUTING 8 101 [0, 2, 0, 0, 0, 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 3, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 101, "speedup": 1.0035635124974223, "baseline_us": 76.4160007238388, "candidate_us": 76.27199962735176, "relative_error": 0.0}
+ROUTING 8 419 [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 2, 4, 0, 1, 0, 0, 0, 0, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 419, "speedup": 0.9968707991804028, "baseline_us": 76.33600011467934, "candidate_us": 76.78400352597237, "relative_error": 0.0}
+ROUTING 8 2387 [0, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0, 1, 0, 0, 0, 1, 2, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 3]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 2387, "speedup": 1.0014709221174287, "baseline_us": 98.33599999547005, "candidate_us": 98.30400347709656, "relative_error": 0.0}
+ROUTING 8 7919 [0, 0, 0, 0, 0, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 7919, "speedup": 1.0067473408499668, "baseline_us": 73.61600175499916, "candidate_us": 73.21599870920181, "relative_error": 0.0}
+ROUTING 8 15241 [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 15241, "speedup": 1.006717761943034, "baseline_us": 76.4160007238388, "candidate_us": 75.93599706888199, "relative_error": 0.0}
+ROUTING 8 49157 [1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 3, 0, 1, 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 8, "seed": 49157, "speedup": 1.0013791305115003, "baseline_us": 92.48000010848045, "candidate_us": 92.11200103163719, "relative_error": 0.0}
+ROUTING 16 101 [0, 0, 0, 0, 0, 0, 3, 16, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 1, 0, 0, 2, 1, 0, 0, 1]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 101, "speedup": 1.0508323141801752, "baseline_us": 113.3119985461235, "candidate_us": 108.06399956345558, "relative_error": 0.0}
+ROUTING 16 419 [0, 1, 1, 0, 2, 0, 0, 1, 2, 0, 0, 1, 2, 0, 0, 0, 1, 0, 1, 0, 1, 0, 3, 0, 2, 0, 4, 0, 0, 0, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 419, "speedup": 1.0138737638561945, "baseline_us": 119.26399916410446, "candidate_us": 117.93600022792816, "relative_error": 0.0}
+ROUTING 16 2387 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 1, 0, 0, 1, 0, 1]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 2387, "speedup": 1.0708814506950715, "baseline_us": 82.75199681520462, "candidate_us": 77.00800150632858, "relative_error": 0.0}
+ROUTING 16 7919 [0, 0, 3, 8, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 1, 6, 0, 0, 0, 3, 1, 0, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 7919, "speedup": 0.9947391297398179, "baseline_us": 106.08000308275223, "candidate_us": 106.75200074911118, "relative_error": 0.0}
+ROUTING 16 15241 [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 4, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 16, 0, 0, 0, 3, 2, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 15241, "speedup": 1.0416736383884593, "baseline_us": 114.00000005960464, "candidate_us": 109.27999764680862, "relative_error": 0.0}
+ROUTING 16 49157 [4, 0, 1, 0, 1, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 2, 3, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 16, "seed": 49157, "speedup": 0.9938713934474641, "baseline_us": 100.99200159311295, "candidate_us": 101.53599828481674, "relative_error": 0.0}
+ROUTING 32 101 [0, 0, 0, 2, 9, 2, 4, 0, 0, 2, 2, 2, 0, 0, 0, 6, 1, 0, 2, 2, 3, 2, 0, 3, 1, 0, 0, 1, 0, 2, 0, 3]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 101, "speedup": 0.9997340096045543, "baseline_us": 179.76000159978867, "candidate_us": 179.6960011124611, "relative_error": 0.0}
+ROUTING 32 419 [1, 3, 7, 1, 0, 14, 3, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 2, 0, 1, 0, 0, 0, 2, 1, 3, 0, 1]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 419, "speedup": 0.9984469719447061, "baseline_us": 144.19200271368027, "candidate_us": 144.41599696874619, "relative_error": 0.0}
+ROUTING 32 2387 [1, 0, 0, 1, 3, 1, 2, 3, 0, 5, 0, 0, 0, 0, 0, 2, 0, 3, 3, 0, 0, 5, 3, 0, 0, 0, 2, 1, 3, 0, 1, 0]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 2387, "speedup": 1.0027018330615252, "baseline_us": 154.81599420309067, "candidate_us": 154.52800691127777, "relative_error": 0.0}
+ROUTING 32 7919 [0, 9, 0, 3, 0, 1, 1, 0, 1, 1, 4, 6, 5, 2, 1, 2, 2, 3, 0, 0, 1, 1, 0, 12, 4, 0, 0, 0, 0, 0, 0, 1]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 7919, "speedup": 1.0032766977679017, "baseline_us": 191.3120001554489, "candidate_us": 190.39999693632126, "relative_error": 0.0}
+ROUTING 32 15241 [0, 0, 0, 0, 2, 0, 1, 17, 0, 0, 3, 1, 0, 0, 0, 0, 1, 2, 5, 1, 0, 0, 1, 4, 3, 0, 0, 1, 0, 0, 0, 2]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 15241, "speedup": 1.0033536479973586, "baseline_us": 148.31999689340591, "candidate_us": 148.22399616241455, "relative_error": 0.0}
+ROUTING 32 49157 [2, 0, 17, 0, 0, 0, 3, 0, 1, 4, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 6, 0, 1, 0, 2, 1, 0, 0, 0, 5]
+RESULT {"variant": "adaptive_weight_cg", "batch": 32, "seed": 49157, "speedup": 0.9986243425184941, "baseline_us": 149.48800206184387, "candidate_us": 149.87199753522873, "relative_error": 0.0}
+AGGREGATE adaptive_weight_cg 1.0102780864284082
+CHECK adaptive_weight_cg 4 normal True relative L2 error 5.512e-03 (worst row 5.772e-03)
+CHECK adaptive_weight_cg 33 normal True relative L2 error 5.462e-03 (worst row 5.700e-03)
+CHECK adaptive_weight_cg 128 skewed True relative L2 error 5.320e-03 (worst row 5.630e-03)
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ku2EcCCLDdvKv5ZAcv5r5X

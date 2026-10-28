@@ -1,0 +1,11 @@
+{
+  "name": "attention_bf16_partial_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "For the specialized full-context q_len=8 verify path only, store per-split value partial vectors in BF16 scratch instead of FP32. Keep score max/sum statistics, online softmax, merge accumulation, and final norm/gate in FP32. This halves split-partial write/read traffic while preserving FP8 KV inputs and reference output tolerance. Other kernels/routes unchanged.",
+  "sha256": "1b994859ba6aa52d728485d755af967af01326b9bd5758c5ec5e14e3c4def009",
+  "created_at": "2026-10-28T00:10:48.613799+00:00",
+  "decision": "reject",
+  "job_id": "986dcd550122481a",
+  "status": "done",
+  "decision_reason": "Official H200 check passed all 16 tests but scored 1.87799x (95% CI [1.84982, 1.91123]), below the promoted 1.88401x. Verify-16 was slightly faster while verify-32 regressed; reject the all-batch BF16 scratch route and leave canonical attention unchanged."
+}

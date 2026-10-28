@@ -1,0 +1,14 @@
+{
+  "name": "projection_stack_m128_pooler_alt2_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Test the remaining distinct H200 M128 pooler search seed (diag=2, tail=5) alone atop the promoted descriptor stack; prior diag=0 and diag=1 seeds each regressed, while this seed selects a different algorithm configuration.",
+  "sha256": "154b6d08e33e490af8f3335ed59b2faefdbfb980462b526acfca8f2bc2d08a68",
+  "created_at": "2026-10-28T00:44:26.590900+00:00",
+  "decision": "reject",
+  "job_id": "f24682f109e94c63",
+  "status": "done",
+  "speedup": 1.506632240455354,
+  "speedup_ci": [1.4840327568485236, 1.5292317240621842],
+  "tests": 9,
+  "decision_reason": "All tests passed but the aggregate score regressed below the promoted projection score of 1.53456x; M128 verify-16 pooler was 20.3 us versus 19.8 us for the promoted descriptor."
+}

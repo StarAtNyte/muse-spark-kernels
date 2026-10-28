@@ -1,0 +1,24 @@
+{
+  "name": "decoder_m128_operatorstack_stack_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the scored standalone MoE M128 operatorstack path into the current best full decoder; reuse its M128 W13/W2 kernels, preserve the current decoder M32 route, router, attention, projections, and all other dispatches.",
+  "sha256": "25c8c9933fa2f0038b0031a9255af64b60feb953829a59e46ec52937d5e622ae",
+  "created_at": 1793149747.0328398,
+  "decision": "reject_build",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "5323792f7c2c47a4",
+  "error": "NameError: _om_m128_kernel_fn was referenced by the M128 dispatch but omitted from the submitted candidate; no timing result.",
+  "decision_reason": "Runtime check caught a missing wrapper function. Fixed in decoder_m128_operatorstack_stack_v3 and resubmitted."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "moe_rebias_fast_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "The normal/subnormal general rebias path passed correctness but scored 1.743x due hot-loop predicate and extra reconstruction. Challenge NVFP4 scales should be normal E4M3; guard that at prepare, then decode the prebiased one-byte scale into BF16 using only shifts/ORs, preserving compact traffic.",
+  "sha256": "0df96f7ef42ea81bf2e2d0fc0f883265e5900de3a6941d9147a55ce709d5a6d4",
+  "created_at": 1793127738.5128818,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 10,
+      "left": 10
+    }
+  },
+  "status": "done",
+  "job_id": "98e1c0c73080409f",
+  "updated_at": 1793134350.9838042
+}

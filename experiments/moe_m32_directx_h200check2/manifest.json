@@ -1,0 +1,24 @@
+{
+  "name": "moe_m32_directx_h200check2",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "For the measured M32 bottleneck, bypass shared activation staging in the row-mixed MoE GEMMs. Direct global activation operands may remove shared stores/barriers while reusing the already-hot activation tile; all other shapes retain the current staged route.",
+  "sha256": "700382001a798d45dc1a80463442a2c9c7806bbcaacbf9f0af156153a14c3b69",
+  "created_at": 1793133734.20265,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 15,
+      "left": 5
+    }
+  },
+  "status": "done",
+  "job_id": "87f9dca36cc74733",
+  "updated_at": 1793133953.9847586,
+  "decision_reason": "Official H200 check passed correctness but scored 1.9005x (95% CI 1.8720\u20131.9290), below current 1.9698x (CI 1.9402\u20131.9993). Decode-32 dropped to 1.1931x from 1.4517x; reject direct activation bypass and retain current M32 shared staging."
+}

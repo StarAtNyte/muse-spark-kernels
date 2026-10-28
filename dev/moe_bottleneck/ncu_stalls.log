@@ -1,0 +1,87 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-SaE5dRVgqoM7pctyQZbv6l
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 48 (/usr/local/bin/python3)
+CHECK True relative L2 error 5.487e-03 (worst row 6.021e-03)
+==PROF== Profiling "wm_gemm_rs": 0%....50%....100% - 4 passes
+==PROF== Profiling "wm_gemm_rs": 0%....50%....100% - 4 passes
+LARGE_MOE_PROFILE_COMPLETE
+==PROF== Disconnected from process 48
+[48] python3@127.0.0.1
+  void wm_gemm_rs<0, 4, 4, 4, 0>(const uint4 *, const uint2 *, const float *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, int) (32, 96, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Warning: Data collection happened without fixed GPU frequencies. Profiling results may be inconsistent.
+    Section: Command line profiler metrics
+    --------------------------------------------------------------- ----------- ------------
+    Metric Name                                                     Metric Unit Metric Value
+    --------------------------------------------------------------- ----------- ------------
+    l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum                           16582
+    l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum                               0
+    l1tex__data_pipe_lsu_wavefronts_mem_shared_op_ld.sum                             9912518
+    smsp__warp_issue_stalled_barrier_per_warp_active.pct                      %         6.67
+    smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct              %         7.89
+    smsp__warp_issue_stalled_math_pipe_throttle_per_warp_active.pct           %        15.71
+    smsp__warp_issue_stalled_mio_throttle_per_warp_active.pct                 %         0.74
+    smsp__warp_issue_stalled_not_selected_per_warp_active.pct                 %        13.55
+    smsp__warp_issue_stalled_short_scoreboard_per_warp_active.pct             %         2.99
+    smsp__warp_issue_stalled_wait_per_warp_active.pct                         %        19.38
+    --------------------------------------------------------------- ----------- ------------
+
+  void wm_gemm_rs<1, 4, 4, 4, 0>(const uint4 *, const uint2 *, const float *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, int) (16, 96, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Warning: Data collection happened without fixed GPU frequencies. Profiling results may be inconsistent.
+    Section: Command line profiler metrics
+    --------------------------------------------------------------- ----------- ------------
+    Metric Name                                                     Metric Unit Metric Value
+    --------------------------------------------------------------- ----------- ------------
+    l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum                           14144
+    l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum                               0
+    l1tex__data_pipe_lsu_wavefronts_mem_shared_op_ld.sum                             4962112
+    smsp__warp_issue_stalled_barrier_per_warp_active.pct                      %         6.51
+    smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct              %         9.46
+    smsp__warp_issue_stalled_math_pipe_throttle_per_warp_active.pct           %        13.78
+    smsp__warp_issue_stalled_mio_throttle_per_warp_active.pct                 %         0.57
+    smsp__warp_issue_stalled_not_selected_per_warp_active.pct                 %        13.04
+    smsp__warp_issue_stalled_short_scoreboard_per_warp_active.pct             %         3.44
+    smsp__warp_issue_stalled_wait_per_warp_active.pct                         %        19.25
+    --------------------------------------------------------------- ----------- ------------
+
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-SaE5dRVgqoM7pctyQZbv6l

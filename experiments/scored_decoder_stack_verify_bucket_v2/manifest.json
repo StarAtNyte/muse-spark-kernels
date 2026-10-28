@@ -1,0 +1,26 @@
+{
+  "name": "scored_decoder_stack_verify_bucket_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Full stack with measured attention verification winners, own decode/small-full attention, Nathen BF16 projection backend, native FP32 router, pre-norm overlap, and validated M256 MoE bucketing",
+  "sha256": "c2ececd7c9af01b6c575ecb02f2bf1faf1d48f8242056bfe9e3df0d273206a68",
+  "created_at": 1793119531.4759862,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "0dc7807a48754dfc",
+  "updated_at": 1793140006.9054868,
+  "parent_experiment": "decoder_stack_verify_bucket_v2",
+  "mode": "run",
+  "decision_reason": "Official scored H200 run passed all 13 tests; 1.72043x point estimate exceeds the prior 1.70772x best, while confidence intervals overlap."
+}

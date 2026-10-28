@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sgCTPyKqQCTiqQjhpqURYv
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_gluon_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CAPTURED {"name": "base", "plan": {"n_splits": 8, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split4", "plan": {"n_splits": 4, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split6", "plan": {"n_splits": 6, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split12", "plan": {"n_splits": 12, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split16", "plan": {"n_splits": 16, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split24", "plan": {"n_splits": 24, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+CAPTURED {"name": "split32", "plan": {"n_splits": 32, "flat": 0, "cs": 0, "ncl": 1, "nc": 1}}
+RESULT {"name": "split4", "speedup": 0.9680487592004874, "base_us": 16.127999871969223, "candidate_us": 16.575999557971954}
+RESULT {"name": "split6", "speedup": 0.9862266431256306, "base_us": 16.176000237464905, "candidate_us": 16.176000237464905}
+RESULT {"name": "split12", "speedup": 0.9941137312260687, "base_us": 16.208000481128693, "candidate_us": 16.335999593138695}
+RESULT {"name": "split16", "speedup": 0.8476591731231892, "base_us": 16.07999950647354, "candidate_us": 19.039999693632126}
+RESULT {"name": "split24", "speedup": 0.8637349242900524, "base_us": 16.287999227643013, "candidate_us": 18.783999606966972}
+RESULT {"name": "split32", "speedup": 0.7763205050667388, "base_us": 16.11199975013733, "candidate_us": 20.67199908196926}
+SCREEN_DONE NVIDIA H200
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sgCTPyKqQCTiqQjhpqURYv

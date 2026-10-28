@@ -1,0 +1,18 @@
+{
+  "name": "scored_decoder_projection_stack_m256_m128_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack measured M256 pooler and M128 unpooler cuBLASLt descriptors from the scored standalone projection implementation into the whole decoder; all other dispatches unchanged.",
+  "sha256": "1cbebc6fd727d2c87c40073b6a585f99ec399641d3628d0fae364197dd65c431",
+  "check_job_id": "f2034621e7474f7f",
+  "scored_job_id": "59a0e628dd2142b9",
+  "decision": "reject_end_to_end",
+  "created_at": 1793145279.5627918,
+  "decision_reason": "Public scored run passed all tests but measured 1.7317626x, below the current decoder best 1.7344237x; confidence intervals overlap.",
+  "speedup": 1.7317626049036743,
+  "speedup_ci": [
+    1.7057861658301192,
+    1.7577390439772291
+  ],
+  "score_us": 13062.009732712877,
+  "updated_at": 1793145823.0712664
+}

@@ -1,0 +1,144 @@
+{
+  "board": "muse_moe_w4a16",
+  "call_id": "kc-434fd07a6cd048d0",
+  "cluster": "sfo3",
+  "content_hash": "ab5a69033cf5415788df4d5b3160ba7c4549a67dc7c7c9dabd9918b94121442f",
+  "created_at": 1793119852.877412,
+  "dedicated": false,
+  "duplicate_of": null,
+  "finished_at": 1793119965.8653944,
+  "id": "434fd07a6cd048d0",
+  "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_hybrid_m32_m128_v1/profiles/submission.434fd07a6cd048d0.log"
+  },
+  "payload_ref": "muse_moe_w4a16/ab5a69033cf5415788df4d5b3160ba7c4549a67dc7c7c9dabd9918b94121442f.py",
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "afcead6a6ff090aa50fe9bc907f0fa8f4ba73d95fa92af93ec260b5e8ff00f00",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_moe_w4a16/baseline.py": "4fc48bd9cdfd749863c93a2dbf4e556e0c38fb04acc4fa48a53ef34cbf6c92a1",
+        "problems/muse_moe_w4a16/reference.py": "a7e0b4fa86aa477a4e7bb5745b2b258954d72636b6da153bd239a717927cba44",
+        "problems/muse_moe_w4a16/task.yml": "cc6870087c1a115e69f40093478553e0a03c1b3e92f527c2e55c4115e2db42ad"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/tmp/muse_moe_w4a16-epoljan2/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-epoljan2/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_moe_w4a16-epoljan2/run/submission.py\", line 1393, in kernel_fn\n    return _om_kernel_fn(data,state['operatorstack'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_moe_w4a16-epoljan2/run/submission.py\", line 1358, in _om_kernel_fn\n    _om__route2[1,](ids, local, sorted_pairs, work, nwork, work13, nwork13, P, ls, LOCAL=L, BM=bm, BM2=bm13, P_BLOCK=p_block, W_MAX=w_max, W_MAX2=w_max13, num_warps=16 if p_block >= 1024 else 4)\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py\", line 374, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py\", line 741, in run\n    bound_args, specialization, options = binder(*args, **kwargs)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: dynamic_func() missing 1 required positional argument: '_om_BM'\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 122.09,
+        "power.limit": 700,
+        "temperature.gpu": 30
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.159.03",
+        "name": "NVIDIA H200",
+        "power.draw": 133.57,
+        "power.limit": 700,
+        "temperature.gpu": 33
+      },
+      "node": "n-djsogg5ih26gwdcnhyhbnqzfkb"
+    },
+    "passed": false,
+    "records": [
+      {
+        "baseline_copies": 4,
+        "baseline_prepare_pad": 21968896,
+        "copies": 1,
+        "error": null,
+        "event": "setup",
+        "first": "baseline",
+        "prepare_pad": 4943360,
+        "prepare_s": 66.078236222,
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 4,
+          "seed": 7914463331239563085,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 0,
+        "message": "relative L2 error 5.450e-03 (worst row 5.485e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 33,
+          "seed": 7914546140406814213,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 1,
+        "message": "relative L2 error 5.456e-03 (worst row 5.685e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 257,
+          "seed": 7914711758741316472,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 2,
+        "message": "relative L2 error 5.537e-03 (worst row 6.094e-03)",
+        "status": "pass"
+      },
+      {
+        "case": {
+          "bs": 128,
+          "dist": "skewed",
+          "seed": 7914794567908567603,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 3,
+        "message": "TypeError: dynamic_func() missing 1 required positional argument: '_om_BM'",
+        "status": "fail"
+      },
+      {
+        "case": {
+          "bs": 1,
+          "seed": 7914877377075818735,
+          "sharding": "ep8"
+        },
+        "event": "test",
+        "index": 4,
+        "message": "relative L2 error 5.518e-03 (worst row 5.518e-03)",
+        "status": "pass"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
+  "started_at": 1793119864.334392,
+  "status": "done",
+  "team": "StarAtNyte"
+}

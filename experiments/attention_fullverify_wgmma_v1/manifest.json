@@ -1,0 +1,24 @@
+{
+  "name": "attention_fullverify_wgmma_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use the already implemented WGMMA split attention route for only full-context q_len=8 batches 16 and 32, replacing the current Gluon full-verify route. Preserve every other selected dispatch. Compare complete official correctness and aggregate timing; the target cases dominate attention load time.",
+  "sha256": "46c18efa137ac6e64f7d0926349925455308f40b93773ed53b368d2722742c55",
+  "created_at": 1793134484.410613,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "632fde438a5e4bde",
+  "updated_at": 1793135004.0603404,
+  "decision_reason": "Official H200 check passed, but aggregate speedup was 1.8354x (CI 1.8079\u20131.8692), below current 1.8672x (CI 1.8392\u20131.9032). The WGMMA full verify route regressed verify-16 full 1.3235x\u21921.2321x and verify-32 full 1.2730x\u21921.1696x. Keep the current Gluon fused verify route."
+}

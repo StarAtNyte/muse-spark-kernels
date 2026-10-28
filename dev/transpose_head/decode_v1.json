@@ -1,0 +1,362 @@
+[
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 539,
+    "splits": 16,
+    "error": 6.031649172655307e-05,
+    "speedup": 0.81423526114583,
+    "baseline_us": 12.272000312805176,
+    "candidate_us": 15.168000012636185
+  },
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 539,
+    "splits": 32,
+    "error": 0.00023665474145673215,
+    "speedup": 0.8718508845154314,
+    "baseline_us": 12.256000190973282,
+    "candidate_us": 14.08000010997057
+  },
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 539,
+    "splits": 64,
+    "error": 0.00023491964384447783,
+    "speedup": 0.840007021342285,
+    "baseline_us": 12.575999833643436,
+    "candidate_us": 15.200000256299973
+  },
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 16,
+    "error": 1.3168581972422544e-05,
+    "speedup": 0.7914276253831468,
+    "baseline_us": 12.68799975514412,
+    "candidate_us": 16.176000237464905
+  },
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 32,
+    "error": 0.0003440522705204785,
+    "speedup": 0.8473101836868029,
+    "baseline_us": 13.024000450968742,
+    "candidate_us": 15.455999877303839
+  },
+  {
+    "layer": "sliding",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 64,
+    "error": 2.533470023990958e-06,
+    "speedup": 0.8443962048447315,
+    "baseline_us": 12.80000014230609,
+    "candidate_us": 15.32800029963255
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 539,
+    "splits": 4,
+    "error": 0.0004727449850179255,
+    "speedup": 0.7371742225013507,
+    "baseline_us": 19.888000562787056,
+    "candidate_us": 26.847999542951584
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 539,
+    "splits": 8,
+    "error": 0.0004752688982989639,
+    "speedup": 0.9046847059875058,
+    "baseline_us": 19.82400007545948,
+    "candidate_us": 22.079999558627605
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 539,
+    "splits": 16,
+    "error": 0.00043513349373824894,
+    "speedup": 1.0291181655269037,
+    "baseline_us": 19.840000197291374,
+    "candidate_us": 19.088000059127808
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 4,
+    "error": 0.0005198964499868453,
+    "speedup": 0.7353862092073944,
+    "baseline_us": 19.91999987512827,
+    "candidate_us": 27.05600019544363
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 8,
+    "error": 0.0005077355890534818,
+    "speedup": 0.8958494857820822,
+    "baseline_us": 19.840000197291374,
+    "candidate_us": 22.064000368118286
+  },
+  {
+    "layer": "sliding",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 16,
+    "error": 0.0004904205561615527,
+    "speedup": 1.0401114078423388,
+    "baseline_us": 19.888000562787056,
+    "candidate_us": 19.311999902129173
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 539,
+    "splits": 4,
+    "error": 0.0005609745858237147,
+    "speedup": 0.7965990507674755,
+    "baseline_us": 23.360000923275948,
+    "candidate_us": 29.61600013077259
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 539,
+    "splits": 8,
+    "error": 0.0005260626203380525,
+    "speedup": 1.0060529883621194,
+    "baseline_us": 23.72800000011921,
+    "candidate_us": 23.96799996495247
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 539,
+    "splits": 16,
+    "error": 0.00047887724940665066,
+    "speedup": 1.0783754028455361,
+    "baseline_us": 23.520000278949738,
+    "candidate_us": 21.90400008112192
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 4,
+    "error": 0.0006806579185649753,
+    "speedup": 0.8404968467739256,
+    "baseline_us": 24.464000016450882,
+    "candidate_us": 28.912000358104706
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 8,
+    "error": 0.0005853804177604616,
+    "speedup": 1.0100419840047046,
+    "baseline_us": 24.17599968612194,
+    "candidate_us": 23.984000086784363
+  },
+  {
+    "layer": "sliding",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 16,
+    "error": 0.000600045605096966,
+    "speedup": 1.1192714963311348,
+    "baseline_us": 24.17599968612194,
+    "candidate_us": 21.727999672293663
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 539,
+    "splits": 128,
+    "error": 1.1080314266109781e-07,
+    "speedup": 0.6871634904817604,
+    "baseline_us": 22.80000038444996,
+    "candidate_us": 33.135998994112015
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 539,
+    "splits": 256,
+    "error": 1.1080314266109781e-07,
+    "speedup": 0.8710080801690288,
+    "baseline_us": 22.688000462949276,
+    "candidate_us": 26.22400037944317
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 539,
+    "splits": 512,
+    "error": 1.1080314266109781e-07,
+    "speedup": 0.8999538471594954,
+    "baseline_us": 22.655999287962914,
+    "candidate_us": 24.911999702453613
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 128,
+    "error": 0.00016345812764484435,
+    "speedup": 0.6834133543504821,
+    "baseline_us": 22.512000054121017,
+    "candidate_us": 32.896000891923904
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 256,
+    "error": 0.00011390496365493163,
+    "speedup": 0.8526381227766882,
+    "baseline_us": 22.47999981045723,
+    "candidate_us": 26.448000222444534
+  },
+  {
+    "layer": "full",
+    "batch": 1,
+    "seed": 1427,
+    "splits": 512,
+    "error": 0.00016092917940113693,
+    "speedup": 0.913290135254194,
+    "baseline_us": 22.76800014078617,
+    "candidate_us": 24.800000712275505
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 539,
+    "splits": 32,
+    "error": 0.0003781438572332263,
+    "speedup": 1.1222852641045153,
+    "baseline_us": 130.49599528312683,
+    "candidate_us": 115.82400277256966
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 539,
+    "splits": 64,
+    "error": 0.000393250142224133,
+    "speedup": 0.9964679072603977,
+    "baseline_us": 130.0799995660782,
+    "candidate_us": 130.62399625778198
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 539,
+    "splits": 128,
+    "error": 0.0002932520874310285,
+    "speedup": 1.0796339615334827,
+    "baseline_us": 130.19199669361115,
+    "candidate_us": 120.14399841427803
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 32,
+    "error": 0.00036449902108870447,
+    "speedup": 1.1159403266617502,
+    "baseline_us": 130.0799995660782,
+    "candidate_us": 116.41599982976913
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 64,
+    "error": 0.00031361737637780607,
+    "speedup": 0.9920572954260816,
+    "baseline_us": 130.22399693727493,
+    "candidate_us": 131.1039999127388
+  },
+  {
+    "layer": "full",
+    "batch": 16,
+    "seed": 1427,
+    "splits": 128,
+    "error": 0.0002787359117064625,
+    "speedup": 1.0841479491697814,
+    "baseline_us": 129.85600531101227,
+    "candidate_us": 120.35199999809265
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 539,
+    "splits": 16,
+    "error": 0.0003612042055465281,
+    "speedup": 1.0338376824650564,
+    "baseline_us": 217.42399781942368,
+    "candidate_us": 210.35200357437134
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 539,
+    "splits": 32,
+    "error": 0.0002550408826209605,
+    "speedup": 0.9219614927421251,
+    "baseline_us": 217.18399971723557,
+    "candidate_us": 235.29600352048874
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 539,
+    "splits": 64,
+    "error": 0.0002488819300197065,
+    "speedup": 1.0217978981114415,
+    "baseline_us": 216.8480008840561,
+    "candidate_us": 212.3199999332428
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 16,
+    "error": 0.00038496009074151516,
+    "speedup": 1.0347154256437374,
+    "baseline_us": 216.20800346136093,
+    "candidate_us": 208.94400030374527
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 32,
+    "error": 0.0003011793887708336,
+    "speedup": 0.9234891477946384,
+    "baseline_us": 216.07999503612518,
+    "candidate_us": 233.87199640274048
+  },
+  {
+    "layer": "full",
+    "batch": 32,
+    "seed": 1427,
+    "splits": 64,
+    "error": 0.00032556065707467496,
+    "speedup": 1.0228081666447464,
+    "baseline_us": 215.7439962029457,
+    "candidate_us": 210.83199977874756
+  }
+]

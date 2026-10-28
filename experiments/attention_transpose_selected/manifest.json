@@ -1,0 +1,24 @@
+{
+  "name": "attention_transpose_selected",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Dense transposed FP8 QK and FP16 PV fully occupy tensor-core M/N dimensions for eight GQA heads, with three-stage cp.async and unchanged all-key stable softmax. Five seeds across two H200 runs show full decode batch16 gain22..23 percent, batch32 gain13..14 percent; sliding gains7..10 percent. Keep batch1 and verify parent paths.",
+  "sha256": "0597abd272a11144e3c028f821602ecf3f055236542ce24575262362148b1fe6",
+  "created_at": 1793039427.4919004,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "f75e704b61404709",
+  "updated_at": 1793039899.0533257,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

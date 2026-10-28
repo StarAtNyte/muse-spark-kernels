@@ -1,0 +1,23 @@
+{
+  "name": "moe_bk512_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "NCU shows 15-17% tensor-pipe active cycles on the 64x256 W4A16 Gluon tile. Double the K tile from 256 to 512 to halve the 4096-wide loop trips and amortize decode/synchronization overhead.",
+  "sha256": "373515c997032b7fb04cb46516a4c56c75e6afd04f4efd66127b22da4c73d940",
+  "created_at": 1793126394.3469365,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "e6b8cfd1e0224932",
+  "updated_at": 1793134350.546329
+}

@@ -1,0 +1,23 @@
+{
+  "name": "moe_prescale_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Current Gluon W4A16 decode converts every E4M3 group scale to BF16 inside each output CTA/K tile. Preconvert scales losslessly once in untimed prepare, keep packed E2M1 codes, and remove repeated E4M3->FP32 scale decode from the hot loop; expected cost is a small scale-buffer expansion.",
+  "sha256": "5f58ff19df12ea074ed14d5834aaae3f2460e1c51ec828b7f81980a95d0712b0",
+  "created_at": 1793127251.0463555,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "done",
+  "job_id": "99f81363ae5a4cc6",
+  "updated_at": 1793134350.8978407
+}

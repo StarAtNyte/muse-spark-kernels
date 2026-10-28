@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/tmp/muse_decode_layer-xm3fohnx/run/worker.py", line 458, in child_main
+    fn(state["data"])
+  File "/tmp/muse_decode_layer-xm3fohnx/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_decode_layer-xm3fohnx/run/submission.py", line 1610, in kernel_fn
+    expert_output = _experts(expert_input, topk_weights, local_ids, state)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-xm3fohnx/run/submission.py", line 1409, in _experts
+    return _experts_wm(x, topk_weights, topk_ids, state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-xm3fohnx/run/submission.py", line 9790, in _experts_wm
+    return _om_m128_kernel_fn(data,state['operatorstack_m128'])
+           ^^^^^^^^^^^^^^^^^^
+NameError: name '_om_m128_kernel_fn' is not defined

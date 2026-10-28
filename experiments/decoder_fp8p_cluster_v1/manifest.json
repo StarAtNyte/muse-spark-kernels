@@ -1,0 +1,23 @@
+{
+  "name": "decoder_fp8p_cluster_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate latest fully official-validated attention FP8 P/V full verify WGMMA and DSM sliding verify branches into decoder_transpose_selected. Preserve current q_len1 transposed decode and all other layer math/weights. Prior decoder used FA3 for verify; target verify16/32 full and verify16 sliding. Full decoder official checks required before promotion.",
+  "sha256": "c9d6fcb62d001e2e831a58de6d500e3824f5ac56a381359573e28cde2cedd6e9",
+  "created_at": 1793079217.7772086,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "aa0afe844e254d62",
+  "updated_at": 1793080170.6911502
+}

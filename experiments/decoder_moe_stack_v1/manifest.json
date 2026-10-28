@@ -1,0 +1,24 @@
+{
+  "name": "decoder_moe_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate fully validated M32/M128 register-direct MoE winners with publicly confirmed decoder_stack_v3; preserve existing norm weight, local expert-ID mapping, projection/router/attention paths; lossless fixed-source compression only",
+  "sha256": "49110ad07441d9f5e36a6ceda35c94be984c539d9050d2bfca954fdbcfa96edf",
+  "created_at": 1793121019.1604416,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "done",
+  "job_id": "2dca3780329f4907",
+  "updated_at": 1793121545.7347367,
+  "decision_reason": "Complete official coverage passed but aggregate1.706154x does not improve existing1.707723x; standalone MoE shape wins do not transfer robustly to decoder routing."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "moe_bn128_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "With H200 NCU showing low tensor-pipe active cycles and a 64-column tile launching many inactive expert/output work combinations at batch32 decode, double the output tile to BN128 to amortize K=4096 weight decode and halve CTA count.",
+  "sha256": "3acc3570a51884963628a3a9ef6f1517fe5eca0f1a01369e30f13700ac9fdfbf",
+  "created_at": 1793126206.9458911,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "f43c9c875e3847ad",
+  "updated_at": 1793134350.5548825
+}

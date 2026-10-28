@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ksc77m1rdmLLO2cYBencSY
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+VARIANT 4 2 [
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpgyu6bti9/kernel.cu(216): warning #550-D: variable \"vsrc_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n             ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmpgyu6bti9/kernel.cu(216): warning #550-D: variable \"vdst_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n                          ^\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": -11,
+    "stdout": "",
+    "stderr": ""
+  }
+]
+VARIANT 2 3 [
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpqb83ljb2/kernel.cu(216): warning #550-D: variable \"vsrc_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n             ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmpqb83ljb2/kernel.cu(216): warning #550-D: variable \"vdst_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n                          ^\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": -11,
+    "stdout": "",
+    "stderr": ""
+  }
+]
+VARIANT 1 3 [
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpepwszbqv/kernel.cu(216): warning #550-D: variable \"vsrc_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n             ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmpepwszbqv/kernel.cu(216): warning #550-D: variable \"vdst_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n                          ^\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": -11,
+    "stdout": "",
+    "stderr": ""
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ksc77m1rdmLLO2cYBencSY

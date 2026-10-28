@@ -1,0 +1,33 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-aM82s4pFg76NQUj3dUXt4e
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+Stopping app - uncaught exception raised locally: FileNotFoundError(2, 'No such file or directory').
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py:87 in  │
+│ main                                                                         │
+│                                                                              │
+│   86 │   fn = run_cute if cute else (run_sgl if sgl else run)                │
+│ ❱ 87 │   print(fn.remote(problem, open(file).read(), cmd, open(drv).read() i │
+│   88                                                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+FileNotFoundError: [Errno 2] No such file or directory: 
+'dev/ptx_campaign/moe_preload2.py'

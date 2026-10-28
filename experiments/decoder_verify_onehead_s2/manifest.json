@@ -1,0 +1,24 @@
+{
+  "name": "decoder_verify_onehead_s2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate standalone officially validated independent-KV-head two-stage WGMMA attention into full decoder verification, retaining original decode and sliding paths.",
+  "sha256": "dc612616a66377c723aac204e01f57b584f62c8b3132b4ff96fd59519697dfd0",
+  "created_at": 1793031247.8395746,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "6e76d74b52f04826",
+  "updated_at": 1793031691.697215,
+  "decision_reason": "All official coverage passed, but 1.499811x aggregate did not improve validated decoder 1.516715x."
+}

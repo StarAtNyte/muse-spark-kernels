@@ -1,0 +1,24 @@
+{
+  "name": "moe_bucket_row_m256_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Stable exact GPU token-count buckets with independent row-split resource reservations and concurrent W13/W2 streams only at M>=256; two H200 seeds showed 2.3% and 10.0% latency gains, original production fallbacks otherwise.",
+  "sha256": "cc0a11862ff7d7a74db5b5289ad5a4376b5de5cee7ae981bed28beaede1e278e",
+  "created_at": 1793093478.6962483,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "8df80c8aed0f40a4",
+  "updated_at": 1793093770.216813,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

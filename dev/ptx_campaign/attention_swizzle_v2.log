@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IjENjMaGLZ424KWJd53UNj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"batch": 3, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.0968945261685312, "baseline_us": 43.34399849176407, "candidate_us": 38.896000012755394}
+RESULT {"batch": 3, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0960893828770026, "baseline_us": 43.76000165939331, "candidate_us": 39.5519994199276}
+RESULT {"batch": 16, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.1272745131197945, "baseline_us": 142.0159935951233, "candidate_us": 126.27199292182922}
+RESULT {"batch": 16, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.1252066121001536, "baseline_us": 141.63200557231903, "candidate_us": 126.00000202655792}
+RESULT {"batch": 32, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.0854747260177886, "baseline_us": 234.22399908304214, "candidate_us": 216.19199961423874}
+RESULT {"batch": 32, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0842797859701443, "baseline_us": 232.87999629974365, "candidate_us": 215.27999639511108}
+RESULT {"batch": 33, "seed": 539, "relative_error": 0.0, "paired_speedup": 1.096434330765435, "baseline_us": 237.31200397014618, "candidate_us": 216.62399917840958}
+RESULT {"batch": 33, "seed": 1427, "relative_error": 0.0, "paired_speedup": 1.0860214237796182, "baseline_us": 235.664002597332, "candidate_us": 216.8160006403923}
+CHECK 4 6000 64 1.0 True relative L2 error 7.911e-02 (worst row 1.109e-01) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]
+CHECK 2 9000 64 0.015625 True relative L2 error 6.166e-02 (worst row 6.603e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+CHECK 5 80000 1 1.0 True relative L2 error 5.184e-02 (worst row 7.256e-02) [bound 0.145: 2.5 x the reference's 0.052 with FP8 E4M3 queries + 0.015]
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IjENjMaGLZ424KWJd53UNj

@@ -10,7 +10,7 @@ def _wm_module():
     global _WM_MOD
     if _WM_MOD is None:
         from torch.utils.cpp_extension import load_inline
-        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish", "wm_pf"],
+        _WM_MOD = load_inline("muse_wm_moe", _WM_CPP, cuda_sources=_WM_CUDA, functions=["wm_route", "wm_gemm_run", "wm_set_pdl_t", "wm_set_persist_t", "wm_finish", "wm_pf", "wm_permx"],
                               extra_cuda_cflags=["-O3", "--use_fast_math"] + _WM_EXTRA, verbose=False)
         _WM_MOD.wm_set_pdl_t(int(_WM_PDL and torch.cuda.get_device_capability()[0] >= 9))
     return _WM_MOD
@@ -72,6 +72,10 @@ def kernel_fn(data, state):
     maxslots = min(m * TOP_K, 32 + (m * TOP_K) // (nch * 8))
     inter = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
     y = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
+    if ring == 7:
+        xp = torch.empty_like(x)
+        mod.wm_permx(x, xp)
+        x = xp
     mod.wm_gemm_run(0, nch, nt, nw, ring, _WM_DBG, wm["w13"], wm["s13"], wm["gs13"], x, inter, cnt, lst, act, nact, woff, maxslots, lmax)
     mod.wm_gemm_run(1, nch, nt1, nw, ring, _WM_DBG, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
     topk_weights = data["topk_weights"].to(torch.float32).contiguous()

@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PIGGoeCiTGfhJsylUbU4B0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_cute.
+├── ✓ Created Function run.
+└── ✓ Created Function run_sgl.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 32 419 True relative L2 error 5.549e-03 (worst row 5.944e-03) bit_equal False baseline_error 0.0006237257039174438
+RESULT {"batch": 32, "seed": 419, "baseline_us": 160.65599769353867, "candidate_us": 179.6480044722557, "ratio": 0.8942821166619187}
+CHECK 32 7919 True relative L2 error 5.472e-03 (worst row 5.700e-03) bit_equal False baseline_error 0.0007225471781566739
+RESULT {"batch": 32, "seed": 7919, "baseline_us": 179.3920025229454, "candidate_us": 177.95200645923615, "ratio": 1.0080920473579438}
+CHECK 32 15241 True relative L2 error 5.477e-03 (worst row 5.864e-03) bit_equal False baseline_error 0.0005785267567262053
+RESULT {"batch": 32, "seed": 15241, "baseline_us": 171.7280000448227, "candidate_us": 175.76000094413757, "ratio": 0.9770596217702776}
+CHECK 32 49157 True relative L2 error 5.462e-03 (worst row 5.706e-03) bit_equal False baseline_error 0.000521067704539746
+RESULT {"batch": 32, "seed": 49157, "baseline_us": 180.04799634218216, "candidate_us": 182.76799470186234, "ratio": 0.985117753444102}
+CHECK 32 71359 True relative L2 error 5.478e-03 (worst row 5.740e-03) bit_equal False baseline_error 0.0005592113011516631
+RESULT {"batch": 32, "seed": 71359, "baseline_us": 178.81600558757782, "candidate_us": 177.0080029964447, "ratio": 1.0102142420711306}
+CHECK 32 93819 True relative L2 error 5.461e-03 (worst row 5.746e-03) bit_equal False baseline_error 0.0004898077459074557
+RESULT {"batch": 32, "seed": 93819, "baseline_us": 142.89599657058716, "candidate_us": 172.72000014781952, "ratio": 0.827327445856253}
+RS_M32_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PIGGoeCiTGfhJsylUbU4B0

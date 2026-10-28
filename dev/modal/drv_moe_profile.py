@@ -1,0 +1,11 @@
+"""Profile the validated native MoE's gate/up and down kernels at batch 16."""
+exec(open('/w/modal/drv_moe_ptx.py').read().split('for name, cuda, flags in variants:')[0])
+data = R.generate_input(16, 'ep8', 17319)
+graph, output = capture(data, base_mod)
+flush.add_(1)
+torch.cuda.synchronize()
+torch.cuda.profiler.start()
+graph.replay()
+torch.cuda.synchronize()
+torch.cuda.profiler.stop()
+print('PROFILE_FINISHED', output.shape, flush=True)

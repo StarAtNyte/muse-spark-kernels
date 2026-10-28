@@ -1,0 +1,23 @@
+{
+  "name": "projection_stack_pool_unpool_repeat",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Official repeat of the disjoint best pooler/unpooler cuBLASLt plan stack; confirm whether 1.524x holds against current projection before any promotion.",
+  "sha256": "b8f85e80b0b75ea75eb452d60bab7e49840c3151206712b72b72894661544b69",
+  "created_at": 1793131639.6870432,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 12,
+      "left": 8
+    }
+  },
+  "status": "duplicate",
+  "job_id": "673ecc6279474c01",
+  "updated_at": 1793131670.305358
+}

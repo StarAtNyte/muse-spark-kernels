@@ -1,0 +1,24 @@
+{
+  "name": "decoder_ptx_merge_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate officially validated per-query-row fd3 merge into the current best whole decoder, preserving all other kernels and dispatch",
+  "sha256": "ef06538cf89360bd477630e088863f44c4f0bcd591bf26a386fa9b3e816cf1b4",
+  "created_at": 1793014910.3233082,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "80f619e887d94eb4",
+  "updated_at": 1793021296.8258011,
+  "decision_reason": "Passed all coverage at 1.508117x, below decoder_wm_v3 at 1.516715x; retain current decoder."
+}

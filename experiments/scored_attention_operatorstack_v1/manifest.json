@@ -1,0 +1,25 @@
+{
+  "name": "scored_attention_operatorstack_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Independent full-coverage benchmark of MIT bigboateng attention; identify complementary shape winners before stacking with our cluster/FP8 kernels",
+  "sha256": "bf4a894e0f83577ca876105b05fc0467b6213ef86cee98d894f9590936d9280d",
+  "created_at": 1793118902.0426023,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "updated_at": 1793119745.355118,
+  "parent_experiment": "attention_operatorstack_v1",
+  "mode": "run",
+  "job_id": "bf038389a64745fa"
+}

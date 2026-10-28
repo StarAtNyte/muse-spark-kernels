@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cNLZk84p9FYpG01kjm1aR0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmpcrs322r8/kernel.cu(154): warning #177-D: variable \"base_row\" was declared but never referenced\n    const long base_row = ((long)(b * 2 + kh) * splits + split) * 64;\n               ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n/tmp/tmpcrs322r8/kernel.cu(217): warning #550-D: variable \"vsrc_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n             ^\n\n/tmp/tmpcrs322r8/kernel.cu(217): warning #550-D: variable \"vdst_off\" was set but never used\n    uint32_t vsrc_off[2], vdst_off[4];\n                          ^\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "ptxas info    : 3 bytes gmem\nptxas info    : Compiling entry function '_Z12wg5_partialsPKhS0_S0_PKiS2_PKfS4_PfS5_iiiiiiifiiPK13__nv_bfloat16PS6_i' for 'sm_90a'\nptxas info    : Function properties for _Z12wg5_partialsPKhS0_S0_PKiS2_PKfS4_PfS5_iiiiiiifiiPK13__nv_bfloat16PS6_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 118 registers, used 2 barriers\nptxas info    : Compile time = 136.511 ms\n"
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cNLZk84p9FYpG01kjm1aR0

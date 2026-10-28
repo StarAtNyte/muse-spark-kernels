@@ -1,0 +1,23 @@
+{
+  "name": "decoder_public_projection_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate independently reproduced MIT-licensed Nathen Fernandes v18 dense projections into our verified decoder_pre_norm_overlap_v1. Namespace-only adaptation, preserved MIT notice, avoid unused legacy dense preparation. Keep attention, router selection, FP4 experts, norms, residuals and BF16 precision intact.",
+  "sha256": "356abbcdcb6cacd5feb2c5dbf7f544e86881e21c1b01b1f5be793466b5d2946c",
+  "created_at": 1793098617.9864728,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "7b726d295a6747bc",
+  "updated_at": 1793099164.5366647
+}

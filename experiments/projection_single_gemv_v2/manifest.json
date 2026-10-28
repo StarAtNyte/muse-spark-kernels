@@ -1,0 +1,23 @@
+{
+  "name": "projection_single_gemv_v2",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Add occupancy-tuned one-token QKV GEMV BN1/BK512/eight warps to the validated direct-router parent; three independent seeds show17..18 percent local gain. Preserve original BF16 weights and FP32 accumulation, other regimes unchanged.",
+  "sha256": "78d343c68fe8a296f35a779832d4ba363a53c66dfa7637886e92306b1cbcd7b5",
+  "created_at": 1793038720.8425786,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "be2868a5c1934c60",
+  "updated_at": 1793038882.0096118
+}

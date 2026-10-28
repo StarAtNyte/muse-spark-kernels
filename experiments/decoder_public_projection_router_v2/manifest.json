@@ -1,0 +1,24 @@
+{
+  "name": "decoder_public_projection_router_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Extend the verified public dense-projection decoder with a native FP32 small-router path adapted from Nathen Fernandes scalar router. Keep both FP32 activations and FP32 weights, preserve MIT attribution. 34 paired H200 checks pass; at M8 router time falls from ~28us to ~13us including replay overhead, aiming to expose pooler overlap gains.",
+  "sha256": "eca36c047514202813ddf2219c3f8507ab8865c9cf0a9de8ec9f8d4dee771f11",
+  "created_at": 1793099254.38518,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "f0a4978fa68d4929",
+  "updated_at": 1793108276.6334186,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

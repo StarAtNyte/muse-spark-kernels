@@ -1028,6 +1028,7 @@ extern "C" int wm_gemm_c(int mode, int nmax, int nt, int nw, int ring, int dbg, 
                          const int* woff, int maxslots, int lmax, cudaStream_t st) {
   const int pdl = g_pdl;
 #define WM_WG(M, N_, S_) if (mode == M && ring == 7 && nmax == N_ && nt == S_ && dbg == 0) { launch_wg<M, N_, S_>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }
+  WM_WG(0, 4, 3) WM_WG(1, 4, 3) WM_WG(0, 8, 3) WM_WG(1, 8, 3) WM_WG(0, 4, 2) WM_WG(1, 4, 2)
 #undef WM_WG
 #define WM_RS(M, T, N, S_) \
   if (mode == M && ring == 4 && nt == T && nmax == N && dbg == 0) { launch_rs<M, T, N, S_, 0>(W, S, GS, X, OUT, lst, act, maxslots, lmax, pdl, st); return 0; }

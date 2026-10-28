@@ -1,0 +1,57 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2pIKo4nGEUfrHcA7ITTIG3
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EXACT identity 0.0
+EXACT ones 0.0
+EXACT integer 0.0
+EXACT permutation 0.0
+RESULT {"batch": 1, "seed": 113, "fp32_error": 6.012028097757138e-05, "pytorch_fp8_error": 6.012028097757138e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.421875}
+RESULT {"batch": 1, "seed": 7919, "fp32_error": 6.93273832439445e-05, "pytorch_fp8_error": 6.93273832439445e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.5625}
+RESULT {"batch": 1, "seed": 3613, "fp32_error": 7.06278660800308e-05, "pytorch_fp8_error": 7.06278660800308e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.83984375}
+RESULT {"batch": 3, "seed": 113, "fp32_error": 6.277469219639897e-05, "pytorch_fp8_error": 6.277469219639897e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.609375}
+RESULT {"batch": 3, "seed": 7919, "fp32_error": 7.054919115034863e-05, "pytorch_fp8_error": 7.054919115034863e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.765625}
+RESULT {"batch": 3, "seed": 3613, "fp32_error": 7.184563582995906e-05, "pytorch_fp8_error": 7.184563582995906e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.87109375}
+RESULT {"batch": 16, "seed": 113, "fp32_error": 6.743225094396621e-05, "pytorch_fp8_error": 6.743225094396621e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 1.08203125}
+RESULT {"batch": 16, "seed": 7919, "fp32_error": 6.876765110064298e-05, "pytorch_fp8_error": 6.876765110064298e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.875}
+RESULT {"batch": 16, "seed": 3613, "fp32_error": 7.154248305596411e-05, "pytorch_fp8_error": 7.154248305596411e-05, "error_vs_fp8_tensorcore": 0.0, "max_abs": 0.9921875}
+FP8P_NATIVE_PRIMITIVE_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2pIKo4nGEUfrHcA7ITTIG3

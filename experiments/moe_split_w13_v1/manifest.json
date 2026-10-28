@@ -1,0 +1,23 @@
+{
+  "name": "moe_split_w13_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Batch32 decode is weak (1.466x), with ~60% of candidate time in paired gate/up. Split the 4096-wide W13 K dimension across four CTAs, write FP32 gate/up partials, reduce them and apply the original BF16 rounding + SiLU epilogue, then retain the existing W2 and norm path. This trades one reducer launch for shorter WGMMA/MMA loops and 4x W13 CTA parallelism.",
+  "sha256": "8acff58a4f9105ee24ef33dfc257a2e3da246d07871623e35de2e7392afc4daf",
+  "created_at": 1793128052.9069526,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 11,
+      "left": 9
+    }
+  },
+  "status": "done",
+  "job_id": "0567437af81948d3",
+  "updated_at": 1793134350.8976731
+}

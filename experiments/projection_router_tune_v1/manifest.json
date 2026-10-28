@@ -1,0 +1,24 @@
+{
+  "name": "projection_router_tune_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Retain validated dense dispatch; graph-time 12 router tiling/split-K configurations on synthetic inputs during prepare, correctness-gate and require 3 percent win over original router",
+  "sha256": "5b3cc9dc70fc7416f339cd76a87c4cab190b7d031da77fc1d9fb7dab96fb24f9",
+  "created_at": 1793013449.6217687,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "50ece49c24264d6e",
+  "updated_at": 1793013614.3169904,
+  "decision_reason": "All official coverage passed at 1.188518x, but every router tuning choice fell back to the original path. Difference from 1.182878x is within confidence intervals; no demonstrated algorithmic improvement."
+}

@@ -1,0 +1,92 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ifVBR1Y6dmOopa9q1P0kLm
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 1 173 1 True relative L2 error 6.958e-02 (worst row 8.818e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 1, "us": 53.0879981815815}
+CHECK 1 173 2 True relative L2 error 6.888e-02 (worst row 8.689e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 2, "us": 32.735999673604965}
+CHECK 1 173 4 True relative L2 error 6.896e-02 (worst row 8.615e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 4, "us": 23.10399990528822}
+CHECK 1 173 8 True relative L2 error 6.873e-02 (worst row 8.452e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 8, "us": 19.200000911951065}
+CHECK 1 2387 1 True relative L2 error 7.082e-02 (worst row 8.194e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 1, "us": 53.647998720407486}
+CHECK 1 2387 2 True relative L2 error 7.123e-02 (worst row 8.308e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 2, "us": 33.503999933600426}
+CHECK 1 2387 4 True relative L2 error 7.147e-02 (worst row 8.266e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 4, "us": 23.711999878287315}
+CHECK 1 2387 8 True relative L2 error 7.140e-02 (worst row 8.214e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 8, "us": 19.360000267624855}
+CHECK 16 173 1 True relative L2 error 6.777e-02 (worst row 1.009e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 1, "us": 55.24799972772598}
+CHECK 16 173 2 True relative L2 error 6.750e-02 (worst row 1.012e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 2, "us": 35.93600168824196}
+CHECK 16 173 4 True relative L2 error 6.729e-02 (worst row 1.012e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 4, "us": 28.095999732613564}
+CHECK 16 173 8 True relative L2 error 6.714e-02 (worst row 1.011e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 8, "us": 25.040000677108765}
+CHECK 16 2387 1 True relative L2 error 7.118e-02 (worst row 1.058e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 1, "us": 55.296000093221664}
+CHECK 16 2387 2 True relative L2 error 7.089e-02 (worst row 1.040e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 2, "us": 35.58399900794029}
+CHECK 16 2387 4 True relative L2 error 7.073e-02 (worst row 1.045e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 4, "us": 27.92000025510788}
+CHECK 16 2387 8 True relative L2 error 7.058e-02 (worst row 1.046e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 8, "us": 25.119999423623085}
+CHECK 32 173 1 True relative L2 error 6.627e-02 (worst row 1.096e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 1, "us": 59.07199904322624}
+CHECK 32 173 2 True relative L2 error 6.605e-02 (worst row 1.094e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 2, "us": 39.77600112557411}
+CHECK 32 173 4 True relative L2 error 6.590e-02 (worst row 1.094e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 4, "us": 33.72799977660179}
+CHECK 32 173 8 True relative L2 error 6.582e-02 (worst row 1.091e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 8, "us": 38.52800093591213}
+CHECK 32 2387 1 True relative L2 error 6.896e-02 (worst row 1.180e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 1, "us": 59.328000992536545}
+CHECK 32 2387 2 True relative L2 error 6.870e-02 (worst row 1.171e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 2, "us": 39.8080013692379}
+CHECK 32 2387 4 True relative L2 error 6.852e-02 (worst row 1.171e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 4, "us": 33.583998680114746}
+CHECK 32 2387 8 True relative L2 error 6.845e-02 (worst row 1.175e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 8, "us": 38.495998829603195}
+CLUSTER_SIZES_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ifVBR1Y6dmOopa9q1P0kLm

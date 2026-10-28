@@ -1,0 +1,24 @@
+{
+  "name": "decoder_moe_m32_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the validated public M32 MoE kernel only on the decoder 32-row route where it improved; retain current WM on the losing 128-row route. Shape dispatch isolates the measured complementary gain.",
+  "sha256": "15cfa49a6fb187647aa597a2d30b9d3bf39d2a38c2f424e18e928a8fb6196c4f",
+  "created_at": 1793121883.4624524,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 9,
+      "left": 11
+    }
+  },
+  "status": "done",
+  "job_id": "6749df98f8b64274",
+  "updated_at": 1793122395.895031,
+  "decision_reason": "Official full coverage passed 13/13 tests, but aggregate 1.702752x is below current private best 1.707723x (confidence intervals overlap); shape-only M32 dispatch did not yield a repeatable whole-decoder gain. Keep decoder_stack_v3."
+}

@@ -1,0 +1,24 @@
+{
+  "name": "attention_hybrid_verify_v2",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use independent per-case winners: MIT bigboateng on sliding verification and full B>4 verification, our native/cluster kernels on decode and small full verification; exact eight-token shape dispatch",
+  "sha256": "353743e6b08c054f7597f856f2b5d8e6dd04dcfe76f71541fbdd71df4932ca08",
+  "created_at": 1793119350.7199526,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "17f2722ab1f8495f",
+  "updated_at": 1793119780.7536917,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

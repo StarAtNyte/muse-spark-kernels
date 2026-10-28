@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sD4KSEHRNXhh9KVYIGF3yL
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"batch": 1, "keys": 16, "seed": 113, "errors": [0.0, 1.752222722473107e-08]}
+RESULT {"batch": 1, "keys": 16, "seed": 7919, "errors": [0.0, 2.2682538514118278e-08]}
+RESULT {"batch": 1, "keys": 128, "seed": 113, "errors": [0.0, 1.031749192748066e-07]}
+RESULT {"batch": 1, "keys": 128, "seed": 7919, "errors": [0.0, 1.0148763607276123e-07]}
+RESULT {"batch": 3, "keys": 16, "seed": 113, "errors": [0.0, 2.1242644976382508e-08]}
+RESULT {"batch": 3, "keys": 16, "seed": 7919, "errors": [0.0, 2.7000448099556706e-08]}
+RESULT {"batch": 16, "keys": 256, "seed": 113, "errors": [0.0, 1.7745729508078512e-07]}
+RESULT {"batch": 16, "keys": 256, "seed": 7919, "errors": [0.0, 1.8048007177640102e-07]}
+TRANSPOSE_PRIMITIVES_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-sD4KSEHRNXhh9KVYIGF3yL

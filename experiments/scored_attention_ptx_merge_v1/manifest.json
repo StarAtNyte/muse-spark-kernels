@@ -1,0 +1,25 @@
+{
+  "name": "scored_attention_ptx_merge_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Compute fd3 split-KV intra-CTA merge statistics once per query row, eliminating redundant exponentials across 64 output dimensions; Modal two-seed 6-8 percent decode speedup with identical outputs",
+  "sha256": "3f55081f7353d30fdb756df51943b2e7558c3e4463f0884d6547ee32acd825cb",
+  "created_at": 1793014487.0219097,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "updated_at": 1793021325.8727164,
+  "parent_experiment": "attention_ptx_merge_v1",
+  "mode": "run",
+  "job_id": "3659bd2bb1bb471f"
+}

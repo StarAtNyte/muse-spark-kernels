@@ -1,0 +1,16 @@
+{
+  "name": "attention_fp8_pv_wgmma_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Keep both FP8 operands for WGMMA PV, scale probabilities by 2^8 per pinned FA3 precision behavior, and remove the per-tile V FP8-to-FP16 conversion in full-context verification.",
+  "sha256": "61c2b42badff5df45bcd6b171a14bb9f51555c103df4bcbe34baf634500f351a",
+  "created_at": 1793152464.6620457,
+  "decision": "reject_compile",
+  "status": "done",
+  "modal_screens": [
+    "ap-4HLLL3Vof6ODjxH3XyWBZr",
+    "ap-cmq97ENbTS7facGDJ89CGd",
+    "ap-s8wVPeoUZuLoYUQzjF99oo",
+    "ap-6wQf1vux8UEaWbxJ4wkTf5"
+  ],
+  "decision_reason": "Four H200 compiles failed in Triton ConvertNVGPUToLLVM before timing. NVIDIA PTX documents that WGMMA transpose is unsupported for FP8 operands; current QK and PV operands require transposed shared descriptors. A usable design would need a data-layout rewrite, not this direct dtype swap."
+}

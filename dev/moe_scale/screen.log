@@ -1,0 +1,72 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oMDqNMHBXxU4TMPcTybZUH
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 461, in __init__
+    self.raw_src, self.starting_line_number = inspect.getsourcelines(fn)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/inspect.py", line 1264, in getsourcelines
+    lines, lnum = findsource(object)
+                  ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/inspect.py", line 1093, in findsource
+    raise OSError('could not get source code')
+OSError: could not get source code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 6, in <module>
+    sub=types.ModuleType('scale_parent');exec(m.PARENT,sub.__dict__)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 109, in <module>
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 935, in jit
+    return decorator(fn)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 923, in decorator
+    return JITFunction(
+           ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 756, in __init__
+    super().__init__(fn)
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 463, in __init__
+    raise ValueError("@jit functions should be defined in a Python file") from e
+ValueError: @jit functions should be defined in a Python file
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oMDqNMHBXxU4TMPcTybZUH

@@ -1,0 +1,24 @@
+{
+  "name": "projection_unpool128_alt1_repeat",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Independent official timing repeat of the unchanged M128 verify unpooler descriptor; only a comment differs to avoid SHA duplicate suppression.",
+  "sha256": "a2e11310b9e33190d768f68d45152620b04dfd97ec6519a77ca62105d7981ca2",
+  "created_at": 1793123609.606966,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "dab8ec860dae447d",
+  "updated_at": 1793123774.6714265,
+  "decision_reason": "Independent full check scored 1.510x. Small verify-16 unpooler case-speedup increase was not enough to produce a robust aggregate gain."
+}

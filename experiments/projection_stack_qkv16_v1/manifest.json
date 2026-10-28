@@ -1,0 +1,23 @@
+{
+  "name": "projection_stack_qkv16_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Combine the strongest verified disjoint projection choices (M256 pooler and M128 unpooler cuBLASLt algorithms) with an H200-screened M16 QKV BF16 split-K tensor-core GEMM (3.9% local gain, eight K splits). The new route affects only decode16 QKV; all other M and layer routes remain on the parent implementation.",
+  "sha256": "a7e3dc95e9c56a68149e045abb3e1d83eb9dcc04311c13965e0307329074b419",
+  "created_at": 1793129390.6547434,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 11,
+      "left": 9
+    }
+  },
+  "status": "done",
+  "job_id": "0bc2d67e0c834686",
+  "updated_at": 1793131955.3797631
+}

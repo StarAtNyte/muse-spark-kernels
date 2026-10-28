@@ -1,0 +1,24 @@
+{
+  "name": "decoder_pre_norm_overlap_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Retain verified one-pass pre-expert RMSNorm and move it after pooler before router stream join, allowing independent norm work to overlap side-stream routing. No arithmetic or input/output precision changes.",
+  "sha256": "225e947eb03af75b9cef8c4c398103373bae99102eedc4759876d91dc627a077",
+  "created_at": 1793097693.7772174,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "ed021d8da1d045bf",
+  "updated_at": 1793098223.6073124,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

@@ -44,7 +44,7 @@ def _lab_time(fn, flush, reps=20):
     return ts[len(ts) // 2]
 
 
-_WM_EXTRA = ['-DWM_DBG_BUILD']
+_WM_EXTRA = ['-DWM_DBG_BUILD', '-gencode=arch=compute_90a,code=sm_90a']
 
 
 def _lab_fin(state):
@@ -129,7 +129,8 @@ def _lab_stress(state):
 
 def _lab(state):
     global _WM_DBG
-    _lab_cfgs(state)
+    import os
+    (_lab_run if os.environ.get('LABMODE') == 'run' else _lab_wgcmp)(state)
 
 
 def _lab_pdl(state):
@@ -232,10 +233,10 @@ def _lab_prof(state):
 def _lab_run(state):
     global _WM_CFG
     import os
-    m = int(os.environ.get("LABM", "32"))
-    cfgs = {1: (2, 4, 0), 8: (2, 4, 0), 16: (2, 4, 0), 32: (4, 4, 1), 128: (4, 4, 4), 256: (4, 4, 4)}
+    m = int(os.environ.get("LABM", "256"))
+    cfg = eval(os.environ.get("LABCFG", "(4, 4, 4)"))
     data = _lab_inputs(m, 'cuda', 100 + 7 * m)
-    _WM_CFG = [(10**9, cfgs[m])]
+    _WM_CFG = [(10**9, cfg)]
     for _ in range(3):
         kernel_fn(data, state)
     torch.cuda.synchronize()
@@ -258,3 +259,118 @@ def _lab_pf(state):
                 row.append(f'pf{npf}=ERR')
         print('LAB', ' '.join(row), flush=True)
     _WM_PF = 0
+
+
+def _lab_chain(state):
+    """Marginal cost of each kernel in the MoE chain (graph + cold L2): route, +gemm0, +gemm1, +finish."""
+    global _WM_CFG
+    flush = torch.zeros(160 * 1024 * 1024 // 4, dtype=torch.float32, device='cuda')
+    cfgs = {1: (2, 4, 0), 8: (2, 2, 0), 16: (2, 8, 0), 32: (4, 4, 1), 128: (4, 4, 4), 256: (4, 4, 4)}
+    for m in (1, 8, 16, 32, 128, 256):
+        datas = [_lab_inputs(m, 'cuda', 100 + 7 * m + s) for s in range(3)]
+        _WM_CFG = [(10**9, cfgs[m])]
+        wm = state["wm"]
+        mod = wm["mod"]
+        row = [f'CHAIN M={m}']
+        for stage in (1, 2, 3, 4):
+            def run(d, stage=stage):
+                x = d["hidden_states"].contiguous()
+                nch = 1 if m <= 8 else 2 if m <= 16 else 4
+                lmax = (m + 7) // 8 * 8
+                _c = _wm_cfg(m)
+                nt, nw, ring = _c[:3]
+                dev = x.device
+                ids = d["topk_ids"].contiguous()
+                cnt = torch.empty(32, dtype=torch.int32, device=dev)
+                lst = torch.empty(32 * lmax, dtype=torch.int32, device=dev)
+                act = torch.empty(512, dtype=torch.int32, device=dev)
+                woff = torch.empty(128, dtype=torch.int32, device=dev)
+                nact = torch.empty(1, dtype=torch.int32, device=dev)
+                lids = torch.empty(m * TOP_K, dtype=torch.int32, device=dev)
+                mod.wm_route(ids, _WM_NOLS, 0, lmax, cnt, lst, act, nact, lids, woff, nch * 8)
+                if stage == 1:
+                    return act
+                maxslots = min(m * TOP_K, 32 + (m * TOP_K) // (nch * 8))
+                inter = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
+                y = torch.empty((m * TOP_K, 4096), dtype=torch.bfloat16, device=dev)
+                mod.wm_gemm_run(0, nch, nt, nw, ring, 0, wm["w13"], wm["s13"], wm["gs13"], x, inter, cnt, lst, act, nact, woff, maxslots, lmax)
+                if stage == 2:
+                    return inter
+                mod.wm_gemm_run(1, nch, nt, nw, ring, 0, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
+                if stage == 3:
+                    return y
+                tw = d["topk_weights"].to(torch.float32).contiguous()
+                out = torch.empty((m, 4096), dtype=torch.bfloat16, device=dev)
+                mod.wm_finish(y, tw, lids, state["norm_w"], out, POST_NORM_EPS)
+                return out
+            try:
+                ts = [_lab_time(lambda: run(dd), flush) for dd in datas]
+                row.append(f's{stage}=' + '/'.join(f'{t:.0f}' for t in ts) + f'({sum(ts)/len(ts):.1f})')
+            except Exception as ex:
+                row.append(f's{stage}=ERR({str(ex)[:40]})')
+        print('LAB', ' '.join(row), flush=True)
+
+
+def _lab_wgcmp(state):
+    global _WM_CFG, _WM_FIN
+    _WM_FIN = True
+    flush = torch.zeros(160 * 1024 * 1024 // 4, dtype=torch.float32, device='cuda')
+    for m in (128, 256):
+        datas = [_lab_inputs(m, 'cuda', 100 + 7 * m + s) for s in range(3)]
+        for d in datas[:1]:
+            _WM_CFG = [(10**9, (4, 4, 4))]
+            a = kernel_fn(d, state).float()
+            row = [f'WGCMP M={m}']
+            for cfg in ((3, 4, 7), (2, 4, 7)):
+                _WM_CFG = [(10**9, cfg)]
+                try:
+                    b = kernel_fn(d, state).float()
+                    row.append(f'{cfg}: relerr_vs_rs={((a-b).norm()/a.norm()).item():.2e} finite={int(torch.isfinite(b).all())}')
+                except Exception as ex:
+                    row.append(f'{cfg}: ERR {str(ex)[:50]}')
+            print('LAB', ' '.join(row), flush=True)
+        for cfg in ((4, 4, 4), (3, 4, 7), (2, 4, 7)):
+            _WM_CFG = [(10**9, cfg)]
+            try:
+                ts = [_lab_time(lambda: kernel_fn(dd, state), flush) for dd in datas]
+                print('LAB', f'WGT M={m} {cfg}', '/'.join(f'{t:.0f}' for t in ts), flush=True)
+            except Exception as ex:
+                print('LAB', f'WGT M={m} {cfg} ERR {str(ex)[:50]}', flush=True)
+
+
+def _lab_wgdbg(state):
+    global _WM_CFG
+    wm = state["wm"]; mod = wm["mod"]
+    m = 256
+    d = _lab_inputs(m, 'cuda', 100 + 7 * m)
+    x = d["hidden_states"].contiguous()
+    ids = d["topk_ids"].contiguous()
+    k = torch.arange(4096, device='cuda')
+    c, kl = k >> 6, k & 63
+    t_, ks, p_, h_ = kl >> 4, (kl >> 2) & 3, (kl >> 1) & 1, kl & 1
+    perm = c * 64 + (ks * 2 + p_) * 8 + t_ * 2 + h_
+    def run(cfg, permx):
+        nch = 4
+        lmax = (m + 7) // 8 * 8
+        nt, nw, ring = cfg
+        cnt = torch.empty(32, dtype=torch.int32, device='cuda'); lst = torch.empty(32 * lmax, dtype=torch.int32, device='cuda')
+        act = torch.empty(512, dtype=torch.int32, device='cuda'); woff = torch.empty(128, dtype=torch.int32, device='cuda')
+        nact = torch.empty(1, dtype=torch.int32, device='cuda'); lids = torch.empty(m * TOP_K, dtype=torch.int32, device='cuda')
+        mod.wm_route(ids, _WM_NOLS, 0, lmax, cnt, lst, act, nact, lids, woff, nch * 8)
+        maxslots = min(m * TOP_K, 32 + (m * TOP_K) // (nch * 8))
+        xx = x
+        if permx:
+            xx = torch.empty_like(x); mod.wm_permx(x, xx)
+        inter = torch.zeros((m * TOP_K, 4096), dtype=torch.bfloat16, device='cuda')
+        y = torch.zeros((m * TOP_K, 4096), dtype=torch.bfloat16, device='cuda')
+        mod.wm_gemm_run(0, nch, nt, nw, ring, 0, wm["w13"], wm["s13"], wm["gs13"], xx, inter, cnt, lst, act, nact, woff, maxslots, lmax)
+        mod.wm_gemm_run(1, nch, nt, nw, ring, 0, wm["w2"], wm["s2"], wm["gs2"], inter, y, cnt, lst, act, nact, woff, maxslots, lmax)
+        torch.cuda.synchronize()
+        return inter, y, lids
+    i1, y1, l1 = run((4, 4, 4), False)
+    i2, y2, l2 = run((3, 4, 7), True)
+    live = (l1.view(-1) >= 0)
+    a = i1[live].float(); b = i2[live][:, perm].float()
+    print('LAB WGDBG inter relerr(un-permuted)=%.3e  nonzero_rs=%d nonzero_wg=%d live=%d' % (((a - b).norm() / a.norm()).item(), int((a != 0).sum()), int((b != 0).sum()), int(live.sum())), flush=True)
+    a = y1[live].float(); b = y2[live].float()
+    print('LAB WGDBG y relerr=%.3e' % (((a - b).norm() / a.norm()).item()), flush=True)

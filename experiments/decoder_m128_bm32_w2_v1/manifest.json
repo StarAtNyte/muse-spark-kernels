@@ -1,0 +1,8 @@
+{
+  "name": "decoder_m128_bm32_w2_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "If standalone MoE M128 BM32 W2 is faster and correct, stack exactly that tile-size change into the current scored decoder, retaining its M32 operatorstack, projection plans, attention routes, normalization and all other dispatch.",
+  "sha256": "142a95eede9fdbfcc70a8f7c359f7d75a00b613e2a0e5cd0b4f6c83d623b0e62",
+  "created_at": "2026-10-28T00:39:58.438797+00:00",
+  "decision": "reject_dependency"
+}

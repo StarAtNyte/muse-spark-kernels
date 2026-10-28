@@ -1,0 +1,24 @@
+{
+  "name": "decoder_m256_wm_transfer_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer only the already-scored standalone MoE M256 regular weight-major CUDA route into the decoder; retain its scored M32/M128 operatorstack routes, all projection descriptors, and all attention paths, replacing only decoder M256 bucket GEMM dispatch.",
+  "sha256": "9c9dbb79be945dd7e352741c2d088cae371eecd3d99659e4e952c24a08b97ba3",
+  "created_at": 1793152415.556926,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "6979bd1efba34f39",
+  "updated_at": 1793152932.254864,
+  "decision_reason": "All 13 tests passed at 1.735970x (95% CI [1.709931,1.762009]), below the promoted 1.738209x with overlapping intervals. The regular WM route regressed verify-32 sliding 3.2% (395.6 to 408.1 us) and full 3.4% (676.9 to 700.2 us) relative to the scored decoder; keep the bucket route."
+}

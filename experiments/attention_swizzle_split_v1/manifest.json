@@ -1,0 +1,24 @@
+{
+  "name": "attention_swizzle_split_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Combine validated row-merge with 128-byte XOR-swizzled KV staging and full SMEM carveout; use 32 splits for batches 8-24 based on paired two-seed Modal sweep, retain original small-batch split count",
+  "sha256": "306fcab9a44b98f977e3e5a4c991c11409482b06eddde9eef755ded0734db03c",
+  "created_at": 1793015121.4418197,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "301cc5b614d14674",
+  "updated_at": 1793021325.221653,
+  "decision_reason": "Passed all coverage at 1.558637x, below simpler attention_ptx_merge_v1 at 1.573112x; archive only."
+}

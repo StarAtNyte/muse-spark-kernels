@@ -1,0 +1,23 @@
+{
+  "name": "decoder_stack_bucket_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Add validated M256 count-tiered concurrent MoE bucketing to projection/router/norm plus hybrid attention decoder stack; compare to decoder_stack_v3",
+  "sha256": "b41d56e680e3e7a67dd67cd311fe6b00f9180ec9f8d374cc020cbba43d9d6ce6",
+  "created_at": 1793119258.1561701,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "a37d5a378c004866",
+  "updated_at": 1793119744.736682
+}

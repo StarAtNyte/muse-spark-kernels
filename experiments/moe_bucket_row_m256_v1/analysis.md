@@ -1,0 +1,106 @@
+# moe_bucket_row_m256_v1
+
+Job: `8df80c8aed0f40a4`
+Correctness: True; official speedup: 1.93348x; CI: [1.904475612521217, 1.9624799458974975]
+
+| Load | Layer | Baseline µs | Candidate µs | Speedup | Floor µs |
+|---|---|---:|---:|---:|---:|
+| decode 1 | experts (ep8) | 79.52 | 32.17 | 2.472x | 11.42 |
+| decode 16 | experts (ep8) | 187.60 | 103.44 | 1.814x | 52.52 |
+| decode 32 | experts (ep8) | 202.45 | 150.11 | 1.349x | 70.76 |
+| verify 1 | experts (ep8) | 150.08 | 81.32 | 1.845x | 37.32 |
+| verify 16 | experts (ep8) | 459.02 | 223.84 | 2.051x | 101.34 |
+| verify 32 | experts (ep8) | 618.48 | 270.93 | 2.283x | 108.94 |
+
+| Load | Baseline ms | Candidate ms | Speedup | Ideal roofline bound |
+|---|---:|---:|---:|---:|
+| decode 1 | 4.771 | 1.930 | 2.472x | 6.965x |
+| decode 16 | 11.256 | 6.206 | 1.814x | 3.572x |
+| decode 32 | 12.147 | 9.007 | 1.349x | 2.861x |
+| verify 1 | 9.005 | 4.879 | 1.845x | 4.022x |
+| verify 16 | 27.541 | 13.430 | 2.051x | 4.529x |
+| verify 32 | 37.109 | 16.256 | 2.283x | 5.677x |
+
+Recomputed geometric mean across loads: 1.933478x.
+Roofline bounds omit launch, merge, redundant traffic, and other costs.
+
+## Official profiler reports
+
+### decode 1: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      21.5 µs  52.6%      1
+void wm_gemm<1, 2, 1, 4, 0, 0>(uint4 const*, uint2 const*...      14.0 µs  34.4%      1
+_post_expert_norm_weighted_sum_kernel                              3.6 µs   8.7%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.8 µs   4.4%      1
+total                                                             40.9 µs
+GPU busy (kernels overlap: PDL or streams)                        37.4 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### decode 16: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 2, 8, 0, 0>(uint4 const*, uint2 const*...      59.5 µs  60.5%      1
+void wm_gemm<1, 2, 2, 8, 0, 0>(uint4 const*, uint2 const*...      32.8 µs  33.3%      1
+_post_expert_norm_weighted_sum_kernel                              4.1 µs   4.2%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   1.9%      1
+total                                                             98.3 µs
+```
+
+### decode 32: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      84.1 µs  60.7%      1
+void wm_gemm<1, 4, 4, 4, 1, 0>(uint4 const*, uint2 const*...      47.6 µs  34.4%      1
+_post_expert_norm_weighted_sum_kernel                              5.1 µs   3.6%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.8 µs   1.3%      1
+total                                                            138.6 µs
+GPU busy (kernels overlap: PDL or streams)                       134.1 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 1: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm<0, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      46.6 µs  61.0%      1
+void wm_gemm<1, 2, 1, 2, 0, 0>(uint4 const*, uint2 const*...      24.6 µs  32.2%      1
+_post_expert_norm_weighted_sum_kernel                              3.4 µs   4.4%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.8 µs   2.3%      1
+total                                                             76.4 µs
+```
+
+### verify 16: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_gemm_rs<0, 4, 4, 4, 0>(uint4 const*, uint2 const*...     126.9 µs  49.6%      1
+void wm_gemm_rs<1, 4, 4, 4, 0>(uint4 const*, uint2 const*...     122.1 µs  47.7%      1
+_post_expert_norm_weighted_sum_kernel                              5.1 µs   2.0%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       1.9 µs   0.7%      1
+total                                                            256.0 µs
+GPU busy (kernels overlap: PDL or streams)                       215.1 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+
+### verify 32: experts (ep8)
+
+```text
+kernel                                                           GPU time  share  calls
+void wm_bucket<1, 1>(uint4 const*, uint2 const*, float co...     121.2 µs  17.7%      1
+void wm_bucket<1, 4>(uint4 const*, uint2 const*, float co...     118.6 µs  17.3%      1
+void wm_bucket<1, 2>(uint4 const*, uint2 const*, float co...     115.6 µs  16.9%      1
+void wm_bucket<0, 1>(uint4 const*, uint2 const*, float co...     114.8 µs  16.8%      1
+void wm_bucket<0, 4>(uint4 const*, uint2 const*, float co...     113.1 µs  16.5%      1
+void wm_bucket<0, 2>(uint4 const*, uint2 const*, float co...      92.7 µs  13.5%      1
+_post_expert_norm_weighted_sum_kernel                              6.0 µs   0.9%      1
+route_kernel(int const*, int, int const*, int, int, int*,...       3.2 µs   0.5%      1
+total                                                            685.2 µs
+GPU busy (kernels overlap: PDL or streams)                       360.9 µs
+an overlapping kernel's time includes any wait for the one before it, so the rows add up to more
+```
+

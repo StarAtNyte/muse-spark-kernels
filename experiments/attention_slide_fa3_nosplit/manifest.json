@@ -1,0 +1,24 @@
+{
+  "name": "attention_slide_fa3_nosplit",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Set FA3 num_splits=1 only for sliding-window fallback attention to remove split-combine overhead on 2048-token verification windows; preserve full-context native paths.",
+  "sha256": "3bf37f8a0fe42946cadf93d39fa5e2968dd96c93ae28e67a6e81c5902e60c668",
+  "created_at": 1793031718.3213518,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "done",
+  "job_id": "0707c94f18a34994",
+  "updated_at": 1793032208.3089416,
+  "decision_reason": "All official coverage passed, but 1.574246x was below validated 1.604675x. Keep FA3 split heuristic."
+}

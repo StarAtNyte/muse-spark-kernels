@@ -1,0 +1,23 @@
+{
+  "name": "moe_hybrid_m32_m128_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Combine independent per-case winners: MIT bigboateng register-direct at M32/M128 with our native kernels at M1/M8/M16 and validated bucketed M256; lossless prepared weights and shape-only dispatch",
+  "sha256": "579921a2390481e4e05cd6b144d7d4b910fc209aed892f449f591734b8ae8590",
+  "created_at": 1793119852.0983295,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "done",
+  "job_id": "434fd07a6cd048d0",
+  "updated_at": 1793120014.1059165
+}

@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-34iMZqNTszrOLqTssBNX8G
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+STDERR:
+ude/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -fPIC -std=c++17 -c /root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp -o main.o 
+FAILED: main.o 
+c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_norm_route_probe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -fPIC -std=c++17 -c /root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp -o main.o 
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp: In function ‘void wm_set_pdl_t(int64_t)’:
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp:5:30: error: ‘wm_set_pdl’ was not declared in this scope; did you mean ‘wm_set_pdl_t’?
+    5 | void wm_set_pdl_t(int64_t v){wm_set_pdl(v);}
+      |                              ^~~~~~~~~~
+      |                              wm_set_pdl_t
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp: In function ‘void wm_route(at::Tensor, int64_t, at::Tensor, at::Tensor, at::Tensor, at::Tensor, at::Tensor, at::Tensor, int64_t)’:
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp:7:11: error: ‘route_kernel’ was not declared in this scope
+    7 |  launch_k(route_kernel,dim3(1),dim3(1024),0,at::cuda::getCurrentCUDAStream(),g_pdl!=0,ids.data_ptr<int>(),(int)ids.numel(),(const int*)nullptr,0,(int)lmax,cnt.data_ptr<int>(),lst.data_ptr<int>(),act.data_ptr<int>(),nact.data_ptr<int>(),lids.data_ptr<int>(),woff.data_ptr<int>(),(int)grp,(int)(act.numel()/4));
+      |           ^~~~~~~~~~~~
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp:7:78: error: ‘g_pdl’ was not declared in this scope
+    7 |  launch_k(route_kernel,dim3(1),dim3(1024),0,at::cuda::getCurrentCUDAStream(),g_pdl!=0,ids.data_ptr<int>(),(int)ids.numel(),(const int*)nullptr,0,(int)lmax,cnt.data_ptr<int>(),lst.data_ptr<int>(),act.data_ptr<int>(),nact.data_ptr<int>(),lids.data_ptr<int>(),woff.data_ptr<int>(),(int)grp,(int)(act.numel()/4));
+      |                                                                              ^~~~~
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/main.cpp:7:2: error: ‘launch_k’ was not declared in this scope
+    7 |  launch_k(route_kernel,dim3(1),dim3(1024),0,at::cuda::getCurrentCUDAStream(),g_pdl!=0,ids.data_ptr<int>(),(int)ids.numel(),(const int*)nullptr,0,(int)lmax,cnt.data_ptr<int>(),lst.data_ptr<int>(),act.data_ptr<int>(),nact.data_ptr<int>(),lids.data_ptr<int>(),woff.data_ptr<int>(),(int)grp,(int)(act.numel()/4));
+      |  ^~~~~~~~
+[2/3] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_norm_route_probe -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 --use_fast_math -gencode=arch=compute_90a,code=sm_90a -std=c++17 -c /root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/cuda.cu(20): warning #177-D: variable "MASK" was declared but never referenced
+  constexpr uint32_t MASK = 0x81C081C0u;
+                     ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu128/muse_norm_route_probe/cuda.cu(68): warning #550-D: variable "g_persist" was set but never used
+  static int g_persist = 0;
+             ^
+
+ninja: build stopped: subcommand failed.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-34iMZqNTszrOLqTssBNX8G

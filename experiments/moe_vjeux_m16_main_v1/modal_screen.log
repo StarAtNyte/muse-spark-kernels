@@ -1,0 +1,34 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-b6ms8nm9fRMBrxcT0QDySp
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_gluon_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200 sfx ('-DOKC_PRMTSC=1',)
+RESULT {"seed": 419, "mid_us": 109.31199789047241, "main_us": 118.8799999654293, "mid_over_main": 0.9191107871804387, "relative_l2": 0.000373625400243327}
+RESULT {"seed": 7919, "mid_us": 101.64799913764, "main_us": 110.9279990196228, "mid_over_main": 0.9129436383634654, "relative_l2": 0.0005635429988615215}
+RESULT {"seed": 17319, "mid_us": 91.72799810767174, "main_us": 102.19200327992439, "mid_over_main": 0.8922802598074452, "relative_l2": 0.0006916632992215455}
+MOE_M16_MAIN_SCREEN_DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-b6ms8nm9fRMBrxcT0QDySp

@@ -1,0 +1,11 @@
+{
+  "name": "attention_fullverify_warps8_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Double producer partition from four to eight warps for full-context q_len=8 verify; retain four-stage shared-memory ring and all math, increase outstanding KV load parallelism on the latency-limited kernel.",
+  "sha256": "4a5d3b1f6c37eb5a72d1524bba2dc725541ed4a72ac32addee207702db9bc36c",
+  "created_at": 1793159618.2838905,
+  "decision": "reject_hang",
+  "status": "done",
+  "parent": "kernels/muse_attention_decode/submission.py",
+  "decision_reason": "Eight producer warps first failed Gluon layout validation. After matching the producer layout to eight warps, the candidate entered a sustained 100% GPU run with no output for over five minutes. The Modal app was stopped to cap cost; this is a synchronization-hang failure, with no timing or correctness result."
+}

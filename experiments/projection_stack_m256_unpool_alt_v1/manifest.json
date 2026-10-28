@@ -1,0 +1,10 @@
+{
+  "name": "projection_stack_m256_unpool_alt_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Keep the publicly scored pooler M256 + unpooler M128 cuBLASLt stack intact; change only the M256 unpooler from algo3/config tail2 to the distinct screened search seed algo2/config tail5. Test a not-yet-officially-checked plan on the large M256 unpooler GEMM.",
+  "sha256": "24845314960f1ac09f7206487303275302bd80edb45b6bd7e0430cf6d5e2ad89",
+  "created_at": "2026-10-28T00:06:13.119876+00:00",
+  "decision": "reject",
+  "job_id": "d81b3c71ea914fbd",
+  "decision_reason": "Official H200 check passed correctness but scored 1.52496x (95% CI [1.50209, 1.54784]), below the promoted 1.53456x stack. Reject this M256 unpooler plan; keep the public source unchanged."
+}

@@ -1,0 +1,134 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zuidbZNpRB8Lg4uxByLJzQ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+BASE_CHECK 1 5011 True relative L2 error 6.202e-02 (worst row 7.659e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+CHECK separate 1 5011 True relative L2 error 6.242e-02 (worst row 7.648e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 1, "seed": 5011, "speedup": 1.0682242746618245, "baseline_us": 18.303999677300453, "candidate_us": 16.991999931633472}
+CHECK prepare 1 5011 True relative L2 error 6.345e-02 (worst row 7.705e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 1, "seed": 5011, "speedup": 1.0498155021178674, "baseline_us": 18.303999677300453, "candidate_us": 17.343999817967415}
+CHECK stats 1 5011 True relative L2 error 6.345e-02 (worst row 7.705e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 1, "seed": 5011, "speedup": 1.1090028386443684, "baseline_us": 19.519999623298645, "candidate_us": 17.56799966096878}
+BASE_CHECK 1 15241 True relative L2 error 6.440e-02 (worst row 7.659e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+CHECK separate 1 15241 True relative L2 error 6.474e-02 (worst row 7.815e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 1, "seed": 15241, "speedup": 1.1114200748679195, "baseline_us": 19.58400011062622, "candidate_us": 17.616000026464462}
+CHECK prepare 1 15241 True relative L2 error 6.534e-02 (worst row 7.765e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 1, "seed": 15241, "speedup": 1.1146328440233617, "baseline_us": 19.360000267624855, "candidate_us": 17.40800030529499}
+CHECK stats 1 15241 True relative L2 error 6.534e-02 (worst row 7.765e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 1, "seed": 15241, "speedup": 1.1285636428909165, "baseline_us": 19.600000232458115, "candidate_us": 17.455999739468098}
+BASE_CHECK 1 49157 True relative L2 error 5.834e-02 (worst row 7.718e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+CHECK separate 1 49157 True relative L2 error 5.863e-02 (worst row 7.869e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 1, "seed": 49157, "speedup": 1.0945448019300634, "baseline_us": 19.19999998062849, "candidate_us": 17.535999417304993}
+CHECK prepare 1 49157 True relative L2 error 5.903e-02 (worst row 8.158e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 1, "seed": 49157, "speedup": 1.0975967975466494, "baseline_us": 19.407999701797962, "candidate_us": 17.632000148296356}
+CHECK stats 1 49157 True relative L2 error 5.903e-02 (worst row 8.158e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 1, "seed": 49157, "speedup": 1.1098696126751786, "baseline_us": 19.29599978029728, "candidate_us": 17.40800030529499}
+BASE_CHECK 2 5011 True relative L2 error 6.429e-02 (worst row 8.744e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+CHECK separate 2 5011 True relative L2 error 6.435e-02 (worst row 8.724e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 2, "seed": 5011, "speedup": 1.1149012972575414, "baseline_us": 19.648000597953796, "candidate_us": 17.80799962580204}
+CHECK prepare 2 5011 True relative L2 error 6.485e-02 (worst row 8.487e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 2, "seed": 5011, "speedup": 1.1029851967221576, "baseline_us": 19.72800027579069, "candidate_us": 17.823999747633934}
+CHECK stats 2 5011 True relative L2 error 6.485e-02 (worst row 8.487e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 2, "seed": 5011, "speedup": 1.108207340857427, "baseline_us": 19.648000597953796, "candidate_us": 17.72800087928772}
+BASE_CHECK 2 15241 True relative L2 error 6.189e-02 (worst row 7.689e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+CHECK separate 2 15241 True relative L2 error 6.164e-02 (worst row 7.543e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 2, "seed": 15241, "speedup": 1.07512872799472, "baseline_us": 19.200000911951065, "candidate_us": 17.952000722289085}
+CHECK prepare 2 15241 True relative L2 error 6.162e-02 (worst row 7.670e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 2, "seed": 15241, "speedup": 1.083259595043633, "baseline_us": 19.360000267624855, "candidate_us": 17.95199979096651}
+CHECK stats 2 15241 True relative L2 error 6.162e-02 (worst row 7.670e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 2, "seed": 15241, "speedup": 1.0974757895715226, "baseline_us": 19.488000310957432, "candidate_us": 17.823999747633934}
+BASE_CHECK 2 49157 True relative L2 error 5.950e-02 (worst row 7.441e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+CHECK separate 2 49157 True relative L2 error 5.961e-02 (worst row 7.463e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 2, "seed": 49157, "speedup": 1.091479860594948, "baseline_us": 19.43999994546175, "candidate_us": 17.839999869465828}
+CHECK prepare 2 49157 True relative L2 error 5.935e-02 (worst row 7.579e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 2, "seed": 49157, "speedup": 1.0929010686102534, "baseline_us": 19.487999379634857, "candidate_us": 17.696000635623932}
+CHECK stats 2 49157 True relative L2 error 5.935e-02 (worst row 7.579e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 2, "seed": 49157, "speedup": 1.0974757895715226, "baseline_us": 19.551999866962433, "candidate_us": 17.72800087928772}
+BASE_CHECK 4 5011 True relative L2 error 6.106e-02 (worst row 7.781e-02) [bound 0.150: 2.5 x the reference's 0.060 with FP8 E4M3 queries + 0.015]
+CHECK separate 4 5011 True relative L2 error 6.093e-02 (worst row 7.800e-02) [bound 0.150: 2.5 x the reference's 0.060 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 4, "seed": 5011, "speedup": 1.040901472410833, "baseline_us": 19.967999309301376, "candidate_us": 19.18400079011917}
+CHECK prepare 4 5011 True relative L2 error 6.094e-02 (worst row 7.809e-02) [bound 0.150: 2.5 x the reference's 0.060 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 4, "seed": 5011, "speedup": 1.0462545996607426, "baseline_us": 19.936000928282738, "candidate_us": 19.13600042462349}
+CHECK stats 4 5011 True relative L2 error 6.094e-02 (worst row 7.809e-02) [bound 0.150: 2.5 x the reference's 0.060 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 4, "seed": 5011, "speedup": 1.0452260845978631, "baseline_us": 19.967999309301376, "candidate_us": 19.360000267624855}
+BASE_CHECK 4 15241 True relative L2 error 6.716e-02 (worst row 8.799e-02) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+CHECK separate 4 15241 True relative L2 error 6.689e-02 (worst row 8.808e-02) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 4, "seed": 15241, "speedup": 1.031800302688705, "baseline_us": 19.888000562787056, "candidate_us": 19.200000911951065}
+CHECK prepare 4 15241 True relative L2 error 6.693e-02 (worst row 8.712e-02) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 4, "seed": 15241, "speedup": 1.0208167073208303, "baseline_us": 19.66400071978569, "candidate_us": 19.279999658465385}
+CHECK stats 4 15241 True relative L2 error 6.693e-02 (worst row 8.712e-02) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 4, "seed": 15241, "speedup": 1.0399626733738738, "baseline_us": 19.840000197291374, "candidate_us": 19.168000668287277}
+BASE_CHECK 4 49157 True relative L2 error 6.304e-02 (worst row 9.516e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+CHECK separate 4 49157 True relative L2 error 6.302e-02 (worst row 9.550e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 4, "seed": 49157, "speedup": 1.045491505666895, "baseline_us": 19.807999953627586, "candidate_us": 19.05599981546402}
+CHECK prepare 4 49157 True relative L2 error 6.221e-02 (worst row 9.513e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 4, "seed": 49157, "speedup": 1.0366675715489113, "baseline_us": 19.903999753296375, "candidate_us": 19.29599978029728}
+CHECK stats 4 49157 True relative L2 error 6.221e-02 (worst row 9.513e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 4, "seed": 49157, "speedup": 1.0366984869765508, "baseline_us": 19.807999953627586, "candidate_us": 19.1040001809597}
+BASE_CHECK 8 5011 True relative L2 error 6.303e-02 (worst row 8.839e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+CHECK separate 8 5011 True relative L2 error 6.305e-02 (worst row 8.872e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 8, "seed": 5011, "speedup": 0.9947715612479066, "baseline_us": 21.51999995112419, "candidate_us": 21.616000682115555}
+CHECK prepare 8 5011 True relative L2 error 6.286e-02 (worst row 8.860e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 8, "seed": 5011, "speedup": 0.9881311384292192, "baseline_us": 21.503999829292297, "candidate_us": 21.75999991595745}
+CHECK stats 8 5011 True relative L2 error 6.286e-02 (worst row 8.860e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 8, "seed": 5011, "speedup": 1.0059325416355667, "baseline_us": 21.888000890612602, "candidate_us": 21.616000682115555}
+BASE_CHECK 8 15241 True relative L2 error 6.417e-02 (worst row 1.132e-01) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+CHECK separate 8 15241 True relative L2 error 6.402e-02 (worst row 1.133e-01) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 8, "seed": 15241, "speedup": 1.0134428912176565, "baseline_us": 21.776000037789345, "candidate_us": 21.55200019478798}
+CHECK prepare 8 15241 True relative L2 error 6.473e-02 (worst row 1.143e-01) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 8, "seed": 15241, "speedup": 1.008098979669405, "baseline_us": 21.90400008112192, "candidate_us": 21.71199955046177}
+CHECK stats 8 15241 True relative L2 error 6.472e-02 (worst row 1.143e-01) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 8, "seed": 15241, "speedup": 1.002191889417026, "baseline_us": 21.727999672293663, "candidate_us": 21.63200080394745}
+BASE_CHECK 8 49157 True relative L2 error 6.211e-02 (worst row 9.345e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+CHECK separate 8 49157 True relative L2 error 6.188e-02 (worst row 9.230e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "separate", "batch": 8, "seed": 49157, "speedup": 0.9992657800241054, "baseline_us": 21.584000438451767, "candidate_us": 21.503999829292297}
+CHECK prepare 8 49157 True relative L2 error 6.194e-02 (worst row 9.166e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "prepare", "batch": 8, "seed": 49157, "speedup": 0.9970489783008598, "baseline_us": 21.776000037789345, "candidate_us": 21.743999794125557}
+CHECK stats 8 49157 True relative L2 error 6.194e-02 (worst row 9.166e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]
+RESULT {"variant": "stats", "batch": 8, "seed": 49157, "speedup": 0.9911478157391478, "baseline_us": 21.60000056028366, "candidate_us": 21.824000403285027}
+EDGE_CHECK separate 3 4000 1 0.015625 True relative L2 error 6.838e-02 (worst row 1.003e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK prepare 3 4000 1 0.015625 True relative L2 error 6.823e-02 (worst row 1.004e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK stats 3 4000 1 0.015625 True relative L2 error 6.823e-02 (worst row 1.004e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK separate 4 6000 64 1.0 True relative L2 error 7.952e-02 (worst row 1.146e-01) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK prepare 4 6000 64 1.0 True relative L2 error 7.950e-02 (worst row 1.146e-01) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK stats 4 6000 64 1.0 True relative L2 error 7.950e-02 (worst row 1.146e-01) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]
+CLUSTER_NONPORTABLE_CONFIRM_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-zuidbZNpRB8Lg4uxByLJzQ

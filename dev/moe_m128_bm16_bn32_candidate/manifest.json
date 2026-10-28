@@ -1,0 +1,7 @@
+{
+  "name": "moe_m128_bm16_bn32_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Isolate W2 BN32 layout from the rejected BM32xBN32 candidate: keep the validated BM16 work tile, W13/M32 paths, arithmetic, and precision unchanged, and change only M128 W2 to BN32 with a separate lossless tile-major repack. Test whether the BN32 layout helps when accumulator rows return to BM16.",
+  "sha256": "e98daf26ef4913e6a177d01b6bf6830f76b415ecd8d764a1e7a52b46e32ac134",
+  "decision": "prepared"
+}

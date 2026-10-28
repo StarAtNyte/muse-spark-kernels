@@ -1,0 +1,59 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jrI4cmypaA3QXeEqDvOOKW
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200
+COMPILED preload2 95.47375082969666
+RESULT {"variant": "preload2", "batch": 1, "seed": 419, "speedup": 0.999985927253149, "baseline_us": 47.360001131892204, "candidate_us": 47.919999808073044, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 1, "seed": 2387, "speedup": 0.9938803150786328, "baseline_us": 47.42399975657463, "candidate_us": 48.3039990067482, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 8, "seed": 419, "speedup": 1.0307260959008009, "baseline_us": 77.2319994866848, "candidate_us": 75.05599781870842, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 8, "seed": 2387, "speedup": 0.9170505482069171, "baseline_us": 98.43200072646141, "candidate_us": 107.2320006787777, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 16, "seed": 419, "speedup": 1.0030850438000374, "baseline_us": 119.6800023317337, "candidate_us": 119.26399916410446, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 16, "seed": 2387, "speedup": 1.085129393568959, "baseline_us": 83.3280012011528, "candidate_us": 76.81600004434586, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 32, "seed": 419, "speedup": 1.000550284120123, "baseline_us": 144.9280008673668, "candidate_us": 144.9279934167862, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 32, "seed": 2387, "speedup": 1.0032215283599197, "baseline_us": 154.81600165367126, "candidate_us": 154.25600111484528, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 128, "seed": 419, "speedup": 1.001720338413865, "baseline_us": 229.40800338983536, "candidate_us": 230.38399964571, "relative_error": 0.0}
+RESULT {"variant": "preload2", "batch": 128, "seed": 2387, "speedup": 0.9972456934398439, "baseline_us": 219.7759971022606, "candidate_us": 220.46399861574173, "relative_error": 0.0}
+AGGREGATE preload2 1.0025056363765616
+CHECK preload2 4 normal True relative L2 error 5.512e-03 (worst row 5.772e-03)
+CHECK preload2 33 normal True relative L2 error 5.462e-03 (worst row 5.700e-03)
+CHECK preload2 128 skewed True relative L2 error 5.320e-03 (worst row 5.630e-03)
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jrI4cmypaA3QXeEqDvOOKW

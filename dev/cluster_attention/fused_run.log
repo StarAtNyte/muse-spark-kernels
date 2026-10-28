@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-f7oJo8RUydPJtCgI8MEFxr
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK 1 6000 113 True relative L2 error 8.456e-02 (worst row 1.104e-01) [bound 0.150: 2.5 x the reference's 0.084 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "ctx": 6000, "page": 64, "seed": 113, "baseline_us": 18.239999189972878, "cluster_us": 18.063999712467194, "speedup": 1.007026880033266}
+CHECK 1 6000 7919 True relative L2 error 7.549e-02 (worst row 8.801e-02) [bound 0.150: 2.5 x the reference's 0.076 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "ctx": 6000, "page": 64, "seed": 7919, "baseline_us": 19.039999693632126, "cluster_us": 18.912000581622124, "speedup": 1.012807434373999}
+CHECK 4 9000 113 True relative L2 error 6.590e-02 (worst row 8.860e-02) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "ctx": 9000, "page": 64, "seed": 113, "baseline_us": 21.27999998629093, "cluster_us": 19.82400007545948, "speedup": 1.074061758929584}
+CHECK 4 9000 7919 True relative L2 error 7.145e-02 (worst row 9.838e-02) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "ctx": 9000, "page": 64, "seed": 7919, "baseline_us": 21.056000143289566, "cluster_us": 19.872000440955162, "speedup": 1.0521234490498133}
+CHECK 1 80000 113 True relative L2 error 6.403e-02 (worst row 8.286e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "ctx": 80000, "page": 1, "seed": 113, "baseline_us": 19.67999991029501, "cluster_us": 19.519999623298645, "speedup": 1.0065980240464252}
+CHECK 1 80000 7919 True relative L2 error 7.324e-02 (worst row 8.833e-02) [bound 0.150: 2.5 x the reference's 0.073 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "ctx": 80000, "page": 1, "seed": 7919, "baseline_us": 19.74399946630001, "cluster_us": 19.34400014579296, "speedup": 1.029310735324433}
+CHECK 4 80000 113 True relative L2 error 6.572e-02 (worst row 9.871e-02) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "ctx": 80000, "page": 1, "seed": 113, "baseline_us": 21.104000508785248, "cluster_us": 20.143999718129635, "speedup": 1.0500373606818671}
+CHECK 4 80000 7919 True relative L2 error 7.154e-02 (worst row 1.152e-01) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "ctx": 80000, "page": 1, "seed": 7919, "baseline_us": 20.879999734461308, "cluster_us": 19.952000118792057, "speedup": 1.0500546793817964}
+CLUSTER_ATTENTION_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-f7oJo8RUydPJtCgI8MEFxr

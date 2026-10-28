@@ -1,0 +1,23 @@
+{
+  "name": "moe_bk512_m32_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "The global BK512 tile compiles and passes batch32 tests but breaks M128 due resource limits. Retain BK256 for all M128/default cases and isolate a second lossless BK512 pack for M32 only, testing whether halving loop trips improves the weak batch32 decode.",
+  "sha256": "29c3b8b5ce328947f4c1900ace25577346910983230647cb031163ebc2a7835c",
+  "created_at": 1793126601.8823376,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "aa601897e9db42f3",
+  "updated_at": 1793134350.5491133
+}

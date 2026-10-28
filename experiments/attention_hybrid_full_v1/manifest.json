@@ -1,0 +1,23 @@
+{
+  "name": "attention_hybrid_full_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Stack MIT bigboateng full-attention Gluon warp-specialized paths at B>4 with our sliding clusters, small-batch kernels and general fallback; shape-only dispatch",
+  "sha256": "ee9f46d72d984578da050e9aefa45516d9aeb3320030e3083a6261a5edebfeba",
+  "created_at": 1793118943.7392983,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "e95463a5ae7d49fa",
+  "updated_at": 1793119412.5817502
+}

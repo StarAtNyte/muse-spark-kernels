@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wI6ZyMSV30soWX0pXnhePW
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "/tmp/tmp_35ujg0_/kernel.cu(65): warning #550-D: variable \"g_persist\" was set but never used\n  static int g_persist = 0;\n             ^\n\nRemark: The warnings can be suppressed with \"-diag-suppress <warning-number>\"\n\n"
+  },
+  {
+    "stage": "ptxas",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "ptxas info    : 0 bytes gmem\nptxas info    : Compiling entry function '_Z10wm_gemm_rsILi1ELi2ELi8ELi3ELi0EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_i' for 'sm_90a'\nptxas info    : Function properties for _Z10wm_gemm_rsILi1ELi2ELi8ELi3ELi0EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 158 registers, used 1 barriers\nptxas info    : Compile time = 184.993 ms\nptxas info    : Compiling entry function '_Z10wm_gemm_rsILi0ELi2ELi8ELi3ELi0EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_i' for 'sm_90a'\nptxas info    : Function properties for _Z10wm_gemm_rsILi0ELi2ELi8ELi3ELi0EEvPK5uint4PK5uint2PKfPK13__nv_bfloat16PS8_PKiSD_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 160 registers, used 1 barriers\nptxas info    : Compile time = 271.546 ms\nptxas info    : Compiling entry function '_Z12wm_pf_kernelPKhS0_PKiS2_iiimm' for 'sm_90a'\nptxas info    : Function properties for _Z12wm_pf_kernelPKhS0_PKiS2_iiimm\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 26 registers, used 0 barriers\nptxas info    : Compile time = 8.839 ms\nptxas info    : Compiling entry function '_Z16wm_finish_kernelPK13__nv_bfloat16PKfPKiS1_PS_f' for 'sm_90a'\nptxas info    : Function properties for _Z16wm_finish_kernelPK13__nv_bfloat16PKfPKiS1_PS_f\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 64 registers, used 1 barriers, 32 bytes smem\nptxas info    : Compile time = 51.316 ms\nptxas info    : Compiling entry function '_Z15wm_permx_kernelPK13__nv_bfloat16PS_i' for 'sm_90a'\nptxas info    : Function properties for _Z15wm_permx_kernelPK13__nv_bfloat16PS_i\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 12 registers, used 0 barriers\nptxas info    : Compile time = 2.252 ms\nptxas info    : Compiling entry function '_Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii' for 'sm_90a'\nptxas info    : Function properties for _Z12route_kernelPKiiS0_iiPiS1_S1_S1_S1_S1_ii\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 52 registers, used 1 barriers, 128 bytes smem\nptxas info    : Compile time = 17.212 ms\n"
+  }
+]
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wI6ZyMSV30soWX0pXnhePW

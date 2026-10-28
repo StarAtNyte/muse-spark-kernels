@@ -1,0 +1,26 @@
+{
+  "name": "moe_m128_bm8_w2_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "For M128, keep the promoted BN64 W2 layout and W13 BM32 path, but use BM8 route chunks/W2 CTAs to reduce accumulator padding for the measured sparse expert rows; keep every other shape dispatch unchanged.",
+  "sha256": "c8c86f16413e07b86c109f4577d9dd0cd7a99ea7712c70dba47423d69931f8f4",
+  "created_at": 1793149382.7591228,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "d9da7b4df13a4cd7",
+  "speedup": 1.957516848827101,
+  "speedup_ci": [1.9281540960946946, 1.9868796015595074],
+  "tests": 5,
+  "decision_reason": "All tests passed but score was below the promoted 1.97208x. Verify-16 W2 rose to 80.7 us from 68.7 us; smaller BM8 tiles did not offset the scheduling and launch costs."
+}

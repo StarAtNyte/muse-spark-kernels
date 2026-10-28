@@ -1,0 +1,24 @@
+{
+  "name": "projection_pool256_alt1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Combine Nathen v18 dense dispatch with the next recorded H200 cuBLASLt search descriptor for the dominant M256 pooler route; keep all other shape plans unchanged.",
+  "sha256": "3117d4185617a9d8f95205a839f18a8ae659f25ea113cc63de10b106fbc1c734",
+  "created_at": 1793123017.1576602,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "def4b81cba2a4eb6",
+  "updated_at": 1793123167.5311878,
+  "decision_reason": "All 9 tests passed, but verify-32 pooler profile was 25.6 us vs prior 24.2 us; aggregate 1.526x is not evidence of a route win."
+}

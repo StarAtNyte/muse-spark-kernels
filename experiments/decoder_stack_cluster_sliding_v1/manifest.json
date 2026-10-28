@@ -1,0 +1,25 @@
+{
+  "name": "decoder_stack_cluster_sliding_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Integrate the independently checked Hopper cluster attention only for sliding verify q_len=8, batch 2..24 into the scored decoder stack; retain existing best paths for all other cases and compare full decoder aggregate.",
+  "sha256": "775b0cc661b7407015b930a820ba0ea8f2dfedec5a1ec0c5d2d9083a0caa7423",
+  "created_at": 1793140255.8077269,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 11,
+      "left": 9
+    }
+  },
+  "status": "done",
+  "job_id": "4c6776da972c4d3a",
+  "updated_at": 1793141863.1807542,
+  "decision_reason": "Official scored run passed correctness but scored 1.708477x (CI [1.682850, 1.741314]), below the current public 1.720433x. Reject cluster specialization for this decoder stack.",
+  "scored_job_id": "02a5d46d93f24780"
+}

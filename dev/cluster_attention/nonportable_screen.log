@@ -1,0 +1,82 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-KIBgnRmcOm8XkixuP1RvmA
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CLUSTER16_CAPACITY 1 28
+CHECK 1 173 8 True relative L2 error 6.873e-02 (worst row 8.452e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 8, "speedup": 0.9897520036973592, "baseline_us": 18.65600049495697, "candidate_us": 18.831999972462654}
+CHECK 1 173 16 True relative L2 error 6.866e-02 (worst row 8.486e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 173, "cluster_size": 16, "speedup": 1.1048275905337377, "baseline_us": 18.60800012946129, "candidate_us": 16.767999157309532}
+CHECK 1 2387 8 True relative L2 error 7.140e-02 (worst row 8.214e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 8, "speedup": 0.9951051468207559, "baseline_us": 19.43999994546175, "candidate_us": 19.45599913597107}
+CHECK 1 2387 16 True relative L2 error 7.152e-02 (worst row 8.211e-02) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 1, "seed": 2387, "cluster_size": 16, "speedup": 1.0916515002786784, "baseline_us": 19.34400014579296, "candidate_us": 17.712000757455826}
+CLUSTER16_CAPACITY 4 28
+CHECK 4 173 8 True relative L2 error 7.022e-02 (worst row 9.004e-02) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "seed": 173, "cluster_size": 8, "speedup": 1.0103833727676292, "baseline_us": 20.031999796628952, "candidate_us": 20.031999796628952}
+CHECK 4 173 16 True relative L2 error 7.012e-02 (worst row 9.027e-02) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "seed": 173, "cluster_size": 16, "speedup": 1.0392612938772814, "baseline_us": 19.91999987512827, "candidate_us": 19.120000302791595}
+CHECK 4 2387 8 True relative L2 error 6.683e-02 (worst row 9.521e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "seed": 2387, "cluster_size": 8, "speedup": 1.0105348793615534, "baseline_us": 20.080000162124634, "candidate_us": 19.7759997099638}
+CHECK 4 2387 16 True relative L2 error 6.677e-02 (worst row 9.499e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 4, "seed": 2387, "cluster_size": 16, "speedup": 1.0495762557176285, "baseline_us": 20.14400064945221, "candidate_us": 19.152000546455383}
+CLUSTER16_CAPACITY 16 28
+CHECK 16 173 8 True relative L2 error 6.714e-02 (worst row 1.011e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 8, "speedup": 1.03361784203204, "baseline_us": 25.679999962449074, "candidate_us": 24.9439999461174}
+CHECK 16 173 16 True relative L2 error 6.704e-02 (worst row 1.011e-01) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 173, "cluster_size": 16, "speedup": 0.7689657523279502, "baseline_us": 25.311999954283237, "candidate_us": 33.07199850678444}
+CHECK 16 2387 8 True relative L2 error 7.058e-02 (worst row 1.046e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 8, "speedup": 0.9877119196041264, "baseline_us": 25.26400052011013, "candidate_us": 25.359999388456345}
+CHECK 16 2387 16 True relative L2 error 7.049e-02 (worst row 1.043e-01) [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 16, "seed": 2387, "cluster_size": 16, "speedup": 0.7774320937406052, "baseline_us": 25.104000233113766, "candidate_us": 32.5119998306036}
+CLUSTER16_CAPACITY 32 28
+CHECK 32 173 8 True relative L2 error 6.582e-02 (worst row 1.091e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 8, "speedup": 0.20472573432331076, "baseline_us": 8.00000037997961, "candidate_us": 39.63200002908707}
+CHECK 32 173 16 True relative L2 error 6.577e-02 (worst row 1.093e-01) [bound 0.150: 2.5 x the reference's 0.066 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 173, "cluster_size": 16, "speedup": 0.1754090920086596, "baseline_us": 8.144000079482794, "candidate_us": 46.271998435258865}
+CHECK 32 2387 8 True relative L2 error 6.845e-02 (worst row 1.175e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 8, "speedup": 0.2121971645624379, "baseline_us": 8.128000423312187, "candidate_us": 38.575999438762665}
+CHECK 32 2387 16 True relative L2 error 6.838e-02 (worst row 1.176e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+RESULT {"batch": 32, "seed": 2387, "cluster_size": 16, "speedup": 0.1788221023351888, "baseline_us": 8.239999879151583, "candidate_us": 46.112000942230225}
+EDGE_CHECK 3 4000 1 0.015625 True relative L2 error 6.838e-02 (worst row 1.003e-01) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.015]
+EDGE_CHECK 4 6000 64 1.0 True relative L2 error 7.952e-02 (worst row 1.146e-01) [bound 0.150: 2.5 x the reference's 0.079 with FP8 E4M3 queries + 0.015]
+CLUSTER_NONPORTABLE_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-KIBgnRmcOm8XkixuP1RvmA

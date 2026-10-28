@@ -1,0 +1,94 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2reA2TJmtTwZNOj67Y0yv4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+READY NVIDIA H200
+COMPILED l1_ca 76.19344520568848
+RESULT {"variant": "l1_ca", "batch": 1, "seed": 419, "speedup": 0.9772238447517168, "baseline_us": 47.63200134038925, "candidate_us": 48.127999529242516, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 1, "seed": 2387, "speedup": 0.992003491761168, "baseline_us": 47.280000522732735, "candidate_us": 47.74400033056736, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 8, "seed": 419, "speedup": 0.9974402661118597, "baseline_us": 76.49600133299828, "candidate_us": 76.54400169849396, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 8, "seed": 2387, "speedup": 1.0017880500803895, "baseline_us": 98.68799895048141, "candidate_us": 98.35200011730194, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 16, "seed": 419, "speedup": 1.0016029530508497, "baseline_us": 119.19999867677689, "candidate_us": 118.99200081825256, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 16, "seed": 2387, "speedup": 1.0083349134391093, "baseline_us": 82.99199864268303, "candidate_us": 82.2720006108284, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 32, "seed": 419, "speedup": 1.0002220758607003, "baseline_us": 144.3839967250824, "candidate_us": 144.20799911022186, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 32, "seed": 2387, "speedup": 1.0093061160752956, "baseline_us": 155.12000024318695, "candidate_us": 153.6320000886917, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 128, "seed": 419, "speedup": 0.9906710289741212, "baseline_us": 230.8799996972084, "candidate_us": 231.36000335216522, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 128, "seed": 2387, "speedup": 0.9969351748812356, "baseline_us": 220.12799978256226, "candidate_us": 220.04800289869308, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 256, "seed": 419, "speedup": 0.9988645607005332, "baseline_us": 296.1599975824356, "candidate_us": 298.5760122537613, "relative_error": 0.0}
+RESULT {"variant": "l1_ca", "batch": 256, "seed": 2387, "speedup": 0.9982305921329617, "baseline_us": 298.0159968137741, "candidate_us": 298.39999973773956, "relative_error": 0.0}
+AGGREGATE l1_ca 0.9976854385466569
+CHECK l1_ca 4 normal True relative L2 error 5.512e-03 (worst row 5.772e-03)
+CHECK l1_ca 33 normal True relative L2 error 5.462e-03 (worst row 5.700e-03)
+CHECK l1_ca 128 skewed True relative L2 error 5.320e-03 (worst row 5.630e-03)
+
+STDERR:
+vict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 663597; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 663984; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 663990; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664008; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664014; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664441; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664447; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664465; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664471; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664854; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664860; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664878; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 664884; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665271; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665277; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665295; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665301; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665688; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665694; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665712; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 665718; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 666791; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 666798; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 666900; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 666907; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 667885; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 667892; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 667994; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas /tmp/tmpxft_00000072_00000000-6_cuda.ptx, line 668001; error   : Modifier '.evict_last' cannot be combined with modifier '.ca'
+ptxas fatal   : Ptx assembly aborted due to errors
+ninja: build stopped: subcommand failed.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2reA2TJmtTwZNOj67Y0yv4

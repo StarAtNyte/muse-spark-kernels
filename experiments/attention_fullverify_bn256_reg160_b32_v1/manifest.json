@@ -1,0 +1,25 @@
+{
+  "name": "attention_fullverify_bn256_reg160_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Pair the B32-only BN=256 tile with maxnreg=160 (ptxas measured minimum 154) while preserving split=4; the wider tile already limits shared-memory residency to one CTA per SM.",
+  "sha256": "3cc937af7091c41a200ffc76d5fb0c4e673d01415dd2b45b616fae1688bbe5d1",
+  "created_at": 1793138386.5785894,
+  "decision": "reject",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 4,
+      "left": 6
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 13,
+      "left": 7
+    }
+  },
+  "status": "done",
+  "job_id": "4a99c00577844af7",
+  "updated_at": 1793138959.4220643,
+  "measured_speedup": 1.7889017827092009,
+  "note": "BN256 passed correctness after maxnreg 160, but batch32 full verify rose to 393.8us and aggregate fell to 1.78890x; wider tile loses heavily."
+}

@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bX49dKQOTD9HzL2CMXt6eR
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/compile_device.py
+└── ✓ Created Function compile_device.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+[
+  {
+    "stage": "nvcc_ptx",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "stage": "ptxas",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "ptxas info    : 0 bytes gmem\nptxas info    : Compiling entry function '_Z11fp32_routerILi8ELi512ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi8ELi512ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 188 registers, used 1 barriers, 512 bytes smem\nptxas info    : Compile time = 37.232 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi8ELi512ELi1EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi8ELi512ELi1EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 112 registers, used 1 barriers, 512 bytes smem\nptxas info    : Compile time = 20.269 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi8ELi256ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi8ELi256ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 188 registers, used 1 barriers, 256 bytes smem\nptxas info    : Compile time = 32.492 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi8ELi256ELi1EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi8ELi256ELi1EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 112 registers, used 1 barriers, 256 bytes smem\nptxas info    : Compile time = 24.334 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi8ELi128ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi8ELi128ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 188 registers, used 1 barriers, 128 bytes smem\nptxas info    : Compile time = 33.380 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi1ELi512ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi1ELi512ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 40 registers, used 1 barriers, 64 bytes smem\nptxas info    : Compile time = 8.163 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi1ELi512ELi1EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi1ELi512ELi1EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 32 registers, used 1 barriers, 64 bytes smem\nptxas info    : Compile time = 5.898 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi1ELi256ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi1ELi256ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 40 registers, used 1 barriers, 32 bytes smem\nptxas info    : Compile time = 6.832 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi1ELi256ELi1EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi1ELi256ELi1EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 32 registers, used 1 barriers, 32 bytes smem\nptxas info    : Compile time = 5.765 ms\nptxas info    : Compiling entry function '_Z11fp32_routerILi1ELi128ELi2EEvPKfS1_Pfi' for 'sm_90a'\nptxas info    : Function properties for _Z11fp32_routerILi1ELi128ELi2EEvPKfS1_Pfi\n    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads\nptxas info    : Used 40 registers, used 1 barriers, 16 bytes smem\nptxas info    : Compile time = 6.694 ms\n"
+  }
+]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bX49dKQOTD9HzL2CMXt6eR

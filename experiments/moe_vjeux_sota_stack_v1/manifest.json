@@ -1,0 +1,12 @@
+{
+  "name": "moe_vjeux_sota_stack_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Check the higher-performing vjeux public MoE implementation (2.32668x) as a base, then selectively stack our best routes only if exact shape-level H200 tests show wins.",
+  "sha256": "42ddf34e542c77b35906365338928c2de41600fb83db19425274b31015997073",
+  "upstream": "https://github.com/vjeux/okc-2026",
+  "license": "Apache-2.0",
+  "created_at": 1793161391.528433,
+  "decision": "prepared_for_h200_screen",
+  "status": "prepared",
+  "parent": "kernels/muse_moe_w4a16/submission.py"
+}

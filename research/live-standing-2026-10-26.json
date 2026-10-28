@@ -1,0 +1,103 @@
+{
+  "retrieved_at": 1793013520.616126,
+  "source": "authenticated okc leaderboard API",
+  "boards": {
+    "overall": {
+      "board": "overall",
+      "measure": "rank across the problems; the API gives ranks only",
+      "ranked": 1208,
+      "leader": {
+        "rank": 1,
+        "team": "colinlikescode",
+        "first": true,
+        "ahead": 0
+      },
+      "you": {
+        "rank": 315,
+        "team": "StarAtNyte",
+        "first": false,
+        "ahead": 314
+      }
+    },
+    "muse_bf16_proj": {
+      "board": "muse_bf16_proj",
+      "measure": "speedup over SGLang; higher ranks higher",
+      "ranked": 1052,
+      "leader": {
+        "rank": 1,
+        "team": "colinlikescode",
+        "speedup": 1.6367,
+        "first": true,
+        "ahead": 0
+      },
+      "you": {
+        "rank": 678,
+        "team": "StarAtNyte",
+        "speedup": 1.1821,
+        "first": false,
+        "ahead": 677,
+        "to_first": 1.3846
+      }
+    },
+    "muse_attention_decode": {
+      "board": "muse_attention_decode",
+      "measure": "speedup over SGLang; higher ranks higher",
+      "ranked": 786,
+      "leader": {
+        "rank": 1,
+        "team": "pjmullin3",
+        "speedup": 3.0316,
+        "first": true,
+        "ahead": 0
+      },
+      "you": {
+        "rank": 401,
+        "team": "StarAtNyte",
+        "speedup": 1.544,
+        "first": false,
+        "ahead": 400,
+        "to_first": 1.9635
+      }
+    },
+    "muse_moe_w4a16": {
+      "board": "muse_moe_w4a16",
+      "measure": "speedup over SGLang; higher ranks higher",
+      "ranked": 826,
+      "leader": {
+        "rank": 1,
+        "team": "colinlikescode",
+        "speedup": 2.576,
+        "first": true,
+        "ahead": 0
+      },
+      "you": {
+        "rank": 183,
+        "team": "StarAtNyte",
+        "speedup": 1.927,
+        "first": false,
+        "ahead": 182,
+        "to_first": 1.3368
+      }
+    },
+    "muse_decode_layer": {
+      "board": "muse_decode_layer",
+      "measure": "speedup over SGLang; higher ranks higher",
+      "ranked": 724,
+      "leader": {
+        "rank": 1,
+        "team": "colinlikescode",
+        "speedup": 2.3797,
+        "first": true,
+        "ahead": 0
+      },
+      "you": {
+        "rank": 311,
+        "team": "StarAtNyte",
+        "speedup": 1.5143,
+        "first": false,
+        "ahead": 310,
+        "to_first": 1.5715
+      }
+    }
+  }
+}

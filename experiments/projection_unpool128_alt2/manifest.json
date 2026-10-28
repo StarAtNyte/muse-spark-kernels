@@ -1,0 +1,24 @@
+{
+  "name": "projection_unpool128_alt2",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Test a different algorithm family from the recorded H200 cuBLASLt search seeds for the M128 verify unpooler route; retain v18 on every other route.",
+  "sha256": "ef5ddc7bde2db288df2b9e390657f62d56438fd82711ba1d04f1557dd7e9c1d7",
+  "created_at": 1793124268.1677053,
+  "decision": "reject_end_to_end",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "done",
+  "job_id": "19e950d403e74def",
+  "updated_at": 1793124423.2731328,
+  "decision_reason": "All 9 tests passed, but verify-16 unpooler regressed to 0.971x of SGLang; aggregate 1.499x."
+}

@@ -1,0 +1,85 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-EH14OdaVVoGb8biX0A6Wcw
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 0, "speedup": 1.0114434533365344, "baseline_us": 21.24800067394972, "candidate_us": 20.99199965596199}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 1, "speedup": 0.9924585349052519, "baseline_us": 21.104000508785248, "candidate_us": 21.263999864459038}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 2, "speedup": 1.0014957772282185, "baseline_us": 21.695999428629875, "candidate_us": 21.79200015962124}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 3, "speedup": 0.9669394144709542, "baseline_us": 21.728000603616238, "candidate_us": 22.44799956679344}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 4, "speedup": 0.9381176919889576, "baseline_us": 21.75999991595745, "candidate_us": 23.616000078618526}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 5, "speedup": 0.9588939012826971, "baseline_us": 21.727999672293663, "candidate_us": 22.752000018954277}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 6, "speedup": 0.9145731407794586, "baseline_us": 21.743999794125557, "candidate_us": 23.95200077444315}
+SCREEN {"batch": 16, "layer": "qkv_gate", "algorithm": 7, "speedup": 0.9487454328052239, "baseline_us": 21.680000238120556, "candidate_us": 22.880000062286854}
+CONFIRM {"batch": 16, "layer": "qkv_gate", "seed": 173, "algorithm": 0, "speedup": 0.9970717373563994, "baseline_us": 21.71199955046177, "candidate_us": 21.79200015962124}
+CONFIRM {"batch": 16, "layer": "qkv_gate", "seed": 2387, "algorithm": 0, "speedup": 0.9773196226136568, "baseline_us": 21.43999934196472, "candidate_us": 21.856000646948814}
+CONFIRM {"batch": 16, "layer": "qkv_gate", "seed": 7919, "algorithm": 0, "speedup": 0.994089393307249, "baseline_us": 21.664000116288662, "candidate_us": 21.743999794125557}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 0, "speedup": 1.0279894840031532, "baseline_us": 32.09599852561951, "candidate_us": 31.183999963104725}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 1, "speedup": 1.0386968484383508, "baseline_us": 31.888000667095184, "candidate_us": 30.94400092959404}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 2, "speedup": 1.0015089920333082, "baseline_us": 32.16000087559223, "candidate_us": 32.1119986474514}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 3, "speedup": 0.9785658447631133, "baseline_us": 31.71199932694435, "candidate_us": 32.09599852561951}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 4, "speedup": 0.955682934349757, "baseline_us": 32.14400075376034, "candidate_us": 33.3119984716177}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 5, "speedup": 0.9858714525954033, "baseline_us": 31.95200115442276, "candidate_us": 32.23999962210655}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 6, "speedup": 0.9820119651376142, "baseline_us": 31.696001067757607, "candidate_us": 32.52799995243549}
+SCREEN {"batch": 32, "layer": "pooler", "algorithm": 7, "speedup": 0.9608561757994427, "baseline_us": 31.74399957060814, "candidate_us": 32.86400064826012}
+CONFIRM {"batch": 32, "layer": "pooler", "seed": 173, "algorithm": 1, "speedup": 1.0413647377713662, "baseline_us": 31.840000301599503, "candidate_us": 30.62400035560131}
+CONFIRM {"batch": 32, "layer": "pooler", "seed": 2387, "algorithm": 1, "speedup": 1.0257973570444332, "baseline_us": 31.520001590251923, "candidate_us": 30.672000721096992}
+CONFIRM {"batch": 32, "layer": "pooler", "seed": 7919, "algorithm": 1, "speedup": 1.0290523605766173, "baseline_us": 31.90400078892708, "candidate_us": 30.848000198602676}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 0, "speedup": 0.9824057682618357, "baseline_us": 28.176000341773033, "candidate_us": 28.880000114440918}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 1, "speedup": 0.8822971881813314, "baseline_us": 28.144000098109245, "candidate_us": 31.999999657273293}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 2, "speedup": 0.8717304013224968, "baseline_us": 27.951999567449093, "candidate_us": 32.06400014460087}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 3, "speedup": 0.8599589798670885, "baseline_us": 28.12799997627735, "candidate_us": 32.91199915111065}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 4, "speedup": 0.9421976355629044, "baseline_us": 27.96800062060356, "candidate_us": 29.680000618100166}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 5, "speedup": 0.9872982436758079, "baseline_us": 29.77599948644638, "candidate_us": 29.248000122606754}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 6, "speedup": 0.9126413030945113, "baseline_us": 28.048000298440456, "candidate_us": 30.87999951094389}
+SCREEN {"batch": 32, "layer": "unpooler", "algorithm": 7, "speedup": 0.8494618022330902, "baseline_us": 28.16000021994114, "candidate_us": 33.47199968993664}
+CONFIRM {"batch": 32, "layer": "unpooler", "seed": 173, "algorithm": 5, "speedup": 0.995506106074861, "baseline_us": 28.28799933195114, "candidate_us": 28.255999088287354}
+CONFIRM {"batch": 32, "layer": "unpooler", "seed": 2387, "algorithm": 5, "speedup": 0.9898381772828297, "baseline_us": 28.176000341773033, "candidate_us": 28.672000393271446}
+CONFIRM {"batch": 32, "layer": "unpooler", "seed": 7919, "algorithm": 5, "speedup": 0.9697810177075838, "baseline_us": 28.192000463604927, "candidate_us": 29.91999965161085}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 0, "speedup": 1.010191784744625, "baseline_us": 33.0400001257658, "candidate_us": 33.02400000393391}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 1, "speedup": 0.9759259253962879, "baseline_us": 32.43200108408928, "candidate_us": 33.23199972510338}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 2, "speedup": 0.9333713532736408, "baseline_us": 32.62399882078171, "candidate_us": 34.78400036692619}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 3, "speedup": 0.9306278595227142, "baseline_us": 33.07200036942959, "candidate_us": 35.2960005402565}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 4, "speedup": 0.9291896540064635, "baseline_us": 32.71999955177307, "candidate_us": 34.88000109791756}
+SCREEN {"batch": 128, "layer": "pooler", "algorithm": 5, "speedup": 0.9840999626998189, "baseline_us": 32.655999064445496, "candidate_us": 33.376000821590424}
+CONFIRM {"batch": 128, "layer": "pooler", "seed": 173, "algorithm": 0, "speedup": 1.0186143022039378, "baseline_us": 32.59200043976307, "candidate_us": 32.03199990093708}
+CONFIRM {"batch": 128, "layer": "pooler", "seed": 2387, "algorithm": 0, "speedup": 0.9995073280861184, "baseline_us": 32.62399882078171, "candidate_us": 32.48000144958496}
+CONFIRM {"batch": 128, "layer": "pooler", "seed": 7919, "algorithm": 0, "speedup": 1.0147801034888042, "baseline_us": 32.287999987602234, "candidate_us": 31.840000301599503}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-EH14OdaVVoGb8biX0A6Wcw

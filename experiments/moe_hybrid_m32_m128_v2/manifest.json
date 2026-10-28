@@ -1,0 +1,24 @@
+{
+  "name": "moe_hybrid_m32_m128_v2",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Fix namespaced JIT keyword arguments consistently, then validate shape-selected M32/M128 register-direct public paths stacked with our native and bucketed MoE paths",
+  "sha256": "d9184158a250bd6abe796fe52dd1fc52bd8b5ca15381855e24e40f5fa36ae8e4",
+  "created_at": 1793120144.2634225,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "done",
+  "job_id": "434b1d6c0336443e",
+  "updated_at": 1793120336.3905888,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

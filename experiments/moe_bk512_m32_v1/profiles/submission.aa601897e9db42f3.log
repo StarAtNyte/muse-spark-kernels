@@ -1,0 +1,84 @@
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/language/_core.py", line 99, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/language/core.py", line 43, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/language/core.py", line 2282, in reshape
+    return _semantic.reshape(input, shape, can_reorder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/language/_semantic.py", line 221, in reshape
+    value = super().reshape(input, dst_shape, can_reorder)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/language/semantic.py", line 644, in reshape
+    raise ValueError("reshape() cannot change total number of elements in tensor")
+ValueError: reshape() cannot change total number of elements in tensor
+
+The above exception was the direct cause of the following exception:
+
+triton.compiler.errors.CompilationError: at 2:9:
+def _om__x_tile(xv, _om_BM: _om_gl.constexpr, _om_BK: _om_gl.constexpr, _om_B_L: _om_gl.constexpr):
+    xb = _om_gl.reshape(_om_gl.permute(_om_gl.reshape(xv, [_om_BM, 4, 8, 2, 2, 2]), (2, 3, 4, 1, 5, 0)), [_om_BK, _om_BM])
+         ^
+reshape() cannot change total number of elements in tensor
+
+The above exception was the direct cause of the following exception:
+
+triton.compiler.errors.CompilationError: at 12:11:
+def _om__x_shared(x_ptr, off, msk, k0, x_s, _om_BM: _om_gl.constexpr, _om_BK: _om_gl.constexpr):
+    xg = _om_gl.load(x_ptr + off + k0, mask=msk, other=0.0)
+    _om_gl.barrier()
+    x_s.store(xg)
+    _om_gl.barrier()
+    if _om_BM == 8:
+        xv = _om_gl.reshape(x_s.load(_om_LX2_8), [_om_BM, 4, 64])
+    elif _om_BM == 32:
+        xv = _om_gl.reshape(x_s.load(_om_LX2_32), [_om_BM, 4, 64])
+    else:
+        xv = _om_gl.reshape(x_s.load(_om_LX2), [_om_BM, 4, 64])
+    return _om__x_tile(xv, _om_BM, _om_BK, _om_B_L)
+           ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-2n0tp9wz/run/worker.py", line 458, in child_main
+    fn(state["data"])
+  File "/tmp/muse_moe_w4a16-2n0tp9wz/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_moe_w4a16-2n0tp9wz/run/submission.py", line 1404, in kernel_fn
+    return _om_kernel_fn(data,state['operatorstack_bk512'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-2n0tp9wz/run/submission.py", line 1366, in _om_kernel_fn
+    _om__w2[2 * I // _om_BN, w_max](x, state['w13g'], state['w13g_sf'], state['w13_gs'], sorted_pairs, work, nwork, inter, K=H, N=2 * I, _om_BN=_om_BN, _om_BK=_om_BK, _om_BM=bm, XS=M >= _om_XS_MIN_M, SMB=False, HOP=False, CHK=True, PF=M <= _om_PF_MAX_M, GU=True, num_warps=_om_NUM_WARPS)
+  File "/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py", line 374, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py", line 757, in run
+    kernel = self._do_compile(key, signature, device, constexprs, options, attrs, warmup)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/runtime/jit.py", line 902, in _do_compile
+    kernel = self.compile(src, target=target, options=options.__dict__)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/compiler/compiler.py", line 307, in compile
+    module = src.make_ir(target, options, codegen_fns, module_map, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/triton/experimental/gluon/_runtime.py", line 40, in make_ir
+    module = ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 68:25:
+                    p0, p1, p2, p3 = _om__ssplit4(sq, _om_BN)
+                    acc = _om__mma_chunk(q0, p0, xb_s, 0, acc, _om_BN, a_l, HOP)
+                    acc = _om__mma_chunk(q1, p1, xb_s, 1, acc, _om_BN, a_l, HOP)
+                    acc = _om__mma_chunk(q2, p2, xb_s, 2, acc, _om_BN, a_l, HOP)
+                    acc = _om__mma_chunk(q3, p3, xb_s, 3, acc, _om_BN, a_l, HOP)
+                elif HOP:
+                    acc = _om_warpgroup_mma(_om__decode_tile(wq, sq, _om_BN, _om_BK, _om_L3, a_l), xb_s.permute((1, 0)), acc)
+                else:
+                    acc = _om_mma_v2(_om__decode_tile(wq, sq, _om_BN, _om_BK, _om_L3, _om_A_L), xb_s.permute((1, 0)).load(_om_B_L), acc)
+            else:
+                if XS:
+                    xb = _om__x_shared(a_ptr, xoff, xmsk, k0, x_s, _om_BM, _om_BK)
+                         ^

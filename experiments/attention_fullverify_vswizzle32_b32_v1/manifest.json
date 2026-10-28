@@ -1,0 +1,12 @@
+{
+  "name": "attention_fullverify_vswizzle32_b32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Test 32B swizzle for FP8 V staging (valid within 64B contiguous D tile) while retaining K layout, arithmetic, stage count and split strategy.",
+  "sha256": "f322d2ec17ceae45be17054ed78824009ecff6e5f136fbf8f9a32a4279a7ce87",
+  "created_at": 1793160541.9113336,
+  "decision": "reject_h200",
+  "status": "done",
+  "paired_h200": [0.8289685648294127, 0.8264543594366295, 0.8273778558227785],
+  "decision_reason": "Reference checks passed, but the candidate was 17.2-17.4% slower than the canonical 64B swizzle on all three paired B32 graph runs.",
+  "parent": "kernels/muse_attention_decode/submission.py"
+}

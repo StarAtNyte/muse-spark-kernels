@@ -1,0 +1,23 @@
+{
+  "name": "moe_interleaved_m32",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Extend the already validated operatorstack interleaved lossless weight layout from M8 to M32 only; preserve all other routes, test whether this shape-specific repacking improves the decode32 route.",
+  "sha256": "d9184158a250bd6abe796fe52dd1fc52bd8b5ca15381855e24e40f5fa36ae8e4",
+  "created_at": 1793132466.162527,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 14,
+      "left": 6
+    }
+  },
+  "status": "duplicate",
+  "job_id": "4dfc66b682364183",
+  "updated_at": 1793134350.5445402
+}

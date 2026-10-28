@@ -1,0 +1,24 @@
+{
+  "name": "attention_verify_small128",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use independent-head 128-key WGMMA tiles for full-context verification at batches1..4 with split counts128/64/32, context>=32768; three-seed Modal gains16..18 percent for scored batch1, tough reference checks passed.",
+  "sha256": "375242e65328a1d5776eb59b2b5e7a09676809031c6b8206b78ec1f72268f59e",
+  "created_at": 1793032733.253756,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "2191c82015cf4143",
+  "updated_at": 1793033218.761564,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

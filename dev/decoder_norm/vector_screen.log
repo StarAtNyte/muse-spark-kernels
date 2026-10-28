@@ -1,0 +1,112 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-W3OpajiJ9tviWiDrlLdyfd
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+CHECK triton4 1 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 1, "seed": 173, "speedup": 1.7156598116707775, "baseline_us": 13.584000058472157, "candidate_us": 7.935999892652035}
+CHECK triton8 1 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 1, "seed": 173, "speedup": 1.7379998800922243, "baseline_us": 13.728000223636627, "candidate_us": 7.952000014483929}
+CHECK fused 1 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 1, "seed": 173, "speedup": 1.8544337562646849, "baseline_us": 14.304000418633223, "candidate_us": 7.74399982765317}
+CHECK triton4 4 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 4, "seed": 173, "speedup": 1.6217712333655767, "baseline_us": 14.063999988138676, "candidate_us": 8.671999908983707}
+CHECK triton8 4 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 4, "seed": 173, "speedup": 1.656715166877921, "baseline_us": 14.047999866306782, "candidate_us": 8.495999965816736}
+CHECK fused 4 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 4, "seed": 173, "speedup": 1.687625412535004, "baseline_us": 13.919999822974205, "candidate_us": 8.287999778985977}
+CHECK triton4 8 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 8, "seed": 173, "speedup": 1.6622378945955794, "baseline_us": 14.047999866306782, "candidate_us": 8.448000065982342}
+CHECK triton8 8 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 8, "seed": 173, "speedup": 1.6458332851025541, "baseline_us": 13.983999844640493, "candidate_us": 8.544000331312418}
+CHECK fused 8 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 8, "seed": 173, "speedup": 1.5069326976414836, "baseline_us": 14.015999622642994, "candidate_us": 9.231999982148409}
+CHECK triton4 16 173 PASS torch_error 7.584823833894916e-06 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 16, "seed": 173, "speedup": 1.5601367343921977, "baseline_us": 13.664000201970339, "candidate_us": 8.736000396311283}
+CHECK triton8 16 173 PASS torch_error 0.0 fp32_error 7.584823833894916e-06
+RESULT {"variant": "triton8", "batch": 16, "seed": 173, "speedup": 1.6100386642712379, "baseline_us": 13.663999736309052, "candidate_us": 8.448000065982342}
+CHECK triton4 32 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 32, "seed": 173, "speedup": 1.6112295946603998, "baseline_us": 14.22400027513504, "candidate_us": 8.880000095814466}
+CHECK triton8 32 173 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 32, "seed": 173, "speedup": 1.638332043079707, "baseline_us": 14.208000153303146, "candidate_us": 8.671999908983707}
+CHECK triton4 128 173 PASS torch_error 1.5384099242510274e-05 fp32_error 1.6508472981513478e-05
+RESULT {"variant": "triton4", "batch": 128, "seed": 173, "speedup": 1.537687139170536, "baseline_us": 14.639999717473984, "candidate_us": 9.519999846816063}
+CHECK triton8 128 173 PASS torch_error 1.1041792276955675e-05 fp32_error 1.2561064977489877e-05
+RESULT {"variant": "triton8", "batch": 128, "seed": 173, "speedup": 1.6041679337906785, "baseline_us": 14.688000082969666, "candidate_us": 9.184000082314014}
+CHECK triton4 256 173 PASS torch_error 4.7337815090031654e-07 fp32_error 5.376542503654491e-06
+RESULT {"variant": "triton4", "batch": 256, "seed": 173, "speedup": 1.4574370086547817, "baseline_us": 15.199999790638685, "candidate_us": 10.495999827980995}
+CHECK triton8 256 173 PASS torch_error 5.719849923480069e-06 fp32_error 2.008373257922358e-06
+RESULT {"variant": "triton8", "batch": 256, "seed": 173, "speedup": 1.5110063903796753, "baseline_us": 15.312000177800655, "candidate_us": 10.143999941647053}
+CHECK triton4 1 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 1, "seed": 7919, "speedup": 1.6256609035908824, "baseline_us": 14.400000218302011, "candidate_us": 8.832000195980072}
+CHECK triton8 1 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 1, "seed": 7919, "speedup": 1.6890330031493237, "baseline_us": 14.175999909639359, "candidate_us": 8.320000022649765}
+CHECK fused 1 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 1, "seed": 7919, "speedup": 1.83631869949703, "baseline_us": 14.303999952971935, "candidate_us": 7.807999849319458}
+CHECK triton4 4 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 4, "seed": 7919, "speedup": 1.6806102302059736, "baseline_us": 14.079999644309282, "candidate_us": 8.352000266313553}
+CHECK triton8 4 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 4, "seed": 7919, "speedup": 1.6458333356133337, "baseline_us": 14.128000009804964, "candidate_us": 8.48000030964613}
+CHECK fused 4 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 4, "seed": 7919, "speedup": 1.7059999289866572, "baseline_us": 13.98400031030178, "candidate_us": 8.320000022649765}
+CHECK triton4 8 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 8, "seed": 7919, "speedup": 1.6203704292567238, "baseline_us": 14.128000009804964, "candidate_us": 8.671999908983707}
+CHECK triton8 8 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 8, "seed": 7919, "speedup": 1.6541544675984028, "baseline_us": 14.175999909639359, "candidate_us": 8.511999621987343}
+CHECK fused 8 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "fused", "batch": 8, "seed": 7919, "speedup": 1.5051010276304826, "baseline_us": 14.015999622642994, "candidate_us": 9.375999681651592}
+CHECK triton4 16 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 16, "seed": 7919, "speedup": 1.603030303591534, "baseline_us": 14.063999988138676, "candidate_us": 8.767999708652496}
+CHECK triton8 16 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 16, "seed": 7919, "speedup": 1.6018182168389896, "baseline_us": 14.08000010997057, "candidate_us": 8.799999952316284}
+CHECK triton4 32 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton4", "batch": 32, "seed": 7919, "speedup": 1.5719963794124578, "baseline_us": 13.9679997228086, "candidate_us": 8.895999751985073}
+CHECK triton8 32 7919 PASS torch_error 0.0 fp32_error 0.0
+RESULT {"variant": "triton8", "batch": 32, "seed": 7919, "speedup": 1.625833040988997, "baseline_us": 14.063999988138676, "candidate_us": 8.72000027447939}
+CHECK triton4 128 7919 PASS torch_error 5.568294909608085e-06 fp32_error 1.4989346936999937e-06
+RESULT {"variant": "triton4", "batch": 128, "seed": 7919, "speedup": 1.5245722490168734, "baseline_us": 14.415999874472618, "candidate_us": 9.535999968647957}
+CHECK triton8 128 7919 PASS torch_error 0.0 fp32_error 5.362751380744157e-06
+RESULT {"variant": "triton8", "batch": 128, "seed": 7919, "speedup": 1.5848903085256185, "baseline_us": 14.511999674141407, "candidate_us": 9.16799996048212}
+CHECK triton4 256 7919 PASS torch_error 8.479695679852739e-06 fp32_error 1.8961176238008193e-06
+RESULT {"variant": "triton4", "batch": 256, "seed": 7919, "speedup": 1.4753086780168614, "baseline_us": 15.296000055968761, "candidate_us": 10.383999906480312}
+CHECK triton8 256 7919 PASS torch_error 1.214338954014238e-05 fp32_error 8.896737199393101e-06
+RESULT {"variant": "triton8", "batch": 256, "seed": 7919, "speedup": 1.4928814274187365, "baseline_us": 15.072000212967396, "candidate_us": 10.239999741315842}
+DECODER_NORM_SCREEN_PASSED
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-W3OpajiJ9tviWiDrlLdyfd

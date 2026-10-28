@@ -1,0 +1,23 @@
+{
+  "name": "moe_m32_wgmma_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "On M32 decode only, stage the activation tile in shared memory and use Hopper WGMMA for the four 64-K chunks of paired gate/up. Preserve existing paths for M1/M8/M16 and M128/M256. Target measured low tensor-pipe activity in the weak M32 case.",
+  "sha256": "c27e8e9139d467d4b8f1a60e90efff02b0f96503dcbb2fae06f7b7f50f97f0a0",
+  "created_at": 1793126890.5221257,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "done",
+  "job_id": "aa2b0a2e76f8429c",
+  "updated_at": 1793129097.5436435
+}

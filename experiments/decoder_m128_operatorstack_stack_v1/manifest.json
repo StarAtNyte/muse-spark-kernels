@@ -1,0 +1,21 @@
+{
+  "name": "decoder_m128_operatorstack_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the scored standalone MoE M128 operatorstack path into the current best full decoder; reuse its M128 W13/W2 kernels, preserve the current decoder M32 route, router, attention, projections, and all other dispatches.",
+  "sha256": "3918b68c5fdaadaff487988d2cb526be33f40447060c3b5c7b0ea50376f0fdfe",
+  "created_at": 1793149698.8141632,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "prepared"
+}

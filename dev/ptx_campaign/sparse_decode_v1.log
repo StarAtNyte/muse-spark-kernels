@@ -1,0 +1,82 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-q1MsX5Y9fOmifbqY5mhe0n
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EARLY_CHECK 1 3000 full 1 1.0 True relative L2 error 5.575e-02 (worst row 5.575e-02) [bound 0.150: 2.5 x the reference's 0.056 with FP8 E4M3 queries + 0.015]
+EARLY_CHECK 2 6000 sliding 64 0.015625 True relative L2 error 7.525e-02 (worst row 9.675e-02) [bound 0.150: 2.5 x the reference's 0.075 with FP8 E4M3 queries + 0.015]
+EARLY_CHECK 3 9000 full 64 0.015625 True relative L2 error 6.435e-02 (worst row 6.825e-02) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.015]
+RESULT {"layer": "sliding", "batch": 1, "seed": 539, "splits": 16, "error": 0.0, "speedup": 0.7514562934515933, "baseline_us": 12.35199999064207, "candidate_us": 16.560000367462635}
+RESULT {"layer": "sliding", "batch": 1, "seed": 539, "splits": 32, "error": 0.0, "speedup": 0.7286352326164338, "baseline_us": 12.096000369638205, "candidate_us": 16.704000532627106}
+RESULT {"layer": "sliding", "batch": 1, "seed": 539, "splits": 64, "error": 0.0, "speedup": 0.6762476448679655, "baseline_us": 12.512000277638435, "candidate_us": 18.463999964296818}
+RESULT {"layer": "sliding", "batch": 1, "seed": 1427, "splits": 16, "error": 0.0, "speedup": 0.7391713202647823, "baseline_us": 12.736000120639801, "candidate_us": 17.503999173641205}
+RESULT {"layer": "sliding", "batch": 1, "seed": 1427, "splits": 32, "error": 3.582867748264107e-06, "speedup": 0.7102058550841245, "baseline_us": 12.68799975514412, "candidate_us": 17.823999747633934}
+RESULT {"layer": "sliding", "batch": 1, "seed": 1427, "splits": 64, "error": 3.582867748264107e-06, "speedup": 0.6925785457975582, "baseline_us": 12.639999855309725, "candidate_us": 18.240000121295452}
+RESULT {"layer": "sliding", "batch": 16, "seed": 539, "splits": 4, "error": 0.0, "speedup": 0.5808897377002835, "baseline_us": 19.680000841617584, "candidate_us": 33.80800038576126}
+RESULT {"layer": "sliding", "batch": 16, "seed": 539, "splits": 8, "error": 0.0003484937478788197, "speedup": 0.7753101692356787, "baseline_us": 19.67999991029501, "candidate_us": 25.647999718785286}
+RESULT {"layer": "sliding", "batch": 16, "seed": 539, "splits": 16, "error": 0.00038538090302608907, "speedup": 0.8505179916100101, "baseline_us": 19.648000597953796, "candidate_us": 23.04000034928322}
+RESULT {"layer": "sliding", "batch": 16, "seed": 1427, "splits": 4, "error": 0.0, "speedup": 0.5687494360280974, "baseline_us": 19.648000597953796, "candidate_us": 34.40000116825104}
+RESULT {"layer": "sliding", "batch": 16, "seed": 1427, "splits": 8, "error": 0.00038693472743034363, "speedup": 0.7697550661023784, "baseline_us": 19.759999588131905, "candidate_us": 25.567999109625816}
+RESULT {"layer": "sliding", "batch": 16, "seed": 1427, "splits": 16, "error": 0.00045528088230639696, "speedup": 0.8377059254682941, "baseline_us": 19.696000032126904, "candidate_us": 23.19999970495701}
+RESULT {"layer": "sliding", "batch": 32, "seed": 539, "splits": 4, "error": 0.0003846986801363528, "speedup": 0.6461237692365278, "baseline_us": 23.631999269127846, "candidate_us": 36.559998989105225}
+RESULT {"layer": "sliding", "batch": 32, "seed": 539, "splits": 8, "error": 0.0004516937187872827, "speedup": 0.7804267110316289, "baseline_us": 23.63200020045042, "candidate_us": 30.38400039076805}
+RESULT {"layer": "sliding", "batch": 32, "seed": 539, "splits": 16, "error": 0.00046206198749132454, "speedup": 0.7038461749478147, "baseline_us": 23.663999512791634, "candidate_us": 33.64799916744232}
+RESULT {"layer": "sliding", "batch": 32, "seed": 1427, "splits": 4, "error": 0.0004505680117290467, "speedup": 0.6575322775391803, "baseline_us": 24.09599907696247, "candidate_us": 36.447999998927116}
+RESULT {"layer": "sliding", "batch": 32, "seed": 1427, "splits": 8, "error": 0.0005228949012234807, "speedup": 0.7901720916021182, "baseline_us": 24.063999764621258, "candidate_us": 30.672000721096992}
+RESULT {"layer": "sliding", "batch": 32, "seed": 1427, "splits": 16, "error": 0.0005576928961090744, "speedup": 0.7342955456481368, "baseline_us": 23.792000487446785, "candidate_us": 32.944001257419586}
+RESULT {"layer": "full", "batch": 1, "seed": 539, "splits": 128, "error": 0.0, "speedup": 0.491749413582805, "baseline_us": 22.576000541448593, "candidate_us": 46.54400050640106}
+RESULT {"layer": "full", "batch": 1, "seed": 539, "splits": 256, "error": 1.1080314266109781e-07, "speedup": 0.6465992549205535, "baseline_us": 22.60800078511238, "candidate_us": 34.81600061058998}
+RESULT {"layer": "full", "batch": 1, "seed": 539, "splits": 512, "error": 1.1080314266109781e-07, "speedup": 0.5386704073611859, "baseline_us": 22.512000054121017, "candidate_us": 41.600000113248825}
+RESULT {"layer": "full", "batch": 1, "seed": 1427, "splits": 128, "error": 0.0, "speedup": 0.49523261063421375, "baseline_us": 22.52800017595291, "candidate_us": 45.52000015974045}
+RESULT {"layer": "full", "batch": 1, "seed": 1427, "splits": 256, "error": 0.00011390496365493163, "speedup": 0.6619968333504762, "baseline_us": 22.80000038444996, "candidate_us": 34.19199958443642}
+RESULT {"layer": "full", "batch": 1, "seed": 1427, "splits": 512, "error": 0.00011368314153514802, "speedup": 0.6611202854929528, "baseline_us": 22.352000698447227, "candidate_us": 33.87200087308884}
+RESULT {"layer": "full", "batch": 16, "seed": 539, "splits": 32, "error": 0.00014027291035745293, "speedup": 0.48817894524637806, "baseline_us": 131.80800527334213, "candidate_us": 269.9359953403473}
+RESULT {"layer": "full", "batch": 16, "seed": 539, "splits": 64, "error": 0.0, "speedup": 0.567453430422181, "baseline_us": 131.48800283670425, "candidate_us": 231.4400002360344}
+RESULT {"layer": "full", "batch": 16, "seed": 539, "splits": 128, "error": 0.00023618139675818384, "speedup": 0.5900085724186148, "baseline_us": 132.08000361919403, "candidate_us": 223.10400009155273}
+RESULT {"layer": "full", "batch": 16, "seed": 1427, "splits": 32, "error": 0.0001789465604815632, "speedup": 0.48770811244520235, "baseline_us": 131.4079985022545, "candidate_us": 269.8560059070587}
+RESULT {"layer": "full", "batch": 16, "seed": 1427, "splits": 64, "error": 0.0, "speedup": 0.5675955549172595, "baseline_us": 131.43999874591827, "candidate_us": 231.82399570941925}
+RESULT {"layer": "full", "batch": 16, "seed": 1427, "splits": 128, "error": 0.00021231817663647234, "speedup": 0.5874508490633441, "baseline_us": 131.6480040550232, "candidate_us": 224.2240011692047}
+RESULT {"layer": "full", "batch": 32, "seed": 539, "splits": 16, "error": 0.0001794373820303008, "speedup": 0.45032808328310137, "baseline_us": 219.4719985127449, "candidate_us": 487.5840097665787}
+RESULT {"layer": "full", "batch": 32, "seed": 539, "splits": 32, "error": 0.0, "speedup": 0.5352008129943951, "baseline_us": 220.11200338602066, "candidate_us": 411.2959951162338}
+RESULT {"layer": "full", "batch": 32, "seed": 539, "splits": 64, "error": 0.00017293597920797765, "speedup": 0.5693177878620916, "baseline_us": 219.82400119304657, "candidate_us": 386.33599877357483}
+RESULT {"layer": "full", "batch": 32, "seed": 1427, "splits": 16, "error": 0.0002281477500218898, "speedup": 0.45153233697232686, "baseline_us": 219.64799612760544, "candidate_us": 486.9920015335083}
+RESULT {"layer": "full", "batch": 32, "seed": 1427, "splits": 32, "error": 0.0, "speedup": 0.5333826912837483, "baseline_us": 219.2320004105568, "candidate_us": 411.2800061702728}
+RESULT {"layer": "full", "batch": 32, "seed": 1427, "splits": 64, "error": 0.00029688311042264104, "speedup": 0.5707692113445433, "baseline_us": 219.79200094938278, "candidate_us": 384.6080005168915}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-q1MsX5Y9fOmifbqY5mhe0n

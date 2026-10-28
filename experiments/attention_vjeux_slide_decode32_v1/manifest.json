@@ -1,0 +1,25 @@
+{
+  "name": "attention_vjeux_slide_decode32_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Changing split-KV CTA count may improve batch-32 single-token sliding decode; this shape has not had a dedicated plan sweep in the integrated vjeux attention path.",
+  "status": "done",
+  "decision": "reject_performance",
+  "decision_reason": "The candidate counts were slower or within 0.6% of the base across one H200 paired graph screen; no variant showed a material gain. Preserve the 8-split path.",
+  "parent": "experiments/attention_vjeux_public_check_v1/submission.py",
+  "screen": {
+    "gpu": "NVIDIA H200",
+    "shape": "B32 q_len=1 sliding, 80k context, page_size=1",
+    "base_plan": {"n_splits": 8, "nc": 1},
+    "base_us": 16.13,
+    "variants": {
+      "4": {"us": 16.58, "base_over_candidate": 0.9680},
+      "6": {"us": 16.18, "base_over_candidate": 0.9862},
+      "12": {"us": 16.34, "base_over_candidate": 0.9941},
+      "16": {"us": 19.04, "base_over_candidate": 0.8477},
+      "24": {"us": 18.78, "base_over_candidate": 0.8637},
+      "32": {"us": 20.67, "base_over_candidate": 0.7763}
+    }
+  },
+  "official_check": false,
+  "public_submission": false
+}

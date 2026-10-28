@@ -1,0 +1,126 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-W3wbL6DGl26fztwFAqXrBk
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+GPU NVIDIA H200 torch 2.11.0+cu128
+RESULT {"batch": 1, "cfg": [16, 16, 128, 4], "paired_speedup": 0.7221153962396956, "baseline_us": 12.016000226140022, "candidate_us": 16.751999966800213}
+RESULT {"batch": 1, "cfg": [16, 16, 128, 8], "paired_speedup": 0.9135902885026992, "baseline_us": 11.82399969547987, "candidate_us": 12.97600008547306}
+RESULT {"batch": 1, "cfg": [16, 16, 128, 16], "paired_speedup": 0.9740304237190021, "baseline_us": 12.575999833643436, "candidate_us": 12.94400030747056}
+RESULT {"batch": 1, "cfg": [16, 32, 128, 4], "paired_speedup": 0.7446836527388079, "baseline_us": 12.527999933809042, "candidate_us": 16.815999522805214}
+RESULT {"batch": 1, "cfg": [16, 32, 128, 8], "paired_speedup": 0.924006182012414, "baseline_us": 12.543999589979649, "candidate_us": 13.584000058472157}
+RESULT {"batch": 1, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0090844011604463, "baseline_us": 12.512000277638435, "candidate_us": 12.384000234305859}
+RESULT {"batch": 1, "cfg": [16, 64, 128, 4], "paired_speedup": 0.7418179021499058, "baseline_us": 12.640000320971012, "candidate_us": 17.03999936580658}
+RESULT {"batch": 1, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9279231028530855, "baseline_us": 12.56000017747283, "candidate_us": 13.60000018030405}
+RESULT {"batch": 1, "cfg": [16, 64, 128, 16], "paired_speedup": 1.021053951068887, "baseline_us": 12.512000277638435, "candidate_us": 12.272000312805176}
+RESULT {"batch": 1, "cfg": [32, 32, 128, 8], "paired_speedup": 0.8940774698893027, "baseline_us": 12.527999933809042, "candidate_us": 14.047999866306782}
+RESULT {"batch": 1, "cfg": [32, 32, 128, 16], "paired_speedup": 0.982346950857661, "baseline_us": 12.44799979031086, "candidate_us": 12.83199992030859}
+RESULT {"batch": 1, "cfg": [32, 64, 128, 16], "paired_speedup": 0.9935962900157178, "baseline_us": 12.44799979031086, "candidate_us": 12.543999589979649}
+BEST [{"batch": 1, "cfg": [16, 64, 128, 16], "paired_speedup": 1.021053951068887, "baseline_us": 12.512000277638435, "candidate_us": 12.272000312805176}, {"batch": 1, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0090844011604463, "baseline_us": 12.512000277638435, "candidate_us": 12.384000234305859}, {"batch": 1, "cfg": [32, 64, 128, 16], "paired_speedup": 0.9935962900157178, "baseline_us": 12.44799979031086, "candidate_us": 12.543999589979649}]
+RESULT {"batch": 8, "cfg": [16, 16, 128, 4], "paired_speedup": 0.7336986050523198, "baseline_us": 12.799999676644802, "candidate_us": 17.456000670790672}
+RESULT {"batch": 8, "cfg": [16, 16, 128, 8], "paired_speedup": 0.9177319006622271, "baseline_us": 12.68799975514412, "candidate_us": 13.824000023305416}
+RESULT {"batch": 8, "cfg": [16, 16, 128, 16], "paired_speedup": 0.9949747780213554, "baseline_us": 12.768000364303589, "candidate_us": 12.83199992030859}
+RESULT {"batch": 8, "cfg": [16, 32, 128, 4], "paired_speedup": 0.7481131657926549, "baseline_us": 12.68799975514412, "candidate_us": 16.96000061929226}
+RESULT {"batch": 8, "cfg": [16, 32, 128, 8], "paired_speedup": 0.9522401838103025, "baseline_us": 12.848000042140484, "candidate_us": 13.48799979314208}
+RESULT {"batch": 8, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0220207422849026, "baseline_us": 12.640000320971012, "candidate_us": 12.335999868810177}
+RESULT {"batch": 8, "cfg": [16, 64, 128, 4], "paired_speedup": 0.7340260322718948, "baseline_us": 12.719999998807907, "candidate_us": 17.280000261962414}
+RESULT {"batch": 8, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9221712759408547, "baseline_us": 12.608000077307224, "candidate_us": 13.807999901473522}
+RESULT {"batch": 8, "cfg": [16, 64, 128, 16], "paired_speedup": 1.0234986831086843, "baseline_us": 12.68799975514412, "candidate_us": 12.480000033974648}
+RESULT {"batch": 8, "cfg": [32, 32, 128, 8], "paired_speedup": 0.9084600610205762, "baseline_us": 12.672000098973513, "candidate_us": 13.999999966472387}
+RESULT {"batch": 8, "cfg": [32, 32, 128, 16], "paired_speedup": 0.9679800730603367, "baseline_us": 12.59199995547533, "candidate_us": 13.024000450968742}
+RESULT {"batch": 8, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0012468922951419, "baseline_us": 12.880000285804272, "candidate_us": 12.752000242471695}
+BEST [{"batch": 8, "cfg": [16, 64, 128, 16], "paired_speedup": 1.0234986831086843, "baseline_us": 12.68799975514412, "candidate_us": 12.480000033974648}, {"batch": 8, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0220207422849026, "baseline_us": 12.640000320971012, "candidate_us": 12.335999868810177}, {"batch": 8, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0012468922951419, "baseline_us": 12.880000285804272, "candidate_us": 12.752000242471695}]
+RESULT {"batch": 16, "cfg": [16, 16, 128, 4], "paired_speedup": 0.7404013195907206, "baseline_us": 12.86399969831109, "candidate_us": 17.50400010496378}
+RESULT {"batch": 16, "cfg": [16, 16, 128, 8], "paired_speedup": 0.9097389322946781, "baseline_us": 12.784000020474195, "candidate_us": 14.128000009804964}
+RESULT {"batch": 16, "cfg": [16, 16, 128, 16], "paired_speedup": 0.9574741034095654, "baseline_us": 12.703999876976013, "candidate_us": 13.36000021547079}
+RESULT {"batch": 16, "cfg": [16, 32, 128, 4], "paired_speedup": 0.7599693873804648, "baseline_us": 12.799999676644802, "candidate_us": 16.896000131964684}
+RESULT {"batch": 16, "cfg": [16, 32, 128, 8], "paired_speedup": 0.962477935745514, "baseline_us": 12.928000185638666, "candidate_us": 13.45600001513958}
+RESULT {"batch": 16, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0192407549462579, "baseline_us": 12.767999898642302, "candidate_us": 12.512000277638435}
+RESULT {"batch": 16, "cfg": [16, 64, 128, 4], "paired_speedup": 0.7346780271646618, "baseline_us": 12.880000285804272, "candidate_us": 17.40800030529499}
+RESULT {"batch": 16, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9393720450222243, "baseline_us": 13.088000006973743, "candidate_us": 13.919999822974205}
+RESULT {"batch": 16, "cfg": [16, 64, 128, 16], "paired_speedup": 1.019158784849141, "baseline_us": 12.848000042140484, "candidate_us": 12.752000242471695}
+RESULT {"batch": 16, "cfg": [32, 32, 128, 8], "paired_speedup": 0.8975436296327172, "baseline_us": 12.86399969831109, "candidate_us": 14.431999996304512}
+RESULT {"batch": 16, "cfg": [32, 32, 128, 16], "paired_speedup": 0.9670314251054339, "baseline_us": 12.736000120639801, "candidate_us": 13.104000128805637}
+RESULT {"batch": 16, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0000030708946879, "baseline_us": 12.896000407636166, "candidate_us": 12.912000063806772}
+BEST [{"batch": 16, "cfg": [16, 32, 128, 16], "paired_speedup": 1.0192407549462579, "baseline_us": 12.767999898642302, "candidate_us": 12.512000277638435}, {"batch": 16, "cfg": [16, 64, 128, 16], "paired_speedup": 1.019158784849141, "baseline_us": 12.848000042140484, "candidate_us": 12.752000242471695}, {"batch": 16, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0000030708946879, "baseline_us": 12.896000407636166, "candidate_us": 12.912000063806772}]
+RESULT {"batch": 32, "cfg": [16, 16, 128, 4], "paired_speedup": 0.7431593555142284, "baseline_us": 13.055999763309956, "candidate_us": 17.64800027012825}
+RESULT {"batch": 32, "cfg": [16, 16, 128, 8], "paired_speedup": 0.8657521583752075, "baseline_us": 13.104000128805637, "candidate_us": 15.15199989080429}
+RESULT {"batch": 32, "cfg": [16, 16, 128, 16], "paired_speedup": 0.8291925151457415, "baseline_us": 12.912000063806772, "candidate_us": 15.60000004246831}
+RESULT {"batch": 32, "cfg": [16, 32, 128, 4], "paired_speedup": 0.7690878819350936, "baseline_us": 12.927999719977379, "candidate_us": 16.863999888300896}
+RESULT {"batch": 32, "cfg": [16, 32, 128, 8], "paired_speedup": 0.9352846935204493, "baseline_us": 12.992000207304955, "candidate_us": 13.903999701142311}
+RESULT {"batch": 32, "cfg": [16, 32, 128, 16], "paired_speedup": 0.9720575205424955, "baseline_us": 12.879999820142984, "candidate_us": 13.151999562978745}
+RESULT {"batch": 32, "cfg": [16, 64, 128, 4], "paired_speedup": 0.7449604449450037, "baseline_us": 13.024000450968742, "candidate_us": 17.632000148296356}
+RESULT {"batch": 32, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9339599994799965, "baseline_us": 13.056000228971243, "candidate_us": 13.98400031030178}
+RESULT {"batch": 32, "cfg": [16, 64, 128, 16], "paired_speedup": 0.9903381611947248, "baseline_us": 13.024000450968742, "candidate_us": 13.120000250637531}
+RESULT {"batch": 32, "cfg": [32, 32, 128, 8], "paired_speedup": 0.9051540100443605, "baseline_us": 12.97600008547306, "candidate_us": 14.384000096470118}
+RESULT {"batch": 32, "cfg": [32, 32, 128, 16], "paired_speedup": 0.9999939926551734, "baseline_us": 13.152000028640032, "candidate_us": 13.183999806642532}
+RESULT {"batch": 32, "cfg": [32, 64, 128, 16], "paired_speedup": 0.9710584222702123, "baseline_us": 12.896000407636166, "candidate_us": 13.376000337302685}
+BEST [{"batch": 32, "cfg": [32, 32, 128, 16], "paired_speedup": 0.9999939926551734, "baseline_us": 13.152000028640032, "candidate_us": 13.183999806642532}, {"batch": 32, "cfg": [16, 64, 128, 16], "paired_speedup": 0.9903381611947248, "baseline_us": 13.024000450968742, "candidate_us": 13.120000250637531}, {"batch": 32, "cfg": [16, 32, 128, 16], "paired_speedup": 0.9720575205424955, "baseline_us": 12.879999820142984, "candidate_us": 13.151999562978745}]
+RESULT {"batch": 128, "cfg": [16, 16, 128, 4], "paired_speedup": 0.49058522113863035, "baseline_us": 15.039999969303608, "candidate_us": 30.81599995493889}
+RESULT {"batch": 128, "cfg": [16, 16, 128, 8], "paired_speedup": 0.4828827285606453, "baseline_us": 15.072000212967396, "candidate_us": 31.183999963104725}
+RESULT {"batch": 128, "cfg": [16, 16, 128, 16], "paired_speedup": 0.46531482588012063, "baseline_us": 15.072000212967396, "candidate_us": 32.44800120592117}
+RESULT {"batch": 128, "cfg": [16, 32, 128, 4], "paired_speedup": 0.7952800612389704, "baseline_us": 15.023999847471714, "candidate_us": 19.088000059127808}
+RESULT {"batch": 128, "cfg": [16, 32, 128, 8], "paired_speedup": 0.8484551872157797, "baseline_us": 15.039999969303608, "candidate_us": 17.776000313460827}
+RESULT {"batch": 128, "cfg": [16, 32, 128, 16], "paired_speedup": 0.7639435791694562, "baseline_us": 15.184000134468079, "candidate_us": 20.320000126957893}
+RESULT {"batch": 128, "cfg": [16, 64, 128, 4], "paired_speedup": 0.8317093501767058, "baseline_us": 15.039999969303608, "candidate_us": 18.0479995906353}
+RESULT {"batch": 128, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9542267282149579, "baseline_us": 15.072000212967396, "candidate_us": 15.77599998563528}
+RESULT {"batch": 128, "cfg": [16, 64, 128, 16], "paired_speedup": 0.7861377255343813, "baseline_us": 14.992000069469213, "candidate_us": 19.13600042462349}
+RESULT {"batch": 128, "cfg": [32, 32, 128, 8], "paired_speedup": 0.8227697203447555, "baseline_us": 14.960000291466713, "candidate_us": 18.239999189972878}
+RESULT {"batch": 128, "cfg": [32, 32, 128, 16], "paired_speedup": 0.8078228602890927, "baseline_us": 15.00799972563982, "candidate_us": 18.543999642133713}
+RESULT {"batch": 128, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0172996608750795, "baseline_us": 15.056000091135502, "candidate_us": 14.783999882638454}
+BEST [{"batch": 128, "cfg": [32, 64, 128, 16], "paired_speedup": 1.0172996608750795, "baseline_us": 15.056000091135502, "candidate_us": 14.783999882638454}, {"batch": 128, "cfg": [16, 64, 128, 8], "paired_speedup": 0.9542267282149579, "baseline_us": 15.072000212967396, "candidate_us": 15.77599998563528}, {"batch": 128, "cfg": [16, 32, 128, 8], "paired_speedup": 0.8484551872157797, "baseline_us": 15.039999969303608, "candidate_us": 17.776000313460827}]
+RESULT {"batch": 256, "cfg": [16, 16, 128, 4], "paired_speedup": 0.3515911873646451, "baseline_us": 17.904000356793404, "candidate_us": 51.00800096988678}
+RESULT {"batch": 256, "cfg": [16, 16, 128, 8], "paired_speedup": 0.3534883904324373, "baseline_us": 18.19199975579977, "candidate_us": 51.58399976789951}
+RESULT {"batch": 256, "cfg": [16, 16, 128, 16], "paired_speedup": 0.33012234545413577, "baseline_us": 18.09599995613098, "candidate_us": 54.88000065088272}
+RESULT {"batch": 256, "cfg": [16, 32, 128, 4], "paired_speedup": 0.6945361599268666, "baseline_us": 18.160000443458557, "candidate_us": 26.095999404788017}
+RESULT {"batch": 256, "cfg": [16, 32, 128, 8], "paired_speedup": 0.6349434653773777, "baseline_us": 18.09599995613098, "candidate_us": 28.335999697446823}
+RESULT {"batch": 256, "cfg": [16, 32, 128, 16], "paired_speedup": 0.6081178305340583, "baseline_us": 18.223999999463558, "candidate_us": 30.031999573111534}
+RESULT {"batch": 256, "cfg": [16, 64, 128, 4], "paired_speedup": 0.8647222698805843, "baseline_us": 18.063999712467194, "candidate_us": 20.944000221788883}
+RESULT {"batch": 256, "cfg": [16, 64, 128, 8], "paired_speedup": 0.728512600099775, "baseline_us": 18.015999346971512, "candidate_us": 24.927999824285507}
+RESULT {"batch": 256, "cfg": [16, 64, 128, 16], "paired_speedup": 0.693209546367533, "baseline_us": 18.09599995613098, "candidate_us": 26.127999648451805}
+RESULT {"batch": 256, "cfg": [32, 32, 128, 8], "paired_speedup": 0.701504704096463, "baseline_us": 17.935999669134617, "candidate_us": 25.520000606775284}
+RESULT {"batch": 256, "cfg": [32, 32, 128, 16], "paired_speedup": 0.6651080801844318, "baseline_us": 18.144000321626663, "candidate_us": 27.39199995994568}
+RESULT {"batch": 256, "cfg": [32, 64, 128, 16], "paired_speedup": 0.8475588475420345, "baseline_us": 17.9840000346303, "candidate_us": 21.21600043028593}
+BEST [{"batch": 256, "cfg": [16, 64, 128, 4], "paired_speedup": 0.8647222698805843, "baseline_us": 18.063999712467194, "candidate_us": 20.944000221788883}, {"batch": 256, "cfg": [32, 64, 128, 16], "paired_speedup": 0.8475588475420345, "baseline_us": 17.9840000346303, "candidate_us": 21.21600043028593}, {"batch": 256, "cfg": [16, 64, 128, 8], "paired_speedup": 0.728512600099775, "baseline_us": 18.015999346971512, "candidate_us": 24.927999824285507}]
+COVERAGE 5 normal all configurations passed
+COVERAGE 9 outliers all configurations passed
+COVERAGE 33 normal all configurations passed
+COVERAGE 130 outliers all configurations passed
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-W3wbL6DGl26fztwFAqXrBk

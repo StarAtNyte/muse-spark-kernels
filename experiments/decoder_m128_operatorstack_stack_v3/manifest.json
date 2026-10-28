@@ -1,0 +1,35 @@
+{
+  "name": "decoder_m128_operatorstack_stack_v3",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the scored standalone MoE M128 operatorstack path into the current best full decoder; reuse its M128 W13/W2 kernels, preserve the current decoder M32 route, router, attention, projections, and all other dispatches.",
+  "sha256": "e39992a27f901ab359dc3a25cb17684dac4ad253caf5dd100c8d4afada0df7a7",
+  "created_at": 1793150401.48762,
+  "decision": "promote_global",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "3bf8af9cf4524476",
+  "speedup": 1.7354717336079644,
+  "speedup_ci": [
+    1.7094396576038449,
+    1.7615038096120836
+  ],
+  "tests": 13,
+  "scored_job_id": "97f2d048d0674de9",
+  "scored_speedup": 1.7382092260901238,
+  "scored_speedup_ci": [
+    1.712136087698772,
+    1.7642823644814756
+  ],
+  "decision_reason": "Private full-layer check passed all 13 tests at 1.73547x; independent public run passed all 13 tests and scored 1.73821x, above the previous decoder best 1.73442x. The exact scored source is promoted."
+}

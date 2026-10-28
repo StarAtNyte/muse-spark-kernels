@@ -1,0 +1,23 @@
+{
+  "name": "decoder_pre_norm_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Replace the generic pre-expert F.rms_norm with one-pass Triton BF16-weight RMSNorm; 34 numerical and metadata checks pass and paired H200 Torch2.9 graphs save about 5us across all batch sizes. Preserve all expert, attention, projection, routing, and residual code.",
+  "sha256": "e479182783eb84e1a2d63f75fe3a4973f426116554a08d2086baf2666b6c3028",
+  "created_at": 1793097236.3242671,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "c0f2e3bd78904982",
+  "updated_at": 1793097643.7174914
+}
