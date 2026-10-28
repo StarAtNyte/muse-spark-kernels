@@ -843,3 +843,16 @@ shape; next prefill work should target a different component/dataflow, likely
 the large-T expert path or its routing/finalize rather than repeating Marlin
 tile-size guesses. Check artifacts and exact candidates are in
 `experiments/prefill_blocksize_48_t753_check_v1/`.
+
+## Whole-decoder WGS gather-batch transfer (2026-10-28)
+
+Transferred only the standalone MoE winner's `OKC_GATHB=7` setting into the
+whole-decoder WGS kernel, which uses 8. The complete H200 check
+`04a138c2ac314122` passed all correctness and timing cases at **2.08635x**
+(95% CI **[2.05506, 2.11765]**), versus **2.09091x** for the prior exact-source
+check. The point estimate is lower and the intervals overlap; reject as no
+demonstrated integrated gain, retain the published decoder, and do not submit.
+The profile still attributes 207 us / 40% of GPU time to MoE on verify-32 full,
+so the next decoder experiment should change the WGS dataflow or reduce its
+critical-path traffic, rather than transfer this gather constant. Exact source,
+status, and analysis: `experiments/decoder_wgs_gathb7_check_v1/`.

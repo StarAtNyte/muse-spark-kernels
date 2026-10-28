@@ -107,6 +107,13 @@ See [the engineering notebook](research/ENGINEERING.md) for measured
 bottlenecks, pending experiments, promotion criteria, and hardware references.
 All five challenge contracts are initialized under `kernels/`.
 
+Latest decoder transfer check `04a138c2ac314122` passed correctness at
+2.08635x (95% CI 2.05506–2.11765) after changing only the WGS activation
+gather batch from 8 to 7. It did not beat the prior same-source check
+(2.09091x), so it was archived without submission. The live board remains
+overall #94; continue targeting integrated decoder dataflow and the category
+cutoffs above.
+
 `serving/sglang` is the pinned SGLang checkout. `serving/patch.diff` currently
 contains the fused Hopper router and a guarded small-batch expert-reduction
 path, both derived from validated kernels. Syntax and patch rules pass; the serving patch has not been

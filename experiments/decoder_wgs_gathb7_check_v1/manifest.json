@@ -1,0 +1,13 @@
+{
+  "name": "decoder_wgs_gathb7_check_v1",
+  "problem": "muse_decode_layer",
+  "parent": "kernels/muse_decode_layer/submission.py",
+  "hypothesis": "Transfer the MoE winner's activation gather batch of 7 to the whole-decoder WGS kernel, which still uses 8.",
+  "sha256": "91080ec960e25bfc87ca44dbd029eefc217a934a002362b8c56dd9418dd926df",
+  "check_job_id": "04a138c2ac314122",
+  "decision": "reject_inconclusive_no_gain",
+  "passed": true,
+  "speedup": 2.0863522714019274,
+  "speedup_ci": [2.0550569873308984, 2.117647555472956],
+  "reason": "Full correctness passed, but the score is below the prior exact-source check at 2.0909137x and confidence intervals overlap. No demonstrated end-to-end improvement; do not submit."
+}
