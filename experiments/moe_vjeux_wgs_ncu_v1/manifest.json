@@ -1,0 +1,9 @@
+{
+  "name": "moe_vjeux_wgs_ncu_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Profile the scored WGS kernel to identify the largest hardware constraint before another structural redesign.",
+  "decision": "profiled",
+  "job_shape": {"batch": 32, "grid_ctas": 132, "threads_per_cta": 576},
+  "source_submission_unchanged": true
+}

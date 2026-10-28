@@ -1,0 +1,19 @@
+Modal H200, Nsight Compute 12.8, `--clock-control none --profile-from-start off --target-processes all --set basic`.
+Reference check passed: relative L2 2.581e-03, worst row 2.730e-03.
+Clocks were not fixed, so absolute timings/counters may vary; use only as directional profile.
+
+Kernel: moe_fused<0>, batch 32
+Grid: 132 CTAs (one per SM); block: 576 threads
+Duration: 104.10 us (profiled)
+DRAM throughput: 68.04%
+SM throughput: 54.50%
+L2 throughput: 76.84%
+L1/TEX throughput: 23.36%
+Registers/thread: 96
+Dynamic shared memory/CTA: 231.17 KiB
+Theoretical occupancy: 28.12%; achieved: 27.84% (17.82 active warps/SM)
+Waves/SM: 1
+
+Interpretation: WGS is memory-heavy but not at the DRAM ceiling. The main resource constraint is the large per-CTA shared-memory/register footprint. Lowering FT_T to 32 reduced the tile but materially regressed all scored batches (see moe_wgs_ft32_v1); a redesign must preserve weight reuse and scheduling efficiency while changing resource allocation.
+
+Profiler setup history: first run used an old diagnostic wrapper and failed before kernel launch because it expected `_finish_experts`; second run reached the kernel but Nsight's default clock locking was denied by Modal; corrected driver is `dev/modal/drv_moe_wgs_ncu.py` and the successful run used `--clock-control none`.

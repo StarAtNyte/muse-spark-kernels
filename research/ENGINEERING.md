@@ -692,3 +692,19 @@ CUDA decoder together, all six H200 reference checks matched bitwise. Paired
 timings were neutral/slower at batch 32 and 0.35-1.6% slower at batches 128
 and 256. Reject the legacy decode and keep DQ7. Evidence is in
 `experiments/moe_dq4_rotate_v2/`.
+
+## Profile the scored MoE WGS CTA; smaller token tile rejected (2026-10-28)
+
+Nsight Compute on the scored batch-32 H200 WGS kernel (`moe_fused<0>`, clocks
+unlocked) measured 68.0% DRAM throughput, 54.5% SM throughput, 76.8% L2
+throughput, 96 registers/thread, 231.2 KiB shared memory/CTA, and 27.8%
+achieved occupancy (17.8 active warps/SM). The grid is 132 CTAs, one per SM.
+This points to a memory-heavy kernel with a large CTA resource footprint,
+though counters are directional because Modal does not permit fixed clocks.
+Full profile and profiler setup history: `experiments/moe_vjeux_wgs_ncu_v1/`.
+
+Tested halving WGS `FT_T` from 64 to 32 to reduce per-CTA accumulator and
+shared-memory use. All six outputs passed reference checks. It regressed 3-5%
+at batch 32, 5-10% at batch 128, and 12-18% at batch 256, consistent with
+less weight reuse and extra scheduling overhead outweighing the smaller tile.
+Reject; keep `FT_T=64`. Exact times: `experiments/moe_wgs_ft32_v1/`.

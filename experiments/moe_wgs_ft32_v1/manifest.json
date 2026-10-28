@@ -1,0 +1,9 @@
+{
+  "name": "moe_wgs_ft32_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Halving the WGS output-token tile may reduce the 96-register accumulator footprint and improve the memory-heavy H200 kernel, especially for skewed high-batch jobs.",
+  "decision": "rejected",
+  "result": "All six output comparisons passed the task reference. The 32-token tile regressed 3-5% at batch 32, 5-10% at batch 128, and 12-18% at batch 256. Do not promote.",
+  "change": "Set OKC_FT_T=32 for the WGS main kernel; all routing, dequantization, and epilogue math unchanged."
+}

@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed all six batch/seed pairs.
+Baseline source: kernels/muse_moe_w4a16/submission.py. Candidate changes WGS FT_T from 64 to 32.
+
+batch seed baseline_us candidate_us baseline/candidate relative_l2
+32 419 134.912 140.032 0.96146 0
+32 7919 154.272 158.464 0.96983 0
+128 419 195.184 205.296 0.95214 0
+128 7919 190.992 211.264 0.90134 2.7028e-04
+256 419 232.080 264.112 0.88193 1.5546e-04
+256 7919 213.904 252.624 0.84727 2.0452e-04
+
+Decision: reject. Smaller output tiles increase scheduling and repeated-weight work; the regression grows with batch size.
