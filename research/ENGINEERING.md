@@ -717,3 +717,14 @@ bitwise identical, but CUDA-graph timings regressed on every batch/seed pair:
 0.3-0.9% at batch 32, 2.3-3.2% at batch 128, and 3.1-5.5% at batch 256.
 Reject; preserve the current cache hint. Exact measurements are in
 `experiments/moe_wgs_l2hint_v1/`.
+
+## WGS FT_T=128 compile-time attempt (2026-10-28)
+
+Prepared a 128-token WGS tile with one activation-ring slot to amortize each
+weight stage over more token rows while keeping shared memory bounded. Its
+H200 Modal call remained live for over 15 minutes after container startup
+without producing compile, correctness, or timing output. Stopped the ephemeral
+app to cap spend. Treat this as inconclusive, not a kernel regression; the
+candidate and full stop record are in
+`experiments/moe_wgs_ft128_nx1_v1/`. Any follow-up needs a bounded compile step
+before allocating another H200.

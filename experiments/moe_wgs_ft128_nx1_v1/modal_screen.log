@@ -1,0 +1,4 @@
+Modal H200 screen was terminated before correctness or timing.
+Candidate: FT_T=128, WGS_NX=1, matching larger WGS_FIXW. The Modal app remained live for more than 15 minutes after container startup without producing a result. `modal app stop --yes ap-VnRoSfuM2XpwVZx8dku27S` terminated the ephemeral app to cap H200 spend.
+
+No performance or correctness conclusion. Follow-up: try a smaller intermediate FT_T only if the compile path can be kept bounded; do not resubmit this exact build without an isolated compile-time budget.

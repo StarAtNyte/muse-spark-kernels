@@ -1,0 +1,9 @@
+{
+  "name": "moe_wgs_ft128_nx1_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "A 128-token WGS tile amortizes each 256-K weight stage across more token rows on high-batch verifies; reducing the activation ring to one slot holds shared memory below the H200 CTA limit.",
+  "decision": "stopped_compile_timeout",
+  "result": "The Modal H200 call remained live for over 15 minutes with no output from the large FT_T=128 WGMMA build. The ephemeral app was stopped to cap spend before correctness or timing. No kernel conclusion can be drawn.",
+  "change": "FT_T=128, WGS_NX=1, and WGS_FIXW resized to match the 16 N tiles."
+}
