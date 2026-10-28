@@ -120,3 +120,8 @@ path, both derived from validated kernels. Syntax and patch rules pass; the serv
 validated on an 8-GPU node. The serving track opens November 5.
 
 Attention backend: attributed MIT implementation from [team bigboateng](https://github.com/operatorstack/open-kernel-challenge-solutions), independently validated at 1.786690x; a shape-dispatched hybrid with our native/cluster attention is under official evaluation.
+
+Latest prefill progress: the vjeux public candidate passed the full H200 check
+at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
+`68ac9af85a3a4e3d`; its public score and rank are pending. The exact candidate
+and check profile are in `experiments/prefill_vjeux_public_check_v1/`.

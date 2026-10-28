@@ -870,3 +870,12 @@ the official reference checker, but was **1.56x slower** at verify-16 full
 own slower kernel and does not transfer to our implementation. Reject without
 an official check. Candidate, license, driver, raw values, and analysis are in
 `experiments/attention_infraax_bn128_transfer_v1/`.
+
+## Public prefill candidate (2026-10-28)
+
+The vjeux Apache-2.0 public prefill source passed the complete H200 check
+`e335018f303143ed` at **1.79783x** (95% CI [1.77086, 1.82479]), above our
+baseline near 1.0x. Promoted the checked source and submitted it for the
+separate prefill leaderboard as `68ac9af85a3a4e3d`; the scored result is
+pending. Exact source, judge profile, and status are in
+`experiments/prefill_vjeux_public_check_v1/`.
