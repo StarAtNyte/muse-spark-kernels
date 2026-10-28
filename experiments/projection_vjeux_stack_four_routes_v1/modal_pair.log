@@ -1,0 +1,100 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-JBQHJRW7RtnpmLTbOTFrPx
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+RESULT {"batch": 1, "layer": "qkv_gate", "seed": 419, "base_us": 14.992000069469213, "candidate_us": 15.296000055968761, "base_over_candidate": 0.9832895550617338}
+RESULT {"batch": 1, "layer": "qkv_gate", "seed": 7919, "base_us": 14.97599994763732, "candidate_us": 15.15199989080429, "base_over_candidate": 0.9865047399151918}
+RESULT {"batch": 1, "layer": "router", "seed": 419, "base_us": 9.056000038981438, "candidate_us": 9.007999673485756, "base_over_candidate": 1.008878828747545}
+RESULT {"batch": 1, "layer": "router", "seed": 7919, "base_us": 9.071999695152044, "candidate_us": 9.039999917149544, "base_over_candidate": 1.0019354886011809}
+RESULT {"batch": 1, "layer": "unpooler", "seed": 419, "base_us": 8.86400043964386, "candidate_us": 8.54399986565113, "base_over_candidate": 1.0430527703468973}
+RESULT {"batch": 1, "layer": "unpooler", "seed": 7919, "base_us": 9.039999917149544, "candidate_us": 8.624000009149313, "base_over_candidate": 1.0434782218994085}
+RESULT {"batch": 8, "layer": "unpooler", "seed": 419, "base_us": 9.072000160813332, "candidate_us": 9.135999716818333, "base_over_candidate": 1.0}
+RESULT {"batch": 8, "layer": "unpooler", "seed": 7919, "base_us": 9.088000282645226, "candidate_us": 9.151999838650227, "base_over_candidate": 0.9965035206985733}
+RESULT {"batch": 256, "layer": "router", "seed": 419, "base_us": 13.488000258803368, "candidate_us": 12.223999947309494, "base_over_candidate": 1.0997375308034643}
+RESULT {"batch": 256, "layer": "router", "seed": 7919, "base_us": 13.567999936640263, "candidate_us": 12.368000112473965, "base_over_candidate": 1.100785480768433}
+
+STDERR:
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.54 sk2=13.28 torch=18.02 -> cgemv
+[okc] tune o m=1: cgemv=9.09 sk2=9.47 torch=10.82 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.27 torch=25.28 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.36 sgemv=7.74 sk2=8.29 torch=11.23 -> cgemv
+[okc] tune router m=1: rgemv=7.68 sk2=8.8 torch=20.03 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.7 torch=18.3 -> sk2
+[okc] tune o m=16: sk2=9.66 torch=10.53 -> sk2
+[okc] tune pooler m=16: sk2=18.4 torch=25.54 -> sk2
+[okc] tune unpooler m=16: sk2=18.02 torch=22.62 -> sk2
+[okc] tune router m=16: sk2=8.77 torch=20.58 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.53 torch=18.94 -> sk2
+[okc] tune o m=32: sk2=9.66 torch=10.46 -> sk2
+[okc] tune pooler m=32: sk2=19.3 torch=25.98 -> sk2
+[okc] tune unpooler m=32: sk2=18.85 torch=22.75 -> sk2
+[okc] tune router m=32: sk2=9.31 torch=20.93 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.63 torch=18.46 -> sk2
+[okc] tune o m=8: sk2=9.63 torch=10.37 -> sk2
+[okc] tune pooler m=8: sk2=18.18 torch=25.38 -> sk2
+[okc] tune unpooler m=8: sk2=8.16 torch=11.33 -> sk2
+[okc] tune router m=8: sk2=8.77 torch=19.71 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.46 torch=20.96 -> gqx
+[okc] tune o m=128: torch=11.07 torchT=11.23 -> torch
+[okc] tune pooler m=128: gq=25.15 torch=28.74 -> gq
+[okc] tune unpooler m=128: torch=23.78 torchT=22.94 -> torchT
+[okc] tune router m=128: rk=9.86 wide=12.74 gemm=13.79 torch=21.54 -> rk
+[okc] tune o m=256: torch=13.02 torchT=13.02 -> torch
+[okc] tune unpooler m=256: torch=28.74 torchT=27.9 -> torchT
+[okc] tune router m=256: rk=10.78 wide=13.82 gemm=17.57 torch=22.53 -> rk
+[okc] disabled: []
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.93 sk2=13.47 torch=18.62 -> cgemv
+[okc] tune o m=1: cgemv=9.06 sk2=9.63 torch=10.82 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.34 torch=25.31 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.49 sgemv=7.68 sk2=8.16 torch=11.26 -> cgemv
+[okc] tune router m=1: rgemv=7.55 sk2=8.93 torch=19.52 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.82 torch=18.37 -> sk2
+[okc] tune o m=16: sk2=9.31 torch=10.34 -> sk2
+[okc] tune pooler m=16: sk2=18.56 torch=25.54 -> sk2
+[okc] tune unpooler m=16: sk2=18.05 torch=22.4 -> sk2
+[okc] tune router m=16: sk2=8.86 torch=20.61 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.59 torch=18.98 -> sk2
+[okc] tune o m=32: sk2=9.66 torch=10.62 -> sk2
+[okc] tune pooler m=32: sk2=19.2 torch=26.21 -> sk2
+[okc] tune unpooler m=32: sk2=19.04 torch=22.69 -> sk2
+[okc] tune router m=32: sk2=9.15 torch=20.93 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.54 torch=18.75 -> sk2
+[okc] tune o m=8: sk2=9.6 torch=10.21 -> sk2
+[okc] tune pooler m=8: sk2=18.43 torch=25.31 -> sk2
+[okc] tune unpooler m=8: sk2=8.22 torch=11.36 -> sk2
+[okc] tune router m=8: sk2=8.7 torch=19.87 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.37 torch=21.31 -> gqx
+[okc] tune o m=128: torch=11.23 torchT=11.14 -> torchT
+[okc] tune pooler m=128: gq=24.83 torch=29.06 -> gq
+[okc] tune unpooler m=128: torch=23.65 torchT=23.14 -> torchT
+[okc] tune router m=128: rk=9.86 wide=12.7 gemm=13.98 torch=21.54 -> rk
+[okc] tune o m=256: torch=12.99 torchT=12.96 -> torchT
+[okc] tune unpooler m=256: torch=28.58 torchT=28.1 -> torchT
+[okc] tune router m=256: rk=11.17 wide=13.79 gemm=17.5 torch=22.62 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-JBQHJRW7RtnpmLTbOTFrPx

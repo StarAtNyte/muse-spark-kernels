@@ -1,0 +1,26 @@
+{
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Stack paired-winning vjeux M1 unpooler and M256 router atop the scored M32 pooler/M128 router hybrid.",
+  "sha256": "e270e24d3613bf41fe747fb2ed1da009a6737c466b1621908ea49ad9b09002c1",
+  "check_job": "4759f26857a74c46",
+  "status": "done",
+  "driver": "dev/modal/drv_projection_vjeux_pair_small.py",
+  "paired_speedups": {
+    "unpooler_m1": [
+      1.04305277,
+      1.04347822
+    ],
+    "router_m256": [
+      1.09973753,
+      1.10078548
+    ]
+  },
+  "passed": true,
+  "check_speedup": 1.5241177903095153,
+  "check_ci": [
+    1.5012560234548726,
+    1.5469795571641578
+  ],
+  "decision": "promoted_submitted",
+  "scored_job": "4ed546f6ab2748cb"
+}
