@@ -1,0 +1,20 @@
+{
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Exchange one weight stage for one activation stage while staying within H200 shared-memory limits.",
+  "driver": "dev/modal/drv_moe_wgs_w2x4.py",
+  "change": "WGS_NS 3 -> 2; OKC_WGSNX 3 -> 4",
+  "hardware": "NVIDIA H200",
+  "modal_app": "ap-Hc25NQ0WLEqGhn95DK3AEK",
+  "reference_passed": true,
+  "relative_l2": 0,
+  "base_over_candidate": [
+    0.9757037411,
+    0.9767799671,
+    0.955517474,
+    0.9443083521,
+    0.9350821828,
+    0.9289478311
+  ],
+  "decision": "reject_regression",
+  "note": "Inherited gath2_us label refers to WGS_NS=2, WGSNX=4."
+}

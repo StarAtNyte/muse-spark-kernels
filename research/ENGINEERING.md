@@ -917,3 +917,7 @@ Check `64ef8d86191240e6` used order 2 for T >= 8192 to interleave small expert t
 ## WGS two-slot activation ring (2026-10-28)
 
 A paired H200 screen changed `OKC_WGSNX` from 3 to 2 on the current standalone MoE kernel. All six reference checks passed with bitwise-identical output, but the two-slot variant was **2.7–5.0% slower** at M32/M128/M256 over two seeds. Retain three slots in MoE and decoder. Exact driver, parent source, and raw Modal log are in `experiments/moe_wgs_nx2_v1/`; its `gath2_us` output label refers to WGSNX=2.
+
+## Balanced WGS ring screen (2026-10-28)
+
+A fourth activation slot alone exceeds H200 shared memory, so a paired screen exchanged one weight slot for an activation slot: `WGS_NS=2`, `OKC_WGSNX=4`. All six H200 reference checks passed bitwise, but the variant was **2.3–7.1% slower** across M32/M128/M256. Retain the three-weight/three-activation schedule. Driver, parent source and raw Modal log: `experiments/moe_wgs_w2x4_v1/` and `dev/modal/drv_moe_wgs_w2x4.py`. The inherited `gath2_us` label denotes the balanced ring candidate.
