@@ -897,3 +897,7 @@ Check `87cb6bd7900f4a39` forced one split for full-short attention. It passed co
 ## Prefill four-split full-short attention (2026-10-28)
 
 Check `0f25463837034bb3` forced four splits for full-short attention. It passed at **1.76839x** (95% CI [1.74187, 1.79492]); B1/T753 full measured **898.1 us** versus **922.1 us** in the parent check. The target gain comes from separate runs and the aggregate estimate is lower with overlapping intervals; retain as a paired H200 screen candidate, do not promote yet. Exact source, status and profiles: `experiments/prefill_full_short_four_splits_v1/`.
+
+## Paired prefill split screen (2026-10-28)
+
+On Modal H200, paired 2-vs-4 split attention replays across seeds 539, 1427, and 7919 favored four splits by **1.17%, 1.05%, and 0.90%**, respectively; three splits were 21–22% slower. This component screen used synthetic inputs and does not prove the full-layer score. The four-split candidate passed full official correctness in check `0f25463837034bb3` and was promoted and submitted as `69464bf8cbce4588`. Exact driver and Modal output are archived with `experiments/prefill_full_short_four_splits_v1/`.

@@ -908,6 +908,8 @@ def _run_attention(st, data, q8, qkv, cfg, variant, pre):
     """Attention + norm-gate epilogue -> og [T, Q_SIZE]."""
     if variant is not None:
         ns = _attn_splits(cfg, data, variant, st["nsm"])
+        if _attn_class(cfg) == "full_short":
+            ns = 4
         sk = ATTN_SK.get(_attn_class(cfg), 0)
         if sk and variant in (8, 43) and cfg["batch"] * ((cfg["q_len"] + ATTN_SK_Q_BLOCK - 1) // ATTN_SK_Q_BLOCK) * 2 <= ATTN_SK_MAX_PAIRS:
             ns = -sk

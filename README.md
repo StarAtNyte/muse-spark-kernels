@@ -124,3 +124,5 @@ Latest prefill progress: the vjeux public candidate passed the full H200 check
 at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
 `68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its live rank is #49. The exact candidate
 and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
+
+Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` is pending. The public best remains 1.7874x until a new result is published.

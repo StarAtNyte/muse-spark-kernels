@@ -1,0 +1,49 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2AapR2kZqSf3OrCB3Uc63R
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_cute.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"seed": 539, "splits": 3, "relative_l2": 0.012543019838631153, "parent_us": 499.63200092315674, "candidate_us": 636.000007390976, "speedup": 0.782844455833889}
+RESULT {"seed": 539, "splits": 4, "relative_l2": 0.011555860750377178, "parent_us": 496.39999866485596, "candidate_us": 492.6239997148514, "speedup": 1.0116578393141273}
+RESULT {"seed": 1427, "splits": 3, "relative_l2": 0.012403546832501888, "parent_us": 495.8239942789078, "candidate_us": 635.3760063648224, "speedup": 0.7784633665163426}
+RESULT {"seed": 1427, "splits": 4, "relative_l2": 0.01154736801981926, "parent_us": 497.16800451278687, "candidate_us": 489.5999878644943, "speedup": 1.0104878636331573}
+RESULT {"seed": 7919, "splits": 3, "relative_l2": 0.012499196454882622, "parent_us": 499.82400238513947, "candidate_us": 638.5280191898346, "speedup": 0.7816538977167826}
+RESULT {"seed": 7919, "splits": 4, "relative_l2": 0.011602739803493023, "parent_us": 498.1279969215393, "candidate_us": 493.6319887638092, "speedup": 1.0090420358578407}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2AapR2kZqSf3OrCB3Uc63R
