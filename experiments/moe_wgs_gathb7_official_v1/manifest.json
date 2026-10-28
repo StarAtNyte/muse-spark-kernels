@@ -1,0 +1,25 @@
+{
+  "name": "moe_wgs_gathb7_official_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Change only the WGS activation gather batch from 8 to 7 after five of six paired H200 graph points favored 7, to test the complete official MoE score.",
+  "sha256": "42ddf34e542c77b35906365338928c2de41600fb83db19425274b31015997073",
+  "created_at": 1793171144.1107802,
+  "decision": "duplicate_of_existing_job",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 8,
+      "left": 12
+    }
+  },
+  "status": "duplicate",
+  "job_id": "75dcd1f2d67340d6",
+  "updated_at": 1793171149.9794254,
+  "duplicate_job_id": "de2c6cad047f4f59",
+  "note": "Initial check request accidentally archived unchanged GATHB=8 source; duplicate was detected and did not consume a check. Corrected GATHB=7 source is archived in moe_wgs_gathb7_check_v1."
+}

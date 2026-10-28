@@ -43,8 +43,8 @@ Private checks have a separate daily quota from leaderboard submissions.
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5346x | #64 | 1.5450x | 1.6367x | d2dd2aec03f94dbf |
 | Attention | 2.5806x | #60 | 2.5883x | 3.0316x | 0d181df6ffc2480b |
-| MoE | 2.3263x | #71 | 2.3400x | 2.6853x | a834a3c9bf6e44f6 |
-| Whole decoder layer | 2.0746x | #94 | 2.1292x | 2.3986x | 2a5a87f725fd47d2 |
+| MoE | 2.3290x | #63 | 2.3400x | 2.6853x | 88e09ad35c814c29 |
+| Whole decoder layer | 2.0746x | #94 | 2.1351x | 2.3986x | 2a5a87f725fd47d2 |
 | Prefill layer | — | Unranked | 1.7831x | 2.0252x | No submission |
 
 Overall rank is **#94**. Prefill is a separate board and does not count toward
@@ -65,12 +65,14 @@ ranks were not returned in the public job records, so they are left blank.
 |---|---|---|---|---:|
 | Projections | 1.1743x → 1.5177x → **1.5346x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Live rank #64. Job `d2dd2aec03f94dbf`. | `kernels/muse_bf16_proj/submission.py` | #64 |
 | Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #60 |
-| MoE | 1.1465x → **2.3263x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel and shape dispatch. Job `a834a3c9bf6e44f6`. | `kernels/muse_moe_w4a16/submission.py` | #71 |
+| MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #63 |
 | Whole decoder | 1.0962x → 1.7469x → **2.0746x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path. Job `2a5a87f725fd47d2`. | `kernels/muse_decode_layer/submission.py` | #94 |
 | Prefill layer | No scored run | Not started; separate leaderboard, excluded from overall rank. Top-50 cutoff shown above. | `kernels/muse_prefill_layer/submission.py` | Unranked |
 
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
-same; each job ID and score identifies the exact published run.
+same; each job ID and score identifies the exact published run. The latest MoE
+submission improved the live rank from #71 to #63; its 2.3290x score remains
+below the current top-50 cutoff of 2.3400x.
 
 ### Latest validation against the published kernels (2026-10-28)
 
@@ -82,7 +84,7 @@ not resubmitted:
 | Problem | Check score (95% interval) | Source vs published | Decision |
 |---|---:|---|---|
 | Attention | 2.57313x (2.53453–2.62387) | Identical | Keep published 2.5806x |
-| MoE | 2.32608x (2.29119–2.36097) | Identical | Keep published 2.3263x |
+| MoE | 2.32608x (2.29119–2.36097) | Identical | Historical check; superseded by GATHB=7 run 2.3290x |
 | Whole decoder | 2.09091x (2.05955–2.12228) | Identical | Keep published 2.0746x; interval overlaps |
 
 Recent bounded H200 screens also rejected MoE gather batch sizes 4, 6, and 16;

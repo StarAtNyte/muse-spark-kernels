@@ -1,0 +1,11 @@
+Modal H200 paired CUDA-graph screen, 16 alternating samples per point. Reference checks passed for both variants; candidate outputs were bitwise identical to baseline (relative L2 = 0).
+
+batch seed baseline_us gath7_us baseline/candidate
+32 419 133.472 132.128 1.00694
+32 7919 152.128 151.600 1.00172
+128 419 193.936 193.920 0.99943
+128 7919 190.976 190.128 1.00575
+256 419 230.128 229.648 1.00209
+256 7919 214.464 213.536 1.00400
+
+Five of six pairs favored GATHB=7; the one miss was a 0.06% near tie. Best gain was 0.69%. Run one official private check to measure the aggregate score; do not promote unless aggregate improvement is credible.

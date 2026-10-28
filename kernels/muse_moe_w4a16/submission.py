@@ -1846,7 +1846,7 @@ __device__ __forceinline__ int wgs_cost(int pb, int cnt) {
   return (int)(((pb ? WGS_PB : WGS_PA) >> (8 * (((cnt + 7) >> 3) - 1))) & 255ull);
 }
 #define OKC_WGSREORD 1  // WGS: phase A starts with the trailing partial unit (see wgs_split)
-#define OKC_GATHB 8  // WGS: x rows gathered per batch (loads first, then stores); 0 = one row at a time
+#define OKC_GATHB 7  // WGS: x rows gathered per batch (loads first, then stores); 0 = one row at a time
 #define OKC_WGSPR 1  // WGS: the x producer warp computes the stage ranges while the consumers gather
 #define OKC_WGSDFIN 2  // WGS: stream-K split units finished by a designated share (see wgs_flush): bit0 phase A, bit1 phase B
 #define OKC_WGSFCI 3

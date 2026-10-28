@@ -1,0 +1,28 @@
+{
+  "name": "moe_wgs_gathb7_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "kernels/muse_moe_w4a16/submission.py",
+  "hypothesis": "Complete the gather batch-size local sweep around the paired-screen winner 6 and canonical 8; test 7 on H200 to see if intermediate launch amortization improves the near-top-50 MoE aggregate.",
+  "change": "Compile-time OKC_GATHB 8 -> 7 only.",
+  "status": "screened",
+  "sha256": "a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a",
+  "driver": "dev/modal/drv_moe_wgs_gathb16.py (matched compile-time define OKC_GATHB=7)",
+  "created_at": 1793170974.2256484,
+  "decision": "run_private_check",
+  "screen": {
+    "device": "H200",
+    "batches": [
+      32,
+      128,
+      256
+    ],
+    "seeds": [
+      419,
+      7919
+    ],
+    "timing": "16 alternating paired CUDA-graph samples per seed/batch",
+    "correctness": "task reference passed at every point; candidate output bitwise identical to parent",
+    "result": "five of six pairs favor GATHB=7; max gain 0.69%; one 0.06% near tie"
+  },
+  "updated_at": 1793171169.9375355
+}

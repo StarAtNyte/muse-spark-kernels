@@ -1,0 +1,21 @@
+{
+  "name": "scored_moe_wgs_gathb7_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "kernels/muse_moe_w4a16/submission.py before GATHB=7",
+  "hypothesis": "The WGS activation gather batch of 7 improves the official aggregate MoE score after paired H200 screens favored it in five of six points.",
+  "change": "Only compile-time OKC_GATHB 8 -> 7.",
+  "sha256": "a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a",
+  "job_id": "88e09ad35c814c29",
+  "check_job_id": "ed6c09d5edde4d70",
+  "status": "done",
+  "decision": "promote_scored_improvement",
+  "passed": true,
+  "speedup": 2.3290478509210897,
+  "speedup_ci": [
+    2.2941121331572734,
+    2.363983568684906
+  ],
+  "score_us": 5774.2480450461335,
+  "created_at": 1793171729.8390899,
+  "reason": "Public H200 run improved from 2.3263x to 2.3290x; live MoE rank improved from #71 to #63 but remains below #50 score 2.3400x."
+}
