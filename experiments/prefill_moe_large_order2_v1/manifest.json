@@ -1,0 +1,15 @@
+{
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Interleave small and large expert tiles for long prefill to reduce persistent-queue tail latency.",
+  "sha256": "5c02350361fd169844dc8ca8f0b96beecabc13e244b00681d6b365ef9fae021b",
+  "job_id": "64ef8d86191240e6",
+  "status": "done",
+  "passed": true,
+  "speedup": 1.7935186648296715,
+  "speedup_ci": [
+    1.7666158848572264,
+    1.8204214448021163
+  ],
+  "decision": "reject_no_consistent_gain",
+  "reason": "Long-case expert times move in both directions and aggregate check is below parent with overlapping confidence intervals."
+}

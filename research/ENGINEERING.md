@@ -909,3 +909,7 @@ Job `69464bf8cbce4588` passed at **1.78568x** (95% CI [1.75889, 1.81246]), below
 ## Prefill mid-sized MoE remainder plan (2026-10-28)
 
 Check `b399b11823e54e91` raised `FINE_MIN_T` from 2048 to 4096, choosing coarse remainders for B4/T753. It passed at **1.78337x** (95% CI [1.75662, 1.81012]), below the parent check **1.79783x**; B4 sliding profiled expert time rose from **744.6 us to 774.6 us**. Reject; retain the fine plan. Exact source, status and profiles: `experiments/prefill_moe_fine4096_v1/`.
+
+## Long-prefill expert ordering (2026-10-28)
+
+Check `64ef8d86191240e6` used order 2 for T >= 8192 to interleave small expert tiles. It passed at **1.79352x** (95% CI [1.76662, 1.82042]), versus parent **1.79783x**. Long-case expert profiles varied in both directions between the two runs, so no consistent gain is established. Retain order 1. Exact candidate, status and profiles: `experiments/prefill_moe_large_order2_v1/`.
