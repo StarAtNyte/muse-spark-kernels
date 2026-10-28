@@ -750,3 +750,11 @@ Keep 264 CTAs; evidence and drivers are in
 `experiments/attention_full_decode32_flat_split_v1/`,
 `experiments/attention_full_decode32_flat_fine_v1/`, and
 `dev/modal/drv_attention_full_decode32_flat_split.py` / `drv_attention_full_decode32_flat_fine.py`.
+
+## q_len-1 full decode-32 virtual boundary padding (2026-10-28)
+
+The current flat kernel inserts 400 virtual keys between request ranges for
+q_len 1; q_len 8 uses 600. Tested 600 for the batch-32 full-context decode
+shape against the current 400 on three paired H200 seeds. All reference checks
+passed, but results were neutral (speed ratios 1.0016x, 1.0003x, 0.9952x).
+Keep 400. Evidence: `experiments/attention_full_decode32_segk600_v1/`.

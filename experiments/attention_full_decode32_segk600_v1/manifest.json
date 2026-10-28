@@ -1,0 +1,9 @@
+{
+  "name": "attention_full_decode32_segk600_v1",
+  "problem": "muse_attention_decode",
+  "parent": "scored_attention_vjeux_public_check_v1",
+  "hypothesis": "The q_len-1 flat partition's 400-key virtual boundary padding was selected at batch 16; 600 may better balance q_len-1 full attention at batch 32, where this case carries high score weight.",
+  "decision": "rejected",
+  "result": "All three reference checks passed. SEGK=600 was effectively neutral across seeds (-0.5% to +0.16%). Keep the validated 400-key q_len-1 boundary padding.",
+  "change": "Use SEGK=600 for q_len 1 instead of 400; q_len 8 remains at 600."
+}

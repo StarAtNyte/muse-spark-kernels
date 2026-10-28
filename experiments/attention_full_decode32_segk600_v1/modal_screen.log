@@ -1,0 +1,9 @@
+Modal H200 paired CUDA-graph screen; task reference checks passed on all three seeds.
+Current q_len-1 SEGK: 400. Candidate q_len-1 SEGK: 600. q_len-8 remains 600 in both.
+
+seed baseline_us candidate_us speedup
+539 173.200 173.024 1.00158
+1427 171.696 171.664 1.00028
+2753 172.464 173.056 0.99521
+
+Decision: reject as neutral/no repeatable gain. Keep SEGK=400.
