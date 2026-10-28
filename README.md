@@ -134,3 +134,5 @@ Projection four-route hybrid adds paired-winning M1 unpooler and M256 router rou
 The isolated vjeux M256 router candidate passed check `593651829e0e4b78`; scored job `df44909a5b3540ff` passed at 1.52297x; public projection best remains 1.53951x.
 
 Decoder T=1/8 output-projection transfer passed check `7ec7babbe7044aa6` at 2.08690x; scored job `1c4e4524414c407f` passed at 2.08743x, rank #95.
+
+Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.08859x; scored job `6cf1be8d60e84ac7` is pending. Published decoder best remains 2.08743x.

@@ -963,3 +963,7 @@ The scored decoder transfer `1c4e4524414c407f` passed at **2.08743x** (95% CI [2
 ## Decoder M8 pooler transfer (2026-10-28)
 
 CUDA 13 paired screens found our standalone M8 pooler 12–13% faster than vjeux over two seeds, but transferring it with a separate router into the decoder passed check `0b2fb472b69241fa` at only **2.07081x** (95% CI [2.03975, 2.10187]) vs parent check **2.08690x**. Verify-1 sliding was **118.59 vs 109.07 us**, full **122.28 vs 117.75 us**. Reject; preserve the decoder route. Exact source, paired log, driver and judge profiles: `experiments/decoder_pooler8_transfer_v1/` and `dev/modal/drv_projection_vjeux_pair_decoder.py`.
+
+## Decoder projection and WGS gather stack (2026-10-28)
+
+Combined the scored small output projection transfer with standalone MoE gather batch 7. Check `9ace173c90844588` passed at **2.08859x** (95% CI [2.05726, 2.11992]), versus parent check **2.08690x**; intervals overlap. Submitted exact checked source as `6cf1be8d60e84ac7` (pending), supported by the standalone paired screen and scored MoE gain. Candidate, status, and profiles: `experiments/decoder_projection_stack_gathb7_v1/`.
