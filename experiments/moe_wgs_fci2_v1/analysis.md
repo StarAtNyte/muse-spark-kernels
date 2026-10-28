@@ -1,0 +1,5 @@
+# WGS split fixup at group 2
+
+The candidate changes `OKC_WGSFCI` from 3 to 2 to issue deferred split fixup one WGMMA commit group earlier. The paired H200 screen checks the reference before timing and alternates 16 graph replays for token counts 32, 128 and 256 over seeds 419 and 7919. All six checks passed with bitwise-identical outputs. Baseline/candidate median paired ratios were 1.00788, 0.99585 (M32), 0.99910, 0.99934 (M128), and 1.00082, 0.99298 (M256). Effects are mixed; no repeatable gain is established. Retain the existing kernel. These are component measurements, not an official leaderboard score.
+
+The driver dynamically builds the candidate from baseline SHA-256 `a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a`. Its inherited `gath2_us` output label denotes FCI=2. Modal app `ap-G9kulRfCR2asdVeLxsWZgR`; raw output `modal.log`. Command: `modal run dev/modal/run_h200.py --problem muse_moe_w4a16 --file kernels/muse_moe_w4a16/submission.py --drv experiments/moe_wgs_fci2_v1/driver.py --cmd 'timeout 900s python /w/run/drv.py'`.
