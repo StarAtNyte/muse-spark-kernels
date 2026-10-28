@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed both outputs for all six batch/seed pairs.
+Baseline source: kernels/muse_moe_w4a16/submission.py. Candidate compresses the large-job WGS cost tail.
+
+batch seed baseline_us candidate_us baseline/candidate relative_l2
+32 419 133.760 133.248 1.00701 0
+32 7919 152.336 151.856 0.99884 0
+128 419 193.424 195.584 0.99140 1.6131e-04
+128 7919 189.696 190.688 0.98781 1.6978e-04
+256 419 230.192 233.072 0.99016 1.8214e-04
+256 7919 213.296 220.880 0.96755 1.6925e-04
+
+Decision: reject. Batch 32 was effectively neutral; verify batches 128/256 regressed on both seeds.

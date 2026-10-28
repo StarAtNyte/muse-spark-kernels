@@ -1,0 +1,10 @@
+{
+  "name": "moe_wgs_costcurve_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Increasing the WGS phase-cost estimate for multi-tile expert jobs improves load balance in the high-token verify shapes.",
+  "decision": "rejected",
+  "result": "All six output comparisons passed the reference. The candidate was neutral at batch 32 and regressed batch 128/256; do not promote.",
+  "schedule_a": [112, 135, 144, 162, 183, 207, 233, 250],
+  "schedule_b": [100, 112, 128, 148, 171, 196, 222, 246]
+}

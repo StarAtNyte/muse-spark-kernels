@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed both outputs for all six batch/seed pairs; relative L2 against baseline was exactly zero.
+Baseline source: kernels/muse_moe_w4a16/submission.py. Candidate switches the prepare-time E2M1 permutation and inline PTX decode together from DQ7 to funnel-shift rotations.
+
+batch seed baseline_us candidate_us baseline/candidate relative_l2
+32 419 134.592 134.496 1.00300 0
+32 7919 154.304 154.800 0.98930 0
+128 419 195.616 196.688 0.99498 0
+128 7919 193.120 193.840 0.99644 0
+256 419 233.424 235.328 0.98970 0
+256 7919 215.632 218.816 0.98431 0
+
+Decision: reject. The legacy rotate decode is neutral/slower at batch 32 and consistently slower at the high verify batches.

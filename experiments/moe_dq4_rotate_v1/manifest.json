@@ -1,0 +1,9 @@
+{
+  "name": "moe_dq4_rotate_v1",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "The original funnel-shift E2M1 decoder may compete better on H200 than the DQ7 layout's extra IMAD instructions under WGS register pressure.",
+  "decision": "invalid_candidate",
+  "result": "Reference checker failed at relative L2 1.411. Candidate packing switched to rotate layout but CUDA decoder remained on DQ7. Retained as the failed setup record; corrected in moe_dq4_rotate_v2.",
+  "change": "Disable DQ7 weight layout and use original rotate-based bit placement and decode."
+}

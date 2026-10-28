@@ -1,0 +1,10 @@
+{
+  "name": "moe_wgs_costcurve_v2",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "Reducing the large-job WGS cost estimate may avoid over-weighting long expert jobs at high verify batches.",
+  "decision": "rejected",
+  "result": "All six output comparisons passed the reference. The candidate was neutral at batch 32 and regressed batch 128/256; do not promote.",
+  "schedule_a": [112, 135, 140, 150, 160, 170, 180, 190],
+  "schedule_b": [100, 104, 115, 123, 132, 140, 148, 156]
+}

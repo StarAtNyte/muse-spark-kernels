@@ -1,0 +1,10 @@
+{
+  "name": "moe_dq4_rotate_v2",
+  "problem": "muse_moe_w4a16",
+  "parent": "scored_moe_vjeux_public_check_v1",
+  "hypothesis": "The original funnel-shift E2M1 decoder may compete better on H200 than the DQ7 layout's extra IMAD instructions under WGS register pressure.",
+  "decision": "rejected",
+  "result": "Reference checker passed for all six batch/seed pairs; bitwise output matched. Rotate decoder regressed 0.3-1.6% at batches 32/128/256. Do not promote.",
+  "change": "Switch prepare-time bit permutation and inline decode together to the original rotate-based mapping.",
+  "correctness_fix": "Compile-time OKC_DQ7 guard now keeps PTX decode aligned with the selected packer."
+}

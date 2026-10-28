@@ -1,0 +1,12 @@
+Modal H200 paired CUDA-graph screen; reference checker passed both outputs for all six batch/seed pairs.
+Baseline source: kernels/muse_moe_w4a16/submission.py. Candidate changes only WGS phase cost curves.
+
+batch seed baseline_us candidate_us baseline/candidate relative_l2
+32 419 133.984 133.280 1.01067 8.3204e-05
+32 7919 152.912 153.200 0.99551 0
+128 419 195.024 198.080 0.98816 2.1179e-04
+128 7919 192.368 192.576 0.99769 1.5808e-04
+256 419 232.464 236.864 0.98854 1.4714e-04
+256 7919 214.192 224.352 0.95452 1.9899e-04
+
+Decision: reject. Only one batch-32 seed improved; both high verify batches regressed on both seeds.

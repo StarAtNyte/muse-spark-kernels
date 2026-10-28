@@ -1,0 +1,4 @@
+Setup validation failure; no timing was performed.
+Modal H200 reference check: relative L2 error 1.411 (bound 0.015).
+Cause: DQ7=False changed prepare-time code permutation, but CUDA dq4() retained unconditional DQ7 decoding.
+Decision: invalid candidate setup, not a kernel result. Corrected pack/decode pairing in moe_dq4_rotate_v2.

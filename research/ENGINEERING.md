@@ -671,3 +671,24 @@ operatorstack expert route wins on its earlier decoder base do not transfer to
 the vjeux WGS path. Candidate and full profile are in
 `experiments/decoder_vjeux_operatorstack_stack_v1/` (check
 `a246d52c81b642a7`).
+
+## MoE WGS schedule and E2M1 decode follow-ups (2026-10-28)
+
+Screened two alternate nonlinear cost curves for the persistent WGS MoE
+kernel, comparing paired CUDA-graph timings on an H200 at batches 32, 128,
+and 256 over two seeds. Both candidates passed the task reference. Increasing
+large-job costs was neutral at batch 32 but regressed batch 128 by 0.2-1.2%
+and batch 256 by 1.2-4.8%. Compressing the large-job tail was also effectively
+neutral at batch 32 and regressed batch 128 by 0.9-1.2% and batch 256 by
+1.0-3.3%. Reject both; retain the scored WGS schedule. Exact tables, times,
+and per-seed errors are in `experiments/moe_wgs_costcurve_v1/` and
+`experiments/moe_wgs_costcurve_v2/`.
+
+Tested the older funnel-shift E2M1 bit layout and inline PTX decoder as an
+alternative to the DQ7 decode. The initial candidate exposed a pack/decode
+mismatch (relative L2 1.411); this setup error is recorded in
+`experiments/moe_dq4_rotate_v1/`. After switching the prepare-time packer and
+CUDA decoder together, all six H200 reference checks matched bitwise. Paired
+timings were neutral/slower at batch 32 and 0.35-1.6% slower at batches 128
+and 256. Reject the legacy decode and keep DQ7. Evidence is in
+`experiments/moe_dq4_rotate_v2/`.
