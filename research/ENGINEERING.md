@@ -879,3 +879,7 @@ baseline near 1.0x. Promoted the checked source and submitted it for the
 separate prefill leaderboard as `68ac9af85a3a4e3d`; the scored result is
 pending. Exact source, judge profile, and status are in
 `experiments/prefill_vjeux_public_check_v1/`.
+
+## Scored prefill result (2026-10-28)
+
+Job `68ac9af85a3a4e3d` passed at **1.78740x** (95% CI [1.76059, 1.81421]). The board displayed #50 at 1.7847x, but did not yet return our row. Rank is unconfirmed. The scored source, status and profile are in `experiments/scored_prefill_vjeux_v1/`.

@@ -45,11 +45,11 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Attention | 2.5806x | #60 | 2.5883x | 3.0316x | 0d181df6ffc2480b |
 | MoE | 2.3290x | #63 | 2.3400x | 2.6853x | 88e09ad35c814c29 |
 | Whole decoder layer | 2.0746x | #94 | 2.1351x | 2.3986x | 2a5a87f725fd47d2 |
-| Prefill layer | — | Unranked | 1.7831x | 2.0252x | No submission |
+| Prefill layer | 1.7874x | Pending | 1.7847x | 2.0252x | 68ac9af85a3a4e3d |
 
 Overall rank is **#94**. Prefill is a separate board and does not count toward
-overall rank; we have not submitted a prefill run. Its current top-50 cutoff is
-1.7831x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
+overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
+is pending. Its current top-50 cutoff is 1.7847x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
 operatorstack transfer passed correctness but scored only **1.8533x**, so it
 was rejected and not submitted. See `research/ENGINEERING.md` and
@@ -67,7 +67,7 @@ ranks were not returned in the public job records, so they are left blank.
 | Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #60 |
 | MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #63 |
 | Whole decoder | 1.0962x → 1.7469x → **2.0746x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path. Job `2a5a87f725fd47d2`. | `kernels/muse_decode_layer/submission.py` | #94 |
-| Prefill layer | No scored run | Private Marlin block-size experiments only; both regressed and were rejected. Separate leaderboard, excluded from overall rank. | `kernels/muse_prefill_layer/submission.py` | Unranked |
+| Prefill layer | **1.7874x** | Validated vjeux prefill implementation; public job `68ac9af85a3a4e3d`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | Pending |
 
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run. The latest MoE
@@ -93,11 +93,10 @@ reduction. The screen logs, exact source snapshots, and official check artifacts
 remain under `experiments/`; details and next hypotheses are in
 `research/ENGINEERING.md` and `research/PTX-CAMPAIGN.md`.
 
-Prefill has no public submission yet. Two private H200 checks of Marlin expert
+Before the current prefill submission, two private H200 checks of Marlin expert
 tile-size heuristics passed correctness but scored **0.9762x** and **0.9899x**;
 both were rejected. BM32/BM48 hurt the high-weight single-request 753-token
-sliding case, so the baseline remains the prefill reference while we change
-optimization direction. Full artifacts: `experiments/prefill_blocksize_density_official_v1/`
+sliding case, so those candidates were rejected. Full artifacts: `experiments/prefill_blocksize_density_official_v1/`
 and `experiments/prefill_blocksize_48_t753_check_v1/`.
 
 All listed private checks passed complete correctness and timing coverage.
@@ -123,5 +122,5 @@ Attention backend: attributed MIT implementation from [team bigboateng](https://
 
 Latest prefill progress: the vjeux public candidate passed the full H200 check
 at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
-`68ac9af85a3a4e3d`; its public score and rank are pending. The exact candidate
+`68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its rank is pending. The exact candidate
 and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
