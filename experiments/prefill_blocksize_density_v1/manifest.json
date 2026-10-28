@@ -1,0 +1,20 @@
+{
+  "name": "prefill_blocksize_density_v1",
+  "problem": "muse_prefill_layer",
+  "parent": "kernels/muse_prefill_layer/baseline.py",
+  "hypothesis": "Estimate local assignments per local expert from the full 256-expert routing space; baseline divides top-k routes by 32 local experts and overestimates per-expert tile occupancy by 8x. Smaller Marlin M tiles may reduce padding for short-prefill T=200/300/753, while larger T should remain at 64.",
+  "change": "Change only the block-size occupancy estimate from num_tokens * TOP_K / LOCAL_EXPERTS to num_tokens * TOP_K / N_EXPERTS; add challenge problem marker.",
+  "status": "done",
+  "decision": "reject_regression",
+  "sha256": "6584408075281729326106c1f1b10c3e0f0981121798e1fbeba73789905929d7",
+  "created_at": 1793171789.2803273,
+  "official_check_job_id": "6415544af04144fc",
+  "speedup": 0.9761499436175609,
+  "speedup_ci": [
+    0.9615076944632975,
+    0.9907921927718242
+  ],
+  "score_us": 396869.2540864176,
+  "reason": "Passed correctness, but the uniform local-expert occupancy estimate chooses BM32 at T=753 and regresses the high-weight B=1 sliding/full cases. Reject.",
+  "updated_at": 1793172309.043217
+}

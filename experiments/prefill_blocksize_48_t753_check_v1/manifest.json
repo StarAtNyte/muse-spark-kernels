@@ -1,0 +1,30 @@
+{
+  "name": "prefill_blocksize_48_t753_check_v1",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Test only Marlin BM48 at the high-weight 753-token shape after BM32 regressed and BM64 remains the baseline; all other shapes keep baseline dispatch.",
+  "sha256": "2ce1a7cefcb4e78eaa52293b44e2cc1fe3abae56cd243c13e1a0375466f06993",
+  "created_at": 1793172052.1686728,
+  "decision": "reject_no_gain",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "fe3f743e1b7e4755",
+  "updated_at": 1793172309.0438335,
+  "speedup": 0.9899343515987636,
+  "speedup_ci": [
+    0.9750853363247822,
+    1.004783366872745
+  ],
+  "score_us": 391343.02125624294,
+  "reason": "BM48 only at T=753; correctness passed, aggregate did not improve."
+}

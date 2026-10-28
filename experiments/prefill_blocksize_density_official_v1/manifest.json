@@ -1,0 +1,30 @@
+{
+  "name": "prefill_blocksize_density_official_v1",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Correct Marlin block-size occupancy estimate for local EP assignment density; reduce padding on the short-prefill shapes without changing large-token dispatch.",
+  "sha256": "6584408075281729326106c1f1b10c3e0f0981121798e1fbeba73789905929d7",
+  "created_at": 1793171795.7533548,
+  "decision": "reject_regression",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "done",
+  "job_id": "6415544af04144fc",
+  "updated_at": 1793172309.0435119,
+  "speedup": 0.9761499436175609,
+  "speedup_ci": [
+    0.9615076944632975,
+    0.9907921927718242
+  ],
+  "score_us": 396869.2540864176,
+  "reason": "B=1,T=753 sliding/full ratios 0.92365x/0.94930x; B=4,T=753 and T=16,384 near neutral."
+}

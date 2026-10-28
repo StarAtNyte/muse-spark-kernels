@@ -1,0 +1,20 @@
+{
+  "name": "prefill_blocksize_48_t753_v1",
+  "problem": "muse_prefill_layer",
+  "parent": "kernels/muse_prefill_layer/baseline.py",
+  "hypothesis": "The corrected density heuristic selected BM32 and regressed the highest-weight single-request 753-token shapes. Test the intermediate Marlin BM48 only for T=753, retaining the SGLang baseline dispatch everywhere else.",
+  "change": "Only use moe_block_size=48 for num_tokens==753; all other T retain baseline heuristic.",
+  "status": "done",
+  "decision": "reject_no_gain",
+  "sha256": "2ce1a7cefcb4e78eaa52293b44e2cc1fe3abae56cd243c13e1a0375466f06993",
+  "created_at": 1793172051.0767329,
+  "official_check_job_id": "fe3f743e1b7e4755",
+  "speedup": 0.9899343515987636,
+  "speedup_ci": [
+    0.9750853363247822,
+    1.004783366872745
+  ],
+  "score_us": 391343.02125624294,
+  "reason": "Passed correctness, but BM48-only T=753 scores below baseline; B=1,T=753 sliding remains ~3.9% slower.",
+  "updated_at": 1793172309.0437007
+}

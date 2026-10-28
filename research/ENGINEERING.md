@@ -809,3 +809,37 @@ Live API refresh later on 2026-10-28: overall #94; projections #64
 (2.3263x; top-50 2.3400x), and decoder #94 (2.0746x; top-50 2.1292x).
 The decoder remains the largest top-50 gap, 2.63%; the MoE score gap is
 0.59%. The README holds the same live snapshot.
+
+## MoE WGS gather batch 7 public result (2026-10-28)
+
+The paired H200 screen favored `OKC_GATHB=7` over 8 in five of six batch/seed
+pairs, with bitwise-identical output. The full official private check passed
+all tests at **2.34263x** (95% CI [2.30749, 2.37777]); the scored H200 run
+completed at **2.32905x** (95% CI [2.29411, 2.36398]), improving the prior
+public score 2.3263x. Live MoE rank moved from #71 to #63; #50 is 2.3400x, so
+the category cutoff is not yet reached. The exact public artifact is
+`experiments/scored_moe_wgs_gathb7_v1/`, and the source is promoted in
+`kernels/muse_moe_w4a16/submission.py` (commit `7112ef1`).
+
+## Prefill Marlin block-size occupancy experiments (2026-10-28)
+
+Prefill baseline profiling shows the grouped NVFP4 Marlin expert GEMMs dominate
+the large-token cases (about 45–61% of the profiled kernel time); no prefill
+candidate had been submitted. Tested whether its `block_size_m` heuristic
+overestimates rows per local expert: replacing `T * top_k / 32` with the
+uniform-routing estimate `T * top_k / 256` selected BM32 instead of BM64 at
+T=753. The official check passed correctness but scored **0.97615x** (95% CI
+[0.96151, 0.99079]). Its high-weight B=1/T=753 sliding/full shapes regressed
+to 0.92365x and 0.94930x respectively; B=4/T=753 and T=16,384 were effectively
+neutral. Reject the broad estimate; observed expert imbalance and extra Marlin
+blocks outweigh the nominal padding reduction. Evidence:
+`experiments/prefill_blocksize_density_official_v1/`.
+
+Then tested BM48 only at T=753, retaining the baseline dispatch elsewhere.
+Correctness passed, but aggregate score was **0.98993x** (95% CI
+[0.97509, 1.00478]); B=1/T=753 sliding remained 3.9% slower, while other
+scored cases were near neutral. Reject. Close block-size-only tuning for this
+shape; next prefill work should target a different component/dataflow, likely
+the large-T expert path or its routing/finalize rather than repeating Marlin
+tile-size guesses. Check artifacts and exact candidates are in
+`experiments/prefill_blocksize_48_t753_check_v1/`.

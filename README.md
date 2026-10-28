@@ -26,7 +26,7 @@ Modal H200 experiments run through `dev/modal/run_h200.py`; see
 First private check: `3f1954adb1044e31`: passed all 9 tests and 30 timed
 cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
 The current public scores are **1.5346x** for projections, **2.5806x** for
-attention, **2.3263x** for MoE, and **2.0746x** for the whole decoder. The
+attention, **2.3290x** for MoE, and **2.0746x** for the whole decoder. The
 private check scores and immutable sources are archived under `experiments/`;
 `research/best.json` points to the current best implementations in `kernels/`.
 
@@ -67,7 +67,7 @@ ranks were not returned in the public job records, so they are left blank.
 | Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #60 |
 | MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #63 |
 | Whole decoder | 1.0962x → 1.7469x → **2.0746x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path. Job `2a5a87f725fd47d2`. | `kernels/muse_decode_layer/submission.py` | #94 |
-| Prefill layer | No scored run | Not started; separate leaderboard, excluded from overall rank. Top-50 cutoff shown above. | `kernels/muse_prefill_layer/submission.py` | Unranked |
+| Prefill layer | No scored run | Private Marlin block-size experiments only; both regressed and were rejected. Separate leaderboard, excluded from overall rank. | `kernels/muse_prefill_layer/submission.py` | Unranked |
 
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run. The latest MoE
@@ -92,6 +92,13 @@ attention full-decode split counts 4–32, alternate CTA grids, and DSMEM cluste
 reduction. The screen logs, exact source snapshots, and official check artifacts
 remain under `experiments/`; details and next hypotheses are in
 `research/ENGINEERING.md` and `research/PTX-CAMPAIGN.md`.
+
+Prefill has no public submission yet. Two private H200 checks of Marlin expert
+tile-size heuristics passed correctness but scored **0.9762x** and **0.9899x**;
+both were rejected. BM32/BM48 hurt the high-weight single-request 753-token
+sliding case, so the baseline remains the prefill reference while we change
+optimization direction. Full artifacts: `experiments/prefill_blocksize_density_official_v1/`
+and `experiments/prefill_blocksize_48_t753_check_v1/`.
 
 All listed private checks passed complete correctness and timing coverage.
 Pending jobs and immutable source snapshots are tracked in `experiments/`.
