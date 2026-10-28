@@ -72,6 +72,25 @@ ranks were not returned in the public job records, so they are left blank.
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run.
 
+### Latest validation against the published kernels (2026-10-28)
+
+Three fresh official H200 checks passed full correctness coverage, but each used
+the exact same source hash already published for that problem. Their different
+timings are run-to-run variation, so they are not new score milestones and were
+not resubmitted:
+
+| Problem | Check score (95% interval) | Source vs published | Decision |
+|---|---:|---|---|
+| Attention | 2.57313x (2.53453–2.62387) | Identical | Keep published 2.5806x |
+| MoE | 2.32608x (2.29119–2.36097) | Identical | Keep published 2.3263x |
+| Whole decoder | 2.09091x (2.05955–2.12228) | Identical | Keep published 2.0746x; interval overlaps |
+
+Recent bounded H200 screens also rejected MoE gather batch sizes 4, 6, and 16;
+attention full-decode split counts 4–32, alternate CTA grids, and DSMEM cluster
+reduction. The screen logs, exact source snapshots, and official check artifacts
+remain under `experiments/`; details and next hypotheses are in
+`research/ENGINEERING.md` and `research/PTX-CAMPAIGN.md`.
+
 All listed private checks passed complete correctness and timing coverage.
 Pending jobs and immutable source snapshots are tracked in `experiments/`.
 

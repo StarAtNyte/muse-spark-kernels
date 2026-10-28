@@ -1,0 +1,24 @@
+{
+  "name": "attention_vjeux_public_check_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use the Apache-2.0 vjeux public attention implementation (public score 2.6104x), after paired H200 CUDA-graph validation against our canonical kernel; target coverage includes all scored attention shapes.",
+  "sha256": "ffc1c6bb4e95aa30390858eab4c43dbd592b2884b4fe3e54412282eaafdbebaa",
+  "created_at": 1793161273.4183292,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "101c4ba595534e48",
+  "updated_at": 1793161637.4391325,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}

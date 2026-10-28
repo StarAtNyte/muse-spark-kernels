@@ -1,0 +1,24 @@
+{
+  "name": "decoder_vjeux_public_check_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Validate vjeux public whole-decoder implementation (2.10188x, rank 65) as a stronger base than our 1.74695x stack; subsequent measured work will stack our projection and split4 routes only when they improve the full-layer aggregate.",
+  "sha256": "a1875397e330a6a12f26aae756130eb77720c9958cf2fc89166e4dd4a820e9d2",
+  "created_at": 1793161563.9352238,
+  "decision": "promote_globally",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "done",
+  "job_id": "f8542d44da634655",
+  "updated_at": 1793161850.9566624,
+  "decision_reason": "Full official coverage passed; current best validated aggregate"
+}
