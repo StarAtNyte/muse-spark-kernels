@@ -1,0 +1,5 @@
+# WGS phase-A designated split completion
+
+The candidate changes `OKC_WGSDFIN` from 2 to 3, enabling designated-share completion of split units in phase A while retaining the existing phase-B policy. The paired H200 screen checks the reference before timing and alternates 16 graph replays per candidate for token counts 32, 128 and 256 over seeds 419 and 7919. All six checks passed and outputs were bitwise identical. Baseline/candidate median ratios were 0.9243, 0.9704 (M32), 0.9576, 0.9519 (M128), and 0.9560, 0.9500 (M256): a consistent regression. Do not promote or transfer into the decoder. These are component measurements, not official leaderboard scores.
+
+The driver dynamically builds the candidate from baseline SHA-256 `a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a`. Its inherited `gath2_us` output label denotes the DFIN=3 candidate. Modal app `ap-9NNimgjsCOlnXF3aS5UEMK`; raw output `modal.log`. Command: `modal run dev/modal/run_h200.py --problem muse_moe_w4a16 --file kernels/muse_moe_w4a16/submission.py --drv experiments/moe_wgs_dfin3_v1/driver.py --cmd 'timeout 900s python /w/run/drv.py'`.
