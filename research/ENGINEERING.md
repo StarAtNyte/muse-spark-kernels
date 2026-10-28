@@ -738,3 +738,15 @@ seeds, the default 8-split per-request plan was 3.8-4.0% slower than the
 current flat 264-CTA plan; 16 splits were about 20% slower and 4 splits about
 27% slower. All candidate outputs passed reference. Keep the flat plan. Logs
 and source are in `experiments/attention_full_decode32_perreq_v1/`.
+
+## Full-context decode-32 flat-grid CTA sweep (2026-10-28)
+
+For attention B32, q_len 1, full context, screened flat grids of 132, 396,
+and 528 CTAs on two H200 seeds. The current 264-CTA plan was faster than all
+three; 528 was closest but still 1.7-2.9% slower. A local sweep of 240, 288,
+and 320 over three seeds found 240 consistently 0.4-0.6% slower, while 288
+and 320 incurred a large 25-47% penalty. All outputs passed reference checks.
+Keep 264 CTAs; evidence and drivers are in
+`experiments/attention_full_decode32_flat_split_v1/`,
+`experiments/attention_full_decode32_flat_fine_v1/`, and
+`dev/modal/drv_attention_full_decode32_flat_split.py` / `drv_attention_full_decode32_flat_fine.py`.

@@ -1,0 +1,14 @@
+Modal H200 paired CUDA-graph screen. Every candidate passed task reference checks on all three seeds. Current plan: flat=1, 264 CTAs, nc=1.
+
+seed flat CTAs baseline_us candidate_us speedup
+539 240 179.904 180.736 0.99362
+539 288 179.584 263.424 0.68156
+539 320 179.872 240.784 0.74615
+1427 240 178.000 178.976 0.99508
+1427 288 177.936 260.832 0.68242
+1427 320 178.560 237.680 0.74925
+2753 240 179.824 181.280 0.99417
+2753 288 179.072 264.272 0.67883
+2753 320 179.664 241.392 0.74411
+
+Decision: reject. 240 CTAs is consistently ~0.5% slower; 288/320 cause a large penalty. Keep 264.

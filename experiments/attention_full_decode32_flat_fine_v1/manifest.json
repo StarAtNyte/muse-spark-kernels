@@ -1,0 +1,9 @@
+{
+  "name": "attention_full_decode32_flat_fine_v1",
+  "problem": "muse_attention_decode",
+  "parent": "scored_attention_vjeux_public_check_v1",
+  "hypothesis": "The broad q_len-1 flat-grid sweep put the optimum near 264 CTAs; a local sweep may identify a slightly better scheduling point.",
+  "decision": "rejected",
+  "result": "All candidates passed reference. 240 CTAs regressed about 0.4-0.6%; 288 and 320 CTAs regressed about 25-47% due to an abrupt resource/scheduling penalty. Retain 264.",
+  "change": "Compare 240, 288, and 320 flat CTAs against the current 264-CTA plan."
+}

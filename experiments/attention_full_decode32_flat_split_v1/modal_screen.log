@@ -1,0 +1,11 @@
+Modal H200 paired CUDA-graph screen. Every candidate passed task reference checks on both seeds. Current plan: flat=1, 264 CTAs, nc=1.
+
+seed flat CTAs baseline_us candidate_us speedup
+539 132 180.384 198.992 0.90630
+539 396 180.192 201.744 0.89282
+539 528 180.848 184.272 0.98266
+1427 132 177.552 197.760 0.89883
+1427 396 177.488 199.488 0.89099
+1427 528 177.152 182.272 0.97120
+
+Decision: reject. The current 264-CTA flat grid is faster than all three tested counts.

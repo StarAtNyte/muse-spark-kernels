@@ -1,0 +1,9 @@
+{
+  "name": "attention_full_decode32_flat_split_v1",
+  "problem": "muse_attention_decode",
+  "parent": "scored_attention_vjeux_public_check_v1",
+  "hypothesis": "Full-context q_len-1 decode may benefit from more or fewer flat CTAs than the current 264-CTA plan; its shorter-query kernel differs from the earlier full-verify split sweep.",
+  "decision": "rejected",
+  "result": "Reference passed on both seeds. Flat CTA counts 132, 396, and 528 all regressed versus 264; 528 was closest at 1.7-2.9% slower. Keep 264 for q_len=1 full B32.",
+  "change": "Screen flat-grid sizes 132, 396, and 528 against the current 264-CTA plan for B=32, q_len=1, full context."
+}
