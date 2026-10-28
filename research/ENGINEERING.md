@@ -973,3 +973,5 @@ The scored decoder projection/gather stack `6cf1be8d60e84ac7` passed at **2.0926
 ## WGS partial-unit ordering by token count (2026-10-28)
 
 H200 paired screens for `OKC_WGSREORD=0` passed reference bitwise, favored M32 by **0.5–1.3%**, were near neutral at M128 and mixed at M256. Global check `2019b1e02a46416c` passed at **2.33338x**; the prior parent check was **2.34263x**. A shape-selected variant keeps the current order above 32 tokens and passed check `72c6e933f69b4bad` at **2.32986x** (95% CI [2.29491, 2.36480]), prepare **212.05s**. Its M32 was **126.48 us** vs parent **127.43 us**; intervals overlap. Submitted exact checked source as `6ae96ed05c124b5f` (pending). Sources, driver, paired log and checks: `experiments/moe_wgs_reord0_v1/`, `experiments/moe_wgs_reord0_m32_v1/`, `dev/modal/drv_moe_wgs_reord0.py`.
+
+The scored shape-selected MoE submission `6ae96ed05c124b5f` passed at **2.32168x** (95% CI [2.28685, 2.35650]), below the public **2.32905x**. Restored the previous scored source; exact candidate, status and profiles: `experiments/scored_moe_reord0_m32_v1/`. Live MoE rank #76, #50 at 2.3519x and overall #87 at this snapshot.

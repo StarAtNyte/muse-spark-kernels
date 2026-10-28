@@ -137,4 +137,4 @@ Decoder T=1/8 output-projection transfer passed check `7ec7babbe7044aa6` at 2.08
 
 Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.08859x; scored job `6cf1be8d60e84ac7` passed at 2.09262x, rank #85.
 
-MoE shape-selected natural unit order passed check `72c6e933f69b4bad` at 2.32986x; scored job `6ae96ed05c124b5f` is pending. Published MoE best remains 2.32905x.
+MoE shape-selected natural unit order passed check `72c6e933f69b4bad` at 2.32986x; scored job `6ae96ed05c124b5f` passed at 2.32168x; published MoE best remains 2.32905x.
