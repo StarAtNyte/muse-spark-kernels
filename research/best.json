@@ -1,16 +1,16 @@
 {
   "muse_bf16_proj": {
-    "experiment": "projection_stack_pool_unpool_v1",
-    "job_id": "d2dd2aec03f94dbf",
-    "sha256": "b8f85e80b0b75ea75eb452d60bab7e49840c3151206712b72b72894661544b69",
-    "speedup": 1.5345576789857185,
+    "experiment": "projection_vjeux_m32pool_m128router_v1",
+    "job_id": "beb3e26afb2544c9",
+    "sha256": "d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9",
+    "speedup": 1.539506245183982,
     "speedup_ci": [
-      1.5115393138009328,
-      1.5575760441705042
+      1.5164136515062223,
+      1.5625988388617416
     ],
     "tests": 9,
     "timed_cases": 30,
-    "public_submission": "d2dd2aec03f94dbf"
+    "public_submission": "beb3e26afb2544c9"
   },
   "muse_attention_decode": {
     "experiment": "attention_vjeux_public_check_v1",

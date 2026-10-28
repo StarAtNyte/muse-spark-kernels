@@ -25,7 +25,7 @@ Modal H200 experiments run through `dev/modal/run_h200.py`; see
 
 First private check: `3f1954adb1044e31`: passed all 9 tests and 30 timed
 cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
-The current public scores are **1.5346x** for projections, **2.5806x** for
+The current public scores are **1.5395x** for projections, **2.5806x** for
 attention, **2.3290x** for MoE, and **2.0746x** for the whole decoder. The
 private check scores and immutable sources are archived under `experiments/`;
 `research/best.json` points to the current best implementations in `kernels/`.
@@ -41,13 +41,13 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5346x | #64 | 1.5450x | 1.6367x | d2dd2aec03f94dbf |
+| Projections | 1.5395x | #61 | 1.5455x | 1.6367x | beb3e26afb2544c9 |
 | Attention | 2.5806x | #60 | 2.5883x | 3.0316x | 0d181df6ffc2480b |
 | MoE | 2.3290x | #63 | 2.3400x | 2.6853x | 88e09ad35c814c29 |
 | Whole decoder layer | 2.0746x | #94 | 2.1351x | 2.3986x | 2a5a87f725fd47d2 |
 | Prefill layer | 1.7874x | #49 | 1.7847x | 2.0252x | 68ac9af85a3a4e3d |
 
-Overall rank is **#94**. Prefill is a separate board and does not count toward
+Overall rank is **#95**. Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
 is #49. Its current top-50 cutoff is 1.7847x. Leaderboard snapshot refreshed 2026-10-28; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
@@ -63,7 +63,7 @@ ranks were not returned in the public job records, so they are left blank.
 
 | Problem | Score progression | Main technique | Current file | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → **1.5346x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Live rank #64. Job `d2dd2aec03f94dbf`. | `kernels/muse_bf16_proj/submission.py` | #64 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Then add the paired vjeux M32 pooler and M128 router routes. Job `beb3e26afb2544c9`. | `kernels/muse_bf16_proj/submission.py` | #61 |
 | Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #60 |
 | MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #63 |
 | Whole decoder | 1.0962x → 1.7469x → **2.0746x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path. Job `2a5a87f725fd47d2`. | `kernels/muse_decode_layer/submission.py` | #94 |
@@ -127,4 +127,4 @@ and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
 
 Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` passed at 1.78568x; the public best remains 1.7874x.
 
-Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` is pending. The published best remains 1.5346x until scoring finishes.
+Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` passed at 1.53951x, rank #61.
