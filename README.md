@@ -72,8 +72,6 @@ ranks were not returned in the public job records, so they are left blank.
 This snapshot was refreshed 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run.
 
-Projection backend: MIT-licensed [Nathen Fernandes v18](https://github.com/NathenFernandes/muse-bf16-proj), independently checked and attributed in the submission.
-
 All listed private checks passed complete correctness and timing coverage.
 Pending jobs and immutable source snapshots are tracked in `experiments/`.
 
