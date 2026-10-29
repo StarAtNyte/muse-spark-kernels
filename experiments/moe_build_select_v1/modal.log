@@ -1,0 +1,64 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qigUXr3UPzbGvxKh9Zhh8H
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_cute.
+├── ✓ Created Function run.
+└── ✓ Created Function run_sgl.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[gpu-health] [WARN] GPU-e3a40b02-a46e-cdea-76e7-b8d62c15c611: XID: NVRM: Xid (PCI:0000:8b:00): 43, pid=939662, name=3, channel 0x00000002
+
+ROW {"bs": 1, "scored": "tiny", "tiny": 36.74, "tiny2": 33.82, "mid": 34.11, "main": 47.34, "gain_tiny2": 1.0863, "gain_mid": 1.077, "gain_main": 0.7761}
+ROW {"bs": 8, "scored": "tiny2", "tiny2": 76.93, "tiny": 78.2, "mid": 77.09, "main": 87.59, "gain_tiny": 0.9838, "gain_mid": 0.998, "gain_main": 0.8784}
+RUN_FAIL 16 tiny2 CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in ht
+RUN_FAIL 16 main CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in ht
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 41, in <module>
+    for k in (list(graphs) if rep % 2 == 0 else list(graphs)[::-1]): ts[k].append(t1(graphs[k]))
+                                                                                  ^^^^^^^^^^^^^
+  File "/w/run/drv.py", line 23, in t1
+    flush.add_(1); a = torch.cuda.Event(enable_timing=True); b = torch.cuda.Event(enable_timing=True)
+    ^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qigUXr3UPzbGvxKh9Zhh8H
