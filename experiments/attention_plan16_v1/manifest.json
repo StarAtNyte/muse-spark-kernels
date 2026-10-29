@@ -1,0 +1,22 @@
+{
+  "name": "attention_plan16_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Tuned plan for 16-request sliding decode: n_splits 8, no cooperative finalize (paired H200 1.015-1.029x on that shape).",
+  "sha256": "554adb3886491fa686e950773b2d5c5cc759377eae0f3a7d3abf9f15fd353293",
+  "created_at": 1793266831.625945,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "870a847b2b004678"
+}
