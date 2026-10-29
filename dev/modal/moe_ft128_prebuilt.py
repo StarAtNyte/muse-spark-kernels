@@ -69,9 +69,12 @@ print('READY',torch.cuda.get_device_name(),sb['sfx'],sc['sfx'],flush=True)
 assert sb['sfx']==('-DOKC_PRMTSC=1',) and sc['sfx']==sb['sfx']
 flush=torch.empty(64*1024*1024,dtype=torch.int32,device='cuda')
 def capture(m,state,data):
+    print('CAPTURE_START',m.__name__,flush=True)
     out=m.kernel_fn(data,state);torch.cuda.synchronize()
+    print('KERNEL_COMPLETE',m.__name__,flush=True)
     ok,msg=R.check_implementation(data,out,weights)
     if not ok:raise AssertionError((m.__name__,msg))
+    print('REFERENCE_PASS',m.__name__,flush=True)
     g=torch.cuda.CUDAGraph()
     with torch.cuda.graph(g):out=m.kernel_fn(data,state)
     g.replay();torch.cuda.synchronize();return g,out
@@ -91,7 +94,7 @@ for bs in (32,128,256):
 print('SCREEN_DONE',flush=True)
 '''
     open('/w/run/screen.py', 'w').write(driver)
-    p = subprocess.run(['timeout', '120s', 'python', '/w/run/screen.py', blobs[0][0], blobs[1][0]], capture_output=True, text=True)
+    p = subprocess.run(['timeout', '60s', 'python', '/w/run/screen.py', blobs[0][0], blobs[1][0]], capture_output=True, text=True)
     return {"returncode": p.returncode, "stdout": p.stdout[-10000:], "stderr": p.stderr[-10000:]}
 
 
