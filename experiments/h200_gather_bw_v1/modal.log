@@ -1,0 +1,65 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lPtpol6BcdZwbylAKcsD0i
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EMPTY_US 5.5
+ROW {"rows": 2560000, "order": "random", "MB": 655, "method": "ldg_r16", "grid": 2112, "us": 180.0, "TBs": 3.64, "TBs_minus_empty": 3.76}
+ROW {"rows": 2560000, "order": "random", "MB": 655, "method": "ldg_r16", "grid": 1056, "us": 180.4, "TBs": 3.63, "TBs_minus_empty": 3.75}
+ROW {"rows": 2560000, "order": "random", "MB": 655, "method": "ldg_r2", "grid": 1056, "us": 181.8, "TBs": 3.6, "TBs_minus_empty": 3.72}
+ROW {"rows": 2560000, "order": "random", "MB": 655, "method": "ldg_r8", "grid": 2112, "us": 181.9, "TBs": 3.6, "TBs_minus_empty": 3.72}
+ROW {"rows": 2560000, "order": "random", "MB": 655, "method": "ldg_r2", "grid": 2112, "us": 182.0, "TBs": 3.6, "TBs_minus_empty": 3.71}
+ROW {"rows": 2560000, "order": "sequential", "MB": 655, "method": "ldg_r16", "grid": 2112, "us": 167.3, "TBs": 3.92, "TBs_minus_empty": 4.05}
+ROW {"rows": 2560000, "order": "sequential", "MB": 655, "method": "ldg_r8", "grid": 2112, "us": 169.8, "TBs": 3.86, "TBs_minus_empty": 3.99}
+ROW {"rows": 2560000, "order": "sequential", "MB": 655, "method": "ldg_r16", "grid": 1056, "us": 170.3, "TBs": 3.85, "TBs_minus_empty": 3.98}
+ROW {"rows": 2560000, "order": "sequential", "MB": 655, "method": "ldg_r4", "grid": 528, "us": 170.8, "TBs": 3.84, "TBs_minus_empty": 3.97}
+ROW {"rows": 2560000, "order": "sequential", "MB": 655, "method": "ldg_r4", "grid": 2112, "us": 171.3, "TBs": 3.83, "TBs_minus_empty": 3.95}
+ROW {"rows": 1280000, "order": "random", "MB": 328, "method": "ldg_r16", "grid": 2112, "us": 94.6, "TBs": 3.46, "TBs_minus_empty": 3.68}
+ROW {"rows": 1280000, "order": "random", "MB": 328, "method": "ldg_r16", "grid": 1056, "us": 94.8, "TBs": 3.46, "TBs_minus_empty": 3.67}
+ROW {"rows": 1280000, "order": "random", "MB": 328, "method": "ldg_r2", "grid": 1056, "us": 95.3, "TBs": 3.44, "TBs_minus_empty": 3.65}
+ROW {"rows": 1280000, "order": "random", "MB": 328, "method": "ldg_r8", "grid": 528, "us": 95.3, "TBs": 3.44, "TBs_minus_empty": 3.65}
+ROW {"rows": 1280000, "order": "random", "MB": 328, "method": "ldg_r8", "grid": 2112, "us": 95.3, "TBs": 3.44, "TBs_minus_empty": 3.65}
+ROW {"rows": 1280000, "order": "sequential", "MB": 328, "method": "ldg_r16", "grid": 2112, "us": 89.2, "TBs": 3.67, "TBs_minus_empty": 3.91}
+ROW {"rows": 1280000, "order": "sequential", "MB": 328, "method": "ldg_r16", "grid": 1056, "us": 89.6, "TBs": 3.66, "TBs_minus_empty": 3.9}
+ROW {"rows": 1280000, "order": "sequential", "MB": 328, "method": "ldg_r8", "grid": 2112, "us": 90.0, "TBs": 3.64, "TBs_minus_empty": 3.88}
+ROW {"rows": 1280000, "order": "sequential", "MB": 328, "method": "ldg_r2", "grid": 528, "us": 90.1, "TBs": 3.64, "TBs_minus_empty": 3.87}
+ROW {"rows": 1280000, "order": "sequential", "MB": 328, "method": "ldg_r4", "grid": 264, "us": 90.4, "TBs": 3.63, "TBs_minus_empty": 3.86}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lPtpol6BcdZwbylAKcsD0i
