@@ -1,0 +1,3 @@
+# WGS ring depth (4 weight stages) — incomplete
+
+Driver `dev/modal/drv_moe_ring.py`. Found that the barrier indices are hard-coded (`BW_F = 0, BW_E = 3, BX_F = 6`): with WGS_NS=4 the weight full/empty barriers overlap at index 3, which explains the earlier 4-stage launch fault. The driver derives them from the ring sizes (`BW_E = WGS_NS, BX_F = 2*WGS_NS, BX_E = BX_F + WGS_NX`) for variants bare_ns4nx1 and real_ns4nx2 (4 weight stages, 2 x slots). The combined run hung without output (likely a remaining deadlock in a 4-stage variant); a per-variant rerun (`dev/modal/run_cuda13_env.py`, VAR env) is the next step. No results yet.
