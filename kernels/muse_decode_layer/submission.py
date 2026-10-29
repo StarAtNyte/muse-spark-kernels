@@ -11011,7 +11011,7 @@ def kernel_fn(data, state):
         if qpick == "bfp" and T <= BFP_MAX_T and state.get("bfp") is not None:
             qkv = _bfp_gemm(state, "qkv", data["attn_input"], T, state["qkv"].shape[0], HIDDEN)
         elif qpick is True or qpick == "bfp":
-            qkv = torch.mm(data["attn_input"], state["qkv"].t())
+            qkv = _qkv_mm(data["attn_input"], state, T)
         else:
             Pq, Sq = dense(data["attn_input"], state["qkv"], T)
             qkv = Pq[0] if Sq == 1 else Pq.sum(0)
@@ -11193,3 +11193,35 @@ def dense(x, w, T, state=None, name=None):
         out = _proj_transfer.kernel_fn({"x": x, "config": {"m": T, "n": 8192, "k": 1024, "layer": "o"}}, state["projection_transfer"])
         return out.view(1, T, 8192), 1
     return _proj_previous_dense(x, w, T, state, name)
+
+
+# T = 128 qkv and T = 128 / 256 output projections through the scored projection stack (its wide2 / vjeux routes
+# measured faster than cuBLAS on the H200: qkv 128 19.6 vs 24.7 us, o 128 12.3 vs 13.6, o 256 13.8 vs 14.9 isolated).
+BIG_PROJ_QKV = (128,)
+BIG_PROJ_O = (128, 256)
+
+
+def _qkv_mm(x, state, T):
+    if T in BIG_PROJ_QKV and state.get("projection_transfer") is not None:
+        n, k = state["qkv"].shape
+        return _proj_transfer.kernel_fn({"x": x, "config": {"m": T, "n": n, "k": k, "layer": "qkv_gate"}},
+                                        state["projection_transfer"])
+    return torch.mm(x, state["qkv"].t())
+
+
+_bigproj_previous_dense = dense
+
+
+def dense(x, w, T, state=None, name=None):
+    if (state is not None and state.get("projection_transfer") is not None and name == "o" and T in BIG_PROJ_O
+            and tuple(w.shape) == (8192, 1024)):
+        out = _proj_transfer.kernel_fn({"x": x, "config": {"m": T, "n": 8192, "k": 1024, "layer": "o"}},
+                                       state["projection_transfer"])
+        return out.view(1, T, 8192), 1
+    if (state is not None and state.get("projection_transfer") is not None and T in BIG_PROJ_QKV
+            and w is state.get("qkv")):
+        n, k = w.shape
+        out = _proj_transfer.kernel_fn({"x": x, "config": {"m": T, "n": n, "k": k, "layer": "qkv_gate"}},
+                                       state["projection_transfer"])
+        return out.view(1, T, n), 1
+    return _bigproj_previous_dense(x, w, T, state, name)
