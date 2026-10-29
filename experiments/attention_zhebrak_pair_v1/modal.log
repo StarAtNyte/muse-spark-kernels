@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Ge2947t9ZfE3paDqJH6w8O
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"case": "decode 1 sliding", "ours": 8.7, "cand": 10.4, "cand_gain": 0.836, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 1 full", "ours": 16.6, "cand": 19.4, "cand_gain": 0.856, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 16 sliding", "ours": 12.9, "cand": 15.1, "cand_gain": 0.854, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 16 full", "ours": 99.4, "cand": 103.1, "cand_gain": 0.964, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 sliding", "ours": 15.7, "cand": 17.7, "cand_gain": 0.888, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 full", "ours": 181.6, "cand": 185.2, "cand_gain": 0.981, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 1 sliding", "ours": 10.8, "cand": 11.8, "cand_gain": 0.917, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 1 full", "ours": 19.0, "cand": 25.2, "cand_gain": 0.753, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 sliding", "ours": 15.7, "cand": 20.0, "cand_gain": 0.787, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full", "ours": 109.2, "cand": 116.9, "cand_gain": 0.934, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 sliding", "ours": 19.3, "cand": 24.4, "cand_gain": 0.791, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full", "ours": 192.7, "cand": 208.1, "cand_gain": 0.926, "ok": {"ours": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Ge2947t9ZfE3paDqJH6w8O
