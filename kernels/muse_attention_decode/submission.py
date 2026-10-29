@@ -2939,6 +2939,7 @@ def _cached(cache, key, make):
 _TUNED = {
     (32, 8, True, 1): dict(n_splits=4, nc=1, coop=1),
     (1, 1, False, 1): dict(nc=8, coop=1, n_splits=252),
+    (16, 1, True, 1): dict(n_splits=8, coop=0, nc=1),   # H200 paired sweep: 1.029x on 16-request sliding decode
 }
 
 

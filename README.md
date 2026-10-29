@@ -42,12 +42,12 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5395x | #88 | 1.5560x | 1.6367x | beb3e26afb2544c9 |
-| Attention | 2.5806x | #94 | 2.6205x | 3.0542x | 0d181df6ffc2480b |
+| Attention | 2.6177x | #55 | 2.6237x | 3.0542x | b95cd80bd3e6497f |
 | MoE | 2.3290x | #103 | 2.3736x | 2.6888x | 88e09ad35c814c29 |
-| Whole decoder layer | 2.0926x | #117 | 2.1655x | 2.4029x | 6cf1be8d60e84ac7 |
+| Whole decoder layer | 2.0926x | #120 | 2.1663x | 2.4029x | 6cf1be8d60e84ac7 |
 | Prefill layer | 1.7874x | #78 | 1.7994x | 2.0325x | 68ac9af85a3a4e3d |
 
-Overall rank is **#117** (live snapshot 2026-10-29 09:13 UTC via `python tools/standings.py`; ranks move as others submit). Prefill is a separate board and does not count toward
+Overall rank is **#120** (live snapshot 2026-10-29 09:53 UTC via `python tools/standings.py`; ranks move as others submit). Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
 is #74. Its current top-50 cutoff is 1.7992x. Leaderboard snapshot refreshed 2026-10-29 09:13 UTC; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
@@ -64,7 +64,7 @@ ranks were not returned in the public job records, so they are left blank.
 | Problem | Score progression | Main technique | Current file | Current rank |
 |---|---|---|---|---:|
 | Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Then add the paired vjeux M32 pooler and M128 router routes. Job `beb3e26afb2544c9`. | `kernels/muse_bf16_proj/submission.py` | #82 |
-| Attention | 1.1305x → **2.5806x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation. Job `0d181df6ffc2480b`. | `kernels/muse_attention_decode/submission.py` | #89 |
+| Attention | 1.1305x → 2.5806x → **2.6177x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation (job `0d181df6ffc2480b`), then tune the 16-request sliding decode plan (8 splits, no cooperative finalize). Job `b95cd80bd3e6497f`. | `kernels/muse_attention_decode/submission.py` | #89 |
 | MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #96 |
 | Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0874x → **2.0926x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path, then transfer small output projections and gather batch 7. Job `6cf1be8d60e84ac7`. | `kernels/muse_decode_layer/submission.py` | #110 |
 | Prefill layer | **1.7874x** | Validated vjeux prefill implementation; public job `68ac9af85a3a4e3d`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #74 |

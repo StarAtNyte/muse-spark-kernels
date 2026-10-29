@@ -1,5 +1,5 @@
 {
- "captured_at_utc": "2026-10-29T09:13:31.213212+00:00",
+ "captured_at_utc": "2026-10-29T09:53:15.080178+00:00",
  "boards": {
   "muse_bf16_proj": {
    "you": {
@@ -29,12 +29,12 @@
   },
   "muse_attention_decode": {
    "you": {
-    "rank": 94,
+    "rank": 55,
     "team": "StarAtNyte",
-    "speedup": 2.5806,
+    "speedup": 2.6177,
     "first": false,
-    "ahead": 93,
-    "to_first": 1.1835
+    "ahead": 54,
+    "to_first": 1.1667
    },
    "leader": {
     "rank": 1,
@@ -44,13 +44,14 @@
     "ahead": 0
    },
    "rank_50": {
-    "attempts": 1,
-    "job": "a2313ce909614864",
+    "attempts": 16,
+    "job": "3ab3a2b36ced4415",
     "rank": 50,
-    "speedup": 2.6205,
-    "submitted_at": 1793162432.687912,
-    "team": "defiarbitrage-star",
-    "value": 1437.2642106689855
+    "screening": "pending",
+    "speedup": 2.6237,
+    "submitted_at": 1792854066.5539627,
+    "team": "accountforgoofystuff",
+    "value": 1435.4873629709925
    }
   },
   "muse_moe_w4a16": {
@@ -81,11 +82,11 @@
   },
   "muse_decode_layer": {
    "you": {
-    "rank": 117,
+    "rank": 120,
     "team": "StarAtNyte",
     "speedup": 2.0926,
     "first": false,
-    "ahead": 116,
+    "ahead": 119,
     "to_first": 1.1483
    },
    "leader": {
@@ -96,13 +97,13 @@
     "ahead": 0
    },
    "rank_50": {
-    "attempts": 26,
-    "job": "9d9e0594887d481e",
+    "attempts": 34,
+    "job": "e3231d0dec904eba",
     "rank": 50,
-    "speedup": 2.1655,
-    "submitted_at": 1793252693.2569613,
-    "team": "HyperbolicCurve",
-    "value": 10445.753896518949
+    "speedup": 2.1663,
+    "submitted_at": 1793244596.1585407,
+    "team": "pierrelouisdelx",
+    "value": 10442.103301209976
    }
   },
   "muse_prefill_layer": {
@@ -133,9 +134,9 @@
   }
  },
  "overall_you": {
-  "rank": 117,
+  "rank": 120,
   "team": "StarAtNyte",
   "first": false,
-  "ahead": 116
+  "ahead": 119
  }
 }

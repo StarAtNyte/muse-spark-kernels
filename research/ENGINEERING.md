@@ -1014,3 +1014,10 @@ unpooler M128 unchanged (18.8 -> 18.7: in the judge it already ran a tuned cuBLA
 (promote.py gates against the best public score): scored `fca63c7685ab435d` **1.510x** (95% CI [1.488, 1.533]) —
 the same source swung 1.5% between its check and scored run. Public best stays 1.5395x; the faster source is
 canonical. The same two routes in the decoder gave no gain (`experiments/decoder_wide2x_screen_v1`).
+
+## Attention 16-request sliding plan (2026-10-29)
+
+Plan sweep (`experiments/attention_plan_multi_v1`) found n_splits 8 without cooperative finalize 1.029x on the
+16-request sliding decode; paired 12-shape screen 1.015x on that shape, others unchanged. Check `870a847b2b004678`
+passed 16/16 at **2.601x**; scored `b95cd80bd3e6497f` **2.6177x** (95% CI [2.578, 2.657]), new public best (was
+2.5806x). Live attention rank #55, top-50 cutoff 2.6237x (2026-10-29 09:53 UTC).
