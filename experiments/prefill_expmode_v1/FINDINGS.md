@@ -1,0 +1,3 @@
+# Prefill full attention exp path (variant 43 vs EXPMODE -1/8/16/32) — rejected
+
+Driver `dev/modal/drv_prefill_expmode.py`, raw `modal.log` (CUDA 13 H200, component timing of `_attn_custom` on synthetic full-context cases; reference = the scored variant 43 output, since the file reference path needs FA3). EXPMODE -1 is bit-identical and time-identical to 43 (the scored template already takes the f16x2 MUFU path). FMA-polynomial shares are slower: EXPMODE 8 0.84-0.88x, 16 0.83-0.86x, 32 0.79-0.82x on all five shapes (753-token turns at B=1/4, 16384-token first turns at ctx 0/32768/65536). Long case: 6.71 ms for ~4.95 TFLOP of FP8 attention (~740 TFLOP/s); exp throughput is not its limit.

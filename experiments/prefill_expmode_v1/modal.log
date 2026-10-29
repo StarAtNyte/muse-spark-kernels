@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-TPYujkvNdYNv0UMnYcv6Jf
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"B": 1, "L": 753, "ctx": 80000, "nsplit": 2, "base43_us": 366.8, "err43": "0.00e+00", "em-1": {"gain": 0.9995, "err": "0.00e+00"}, "em8": {"gain": 0.8449, "err": "8.51e-04"}, "em16": {"gain": 0.8336, "err": "1.08e-03"}, "em32": {"gain": 0.7969, "err": "1.51e-03"}}
+ROW {"B": 4, "L": 753, "ctx": 80000, "nsplit": 1, "base43_us": 1397.2, "err43": "0.00e+00", "em-1": {"gain": 1.0002, "err": "0.00e+00"}, "em8": {"gain": 0.8724, "err": "9.41e-04"}, "em16": {"gain": 0.8301, "err": "1.22e-03"}, "em32": {"gain": 0.7877, "err": "1.69e-03"}}
+ROW {"B": 1, "L": 16384, "ctx": 0, "nsplit": 1, "base43_us": 836.9, "err43": "0.00e+00", "em-1": {"gain": 0.9995, "err": "0.00e+00"}, "em8": {"gain": 0.869, "err": "7.36e-04"}, "em16": {"gain": 0.8598, "err": "1.02e-03"}, "em32": {"gain": 0.8215, "err": "1.43e-03"}}
+ROW {"B": 1, "L": 16384, "ctx": 32768, "nsplit": 1, "base43_us": 3826.7, "err43": "0.00e+00", "em-1": {"gain": 0.9998, "err": "0.00e+00"}, "em8": {"gain": 0.8687, "err": "8.26e-04"}, "em16": {"gain": 0.8323, "err": "1.14e-03"}, "em32": {"gain": 0.7936, "err": "1.61e-03"}}
+ROW {"B": 1, "L": 16384, "ctx": 65536, "nsplit": 1, "base43_us": 6714.8, "err43": "0.00e+00", "em-1": {"gain": 1.0006, "err": "0.00e+00"}, "em8": {"gain": 0.8829, "err": "8.65e-04"}, "em16": {"gain": 0.8303, "err": "1.18e-03"}, "em32": {"gain": 0.7867, "err": "1.67e-03"}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-TPYujkvNdYNv0UMnYcv6Jf
