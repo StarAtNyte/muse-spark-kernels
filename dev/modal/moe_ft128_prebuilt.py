@@ -32,7 +32,7 @@ print("EXT_PATH=" + ext.__file__, flush=True)
     return os.path.basename(path), open(path, "rb").read()
 
 
-@app.function(gpu="H200", timeout=420)
+@app.function(gpu="H200", timeout=180)
 def screen(base_src: str, candidate_src: str, blobs):
     import subprocess
     os.makedirs("/w/run", exist_ok=True)
@@ -91,7 +91,7 @@ for bs in (32,128,256):
 print('SCREEN_DONE',flush=True)
 '''
     open('/w/run/screen.py', 'w').write(driver)
-    p = subprocess.run(['timeout', '360s', 'python', '/w/run/screen.py', blobs[0][0], blobs[1][0]], capture_output=True, text=True)
+    p = subprocess.run(['timeout', '120s', 'python', '/w/run/screen.py', blobs[0][0], blobs[1][0]], capture_output=True, text=True)
     return {"returncode": p.returncode, "stdout": p.stdout[-10000:], "stderr": p.stderr[-10000:]}
 
 
