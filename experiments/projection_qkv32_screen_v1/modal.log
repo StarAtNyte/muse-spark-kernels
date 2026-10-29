@@ -1,0 +1,109 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZeKzQhA85mjsTRMVbsJXDp
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 1
+
+STDERR:
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.35 sk2=12.9 torch=17.86 -> cgemv
+[okc] tune o m=1: cgemv=8.99 sk2=9.28 torch=10.66 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.34 torch=24.64 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.23 sgemv=7.58 sk2=8.22 torch=10.85 -> cgemv
+[okc] tune router m=1: rgemv=7.55 sk2=8.58 torch=20.13 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.22 torch=17.86 -> sk2
+[okc] tune o m=16: sk2=9.34 torch=10.46 -> sk2
+[okc] tune pooler m=16: sk2=18.56 torch=24.8 -> sk2
+[okc] tune unpooler m=16: sk2=18.14 torch=22.94 -> sk2
+[okc] tune router m=16: sk2=8.45 torch=20.38 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.4 torch=18.37 -> sk2
+[okc] tune o m=32: sk2=9.44 torch=10.46 -> sk2
+[okc] tune pooler m=32: sk2=19.14 torch=25.12 -> sk2
+[okc] tune unpooler m=32: sk2=18.91 torch=23.01 -> sk2
+[okc] tune router m=32: sk2=9.09 torch=20.7 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.38 torch=18.11 -> sk2
+[okc] tune o m=8: sk2=9.54 torch=10.43 -> sk2
+[okc] tune pooler m=8: sk2=18.56 torch=24.93 -> sk2
+[okc] tune unpooler m=8: sk2=8.19 torch=11.14 -> sk2
+[okc] tune router m=8: sk2=8.58 torch=19.65 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.94 torch=21.12 -> gqx
+[okc] tune o m=128: torch=11.07 torchT=11.23 -> torch
+[okc] tune pooler m=128: gq=25.41 torch=29.86 -> gq
+[okc] tune unpooler m=128: torch=24.29 torchT=23.26 -> torchT
+[okc] tune router m=128: rk=9.95 wide=12.8 gemm=13.57 torch=21.47 -> rk
+[okc] tune o m=256: torch=13.22 torchT=13.09 -> torchT
+[okc] tune unpooler m=256: torch=29.6 torchT=27.9 -> torchT
+[okc] tune router m=256: rk=10.82 wide=13.6 gemm=17.15 torch=22.66 -> rk
+[okc] disabled: []
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.96 sk2=13.57 torch=18.53 -> cgemv
+[okc] tune o m=1: cgemv=8.9 sk2=9.41 torch=10.56 -> cgemv
+[okc] tune pooler m=1: cgemv=17.44 sk2=18.46 torch=25.44 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.49 sgemv=7.71 sk2=8.13 torch=11.1 -> cgemv
+[okc] tune router m=1: rgemv=7.46 sk2=8.77 torch=19.55 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.6 torch=18.11 -> sk2
+[okc] tune o m=16: sk2=9.38 torch=10.5 -> sk2
+[okc] tune pooler m=16: sk2=18.72 torch=25.06 -> sk2
+[okc] tune unpooler m=16: sk2=18.3 torch=22.82 -> sk2
+[okc] tune router m=16: sk2=8.58 torch=20.61 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.75 torch=18.46 -> sk2
+[okc] tune o m=32: sk2=9.54 torch=10.66 -> sk2
+[okc] tune pooler m=32: sk2=19.14 torch=25.44 -> sk2
+[okc] tune unpooler m=32: sk2=18.91 torch=23.04 -> sk2
+[okc] tune router m=32: sk2=8.93 torch=20.7 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.47 torch=18.21 -> sk2
+[okc] tune o m=8: sk2=9.44 torch=10.3 -> sk2
+[okc] tune pooler m=8: sk2=18.62 torch=24.8 -> sk2
+[okc] tune unpooler m=8: sk2=8.0 torch=11.1 -> sk2
+[okc] tune router m=8: sk2=8.54 torch=19.94 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.82 torch=21.22 -> gqx
+[okc] tune o m=128: torch=11.2 torchT=11.01 -> torchT
+[okc] tune pooler m=128: gq=25.38 torch=29.79 -> gq
+[okc] tune unpooler m=128: torch=24.1 torchT=23.36 -> torchT
+[okc] tune router m=128: rk=9.86 wide=12.67 gemm=14.24 torch=21.28 -> rk
+[okc] tune o m=256: torch=12.9 torchT=13.02 -> torch
+[okc] tune unpooler m=256: torch=28.45 torchT=28.42 -> torchT
+[okc] tune router m=256: rk=10.59 wide=13.86 gemm=17.28 torch=22.75 -> rk
+[okc] disabled: []
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 34, in <module>
+    gb, ob = cap(B, sb, d); gc, oc = cap(C, sc, d)
+                                     ^^^^^^^^^^^^^
+  File "/w/run/drv.py", line 24, in cap
+    o = M.kernel_fn(d, st); torch.cuda.synchronize(); g = torch.cuda.CUDAGraph()
+        ^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 7235, in kernel_fn
+    return _hybrid_base_kernel(data, state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 7215, in kernel_fn
+    return _v18_base_kernel(data,state) if out is None else out
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 6546, in kernel_fn
+    out = run_bundle2(data['x'], data['config']['layer'], data['config']['n'], state['bundle2'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 6528, in run_bundle2
+    raise RuntimeError(f'bundle2 qkv launch failed: {rc}')
+RuntimeError: bundle2 qkv launch failed: -5
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZeKzQhA85mjsTRMVbsJXDp

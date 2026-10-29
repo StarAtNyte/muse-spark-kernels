@@ -209,3 +209,25 @@ State of `serving/sglang` working tree (`okc serve diff` -> serving/patch.diff, 
 - Other participants' public repos (cloned under ~/agent-skills-src/other): lee101/openkernels (best docs/ideas.md, docs/moe_gap_analysis.md, BF16 c12 compression 1.15->1.37, cuBLASLt algo search in prepare). They are behind us on MoE/decoder, ahead on BF16 (1.46) and similar on attention.
 - Serving: gen_module now keeps WM_ALL(2,1,2,0) and WM_ALL(2,2,8,0); template _CFG = [(1,(2,4,0,1)),(8,(2,2,0,1)),(16,(2,8,0,2)),(32,(4,4,1,4)),(inf,(4,4,4,4))]. A missing config in the trimmed dispatch would have raised "unsupported config" in the real server: after ANY change to configs rerun dev/serving/test_layer_stub.py (all batch sizes must print True). patch.diff refreshed (75 KB).
 - Ideas not done: fused decoder glue kernels (norm_residual x2, pre-expert rmsnorm, post-expert finish: ~15-20us/layer of stock glue at small batch), wgmma-RS MoE with double-buffered A registers (existing wm_body_wg was 1.5x slower: single CTA/WG, commit_wait per chunk), n-gram/prompt-lookup assisted drafting and load-adaptive draft length for the serving track (untestable before Nov 5).
+
+## UPDATE 2026-10-29 (long Modal session) — read research/FLOORS-2026-10-29.md first
+
+Public bests: attention **2.6177x** (#55, cutoff 2.6237; new: 16-request sliding plan, job b95cd80bd3e6497f),
+projections 1.5395x (#88, cutoff 1.556), MoE 2.3290x (#103, 2.3736), decoder 2.0926x (#120, 2.1663), prefill 1.7874x
+(#78, 1.7994); overall #120. `python tools/standings.py` refreshes the table (README updated).
+Canonical sources now carry two same-run-validated small wins whose scored runs landed in noise: decoder T=128 qkv +
+T=128/256 o via the projection stack (check 2.0999x), projection wide2 qkv256 (check 1.5326x; note: on the judge the
+qkv256 case still ran nvjet, so this was likely noise).
+
+Key lessons (all evidence under experiments/, each with FINDINGS.md):
+- Modal H200 = judge hardware but different driver (610 vs 580). Small/launch-sensitive lab wins did NOT transfer
+  (MoE TINY2 at bs1 1.09x lab, decoder 16-req attention plan 1.07x lab: both equal on judge). Use `okc check` to
+  decide; judge per-case seeds are in status.json. Don't co-load base/candidate that share load_inline names but
+  differ in builds (artifact); prefer `dev/modal/run_cuda13_env.py` (one process per variant/shape).
+- Floors: contiguous TMA ~3.9-4.1 TB/s, random 128 B gathers ~3.7 TB/s. Attention full-context is at the gather
+  limit; prefill MoE/attention/dense are at tensor/cuBLAS limits.
+- WGS MoE: math ablations (no decode/scale/wgmma) only 2-5%; per-CTA tails are systematic but rebalancing with
+  fitted cost tables (R^2 0.995) is slower; FT_T=32 + 4-stage ring does not build. The kernel is throughput-bound
+  at ~3.3 TB/s in its streaming skeleton; the remaining lever is a structural rewrite.
+- Exhausted: attention plans (all shapes, both attention copies), MoE build thresholds and WGS knobs, decoder PDL
+  depth, L2 prefetch, split-K single-token MoE, zhebrak hybrid, wide2 sweeps, prefill exp modes, flat B=1 attention.
