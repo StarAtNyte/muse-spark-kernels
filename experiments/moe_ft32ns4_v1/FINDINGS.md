@@ -1,0 +1,3 @@
+# WGS MoE: 32-row x slots + 4 weight stages — not buildable as a constant change
+
+Idea: halve the x ring (OKC_FT_T 64 -> 32) for <=32-token jobs to free ~48 KB and add a 4th weight stage (WGS_NS 3 -> 4), matching the faster 4-stage TMA probe. Driver `dev/modal/drv_moe_ft32ns4.py`, log `modal.log`: FT_T=32 alone fails ptxas register allocation at the 96-register cap (C7600) even for moe_fused<false> (big-M instance removed); FT_T=32 + NS=4 builds but faults at launch (ring barrier/slot layout assumes 3 stages). Would need a register and barrier-layout rework of the WGS kernel; not pursued. Also checked: the memory-bound blog architecture overview (no kernel-level content beyond TASK.md).
