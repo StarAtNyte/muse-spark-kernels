@@ -1,0 +1,23 @@
+{
+  "name": "attention_plan_b1s_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Add single-request sliding decode plan n_splits 64, no coop finalize, on top of the 16-request plan.",
+  "sha256": "ca39967b84460bdf99a9f86c1ffc4d6c119d0bcded2e09ad51004e53270400e6",
+  "created_at": 1793269809.8244035,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "done",
+  "job_id": "83437ce6d6534493",
+  "updated_at": 1793270170.0813656
+}
