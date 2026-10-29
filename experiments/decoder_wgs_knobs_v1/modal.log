@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-tnbQxM5v1ZPPNABzlWSNDm
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+tune failed: ValueError('bad marshal data (unknown type code)')
+ROW {"layer": "sliding", "seed": 8001, "base": 172.0, "g_dfin0": 1.0009, "g_dfin1": 0.9485, "g_dfin3": 0.958, "g_a085": 0.9986, "g_a115": 0.9983, "g_b085": 0.9993, "g_b115": 0.9953}
+ROW {"layer": "sliding", "seed": 8002, "base": 174.3, "g_dfin0": 0.9878, "g_dfin1": 0.9618, "g_dfin3": 0.9656, "g_a085": 1.01, "g_a115": 1.0004, "g_b085": 0.9907, "g_b115": 1.0068}
+ROW {"layer": "full", "seed": 8001, "base": 340.2, "g_dfin0": 0.9969, "g_dfin1": 0.9734, "g_dfin3": 0.9734, "g_a085": 1.0058, "g_a115": 0.9993, "g_b085": 0.9988, "g_b115": 1.0016}
+ROW {"layer": "full", "seed": 8002, "base": 332.9, "g_dfin0": 0.9954, "g_dfin1": 0.9755, "g_dfin3": 0.9795, "g_a085": 1.0023, "g_a115": 1.0, "g_b085": 0.9964, "g_b115": 1.0008}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-tnbQxM5v1ZPPNABzlWSNDm
