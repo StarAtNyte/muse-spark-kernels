@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-58aEwA8eiPPbgVU4pXZKKy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+PICKS {'1-qkv': 'bfp', '1-o': 'bfp', '1-pr': 'bfpf', '1-un': 'bfp', '8-qkv': 'bfp', '8-o': 'bfp', '8-pr': 'bfpf', '8-un': 'bfp', '16-qkv': 'bfp', '16-o': 'bfp', '16-pr': 'bfpf', '16-un': 'bfp', '32-qkv': 'bfp', '32-o': 'bfp', '32-pr': 'bfp', '32-un': 'bfp'}
+ROW {"T": 1, "qkv": [15.68, 15.26], "o": [10.4, 10.3], "un": [9.41, 9.18], "pr_cur": 24.51, "pool_proj": 19.9, "router_proj": 9.41, "pool_router_proj_seq": 24.1, "picks": {"qkv": "bfp", "pr": "bfpf"}}
+ROW {"T": 8, "qkv": [15.71, 15.36], "o": [10.3, 10.56], "un": [9.57, 9.34], "pr_cur": 24.51, "pool_proj": 19.81, "router_proj": 9.38, "pool_router_proj_seq": 24.7, "picks": {"qkv": "bfp", "pr": "bfpf"}}
+ROW {"T": 16, "qkv": [15.55, 15.81], "o": [10.94, 10.85], "un": [20.9, 22.05], "pr_cur": 24.19, "pool_proj": 22.4, "router_proj": 9.47, "pool_router_proj_seq": 28.0, "picks": {"qkv": "bfp", "pr": "bfpf"}}
+ROW {"T": 32, "qkv": [16.93, 16.7], "o": [11.3, 11.55], "un": [21.5, 21.89], "pr_cur": 26.08, "pool_proj": 25.7, "router_proj": 10.37, "pool_router_proj_seq": 32.38, "picks": {"qkv": "bfp", "pr": "bfp"}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-58aEwA8eiPPbgVU4pXZKKy
