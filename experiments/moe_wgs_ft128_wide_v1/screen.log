@@ -1,0 +1,48 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-k376CQzrkXbnkjV0vkP7O2
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_wgs_ft128_wi
+│   de_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Created Function screen.
+└── ✓ Created Function compile_one.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+COMPILED [('okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_dq71_sm90a.so', 5224528), ('okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_ft1281_okc_prmtsc1_okc_dq71_sm90a.so', 9935000)]
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+{"returncode": 0, "stdout": "READY NVIDIA H200 ('-DOKC_PRMTSC=1',) ('-DOKC_PRMTSC=1',)\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 32, \"seed\": 419, \"baseline_us\": 132.9440027475357, \"candidate_us\": 137.95199990272522, \"base_over_candidate\": 0.9633979138922062, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 32, \"seed\": 7919, \"baseline_us\": 152.17600017786026, \"candidate_us\": 158.76799821853638, \"base_over_candidate\": 0.9659638346499291, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 128, \"seed\": 419, \"baseline_us\": 192.6400065422058, \"candidate_us\": 207.31200277805328, \"base_over_candidate\": 0.9325090172490675, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 128, \"seed\": 7919, \"baseline_us\": 189.88800048828125, \"candidate_us\": 205.05599677562714, \"base_over_candidate\": 0.9241104109175489, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 256, \"seed\": 419, \"baseline_us\": 229.823999106884, \"candidate_us\": 252.83201038837433, \"base_over_candidate\": 0.9165830684285402, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 256, \"seed\": 7919, \"baseline_us\": 212.96000480651855, \"candidate_us\": 235.9040006995201, \"base_over_candidate\": 0.9020033162286808, \"relative_l2\": 0.0}\nSKEW_LOCAL_EXPERT_ROWS 128\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nSKEW_PASS 0.0004897018079645932\nSCREEN_DONE\n", "stderr": ""}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-k376CQzrkXbnkjV0vkP7O2
