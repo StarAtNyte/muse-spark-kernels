@@ -1,0 +1,67 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qIkcTtSKQUqS5Kn1zx4KaO
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_cute.
+├── ✓ Created Function run.
+└── ✓ Created Function run_sgl.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+BUILD -DOKC_NW=16 -DOKC_WGS=1
+ Function _ZN3okc9moe_fusedILb1EEEvNS_6ParamsE:
+  REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[2]:56 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN3okc9moe_fusedILb0EEEvNS_6ParamsE:
+  REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[2]:56 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+BUILD -DOKC_NW=8 -DOKC_TINY=1
+ Function _ZN3okc9moe_fusedILb1EEEvNS_6ParamsE:
+  REG:149 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN3okc9moe_fusedILb0EEEvNS_6ParamsE:
+  REG:149 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+BUILD -DOKC_NW=8 -DOKC_TINY=1
+ Function _ZN3okc9moe_fusedILb1EEEvNS_6ParamsE:
+  REG:149 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN3okc9moe_fusedILb0EEEvNS_6ParamsE:
+  REG:149 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+BUILD -DOKC_NW=8 -DOKC_TINY=1 -DOKC_SPLIT=1
+ Function _ZN3okc9moe_fusedILb1EEEvNS_6ParamsE:
+  REG:153 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN3okc9moe_fusedILb0EEEvNS_6ParamsE:
+  REG:153 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:800 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qIkcTtSKQUqS5Kn1zx4KaO
