@@ -1,0 +1,22 @@
+{
+  "name": "decoder_attn16_plan_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Decoder attention plan for 16-request sliding decode: 8 splits, no cooperative finalize (paired whole-layer 1.067-1.074x).",
+  "sha256": "e58347844abcc83127d4bd91b156af365686bca7498b9b19817a7db7ee81072d",
+  "created_at": 1793269374.984736,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "received",
+  "job_id": "113d223d543c42da"
+}
