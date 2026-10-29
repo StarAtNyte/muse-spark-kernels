@@ -1,0 +1,77 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-iFJ0r7zNB8S4LfYLFGnah9
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EMPTY_US 4.93
+ROW {"MB": 56.6, "method": "ldg_u4", "grid": 264, "threads": 512, "us": 21.0, "TBs": 2.7, "TBs_minus_empty": 3.53}
+ROW {"MB": 56.6, "method": "ldg_u4", "grid": 1056, "threads": 256, "us": 21.0, "TBs": 2.7, "TBs_minus_empty": 3.52}
+ROW {"MB": 56.6, "method": "ldg_u4", "grid": 132, "threads": 1024, "us": 21.0, "TBs": 2.69, "TBs_minus_empty": 3.52}
+ROW {"MB": 56.6, "method": "ldg_u8", "grid": 528, "threads": 256, "us": 21.1, "TBs": 2.68, "TBs_minus_empty": 3.5}
+ROW {"MB": 56.6, "method": "ldg_u8_l2hint", "grid": 132, "threads": 1024, "us": 21.1, "TBs": 2.68, "TBs_minus_empty": 3.5}
+ROW {"MB": 56.6, "method": "ldg_u8_l2hint", "grid": 264, "threads": 512, "us": 21.1, "TBs": 2.68, "TBs_minus_empty": 3.49}
+ROW {"MB": 56.6, "method": "ldg_u8_l2hint", "grid": 528, "threads": 256, "us": 21.1, "TBs": 2.68, "TBs_minus_empty": 3.49}
+ROW {"MB": 56.6, "method": "ldg_u4", "grid": 528, "threads": 256, "us": 21.2, "TBs": 2.67, "TBs_minus_empty": 3.48}
+ROW {"MB": 113.2, "method": "ldg_u8", "grid": 528, "threads": 256, "us": 34.4, "TBs": 3.29, "TBs_minus_empty": 3.83}
+ROW {"MB": 113.2, "method": "ldg_u8_l2hint", "grid": 528, "threads": 256, "us": 34.5, "TBs": 3.28, "TBs_minus_empty": 3.82}
+ROW {"MB": 113.2, "method": "ldg_u8", "grid": 264, "threads": 512, "us": 34.7, "TBs": 3.26, "TBs_minus_empty": 3.8}
+ROW {"MB": 113.2, "method": "ldg_u16_l2hint", "grid": 132, "threads": 1024, "us": 34.8, "TBs": 3.25, "TBs_minus_empty": 3.78}
+ROW {"MB": 113.2, "method": "ldg_u16_l2hint", "grid": 528, "threads": 256, "us": 34.8, "TBs": 3.25, "TBs_minus_empty": 3.78}
+ROW {"MB": 113.2, "method": "ldg_u4", "grid": 132, "threads": 1024, "us": 34.8, "TBs": 3.25, "TBs_minus_empty": 3.78}
+ROW {"MB": 113.2, "method": "ldg_u4", "grid": 264, "threads": 512, "us": 34.8, "TBs": 3.25, "TBs_minus_empty": 3.78}
+ROW {"MB": 113.2, "method": "ldg_u16_l2hint", "grid": 264, "threads": 512, "us": 34.9, "TBs": 3.24, "TBs_minus_empty": 3.78}
+ROW {"MB": 340.0, "method": "tma_4x32K", "grid": 132, "threads": 256, "us": 89.1, "TBs": 3.82, "TBs_minus_empty": 4.04}
+ROW {"MB": 340.0, "method": "tma_8x16K", "grid": 264, "threads": 256, "us": 89.2, "TBs": 3.81, "TBs_minus_empty": 4.03}
+ROW {"MB": 340.0, "method": "tma_6x32K", "grid": 132, "threads": 256, "us": 89.3, "TBs": 3.81, "TBs_minus_empty": 4.03}
+ROW {"MB": 340.0, "method": "tma_8x16K", "grid": 132, "threads": 256, "us": 89.4, "TBs": 3.8, "TBs_minus_empty": 4.02}
+ROW {"MB": 340.0, "method": "ldg_u8", "grid": 528, "threads": 256, "us": 90.5, "TBs": 3.76, "TBs_minus_empty": 3.97}
+ROW {"MB": 340.0, "method": "ldg_u8", "grid": 132, "threads": 1024, "us": 90.5, "TBs": 3.76, "TBs_minus_empty": 3.97}
+ROW {"MB": 340.0, "method": "ldg_u4", "grid": 528, "threads": 256, "us": 90.6, "TBs": 3.75, "TBs_minus_empty": 3.97}
+ROW {"MB": 340.0, "method": "ldg_u4", "grid": 264, "threads": 512, "us": 90.6, "TBs": 3.75, "TBs_minus_empty": 3.97}
+ROW {"MB": 425.0, "method": "tma_8x16K", "grid": 132, "threads": 256, "us": 107.8, "TBs": 3.94, "TBs_minus_empty": 4.13}
+ROW {"MB": 425.0, "method": "tma_8x16K", "grid": 264, "threads": 256, "us": 108.5, "TBs": 3.92, "TBs_minus_empty": 4.1}
+ROW {"MB": 425.0, "method": "tma_4x32K", "grid": 132, "threads": 256, "us": 108.6, "TBs": 3.91, "TBs_minus_empty": 4.1}
+ROW {"MB": 425.0, "method": "tma_6x32K", "grid": 132, "threads": 256, "us": 108.9, "TBs": 3.9, "TBs_minus_empty": 4.09}
+ROW {"MB": 425.0, "method": "ldg_u8", "grid": 528, "threads": 256, "us": 110.8, "TBs": 3.83, "TBs_minus_empty": 4.01}
+ROW {"MB": 425.0, "method": "ldg_u4", "grid": 528, "threads": 256, "us": 111.0, "TBs": 3.83, "TBs_minus_empty": 4.0}
+ROW {"MB": 425.0, "method": "ldg_u4", "grid": 264, "threads": 512, "us": 111.0, "TBs": 3.83, "TBs_minus_empty": 4.0}
+ROW {"MB": 425.0, "method": "ldg_u8", "grid": 1056, "threads": 256, "us": 111.2, "TBs": 3.82, "TBs_minus_empty": 4.0}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-iFJ0r7zNB8S4LfYLFGnah9
