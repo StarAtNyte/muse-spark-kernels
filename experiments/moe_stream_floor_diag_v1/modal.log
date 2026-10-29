@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1JjuwI1F5jhLDWWWrUl6MJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[gpu-health] [WARN] GPU-6793efde-02cd-5d15-1c51-cc3cd4858702: XID: NVRM: Xid (PCI:0000:72:00): 13, pid=434891, name=3, Graphics Exception: channel 0x00000002, Class 0000cbc0, Offset 00000510, Data 0017e2ac
+
+[gpu-health] [WARN] GPU-6793efde-02cd-5d15-1c51-cc3cd4858702: XID: NVRM: Xid (PCI:0000:72:00): 31, pid=434891, name=3, channel 0x00000002, intr 00000000. MMU Fault: ENGINE GRAPHICS GPC1 GPCCLIENT_T1_14 faulted @ 0x2ac4_00004000. Fault is of type FAULT_PDE ACCESS_TYPE_VIRT_READ
+
+PROBE_OK
+EMPTY_US 4.8
+ROW {"bs": 1, "seed": 419, "distinct": 3, "routes": 3, "MB": 84.9, "kernel_us": 39.0, "stream_us": 30.8, "stream_cfg": [264, 512], "stream_TBs": 2.76, "kernel_minus_empty": 34.2, "stream_minus_empty": 26.0, "kernel_over_stream": 1.27}
+ROW {"bs": 1, "seed": 7919, "distinct": 2, "routes": 2, "MB": 56.6, "kernel_us": 31.3, "stream_us": 23.1, "stream_cfg": [264, 512], "stream_TBs": 2.45, "kernel_minus_empty": 26.5, "stream_minus_empty": 18.3, "kernel_over_stream": 1.35}
+ROW {"bs": 16, "seed": 419, "distinct": 13, "routes": 21, "MB": 368.1, "kernel_us": 109.6, "stream_us": 106.6, "stream_cfg": [264, 512], "stream_TBs": 3.45, "kernel_minus_empty": 104.8, "stream_minus_empty": 101.8, "kernel_over_stream": 1.03}
+ROW {"bs": 16, "seed": 7919, "distinct": 12, "routes": 26, "MB": 339.7, "kernel_us": 102.2, "stream_us": 99.4, "stream_cfg": [264, 512], "stream_TBs": 3.42, "kernel_minus_empty": 97.4, "stream_minus_empty": 94.6, "kernel_over_stream": 1.03}
+ROW {"bs": 32, "seed": 419, "distinct": 15, "routes": 45, "MB": 424.7, "kernel_us": 130.5, "stream_us": 119.9, "stream_cfg": [264, 512], "stream_TBs": 3.54, "kernel_minus_empty": 125.7, "stream_minus_empty": 115.1, "kernel_over_stream": 1.09}
+
+STDERR:
+*** stack smashing detected ***: terminated
+Aborted
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1JjuwI1F5jhLDWWWrUl6MJ

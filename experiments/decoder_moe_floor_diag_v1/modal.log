@@ -1,0 +1,45 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VpMj0VzSi3kiLfokwp6mEo
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+READY
+EXPERT_MB 28.311552
+ROW {"case": "decode 1 sliding", "routes": 2, "distinct": 2, "hottest": 1, "layer_us": 88.4, "moe_us": 31.4, "moe_floor48_us": 11.8, "moe_frac": 0.38}
+ROW {"case": "decode 1 full", "routes": 2, "distinct": 2, "hottest": 1, "layer_us": 94.2, "moe_us": 31.6, "moe_floor48_us": 11.8, "moe_frac": 0.37}
+ROW {"case": "decode 16 sliding", "routes": 23, "distinct": 7, "hottest": 8, "layer_us": 134.0, "moe_us": 68.4, "moe_floor48_us": 41.3, "moe_frac": 0.6}
+ROW {"case": "decode 16 full", "routes": 24, "distinct": 7, "hottest": 8, "layer_us": 214.8, "moe_us": 70.1, "moe_floor48_us": 41.3, "moe_frac": 0.59}
+ROW {"case": "decode 32 sliding", "routes": 49, "distinct": 10, "hottest": 16, "layer_us": 177.0, "moe_us": 98.2, "moe_floor48_us": 59.0, "moe_frac": 0.6}
+ROW {"case": "decode 32 full", "routes": 51, "distinct": 10, "hottest": 14, "layer_us": 328.7, "moe_us": 96.8, "moe_floor48_us": 59.0, "moe_frac": 0.61}
+ROW {"case": "verify 1 sliding", "routes": 13, "distinct": 8, "hottest": 3, "layer_us": 127.9, "moe_us": 72.8, "moe_floor48_us": 47.2, "moe_frac": 0.65}
+ROW {"case": "verify 1 full", "routes": 11, "distinct": 6, "hottest": 3, "layer_us": 122.2, "moe_us": 59.1, "moe_floor48_us": 35.4, "moe_frac": 0.6}
+ROW {"case": "verify 16 sliding", "routes": 174, "distinct": 20, "hottest": 43, "layer_us": 270.7, "moe_us": 168.2, "moe_floor48_us": 118.0, "moe_frac": 0.7}
+ROW {"case": "verify 16 full", "routes": 166, "distinct": 20, "hottest": 38, "layer_us": 360.6, "moe_us": 167.9, "moe_floor48_us": 118.0, "moe_frac": 0.7}
+ROW {"case": "verify 32 sliding", "routes": 324, "distinct": 20, "hottest": 80, "layer_us": 319.8, "moe_us": 188.3, "moe_floor48_us": 118.0, "moe_frac": 0.63}
+ROW {"case": "verify 32 full", "routes": 322, "distinct": 24, "hottest": 63, "layer_us": 507.3, "moe_us": 207.3, "moe_floor48_us": 141.6, "moe_frac": 0.68}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VpMj0VzSi3kiLfokwp6mEo
