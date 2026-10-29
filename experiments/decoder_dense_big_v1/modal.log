@@ -1,0 +1,33 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-15XVDJJvOM3CWVg6lMoUCm
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"m": 128, "qkv_gate": {"proj_us": 19.58, "err": "1.7e-03"}, "o": {"proj_us": 12.26, "err": "1.7e-03"}, "pooler": {"proj_us": 29.79, "err": "1.7e-03"}, "unpooler": "sglang-route", "router": {"proj_us": 11.46, "err": "3.3e-06"}, "cur_qkv_us": 24.7, "cur_o_us": 13.6, "cur_pr_us": 34.24, "cur_unpool_us": 30.37}
+ROW {"m": 256, "qkv_gate": "sglang-route", "o": {"proj_us": 13.82, "err": "1.7e-03"}, "pooler": {"proj_us": 35.42, "err": "1.7e-03"}, "unpooler": "sglang-route", "router": {"proj_us": 13.86, "err": "3.2e-06"}, "cur_qkv_us": 29.12, "cur_o_us": 14.94, "cur_pr_us": 39.62, "cur_unpool_us": 34.5}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-15XVDJJvOM3CWVg6lMoUCm
