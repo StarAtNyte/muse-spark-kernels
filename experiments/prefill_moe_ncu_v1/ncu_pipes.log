@@ -1,0 +1,83 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-kujNDpBKMS8y26bPMOsY6e
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 48 (/usr/local/bin/python3)
+LT tune T=753 qkv: torch.mm 1669.7us, best 1139.0us algo 5 of 8
+LT tune T=753 o: torch.mm 1669.4us, best 1183.4us algo 3 of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 1832.9us, best 1144.9us algo 1 of 8
+LT tune T=753 unpooler: torch.mm 1781.1us, best 1175.9us algo 0 of 8
+LT tune T=3012 qkv: torch.mm 1864.1us, best 1241.8us algo 3 of 8
+LT tune T=3012 o: torch.mm 1901.7us, best 1188.4us algo 0 of 8
+LT tune T=3012 router: torch.mm 1993.7us, best 1235.5us algo 0 of 8
+LT tune T=3012 pooler: torch.mm 1920.4us, best 1291.6us algo 5 of 8
+LT tune T=3012 unpooler: torch.mm 1827.9us, best 1189.5us algo 2 of 8
+LT tune T=16384 qkv: torch.mm 1876.5us, best 1396.3us algo 0 of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 1967.6us, best 1218.2us algo 0 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47892312901008'>")
+CHECK (True, 'update relative L2 error 5.175e-02 (worst row 1.209e-01) [bound 0.122]; attention input relative L2 error 3.350e-02 (worst row 8.273e-02) [bound 0.079]')
+==PROF== Profiling "moe_fused_persistent": 0%....50%....100% - 9 passes
+DONE
+==PROF== Disconnected from process 48
+[48] python3@127.0.0.1
+  void moe_fused_persistent<1>(FusedArgs) (132, 1, 1)x(384, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Warning: Data collection happened without fixed GPU frequencies. Profiling results may be inconsistent.
+    Section: Command line profiler metrics
+    ----------------------------------------------------------------------- ----------- ------------
+    Metric Name                                                             Metric Unit Metric Value
+    ----------------------------------------------------------------------- ----------- ------------
+    gpu__time_duration.sum                                                           ms         2.87
+    sm__inst_executed_pipe_alu.sum                                                 inst    335530628
+    sm__inst_executed_pipe_fma.sum                                                 inst    147680528
+    sm__pipe_alu_cycles_active.avg.pct_of_peak_sustained_active                       %        26.65
+    sm__pipe_fma_cycles_active.avg.pct_of_peak_sustained_active                       %         9.07
+    sm__pipe_fmaheavy_cycles_active.avg.pct_of_peak_sustained_active                  %        10.80
+    sm__pipe_shared_cycles_active.avg.pct_of_peak_sustained_active                    %        92.82
+    sm__pipe_tensor_op_gmma_cycles_active.avg.pct_of_peak_sustained_elapsed                  (!) n/a
+    sm__throughput.avg.pct_of_peak_sustained_elapsed                                  %        92.60
+    ----------------------------------------------------------------------- ----------- ------------
+
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-kujNDpBKMS8y26bPMOsY6e
