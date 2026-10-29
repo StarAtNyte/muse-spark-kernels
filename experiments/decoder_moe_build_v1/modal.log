@@ -1,0 +1,39 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cscmWVv99sY77FXSHXhann
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"T": 16, "layer": "sliding", "seed": 7001, "scored": 141.9, "mid": 141.6, "wgs": 150.0, "gain_mid": 1.002, "gain_wgs": 0.9461}
+ROW {"T": 16, "layer": "sliding", "seed": 7002, "scored": 126.7, "mid": 126.3, "wgs": 139.4, "gain_mid": 1.0029, "gain_wgs": 0.9084}
+ROW {"T": 16, "layer": "full", "seed": 7001, "scored": 215.2, "mid": 215.7, "wgs": 225.0, "gain_mid": 0.9978, "gain_wgs": 0.9566}
+ROW {"T": 16, "layer": "full", "seed": 7002, "scored": 249.4, "mid": 249.2, "wgs": 258.6, "gain_mid": 1.0008, "gain_wgs": 0.9643}
+ROW {"T": 32, "layer": "sliding", "seed": 7001, "scored": 186.4, "mid": 195.4, "wgs": 186.7, "gain_mid": 0.9539, "gain_wgs": 0.9984}
+ROW {"T": 32, "layer": "sliding", "seed": 7002, "scored": 183.5, "mid": 174.5, "wgs": 183.7, "gain_mid": 1.0514, "gain_wgs": 0.9989}
+ROW {"T": 32, "layer": "full", "seed": 7001, "scored": 335.4, "mid": 338.3, "wgs": 335.5, "gain_mid": 0.9914, "gain_wgs": 1.0}
+ROW {"T": 32, "layer": "full", "seed": 7002, "scored": 324.7, "mid": 333.2, "wgs": 323.6, "gain_mid": 0.9743, "gain_wgs": 1.0031}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cscmWVv99sY77FXSHXhann
