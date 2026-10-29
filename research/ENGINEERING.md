@@ -1005,3 +1005,12 @@ Check `6047870f0fe44acb` passed 13/13 at **2.0999x** (95% CI [2.0684, 2.1314]); 
 shapes in every same-run comparison); the board keeps the 2.0926x run. Artifacts:
 `experiments/decoder_bigproj_screen_v1/`, `experiments/decoder_bigproj_qkv128_o128_256_v1/`,
 `experiments/scored_decoder_bigproj_v1/`.
+
+## Projection qkv M256 + unpooler M128 via wide2 (2026-10-29)
+
+Paired H200 screen vs cuBLAS: qkv M256 1.05-1.07x, unpooler M128 1.07-1.08x (`experiments/projection_wide2x_screen_v1`).
+Check `05933bad61fc488a` passed 9/9 at **1.5326x** vs parent check **1.5270x**; target verify-32 qkv 18.2 -> 17.4 us,
+unpooler M128 unchanged (18.8 -> 18.7: in the judge it already ran a tuned cuBLASLt plan). Submitted directly
+(promote.py gates against the best public score): scored `fca63c7685ab435d` **1.510x** (95% CI [1.488, 1.533]) —
+the same source swung 1.5% between its check and scored run. Public best stays 1.5395x; the faster source is
+canonical. The same two routes in the decoder gave no gain (`experiments/decoder_wide2x_screen_v1`).

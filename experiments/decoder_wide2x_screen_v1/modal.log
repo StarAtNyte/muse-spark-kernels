@@ -1,0 +1,39 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ANK4FCCR9MAPfs63xYeCvl
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4001, "base": 333.6, "cand": 331.9, "gain": 1.0053, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.557e-02 (worst row 1.067e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4002, "base": 365.1, "cand": 366.2, "gain": 0.9968, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.711e-02 (worst row 1.054e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 269.9, "cand": 269.7, "gain": 1.001, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.790e-02 (worst row 9.830e-02) [bound 0.140]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 262.9, "cand": 262.0, "gain": 1.0036, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.951e-02 (worst row 9.523e-02) [bound 0.142]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4001, "base": 513.4, "cand": 516.6, "gain": 0.9937, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.443e-02 (worst row 1.002e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4002, "base": 514.2, "cand": 515.6, "gain": 0.9974, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.498e-02 (worst row 1.047e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 325.4, "cand": 324.9, "gain": 1.0014, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.115e-02 (worst row 9.480e-02) [bound 0.146]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 318.7, "cand": 319.2, "gain": 0.9983, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.172e-02 (worst row 9.937e-02) [bound 0.150]; attention input re"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ANK4FCCR9MAPfs63xYeCvl

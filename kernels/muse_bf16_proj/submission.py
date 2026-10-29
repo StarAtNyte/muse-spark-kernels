@@ -825,7 +825,7 @@ CANDIDATE_CONFIGS = {
     (128, "qkv_gate"): (128, 3, 8, 1),
     (128, "o"): (128, 1, 8, 1),
     (128, "pooler"): (128, 2, 8, 1),
-    (128, "unpooler"): (128, 1, 9, 1),
+    (128, "unpooler"): (128, 1, 8, 1),  # H200 sweep best (experiments/projection_wide2_sweep_v1)
     (256, "qkv_gate"): (256, 3, 5, 1),
     (256, "o"): (256, 1, 5, 1),
     (256, "pooler"): (256, 2, 5, 1),
@@ -838,7 +838,7 @@ def prepare_wide2(weights) -> dict:
     props = torch.cuda.get_device_properties(device)
     if (props.major, props.minor) != (9, 0):
         return {"configs": {}}
-    h200_keys = [(128, "qkv_gate"), (128, "pooler"), (256, "pooler")]
+    h200_keys = [(128, "qkv_gate"), (128, "pooler"), (256, "pooler"), (256, "qkv_gate"), (128, "unpooler")]
     keys = h200_keys
     configs = {key: CANDIDATE_CONFIGS[key] for key in keys}
     return {
