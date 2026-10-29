@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-AHwQGPo2xfXfc0ZPzd9peK
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"q": 1, "layer": "full", "base": 16.66, "n": 43, "best": [[16.66, "base", 1.0], [16.85, "ns252_c1_nc8", 0.989], [16.93, "ns252_c0_nc8", 0.984], [17.1, "ns252_c0_nc4", 0.974], [17.25, "ns378_c1_nc8", 0.966], [17.33, "ns252_c1_nc4", 0.961]]}
+ROW {"q": 1, "layer": "sliding", "base": 9.22, "n": 25, "best": [[9.15, "ns64_c0_nc1", 1.007], [9.22, "base", 1.0], [9.34, "ns32_c0_nc1", 0.986], [9.52, "ns64_c1_nc1", 0.968], [9.57, "ns32_c0_nc4", 0.963], [9.57, "ns32_c1_nc8", 0.963]]}
+ROW {"q": 8, "layer": "full", "base": 19.09, "n": 43, "best": [[19.09, "base", 1.0], [19.2, "ns252_c1_nc8", 0.994], [19.49, "ns252_c1_nc4", 0.979], [20.05, "ns126_c1_nc8", 0.952], [20.67, "ns126_c1_nc4", 0.923], [21.12, "ns126_c1_nc1", 0.904]]}
+ROW {"q": 8, "layer": "sliding", "base": 10.88, "n": 25, "best": [[10.88, "base", 1.0], [10.93, "ns64_c1_nc1", 0.996], [11.14, "ns64_c1_nc4", 0.977], [11.17, "ns64_c1_nc8", 0.974], [12.03, "ns32_c1_nc1", 0.904], [12.06, "ns32_c1_nc8", 0.902]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-AHwQGPo2xfXfc0ZPzd9peK
