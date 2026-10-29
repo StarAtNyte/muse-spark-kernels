@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GmqLZWnG7avimxqGHJfF37
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ROW {"bs": 32, "seed": 419, "base": 134.2, "gain_x8": 1.0218, "gain_nomma_x8": 1.0579, "gain_bare": 1.0875}
+ROW {"bs": 32, "seed": 7919, "base": 152.8, "gain_x8": 1.0002, "gain_nomma_x8": 1.0396, "gain_bare": 1.0748}
+ROW {"bs": 128, "seed": 419, "base": 195.3, "gain_x8": 0.9762, "gain_nomma_x8": 1.0367, "gain_bare": 1.0649}
+ROW {"bs": 128, "seed": 7919, "base": 192.2, "gain_x8": 0.9611, "gain_nomma_x8": 1.0392, "gain_bare": 1.0783}
+ROW {"bs": 256, "seed": 419, "base": 231.8, "gain_x8": 0.9269, "gain_nomma_x8": 1.0213, "gain_bare": 1.0721}
+ROW {"bs": 256, "seed": 7919, "base": 214.9, "gain_x8": 0.918, "gain_nomma_x8": 1.0217, "gain_bare": 1.1124}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GmqLZWnG7avimxqGHJfF37
