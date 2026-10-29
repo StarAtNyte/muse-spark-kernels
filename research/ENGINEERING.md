@@ -987,3 +987,7 @@ Applied the standalone M32 work-order candidate inside the current scored decode
 ## Decoder launch overlap at 128 tokens (2026-10-29)
 
 Extended PDL from 32 to 128 tokens in the full decoder. Check `25a2f727325744b1` passed 13/13 at **2.06235x** (95% CI [2.03142, 2.09329]), below the parent check **2.08859x** with overlapping intervals. No gain is established; keep the existing threshold. Candidate, status, and profiles: `experiments/decoder_pdl128_v1/`.
+
+## Decoder fused pooler/router at 32 tokens (2026-10-29)
+
+Pinned the existing fused pooler/router route for 32 tokens. Full check `ca5f44975b6c4f41` passed 13/13 at **2.07020x** (95% CI [2.03914, 2.10125]), versus parent **2.08859x** (95% CI [2.05726, 2.11992]). The intervals overlap and separate-run baseline timings vary; no gain is established. Keep the current scored route. Candidate and full results: `experiments/decoder_fused_pr32_v1/`.
