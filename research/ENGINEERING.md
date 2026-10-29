@@ -983,3 +983,7 @@ The scored shape-selected MoE submission `6ae96ed05c124b5f` passed at **2.32168x
 ## Decoder M32 MoE work ordering (2026-10-28)
 
 Applied the standalone M32 work-order candidate inside the current scored decoder. Full check `29875ca2354e4673` passed at **2.08360x** (95% CI [2.05234, 2.11485]), versus the parent check **2.08859x** (95% CI [2.05726, 2.11992]). No improvement is established; keep the scored decoder unchanged. Candidate, status and profiles: `experiments/decoder_moe_order_m32_v1/`.
+
+## Decoder launch overlap at 128 tokens (2026-10-29)
+
+Extended PDL from 32 to 128 tokens in the full decoder. Check `25a2f727325744b1` passed 13/13 at **2.06235x** (95% CI [2.03142, 2.09329]), below the parent check **2.08859x** with overlapping intervals. No gain is established; keep the existing threshold. Candidate, status, and profiles: `experiments/decoder_pdl128_v1/`.
