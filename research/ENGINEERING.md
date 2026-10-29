@@ -993,3 +993,15 @@ Extended PDL from 32 to 128 tokens in the full decoder. Check `25a2f727325744b1`
 Pinned the existing fused pooler/router route for 32 tokens. Full check `ca5f44975b6c4f41` passed 13/13 at **2.07020x** (95% CI [2.03914, 2.10125]), versus parent **2.08859x** (95% CI [2.05726, 2.11992]). The intervals overlap and separate-run baseline timings vary; no gain is established. Keep the current scored route. Candidate and full results: `experiments/decoder_fused_pr32_v1/`.
 
 Pinned the same route at 16 tokens. Check `aaf7f795b7ec4d15` passed 13/13 at **2.06579x** (95% CI [2.03481, 2.09678]), below the parent point estimate with overlapping intervals. The recorded profile truncates template names, so whether the parent tuner selected the same fused route remains unknown. No gain is established; preserve the scored decoder. Candidate and profiles: `experiments/decoder_fused_pr16_v1/`.
+
+## Decoder T=128/256 projection transfer (2026-10-29)
+
+Isolated H200 timing showed the embedded scored projection stack beating the decoder's cuBLAS route for qkv at
+T=128 (19.6 vs 24.7 us) and o at T=128/256 (12.3 vs 13.6, 13.8 vs 14.9); splitting the fused pooler+router loses,
+and small-T (1-32) routes are already equal. Paired whole-layer screen: verify 16 +0.9-2.6%, verify 32 +0.3-0.5%.
+Check `6047870f0fe44acb` passed 13/13 at **2.0999x** (95% CI [2.0684, 2.1314]); target cases verify-16 full 340.0 vs
+349.5 us, sliding 256.6 vs 260.6 us. Scored submission `cc5bca81d4194820` passed at **2.080x** (95% CI
+[2.049, 2.111]), below the public **2.0926x** within noise. The new source stays canonical (faster on the targeted
+shapes in every same-run comparison); the board keeps the 2.0926x run. Artifacts:
+`experiments/decoder_bigproj_screen_v1/`, `experiments/decoder_bigproj_qkv128_o128_256_v1/`,
+`experiments/scored_decoder_bigproj_v1/`.
