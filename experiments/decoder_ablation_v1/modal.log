@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-blIHaZtVKSc3AwUvPSpLmP
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[gpu-health] [WARN] GPU-7f5f5318-9a3a-2d09-b2f3-b537f37d06c1: XID: NVRM: Xid (PCI:0000:72:00): 43, pid=1529352, name=3, channel 0x00000002
+
+RETURNCODE 1
+READY
+ROW {"case": "decode 1 sliding", "base": 95.2, "no_glue": 54.7, "no_moe": 61.4, "no_attn": 91.4, "no_dense": 55.7, "only_moe": 24.7, "saves_no_glue": 40.6, "saves_no_moe": 33.8, "saves_no_attn": 3.8, "saves_no_dense": 39.5, "saves_only_moe": 70.5}
+ROW {"case": "decode 16 sliding", "base": 142.0, "no_glue": 68.4, "no_moe": 75.6, "no_attn": 136.1, "no_dense": 94.2, "only_moe": 122.2, "saves_no_glue": 73.6, "saves_no_moe": 66.4, "saves_no_attn": 5.9, "saves_no_dense": 47.8, "saves_only_moe": 19.8}
+ROW {"case": "decode 32 sliding", "base": 183.2, "no_glue": 150.3, "no_moe": 81.6, "no_attn": 174.8, "no_dense": 130.8, "only_moe": 84.4, "saves_no_glue": 32.9, "saves_no_moe": 101.6, "saves_no_attn": 8.4, "saves_no_dense": 52.4, "saves_only_moe": 98.7}
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 70, in <module>
+    apply(v); graphs[v] = cap(d)
+                          ^^^^^^
+  File "/w/run/drv.py", line 57, in cap
+    g.replay(); torch.cuda.synchronize(); return g
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1162, in synchronize
+    return torch._C._cuda_synchronize()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-blIHaZtVKSc3AwUvPSpLmP
