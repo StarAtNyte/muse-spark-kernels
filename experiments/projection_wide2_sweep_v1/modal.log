@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-A4fENCDqAKJVLTz72Wcf24
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"m": 256, "layer": "qkv_gate", "cublas_us": 3.17, "n_ok": 156, "best": [{"us": 27.01, "bn": 256, "split": 3, "stages": 5, "hint": 1}, {"us": 29.12, "bn": 256, "split": 3, "stages": 4, "hint": 1}, {"us": 33.09, "bn": 256, "split": 2, "stages": 5, "hint": 1}, {"us": 34.72, "bn": 256, "split": 3, "stages": 3, "hint": 1}], "gain_vs_cublas": 0.117, "candidate_cfg": [256, 3, 5, 1]}
+ROW {"m": 256, "layer": "o", "cublas_us": 13.98, "n_ok": 156, "best": [{"us": 16.16, "bn": 256, "split": 1, "stages": 5, "hint": 1}, {"us": 16.64, "bn": 256, "split": 1, "stages": 4, "hint": 1}, {"us": 18.11, "bn": 256, "split": 1, "stages": 3, "hint": 1}, {"us": 20.86, "bn": 256, "split": 1, "stages": 4, "hint": 0}], "gain_vs_cublas": 0.865, "candidate_cfg": [256, 1, 5, 1]}
+ROW {"m": 256, "layer": "unpooler", "cublas_us": 3.17, "n_ok": 156, "best": [{"us": 33.92, "bn": 256, "split": 1, "stages": 5, "hint": 1}, {"us": 36.29, "bn": 256, "split": 1, "stages": 4, "hint": 1}, {"us": 41.09, "bn": 256, "split": 2, "stages": 5, "hint": 1}, {"us": 42.56, "bn": 256, "split": 2, "stages": 4, "hint": 1}], "gain_vs_cublas": 0.093, "candidate_cfg": [256, 1, 5, 1]}
+ROW {"m": 128, "layer": "o", "cublas_us": 12.32, "n_ok": 156, "best": [{"us": 13.92, "bn": 128, "split": 1, "stages": 6, "hint": 1}, {"us": 13.98, "bn": 128, "split": 1, "stages": 8, "hint": 1}, {"us": 14.24, "bn": 128, "split": 1, "stages": 5, "hint": 1}, {"us": 14.85, "bn": 128, "split": 1, "stages": 4, "hint": 1}], "gain_vs_cublas": 0.885, "candidate_cfg": [128, 1, 8, 1]}
+ROW {"m": 128, "layer": "unpooler", "cublas_us": 3.17, "n_ok": 156, "best": [{"us": 27.9, "bn": 128, "split": 1, "stages": 8, "hint": 1}, {"us": 28.83, "bn": 128, "split": 1, "stages": 6, "hint": 1}, {"us": 30.11, "bn": 128, "split": 1, "stages": 5, "hint": 1}, {"us": 32.38, "bn": 128, "split": 2, "stages": 8, "hint": 1}], "gain_vs_cublas": 0.114, "candidate_cfg": [128, 1, 9, 1]}
+ROW {"m": 256, "layer": "pooler", "cublas_us": 35.58, "n_ok": 156, "best": [{"us": 36.03, "bn": 256, "split": 2, "stages": 5, "hint": 1}, {"us": 38.27, "bn": 256, "split": 2, "stages": 4, "hint": 1}, {"us": 39.62, "bn": 128, "split": 1, "stages": 8, "hint": 1}, {"us": 41.06, "bn": 128, "split": 1, "stages": 6, "hint": 1}], "gain_vs_cublas": 0.988, "candidate_cfg": [256, 2, 5, 1]}
+DONE
+
+STDERR:
+[okc] CUTLASS route off: RuntimeError: flashinfer (CUTLASS headers) not installed
+[okc] tune qkv_gate m=1: cgemv=12.54 sk2=13.06 torch=18.75 -> cgemv
+[okc] tune o m=1: cgemv=9.12 sk2=9.47 torch=10.72 -> cgemv
+[okc] tune pooler m=1: cgemv=17.7 sk2=18.59 torch=25.82 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.39 sgemv=7.87 sk2=8.32 torch=11.2 -> cgemv
+[okc] tune router m=1: rgemv=7.71 sk2=8.67 torch=20.03 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.6 torch=18.24 -> sk2
+[okc] tune o m=16: sk2=9.57 torch=11.04 -> sk2
+[okc] tune pooler m=16: sk2=18.56 torch=25.79 -> sk2
+[okc] tune unpooler m=16: sk2=18.3 torch=22.62 -> sk2
+[okc] tune router m=16: sk2=8.83 torch=20.48 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.62 torch=18.72 -> sk2
+[okc] tune o m=32: sk2=9.66 torch=10.53 -> sk2
+[okc] tune pooler m=32: sk2=19.2 torch=26.11 -> sk2
+[okc] tune unpooler m=32: sk2=19.1 torch=23.17 -> sk2
+[okc] tune router m=32: sk2=9.34 torch=20.8 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.57 torch=18.56 -> sk2
+[okc] tune o m=8: sk2=9.73 torch=10.34 -> sk2
+[okc] tune pooler m=8: sk2=18.66 torch=25.79 -> sk2
+[okc] tune unpooler m=8: sk2=8.26 torch=11.42 -> sk2
+[okc] tune router m=8: sk2=8.7 torch=19.65 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.56 torch=21.22 -> gqx
+[okc] tune o m=128: torch=11.17 torchT=11.2 -> torch
+[okc] tune pooler m=128: gq=25.06 torch=28.61 -> gq
+[okc] tune unpooler m=128: torch=24.19 torchT=23.07 -> torchT
+[okc] tune router m=128: rk=9.98 wide=12.74 gemm=13.82 torch=21.57 -> rk
+[okc] tune o m=256: torch=13.47 torchT=13.02 -> torchT
+[okc] tune unpooler m=256: torch=28.8 torchT=28.74 -> torchT
+[okc] tune router m=256: rk=10.94 wide=13.82 gemm=17.57 torch=22.4 -> rk
+[okc] disabled: []
+/usr/local/lib/python3.12/site-packages/torch/cuda/graphs.py:126: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:147.)
+  super().capture_end()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-A4fENCDqAKJVLTz72Wcf24
