@@ -1,0 +1,3 @@
+# Fused pooler/router pin at 16 tokens
+
+The current decoder tunes its 16-token pooler/router choice using isolated timings; its pinned choices elsewhere exist because isolated measurements miss in-chain PDL overlap. This candidate pins the existing fused route at T=16 to test it in the full decoder. The baseline tuner may already select that same route, so the profile must confirm the actual dispatch before attributing any score difference to the change. The unscored official check `aaf7f795b7ec4d15` is pending. Candidate SHA-256 `6888e733b08b24c9756ac7e5dc87dcac0f303052659f8d8b8bb169dfb1962d5e`; canonical decoder is unchanged.
