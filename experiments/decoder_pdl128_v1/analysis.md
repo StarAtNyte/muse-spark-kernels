@@ -1,0 +1,3 @@
+# Decoder PDL through 128 tokens
+
+The candidate extends the decoder's programmatic dependent launch threshold from 32 to 128 tokens, retaining the existing no-PDL path at 256. This tests launch overlap in the full decoder rather than timing an isolated kernel. It changes both the Triton glue and participating native launchers through the existing `_pdl(T)` switch. Official unscored check `25a2f727325744b1` is pending; no performance or correctness conclusion is available until it completes. Candidate SHA-256 `72eeeb4573892539151ccada2962e7a6aed259c74104ff46b88455ee434bb891`; canonical decoder is unchanged.
