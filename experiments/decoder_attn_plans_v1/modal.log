@@ -1,0 +1,94 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-mJWnE1Db80fMTF6EgQBHFM
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_env.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"B": "32", "Q": "1", "LAYER": "sliding"} RETURNCODE 0
+ROW {"B": 32, "q": 1, "layer": "sliding", "base": 182.3, "tuned": "None", "best": [[181.6, "ns8_c0", 1.004], [181.6, "ns6_c0", 1.0039], [181.9, "ns12_c0", 1.0022], [182.2, "ns8_c1", 1.0006], [182.3, "base", 1.0]]}
+
+STDERR:
+
+ENV {"B": "1", "Q": "1", "LAYER": "sliding"} RETURNCODE 0
+tune failed: ValueError('bad marshal data (unknown type code)')
+ROW {"B": 1, "q": 1, "layer": "sliding", "base": 111.5, "tuned": "None", "best": [[111.3, "ns48_c0", 1.0023], [111.3, "ns48_c1", 1.0017], [111.5, "ns64_c0", 1.0003], [111.5, "ns32_c0", 1.0002], [111.5, "base", 1.0]]}
+
+STDERR:
+
+ENV {"B": "1", "Q": "8", "LAYER": "sliding"} RETURNCODE 0
+tune failed: ValueError('bad marshal data (unknown type code)')
+ROW {"B": 1, "q": 8, "layer": "sliding", "base": 138.9, "tuned": "None", "best": [[137.7, "ns16_c1", 1.0082], [138.7, "ns48_c1", 1.0013], [138.9, "base", 1.0], [139.3, "ns64_c1", 0.9968], [140.0, "ns32_c1", 0.9922]]}
+
+STDERR:
+
+ENV {"B": "16", "Q": "8", "LAYER": "sliding"} RETURNCODE 0
+tune failed: ValueError('bad marshal data (unknown type code)')
+ROW {"B": 16, "q": 8, "layer": "sliding", "base": 265.1, "tuned": "None", "best": [[264.8, "ns8_c1", 1.0011], [265.1, "base", 1.0], [265.4, "ns6_c1", 0.9989], [265.5, "ns12_c1", 0.9986], [265.8, "ns16_c1", 0.9973]]}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-mJWnE1Db80fMTF6EgQBHFM
