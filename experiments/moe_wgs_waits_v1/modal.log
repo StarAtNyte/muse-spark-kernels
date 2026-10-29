@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-drrn1Bqk66nmTkSN7L0z8l
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ROW {"bs": 32, "seed": 419, "ok": true, "A": {"total": 15.9, "wait_w": 1.8, "wait_x": 0.5}, "B": {"total": 8.2, "wait_w": 0.8, "wait_x": 0.4}}
+ROW {"bs": 32, "seed": 7919, "ok": true, "A": {"total": 15.4, "wait_w": 1.7, "wait_x": 0.5}, "B": {"total": 7.4, "wait_w": 0.7, "wait_x": 0.3}}
+ROW {"bs": 128, "seed": 419, "ok": true, "A": {"total": 16.1, "wait_w": 2.1, "wait_x": 0.5}, "B": {"total": 7.9, "wait_w": 0.7, "wait_x": 0.3}}
+ROW {"bs": 128, "seed": 7919, "ok": true, "A": {"total": 16.2, "wait_w": 1.8, "wait_x": 0.5}, "B": {"total": 7.8, "wait_w": 0.7, "wait_x": 0.3}}
+ROW {"bs": 256, "seed": 419, "ok": true, "A": {"total": 15.9, "wait_w": 1.2, "wait_x": 0.5}, "B": {"total": 8.6, "wait_w": 0.7, "wait_x": 0.3}}
+ROW {"bs": 256, "seed": 7919, "ok": true, "A": {"total": 16.3, "wait_w": 1.1, "wait_x": 0.5}, "B": {"total": 8.4, "wait_w": 0.6, "wait_x": 0.4}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-drrn1Bqk66nmTkSN7L0z8l
