@@ -109,15 +109,15 @@ def med(fn, n=20):
 empty = med(lambda: out.add_(1))
 print('EMPTY_US', round(empty, 2), flush=True)
 NAMES = ['ldg_r2', 'ldg_r4', 'ldg_r8', 'ldg_r16', 'tma_d16', 'tma_d32', 'tma_d64']
-for rows in (2_560_000, 1_280_000):  # decode 32 / 16 at ~80K tokens per request
+for rows in tuple(int(r) for r in __import__('os').environ.get('ROWS', '80000,2048,32768').split(',')):  # decode 32 / 16 at ~80K tokens per request
     K = torch.randint(0, 255, (rows, 128), dtype=torch.uint8, device='cuda')
     V = torch.randint(0, 255, (rows, 128), dtype=torch.uint8, device='cuda')
-    for order in ('random', 'sequential'):
+    for order in ('random',):
         idx = (torch.randperm(rows, device='cuda') if order == 'random' else torch.arange(rows, device='cuda')).to(torch.int32)
         nbytes = rows * 256
         best = []
         for m, name in enumerate(NAMES):
-            grids = (132, 264, 528, 1056, 2112) if m < 4 else (132, 264, 396)
+            grids = (66, 132, 252, 264, 528, 1056) if m < 4 else (132, 252, 264)
             for grid in grids:
                 try: us = med(lambda: ext.run(m, K, V, idx, out, grid))
                 except Exception as e: print('FAIL', name, grid, str(e)[:80], flush=True); continue

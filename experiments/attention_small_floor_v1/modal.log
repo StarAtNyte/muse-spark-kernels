@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-uoD9YwTBjic0dtLu296ERP
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+EMPTY_US 5.5
+ROW {"case": {"batch": 1, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "heads": "tp8"}, "us": 8.99}
+ROW {"case": {"batch": 1, "ctx": 80000, "layer": "full", "page": 1, "dist": "coherent", "heads": "tp8"}, "us": 16.62}
+ROW {"case": {"batch": 1, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "heads": "tp8", "q_len": 8}, "us": 11.07}
+ROW {"case": {"batch": 1, "ctx": 80000, "layer": "full", "page": 1, "dist": "coherent", "heads": "tp8", "q_len": 8}, "us": 19.38}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-uoD9YwTBjic0dtLu296ERP
