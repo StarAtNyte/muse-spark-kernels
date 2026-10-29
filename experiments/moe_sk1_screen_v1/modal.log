@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-tkI1tMGnYjDicegrFQn2nS
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+EAGER 40 of 40 pass
+ROW {"seed": 419, "distinct": 3, "base": 39.28, "sk1_ns4": 50.22, "sk1_ns5": 52.46, "gain_sk1_ns4": 0.782, "gain_sk1_ns5": 0.749, "msg": "relative L2 error 2.530e-03 (worst row 2.530e-03)"}
+ROW {"seed": 7919, "distinct": 2, "base": 31.04, "sk1_ns4": 39.14, "sk1_ns5": 41.3, "gain_sk1_ns4": 0.793, "gain_sk1_ns5": 0.752, "msg": "relative L2 error 2.484e-03 (worst row 2.484e-03)"}
+ROW {"seed": 15241, "distinct": 3, "base": 39.49, "sk1_ns4": 50.53, "sk1_ns5": 52.66, "gain_sk1_ns4": 0.782, "gain_sk1_ns5": 0.75, "msg": "relative L2 error 2.481e-03 (worst row 2.481e-03)"}
+ROW {"seed": 3, "distinct": 3, "base": 39.46, "sk1_ns4": 50.16, "sk1_ns5": 52.21, "gain_sk1_ns4": 0.787, "gain_sk1_ns5": 0.756, "msg": "relative L2 error 2.462e-03 (worst row 2.462e-03)"}
+ROW {"seed": 77, "distinct": 2, "base": 31.22, "sk1_ns4": 39.01, "sk1_ns5": 40.86, "gain_sk1_ns4": 0.8, "gain_sk1_ns5": 0.764, "msg": "relative L2 error 2.602e-03 (worst row 2.602e-03)"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-tkI1tMGnYjDicegrFQn2nS
