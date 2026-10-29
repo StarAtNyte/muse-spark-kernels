@@ -1,0 +1,131 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-9rLT5geQDBaMb3Ut4sSfs3
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_env.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+=========
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+=
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"B": "16", "Q": "8", "LAYER": "sliding"} RETURNCODE 0
+ROW {"B": 16, "q": 8, "layer": "sliding", "base": 15.98, "n": 9, "best": [[15.98, "base", 1.0], [16.05, "ns8_c1", 0.996], [16.26, "ns12_c1", 0.983], [16.29, "ns16_c1", 0.981]]}
+
+STDERR:
+
+ENV {"B": "32", "Q": "8", "LAYER": "sliding"} RETURNCODE 0
+ROW {"B": 32, "q": 8, "layer": "sliding", "base": 19.73, "n": 9, "best": [[19.47, "ns4_c1", 1.013], [19.73, "base", 1.0], [19.73, "ns8_c1", 1.0], [20.67, "ns6_c1", 0.954]]}
+
+STDERR:
+
+ENV {"B": "16", "Q": "1", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 16, "q": 1, "layer": "full", "base": 99.52, "n": 7, "best": [[99.06, "ns264", 1.005], [99.52, "base", 1.0], [102.3, "ns198", 0.973], [104.5, "ns528", 0.952]]}
+
+STDERR:
+
+ENV {"B": "32", "Q": "1", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 32, "q": 1, "layer": "full", "base": 172.46, "n": 7, "best": [[172.38, "ns264", 1.0], [172.46, "base", 1.0], [176.11, "ns528", 0.979], [182.48, "ns198", 0.945]]}
+
+STDERR:
+
+ENV {"B": "16", "Q": "8", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 16, "q": 8, "layer": "full", "base": 108.5, "n": 7, "best": [[108.13, "ns264", 1.003], [108.5, "base", 1.0], [120.06, "ns528", 0.904], [122.02, "ns198", 0.889]]}
+
+STDERR:
+
+ENV {"B": "32", "Q": "8", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 32, "q": 8, "layer": "full", "base": 192.59, "n": 7, "best": [[192.59, "base", 1.0], [193.01, "ns264", 0.998], [205.92, "ns528", 0.935], [225.98, "ns198", 0.852]]}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-9rLT5geQDBaMb3Ut4sSfs3
