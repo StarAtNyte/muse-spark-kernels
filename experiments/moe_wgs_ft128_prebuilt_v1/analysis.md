@@ -1,0 +1,5 @@
+# 128-token WGS prebuilt GPU diagnostic
+
+Compiled the scored baseline and the candidate in CPU-only Modal containers, then transferred the extensions to an H200. The initial two-minute screen timed out after initialization; the instrumented 60-second retry showed `KERNEL_COMPLETE base` and `REFERENCE_PASS base`, followed by `CAPTURE_START cand` with no candidate completion before exit code 124. The candidate's first launch did not complete in the bounded test; no candidate reference result or timing is available. Reject this version and retain the scored baseline. The cause of the stall is not established.
+
+Candidate source SHA-256 `2d17be6b48f9043760133479f6a8f8b241e9cda258172c9b36e9040f869f8378`; baseline source SHA-256 `a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a`. The instrumented app was `ap-Cyl6YrO06nTVB9TWbBBBhr`. `diagnostic.log` and `retry.log` preserve the outputs. `first_app_logs.txt` is the recovered server log from an earlier run whose local output was lost across an environment restart; it contains no benchmark result. Runner: `dev/modal/moe_ft128_prebuilt.py`.
