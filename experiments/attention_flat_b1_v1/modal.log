@@ -1,0 +1,51 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3mwHDtems3Go5DULi8bCl5
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_env.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"B": "1", "Q": "1", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 1, "q": 1, "layer": "full", "base": 17.1, "n": 31, "best": [[17.1, "base", 1.0], [17.98, "flat_ns126_nc4_c1", 0.951], [18.11, "flat_ns126_nc4", 0.944], [18.16, "flat_ns126_nc8", 0.942]]}
+
+STDERR:
+
+ENV {"B": "1", "Q": "8", "LAYER": "full"} RETURNCODE 0
+ROW {"B": 1, "q": 8, "layer": "full", "base": 19.7, "n": 31, "best": [[19.7, "base", 1.0], [20.58, "flat_ns252_nc8", 0.957], [20.85, "flat_ns252_nc8_c1", 0.945], [20.94, "flat_ns264_nc8_c1", 0.94]]}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3mwHDtems3Go5DULi8bCl5
