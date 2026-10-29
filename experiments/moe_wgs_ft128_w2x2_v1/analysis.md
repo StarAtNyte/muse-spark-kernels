@@ -4,4 +4,6 @@ The one-activation-slot 128-token variant had to drain all WGMMA groups before e
 
 All six task-reference checks passed with bitwise-identical output. Median paired baseline/candidate ratios over seeds 419 and 7919 were 0.9701 and 0.9721 at M32, 0.9446 and 0.9426 at M128, and 0.9377 and 0.9233 at M256. This substantially improves on the earlier one-slot variant but remains approximately 3–8% slower than the scored baseline. Do not promote or submit. This is a component screen, not an official score.
 
+Subsequent source audit found that WGS dispatch has implementations only through eight 8-row tiles and defaults to eight for larger jobs, while the packed cost table likewise has only eight buckets. Therefore these sample checks do not establish correctness when an expert receives more than 64 rows: the candidate needs a correct wider dispatch and defined scheduling costs before further validation. The same limitation applies to the one-slot 128-token experiment.
+
 Candidate SHA-256 `d97ccd9d947fa12d701d31ae2b500abc5c0f2b6ee055d83255021af38a473fca`; baseline SHA-256 `a7fa7eac2b2f6a943ceb977197d992d2fe770aea7a1f65a82ae9d4462127d48a`. Modal app `ap-WmxEXtKKs9Cx5ZekPmg0Ot`; raw output `screen.log`. Command: `modal run dev/modal/moe_ft128_prebuilt.py --base kernels/muse_moe_w4a16/submission.py --candidate experiments/moe_wgs_ft128_w2x2_v1/submission.py`.

@@ -1,0 +1,3 @@
+# 128-token scheduler audit
+
+The 128-token WGS experiments inherited an eight-entry packed cost table. `wgs_cost` selects bucket `(cnt + 7) / 8 - 1`; for counts above 64 this attempts a shift of at least 64 bits on a 64-bit integer, which is not a valid C++ shift. This candidate clamps the bucket to 7, but inspection also revealed that `wgs_phase` dispatches only `WGSMMA<1>` through `WGSMMA<8>` and defaults to 8 for larger jobs. Therefore the cost clamp alone cannot make the 128-token implementation correct above 64 rows. Its CPU build was stopped before GPU evaluation; do not submit. A valid follow-up must implement and test the full 9–16 tile dispatch and skewed routing cases.
