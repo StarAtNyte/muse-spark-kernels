@@ -1,0 +1,48 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-C3iE91DYIF80ZzKnVTL0Vb
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/moe_ft128_prebuilt
+│   .py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Created Function compile_one.
+└── ✓ Created Function screen.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+COMPILED [('okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_dq71_sm90a.so', 5224528), ('okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_ft1281_okc_prmtsc1_okc_dq71_sm90a.so', 5240984)]
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+{"returncode": 0, "stdout": "READY NVIDIA H200 ('-DOKC_PRMTSC=1',) ('-DOKC_PRMTSC=1',)\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 32, \"seed\": 419, \"baseline_us\": 134.44799929857254, \"candidate_us\": 160.94399988651276, \"base_over_candidate\": 0.8449887066741201, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 32, \"seed\": 7919, \"baseline_us\": 153.9039984345436, \"candidate_us\": 183.18399786949158, \"base_over_candidate\": 0.8414838889907477, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 128, \"seed\": 419, \"baseline_us\": 196.1439996957779, \"candidate_us\": 242.75200068950653, \"base_over_candidate\": 0.8067142233627047, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 128, \"seed\": 7919, \"baseline_us\": 192.57599860429764, \"candidate_us\": 239.47200179100037, \"base_over_candidate\": 0.8060817671801883, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 256, \"seed\": 419, \"baseline_us\": 232.7839955687523, \"candidate_us\": 291.51999950408936, \"base_over_candidate\": 0.7997687056799003, \"relative_l2\": 0.0}\nCAPTURE_START base\nKERNEL_COMPLETE base\nREFERENCE_PASS base\nCAPTURE_START cand\nKERNEL_COMPLETE cand\nREFERENCE_PASS cand\nRESULT {\"batch\": 256, \"seed\": 7919, \"baseline_us\": 216.62400662899017, \"candidate_us\": 275.64799785614014, \"base_over_candidate\": 0.7846527665129037, \"relative_l2\": 0.0}\nSCREEN_DONE\n", "stderr": ""}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-C3iE91DYIF80ZzKnVTL0Vb
