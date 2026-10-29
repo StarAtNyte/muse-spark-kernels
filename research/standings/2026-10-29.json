@@ -1,142 +1,141 @@
 {
-  "captured_at_utc": "2026-10-29T04:13:02.360946+00:00",
-  "overall_you": {
-    "rank": 110,
+ "captured_at_utc": "2026-10-29T09:13:31.213212+00:00",
+ "boards": {
+  "muse_bf16_proj": {
+   "you": {
+    "rank": 88,
     "team": "StarAtNyte",
+    "speedup": 1.5395,
     "first": false,
-    "ahead": 109
+    "ahead": 87,
+    "to_first": 1.0631
+   },
+   "leader": {
+    "rank": 1,
+    "team": "colinlikescode",
+    "speedup": 1.6367,
+    "first": true,
+    "ahead": 0
+   },
+   "rank_50": {
+    "attempts": 6,
+    "job": "dc15f59ab42249ad",
+    "rank": 50,
+    "speedup": 1.556,
+    "submitted_at": 1793223178.7453525,
+    "team": "bill810975",
+    "value": 3104.5378711440594
+   }
   },
-  "boards": {
-    "muse_bf16_proj": {
-      "you": {
-        "rank": 82,
-        "team": "StarAtNyte",
-        "speedup": 1.5395,
-        "first": false,
-        "ahead": 81,
-        "to_first": 1.0631
-      },
-      "leader": {
-        "rank": 1,
-        "team": "colinlikescode",
-        "speedup": 1.6367,
-        "first": true,
-        "ahead": 0
-      },
-      "rank_50": {
-        "attempts": 9,
-        "job": "f8e680615a0143bf",
-        "rank": 50,
-        "screening": "under_review",
-        "speedup": 1.5544,
-        "submitted_at": 1792998572.7531257,
-        "team": "EmreKaplaner",
-        "value": 3107.765281416104
-      }
-    },
-    "muse_attention_decode": {
-      "you": {
-        "rank": 89,
-        "team": "StarAtNyte",
-        "speedup": 2.5806,
-        "first": false,
-        "ahead": 88,
-        "to_first": 1.1835
-      },
-      "leader": {
-        "rank": 1,
-        "team": "LeshengJin",
-        "speedup": 3.0542,
-        "first": true,
-        "ahead": 0
-      },
-      "rank_50": {
-        "attempts": 12,
-        "job": "67f71df756984018",
-        "rank": 50,
-        "speedup": 2.6154,
-        "submitted_at": 1793238075.593186,
-        "team": "Raphael-Hao",
-        "value": 1440.056090900216
-      }
-    },
-    "muse_moe_w4a16": {
-      "you": {
-        "rank": 96,
-        "team": "StarAtNyte",
-        "speedup": 2.329,
-        "first": false,
-        "ahead": 95,
-        "to_first": 1.1545
-      },
-      "leader": {
-        "rank": 1,
-        "team": "dolanzhao",
-        "speedup": 2.6888,
-        "first": true,
-        "ahead": 0
-      },
-      "rank_50": {
-        "attempts": 34,
-        "job": "cbf182d9fcac4612",
-        "rank": 50,
-        "speedup": 2.3714,
-        "submitted_at": 1793244606.5141044,
-        "team": "pierrelouisdelx",
-        "value": 5671.073480387463
-      }
-    },
-    "muse_decode_layer": {
-      "you": {
-        "rank": 110,
-        "team": "StarAtNyte",
-        "speedup": 2.0926,
-        "first": false,
-        "ahead": 109,
-        "to_first": 1.1483
-      },
-      "leader": {
-        "rank": 1,
-        "team": "pjmullin3",
-        "speedup": 2.4029,
-        "first": true,
-        "ahead": 0
-      },
-      "rank_50": {
-        "attempts": 29,
-        "job": "3e3b9fd385ad4af7",
-        "rank": 50,
-        "speedup": 2.158,
-        "submitted_at": 1793156982.2433898,
-        "team": "tech-cosmos",
-        "value": 10482.126907062853
-      }
-    },
-    "muse_prefill_layer": {
-      "you": {
-        "rank": 74,
-        "team": "StarAtNyte",
-        "speedup": 1.7874,
-        "first": false,
-        "ahead": 73,
-        "to_first": 1.1371
-      },
-      "leader": {
-        "rank": 1,
-        "team": "zzz0906",
-        "speedup": 2.0325,
-        "first": true,
-        "ahead": 0
-      },
-      "rank_50": {
-        "attempts": 19,
-        "job": "3abd95ef34424794",
-        "rank": 50,
-        "speedup": 1.7992,
-        "submitted_at": 1793176133.650078,
-        "team": "shashwatgokhe",
-        "value": 215325.49276353532
-      }
-    }
+  "muse_attention_decode": {
+   "you": {
+    "rank": 94,
+    "team": "StarAtNyte",
+    "speedup": 2.5806,
+    "first": false,
+    "ahead": 93,
+    "to_first": 1.1835
+   },
+   "leader": {
+    "rank": 1,
+    "team": "LeshengJin",
+    "speedup": 3.0542,
+    "first": true,
+    "ahead": 0
+   },
+   "rank_50": {
+    "attempts": 1,
+    "job": "a2313ce909614864",
+    "rank": 50,
+    "speedup": 2.6205,
+    "submitted_at": 1793162432.687912,
+    "team": "defiarbitrage-star",
+    "value": 1437.2642106689855
+   }
+  },
+  "muse_moe_w4a16": {
+   "you": {
+    "rank": 103,
+    "team": "StarAtNyte",
+    "speedup": 2.329,
+    "first": false,
+    "ahead": 102,
+    "to_first": 1.1545
+   },
+   "leader": {
+    "rank": 1,
+    "team": "dolanzhao",
+    "speedup": 2.6888,
+    "first": true,
+    "ahead": 0
+   },
+   "rank_50": {
+    "attempts": 4,
+    "job": "f46043346b114eae",
+    "rank": 50,
+    "speedup": 2.3736,
+    "submitted_at": 1793064471.1609867,
+    "team": "prajitrr",
+    "value": 5665.858832417434
+   }
+  },
+  "muse_decode_layer": {
+   "you": {
+    "rank": 117,
+    "team": "StarAtNyte",
+    "speedup": 2.0926,
+    "first": false,
+    "ahead": 116,
+    "to_first": 1.1483
+   },
+   "leader": {
+    "rank": 1,
+    "team": "pjmullin3",
+    "speedup": 2.4029,
+    "first": true,
+    "ahead": 0
+   },
+   "rank_50": {
+    "attempts": 26,
+    "job": "9d9e0594887d481e",
+    "rank": 50,
+    "speedup": 2.1655,
+    "submitted_at": 1793252693.2569613,
+    "team": "HyperbolicCurve",
+    "value": 10445.753896518949
+   }
+  },
+  "muse_prefill_layer": {
+   "you": {
+    "rank": 78,
+    "team": "StarAtNyte",
+    "speedup": 1.7874,
+    "first": false,
+    "ahead": 77,
+    "to_first": 1.1371
+   },
+   "leader": {
+    "rank": 1,
+    "team": "zzz0906",
+    "speedup": 2.0325,
+    "first": true,
+    "ahead": 0
+   },
+   "rank_50": {
+    "attempts": 12,
+    "job": "b5e1e2b64d81487f",
+    "rank": 50,
+    "speedup": 1.7994,
+    "submitted_at": 1793172364.942444,
+    "team": "UnderAndOver",
+    "value": 215294.67456975096
+   }
   }
+ },
+ "overall_you": {
+  "rank": 117,
+  "team": "StarAtNyte",
+  "first": false,
+  "ahead": 116
+ }
 }

@@ -41,15 +41,15 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5395x | #82 | 1.5544x | 1.6367x | beb3e26afb2544c9 |
-| Attention | 2.5806x | #89 | 2.6154x | 3.0542x | 0d181df6ffc2480b |
-| MoE | 2.3290x | #96 | 2.3714x | 2.6888x | 88e09ad35c814c29 |
-| Whole decoder layer | 2.0926x | #110 | 2.1580x | 2.4029x | 6cf1be8d60e84ac7 |
-| Prefill layer | 1.7874x | #74 | 1.7992x | 2.0325x | 68ac9af85a3a4e3d |
+| Projections | 1.5395x | #88 | 1.5560x | 1.6367x | beb3e26afb2544c9 |
+| Attention | 2.5806x | #94 | 2.6205x | 3.0542x | 0d181df6ffc2480b |
+| MoE | 2.3290x | #103 | 2.3736x | 2.6888x | 88e09ad35c814c29 |
+| Whole decoder layer | 2.0926x | #117 | 2.1655x | 2.4029x | 6cf1be8d60e84ac7 |
+| Prefill layer | 1.7874x | #78 | 1.7994x | 2.0325x | 68ac9af85a3a4e3d |
 
-Overall rank is **#110**. Prefill is a separate board and does not count toward
+Overall rank is **#117** (live snapshot 2026-10-29 09:13 UTC via `python tools/standings.py`; ranks move as others submit). Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
-is #74. Its current top-50 cutoff is 1.7992x. Leaderboard snapshot refreshed 2026-10-29; ranks and cutoffs can move
+is #74. Its current top-50 cutoff is 1.7992x. Leaderboard snapshot refreshed 2026-10-29 09:13 UTC; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
 operatorstack transfer passed correctness but scored only **1.8533x**, so it
 was rejected and not submitted. See `research/ENGINEERING.md` and
