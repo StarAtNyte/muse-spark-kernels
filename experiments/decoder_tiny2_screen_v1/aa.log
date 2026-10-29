@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-D6V7UZ25RKhsXGWpdA3Eng
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 95.9, "cand": 95.2, "gain": 1.0071, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.347e-03 (worst row 6.347e-03) [bound 0.143]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 88.7, "cand": 87.7, "gain": 1.0111, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.753e-03 (worst row 6.753e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4003, "base": 88.7, "cand": 87.6, "gain": 1.0117, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.309e-03 (worst row 6.309e-03) [bound 0.105]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 101.6, "cand": 101.0, "gain": 1.0063, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.165e-03 (worst row 8.165e-03) [bound 0.133]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 94.7, "cand": 93.9, "gain": 1.0087, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.425e-03 (worst row 6.425e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4003, "base": 94.5, "cand": 94.1, "gain": 1.0036, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.476e-03 (worst row 6.476e-03) [bound 0.142]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 130.3, "cand": 128.9, "gain": 1.0107, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.312e-02 (worst row 8.397e-02) [bound 0.130]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 130.4, "cand": 129.6, "gain": 1.0058, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.648e-02 (worst row 8.020e-02) [bound 0.142]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4003, "base": 137.1, "cand": 136.3, "gain": 1.0055, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.208e-02 (worst row 7.692e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 155.4, "cand": 155.3, "gain": 1.0006, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.146e-03 (worst row 9.974e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 147.6, "cand": 147.4, "gain": 1.0013, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.524e-03 (worst row 9.402e-03) [bound 0.142]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4003, "base": 142.1, "cand": 141.6, "gain": 1.0041, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.524e-03 (worst row 1.253e-02) [bound 0.141]; attention input re"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-D6V7UZ25RKhsXGWpdA3Eng

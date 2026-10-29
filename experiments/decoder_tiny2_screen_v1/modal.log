@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ILBZ8g4nnab8aJ9dcessIV
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+tune failed: ValueError('bad marshal data (unknown type code)')
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 108.2, "cand": 91.2, "gain": 1.1875, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.378e-03 (worst row 6.378e-03) [bound 0.143]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 102.2, "cand": 84.0, "gain": 1.217, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.771e-03 (worst row 6.771e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4003, "base": 108.2, "cand": 91.2, "gain": 1.1862, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.383e-03 (worst row 6.383e-03) [bound 0.105]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 114.4, "cand": 99.1, "gain": 1.1551, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.176e-03 (worst row 8.176e-03) [bound 0.133]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 107.8, "cand": 91.4, "gain": 1.179, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.369e-03 (worst row 6.369e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4003, "base": 107.2, "cand": 91.4, "gain": 1.1729, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.476e-03 (worst row 6.476e-03) [bound 0.142]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 136.0, "cand": 122.4, "gain": 1.1107, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.310e-02 (worst row 7.278e-02) [bound 0.131]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 142.1, "cand": 129.0, "gain": 1.1013, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.781e-02 (worst row 7.264e-02) [bound 0.146]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4003, "base": 141.5, "cand": 129.1, "gain": 1.0964, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.202e-02 (worst row 7.527e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 149.2, "cand": 125.4, "gain": 1.1898, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.163e-03 (worst row 9.995e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 156.0, "cand": 134.0, "gain": 1.1643, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.610e-03 (worst row 8.992e-03) [bound 0.139]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4003, "base": 175.7, "cand": 154.9, "gain": 1.1345, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.528e-03 (worst row 1.253e-02) [bound 0.142]; attention input re"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ILBZ8g4nnab8aJ9dcessIV
