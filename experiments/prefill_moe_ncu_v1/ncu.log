@@ -1,0 +1,143 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GV0mgn4NgKJqeA2GnOUJul
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 48 (/usr/local/bin/python3)
+LT tune T=753 qkv: torch.mm 382.7us, best 270.5us algo 0 of 8
+LT tune T=753 o: torch.mm 386.0us, best 271.7us algo 0 of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 387.3us, best 269.6us algo 0 of 8
+LT tune T=753 unpooler: torch.mm 461.6us, best 321.1us algo 0 of 8
+LT tune T=3012 qkv: torch.mm 452.8us, best 324.2us algo 0 of 8
+LT tune T=3012 o: torch.mm 476.9us, best 338.1us algo 0 of 8
+LT tune T=3012 router: torch.mm 507.0us, best 326.7us algo 0 of 8
+LT tune T=3012 pooler: torch.mm 536.9us, best 423.9us algo 0 of 8
+LT tune T=3012 unpooler: torch.mm 537.9us, best 422.1us algo 0 of 8
+LT tune T=16384 qkv: torch.mm 1056.0us, best 935.5us algo 0 of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 636.5us, best 367.0us algo 2 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47306580250256'>")
+CHECK (True, 'update relative L2 error 5.175e-02 (worst row 1.209e-01) [bound 0.122]; attention input relative L2 error 3.350e-02 (worst row 8.273e-02) [bound 0.079]')
+==PROF== Profiling "moe_fused_persistent": 0%....50%....100% - 16 passes
+DONE
+==PROF== Disconnected from process 48
+[48] python3@127.0.0.1
+  void moe_fused_persistent<1>(FusedArgs) (132, 1, 1)x(384, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Warning: Data collection happened without fixed GPU frequencies. Profiling results may be inconsistent.
+    Section: Command line profiler metrics
+    --------------------------------------------------------------------------- ----------- ------------
+    Metric Name                                                                 Metric Unit Metric Value
+    --------------------------------------------------------------------------- ----------- ------------
+    dram__bytes_read.sum                                                              Gbyte         1.09
+    gpu__time_duration.sum                                                               ms         2.89
+    smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio                   inst         3.09
+    smsp__average_warps_issue_stalled_branch_resolving_per_issue_active.ratio          inst         0.21
+    smsp__average_warps_issue_stalled_dispatch_stall_per_issue_active.ratio            inst         0.64
+    smsp__average_warps_issue_stalled_drain_per_issue_active.ratio                     inst         0.00
+    smsp__average_warps_issue_stalled_gmma_per_issue_active.ratio                      inst         0.41
+    smsp__average_warps_issue_stalled_imc_miss_per_issue_active.ratio                  inst         0.00
+    smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio               inst            0
+    smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio           inst         0.55
+    smsp__average_warps_issue_stalled_math_pipe_throttle_per_issue_active.ratio        inst         0.21
+    smsp__average_warps_issue_stalled_membar_per_issue_active.ratio                    inst         0.01
+    smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio              inst         0.02
+    smsp__average_warps_issue_stalled_misc_per_issue_active.ratio                      inst         0.01
+    smsp__average_warps_issue_stalled_no_instruction_per_issue_active.ratio            inst         0.07
+    smsp__average_warps_issue_stalled_not_selected_per_issue_active.ratio              inst         0.23
+    smsp__average_warps_issue_stalled_selected_per_issue_active.ratio                  inst         1.00
+    smsp__average_warps_issue_stalled_short_scoreboard_per_issue_active.ratio          inst         0.72
+    smsp__average_warps_issue_stalled_sleeping_per_issue_active.ratio                  inst         0.26
+    smsp__average_warps_issue_stalled_tex_throttle_per_issue_active.ratio              inst            0
+    smsp__average_warps_issue_stalled_wait_per_issue_active.ratio                      inst         1.50
+    sm__inst_executed_pipe_tensor_op_gmma.sum                                          inst     20054016
+    sm__pipe_tensor_op_gmma_cycles_active.avg.pct_of_peak_sustained_active                       (!) n/a
+    smsp__inst_executed.sum                                                            inst    701355405
+    smsp__issue_active.avg.pct_of_peak_sustained_active                                   %        27.99
+    --------------------------------------------------------------------------- ----------- ------------
+
+    Section: GPU Speed Of Light Throughput
+    ----------------------- ----------- ------------
+    Metric Name             Metric Unit Metric Value
+    ----------------------- ----------- ------------
+    DRAM Frequency                  Ghz         3.20
+    SM Frequency                    Ghz         1.65
+    Elapsed Cycles                cycle      4832967
+    Memory Throughput                 %        52.63
+    DRAM Throughput                   %        10.45
+    Duration                         ms         2.89
+    L1/TEX Cache Throughput           %        52.79
+    L2 Cache Throughput               %        41.04
+    SM Active Cycles              cycle   4769104.41
+    Compute (SM) Throughput           %        92.55
+    ----------------------- ----------- ------------
+
+    INF   This workload is utilizing greater than 80.0% of the available compute or memory performance of the device.   
+          To further improve performance, work will likely need to be shifted from the most utilized to another unit.   
+          Start by analyzing workloads in the Compute Workload Analysis section.                                        
+
+    Section: Occupancy
+    ------------------------------- ----------- ------------
+    Metric Name                     Metric Unit Metric Value
+    ------------------------------- ----------- ------------
+    Max Active Clusters                 cluster            0
+    Max Cluster Size                      block            8
+    Overall GPU Occupancy                     %            0
+    Cluster Occupancy                         %            0
+    Block Limit Barriers                  block           32
+    Block Limit SM                        block           32
+    Block Limit Registers                 block            1
+    Block Limit Shared Mem                block            1
+    Block Limit Warps                     block            5
+    Theoretical Active Warps per SM        warp           12
+    Theoretical Occupancy                     %        18.75
+    Achieved Occupancy                        %        15.62
+    Achieved Active Warps Per SM           warp        10.00
+    ------------------------------- ----------- ------------
+
+    OPT   Est. Local Speedup: 81.25%                                                                                    
+          The 3.00 theoretical warps per scheduler this kernel can issue according to its occupancy are below the       
+          hardware maximum of 16. This kernel's theoretical occupancy (18.8%) is limited by the number of required      
+          registers, and the required amount of shared memory.                                                          
+
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GV0mgn4NgKJqeA2GnOUJul
