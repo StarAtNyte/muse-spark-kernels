@@ -28,7 +28,7 @@ cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
 The current public scores are **1.5395x** for projections, **2.6177x** for
 attention, **2.3820x** for MoE, and **2.2603x** for the whole decoder. The
 private check scores and immutable sources are archived under `experiments/`;
-`research/best.json` points to the current best implementations in `kernels/`.
+`research/best.json` records the best scored source for each problem.
 
 ```bash
 ~/.okc/bin/okc status 3f1954adb1044e31 --json
@@ -41,39 +41,27 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5395x | #138 | 1.5638x | 1.6498x | beb3e26afb2544c9 |
-| Attention | 2.6177x | #93 | 2.6681x | 3.2221x | b95cd80bd3e6497f |
-| MoE | 2.3820x | #76 | 2.4158x | 2.7578x | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603x | #28 | 2.2239x | 2.4178x | b72f02c7eb8745f5 |
-| Prefill layer | 1.8092x | #54 | 1.8115x | 2.0325x | 7d1584001a32467a |
+| Projections | 1.5395x | #169 | 1.5687x | 1.6498x | beb3e26afb2544c9 |
+| Attention | 2.6177x | #110 | 2.6772x | 3.2221x | b95cd80bd3e6497f |
+| MoE | 2.3820x | #91 | 2.4203x | 2.7578x | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603x | #33 | 2.2319x | 2.4178x | b72f02c7eb8745f5 |
+| Prefill layer | 1.8092x | #57 | 1.8127x | 2.0325x | 7d1584001a32467a |
 
-Overall rank is **#28**. The table and overall rank were fetched from the
-leaderboard on **2026-10-30 at 09:21 UTC**, except prefill, refreshed at
-**14:42 UTC**; ranks and cutoffs move as others submit. Prefill is a separate board and does not count toward overall rank.
-The decoder previously reached #25 in an earlier snapshot.
-The latest stacked M32/M128
-operatorstack transfer passed correctness but scored only **1.8533x**, so it
-was rejected and not submitted. See `research/ENGINEERING.md` and
-`experiments/decoder_vjeux_operatorstack_stack_v1/` for the score and profile.
+Overall rank is **#33**. Category ranks and cutoffs were fetched on **2026-10-30 at 17:04 UTC**; overall was fetched immediately afterward. Ranks can move as others submit. Prefill is a separate board and does not count toward overall rank. The category snapshot is [archived](research/standings/2026-10-30-refresh.json).
 
 ## Score progression
 
-Each progression shows published milestones. The rank column gives today's
-rank, except where an earlier rank is explicitly called out. Intermediate
-ranks were not returned in the public job records, so they are left blank.
+These are published milestones; current ranks refer to the snapshot above. Intermediate ranks are omitted when not recorded. Exact scored sources and job IDs are retained under `experiments/`.
 
-| Problem | Score progression | Main technique | Current file | Current rank |
+| Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Adopt Nathen v18's shape-specific BF16 kernels, then stack measured M256-pooler and M128-unpooler cuBLASLt plans. Then add the paired vjeux M32 pooler and M128 router routes. Job `beb3e26afb2544c9`. | `kernels/muse_bf16_proj/submission.py` | #82 |
-| Attention | 1.1305x → 2.5806x → **2.6177x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation (job `0d181df6ffc2480b`), then tune the 16-request sliding decode plan (8 splits, no cooperative finalize). Job `b95cd80bd3e6497f`. | `kernels/muse_attention_decode/submission.py` | #89 |
-| MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #96 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0874x → **2.0926x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path, then transfer small output projections and gather batch 7. Job `6cf1be8d60e84ac7`. | `kernels/muse_decode_layer/submission.py` | #110 |
-| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with a four-lane shuffle gather; public job `7d1584001a32467a`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #54 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Shape-specific BF16 kernels and cuBLASLt plans, with M32 pooler and M128 router routes. | `experiments/projection_vjeux_m32pool_m128router_v1/submission.py` | #169 |
+| Attention | 1.1305x → 2.5806x → **2.6177x** | Fused attention and optimized sliding decode plan. | `kernels/muse_attention_decode/submission.py` | #110 |
+| MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #91 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `kernels/muse_decode_layer/submission.py` | #33 |
+| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with four-lane shuffle gather. | `kernels/muse_prefill_layer/submission.py` | #57 |
 
-This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
-same; each job ID and score identifies the exact published run. The latest MoE
-submission improved the live rank from #71 to #63; its 2.3290x score remains
-below the current top-50 cutoff of 2.3519x.
+The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score.
 
 ### Latest validation against the published kernels (2026-10-28)
 
