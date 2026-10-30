@@ -1,0 +1,5 @@
+# Prefill large-tile MoE cross-stage prefetch
+
+Enabled the existing `MOE_XPF256` path for tiles of at least 160 rows to prefetch the next stage's packed weights and scales. Parent is published 1.80923× SHA-256 `f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9`; candidate SHA-256 `aa7b857759f69174ec0aac77ffe0cfdf9ac190345f8b8614182b77346d1d4f63` differs only in that define. The shared-plan driver loads the parent twice and applies this define to the candidate module; its opening docstring is inherited from an earlier ablation.
+
+Public-image H200 app `ap-mlQh7JJCCkH0rLCzBiSKk9` completed with return code 0. Baseline and candidate passed all three reference screens. Paired cold-L2 median parent/candidate times over 16 replays were 512.7/514.8 µs (turn-1 sliding, 0.9958×), 3093.6/3101.8 µs (turn-4 full, 0.9974×), and 9159.4/9128.0 µs (first-turn sliding, 1.0034×). Each shape uses one seed, attention tuning failed under the SGLang stub and attention was pinned, and this is not the official judge. Results are mixed and too small to establish a gain. No promotion or official submission; see `screen.log`.
