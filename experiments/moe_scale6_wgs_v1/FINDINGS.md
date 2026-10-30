@@ -14,3 +14,5 @@ On H200 app `ap-CJ8u8XIG5DLP2TripCVSqD`, both outputs passed the reference check
 | 256 | 7919 | 209.52 | 211.41 | 0.9911 |
 
 These are component timings, not a judge score. The experiment shares the remaining prepared state and uses an independently generated parent WGS copy. Full raw output is `probe.log`; full correctness, arbitrary scales, and wider conditions remain to be verified.
+
+The published MoE profile assigns equal weight to six shapes; only the 32, 128, and 256 token shapes use WGS in this candidate. As a rough projection only, taking geometric means of the two observed ratios per shape and assuming the other three are unchanged gives an aggregate multiplier `(1.01852 × 1.01960 × 1.00089)^(1/6) = 1.00646`. Applied to the published 2.38203×, this suggests roughly 2.397×. This is not a judge prediction with a confidence interval: the samples are few, graph overhead and actual routing differ, and the product of medians is not the official estimator. The official check is the appropriate next evidence.
