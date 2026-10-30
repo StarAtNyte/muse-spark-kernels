@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cupnEsJYQMywfntiOkuAL7
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.2us, best 42.2us algo None of 8
+LT tune T=753 o: torch.mm 24.5us, best 24.5us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.5us, best 68.5us algo None of 8
+LT tune T=753 unpooler: torch.mm 69.9us, best 69.9us algo None of 8
+LT tune T=3012 qkv: torch.mm 146.9us, best 146.9us algo None of 8
+LT tune T=3012 o: torch.mm 75.2us, best 75.2us algo None of 8
+LT tune T=3012 router: torch.mm 40.9us, best 40.9us algo None of 8
+LT tune T=3012 pooler: torch.mm 255.6us, best 255.6us algo None of 8
+LT tune T=3012 unpooler: torch.mm 255.1us, best 255.1us algo None of 8
+LT tune T=16384 qkv: torch.mm 775.6us, best 775.6us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 200.9us, best 200.9us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47964985427776'>")
+CHECK True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+PADDING {"case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "seed": 9400, "local_start": 0, "counts": [0, 107, 15, 65, 0, 0, 1, 0, 2, 39, 222, 0, 0, 5, 0, 0, 111, 0, 0, 1, 472, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0], "actual": 1044, "padded": 1440, "ideal_32": 1344, "excess": 96, "fine": false}
+CHECK True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [bound 0.097]
+PADDING {"case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "seed": 9401, "local_start": 224, "counts": [8, 8, 0, 508, 1, 345, 0, 0, 0, 0, 1, 402, 0, 0, 389, 1431, 190, 84, 46, 0, 261, 0, 5, 0, 0, 0, 302, 154, 0, 0, 165, 3], "actual": 4303, "padded": 4704, "ideal_32": 4640, "excess": 64, "fine": true}
+CHECK True update relative L2 error 3.222e-02 (worst row 1.049e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.524e-02) [bound 0.047]
+PADDING {"case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "seed": 9402, "local_start": 0, "counts": [0, 1792, 835, 1835, 0, 0, 1, 0, 7, 445, 4629, 0, 0, 161, 18, 0, 1951, 0, 0, 19, 11793, 1, 0, 0, 0, 0, 0, 1, 0, 0, 9, 0], "actual": 23497, "padded": 23808, "ideal_32": 23776, "excess": 32, "fine": true}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cupnEsJYQMywfntiOkuAL7
