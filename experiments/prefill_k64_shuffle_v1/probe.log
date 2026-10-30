@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-4WUnK7tjXBNAOqXjGIe13N
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+PREPARING BASELINE
+LT tune T=753 qkv: torch.mm 42.5us, best 42.5us algo None of 8
+LT tune T=753 o: torch.mm 25.2us, best 25.2us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.1us, best 69.1us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.8us, best 70.8us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.7us, best 147.7us algo None of 8
+LT tune T=3012 o: torch.mm 75.9us, best 75.9us algo None of 8
+LT tune T=3012 router: torch.mm 41.4us, best 41.4us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.2us, best 256.2us algo None of 8
+LT tune T=3012 unpooler: torch.mm 258.3us, best 258.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 769.4us, best 769.4us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 207.1us, best 207.1us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]
+PREPARING CANDIDATE
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 24.9us, best 24.9us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.2us, best 69.2us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.5us, best 70.5us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.6us, best 147.6us algo None of 8
+LT tune T=3012 o: torch.mm 76.1us, best 76.1us algo None of 8
+LT tune T=3012 router: torch.mm 41.0us, best 41.0us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.8us, best 256.8us algo None of 8
+LT tune T=3012 unpooler: torch.mm 256.6us, best 256.6us algo None of 8
+LT tune T=16384 qkv: torch.mm 769.2us, best 769.2us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 208.7us, best 208.7us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]
+RESULT {"tokens": 32, "relative_l2": 0.00017253651458304375, "finite": true}
+RESULT {"tokens": 96, "relative_l2": 0.0001604127319296822, "finite": true}
+RESULT {"tokens": 753, "relative_l2": 0.00013828637020196766, "finite": true}
+PASS: persistent MoE screening
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-4WUnK7tjXBNAOqXjGIe13N
