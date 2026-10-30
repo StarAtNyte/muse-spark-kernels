@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nuXB825szGDwleS8Ia0RW0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_ring_ns4nx2_
+│   isolated_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "real_ns4nx2"} RETURNCODE 1
+START
+RUN_FAIL real_ns4nx2 CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 80, in <module>
+    g, o = cap(e, d)
+           ^^^^^^^^^
+  File "/w/run/drv.py", line 69, in cap
+    with torch.cuda.graph(g): fn()
+  File "/usr/local/lib/python3.12/site-packages/torch/cuda/graphs.py", line 257, in __enter__
+    self.cuda_graph.capture_begin(
+  File "/usr/local/lib/python3.12/site-packages/torch/cuda/graphs.py", line 115, in capture_begin
+    super().capture_begin(pool=pool, capture_error_mode=capture_error_mode)
+torch.AcceleratorError: CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nuXB825szGDwleS8Ia0RW0
