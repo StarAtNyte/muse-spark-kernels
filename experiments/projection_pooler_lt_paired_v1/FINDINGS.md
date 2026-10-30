@@ -1,0 +1,5 @@
+# Pooler cuBLASLt paired descriptor screen
+
+H200 public-image app `ap-qOuuJ43YRz5YJxpiNbmfaX` screened existing stored cuBLASLt descriptors against the exact published projection source SHA-256 `d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9` (1.539506×). It prepared the full baseline, restored each descriptor and checked each output against the reference; 12 alternating cold-L2 graph timings per descriptor. The SGLang imports are stubbed, so this is not the official runtime. See `screen.log` for all timings.
+
+At M128, descriptor `(layout 2, epilogue 0, [66,15,1,0,0,0,35,0,2])` measured 30.816 µs versus baseline 32.192 µs (1.0447×). The incumbent descriptor tested as a direct preallocated-output call measured 1.0159× versus the full baseline, so wrapper/timing differences and noise may account for part of the result. M256 alternatives were neutral or slower in this screen. This single-seed lead is not an official score. A follow-up compares two fully dispatched paths sharing the same prepared plan across four seeds (`experiments/projection_pooler128_fullroute_v1/`); do not promote on this screen alone.

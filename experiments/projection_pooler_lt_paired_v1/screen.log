@@ -1,0 +1,72 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qOuuJ43YRz5YJxpiNbmfaX
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ENV 2.14.1+cu130 NVIDIA H200
+RESULT {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 4, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 31.74399957060814, "candidate_us": 31.247999519109726, "speedup": 1.0158730177653479}
+RESULT {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 1, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 31.74400143325329, "candidate_us": 30.943999998271465, "speedup": 1.0258532004597503}
+RESULT {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 0, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 32.19199925661087, "candidate_us": 30.81599995493889, "speedup": 1.0446521061683558}
+RESULT {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 2, 35, 0, 5], "layout": 2, "epilogue": 0, "baseline_us": 31.360000371932983, "candidate_us": 31.744000501930714, "speedup": 0.9879032219025332}
+BEST {"key": [128, "pooler"], "baseline_us": 31.5839983522892, "results": [{"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 0, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 32.19199925661087, "candidate_us": 30.81599995493889, "speedup": 1.0446521061683558}, {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 1, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 31.74400143325329, "candidate_us": 30.943999998271465, "speedup": 1.0258532004597503}, {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 4, 35, 0, 2], "layout": 2, "epilogue": 0, "baseline_us": 31.74399957060814, "candidate_us": 31.247999519109726, "speedup": 1.0158730177653479}, {"batch": 128, "layer": "pooler", "input_rows": 128, "descriptor": [66, 15, 1, 0, 0, 2, 35, 0, 5], "layout": 2, "epilogue": 0, "baseline_us": 31.360000371932983, "candidate_us": 31.744000501930714, "speedup": 0.9879032219025332}]}
+RESULT {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 18, 1, 0, 0, 4, 35, 0, 3], "layout": 3, "epilogue": 0, "baseline_us": 37.887999787926674, "candidate_us": 37.887999787926674, "speedup": 1.0}
+RESULT {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 18, 1, 0, 0, 0, 35, 0, 2], "layout": 3, "epilogue": 0, "baseline_us": 37.008000537753105, "candidate_us": 38.03199902176857, "speedup": 0.973075344174537}
+RESULT {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 183, 1, 0, 0, 0, 35, 0, 8], "layout": 0, "epilogue": 0, "baseline_us": 37.776000797748566, "candidate_us": 37.776000797748566, "speedup": 1.0}
+RESULT {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 183, 1, 0, 0, 0, 35, 0, 9], "layout": 0, "epilogue": 0, "baseline_us": 38.06399926543236, "candidate_us": 38.15999999642372, "speedup": 0.9974842575733658}
+BEST {"key": [256, "pooler"], "baseline_us": 37.91999816894531, "results": [{"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 183, 1, 0, 0, 0, 35, 0, 8], "layout": 0, "epilogue": 0, "baseline_us": 37.776000797748566, "candidate_us": 37.776000797748566, "speedup": 1.0}, {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 18, 1, 0, 0, 4, 35, 0, 3], "layout": 3, "epilogue": 0, "baseline_us": 37.887999787926674, "candidate_us": 37.887999787926674, "speedup": 1.0}, {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 18, 1, 0, 0, 0, 35, 0, 2], "layout": 3, "epilogue": 0, "baseline_us": 37.008000537753105, "candidate_us": 38.03199902176857, "speedup": 0.973075344174537}, {"batch": 256, "layer": "pooler", "input_rows": 256, "descriptor": [66, 183, 1, 0, 0, 0, 35, 0, 9], "layout": 0, "epilogue": 0, "baseline_us": 38.06399926543236, "candidate_us": 38.15999999642372, "speedup": 0.9974842575733658}]}
+LT_STACK_SCREEN_DONE
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.67 sk2=13.28 torch=17.82 -> cgemv
+[okc] tune o m=1: cgemv=8.86 sk2=9.31 torch=10.56 -> cgemv
+[okc] tune pooler m=1: cgemv=17.54 sk2=18.37 torch=25.38 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.36 sgemv=7.62 sk2=8.16 torch=10.62 -> cgemv
+[okc] tune router m=1: rgemv=7.55 sk2=8.61 torch=18.5 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.22 torch=17.7 -> sk2
+[okc] tune o m=16: sk2=9.38 torch=10.4 -> sk2
+[okc] tune pooler m=16: sk2=18.4 torch=25.18 -> sk2
+[okc] tune unpooler m=16: sk2=17.79 torch=22.24 -> sk2
+[okc] tune router m=16: sk2=8.67 torch=18.82 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.53 torch=18.11 -> sk2
+[okc] tune o m=32: sk2=9.54 torch=10.43 -> sk2
+[okc] tune pooler m=32: sk2=19.39 torch=25.7 -> sk2
+[okc] tune unpooler m=32: sk2=18.72 torch=22.72 -> sk2
+[okc] tune router m=32: sk2=9.31 torch=19.33 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.09 torch=17.98 -> sk2
+[okc] tune o m=8: sk2=9.44 torch=10.14 -> sk2
+[okc] tune pooler m=8: sk2=18.43 torch=25.28 -> sk2
+[okc] tune unpooler m=8: sk2=8.1 torch=11.04 -> sk2
+[okc] tune router m=8: sk2=8.74 torch=18.3 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.43 torch=20.64 -> gqx
+[okc] tune o m=128: torch=11.36 torchT=11.23 -> torchT
+[okc] tune pooler m=128: gq=25.25 torch=28.22 -> gq
+[okc] tune unpooler m=128: torch=23.55 torchT=22.94 -> torchT
+[okc] tune router m=128: rk=9.76 wide=12.54 gemm=13.63 torch=20.13 -> rk
+[okc] tune o m=256: torch=13.09 torchT=12.86 -> torchT
+[okc] tune pooler m=256: torch=35.17 cutlass=31.26 -> cutlass
+[okc] tune unpooler m=256: torch=28.48 torchT=28.06 -> torchT
+[okc] tune router m=256: rk=10.66 wide=13.7 gemm=17.57 torch=20.99 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-qOuuJ43YRz5YJxpiNbmfaX
