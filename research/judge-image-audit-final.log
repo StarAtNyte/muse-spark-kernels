@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Vcl6mg9njRFKTDJbxYeWKJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/judge_env.py
+└── ✓ Created Function inspect_environment.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+{
+  "capability": [
+    9,
+    0
+  ],
+  "cudnn": 92400,
+  "gpu": "NVIDIA H200",
+  "nvcc": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Aug_20_01:58:59_PM_PDT_2025\nCuda compilation tools, release 13.0, V13.0.88\nBuild cuda_13.0.r13.0/compiler.36424714_0\n"
+  },
+  "nvidia_smi": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "name, driver_version, clocks.max.sm [MHz], clocks.max.memory [MHz], memory.total [MiB]\nNVIDIA H200, 610.57.04, 1980 MHz, 3201 MHz, 143771 MiB\n"
+  },
+  "packages": {
+    "deep-gemm": null,
+    "flash-attn": null,
+    "flashinfer-python": "0.7.0.post1",
+    "numpy": "2.3.5",
+    "nvidia-cutlass-dsl": "4.8.0",
+    "sglang": "0.0.0.dev0",
+    "tilelang": "0.1.12",
+    "triton": "3.8.0"
+  },
+  "platform": "Linux-4.19.0-gvisor-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "torch": "2.14.1+cu130",
+  "torch_cuda": "13.0"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Vcl6mg9njRFKTDJbxYeWKJ

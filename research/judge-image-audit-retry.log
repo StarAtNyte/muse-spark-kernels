@@ -1,0 +1,106 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-XhrT1ZRI7wtVWmIDp38PEY
+Building image im-XqP7dt9mZTMyn4EOV5Rn0Q
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -c 'import sysconfig; from pathlib import Path; Path(sysconfig.get_paths()["purelib"], "modal_system_sites.pth").write_text("/usr/local/lib/python3.12/dist-packages\n/usr/lib/python3/dist-packages\n")'
+Saving image...
+Image saved, took 10.24s
+
+Built image im-XqP7dt9mZTMyn4EOV5Rn0Q in 14.71s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/judge_env.py
+└── ✓ Created Function inspect_environment.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+Stopping app - uncaught exception raised locally: DeserializationError("Deserialization failed because the 'torch' module is not available in the local environment.").
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ serialization.py:117 in deserialize                                          │
+│                                                                              │
+│   116 │   try:                                                               │
+│ ❱ 117 │   │   return Unpickler(client, io.BytesIO(s)).load()                 │
+│   118 │   except AttributeError as exc:                                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ModuleNotFoundError: No module named 'torch'
+
+The above exception was the direct cause of the following exception:
+
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/judge_env.py:46 in │
+│ main                                                                         │
+│                                                                              │
+│   45 │   import json                                                         │
+│ ❱ 46 │   print(json.dumps(inspect_environment.remote(), indent=2, sort_keys= │
+│   47                                                                         │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ object.py:49 in wrapped                                                      │
+│                                                                              │
+│    48 │   │   await self.hydrate()                                           │
+│ ❱  49 │   │   return await method(self, *args, **kwargs)                     │
+│    50                                                                        │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ functions.py:2067 in remote                                                  │
+│                                                                              │
+│   2066 │   │                                                                 │
+│ ❱ 2067 │   │   return await self._call_function(args, kwargs)                │
+│   2068                                                                       │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ functions.py:2004 in _call_function                                          │
+│                                                                              │
+│   2003 │   │                                                                 │
+│ ❱ 2004 │   │   return await invocation.run_function()                        │
+│   2005                                                                       │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ functions.py:496 in run_function                                             │
+│                                                                              │
+│    495 │   │   │   if await_response.output.result.status in TERMINAL_STATUS │
+│ ❱  496 │   │   │   │   return await _process_result(                         │
+│    497 │   │   │   │   │   await_response.output.result, await_response.outp │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ utils/function_utils.py:577 in _process_result                               │
+│                                                                              │
+│   576 │   try:                                                               │
+│ ❱ 577 │   │   return deserialize_data_format(data, data_format, client)      │
+│   578 │   except ModuleNotFoundError as deser_exc:                           │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ serialization.py:397 in deserialize_data_format                              │
+│                                                                              │
+│   396 │   if data_format == api_pb2.DATA_FORMAT_PICKLE:                      │
+│ ❱ 397 │   │   return deserialize(s, client)                                  │
+│   398 │   elif data_format == api_pb2.DATA_FORMAT_ASGI:                      │
+│                                                                              │
+│ /home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_ │
+│ serialization.py:134 in deserialize                                          │
+│                                                                              │
+│   133 │   except ModuleNotFoundError as exc:                                 │
+│ ❱ 134 │   │   raise DeserializationError(                                    │
+│   135 │   │   │   f"Deserialization failed because the '{exc.name}' module i │
+╰──────────────────────────────────────────────────────────────────────────────╯
+DeserializationError: Deserialization failed because the 'torch' module is not 
+available in the local environment.

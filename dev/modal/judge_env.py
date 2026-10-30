@@ -4,7 +4,9 @@ The service's recorded image digest and exact benchmark harness remain authorita
 """
 import modal
 
-image = modal.Image.from_registry('lmsysorg/sglang:dev-muse-spark-open')
+image = modal.Image.from_registry('lmsysorg/sglang:dev-muse-spark-open').run_commands(
+    "python -c 'import sysconfig; from pathlib import Path; Path(sysconfig.get_paths()[\"purelib\"], \"modal_system_sites.pth\").write_text(\"/usr/local/lib/python3.12/dist-packages\\n/usr/lib/python3/dist-packages\\n\")'"
+)
 app = modal.App('muse-judge-image-audit', image=image)
 
 @app.function(gpu='H200', timeout=120)
@@ -30,7 +32,7 @@ def inspect_environment():
             return None
 
     return {'python': sys.version, 'platform': platform.platform(),
-            'torch': torch.__version__, 'torch_cuda': torch.version.cuda,
+            'torch': str(torch.__version__), 'torch_cuda': torch.version.cuda,
             'cudnn': torch.backends.cudnn.version(),
             'gpu': torch.cuda.get_device_name(0),
             'capability': torch.cuda.get_device_capability(0),

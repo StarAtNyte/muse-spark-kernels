@@ -7,7 +7,9 @@ import os
 import modal
 
 ROOT = os.getcwd()
-image = (modal.Image.from_registry('lmsysorg/sglang:dev-muse-spark-open')
+image = (modal.Image.from_registry('lmsysorg/sglang:dev-muse-spark-open').run_commands(
+    "python -c 'import sysconfig; from pathlib import Path; Path(sysconfig.get_paths()[\"purelib\"], \"modal_system_sites.pth\").write_text(\"/usr/local/lib/python3.12/dist-packages\\n/usr/lib/python3/dist-packages\\n\")'"
+)
          .add_local_dir(f'{ROOT}/kernels', '/w/kernels')
          .add_local_dir(f'{ROOT}/dev/modal', '/w/modal'))
 app = modal.App('muse-judge-image-diagnostic', image=image)

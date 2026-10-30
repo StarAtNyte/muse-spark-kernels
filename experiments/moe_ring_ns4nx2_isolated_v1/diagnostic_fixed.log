@@ -1,0 +1,67 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-OAZ754lKKyZlMw7g0JV5y6
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_ring_ns4nx2_
+│   isolated_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "real_ns4nx2", "CANDIDATE_ONLY": "1", "CUDA_LAUNCH_BLOCKING": "1"} RETURNCODE -6
+START
+CAP warmup
+CAP warmup done
+CAP begin
+RUN_FAIL real_ns4nx2 CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 83, in <module>
+    g, o = cap(e, d)
+           ^^^^^^^^^
+  File "/w/run/drv.py", line 72, in cap
+    with torch.cuda.graph(g): fn()
+  File "/usr/local/lib/python3.12/site-packages/torch/cuda/graphs.py", line 257, in __enter__
+    self.cuda_graph.capture_begin(
+  File "/usr/local/lib/python3.12/site-packages/torch/cuda/graphs.py", line 115, in capture_begin
+    super().capture_begin(pool=pool, capture_error_mode=capture_error_mode)
+torch.AcceleratorError: CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+terminate called after throwing an instance of 'c10::Error'
+  what():  The graph should be registered to the state
+Exception raised from unregister_graph at /pytorch/aten/src/ATen/cuda/CUDAGeneratorImpl.cpp:162 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x2b78c3adb05d in /usr/local/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: c10::detail::torchCheckFail(char const*, char const*, unsigned int, char const*) + 0x69 (0x2b78c3a6f7d3 in /usr/local/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #2: <unknown function> + 0xcaeedf (0x2b79622baedf in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: at::cuda::CUDAGraph::~CUDAGraph() + 0x4c (0x2b79622beacc in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xe6f682 (0x2b794b78f682 in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+frame #5: <unknown function> + 0x400d47 (0x2b794ad20d47 in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+frame #6: <unknown function> + 0xe6fad1 (0x2b794b78fad1 in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+frame #7: <unknown function> + 0x40f491 (0x2b794ad2f491 in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+frame #8: <unknown function> + 0x40fe3e (0x2b794ad2fe3e in /usr/local/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+<omitting python frames>
+frame #18: <unknown function> + 0x29d90 (0x2b78c2a95d90 in /usr/lib/x86_64-linux-gnu/libc.so.6)
+frame #19: __libc_start_main + 0x80 (0x2b78c2a95e40 in /usr/lib/x86_64-linux-gnu/libc.so.6)
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-OAZ754lKKyZlMw7g0JV5y6
