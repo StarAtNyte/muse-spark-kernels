@@ -1,0 +1,23 @@
+{
+  "name": "decoder_alygg_compact_qkv_o_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Combine our measured compact T128 QKV and O projection routes with alygg77 KPERM3 integrated decoder; validate the complete stacked layer.",
+  "sha256": "ff1f1cbb050f60804f6329306dca388c4dcc1a322d6f5aed13a4d73a3b08ddc3",
+  "created_at": 1793343233.7331543,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "running",
+  "job_id": "eb606b3d40a240ca",
+  "updated_at": 1793343242.8193407
+}
