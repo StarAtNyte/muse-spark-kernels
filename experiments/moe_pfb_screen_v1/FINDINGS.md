@@ -11,4 +11,4 @@ reference check. Paired cold-L2 medians, 30 alternating replays:
 | 1 (3 experts) | 38.1-38.9 | 0.89-0.92x | 0.85-0.88x | 0.91-0.93x |
 | 8 (6-10 experts) | 58-87 | 0.93-0.95x | 0.91-0.93x | 0.91-0.94x |
 
-Every variant is slower. The phase-B restart is not the bottleneck; the extra prefetch traffic competes with phase A.
+Every variant was slower in this screen. Extra prefetch traffic may compete with phase A, but this result alone does not rule out phase-B startup cost or prove the cause of the regression.
