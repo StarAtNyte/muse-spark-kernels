@@ -59,7 +59,9 @@ exts = {} if os.environ.get('CANDIDATE_ONLY') == '1' else {'base': S._ext(main)}
 import os
 for k in (os.environ['VAR'],):
     try: exts[k] = S._ext(main + ('@' + k,))
-    except Exception as e: print('BUILD_FAIL', k, str(e)[-200:], flush=True)
+    except Exception as e:
+        print('BUILD_FAIL', k, str(e)[-200:], flush=True)
+        raise
 flush = torch.zeros(256 * 1024 * 1024 // 4, device='cuda')
 def cap(ext, d):
     x = d['hidden_states'].contiguous(); ids = d['topk_ids'].to(torch.int32).contiguous(); tw = d['topk_weights'].float().contiguous()
@@ -83,9 +85,11 @@ for bs in (32, 256):
                 print('RUN_FAIL', k, str(ex)[:120], flush=True); raise
             if k.startswith('real'):
                 ok, msg = R.check_implementation(d, o, w)
-                if not ok: print('CHECK_FAIL', k, bs, seed, msg[:100], flush=True); continue
+                if not ok: raise AssertionError(f'CHECK_FAIL {k} bs={bs} seed={seed}: {msg}')
             graphs[k] = g
-        if os.environ.get('CANDIDATE_ONLY') == '1': print('CANDIDATE_CHECK_PASSED', bs, flush=True); continue
+        if os.environ.get('CANDIDATE_ONLY') == '1':
+            if not graphs: raise RuntimeError('candidate was not built or checked')
+            print('CANDIDATE_CHECK_PASSED', bs, flush=True); continue
         names = list(graphs); ts = {k: [] for k in names}
         for rep in range(30):
             for k in (names if rep % 2 == 0 else names[::-1]): ts[k].append(t1(graphs[k]))
