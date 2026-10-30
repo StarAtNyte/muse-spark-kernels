@@ -1,0 +1,22 @@
+{
+  "name": "projection_vjeux_router256_m1_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Expand vjeux hybrid routes on canonical 1.5395x base to include router256 (fused rk_kernel: -1.33 us) and unpooler1/router1 (compressed cgemv/rgemv: -0.61 us), while leaving m=32 on base",
+  "sha256": "f4dc87425b4bc1b00d1a6ea2274c443761c5216ec1eb8a31bcbd832c367c2f0b",
+  "created_at": 1793360559.6822667,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "da14d2b1148a4849"
+}

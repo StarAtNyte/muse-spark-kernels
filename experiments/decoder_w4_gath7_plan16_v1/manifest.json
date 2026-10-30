@@ -1,0 +1,24 @@
+{
+  "name": "decoder_w4_gath7_plan16_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer standalone GATHB=7 KPERM3 gather and sliding decode16 split8 noncooperative attention into scored compact T128 decoder. H200 public-image screen passed all 24 paired cases; decode32 sliding gained 0.5-0.9 percent, other cases approximately neutral. Require official CI lower bound above 2.2603 before submission.",
+  "sha256": "9a8c512a2d1fb257d9fc19c13618266cf2b04a60a0596ff8e0db7c6e3317d63f",
+  "created_at": 1793359416.8222005,
+  "decision": "reject_no_submit",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "done",
+  "job_id": "56bffe6cfc6a4eae",
+  "updated_at": 1793359738.7565618,
+  "reason": "Official speedup 2.1978738907x, 95% CI [2.1649057823,2.2308419991] does not beat required 2.2603x threshold; incumbent preserved."
+}
