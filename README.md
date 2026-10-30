@@ -140,3 +140,5 @@ Decoder T=1/8 output-projection transfer passed check `7ec7babbe7044aa6` at 2.08
 Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.08859x; scored job `6cf1be8d60e84ac7` passed at 2.09262x, then rank #85.
 
 MoE shape-selected natural unit order passed check `72c6e933f69b4bad` at 2.32986x; scored job `6ae96ed05c124b5f` passed at 2.32168x; published MoE best remains 2.32905x.
+
+Prefill boundary experiment: a first-recompute boundary launch adjustment passed full check `17ded4dec47047ad` at 1.79396×; three paired component repeats showed a 0.9–1.4% boundary improvement, too small to establish a full-score gain. The exact checked file was submitted as `9937a79b7f8448c4`; score pending. Source, timing logs and uncertainty are in `experiments/prefill_boundary_geometry_v1/`.
