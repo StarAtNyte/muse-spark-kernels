@@ -1,0 +1,23 @@
+{
+  "name": "decoder_alygg_forced_qkv_o_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Force the compact T128 QKV route through the integrated decoder dispatch and stack our T128 O projection, then check full layer.",
+  "sha256": "9da328a22d442cf5292d79b80d998687553a4301cdd9b30ade69f22aee375be3",
+  "created_at": 1793343275.881889,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "received",
+  "job_id": "d8056151187a4b7b",
+  "updated_at": 1793343285.780359
+}
