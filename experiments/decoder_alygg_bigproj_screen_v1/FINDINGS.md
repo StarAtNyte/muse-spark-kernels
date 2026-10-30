@@ -1,0 +1,3 @@
+# Integrated decoder + big-projection stack
+
+The previously measured T128 QKV and T128/T256 O projection transfer was appended to the alygg77 integrated decoder and submitted for an official check. The service rejected the file before evaluation (HTTP 422: submission is larger than 1,000,000 bytes). This is a packaging failure, not a correctness or timing result. The check manifest and exact archived source are in `experiments/decoder_alygg_bigproj_v1/`; no job ID was returned. A future attempt needs a smaller standalone projection backend or extraction of only the required routes, with attribution retained and full correctness rechecked. Do not submit this file unchanged.

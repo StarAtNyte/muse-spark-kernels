@@ -1,0 +1,22 @@
+{
+  "name": "decoder_alygg_bigproj_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack independently paired-winning T128 QKV and T128/T256 O projection routes onto alygg77 integrated decoder; full check required for interactions and preparation.",
+  "sha256": "f813a56407e05d9cb6baa7a31dcf5c7c5b48255b9342afd8dc9a332426255081",
+  "created_at": 1793342963.0396795,
+  "decision": "submission_size_limit",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "rejected",
+  "error": "HTTP 422: submission is larger than 1000000 bytes"
+}
