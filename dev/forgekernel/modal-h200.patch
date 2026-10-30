@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 1/3] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 1/4] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 2/3] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 2/4] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 3/3] Add Hopper knowledge index for Muse task
+Subject: [PATCH 3/4] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5949,6 +5949,194 @@ index 0000000..56f73a1
 +# H200 / SM90 CUDA interface index
 +
 +This local knowledge base starts empty. Use CUDA/PTX documentation and measured H200 probes; do not assume SM100-only features exist on Hopper. See [README](README.md) for the measured Muse boundary context and experiment constraints. Add recipes only after their mechanism is verified on the target.
+-- 
+2.53.0
+
+
+From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Fri, 30 Oct 2026 21:36:25 +0545
+Subject: [PATCH 4/4] Add cold graph task timing and Modal profiling
+
+---
+ docs/modal-delivery.md                        |  4 +-
+ pyproject.toml                                |  3 +
+ .../card_template/eval/leaderboard.py         | 58 ++++++++++++++++++-
+ src/forgekernel/leaderboard.py                |  1 +
+ src/forgekernel/submit/modal_worker.py        | 17 +++++-
+ src/forgekernel/taskcard.py                   |  2 +
+ 6 files changed, 82 insertions(+), 3 deletions(-)
+
+diff --git a/docs/modal-delivery.md b/docs/modal-delivery.md
+index 9418209..df5587e 100644
+--- a/docs/modal-delivery.md
++++ b/docs/modal-delivery.md
+@@ -3,7 +3,7 @@
+ Install the optional client in the ForgeKernel virtual environment and configure `local.env`:
+ 
+ ```sh
+-.venv/bin/pip install modal
++uv pip install --python .venv/bin/python -e '.[modal]'
+ # Authenticate Modal using its normal CLI login, if not already authenticated.
+ # local.env:
+ FK_DELIVERY=modal
+@@ -14,4 +14,6 @@ FK_MODAL_TIMEOUT=300
+ 
+ Each GPU job uploads the same Git archive used by local and SSH delivery to a fresh ephemeral Modal container, runs `gpu_entry.sh` on one GPU, returns the combined stdout/stderr, and stops its app. The subprocess timeout is bounded by `FK_MODAL_TIMEOUT` seconds; a small fixed allowance covers container startup. Jobs are serialized by a local ForgeKernel lock to avoid unexpectedly launching multiple billable GPUs. `forge status <run>` reports campaign progress; `python -m forgekernel.submit <operator> status <job>` and `logs <job>` report individual jobs. Logs are returned when the job finishes, rather than streamed.
+ 
++Set `FK_TASK_CUDA_GRAPH=1` in `local.env` to measure ordinary ForgeKernel tasks with eight cold-L2 CUDA graph replays per input group, alternating reference and candidate. Both sides use the same method; this is a local screen and does not reproduce the official judge's overhead subtraction or fresh-input protocol. The Modal worker invokes Nsight Compute with `--clock-control none`, because Modal does not permit its default GPU clock lock.
++
+ The public Muse image is not the official judge image. Confirm correctness and performance with the official challenge harness. GPU containers are short lived, so their filesystem and compilation caches are not preserved across jobs. The selected image must contain Python, CUDA-enabled PyTorch, build tools and any kernel dependencies required by the task; Nsight Compute may be unavailable. Job environment values, including sealed-reference keys when present, are transmitted to Modal as function inputs and never placed in command-line arguments or logs by this transport; Modal receives them as part of the job. Modal authentication and billing use the existing local Modal account. Stopping the job terminates the local client; the app is ephemeral and the remote function also has an explicit timeout.
+diff --git a/pyproject.toml b/pyproject.toml
+index ac50195..cb05fd9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -10,6 +10,9 @@ requires-python = ">=3.11"
+ license = { text = "Apache-2.0" }
+ readme = "README.md"
+ 
++[project.optional-dependencies]
++modal = ["modal>=1.6,<2"]
++
+ [project.scripts]
+ forge = "forgekernel.__main__:main"
+ 
+diff --git a/src/forgekernel/card_template/eval/leaderboard.py b/src/forgekernel/card_template/eval/leaderboard.py
+index 9f2c206..d45e506 100644
+--- a/src/forgekernel/card_template/eval/leaderboard.py
++++ b/src/forgekernel/card_template/eval/leaderboard.py
+@@ -2352,6 +2352,62 @@ def _task_side(problem: dict, sets: list, kernel, kernel_dps: bool, ref=None,
+     result = timing.measure_windows_workloads(work, burn_in_s=BURN_IN_S)
+     block = timing.workloads_performance(result)
+     block["device_window_basis"] = BASIS_PLAIN
++    if os.environ.get("FK_TASK_CUDA_GRAPH") == "1":
++        # Cold-L2 CUDA graph replay removes host launch overhead for both sides.
++        # Keep captured outputs alive and reject empty captures.
++        import warnings
++        flush_buf = torch.empty(64 * 1024 * 1024, dtype=torch.int32, device=device)
++        kvals, rvals = [], []
++        for group_idx, inp in enumerate(sets):
++            def capture(fn, dps):
++                outs = allocate_outputs(problem, device) if dps else []
++                fn(*inp, *outs)
++                torch.cuda.synchronize()
++                graph = torch.cuda.CUDAGraph()
++                with warnings.catch_warnings(record=True) as caught:
++                    warnings.simplefilter("always")
++                    with torch.cuda.graph(graph):
++                        keep = fn(*inp, *outs)
++                if any("empty" in str(w.message).lower() and "graph" in str(w.message).lower() for w in caught):
++                    raise RuntimeError("CUDA graph capture is empty")
++                graph.replay(); torch.cuda.synchronize()
++                return graph, (keep, outs)
++            kg, khold = capture(kernel, kernel_dps)
++            rg, rhold = capture(ref, ref_dps) if ref is not None else (None, None)
++            def reading(graph):
++                flush_buf.zero_()
++                a = torch.cuda.Event(enable_timing=True); b = torch.cuda.Event(enable_timing=True)
++                a.record(); graph.replay(); b.record(); b.synchronize()
++                return a.elapsed_time(b)
++            kt, rt = [], []
++            for i in range(8):
++                if rg is None:
++                    kt.append(reading(kg))
++                elif i & 1:
++                    rt.append(reading(rg)); kt.append(reading(kg))
++                else:
++                    kt.append(reading(kg)); rt.append(reading(rg))
++            kval = statistics.median(kt)
++            if kval <= 0:
++                raise RuntimeError("CUDA graph returned a nonpositive timing")
++            kvals.append(kval)
++            per = block["workloads"][group_idx]
++            per.update(device_median_ms=round(kval, 4), host_bound_ratio=None,
++                       device_window_basis="cuda_graph")
++            if rg is not None:
++                rval = statistics.median(rt)
++                if rval <= 0:
++                    raise RuntimeError("reference CUDA graph returned a nonpositive timing")
++                rvals.append(rval)
++                per.update(ref_device_ms=round(rval, 4), vs_ref_device=round(rval / kval, 4),
++                           ref_host_bound_ratio=None)
++        kdev = _geomean(kvals)
++        block.update(device_median_ms=round(kdev, 4), host_bound_ratio=None,
++                     device_window_basis="cuda_graph")
++        if rvals:
++            rdev = _geomean(rvals)
++            block.update(ref_device_ms=round(rdev, 4), vs_ref_device=round(rdev / kdev, 4),
++                         ref_host_bound_ratio=None)
+     block["leaderboard"] = {
+         "suite": SUITE_TASK, "upstream": UPSTREAM[SUITE_TASK], "timer": "timing.py",
+         "protocol": {"aggregate": "geomean over input groups", "window": problem.get("timing")},
+@@ -2438,7 +2494,7 @@ def _task_ref_alone(problem: dict, ref_fn, ref_dps: bool, device) -> int:
+         blocks.append({"name": v["_wl_name"], "axes": v["workload"].get("axes"), **block})
+     perf = _task_aggregate(problem, blocks)
+     out = {"median_ms": perf["bwd_median_ms"], "device_median_ms": perf["device_median_ms"],
+-           "device_window_basis": BASIS_PLAIN, "host_enqueue_ms": perf.get("host_enqueue_ms"),
++           "device_window_basis": perf.get("device_window_basis", BASIS_PLAIN), "host_enqueue_ms": perf.get("host_enqueue_ms"),
+            "leaderboard_timer": "timing.py", "clock": clock_state(),
+            "aggregate": "geomean", "n_workloads": perf.get("n_workloads", len(blocks)),
+            "workloads": [{"name": w.get("name"), "median_ms": w.get("bwd_median_ms"),
+diff --git a/src/forgekernel/leaderboard.py b/src/forgekernel/leaderboard.py
+index 3f13186..36b4441 100644
+--- a/src/forgekernel/leaderboard.py
++++ b/src/forgekernel/leaderboard.py
+@@ -819,6 +819,7 @@ set -euo pipefail
+ SOL_ENV="${{SOL_ENV:-/opt/sol/env.sh}}"
+ if [ -f "$SOL_ENV" ]; then set +u; source "$SOL_ENV"; set -u; fi
+ export PATH=/usr/local/cuda/bin:${{PATH}}
++if [ -n "${{FK_MODAL_NCU_BIN:-}}" ]; then export PATH="${{FK_MODAL_NCU_BIN}}:${{PATH}}"; fi
+ WORKSPACE="$(cd "$(dirname "${{BASH_SOURCE[0]}}")" && pwd)"
+ cd "$WORKSPACE"
+ export PYTHONPATH="$WORKSPACE:$WORKSPACE/eval:${{PYTHONPATH:-}}"
+diff --git a/src/forgekernel/submit/modal_worker.py b/src/forgekernel/submit/modal_worker.py
+index f83e301..f8e2903 100644
+--- a/src/forgekernel/submit/modal_worker.py
++++ b/src/forgekernel/submit/modal_worker.py
+@@ -23,6 +23,8 @@ def main() -> int:
+         import io
+         import os
+         import signal
++        import shlex
++        import shutil
+         import subprocess
+         import tarfile
+         import tempfile
+@@ -30,7 +32,20 @@ def main() -> int:
+         with tempfile.TemporaryDirectory(prefix="forge-job-") as tree:
+             with tarfile.open(fileobj=io.BytesIO(payload), mode="r:") as tf:
+                 tf.extractall(tree, filter="data")
+-            proc = subprocess.Popen(argv, cwd=tree, env={**os.environ, **env},
++            job_env = {**os.environ, **env}
++            # Modal GPUs generally cannot change clocks. NCU can still collect
++            # counters when asked to leave clocks alone.
++            ncu = shutil.which("ncu", path=job_env.get("PATH"))
++            if ncu:
++                bindir = os.path.join(tree, ".forge-bin")
++                os.mkdir(bindir)
++                wrapper = os.path.join(bindir, "ncu")
++                with open(wrapper, "w", encoding="utf-8") as fh:
++                    fh.write("#!/bin/sh\nexec " + shlex.quote(ncu) + " --clock-control none \"$@\"\n")
++                os.chmod(wrapper, 0o755)
++                job_env["PATH"] = bindir + os.pathsep + job_env.get("PATH", "")
++                job_env["FK_MODAL_NCU_BIN"] = bindir
++            proc = subprocess.Popen(argv, cwd=tree, env=job_env,
+                                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                     start_new_session=True)
+             try:
+diff --git a/src/forgekernel/taskcard.py b/src/forgekernel/taskcard.py
+index 6f27168..100d069 100644
+--- a/src/forgekernel/taskcard.py
++++ b/src/forgekernel/taskcard.py
+@@ -285,6 +285,8 @@ def write_submit(tree: Path, task, machine, timeout: int = JOB_TIMEOUT_S) -> Pat
+         "[env]", 'PYTHONUNBUFFERED = "1"',
+         f'CUTE_DSL_ARCH = "{CUTE_ARCH.get(task.arch, task.arch + "a")}"',
+     ]
++    if machine.env.get("FK_TASK_CUDA_GRAPH") == "1":
++        lines.append('FK_TASK_CUDA_GRAPH = "1"')
+     p = Path(tree) / "submit.toml"
+     p.write_text("\n".join(lines) + "\n", encoding="utf-8")
+     return p
 -- 
 2.53.0
 
