@@ -1,0 +1,84 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe_ncu.py
+[direct] GPU modal is in use by another forgekernel run -- waiting
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 16:23:30
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Step 1: NCU --set source collection ===
+returncode: 0
+STDOUT:
+ ==WARNING== No metrics to collect found in sections.
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 132 (/usr/bin/python3.12)
+==PROF== Profiling "boundary_kernel": 0%....50%....100% - 1 pass
+==PROF== Disconnected from process 132
+==PROF== Report: /tmp/bnd_rep.ncu-rep
+
+
+=== Step 2: SASS page extraction ===
+SASS: 38400 chars, 480 lines
+=== SASS first 40 lines ===
+    0: ------------------ ------------------------------------------------------------
+    1: Kernel Name        void okc_moe::boundary_kernel<(int)512, (bool)1, (bool)0, (i
+    2:                    nt)0>(const __nv_bfloat16 *, const float *, const __nv_bfloa
+    3:                    t16 *, const float *, const float *, const __nv_bfloat16 *, 
+    4:                    float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *,
+    5:                     float *, const float *, const float *)                     
+    6: ------------------ ------------------------------------------------------------
+    7: Address            Source                                                      
+    8: 0x2b6fed7d1d00           LDC R1, c[0x0][0x28]                                  
+    9: 0x2b6fed7d1d10           S2R R57, SR_CTAID.X                                   
+   10: 0x2b6fed7d1d20           LDC R6, c[0x0][0x258]                                 
+   11: 0x2b6fed7d1d30           ULDC.64 UR6, c[0x0][0x208]                            
+   12: 0x2b6fed7d1d40           BSSY B0, 0x2b6fed7d22c0                               
+   13: 0x2b6fed7d1d50           S2R R3, SR_TID.X                                      
+   14: 0x2b6fed7d1d60           PREEXIT                                               
+   15: 0x2b6fed7d1d70           ACQBULK                                               
+   16: 0x2b6fed7d1d80           ISETP.GE.AND P0, PT, R6, 0x1, PT                      
+   17: 0x2b6fed7d1d90           ISETP.NE.OR P0, PT, R57, RZ, !P0                      
+   18: 0x2b6fed7d1da0           ISETP.GE.OR P0, PT, R3, R6, P0                        
+   19: 0x2b6fed7d1db0     @P0   BRA 0x2b6fed7d22b0                                    
+   20: 0x2b6fed7d1dc0           LOP3.LUT R0, RZ, R3, RZ, 0x33, !PT                    
+   21: 0x2b6fed7d1dd0           BSSY B1, 0x2b6fed7d1ef0                               
+   22: 0x2b6fed7d1de0           MOV R7, R3                                            
+   23: 0x2b6fed7d1df0           IADD3 R0, R0, R6, RZ                                  
+   24: 0x2b6fed7d1e00           LEA.HI R2, R0, 0x1, RZ, 0x17                          
+   25: 0x2b6fed7d1e10           ISETP.GE.U32.AND P0, PT, R0, 0x600, PT                
+   26: 0x2b6fed7d1e20           LOP3.LUT P1, R2, R2, 0x3, RZ, 0xc0, !PT               
+   27: 0x2b6fed7d1e30     @!P1  BRA 0x2b6fed7d1ee0                                    
+   28: 0x2b6fed7d1e40           LDC.64 R4, c[0x0][0x250]                              
+   29: 0x2b6fed7d1e50           MOV R7, R3                                            
+   30: 0x2b6fed7d1e60           IMAD.WIDE R4, R3, 0x4, R4                             
+   31: 0x2b6fed7d1e70           IADD3 R2, R2, -0x1, RZ                                
+   32: 0x2b6fed7d1e80           STG.E desc[UR6][R4.64], RZ                            
+   33: 0x2b6fed7d1e90           IADD3 R7, R7, 0x200, RZ                               
+   34: 0x2b6fed7d1ea0           ISETP.NE.AND P1, PT, R2, RZ, PT                       
+   35: 0x2b6fed7d1eb0           IADD3 R4, P2, R4, 0x800, RZ                           
+   36: 0x2b6fed7d1ec0           IADD3.X R5, RZ, R5, RZ, P2, !PT                       
+   37: 0x2b6fed7d1ed0     @P1   BRA 0x2b6fed7d1e70                                    
+   38: 0x2b6fed7d1ee0           BSYNC B1                                              
+   39: 0x2b6fed7d1ef0     @!P0  BRA 0x2b6fed7d22b0                                    
+
+=== Step 3: launch_tools (cluster / grid / block) ===
+[launch] metrics seen: none
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=boundary_kernel grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=n/a regs=n/a smem_dyn=n/a
+
+=== Step 4: sass_tools (opcode histogram + self-checks) ===
+Traceback (most recent call last):
+  File "/tmp/forge-job-s6eden0o/notes/probe_ncu.py", line 78, in <module>
+    sass_tools.analyze(sass_text,
+  File "/tmp/forge-job-s6eden0o/notes/sass_tools.py", line 199, in analyze
+    expected, _ = pick_kernel(launch_pairs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/forge-job-s6eden0o/notes/sass_tools.py", line 132, in pick_kernel
+    raise ValueError("pick_kernel: no kernels to choose from")
+ValueError: pick_kernel: no kernels to choose from
+[direct] Modal job exited rc=1

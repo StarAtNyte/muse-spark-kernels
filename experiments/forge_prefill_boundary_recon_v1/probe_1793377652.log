@@ -1,0 +1,299 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe_ncu.py
+[direct] GPU modal is in use by another forgekernel run -- waiting
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 16:30:19
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Step 1: NCU --set source collection ===
+returncode: 0
+STDOUT:
+ ==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 132 (/usr/bin/python3.12)
+==PROF== Profiling "boundary_kernel": 0%....50%....100% - 1 pass
+==PROF== Disconnected from process 132
+==PROF== Report: /tmp/bnd_rep.ncu-rep
+
+
+=== Step 2: SASS page extraction ===
+SASS: 52272 chars, 484 lines
+=== SASS first 40 lines ===
+    0: ------------------ ------------------------------------------------------------ ------ ------ ------ ------
+    1: Kernel Name        void okc_moe::boundary_kernel<(int)512, (bool)1, (bool)0, (i                            
+    2:                    nt)0>(const __nv_bfloat16 *, const float *, const __nv_bfloa                            
+    3:                    t16 *, const float *, const float *, const __nv_bfloat16 *,                             
+    4:                    float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *,                            
+    5:                     float *, const float *, const float *)                                                 
+    6: ------------------ ------------------------------------------------------------ ------ ------ ------ ------
+    7: Address            Source                                                       launch launch launch launch
+    8:                                                                                 __clus __clus __clus __clus
+    9:                                                                                 ter_di ter_di ter_di ter_ma
+   10:                                                                                 m_x    m_y    m_z    x_acti
+   11:                                                                                                      ve    
+   12: 0x2b75697d1d00           LDC R1, c[0x0][0x28]                                   0      0      0      0     
+   13: 0x2b75697d1d10           S2R R57, SR_CTAID.X                                    0      0      0      0     
+   14: 0x2b75697d1d20           LDC R6, c[0x0][0x258]                                  0      0      0      0     
+   15: 0x2b75697d1d30           ULDC.64 UR6, c[0x0][0x208]                             0      0      0      0     
+   16: 0x2b75697d1d40           BSSY B0, 0x2b75697d22c0                                0      0      0      0     
+   17: 0x2b75697d1d50           S2R R3, SR_TID.X                                       0      0      0      0     
+   18: 0x2b75697d1d60           PREEXIT                                                0      0      0      0     
+   19: 0x2b75697d1d70           ACQBULK                                                0      0      0      0     
+   20: 0x2b75697d1d80           ISETP.GE.AND P0, PT, R6, 0x1, PT                       0      0      0      0     
+   21: 0x2b75697d1d90           ISETP.NE.OR P0, PT, R57, RZ, !P0                       0      0      0      0     
+   22: 0x2b75697d1da0           ISETP.GE.OR P0, PT, R3, R6, P0                         0      0      0      0     
+   23: 0x2b75697d1db0     @P0   BRA 0x2b75697d22b0                                     0      0      0      0     
+   24: 0x2b75697d1dc0           LOP3.LUT R0, RZ, R3, RZ, 0x33, !PT                     0      0      0      0     
+   25: 0x2b75697d1dd0           BSSY B1, 0x2b75697d1ef0                                0      0      0      0     
+   26: 0x2b75697d1de0           MOV R7, R3                                             0      0      0      0     
+   27: 0x2b75697d1df0           IADD3 R0, R0, R6, RZ                                   0      0      0      0     
+   28: 0x2b75697d1e00           LEA.HI R2, R0, 0x1, RZ, 0x17                           0      0      0      0     
+   29: 0x2b75697d1e10           ISETP.GE.U32.AND P0, PT, R0, 0x600, PT                 0      0      0      0     
+   30: 0x2b75697d1e20           LOP3.LUT P1, R2, R2, 0x3, RZ, 0xc0, !PT                0      0      0      0     
+   31: 0x2b75697d1e30     @!P1  BRA 0x2b75697d1ee0                                     0      0      0      0     
+   32: 0x2b75697d1e40           LDC.64 R4, c[0x0][0x250]                               0      0      0      0     
+   33: 0x2b75697d1e50           MOV R7, R3                                             0      0      0      0     
+   34: 0x2b75697d1e60           IMAD.WIDE R4, R3, 0x4, R4                              0      0      0      0     
+   35: 0x2b75697d1e70           IADD3 R2, R2, -0x1, RZ                                 0      0      0      0     
+   36: 0x2b75697d1e80           STG.E desc[UR6][R4.64], RZ                             0      0      0      0     
+   37: 0x2b75697d1e90           IADD3 R7, R7, 0x200, RZ                                0      0      0      0     
+   38: 0x2b75697d1ea0           ISETP.NE.AND P1, PT, R2, RZ, PT                        0      0      0      0     
+   39: 0x2b75697d1eb0           IADD3 R4, P2, R4, 0x800, RZ                            0      0      0      0     
+
+=== Step 3: launch_tools (cluster / grid / block) ===
+[launch] metrics seen: none
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=boundary_kernel grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=n/a regs=n/a smem_dyn=n/a
+
+=== Step 4: sass_tools (opcode histogram + self-checks) ===
+kernel ranking by duration:
+           27200  boundary_kernel
+parsed: 472 instructions, 12 unparsed lines, 0 tool-noise lines
+opcode histogram (top 40 of 48):
+      80  FMUL.FTZ
+      74  FADD.FTZ
+      50  FFMA.FTZ
+      49  SHF.L.U32
+      29  STG.E
+      24  PRMT
+      14  LDG.E.128.CONSTANT
+      12  IADD3
+      10  SHFL.BFLY
+      10  NOP
+       8  BRA
+       8  LDG.E.64.CONSTANT
+       8  LDS.128
+       8  F2FP.BF16.F32.PACK_AB
+       6  MOV
+       6  LDC.64
+       6  IMAD.WIDE
+       6  LEA
+       6  STG.E.128
+       5  ULDC.64
+       4  BSSY
+       4  IADD3.X
+       4  BSYNC
+       4  LEA.HI.X
+       3  LOP3.LUT
+       3  PLOP3.LUT
+       3  SHF.R.S32.HI
+       2  LDC
+       2  S2R
+       2  ISETP.GE.AND
+       2  ISETP.GT.AND
+       2  STS
+       2  BAR.SYNC.DEFER_BLOCKING
+       2  MUFU.RSQ
+       1  PREEXIT
+       1  ACQBULK
+       1  ISETP.NE.OR
+       1  ISETP.GE.OR
+       1  LEA.HI
+       1  ISETP.GE.U32.AND
+decisive families: NONE
+SASS-OK kernel=boundary_kernel instructions=472 opcodes=48
+
+=== Step 5: orch_tools (sync topology, supply, cache policy) ===
+[parse] 472 instructions, unparsed=12
+--- raw dump (484 lines total) ---
+------------------ ------------------------------------------------------------ ------ ------ ------ ------
+Kernel Name        void okc_moe::boundary_kernel<(int)512, (bool)1, (bool)0, (i                            
+                   nt)0>(const __nv_bfloat16 *, const float *, const __nv_bfloa                            
+                   t16 *, const float *, const float *, const __nv_bfloat16 *,                             
+                   float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *,                            
+                    float *, const float *, const float *)                                                 
+------------------ ------------------------------------------------------------ ------ ------ ------ ------
+Address            Source                                                       launch launch launch launch
+                                                                                __clus __clus __clus __clus
+                                                                                ter_di ter_di ter_di ter_ma
+                                                                                m_x    m_y    m_z    x_acti
+                                                                                                     ve    
+0x2b75697d1d00           LDC R1, c[0x0][0x28]                                   0      0      0      0     
+0x2b75697d1d10           S2R R57, SR_CTAID.X                                    0      0      0      0     
+0x2b75697d1d20           LDC R6, c[0x0][0x258]                                  0      0      0      0     
+0x2b75697d1d30           ULDC.64 UR6, c[0x0][0x208]                             0      0      0      0     
+0x2b75697d1d40           BSSY B0, 0x2b75697d22c0                                0      0      0      0     
+0x2b75697d1d50           S2R R3, SR_TID.X                                       0      0      0      0     
+0x2b75697d1d60           PREEXIT                                                0      0      0      0     
+0x2b75697d1d70           ACQBULK                                                0      0      0      0     
+0x2b75697d1d80           ISETP.GE.AND P0, PT, R6, 0x1, PT                       0      0      0      0     
+0x2b75697d1d90           ISETP.NE.OR P0, PT, R57, RZ, !P0                       0      0      0      0     
+0x2b75697d1da0           ISETP.GE.OR P0, PT, R3, R6, P0                         0      0      0      0     
+0x2b75697d1db0     @P0   BRA 0x2b75697d22b0                                     0      0      0      0     
+0x2b75697d1dc0           LOP3.LUT R0, RZ, R3, RZ, 0x33, !PT                     0      0      0      0     
+0x2b75697d1dd0           BSSY B1, 0x2b75697d1ef0                                0      0      0      0     
+0x2b75697d1de0           MOV R7, R3                                             0      0      0      0     
+0x2b75697d1df0           IADD3 R0, R0, R6, RZ                                   0      0      0      0     
+0x2b75697d1e00           LEA.HI R2, R0, 0x1, RZ, 0x17                           0      0      0      0     
+0x2b75697d1e10           ISETP.GE.U32.AND P0, PT, R0, 0x600, PT                 0      0      0      0     
+... [424 lines omitted] ...
+0x2b75697d38a0           FMUL.FTZ R0, R0, R21                                   0      0      0      0     
+0x2b75697d38b0           FMUL.FTZ R5, R5, R20                                   0      0      0      0     
+0x2b75697d38c0           FMUL.FTZ R7, R7, R24                                   0      0      0      0     
+0x2b75697d38d0           FMUL.FTZ R19, R19, R28                                 0      0      0      0     
+0x2b75697d38e0           FMUL.FTZ R40, R11, R40                                 0      0      0      0     
+0x2b75697d38f0           FMUL.FTZ R41, R8, R41                                  0      0      0      0     
+0x2b75697d3900           LEA R2, P0, R56, UR4, 0x1                              0      0      0      0     
+0x2b75697d3910           F2FP.BF16.F32.PACK_AB R10, R17, R12                    0      0      0      0     
+0x2b75697d3920           F2FP.BF16.F32.PACK_AB R11, R6, R13                     0      0      0      0     
+0x2b75697d3930           F2FP.BF16.F32.PACK_AB R15, R14, R15                    0      0      0      0     
+0x2b75697d3940           LEA.HI.X R3, R56, UR5, R57, 0x1, P0                    0      0      0      0     
+0x2b75697d3950           F2FP.BF16.F32.PACK_AB R8, R5, R0                       0      0      0      0     
+0x2b75697d3960           F2FP.BF16.F32.PACK_AB R9, R7, R4                       0      0      0      0     
+0x2b75697d3970           F2FP.BF16.F32.PACK_AB R13, R31, R30                    0      0      0      0     
+0x2b75697d3980           F2FP.BF16.F32.PACK_AB R12, R16, R19                    0      0      0      0     
+0x2b75697d3990           F2FP.BF16.F32.PACK_AB R14, R41, R40                    0      0      0      0     
+0x2b75697d39a0           STG.E.128 desc[UR6][R2.64], R8                         0      0      0      0     
+0x2b75697d39b0           STG.E.128 desc[UR6][R2.64+0x2000], R12                 0      0      0      0     
+0x2b75697d39c0           EXIT                                                   0      0      0      0     
+0x2b75697d39d0           BRA 0x2b75697d39d0                                     0      0      0      0     
+0x2b75697d39e0           NOP                                                    0      0      0      0     
+0x2b75697d39f0           NOP                                                    0      0      0      0     
+0x2b75697d3a00           NOP                                                    0      0      0      0     
+0x2b75697d3a10           NOP                                                    0      0      0      0     
+0x2b75697d3a20           NOP                                                    0      0      0      0     
+0x2b75697d3a30           NOP                                                    0      0      0      0     
+0x2b75697d3a40           NOP                                                    0      0      0      0     
+0x2b75697d3a50           NOP                                                    0      0      0      0     
+0x2b75697d3a60           NOP                                                    0      0      0      0     
+0x2b75697d3a70           NOP                                                    0      0      0      0     
+--- end raw dump ---
+ORCH-FAIL too-few-instructions
+
+=== Step 6: sched_live_tools (schedule order + live-range) ===
+[parse] 472 instructions, unparsed=12, noise=0
+--- raw dump (484 lines total) ---
+------------------ ------------------------------------------------------------ ------ ------ ------ ------
+Kernel Name        void okc_moe::boundary_kernel<(int)512, (bool)1, (bool)0, (i                            
+                   nt)0>(const __nv_bfloat16 *, const float *, const __nv_bfloa                            
+                   t16 *, const float *, const float *, const __nv_bfloat16 *,                             
+                   float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *,                            
+                    float *, const float *, const float *)                                                 
+------------------ ------------------------------------------------------------ ------ ------ ------ ------
+Address            Source                                                       launch launch launch launch
+                                                                                __clus __clus __clus __clus
+                                                                                ter_di ter_di ter_di ter_ma
+                                                                                m_x    m_y    m_z    x_acti
+                                                                                                     ve    
+0x2b75697d1d00           LDC R1, c[0x0][0x28]                                   0      0      0      0     
+0x2b75697d1d10           S2R R57, SR_CTAID.X                                    0      0      0      0     
+0x2b75697d1d20           LDC R6, c[0x0][0x258]                                  0      0      0      0     
+0x2b75697d1d30           ULDC.64 UR6, c[0x0][0x208]                             0      0      0      0     
+0x2b75697d1d40           BSSY B0, 0x2b75697d22c0                                0      0      0      0     
+0x2b75697d1d50           S2R R3, SR_TID.X                                       0      0      0      0     
+0x2b75697d1d60           PREEXIT                                                0      0      0      0     
+0x2b75697d1d70           ACQBULK                                                0      0      0      0     
+0x2b75697d1d80           ISETP.GE.AND P0, PT, R6, 0x1, PT                       0      0      0      0     
+0x2b75697d1d90           ISETP.NE.OR P0, PT, R57, RZ, !P0                       0      0      0      0     
+0x2b75697d1da0           ISETP.GE.OR P0, PT, R3, R6, P0                         0      0      0      0     
+0x2b75697d1db0     @P0   BRA 0x2b75697d22b0                                     0      0      0      0     
+0x2b75697d1dc0           LOP3.LUT R0, RZ, R3, RZ, 0x33, !PT                     0      0      0      0     
+0x2b75697d1dd0           BSSY B1, 0x2b75697d1ef0                                0      0      0      0     
+0x2b75697d1de0           MOV R7, R3                                             0      0      0      0     
+0x2b75697d1df0           IADD3 R0, R0, R6, RZ                                   0      0      0      0     
+0x2b75697d1e00           LEA.HI R2, R0, 0x1, RZ, 0x17                           0      0      0      0     
+0x2b75697d1e10           ISETP.GE.U32.AND P0, PT, R0, 0x600, PT                 0      0      0      0     
+... [424 lines omitted] ...
+0x2b75697d38a0           FMUL.FTZ R0, R0, R21                                   0      0      0      0     
+0x2b75697d38b0           FMUL.FTZ R5, R5, R20                                   0      0      0      0     
+0x2b75697d38c0           FMUL.FTZ R7, R7, R24                                   0      0      0      0     
+0x2b75697d38d0           FMUL.FTZ R19, R19, R28                                 0      0      0      0     
+0x2b75697d38e0           FMUL.FTZ R40, R11, R40                                 0      0      0      0     
+0x2b75697d38f0           FMUL.FTZ R41, R8, R41                                  0      0      0      0     
+0x2b75697d3900           LEA R2, P0, R56, UR4, 0x1                              0      0      0      0     
+0x2b75697d3910           F2FP.BF16.F32.PACK_AB R10, R17, R12                    0      0      0      0     
+0x2b75697d3920           F2FP.BF16.F32.PACK_AB R11, R6, R13                     0      0      0      0     
+0x2b75697d3930           F2FP.BF16.F32.PACK_AB R15, R14, R15                    0      0      0      0     
+0x2b75697d3940           LEA.HI.X R3, R56, UR5, R57, 0x1, P0                    0      0      0      0     
+0x2b75697d3950           F2FP.BF16.F32.PACK_AB R8, R5, R0                       0      0      0      0     
+0x2b75697d3960           F2FP.BF16.F32.PACK_AB R9, R7, R4                       0      0      0      0     
+0x2b75697d3970           F2FP.BF16.F32.PACK_AB R13, R31, R30                    0      0      0      0     
+0x2b75697d3980           F2FP.BF16.F32.PACK_AB R12, R16, R19                    0      0      0      0     
+0x2b75697d3990           F2FP.BF16.F32.PACK_AB R14, R41, R40                    0      0      0      0     
+0x2b75697d39a0           STG.E.128 desc[UR6][R2.64], R8                         0      0      0      0     
+0x2b75697d39b0           STG.E.128 desc[UR6][R2.64+0x2000], R12                 0      0      0      0     
+0x2b75697d39c0           EXIT                                                   0      0      0      0     
+0x2b75697d39d0           BRA 0x2b75697d39d0                                     0      0      0      0     
+0x2b75697d39e0           NOP                                                    0      0      0      0     
+0x2b75697d39f0           NOP                                                    0      0      0      0     
+0x2b75697d3a00           NOP                                                    0      0      0      0     
+0x2b75697d3a10           NOP                                                    0      0      0      0     
+0x2b75697d3a20           NOP                                                    0      0      0      0     
+0x2b75697d3a30           NOP                                                    0      0      0      0     
+0x2b75697d3a40           NOP                                                    0      0      0      0     
+0x2b75697d3a50           NOP                                                    0      0      0      0     
+0x2b75697d3a60           NOP                                                    0      0      0      0     
+0x2b75697d3a70           NOP                                                    0      0      0      0     
+--- end raw dump ---
+SCHED-FAIL too-few-instructions
+LIVE-FAIL too-few-instructions
+
+=== Step 7: stall_tools price_report ===
+[sanity] kernel=boundary_kernel
+[sanity] duration_ns=22976.0 — dominant across every captured launch
+STALL-FAIL reason=too-few-samples (0 < 500 — was PC sampling collected? needs --set full or --set source)
+
+=== Step 7b: stall_tools segment_ledger ===
+=== SEGMENT LEDGER BEGIN ===
+JOIN-FAIL reason=too-few-samples (0 < 500)
+=== SEGMENT LEDGER END ===
+
+=== Step 8: role_exposure_tools ===
+ROLE-FAIL reason=too-few-samples (0 < 500)
+
+=== Step 9: struct_tools (CSV source page) ===
+CSV: 32134 chars
+[struct] parsed 472 instructions, 0 addresses with execution counts
+=== STRUCT TABLE BEGIN ===
+region 1: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 2 barriers -> 2 segments; copies=1
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |   108-230    | FADD x21  FFMA x16  SHFL x5  STS x1
+    2 |   231-352    | FFMA x33  FADD x21  SHFL x5  LDS x4  HFMA2 x1  MUFU x1  STS x1
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 2: 4 offsets, granule -, strides ['0x10']
+  mma input types: none -> precision=none
+=== STRUCT TABLE END ===
+self-check FAILED: only 472 instructions (< 500)
+self-check FAILED: no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts()
+self-check FAILED: no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+STRUCT-FAIL reason=only 472 instructions (< 500); no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts(); no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+
+=== Step 10: extra DRAM + cluster metrics ===
+extra metrics CSV:
+ "ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","Mbyte","37.13"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","Mbyte","13.70"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","7,274"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","943"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_dim_x","","0"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_dim_y","","0"
+"0","132","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics
+
+=== DONE ===
+
+[gpu_entry.sh] task=cmd finished

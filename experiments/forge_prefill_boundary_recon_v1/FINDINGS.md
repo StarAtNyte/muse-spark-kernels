@@ -1,0 +1,5 @@
+# Forge prefill boundary profiling reconnaissance
+
+Archived completed probe logs from the still-running Forge campaign `muse_prefill_boundary_261030-211439-b293`. Reference is the best-scored prefill source SHA-256 `f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9`, mode-0 gpost boundary. The last probe script is a snapshot and may not match every earlier run.
+
+Job 1793377097 captured SASS but its launch parser found no metrics and the helper aborted with no kernels to choose from. Job 1793377652 reported 472 instructions and an opcode histogram, but lacked launch metrics and sampled instruction counts; orchestration, scheduler and stall analysis failed their data prerequisites. An instruction-count threshold and lack of MMA in this elementwise boundary are tool limitations, not evidence that the kernel is incorrect. Do not infer a stall bottleneck or a valid optimization from these failed analyses. See the raw logs; campaign and additional results remain in the Forge clone.
