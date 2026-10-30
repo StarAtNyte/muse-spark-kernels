@@ -6,11 +6,83 @@
   "created_at": 1793343236.446971,
   "dedicated": false,
   "duplicate_of": null,
+  "finished_at": 1793343414.0472274,
   "id": "eb606b3d40a240ca",
   "mode": "check",
+  "output": {
+    "log": "/home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_alygg_compact_qkv_o_v1/profiles/submission.eb606b3d40a240ca.log"
+  },
   "payload_ref": "muse_decode_layer/c74d6f2cf3202dc851af22b64bddfc3e154b48a7e85df45dc093f36d1c980268.py",
-  "result": null,
+  "result": {
+    "checks": {
+      "flagged": [],
+      "ok": true,
+      "rejected": []
+    },
+    "error": null,
+    "evaluator": {
+      "code_sha256": "2999d8a201bb2b0bad6c7b3998af2143a1ed720d531dbb4d15670721ee9f957b",
+      "files": {
+        "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+        "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+        "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+        "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+        "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+        "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+        "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+        "problems/muse_decode_layer/baseline.py": "87d95a0c4b78f0fd6c772436b959330ca45652b10e82dfc8add9acf0549227d4",
+        "problems/muse_decode_layer/reference.py": "23e177b87aee70c0d4990515989b95bff2972270cdac8ab967445b21fa2f5163",
+        "problems/muse_decode_layer/task.yml": "6a73de4094ff00d7453fb94bd3aa40f5fae79ac7fbea149660eae2125dc5a0c7"
+      },
+      "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e"
+    },
+    "flags": [],
+    "gpu": "H200",
+    "log_tail": "Traceback (most recent call last):\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/worker.py\", line 423, in child_main\n    send(_setup_op(msg, module, state, sync, perf))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/worker.py\", line 322, in _setup_op\n    state[\"prep\"] = prepare(weights)\n                    ^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 14058, in prepare\n    st = _compact_o_prev_prepare(weights)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13985, in prepare\n    st = _qkv_compact_parent_prepare(weights)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13883, in prepare\n    st = _pin_parent_prepare(weights)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13875, in prepare\n    return _gle_b1x_prior_prepare(weights)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13764, in prepare\n    return _gle_prior_prepare(weights)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13215, in prepare\n    state = _router_fp32_native_parent_prepare(weights)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13124, in prepare\n    st = _router_fp32_parent_prepare(weights)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12981, in prepare\n    return _DE_PREPARE(weights)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12740, in prepare\n    st=_sl_previous_prepare(weights)\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12334, in prepare\n    ids=_after_attention(data,st,o_in,None,T)[2]\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13869, in _after_attention\n    return _gle_b1x_prior_after(data, state, o_in, gate, T)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 13758, in _after_attention\n    return _gle_prior_after(data, state, o_in, gate, T)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12940, in _after_attention\n    return _sl_tile_prior_after(data,state,o_in,gate,T)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12735, in _after_attention\n    return _sl_previous_after_attention(data,state,o_in,gate,T)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12187, in _after_attention\n    return _graft_after_attention(data, state, o_in, gate, T)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 12116, in _graft_after_attention\n    P, S = dense(o_in, state[\"o\"], T, state, \"o\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_decode_layer-kdx96t5u/run/submission.py\", line 14065, in dense\n    return run_olayer_candidate(x,state[\"compact_o\"],0).view(1,T,8192), 1\n                                  ~~~~~^^^^^^^^^^^^^\nKeyError: 'compact_o'\n",
+    "machine": {
+      "gpu_after": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 1980,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 125.88,
+        "power.limit": 700,
+        "temperature.gpu": 33
+      },
+      "gpu_before": {
+        "clocks.max.sm": 1980,
+        "clocks.mem": 3201,
+        "clocks.sm": 345,
+        "driver_version": "580.178.04",
+        "name": "NVIDIA H200",
+        "power.draw": 77.45,
+        "power.limit": 700,
+        "temperature.gpu": 30
+      },
+      "node": "n-mcawtvyff5ndtc5n7rfc5engrq"
+    },
+    "passed": false,
+    "records": [
+      {
+        "baseline_copies": 2,
+        "baseline_prepare_pad": 19070976,
+        "copies": null,
+        "error": "KeyError: 'compact_o'",
+        "event": "setup",
+        "first": "baseline",
+        "prepare_pad": null,
+        "prepare_s": null,
+        "status": "fail"
+      }
+    ],
+    "returncode": 112,
+    "score_us": null,
+    "speedup": null,
+    "speedup_ci": null,
+    "status": "ok"
+  },
   "started_at": 1793343243.577285,
-  "status": "running",
+  "status": "done",
   "team": "StarAtNyte"
 }
