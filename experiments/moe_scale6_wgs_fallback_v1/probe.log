@@ -1,0 +1,39 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UBsYDSmizAAriIgRzSc03b
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+FALLBACK SELECTED ('-DOKC_PRMTSC=1', '@scale6_uncompressed')
+PREPARED PARENT
+CHECK True True relative L2 error 2.547e-03 (worst row 2.721e-03)
+CHECK False True relative L2 error 2.547e-03 (worst row 2.721e-03)
+RESULT {"batch": 32, "seed": 419, "base_us": 132.12799280881882, "candidate_us": 133.5039958357811, "ratio": 0.9896931697186439, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.535e-03 (worst row 2.721e-03)
+CHECK False True relative L2 error 2.535e-03 (worst row 2.721e-03)
+RESULT {"batch": 128, "seed": 419, "base_us": 194.33599710464478, "candidate_us": 194.17600333690643, "ratio": 1.0008239626163318, "relative_l2": 0.0}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UBsYDSmizAAriIgRzSc03b
