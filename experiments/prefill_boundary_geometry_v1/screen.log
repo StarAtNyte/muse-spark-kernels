@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-R8jKux2qNjgIeLNVd9uyJe
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+COMPILED
+ROW {"tokens": 753, "mode": 1, "config": [256, false, 2], "base_us": 21.67999930679798, "candidate_us": 23.120000027120113, "gain": 0.9377162318930368}
+ROW {"tokens": 753, "mode": 1, "config": [256, true, 2], "base_us": 21.839999593794346, "candidate_us": 21.647999994456768, "gain": 1.0088691610951008}
+ROW {"tokens": 753, "mode": 1, "config": [512, true, 2], "base_us": 21.647999994456768, "candidate_us": 22.752000018954277, "gain": 0.95147679221265}
+ROW {"tokens": 753, "mode": 1, "config": [512, false, 1], "base_us": 21.743999794125557, "candidate_us": 21.55200019478798, "gain": 1.0089086672978043}
+ROW {"tokens": 753, "mode": 1, "config": [1024, false, 1], "base_us": 21.616000682115555, "candidate_us": 26.544000022113323, "gain": 0.8143460165803066}
+ROW {"tokens": 753, "mode": 2, "config": [256, false, 2], "base_us": 33.424001187086105, "candidate_us": 33.376000821590424, "gain": 1.001438170071731}
+ROW {"tokens": 753, "mode": 2, "config": [256, true, 2], "base_us": 33.31200033426285, "candidate_us": 33.32800045609474, "gain": 0.9995199195387382}
+ROW {"tokens": 753, "mode": 2, "config": [512, true, 2], "base_us": 33.536000177264214, "candidate_us": 34.28800031542778, "gain": 0.9780681249636711}
+ROW {"tokens": 753, "mode": 2, "config": [512, false, 1], "base_us": 33.23199972510338, "candidate_us": 32.52799995243549, "gain": 1.021642885320257}
+ROW {"tokens": 753, "mode": 2, "config": [1024, false, 1], "base_us": 33.52000005543232, "candidate_us": 34.07999873161316, "gain": 0.9835681133502692}
+ROW {"tokens": 16384, "mode": 1, "config": [256, false, 2], "base_us": 284.4479978084564, "candidate_us": 309.9839985370636, "gain": 0.9176215519216424}
+ROW {"tokens": 16384, "mode": 1, "config": [256, true, 2], "base_us": 283.7439924478531, "candidate_us": 277.19999849796295, "gain": 1.0236074819096301}
+ROW {"tokens": 16384, "mode": 1, "config": [512, true, 2], "base_us": 282.54400193691254, "candidate_us": 281.18400275707245, "gain": 1.0048366876013748}
+ROW {"tokens": 16384, "mode": 1, "config": [512, false, 1], "base_us": 283.02399814128876, "candidate_us": 283.9999943971634, "gain": 0.9965633933974317}
+ROW {"tokens": 16384, "mode": 1, "config": [1024, false, 1], "base_us": 283.29600393772125, "candidate_us": 353.2319962978363, "gain": 0.8020111623717496}
+ROW {"tokens": 16384, "mode": 2, "config": [256, false, 2], "base_us": 467.3919975757599, "candidate_us": 480.97600042819977, "gain": 0.9717574206606018}
+ROW {"tokens": 16384, "mode": 2, "config": [256, true, 2], "base_us": 465.5520021915436, "candidate_us": 492.8960055112839, "gain": 0.9445237879512206}
+ROW {"tokens": 16384, "mode": 2, "config": [512, true, 2], "base_us": 467.53600239753723, "candidate_us": 505.0880014896393, "gain": 0.9256525615707536}
+ROW {"tokens": 16384, "mode": 2, "config": [512, false, 1], "base_us": 467.4080014228821, "candidate_us": 498.4479993581772, "gain": 0.93772670775033}
+ROW {"tokens": 16384, "mode": 2, "config": [1024, false, 1], "base_us": 466.67200326919556, "candidate_us": 545.2319979667664, "gain": 0.855914555656069}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+[modal-client] 2026-10-30T10:29:28+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-R8jKux2qNjgIeLNVd9uyJe
