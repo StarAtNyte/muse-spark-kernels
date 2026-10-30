@@ -1,0 +1,26 @@
+{
+  "name": "moe_alygg_kperm3_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Evaluate alygg77 KPERM3 lossless NVFP4 K rearrangement as an official full-workload MoE candidate; compare it against the current GATHB=7 kernel and retain license notices.",
+  "sha256": "b33070898927b7b92df6c7a2515f9c02dd12723c43ca63682fa164e915dd4281",
+  "created_at": 1793336413.1806934,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "running",
+  "job_id": "f45a0a560c4e466d",
+  "updated_at": 1793336437.0873125,
+  "upstream": "https://github.com/alygg77/okc-muse-spark-kernels",
+  "upstream_commit": "6cae49a639ee6d14b929a5fd4a63c627f96d7dc0",
+  "license": "Apache-2.0"
+}

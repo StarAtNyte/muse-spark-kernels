@@ -1,0 +1,26 @@
+{
+  "name": "decoder_alygg_kperm3_fused_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Evaluate alygg77 integrated lossless KPERM3 expert layout plus fused exact FP32 router/pooler on full decoder shapes; compare to current published decoder and preserve source attribution.",
+  "sha256": "8f17613bafb2369152f2739638bf8f6dfb193f6a79dbad3e6d25795cf1ebaf4a",
+  "created_at": 1793336423.017339,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "13161eab55cb447a",
+  "updated_at": 1793336436.6553104,
+  "upstream": "https://github.com/alygg77/okc-muse-spark-kernels",
+  "upstream_commit": "6cae49a639ee6d14b929a5fd4a63c627f96d7dc0",
+  "license": "Apache-2.0"
+}
