@@ -1021,3 +1021,5 @@ Plan sweep (`experiments/attention_plan_multi_v1`) found n_splits 8 without coop
 16-request sliding decode; paired 12-shape screen 1.015x on that shape, others unchanged. Check `870a847b2b004678`
 passed 16/16 at **2.601x**; scored `b95cd80bd3e6497f` **2.6177x** (95% CI [2.578, 2.657]), new public best (was
 2.5806x). Live attention rank #55, top-50 cutoff 2.6237x (2026-10-29 09:53 UTC).
+
+2026-10-30: A four-weight/two-activation WGS ring initially failed because it requested 235,264 B shared memory and the launcher ignored CUDA errors. Reusing the routing-only expert-ID scratch after its final read and producer join reduced the request sufficiently to launch. Candidate-only public-image tests passed graph replay and reference checks at M32/M256 (one seed); paired component screens were 0.9586× and 0.9584× baseline/candidate, respectively, so the variant is rejected. Its timing conflates one extra weight slot with one fewer activation slot. All sources, correctness and raw timing logs are in `experiments/moe_ring_overlay_v1/`; the underlying error is in `experiments/moe_ring_ns4nx2_isolated_v1/`.
