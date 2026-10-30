@@ -38,7 +38,7 @@ yb=torch.empty((32,4096),device='cuda',dtype=torch.bfloat16);yc=torch.empty_like
 for mod,weight,inp,out in [(base,wb,xb,yb),(cand,wc,xp,yc)]:
     mod.moe_gemm(weight,inp,tiles,nt,gs.reshape(-1),out,1,1,False,smem)
     torch.cuda.synchronize()
-ref=x.float() @ dequantize(w[0],sf[0],gs[0]).t()
+ref=x.float() @ dequantize(w[0],sf[0],gs).t()
 for name,y in [('baseline',yb),('permuted',yc)]:
     out=y[:,:128].float(); err=((out-ref).norm()/ref.norm()).item(); maxerr=(out-ref).abs().max().item()
     print('RESULT',json.dumps({'name':name,'relative_l2':err,'max_abs':maxerr}),flush=True)
