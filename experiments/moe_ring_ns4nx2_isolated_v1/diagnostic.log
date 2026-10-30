@@ -1,0 +1,62 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Y0SCca30Nh3lxjBfH64v9L
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_ring_ns4nx2_
+│   isolated_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "real_ns4nx2", "CANDIDATE_ONLY": "1", "CUDA_LAUNCH_BLOCKING": "1"} RETURNCODE 1
+START
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 58, in <module>
+    exts = {} if os.environ.get('CANDIDATE_ONLY') == '1' else {'base': S._ext(main)}
+                 ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'?
+
+ENV {"VAR": "real_ns4nx2", "CUDA_LAUNCH_BLOCKING": "1"} RETURNCODE 1
+START
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 58, in <module>
+    exts = {} if os.environ.get('CANDIDATE_ONLY') == '1' else {'base': S._ext(main)}
+                 ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'?
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Y0SCca30Nh3lxjBfH64v9L

@@ -102,6 +102,8 @@ and `experiments/prefill_blocksize_48_t753_check_v1/`.
 All listed private checks passed complete correctness and timing coverage.
 Pending jobs and immutable source snapshots are tracked in `experiments/`.
 
+See [H200 lower bounds and bottlenecks](research/H200-LOWER-BOUNDS.md) for per-case judge floors, the underlying models, and measured comparators.
+
 See [the engineering notebook](research/ENGINEERING.md) for measured
 bottlenecks, pending experiments, promotion criteria, and hardware references.
 All five challenge contracts are initialized under `kernels/`.
