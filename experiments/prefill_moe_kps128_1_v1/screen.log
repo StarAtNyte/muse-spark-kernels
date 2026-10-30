@@ -1,0 +1,55 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IyzD655XjdOEEKuArgajIl
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 1
+MOE_KPS128=1 SCREEN
+LT tune T=753 qkv: torch.mm 42.6us, best 42.6us algo None of 8
+LT tune T=753 o: torch.mm 25.0us, best 25.0us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.7us, best 68.7us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.3us, best 70.3us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.4us, best 147.4us algo None of 8
+LT tune T=3012 o: torch.mm 75.8us, best 75.8us algo None of 8
+LT tune T=3012 router: torch.mm 41.2us, best 41.2us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.5us, best 256.5us algo None of 8
+LT tune T=3012 unpooler: torch.mm 254.9us, best 254.9us algo None of 8
+LT tune T=16384 qkv: torch.mm 764.4us, best 764.4us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 202.2us, best 192.6us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47120209751760'>")
+SHARED_PLANS
+CHECK base True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+CHECK candidate False residual update: output contains NaN or Inf [bound 0.122]
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 46, in <module>
+    if not ok: raise RuntimeError('reference check failed: ' + name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: reference check failed: candidate
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IyzD655XjdOEEKuArgajIl
