@@ -13,3 +13,5 @@ tail -f .artifacts/muse_prefill_boundary_261030-211439-b293/run.log
 ```
 
 Per-job logs return on completion. A run's generated judge, timing protocol and any accepted candidate must be reviewed against the challenge's actual semantics and checked on the official judge before promotion. `local.env` is gitignored and contains machine-specific configuration; do not commit credentials.
+
+A second task, `tasks/muse_attention_sliding`, wraps the exact current scored attention source (SHA-256 `554adb3886491fa686e950773b2d5c5cc759377eae0f3a7d3abf9f15fd353293`) and includes cache outputs in its interface. Its task definition passes `forge new --dry-run`; it has not yet been calibrated or executed. It covers only three page-1 sliding cases, so the official attention suite remains necessary for any candidate.
