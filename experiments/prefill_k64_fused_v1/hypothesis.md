@@ -1,0 +1,5 @@
+# Prefill persistent MoE K64 permutation
+
+This candidate extends the previously validated nonpersistent WGMMA mapping to the scored fused MoE path. Both expert matrices are packed with the same K64 permutation. The gate and up output rows are permuted together so the intermediate already has the layout needed by the second matrix. The gather kernel exchanges normalized BF16 pairs in shared memory to place the first matrix input in that order. All four WGMMA conversion sites select scales by lane subgroup rather than K16 step.
+
+`candidate.py` is experimental and is not the promoted submission. `driver.py` compares the candidate and parent persistent MoE outputs for one synthetic expert routing distribution and three token counts on the public H200 image. A passing result would be a narrow screen; official correctness, special scales, varied routing, race safety, and full-layer performance remain to be established. The shared-memory exchange and extra block barrier may offset any savings from scale reuse.
