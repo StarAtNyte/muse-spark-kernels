@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3UUOpIMsOZhIOUI3ZpP0FE
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ENV 2.14.1+cu130 NVIDIA H200
+CHECK 6121 base True relative L2 error 2.040e-04 (worst row 4.076e-04); 18 probe rows exact to 0.0e+00
+CHECK 6121 candidate True relative L2 error 2.040e-04 (worst row 4.076e-04); 18 probe rows exact to 0.0e+00
+RESULT {"seed": 6121, "base_us": 31.279999762773514, "candidate_us": 30.287999659776688, "ratio": 1.0327522488820624}
+CHECK 6122 base True relative L2 error 2.017e-04 (worst row 3.997e-04); 17 probe rows exact to 0.0e+00
+CHECK 6122 candidate True relative L2 error 2.017e-04 (worst row 3.997e-04); 17 probe rows exact to 0.0e+00
+RESULT {"seed": 6122, "base_us": 30.96000012010336, "candidate_us": 30.49599938094616, "ratio": 1.0152151347250848}
+CHECK 6123 base True relative L2 error 2.063e-04 (worst row 3.723e-04); 15 probe rows exact to 0.0e+00
+CHECK 6123 candidate True relative L2 error 2.063e-04 (worst row 3.723e-04); 15 probe rows exact to 0.0e+00
+RESULT {"seed": 6123, "base_us": 30.912000685930252, "candidate_us": 30.447999946773052, "ratio": 1.0152391204666424}
+CHECK 6124 base True relative L2 error 2.038e-04 (worst row 4.477e-04); 16 probe rows exact to 0.0e+00
+CHECK 6124 candidate True relative L2 error 2.038e-04 (worst row 4.477e-04); 16 probe rows exact to 0.0e+00
+RESULT {"seed": 6124, "base_us": 31.16799984127283, "candidate_us": 30.592000111937523, "ratio": 1.0188284429663865}
+FULL_ROUTE_DONE
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.67 sk2=13.02 torch=18.08 -> cgemv
+[okc] tune o m=1: cgemv=8.8 sk2=9.25 torch=10.53 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.14 torch=25.09 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.14 sgemv=7.42 sk2=8.06 torch=10.56 -> cgemv
+[okc] tune router m=1: rgemv=7.33 sk2=8.58 torch=18.08 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.28 torch=17.82 -> sk2
+[okc] tune o m=16: sk2=9.25 torch=10.4 -> sk2
+[okc] tune pooler m=16: sk2=18.34 torch=25.54 -> sk2
+[okc] tune unpooler m=16: sk2=17.82 torch=22.43 -> sk2
+[okc] tune router m=16: sk2=8.58 torch=18.5 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.43 torch=18.14 -> sk2
+[okc] tune o m=32: sk2=9.5 torch=10.4 -> sk2
+[okc] tune pooler m=32: sk2=19.14 torch=25.82 -> sk2
+[okc] tune unpooler m=32: sk2=19.04 torch=22.59 -> sk2
+[okc] tune router m=32: sk2=9.15 torch=19.01 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.22 torch=18.14 -> sk2
+[okc] tune o m=8: sk2=9.31 torch=10.14 -> sk2
+[okc] tune pooler m=8: sk2=18.3 torch=25.38 -> sk2
+[okc] tune unpooler m=8: sk2=8.1 torch=10.72 -> sk2
+[okc] tune router m=8: sk2=8.51 torch=18.02 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.5 torch=20.19 -> gqx
+[okc] tune o m=128: torch=10.82 torchT=10.75 -> torchT
+[okc] tune pooler m=128: gq=25.5 torch=29.22 -> gq
+[okc] tune unpooler m=128: torch=23.78 torchT=22.59 -> torchT
+[okc] tune router m=128: rk=9.57 wide=12.38 gemm=13.41 torch=19.78 -> rk
+[okc] tune o m=256: torch=12.8 torchT=12.58 -> torchT
+[okc] tune pooler m=256: torch=33.63 cutlass=31.46 -> cutlass
+[okc] tune unpooler m=256: torch=28.03 torchT=28.1 -> torch
+[okc] tune router m=256: rk=10.66 wide=13.34 gemm=17.02 torch=21.06 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3UUOpIMsOZhIOUI3ZpP0FE

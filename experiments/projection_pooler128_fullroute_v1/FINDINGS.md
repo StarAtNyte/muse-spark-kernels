@@ -1,0 +1,5 @@
+# M128 pooler full-route paired repeat
+
+H200 public-image app `ap-3UUOpIMsOZhIOUI3ZpP0FE` used the exact published projection source SHA-256 `d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9`. Both paths used `kernel_fn` with the same prepared state and cuBLASLt plan; only the M128 pooler descriptor index differed. The alternative is layout 2, epilogue 0, `[66,15,1,0,0,0,35,0,2]`. Each arm passed the challenge reference for four seeds. Alternating cold-L2 graph medians over 24 paired replays produced baseline/candidate ratios 1.0328, 1.0152, 1.0152 and 1.0188; raw values and output checks are in `screen.log`. The SGLang imports were stubbed and the GPU image is public, so this is not the official judge and the small measured gain does not establish a leaderboard gain.
+
+The exact descriptor change was submitted as official check `de8733a0afd94721`, candidate SHA-256 `92b7b57e4dd1f394786f43623f9568c8aa6275b8e25073b404f2e781f413edae`; see `experiments/projection_pooler128_lt0_v1/`. No promotion or public submission has occurred.
