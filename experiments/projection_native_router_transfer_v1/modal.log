@@ -1,0 +1,90 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IHsNiFK25wm0G9jr7tyXJc
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 124
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.77 sk2=13.38 torch=18.21 -> cgemv
+[okc] tune o m=1: cgemv=8.93 sk2=9.44 torch=10.66 -> cgemv
+[okc] tune pooler m=1: cgemv=17.63 sk2=18.21 torch=25.09 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.52 sgemv=7.68 sk2=8.22 torch=10.72 -> cgemv
+[okc] tune router m=1: rgemv=7.55 sk2=8.7 torch=18.43 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.6 torch=17.92 -> sk2
+[okc] tune o m=16: sk2=9.34 torch=10.5 -> sk2
+[okc] tune pooler m=16: sk2=18.34 torch=25.22 -> sk2
+[okc] tune unpooler m=16: sk2=18.02 torch=22.34 -> sk2
+[okc] tune router m=16: sk2=8.7 torch=18.94 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.59 torch=18.4 -> sk2
+[okc] tune o m=32: sk2=9.76 torch=10.5 -> sk2
+[okc] tune pooler m=32: sk2=19.36 torch=25.66 -> sk2
+[okc] tune unpooler m=32: sk2=19.14 torch=22.59 -> sk2
+[okc] tune router m=32: sk2=9.22 torch=19.23 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.66 torch=18.4 -> sk2
+[okc] tune o m=8: sk2=9.47 torch=10.34 -> sk2
+[okc] tune pooler m=8: sk2=18.24 torch=25.28 -> sk2
+[okc] tune unpooler m=8: sk2=8.19 torch=10.94 -> sk2
+[okc] tune router m=8: sk2=8.77 torch=18.37 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.46 torch=20.38 -> gqx
+[okc] tune o m=128: torch=11.58 torchT=11.2 -> torchT
+[okc] tune pooler m=128: gq=25.54 torch=29.25 -> gq
+[okc] tune unpooler m=128: torch=24.03 torchT=23.39 -> torchT
+[okc] tune router m=128: rk=9.86 wide=12.7 gemm=13.76 torch=20.35 -> rk
+[okc] tune o m=256: torch=13.7 torchT=13.54 -> torchT
+[okc] tune pooler m=256: torch=35.52 cutlass=31.39 -> cutlass
+[okc] tune unpooler m=256: torch=29.09 torchT=28.06 -> torchT
+[okc] tune router m=256: rk=10.72 wide=13.76 gemm=17.79 torch=21.41 -> rk
+[okc] disabled: []
+[okc] tune qkv_gate m=1: cgemv=12.99 sk2=13.47 torch=18.34 -> cgemv
+[okc] tune o m=1: cgemv=9.02 sk2=9.47 torch=10.66 -> cgemv
+[okc] tune pooler m=1: cgemv=17.7 sk2=18.24 torch=25.63 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.42 sgemv=7.74 sk2=8.29 torch=10.91 -> cgemv
+[okc] tune router m=1: rgemv=7.58 sk2=8.77 torch=18.46 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.7 torch=18.11 -> sk2
+[okc] tune o m=16: sk2=9.57 torch=10.5 -> sk2
+[okc] tune pooler m=16: sk2=18.66 torch=25.25 -> sk2
+[okc] tune unpooler m=16: sk2=18.02 torch=22.37 -> sk2
+[okc] tune router m=16: sk2=8.99 torch=19.01 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.78 torch=18.3 -> sk2
+[okc] tune o m=32: sk2=9.73 torch=10.66 -> sk2
+[okc] tune pooler m=32: sk2=19.14 torch=25.92 -> sk2
+[okc] tune unpooler m=32: sk2=19.17 torch=22.75 -> sk2
+[okc] tune router m=32: sk2=9.28 torch=19.1 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.76 torch=18.27 -> sk2
+[okc] tune o m=8: sk2=9.57 torch=10.46 -> sk2
+[okc] tune pooler m=8: sk2=18.34 torch=25.22 -> sk2
+[okc] tune unpooler m=8: sk2=8.26 torch=10.91 -> sk2
+[okc] tune router m=8: sk2=8.86 torch=18.69 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.66 torch=20.54 -> gqx
+[okc] tune o m=128: torch=11.1 torchT=11.1 -> torch
+[okc] tune pooler m=128: gq=25.54 torch=29.57 -> gq
+[okc] tune unpooler m=128: torch=23.87 torchT=23.1 -> torchT
+[okc] tune router m=128: rk=9.92 wide=12.8 gemm=13.86 torch=20.32 -> rk
+[okc] tune o m=256: torch=13.5 torchT=12.93 -> torchT
+[okc] tune pooler m=256: torch=34.21 cutlass=31.39 -> cutlass
+[okc] tune unpooler m=256: torch=28.45 torchT=28.1 -> torchT
+[okc] tune router m=256: rk=11.07 wide=14.37 gemm=17.63 torch=21.18 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IHsNiFK25wm0G9jr7tyXJc
