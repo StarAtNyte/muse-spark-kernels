@@ -1,0 +1,100 @@
+--- experiments/decoder_vjeux_sota_stack_v1/submission.py	2026-10-28 10:07:29.153588303 +0545
++++ /tmp/muse-alygg-current/kernels/muse_decode_layer.py	2026-10-30 10:44:50.609852427 +0545
+@@ -5693,7 +5704,13 @@
+         if (r < cnt) {
+           const int ntt = (cnt + 7) >> 3;
+           d[k] = reinterpret_cast<uint4*>(p.xA + (size_t)S.jrow[j] * HD) + ((((tid >> 5) * ntt + (r >> 3)) * 32 + (tid & 31)) * 8 + (r & 7));
+-          v[k] = __ldg(reinterpret_cast<const uint4*>(p.x + (size_t)(S.ent[S.jS[j] + r] >> 3) * HD) + tid);
++          {  // KPERM3: k8 group G = tid & 31 of stage tid >> 5 holds the bf16 pairs at stage offsets 2 B(G) + 64 t,
++             // B(G) = 8 ((G >> 1) & 3) + 2 (G >> 3) + (G & 1)
++            const int G = tid & 31;
++            const unsigned* xs32 = reinterpret_cast<const unsigned*>(p.x + (size_t)(S.ent[S.jS[j] + r] >> 3) * HD + (tid >> 5) * 256)
++                                   + (8 * ((G >> 1) & 3) + 2 * (G >> 3) + (G & 1));
++            v[k] = make_uint4(__ldg(xs32), __ldg(xs32 + 32), __ldg(xs32 + 64), __ldg(xs32 + 96));
++          }
+         }
+       }
+     }
+@@ -5842,14 +5875,15 @@
+     const uint64_t xd = xd0 + (uint64_t)(uint32_t)(xs * (WGS_XS >> 4));
+     // codes and scales one 4-step group at a time (fewer live registers)
+     uint4 cwn = *reinterpret_cast<const uint4*>(pc + (wp * 32 + lane) * 16);
+-    uint2 scn = *reinterpret_cast<const uint2*>(pc + 8192 + (wp * 8 + g) * 8);
++    // KPERM3: K is permuted inside the stage so that step j of every load group is scale block 4 t + j for this lane:
++    // the 4 scale pairs ([j][h] bytes) come from one 8-byte load per stage and are built once per stage
++    const uint2 scs = *reinterpret_cast<const uint2*>(pc + 8192 + (wp * 32 + lane) * 8);
+ #pragma unroll
+     for (int lg = 0; lg < 4; ++lg) {
+       const uint4 cwg = cwn;
+-      const uint2 scg = scn;
++      const uint2 scg = scs;
+       if (lg < 3) {
+         cwn = *reinterpret_cast<const uint4*>(pc + (((lg + 1) * 4 + wp) * 32 + lane) * 16);
+-        scn = *reinterpret_cast<const uint2*>(pc + 8192 + (((lg + 1) * 4 + wp) * 8 + g) * 8);
+       } else if (lane == 0) {
+         mbar_arrive1(S.bars + BW_E + ws);  // every code and scale of this stage is in registers: weights slot free
+       }
+@@ -6750,11 +6848,42 @@
+     return word.contiguous().view(-1)
+ 
+ 
++def _kperm_src():
++    """KPERM3: stage position p -> stage column k. p = 16 s + c (k16 step s = 4 lg + j, fragment column c of lane
++    t = (c >> 1) & 3, i = (c & 1) | ((c >> 3) << 1)); k = 16 (4 t + j) + 4 lg + i, so lane t's columns of step j in all
++    four load groups are exactly scale block 4 t + j."""
++    p = torch.arange(256)
++    s, c = p >> 4, p & 15
++    lg, j, t, i = s >> 2, s & 3, (c >> 1) & 3, (c & 1) | ((c >> 3) << 1)
++    k = 16 * (4 * t + j) + 4 * lg + i
++    assert sorted(k.tolist()) == list(range(256))
++    return k
++
++
++def _kperm_codes(codes):
++    """codes uint8 [R, K/2] (low nibble first) -> the same codes with K permuted inside every 256-K stage."""
++    R, K = codes.shape[0], codes.shape[1] * 2
++    nib = torch.stack((codes & 0xF, codes >> 4), -1).reshape(R, K // 256, 256)
++    nib = nib.index_select(2, _kperm_src().to(codes.device)).reshape(R, K // 2, 2)
++    return (nib[..., 0] | (nib[..., 1] << 4)).contiguous()
++
++
++def _kperm_rows(rowsA):
++    """Gate/up row order whose 16-row block r16, lane g holds inter column colmap(P), P = 8 r16 + g, where
++    colmap(P) = 256 (P >> 8) + _kperm_src()[P & 255] is the column phase B reads at K position P (the phase-A
++    epilogue then stores at its usual position)."""
++    r = rowsA.view(-1, 2, 8)
++    gate, up = r[:, 0, :].reshape(-1), r[:, 1, :].reshape(-1)
++    P = torch.arange(gate.numel(), device=rowsA.device)
++    cm = (P >> 8) * 256 + _kperm_src().to(rowsA.device)[P & 255]
++    return torch.stack((gate.index_select(0, cm).view(-1, 8), up.index_select(0, cm).view(-1, 8)), 1).reshape(-1)
++
++
+ def _wgs_copy(codes, sf, rows):
+     """WGS copy (RS-wgmma tiny band, moe -DOKC_WGS=1): [256-row unit][stage (16)][warpgroup q (4)][9216 B]. Warpgroup q
+     owns rows 64q..64q+63 of the unit; stage st holds k16 steps st*16 + (0..15): codes [grp (4)][warp (4)][lane (32)]
+     [4 words] (word (grp, j) = k16 step st*16 + grp*4 + j, natural mma k order), then scales [grp][warp][g][j][h] (the kernel's OKC_WGSSC2 layout)."""
+-    wn = _pack_codes_nat(codes, rows)
++    wn = _pack_codes_nat(_kperm_codes(codes), rows)
+     R = rows.numel()
+     nb, nub = R // 16, R // 256
+     w = wn.view(nb, 8, 8, 8, 4, 4)                                    # rb16, w8, c8, g, t, s
+@@ -6763,8 +6892,8 @@
+     w = w.permute(0, 3, 1, 4, 2, 6, 5).contiguous()                   # ub, st, q, grp, warp, lane, j
+     cb = w.view(torch.uint8).view(nub, 16, 4, 8192)
+     s = sf.view(torch.uint8).index_select(0, rows)                    # [R, 256]: one byte per row per 16 K
+-    s = s.view(nub, 4, 4, 2, 8, 16, 4, 4)                             # ub, q, warp, h, g, st, grp, j
+-    s = s.permute(0, 5, 1, 6, 2, 4, 7, 3).contiguous().view(nub, 16, 4, 1024)  # ub, st, q, grp, warp, g, j, h (OKC_WGSSC2)
++    s = s.view(nub, 4, 4, 2, 8, 16, 4, 4)                             # ub, q, warp, h, g, st, t, j (block 16 st + 4 t + j)
++    s = s.permute(0, 5, 1, 2, 4, 6, 7, 3).contiguous().view(nub, 16, 4, 1024)  # ub, st, q, warp, g, t, j, h (KPERM3)
+     return torch.cat([cb, s], dim=3).contiguous().view(-1)
+ 
+ 
+@@ -9775,7 +9904,7 @@
+                   torch.cat([_unit_order(x, y) for x, y in zip(wA, sA)]),
+                   torch.cat([_unit_order(x, y) for x, y in zip(wB, sB)])]
+     if "_wgs_on" in globals() and _wgs_on():   # their prepare(): w[12], w[13] = the WGS copies (per 256-row unit)
+-        st["ma_w"].append(torch.cat([_wgs_copy(weights["w13"][e].view(torch.uint8), weights["w13_sf"][e], rowsA)
++        st["ma_w"].append(torch.cat([_wgs_copy(weights["w13"][e].view(torch.uint8), weights["w13_sf"][e], _kperm_rows(rowsA))
+                                      for e in range(32)]))
+         st["ma_w"].append(torch.cat([_wgs_copy(weights["w2"][e].view(torch.uint8), weights["w2_sf"][e], rowsB)
+                                      for e in range(32)]))
