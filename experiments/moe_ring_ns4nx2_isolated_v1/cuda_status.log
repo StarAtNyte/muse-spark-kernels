@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pqdQGzGm62sU5uFizJ9LVY
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "real_ns4nx2", "CANDIDATE_ONLY": "1"} RETURNCODE 1
+START
+CAP warmup
+RUN_FAIL real_ns4nx2 ATTR_ERROR sm=235264 e0=invalid argument e1=invalid argument
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 94, in <module>
+    g, o = cap(e, d)
+           ^^^^^^^^^
+  File "/w/run/drv.py", line 81, in cap
+    print('CAP warmup', flush=True); fn(); torch.cuda.synchronize(); print('CAP warmup done', flush=True); g = torch.cuda.CUDAGraph()
+                                     ^^^^
+  File "/w/run/drv.py", line 80, in <lambda>
+    fn = lambda: ext.okc_run(st['w'], st['scratch'], x, ids, tw, out, 0, 32, st['grid'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: ATTR_ERROR sm=235264 e0=invalid argument e1=invalid argument
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pqdQGzGm62sU5uFizJ9LVY
