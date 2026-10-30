@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-g9W5QDy2HDqDlbbfy4n7uC
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+INVALID_OUTPUT_ABLATION
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 24.9us, best 24.9us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.2us, best 69.2us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.8us, best 70.8us algo None of 8
+LT tune T=3012 qkv: torch.mm 148.5us, best 148.5us algo None of 8
+LT tune T=3012 o: torch.mm 76.2us, best 76.2us algo None of 8
+LT tune T=3012 router: torch.mm 41.4us, best 41.4us algo None of 8
+LT tune T=3012 pooler: torch.mm 258.3us, best 258.3us algo None of 8
+LT tune T=3012 unpooler: torch.mm 258.6us, best 258.6us algo None of 8
+LT tune T=16384 qkv: torch.mm 779.1us, best 779.1us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 208.0us, best 201.0us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47607869957392'>")
+SHARED_PLANS
+ROW {"case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "base_us": 515.9, "ablation_us": 513.0, "gain": 1.0056}
+ROW {"case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "base_us": 3103.3, "ablation_us": 3076.9, "gain": 1.0086}
+ROW {"case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "base_us": 9179.9, "ablation_us": 9202.4, "gain": 0.9976}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-g9W5QDy2HDqDlbbfy4n7uC
