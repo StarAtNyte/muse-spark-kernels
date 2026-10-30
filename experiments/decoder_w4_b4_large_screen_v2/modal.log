@@ -1,0 +1,80 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Db0isH2c2YQ8NxiW87sfju
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w4-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+CHECK base {'batch': 16, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8101} True update relative L2 error 6.019e-02 (worst row 8.868e-02) [bound 0.147]; attention input relative L2 error 3.985e-02 (worst row 6.224e-02) [bound 0.097
+CHECK b4 {'batch': 16, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8101} True update relative L2 error 6.019e-02 (worst row 8.868e-02) [bound 0.147]; attention input relative L2 error 3.985e-02 (worst row 6.224e-02) [bound 0.097
+ROW {"case": {"batch": 16, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8101}, "times": {"base": 266.03201031684875, "b4": 268.65600049495697}, "gain": {"base": 1.0, "b4": 0.9902328994205455}}
+PROFILE {"case": {"batch": 16, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8101}, "variant": "base", "kernels": [["void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)", 14.463999999999942], ["void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)", 11.583999999999833], ["void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)", 7.199999999999818], ["_graft_row_boundary", 4.6720000000000255], ["nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN", 26.657000000000153], ["_graft_route", 2.7200000000002547], ["void okc::moe_fused<true>(okc::Params)", 164.9630000000002], ["nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT", 20.83199999999988], ["_graft_row_boundary", 4.991999999999734]]}
+PROFILE {"case": {"batch": 16, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8101}, "variant": "b4", "kernels": [["void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)", 14.40099999999984], ["void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)", 11.808999999999969], ["void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)", 6.913000000000011], ["_graft_row_boundary", 4.448999999999842], ["nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN", 25.826999999999998], ["_graft_route", 2.655999999999949], ["void okc::moe_fused<true>(okc::Params)", 169.875], ["nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT", 21.314000000000078], ["_graft_row_boundary", 5.121000000000095]]}
+CHECK base {'batch': 16, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8102} True update relative L2 error 6.097e-02 (worst row 8.999e-02) [bound 0.150]; attention input relative L2 error 3.976e-02 (worst row 6.125e-02) [bound 0.098
+CHECK b4 {'batch': 16, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8102} True update relative L2 error 6.097e-02 (worst row 8.999e-02) [bound 0.150]; attention input relative L2 error 3.976e-02 (worst row 6.125e-02) [bound 0.098
+ROW {"case": {"batch": 16, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8102}, "times": {"base": 237.31200397014618, "b4": 238.3520007133484}, "gain": {"base": 1.0, "b4": 0.9956367190537958}}
+CHECK base {'batch': 16, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8111} True update relative L2 error 6.679e-02 (worst row 1.105e-01) [bound 0.150]; attention input relative L2 error 4.332e-02 (worst row 6.616e-02) [bound 0.105
+CHECK b4 {'batch': 16, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8111} True update relative L2 error 6.679e-02 (worst row 1.105e-01) [bound 0.150]; attention input relative L2 error 4.332e-02 (worst row 6.616e-02) [bound 0.105
+ROW {"case": {"batch": 16, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8111}, "times": {"base": 334.3359977006912, "b4": 337.023988366127}, "gain": {"base": 1.0, "b4": 0.9920243342960037}}
+PROFILE {"case": {"batch": 16, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8111}, "variant": "base", "kernels": [["void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)", 14.338999999999942], ["void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)", 99.76600000000008], ["void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)", 8.32100000000014], ["_graft_row_boundary", 4.416999999999916], ["nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN", 24.77300000000014], ["_graft_route", 2.625], ["void okc::moe_fused<true>(okc::Params)", 143.77499999999986], ["nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT", 21.701000000000022], ["_graft_row_boundary", 4.992999999999938]]}
+PROFILE {"case": {"batch": 16, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8111}, "variant": "b4", "kernels": [["void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)", 14.17599999999993], ["void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)", 99.77500000000009], ["void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)", 7.008000000000038], ["_graft_row_boundary", 4.4809999999999945], ["nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN", 24.958999999999833], ["_graft_route", 2.5920000000000982], ["void okc::moe_fused<true>(okc::Params)", 147.10199999999986], ["nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT", 20.86299999999983], ["_graft_row_boundary", 5.503999999999905]]}
+CHECK base {'batch': 16, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8112} True update relative L2 error 6.558e-02 (worst row 9.846e-02) [bound 0.150]; attention input relative L2 error 4.308e-02 (worst row 6.710e-02) [bound 0.104
+CHECK b4 {'batch': 16, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8112} True update relative L2 error 6.558e-02 (worst row 9.846e-02) [bound 0.150]; attention input relative L2 error 4.308e-02 (worst row 6.710e-02) [bound 0.104
+ROW {"case": {"batch": 16, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8112}, "times": {"base": 355.8399975299835, "b4": 357.08799958229065}, "gain": {"base": 1.0, "b4": 0.996505057426273}}
+CHECK base {'batch': 32, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8121} True update relative L2 error 5.946e-02 (worst row 8.907e-02) [bound 0.142]; attention input relative L2 error 3.893e-02 (worst row 6.068e-02) [bound 0.093
+CHECK b4 {'batch': 32, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8121} True update relative L2 error 5.946e-02 (worst row 8.907e-02) [bound 0.142]; attention input relative L2 error 3.893e-02 (worst row 6.068e-02) [bound 0.093
+ROW {"case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8121}, "times": {"base": 308.8639974594116, "b4": 312.3359978199005}, "gain": {"base": 1.0, "b4": 0.9888837649687408}}
+PROFILE {"case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8121}, "variant": "base", "kernels": [["nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN", 20.64199999999994], ["void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)", 14.799000000000092], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN", 8.82899999999995], ["_graft_row_boundary", 7.736000000000104], ["nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN", 30.947000000000116], ["_graft_route", 3.1779999999998836], ["void okc::moe_fused<true>(okc::Params)", 185.586], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT", 26.067000000000007], ["_graft_row_boundary", 7.255000000000109]]}
+PROFILE {"case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8121}, "variant": "b4", "kernels": [["nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN", 20.961000000000013], ["void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)", 14.817000000000007], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN", 8.896999999999935], ["_graft_row_boundary", 6.720999999999776], ["nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN", 31.746000000000095], ["_graft_route", 3.2640000000001237], ["void okc::moe_fused<true>(okc::Params)", 186.92700000000013], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT", 26.786000000000058], ["_graft_row_boundary", 7.457000000000107]]}
+CHECK base {'batch': 32, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8122} True update relative L2 error 6.292e-02 (worst row 1.193e-01) [bound 0.150]; attention input relative L2 error 4.140e-02 (worst row 6.616e-02) [bound 0.101
+CHECK b4 {'batch': 32, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8122} True update relative L2 error 6.292e-02 (worst row 1.193e-01) [bound 0.150]; attention input relative L2 error 4.140e-02 (worst row 6.616e-02) [bound 0.101
+ROW {"case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8122}, "times": {"base": 310.8000010251999, "b4": 314.39998745918274}, "gain": {"base": 1.0, "b4": 0.988549661012788}}
+CHECK base {'batch': 32, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8131} True update relative L2 error 6.653e-02 (worst row 9.878e-02) [bound 0.150]; attention input relative L2 error 4.387e-02 (worst row 6.360e-02) [bound 0.106
+CHECK b4 {'batch': 32, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8131} True update relative L2 error 6.653e-02 (worst row 9.878e-02) [bound 0.150]; attention input relative L2 error 4.387e-02 (worst row 6.360e-02) [bound 0.106
+ROW {"case": {"batch": 32, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8131}, "times": {"base": 501.6160011291504, "b4": 504.67199087142944}, "gain": {"base": 1.0, "b4": 0.9939446020433942}}
+PROFILE {"case": {"batch": 32, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8131}, "variant": "base", "kernels": [["nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN", 21.690000000000055], ["void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)", 177.01699999999983], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN", 9.09900000000016], ["_graft_row_boundary", 6.5349999999998545], ["nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN", 31.846000000000004], ["_graft_route", 3.268000000000029], ["void okc::moe_fused<true>(okc::Params)", 208.63899999999967], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT", 25.791999999999916], ["_graft_row_boundary", 7.24100000000044]]}
+PROFILE {"case": {"batch": 32, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8131}, "variant": "b4", "kernels": [["nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN", 20.519999999999982], ["void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)", 178.12300000000005], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN", 8.995999999999981], ["_graft_row_boundary", 6.594000000000051], ["nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN", 31.117000000000075], ["_graft_route", 3.298000000000002], ["void okc::moe_fused<true>(okc::Params)", 209.5279999999999], ["nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT", 25.770999999999958], ["_graft_row_boundary", 7.266000000000076]]}
+CHECK base {'batch': 32, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8132} True update relative L2 error 6.603e-02 (worst row 1.064e-01) [bound 0.150]; attention input relative L2 error 4.280e-02 (worst row 6.549e-02) [bound 0.104
+CHECK b4 {'batch': 32, 'ctx': 80000, 'layer': 'full', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8132} True update relative L2 error 6.603e-02 (worst row 1.064e-01) [bound 0.150]; attention input relative L2 error 4.280e-02 (worst row 6.549e-02) [bound 0.104
+ROW {"case": {"batch": 32, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "q_len": 8, "spread": "agentic", "seed": 8132}, "times": {"base": 489.99999463558197, "b4": 492.6079958677292}, "gain": {"base": 1.0, "b4": 0.9947057269593174}}
+DONE
+
+STDERR:
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:56 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:57 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:57 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:57 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:57 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:58 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:58 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-30 11:28:58 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-30 11:28:58 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Db0isH2c2YQ8NxiW87sfju

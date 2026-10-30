@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-k36jh6RurFbjdezPPxDzOs
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w4-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 84.3, "cand": 84.6, "gain": 0.9966, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.935e-03 (worst row 6.935e-03) [bound 0.143]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 77.2, "cand": 77.0, "gain": 1.0017, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.544e-03 (worst row 7.544e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 89.9, "cand": 90.4, "gain": 0.9945, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.586e-03 (worst row 8.586e-03) [bound 0.133]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 83.6, "cand": 83.4, "gain": 1.0025, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.911e-03 (worst row 6.911e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 142.4, "cand": 142.6, "gain": 0.9984, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.003e-03 (worst row 1.134e-02) [bound 0.124]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 134.8, "cand": 135.0, "gain": 0.9988, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.169e-03 (worst row 1.532e-02) [bound 0.129]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 227.2, "cand": 226.9, "gain": 1.0013, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.793e-03 (worst row 1.021e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 210.2, "cand": 210.3, "gain": 0.9995, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.768e-03 (worst row 9.338e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 169.6, "cand": 168.1, "gain": 1.0088, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.895e-03 (worst row 1.291e-02) [bound 0.128]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 161.8, "cand": 160.9, "gain": 1.0054, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 1.074e-02 (worst row 3.134e-02) [bound 0.134]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 311.9, "cand": 312.0, "gain": 0.9999, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.613e-03 (worst row 9.075e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 308.6, "cand": 307.5, "gain": 1.0036, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.916e-03 (worst row 1.292e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 143.2, "cand": 143.5, "gain": 0.9977, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.529e-02 (worst row 7.979e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 121.7, "cand": 121.7, "gain": 1.0003, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.043e-02 (worst row 6.431e-02) [bound 0.124]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4001, "base": 109.2, "cand": 108.2, "gain": 1.0089, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.360e-02 (worst row 7.974e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4002, "base": 127.8, "cand": 127.7, "gain": 1.0005, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 5.925e-02 (worst row 7.826e-02) [bound 0.148]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 244.6, "cand": 245.8, "gain": 0.9951, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.159e-02 (worst row 8.850e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 272.8, "cand": 273.2, "gain": 0.9982, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.048e-02 (worst row 9.745e-02) [bound 0.145]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4001, "base": 336.6, "cand": 336.4, "gain": 1.0004, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.563e-02 (worst row 9.186e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4002, "base": 331.8, "cand": 331.4, "gain": 1.0011, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.522e-02 (worst row 1.077e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4001, "base": 309.1, "cand": 308.8, "gain": 1.001, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.018e-02 (worst row 9.988e-02) [bound 0.146]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4002, "base": 298.1, "cand": 297.1, "gain": 1.0033, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.307e-02 (worst row 1.171e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4001, "base": 473.3, "cand": 473.4, "gain": 0.9997, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.728e-02 (worst row 1.014e-01) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4002, "base": 483.0, "cand": 484.0, "gain": 0.998, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.558e-02 (worst row 1.045e-01) [bound 0.150]; attention input re"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-k36jh6RurFbjdezPPxDzOs

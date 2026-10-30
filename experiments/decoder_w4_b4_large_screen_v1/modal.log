@@ -1,0 +1,66 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-LDBie9pf5mjQwqDYoFq1Bu
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w4-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 1
+CHECK base {'batch': 16, 'ctx': 80000, 'layer': 'sliding', 'page': 1, 'dist': 'soft', 'q_len': 8, 'spread': 'agentic', 'seed': 8101} True update relative L2 error 6.019e-02 (worst row 8.868e-02) [bound 0.147]; attention input relative L2 error 3.985e-02 (worst row 6.224e-02) [bound 0.097
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 42, in <module>
+    g,o=cap(d)
+        ^^^^^^
+  File "/w/run/drv.py", line 22, in cap
+    o = S.kernel_fn(d, st); torch.cuda.synchronize(); g = torch.cuda.CUDAGraph()
+        ^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13038, in kernel_fn
+    return _glue_context_parent_kernel(data, state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12206, in kernel_fn
+    return _vj_kernel_fn(data, state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 11158, in kernel_fn
+    return _after_attention(data, state, o_in, None, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13869, in _after_attention
+    return _gle_b1x_prior_after(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13758, in _after_attention
+    return _gle_prior_after(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12940, in _after_attention
+    return _sl_tile_prior_after(data,state,o_in,gate,T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12735, in _after_attention
+    return _sl_previous_after_attention(data,state,o_in,gate,T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12187, in _after_attention
+    return _graft_after_attention(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12167, in _graft_after_attention
+    ext.okc_run(state["ma_w"], state["ma_scratch"], xm[m0:m1], lids[m0:m1], wts[m0:m1], m[m0:m1], 0, 32,
+RuntimeError: B4FIN build is for M <= 32
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-LDBie9pf5mjQwqDYoFq1Bu
