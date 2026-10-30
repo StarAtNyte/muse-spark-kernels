@@ -21,3 +21,18 @@ https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
 
 A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
 
+ENV {} RETURNCODE 0
+START
+ROW {"bs": 16, "seed": 419, "main_us": 119.79199945926666, "mid_us": 109.56799983978271, "gain_mid": 1.0933119125514212}
+ROW {"bs": 16, "seed": 7, "main_us": 119.4240003824234, "mid_us": 109.99999940395355, "gain_mid": 1.0856727366321344}
+ROW {"bs": 24, "seed": 419, "main_us": 119.19999867677689, "mid_us": 111.35999858379364, "gain_mid": 1.0704023005808856}
+ROW {"bs": 24, "seed": 7, "main_us": 131.9200024008751, "mid_us": 124.54400211572647, "gain_mid": 1.059224050615419}
+ROW {"bs": 32, "seed": 419, "main_us": 132.9760029911995, "mid_us": 138.12799751758575, "gain_mid": 0.9627013015537973}
+ROW {"bs": 32, "seed": 7, "main_us": 152.00000256299973, "mid_us": 144.6240022778511, "gain_mid": 1.051001218117155}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-EVqmFkfkwIsk364joMTLGR
