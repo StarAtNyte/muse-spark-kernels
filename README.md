@@ -26,7 +26,7 @@ Modal H200 experiments run through `dev/modal/run_h200.py`; see
 First private check: `3f1954adb1044e31`: passed all 9 tests and 30 timed
 cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
 The current public scores are **1.5395x** for projections, **2.5806x** for
-attention, **2.3290x** for MoE, and **2.0926x** for the whole decoder. The
+attention, **2.3820x** for MoE, and **2.1957x** for the whole decoder. The
 private check scores and immutable sources are archived under `experiments/`;
 `research/best.json` points to the current best implementations in `kernels/`.
 
@@ -43,11 +43,11 @@ Private checks have a separate daily quota from leaderboard submissions.
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5395x | #88 | 1.5560x | 1.6367x | beb3e26afb2544c9 |
 | Attention | 2.6177x | #55 | 2.6237x | 3.0542x | b95cd80bd3e6497f |
-| MoE | 2.3290x | #103 | 2.3736x | 2.6888x | 88e09ad35c814c29 |
-| Whole decoder layer | 2.0926x | #120 | 2.1663x | 2.4029x | 6cf1be8d60e84ac7 |
+| MoE | 2.3820x | #70 | 2.4150x | 2.7578x | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.1957x | #78 | 2.2189x | 2.4178x | 78df8889fbbe4803 |
 | Prefill layer | 1.7874x | #78 | 1.7994x | 2.0325x | 68ac9af85a3a4e3d |
 
-Overall rank is **#120** (live snapshot 2026-10-29 09:53 UTC via `python tools/standings.py`; ranks move as others submit). Prefill is a separate board and does not count toward
+Overall rank is **#78** (live snapshot 2026-10-30; ranks move as others submit). Other table rows retain the earlier 2026-10-29 snapshot. Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
 is #74. Its current top-50 cutoff is 1.7992x. Leaderboard snapshot refreshed 2026-10-29 09:13 UTC; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
