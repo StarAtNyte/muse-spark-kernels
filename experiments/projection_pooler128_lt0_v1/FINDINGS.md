@@ -1,0 +1,5 @@
+# M128 pooler cuBLASLt descriptor official check
+
+Candidate SHA-256 `92b7b57e4dd1f394786f43623f9568c8aa6275b8e25073b404f2e781f413edae` changes only the M128 pooler descriptor from `[66,15,1,0,0,4,35,0,2]` to `[66,15,1,0,0,0,35,0,2]` in the best published projection source. Four-seed full-route H200 screens passed and measured 1.5–3.3% local gains (`experiments/projection_pooler128_fullroute_v1/`).
+
+Official off-board check `de8733a0afd94721` passed 9/9 tests and all timed cases, with no flags, at 1.5165227× (95% CI 1.4937749–1.5392706). The published incumbent `beb3e26afb2544c9` is 1.5395062× (95% CI 1.5164137–1.5625988). M128 pooler measured 20.94 µs here versus 20.32 µs in the incumbent's separate scored run. These are unpaired runs with overlapping intervals, so neither the aggregate difference nor that per-case comparison proves the descriptor is slower. The check does not establish a leaderboard gain. Keep the incumbent and do not submit this candidate; retain the local signal for future matched-judge testing. Raw status and profiles are archived here.
