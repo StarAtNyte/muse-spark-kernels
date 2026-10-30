@@ -1,0 +1,23 @@
+{
+  "name": "prefill_boundary_256_hint_v1",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Use 256 threads and streaming hints only for the first recompute boundary; paired H200 component screens favored it in three seeds while the second boundary stays unchanged.",
+  "sha256": "8f3fcc00c56a8457f96178d9bf7b35349a84406f01c3924201cb731ca242dc5a",
+  "created_at": 1793335585.1241252,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "queued",
+  "job_id": "17ded4dec47047ad",
+  "updated_at": 1793335594.928763
+}
