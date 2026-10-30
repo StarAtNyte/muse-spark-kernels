@@ -1,0 +1,34 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nuhXfj4UJy24ib8w0XdbWt
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RESULT {"name": "baseline", "relative_l2": 0.0016654519131407142}
+RESULT {"name": "permuted", "relative_l2": 0.0016654521459713578}
+PERMUTED_VS_BASE 2.3964099455042742e-05
+PASS: gated WGMMA publishes K64-permuted intermediates
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nuhXfj4UJy24ib8w0XdbWt
