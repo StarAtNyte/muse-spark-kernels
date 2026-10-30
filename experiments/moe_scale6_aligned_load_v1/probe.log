@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pDByNOBNJhh81JL4Knbet5
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+PREPARED CANDIDATE
+PREPARED PARENT
+CHECK True True relative L2 error 2.547e-03 (worst row 2.721e-03)
+CHECK False True relative L2 error 2.547e-03 (worst row 2.721e-03)
+RESULT {"batch": 32, "seed": 419, "base_us": 133.44000279903412, "candidate_us": 131.6479966044426, "ratio": 1.0136121037980994, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.540e-03 (worst row 2.657e-03)
+CHECK False True relative L2 error 2.540e-03 (worst row 2.657e-03)
+RESULT {"batch": 32, "seed": 7919, "base_us": 151.8239974975586, "candidate_us": 150.03199875354767, "ratio": 1.0119441103157905, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.535e-03 (worst row 2.721e-03)
+CHECK False True relative L2 error 2.535e-03 (worst row 2.721e-03)
+RESULT {"batch": 128, "seed": 419, "base_us": 194.46400552988052, "candidate_us": 190.41600078344345, "ratio": 1.0212587425940154, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.556e-03 (worst row 2.705e-03)
+CHECK False True relative L2 error 2.556e-03 (worst row 2.705e-03)
+RESULT {"batch": 128, "seed": 7919, "base_us": 189.63199853897095, "candidate_us": 187.45600432157516, "ratio": 1.011608026242056, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.545e-03 (worst row 2.760e-03)
+CHECK False True relative L2 error 2.545e-03 (worst row 2.760e-03)
+RESULT {"batch": 256, "seed": 419, "base_us": 229.263998568058, "candidate_us": 226.73600167036057, "ratio": 1.0111495169671942, "relative_l2": 0.0}
+CHECK True True relative L2 error 2.553e-03 (worst row 2.767e-03)
+CHECK False True relative L2 error 2.553e-03 (worst row 2.767e-03)
+RESULT {"batch": 256, "seed": 7919, "base_us": 209.47200059890747, "candidate_us": 212.35200017690659, "ratio": 0.9864376150184607, "relative_l2": 0.0}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pDByNOBNJhh81JL4Knbet5
