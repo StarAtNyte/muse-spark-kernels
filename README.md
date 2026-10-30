@@ -26,7 +26,7 @@ Modal H200 experiments run through `dev/modal/run_h200.py`; see
 First private check: `3f1954adb1044e31`: passed all 9 tests and 30 timed
 cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
 The current public scores are **1.5395x** for projections, **2.5806x** for
-attention, **2.3820x** for MoE, and **2.1957x** for the whole decoder. The
+attention, **2.3820x** for MoE, and **2.2603x** for the whole decoder. The
 private check scores and immutable sources are archived under `experiments/`;
 `research/best.json` points to the current best implementations in `kernels/`.
 
@@ -44,10 +44,10 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Projections | 1.5395x | #88 | 1.5560x | 1.6367x | beb3e26afb2544c9 |
 | Attention | 2.6177x | #55 | 2.6237x | 3.0542x | b95cd80bd3e6497f |
 | MoE | 2.3820x | #70 | 2.4150x | 2.7578x | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.1957x | #78 | 2.2189x | 2.4178x | 78df8889fbbe4803 |
+| Whole decoder layer | 2.2603x | #25 | 2.2198x | 2.4178x | b72f02c7eb8745f5 |
 | Prefill layer | 1.7874x | #78 | 1.7994x | 2.0325x | 68ac9af85a3a4e3d |
 
-Overall rank is **#78** (live snapshot 2026-10-30; ranks move as others submit). Other table rows retain the earlier 2026-10-29 snapshot. Prefill is a separate board and does not count toward
+Overall rank is **#25** (live snapshot 2026-10-30; ranks move as others submit). Other table rows retain the earlier 2026-10-29 snapshot. Prefill is a separate board and does not count toward
 overall rank. The scored prefill run passed at 1.7874x; its leaderboard rank
 is #74. Its current top-50 cutoff is 1.7992x. Leaderboard snapshot refreshed 2026-10-29 09:13 UTC; ranks and cutoffs can move
 as new runs are scored. The latest stacked M32/M128
@@ -145,4 +145,4 @@ Prefill boundary experiment: a first-recompute boundary launch adjustment passed
 
 KPERM3 progress (2026-10-30): our GATHB=7 MoE stack passed official check `2ecdb5bf891d40e4` at **2.39112×** and was submitted as `190d8914bacb4aa2`; the integrated alygg77 decoder passed check `13161eab55cb447a` at **2.20175×** and was submitted as `78df8889fbbe4803`. The scored jobs passed: **2.3820× MoE (#70)** and **2.1957× decoder (#78)**; overall rank **#78** at the 2026-10-30 snapshot. MoE #50 was 2.4150×; decoder #50 was 2.2189×. The lossless K rearrangement comes from [alygg77's Apache-2.0 kernels](https://github.com/alygg77/okc-muse-spark-kernels); source, notices, and check profiles are archived in `experiments/`.
 
-Decoder stacking: the combined compact T128 QKV and O projection routes on the KPERM3 decoder passed check `851e490e09f44621` at 2.19920×; its profile confirms both kernels ran. Scored job `b72f02c7eb8745f5` is pending. The aggregate gain over the parent remains uncertain. Details and the failed preparation attempt are in `experiments/decoder_alygg_bigproj_screen_v1/`.
+Decoder stacking: the combined compact T128 QKV and O projection routes on the KPERM3 decoder passed check `851e490e09f44621` at 2.19920×; its profile confirms both kernels ran. Scored job `b72f02c7eb8745f5` passed at **2.26032×** (95% CI 2.22642–2.29423), placing #25 at this snapshot; the point estimate is above the parent’s 2.19567×. Separate-run noise means the entire difference cannot be attributed solely to these routes. Details and the failed preparation attempt are in `experiments/decoder_alygg_bigproj_screen_v1/`.
