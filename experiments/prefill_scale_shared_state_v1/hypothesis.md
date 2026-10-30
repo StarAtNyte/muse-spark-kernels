@@ -1,0 +1,5 @@
+# Shared-plan prefill scale-selection diagnostic
+
+Public-image app `ap-g9W5QDy2HDqDlbbfy4n7uC`; driver SHA-256 `c8bead5c609d17103c9e6992d4f0263f31773692068c099887596f44ebff7797`; parent source SHA-256 `9a12398e9db70abb59ee3a914e185a5e8010e2557056ece22528f6b0b8c24217`.
+
+This repeats the prior invalid-output diagnostic, but prepares weights, cuBLASLt plans, streams and attention choices once, then shallow-copies that state and swaps only the compiled MoE extension. Both arms use the same weights, inputs, plan objects and graph timing, and retain captured outputs. The altered extension reuses the lane-selected scale without applying the matching weight or activation permutation: its outputs are intentionally incorrect. It is not a correctness test, official score, hard bound or proof that the compiler hoists selection. The experiment includes full-layer work and a stubbed SGLang environment, with alternating cold-L2 replays and a bounded 300-second subprocess. A real implementation must additionally pay for the data permutation and pass all official checks. Raw output: `screen.log`.
