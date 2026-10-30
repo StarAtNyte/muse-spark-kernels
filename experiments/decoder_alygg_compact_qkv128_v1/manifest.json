@@ -1,0 +1,23 @@
+{
+  "name": "decoder_alygg_compact_qkv128_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the previously measured T128 specialized QKV route onto the integrated KPERM3 decoder using only its compact extracted MIT backend; validate full layer and prepare time.",
+  "sha256": "99d9fc830b47fe1d2dc51c88f670f05b570542d9c48a9cef939cbfdae53b6a0c",
+  "created_at": 1793343108.204938,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "running",
+  "job_id": "9a3e2477765a4b30",
+  "updated_at": 1793343138.9523294
+}
