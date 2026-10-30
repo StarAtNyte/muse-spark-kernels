@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wuBdgbcfWUJmSLsmQuuPY1
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+START
+GRID {"sm_count": 132, "candidates": [112, 120, 128, 132]}
+ROW {"bs": 32, "seed": 419, "grid": 112, "base_grid": 132, "base_us": 130.92800229787827, "candidate_us": 133.85599851608276, "gain": 0.9781257750816994}
+ROW {"bs": 32, "seed": 419, "grid": 120, "base_grid": 132, "base_us": 130.65599650144577, "candidate_us": 131.4079985022545, "gain": 0.9942773498616538}
+ROW {"bs": 32, "seed": 419, "grid": 128, "base_grid": 132, "base_us": 130.97600638866425, "candidate_us": 130.70400059223175, "gain": 1.0020810824091078}
+ROW {"bs": 128, "seed": 419, "grid": 112, "base_grid": 132, "base_us": 192.01599806547165, "candidate_us": 205.55199682712555, "gain": 0.9341480551364431}
+ROW {"bs": 128, "seed": 419, "grid": 120, "base_grid": 132, "base_us": 191.40800088644028, "candidate_us": 198.2720047235489, "gain": 0.9653808723693539}
+ROW {"bs": 128, "seed": 419, "grid": 128, "base_grid": 132, "base_us": 192.4320012331009, "candidate_us": 191.96799397468567, "gain": 1.0024171073979988}
+ROW {"bs": 256, "seed": 419, "grid": 112, "base_grid": 132, "base_us": 227.39200294017792, "candidate_us": 249.05600398778915, "gain": 0.9130155438907893}
+ROW {"bs": 256, "seed": 419, "grid": 120, "base_grid": 132, "base_us": 227.4719998240471, "candidate_us": 237.60000616312027, "gain": 0.9573737117998222}
+ROW {"bs": 256, "seed": 419, "grid": 128, "base_grid": 132, "base_us": 227.32800245285034, "candidate_us": 230.0799936056137, "gain": 0.9880389810968065}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wuBdgbcfWUJmSLsmQuuPY1
