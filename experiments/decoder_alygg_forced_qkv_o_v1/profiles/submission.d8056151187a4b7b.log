@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/worker.py", line 322, in _setup_op
+    state["prep"] = prepare(weights)
+                    ^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 14061, in prepare
+    st = _compact_o_prev_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13985, in prepare
+    st = _qkv_compact_parent_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13883, in prepare
+    st = _pin_parent_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13875, in prepare
+    return _gle_b1x_prior_prepare(weights)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13764, in prepare
+    return _gle_prior_prepare(weights)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13215, in prepare
+    state = _router_fp32_native_parent_prepare(weights)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13124, in prepare
+    st = _router_fp32_parent_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12981, in prepare
+    return _DE_PREPARE(weights)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12740, in prepare
+    st=_sl_previous_prepare(weights)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12334, in prepare
+    ids=_after_attention(data,st,o_in,None,T)[2]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13869, in _after_attention
+    return _gle_b1x_prior_after(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 13758, in _after_attention
+    return _gle_prior_after(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12940, in _after_attention
+    return _sl_tile_prior_after(data,state,o_in,gate,T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12735, in _after_attention
+    return _sl_previous_after_attention(data,state,o_in,gate,T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12187, in _after_attention
+    return _graft_after_attention(data, state, o_in, gate, T)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 12116, in _graft_after_attention
+    P, S = dense(o_in, state["o"], T, state, "o")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_decode_layer-ljmz8fe5/run/submission.py", line 14068, in dense
+    return run_olayer_candidate(x,state["compact_o"],0).view(1,T,8192), 1
+                                  ~~~~~^^^^^^^^^^^^^
+KeyError: 'compact_o'
