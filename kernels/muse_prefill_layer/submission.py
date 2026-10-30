@@ -557,15 +557,19 @@ def _repack(w, sf, gated):
         nt = torch.arange(n_tiles, device=dev).view(n_tiles, 1, 1)
         q = torch.arange(8, device=dev).view(1, 8, 1)
         lr = torch.arange(16, device=dev).view(1, 1, 16)
-        perm = torch.where(lr < 8, 64 * nt + 8 * q + lr, 4096 + 64 * nt + 8 * q + lr - 8).reshape(-1)
+        col = 8 * q + (lr % 8)
+        mapped = 16 * ((col >> 1) & 3) + 4 * (col >> 4) + (col & 1) + 2 * ((col & 15) >> 3)
+        perm = torch.where(lr < 8, 64 * nt + mapped, 4096 + 64 * nt + mapped).reshape(-1)
     else:
         perm = torch.arange(N, device=dev)
     out = torch.empty((E, n_tiles, KS, WBLK), dtype=torch.uint8, device=dev)
     sf_u8 = sf.view(torch.uint8)
+    kperm = torch.tensor([16 * ((c >> 1) & 3) + 4 * j + (c & 1) + 2 * (c >> 3)
+                          for j in range(4) for c in range(16)], device=dev)
     shifts = torch.tensor([3, 7, 1, 5, 2, 6, 0, 4], dtype=torch.int32, device=dev)  # (half, hk, b) order below
     pos = torch.tensor([_CODE_POS[int(i)] for i in shifts.tolist()], dtype=torch.int64, device=dev)  # [8, 4]
     for e in range(E):
-        c = _codes(w[e][perm]).to(torch.int32)  # [N, 4096]
+        c = _codes(w[e][perm]).view(N, 64, 64).index_select(2, kperm).reshape(N, 4096).to(torch.int32)
         # rows: [nt, wg, w, half, g]; k: [ks, j, hk, t, b]
         c = c.view(n_tiles, 2, 4, 2, 8, KS, 4, 2, 4, 2)
         # -> [nt, ks, wg, w, g, t, j, half, hk, b]
@@ -1916,7 +1920,7 @@ DEVI void consumer_tile(const Args& p, uint8_t* ring, uint32_t bars, int stride,
     for (int j = 0; j < 4; ++j) {
       const uint32_t q = j == 0 ? wq.x : j == 1 ? wq.y : j == 2 ? wq.z : wq.w;
       const uint32_t sw = j < 2 ? sc.x : sc.y;  // scales of k16 steps (j & ~1, j | 1): bytes 0,1 and 2,3
-      convert8(q, scale_pair_sel(sw, j & 1, m16), afrag[j & 1], m16, m64);
+      convert8(q, scale_pair_sel(t < 2 ? sc.x : sc.y, t & 1, m16), afrag[j & 1], m16, m64);
       wg_fence();
       wgmma_rs<N>(acc, afrag[j & 1], desc + 2 * j, 1);
       wg_commit();
@@ -2197,7 +2201,7 @@ DEVI void consumer_item(const Args& p, uint8_t* ring, uint8_t* stg, uint32_t bar
         for (int j = 0; j < 4; ++j) {
           const uint32_t q = j == 0 ? wq.x : j == 1 ? wq.y : j == 2 ? wq.z : wq.w;
           const uint32_t sw = j < 2 ? sc.x : sc.y;
-          convert8(q, scale_pair_sel(sw, j & 1, m16), af3[b][j], m16, m64);  // buffer b's last group (3 k-blocks ago) is complete
+          convert8(q, scale_pair_sel(t < 2 ? sc.x : sc.y, t & 1, m16), af3[b][j], m16, m64);  // buffer b's last group (3 k-blocks ago) is complete
         }
         wg_fence();
 #pragma unroll
@@ -2258,7 +2262,7 @@ DEVI void consumer_item(const Args& p, uint8_t* ring, uint8_t* stg, uint32_t bar
         for (int j = 0; j < 4; ++j) {
           const uint32_t q = j == 0 ? wq.x : j == 1 ? wq.y : j == 2 ? wq.z : wq.w;
           const uint32_t sw = j < 2 ? sc.x : sc.y;  // scales of k16 steps (j & ~1, j | 1): bytes 0,1 and 2,3
-          convert8(q, scale_pair_sel(sw, j & 1, m16), afrag[(DEEP ? kk : (kk & 1)) * 4 + j], m16, m64);
+          convert8(q, scale_pair_sel(t < 2 ? sc.x : sc.y, t & 1, m16), afrag[(DEEP ? kk : (kk & 1)) * 4 + j], m16, m64);
         }
         if constexpr (MMA32) {
           // B fragments from the 128B-swizzled token rows: ldmatrix.x4 = (group 2q, k lo), (2q, k hi), (2q+1, lo),
@@ -2303,7 +2307,7 @@ DEVI void consumer_item(const Args& p, uint8_t* ring, uint8_t* stg, uint32_t bar
         for (int j = 0; j < 4; ++j) {
           const uint32_t q = j == 0 ? wq.x : j == 1 ? wq.y : j == 2 ? wq.z : wq.w;
           const uint32_t sw = j < 2 ? sc.x : sc.y;  // scales of k16 steps (j & ~1, j | 1): bytes 0,1 and 2,3
-          convert8(q, scale_pair_sel(sw, j & 1, m16), afrag[j & 1], m16, m64);
+          convert8(q, scale_pair_sel(t < 2 ? sc.x : sc.y, t & 1, m16), afrag[j & 1], m16, m64);
           wg_fence();
           wgmma_rs<N>(acc, afrag[j & 1], desc + 2 * j, 1);
           wg_commit();
@@ -3171,6 +3175,22 @@ __global__ void __launch_bounds__(256, MOE_GATHER_MINB) moe_gather_kernel(const 
     outw[2 * i] = bf162_u32(a);
     outw[2 * i + 1] = bf162_u32(b);
   }
+  // Transpose each 4x4 lane/register block in two butterfly steps.
+  uint32_t tr[8], next[8];
+#pragma unroll
+  for (int i = 0; i < 8; ++i) tr[i] = outw[2 * (i & 3) + (i >> 2)];
+#pragma unroll
+  for (int bit = 1; bit <= 2; bit <<= 1) {
+#pragma unroll
+    for (int i = 0; i < 8; ++i) {
+      uint32_t v = __shfl_xor_sync(0xffffffffu, tr[i ^ bit], bit, 4);
+      next[i] = ((tid ^ i) & bit) ? v : tr[i];
+    }
+#pragma unroll
+    for (int i = 0; i < 8; ++i) tr[i] = next[i];
+  }
+#pragma unroll
+  for (int i = 0; i < 8; ++i) outw[i] = tr[i];
   const int stg = tid >> 2, ch0 = 2 * (tid & 3);
 #pragma unroll
   for (int k = 0; k < 8; ++k) {

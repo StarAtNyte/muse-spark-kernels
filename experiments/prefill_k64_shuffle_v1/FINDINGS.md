@@ -29,3 +29,5 @@ The official check passed all 5 correctness tests and timed all 8 scored shapes.
 | batch 1, q16384, sliding, context 32768 | 8936.8 | 8943.5 | 0.9993 |
 | batch 1, q16384, full, context 32768 | 12806.4 | 12495.2 | 1.0249 |
 | batch 1, q16384, full, context 65536 | 15459.9 | 15376.9 | 1.0054 |
+
+Scored submission `7d1584001a32467a` passed at **1.809234×** (95% CI 1.782095–1.836372), above the previous public best 1.787397×. On 2026-10-30 at 14:42 UTC it ranked **#54**, with #50 at 1.8115×. The exact scored candidate is promoted to `kernels/muse_prefill_layer/submission.py`; overlapping confidence intervals limit attribution. The scored status and profiles are archived alongside the check.

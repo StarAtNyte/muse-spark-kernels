@@ -45,11 +45,11 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Attention | 2.6177x | #93 | 2.6681x | 3.2221x | b95cd80bd3e6497f |
 | MoE | 2.3820x | #76 | 2.4158x | 2.7578x | 190d8914bacb4aa2 |
 | Whole decoder layer | 2.2603x | #28 | 2.2239x | 2.4178x | b72f02c7eb8745f5 |
-| Prefill layer | 1.7874x | #122 | 1.8065x | 2.0325x | 68ac9af85a3a4e3d |
+| Prefill layer | 1.8092x | #54 | 1.8115x | 2.0325x | 7d1584001a32467a |
 
 Overall rank is **#28**. The table and overall rank were fetched from the
-leaderboard on **2026-10-30 at 09:21 UTC**; ranks and cutoffs move as others
-submit. Prefill is a separate board and does not count toward overall rank.
+leaderboard on **2026-10-30 at 09:21 UTC**, except prefill, refreshed at
+**14:42 UTC**; ranks and cutoffs move as others submit. Prefill is a separate board and does not count toward overall rank.
 The decoder previously reached #25 in an earlier snapshot.
 The latest stacked M32/M128
 operatorstack transfer passed correctness but scored only **1.8533x**, so it
@@ -68,7 +68,7 @@ ranks were not returned in the public job records, so they are left blank.
 | Attention | 1.1305x → 2.5806x → **2.6177x** | Replace the initial fused-I/O route with the validated vjeux full attention implementation (job `0d181df6ffc2480b`), then tune the 16-request sliding decode plan (8 splits, no cooperative finalize). Job `b95cd80bd3e6497f`. | `kernels/muse_attention_decode/submission.py` | #89 |
 | MoE | 1.1465x → 2.3263x → **2.3290x** | Replace the small-reduction patch with vjeux's persistent WGS routed-expert kernel; set activation gather batch to 7 after paired H200 screening and a passing full check. Job `88e09ad35c814c29`. | `kernels/muse_moe_w4a16/submission.py` | #96 |
 | Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0874x → **2.0926x** | Stack M32/M128 expert routes with four-split full verification (1.7469x, then #253); replace that base with the validated vjeux whole-decoder path, then transfer small output projections and gather batch 7. Job `6cf1be8d60e84ac7`. | `kernels/muse_decode_layer/submission.py` | #110 |
-| Prefill layer | **1.7874x** | Validated vjeux prefill implementation; public job `68ac9af85a3a4e3d`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #74 |
+| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with a four-lane shuffle gather; public job `7d1584001a32467a`. Separate leaderboard. | `kernels/muse_prefill_layer/submission.py` | #54 |
 
 This snapshot was refreshed later on 2026-10-28. Ranks can move while scores stay the
 same; each job ID and score identifies the exact published run. The latest MoE
@@ -125,10 +125,10 @@ Attention backend: attributed MIT implementation from [team bigboateng](https://
 
 Latest prefill progress: the vjeux public candidate passed the full H200 check
 at **1.79783x** (95% CI 1.77086–1.82479), and was submitted as
-`68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its live rank is #74. The exact candidate
+`68ac9af85a3a4e3d`, scoring **1.78740x** (95% CI 1.76059–1.81421); its rank was #74 at that earlier snapshot. The exact candidate
 and check profile are in `experiments/prefill_vjeux_public_check_v1/`.
 
-Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` passed at 1.78568x; the public best remains 1.7874x.
+Prefill four-split attention passed the official check and a paired H200 component screen; scored submission `69464bf8cbce4588` passed at 1.78568x; the public best at that time remained 1.7874x.
 
 Projection hybrid with vjeux M32 pooler and M128 router passed full check at 1.52701x after paired H200 screens; scored job `beb3e26afb2544c9` passed at 1.53951x, then rank #61.
 
@@ -142,8 +142,10 @@ Decoder projection and MoE gather stack passed check `9ace173c90844588` at 2.088
 
 MoE shape-selected natural unit order passed check `72c6e933f69b4bad` at 2.32986x; scored job `6ae96ed05c124b5f` passed at 2.32168x; published MoE best remains 2.32905x.
 
-Prefill boundary experiment: a first-recompute boundary launch adjustment passed full check `17ded4dec47047ad` at 1.79396×; three paired component repeats showed a 0.9–1.4% boundary improvement, too small to establish a full-score gain. The exact checked file scored 1.76757× as `9937a79b7f8448c4`, below the 1.78740× published best; intervals overlap and the incumbent remains unchanged. Live prefill rank #114, #50 1.8046×, leader 2.0325× (2026-10-30). Source, timing logs and uncertainty are in `experiments/prefill_boundary_geometry_v1/`.
+Prefill boundary experiment: a first-recompute boundary launch adjustment passed full check `17ded4dec47047ad` at 1.79396×; three paired component repeats showed a 0.9–1.4% boundary improvement, too small to establish a full-score gain. The exact checked file scored 1.76757× as `9937a79b7f8448c4`, below the then-published 1.78740× best; intervals overlap and that incumbent was retained. Live prefill rank #114, #50 1.8046×, leader 2.0325× (2026-10-30). Source, timing logs and uncertainty are in `experiments/prefill_boundary_geometry_v1/`.
 
 KPERM3 progress (2026-10-30): our GATHB=7 MoE stack passed official check `2ecdb5bf891d40e4` at **2.39112×** and was submitted as `190d8914bacb4aa2`; the integrated alygg77 decoder passed check `13161eab55cb447a` at **2.20175×** and was submitted as `78df8889fbbe4803`. The scored jobs passed: **2.3820× MoE (#70)** and **2.1957× decoder (#78)**; overall rank **#78** at the 2026-10-30 snapshot. MoE #50 was 2.4150×; decoder #50 was 2.2189×. The lossless K rearrangement comes from [alygg77's Apache-2.0 kernels](https://github.com/alygg77/okc-muse-spark-kernels); source, notices, and check profiles are archived in `experiments/`.
 
 Decoder stacking: the combined compact T128 QKV and O projection routes on the KPERM3 decoder passed check `851e490e09f44621` at 2.19920×; its profile confirms both kernels ran. Scored job `b72f02c7eb8745f5` passed at **2.26032×** (95% CI 2.22642–2.29423), placing #25 at this snapshot; the point estimate is above the parent’s 2.19567×. Separate-run noise means the entire difference cannot be attributed solely to these routes. Details and the failed preparation attempt are in `experiments/decoder_alygg_bigproj_screen_v1/`.
+
+Prefill K64 scale reuse: the four-lane shuffle candidate passed the official check at 1.80799× and scored **1.80923×** (95% CI 1.78210–1.83637), up from 1.78740×. It ranked #54 on 2026-10-30 at 14:42 UTC; #50 was 1.8115×. Intervals overlap, so the exact effect remains uncertain. Source and profiles: `experiments/prefill_k64_shuffle_v1/`.
