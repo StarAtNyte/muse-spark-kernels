@@ -4,7 +4,7 @@ The local ForgeKernel clone is at `/home/nitiz/Projects/Self/Challenges/ForgeKer
 
 Modal delivery archives each candidate tree and runs one GPU job in a short-lived H200 container using `lmsysorg/sglang:dev-muse-spark-open`, with a default 300-second GPU job timeout and a serialized local job lock. The local and detached H200 smoke tests passed; 28 relevant configuration and delivery tests passed. The public image and ForgeKernel's judge are not the official challenge environment; validate any resulting kernel with the official harness. ForgeKernel has a CLI, not a bundled web dashboard.
 
-The campaign task is `tasks/muse_prefill_boundary`: it uses the promoted prefill boundary implementation as its reference, with 753-, 3012- and 128-row shapes, a 5% target, a 30-minute loop budget and one teacher round. The first snapshot failed calibration because its sealed reference tried to read a physical sibling file; the second uses the bundle's module import. Current run:
+The campaign task is `tasks/muse_prefill_boundary`: it uses the promoted prefill boundary implementation as its reference, with 753-, 3012- and 128-row shapes, a 5% target, a 30-minute loop budget and one teacher round. The first snapshot failed calibration because its sealed reference tried to read a physical sibling file; the second uses the bundle's module import and passed calibration. Nsight Compute initially could not lock GPU clocks, so the search is using timings. Current run:
 
 ```sh
 cd /home/nitiz/Projects/Self/Challenges/ForgeKernel
