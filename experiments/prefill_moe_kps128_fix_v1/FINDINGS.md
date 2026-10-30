@@ -1,0 +1,7 @@
+# Prefill MoE KPS128=1 with global fragment parity
+
+Follow-up to `prefill_moe_kps128_1_v1`, whose direct change from KPS128=2 to 1 produced non-finite output. In the original grouped WGMMA path, the A-fragment buffer and two-accumulator selection use `kk & 1`; with KPS=1, kk resets to zero at every stage. A prior WGMMA group may still be in flight when the same A-fragment buffer is reused. This candidate alternates the fragment buffers and two accumulator sets on `(it * KPS + kk) & 1`. This is a plausible explanation, not a proven root-cause diagnosis. Parent published 1.80923× source SHA-256 `f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9`; candidate SHA-256 `c3482313fe4a57a189f8a09dee27ebbca284b0b317fe295e57e7659cc78e87b6`.
+
+H200 public-image app `ap-i0sidR4lfOIV4llFN2sT2Q` completed (return code 0); baseline and candidate passed the reference in three full-layer cases. Paired cold-L2 parent/candidate median times over 16 replays: 513.8/1708.5 µs (turn-1 sliding), 3025.9/3937.3 µs (turn-4 full), 9204.2/10711.1 µs (first-turn sliding). One seed per case; the candidate is substantially slower. Attention tuning failed in the SGLang stub and attention was pinned. The driver shares prepared state and plans and mutates only the specified KPS/parity code; its opening docstring is inherited. See `screen.log`.
+
+Decision: reject and do not submit. Passing three screens is not full correctness proof; no attribution of the slowdown has been profiled.
