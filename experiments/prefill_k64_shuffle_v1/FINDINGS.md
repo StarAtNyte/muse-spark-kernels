@@ -16,3 +16,16 @@ H200 paired whole-layer timing (`bench.log`, app `ap-OPNBZc9WXJnYTJUIk7I3ud`, on
 The benchmark uses pinned attention with an SGLang import stub; its attention tuner reported a stub-related error. These small mixed differences are not an official score or a reliable proof of overall gain. Official check `7d7b5055714b4239` was launched to test the full correctness suite and score.
 
 Official check `7d7b5055714b4239` passed with 1.807995× speedup (95% CI 1.780875–1.835115), compared with the published 1.7874× prefill score. The intervals overlap, so the difference does not establish a gain by itself. The checked candidate SHA-256 is `f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9`; it was submitted as scored job `7d1584001a32467a`. See `status.json` and `submission_launch.json`.
+
+The official check passed all 5 correctness tests and timed all 8 scored shapes. For context, the following compares its per-shape adjusted medians to the earlier published parent `68ac9af85a3a4e3d`. These are separate, unpaired judge runs; variations in clocks, scheduling and input seeds can account for some or all differences. They are diagnostic, not proof of the candidate's per-shape effect.
+
+| Shape | Published parent µs | Candidate check µs | Parent / candidate |
+| --- | ---: | ---: | ---: |
+| batch 1, q753, sliding, context 80000 | 572.8 | 559.6 | 1.0234 |
+| batch 1, q753, full, context 80000 | 915.3 | 894.2 | 1.0236 |
+| batch 4, q753, sliding, context 80000 | 1794.9 | 1778.5 | 1.0092 |
+| batch 4, q753, full, context 80000 | 3120.9 | 3103.6 | 1.0056 |
+| batch 1, q16384, full, context 0 | 9486.3 | 9530.8 | 0.9953 |
+| batch 1, q16384, sliding, context 32768 | 8936.8 | 8943.5 | 0.9993 |
+| batch 1, q16384, full, context 32768 | 12806.4 | 12495.2 | 1.0249 |
+| batch 1, q16384, full, context 65536 | 15459.9 | 15376.9 | 1.0054 |
