@@ -14,3 +14,5 @@ H200 paired whole-layer timing (`bench.log`, app `ap-OPNBZc9WXJnYTJUIk7I3ud`, on
 | batch 1, q 16384, full, context 65536 | 15925.8 | 15979.9 | 0.9966 |
 
 The benchmark uses pinned attention with an SGLang import stub; its attention tuner reported a stub-related error. These small mixed differences are not an official score or a reliable proof of overall gain. Official check `7d7b5055714b4239` was launched to test the full correctness suite and score.
+
+Official check `7d7b5055714b4239` passed with 1.807995× speedup (95% CI 1.780875–1.835115), compared with the published 1.7874× prefill score. The intervals overlap, so the difference does not establish a gain by itself. The checked candidate SHA-256 is `f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9`; it was submitted as scored job `7d1584001a32467a`. See `status.json` and `submission_launch.json`.
