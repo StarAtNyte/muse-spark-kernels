@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nXTmnofmapKExRykAtEDKB
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RESULT {"ctx": 32768, "seed": 539, "grid": 132, "relative_l2": 0.003193611977621913, "parent_us": 3827.455997467041, "candidate_us": 3916.3678884506226, "speedup": 0.9773931859624337}
+RESULT {"ctx": 32768, "seed": 539, "grid": 264, "relative_l2": 0.004548432771116495, "parent_us": 3827.3919820785522, "candidate_us": 3914.4959449768066, "speedup": 0.9779608673113898}
+RESULT {"ctx": 32768, "seed": 539, "grid": 528, "relative_l2": 0.0065399534069001675, "parent_us": 3832.6560258865356, "candidate_us": 3946.8640089035034, "speedup": 0.9710881128971421}
+RESULT {"ctx": 32768, "seed": 1427, "grid": 132, "relative_l2": 0.003219020552933216, "parent_us": 3829.6159505844116, "candidate_us": 3921.104073524475, "speedup": 0.9764752876321561}
+RESULT {"ctx": 32768, "seed": 1427, "grid": 264, "relative_l2": 0.00458024675026536, "parent_us": 3828.336000442505, "candidate_us": 3918.272018432617, "speedup": 0.9774185447647636}
+RESULT {"ctx": 32768, "seed": 1427, "grid": 528, "relative_l2": 0.006513713393360376, "parent_us": 3831.6959142684937, "candidate_us": 3947.1360445022583, "speedup": 0.9707169682053993}
+RESULT {"ctx": 65536, "seed": 539, "grid": 132, "relative_l2": 0.0033883803989738226, "parent_us": 6769.471883773804, "candidate_us": 6876.336097717285, "speedup": 0.9845456862373957}
+RESULT {"ctx": 65536, "seed": 539, "grid": 264, "relative_l2": 0.004809761419892311, "parent_us": 6761.47198677063, "candidate_us": 6865.503787994385, "speedup": 0.9848471720956504}
+RESULT {"ctx": 65536, "seed": 539, "grid": 528, "relative_l2": 0.006733821239322424, "parent_us": 6771.28005027771, "candidate_us": 6909.98387336731, "speedup": 0.9798472233495781}
+RESULT {"ctx": 65536, "seed": 1427, "grid": 132, "relative_l2": 0.0033625971991568804, "parent_us": 6714.128017425537, "candidate_us": 6815.104007720947, "speedup": 0.985113988248617}
+RESULT {"ctx": 65536, "seed": 1427, "grid": 264, "relative_l2": 0.004807718098163605, "parent_us": 6708.976030349731, "candidate_us": 6813.472032546997, "speedup": 0.9846034148693426}
+RESULT {"ctx": 65536, "seed": 1427, "grid": 528, "relative_l2": 0.00671177776530385, "parent_us": 6822.319984436035, "candidate_us": 6960.079908370972, "speedup": 0.9802071368962271}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-nXTmnofmapKExRykAtEDKB
