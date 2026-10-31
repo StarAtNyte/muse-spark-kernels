@@ -13,3 +13,10 @@ interleaved candidate and runs 12 alternating cold-L2 graph comparisons at
 full-attention contexts 32768 and 65536, query length 16384, page size 1 and
 two seeds. Output is in `modal.log`. A useful result would require complete
 layer testing and official correctness before promotion.
+
+Run `ap-utw25WWaB3sCYLuX6HNJZF` completed with return code 0 and zero
+observed relative output differences. Median paired interleaved/grouped ratios
+were 0.99928 / 0.99961 at context 32768 and 0.99996 / 1.00009 at context
+65536 (seeds 539 / 1427). This does not establish a performance improvement;
+retain the simpler interleaved candidate and do not submit this variant. The
+component screen does not rule out a different grouping or workload.

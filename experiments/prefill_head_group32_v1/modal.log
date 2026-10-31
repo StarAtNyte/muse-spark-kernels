@@ -1,0 +1,34 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-utw25WWaB3sCYLuX6HNJZF
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RESULT {"ctx": 32768, "seed": 539, "relative_l2": 0.0, "parent_us": 3780.880093574524, "candidate_us": 3783.8720083236694, "speedup": 0.9992768931083462}
+RESULT {"ctx": 32768, "seed": 1427, "relative_l2": 0.0, "parent_us": 3789.471983909607, "candidate_us": 3789.6640300750732, "speedup": 0.9996121710089267}
+RESULT {"ctx": 65536, "seed": 539, "relative_l2": 0.0, "parent_us": 6737.152099609375, "candidate_us": 6737.327814102173, "speedup": 0.999957282945225}
+RESULT {"ctx": 65536, "seed": 1427, "relative_l2": 0.0, "parent_us": 6745.536088943481, "candidate_us": 6741.29581451416, "speedup": 1.0000878337901848}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-utw25WWaB3sCYLuX6HNJZF
