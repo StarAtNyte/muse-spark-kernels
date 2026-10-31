@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 1/8] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 1/9] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 2/8] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 2/9] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 3/8] Add Hopper knowledge index for Muse task
+Subject: [PATCH 3/9] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5956,7 +5956,7 @@ index 0000000..56f73a1
 From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:36:25 +0545
-Subject: [PATCH 4/8] Add cold graph task timing and Modal profiling
+Subject: [PATCH 4/9] Add cold graph task timing and Modal profiling
 
 ---
  docs/modal-delivery.md                        |  4 +-
@@ -6144,7 +6144,7 @@ index 6f27168..100d069 100644
 From 34d14600c597f71c41826398612314f113929b1c Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:39:51 +0545
-Subject: [PATCH 5/8] Add scored attention sliding reference task
+Subject: [PATCH 5/9] Add scored attention sliding reference task
 
 ---
  tasks/muse_attention_sliding/description.md   |   14 +
@@ -9434,7 +9434,7 @@ index 0000000..fb8e705
 From a8fc5f6f39055a1258fadfaca9bf3770d53c4e62 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:49:51 +0545
-Subject: [PATCH 6/8] Add O32 projection reference task
+Subject: [PATCH 6/9] Add O32 projection reference task
 
 ---
  tasks/muse_projection_o32/description.md      |    7 +
@@ -16768,7 +16768,7 @@ index 0000000..fb8e705
 From cbe7b6231ef7c395db3deccf8a5cdf8f7469dde0 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:50:47 +0545
-Subject: [PATCH 7/8] Use highest scored projection source as task baseline
+Subject: [PATCH 7/9] Use highest scored projection source as task baseline
 
 ---
  tasks/muse_projection_o32/description.md          | 2 +-
@@ -16814,7 +16814,7 @@ index f37a24f..da6c3e7 100644
 From bd406de32c342be04aefbd9f9982ca6f188529da Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 11:43:03 +0545
-Subject: [PATCH 8/8] Expose virtualenv sandbox helpers to Claude agent
+Subject: [PATCH 8/9] Expose virtualenv sandbox helpers to Claude agent
 
 ---
  scripts/agent-claude.sh | 8 +++++++-
@@ -16839,6 +16839,29 @@ index 394ea78..0f77d93 100755
  PY="${FK_AGENT_PY:-python3}"
  
  ARGS=(--dangerously-skip-permissions)
+-- 
+2.53.0
+
+
+From 205d65138fa968f62890731ff5548e2d5e7af057 Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Sat, 31 Oct 2026 12:32:41 +0545
+Subject: [PATCH 9/9] Document H200 CUDA target for Muse attention
+
+---
+ tasks/muse_attention_sliding/description.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tasks/muse_attention_sliding/description.md b/tasks/muse_attention_sliding/description.md
+index 46a2a00..c9f855b 100644
+--- a/tasks/muse_attention_sliding/description.md
++++ b/tasks/muse_attention_sliding/description.md
+@@ -12,3 +12,5 @@ The task uses page size 1, 16 query heads, 2 KV heads, head width 64, window 204
+ For request b and new token j, normalize Q and K separately per head with `rsqrt(mean(x*x)+1e-5)` in FP32, then apply interleaved RoPE at position `seq_lens[b]+j`. Quantize new K and V to FP8 E4M3 after dividing by their respective scales, and write them at `cache_loc`. Attention is causal and includes the current token and up to 2047 preceding tokens. For each Q head use its shared KV head, logits `dot(Q,K)*5.4730064863875/8`, softmax over visible keys, and FP8 cache values multiplied by their scale. RMS normalize each 64-element attention output with epsilon `1e-5`, multiply by sigmoid(gate), and round to BF16. Match the reference's FP8 query behavior within the challenge tolerance.
+ 
+ Return `(out, k_cache, v_cache)`, where `out` is BF16 `[batch,length,1024]` and the caches are the mutated inputs. Cache writes are part of the contract. Valid groups must have `0 <= seq_lens[b]`, `seq_lens[b]+length <= table_len`, distinct in-bounds physical pages for all used logical positions and `cache_loc[b*length+j] == page_table[b,seq_lens[b]+j]`. Use fresh data and no caching of input-derived results. Generate normal and outlier values with positive finite scales; avoid NaNs and infinities. The challenge validates both outputs and cache writes with its own relative-L2 tolerances, page-64 and scale edge cases. This task screens only page-1 sliding shapes; any candidate needs full official validation.
++
++For this H200 task, CUDA candidates must begin with `// fk-cuda-cflags: -gencode=arch=compute_90a,code=sm_90a` so the generated extension targets the GPU. Launch on PyTorch’s current CUDA stream, check CUDA launch errors, and validate numerical outputs and cache mutations before timing.
 -- 
 2.53.0
 
