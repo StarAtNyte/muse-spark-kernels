@@ -1,0 +1,5 @@
+{
+ "decode1":[{"name":"typical","intent":"Normal inputs and a full sliding window","seed":11},{"name":"short","intent":"Short context near the start of the cache","seed":12},{"name":"scaled","intent":"Smaller positive FP8 scales and larger query values","seed":13}],
+ "verify1":[{"name":"typical","intent":"Causal verification with full sliding window","seed":21},{"name":"short","intent":"Causal verification near the start of the cache","seed":22},{"name":"scaled","intent":"Causal verification with smaller FP8 scales","seed":23}],
+ "decode16":[{"name":"typical","intent":"Batched full sliding windows","seed":31},{"name":"short","intent":"Unequal shorter contexts across requests","seed":32},{"name":"scaled","intent":"Batched windows with smaller FP8 scales","seed":33}]
+}

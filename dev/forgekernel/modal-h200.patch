@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 1/9] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 01/10] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 2/9] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 02/10] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 3/9] Add Hopper knowledge index for Muse task
+Subject: [PATCH 03/10] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5956,7 +5956,7 @@ index 0000000..56f73a1
 From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:36:25 +0545
-Subject: [PATCH 4/9] Add cold graph task timing and Modal profiling
+Subject: [PATCH 04/10] Add cold graph task timing and Modal profiling
 
 ---
  docs/modal-delivery.md                        |  4 +-
@@ -6144,7 +6144,7 @@ index 6f27168..100d069 100644
 From 34d14600c597f71c41826398612314f113929b1c Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:39:51 +0545
-Subject: [PATCH 5/9] Add scored attention sliding reference task
+Subject: [PATCH 05/10] Add scored attention sliding reference task
 
 ---
  tasks/muse_attention_sliding/description.md   |   14 +
@@ -9434,7 +9434,7 @@ index 0000000..fb8e705
 From a8fc5f6f39055a1258fadfaca9bf3770d53c4e62 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:49:51 +0545
-Subject: [PATCH 6/9] Add O32 projection reference task
+Subject: [PATCH 06/10] Add O32 projection reference task
 
 ---
  tasks/muse_projection_o32/description.md      |    7 +
@@ -16768,7 +16768,7 @@ index 0000000..fb8e705
 From cbe7b6231ef7c395db3deccf8a5cdf8f7469dde0 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:50:47 +0545
-Subject: [PATCH 7/9] Use highest scored projection source as task baseline
+Subject: [PATCH 07/10] Use highest scored projection source as task baseline
 
 ---
  tasks/muse_projection_o32/description.md          | 2 +-
@@ -16814,7 +16814,7 @@ index f37a24f..da6c3e7 100644
 From bd406de32c342be04aefbd9f9982ca6f188529da Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 11:43:03 +0545
-Subject: [PATCH 8/9] Expose virtualenv sandbox helpers to Claude agent
+Subject: [PATCH 08/10] Expose virtualenv sandbox helpers to Claude agent
 
 ---
  scripts/agent-claude.sh | 8 +++++++-
@@ -16846,7 +16846,7 @@ index 394ea78..0f77d93 100755
 From 205d65138fa968f62890731ff5548e2d5e7af057 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 12:32:41 +0545
-Subject: [PATCH 9/9] Document H200 CUDA target for Muse attention
+Subject: [PATCH 09/10] Document H200 CUDA target for Muse attention
 
 ---
  tasks/muse_attention_sliding/description.md | 2 ++
@@ -16862,6 +16862,59 @@ index 46a2a00..c9f855b 100644
  Return `(out, k_cache, v_cache)`, where `out` is BF16 `[batch,length,1024]` and the caches are the mutated inputs. Cache writes are part of the contract. Valid groups must have `0 <= seq_lens[b]`, `seq_lens[b]+length <= table_len`, distinct in-bounds physical pages for all used logical positions and `cache_loc[b*length+j] == page_table[b,seq_lens[b]+j]`. Use fresh data and no caching of input-derived results. Generate normal and outlier values with positive finite scales; avoid NaNs and infinities. The challenge validates both outputs and cache writes with its own relative-L2 tolerances, page-64 and scale edge cases. This task screens only page-1 sliding shapes; any candidate needs full official validation.
 +
 +For this H200 task, CUDA candidates must begin with `// fk-cuda-cflags: -gencode=arch=compute_90a,code=sm_90a` so the generated extension targets the GPU. Launch on PyTorch’s current CUDA stream, check CUDA launch errors, and validate numerical outputs and cache mutations before timing.
+-- 
+2.53.0
+
+
+From b0673b5062b0ff8f581fb25901f35f19eda71260 Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Sat, 31 Oct 2026 16:42:07 +0545
+Subject: [PATCH 10/10] Expose token axis for attention judge shapes
+
+---
+ tasks/muse_attention_sliding/shapes.json | 33 +++++++++++++++++++++---
+ 1 file changed, 30 insertions(+), 3 deletions(-)
+
+diff --git a/tasks/muse_attention_sliding/shapes.json b/tasks/muse_attention_sliding/shapes.json
+index 0b40543..475a91f 100644
+--- a/tasks/muse_attention_sliding/shapes.json
++++ b/tasks/muse_attention_sliding/shapes.json
+@@ -1,5 +1,32 @@
+ [
+-  {"name":"decode1", "axes":{"batch":1,"length":1,"pages":80001,"table_len":80001}},
+-  {"name":"verify1", "axes":{"batch":1,"length":8,"pages":80008,"table_len":80008}},
+-  {"name":"decode16", "axes":{"batch":16,"length":1,"pages":1280016,"table_len":80001}}
++  {
++    "name": "decode1",
++    "axes": {
++      "batch": 1,
++      "length": 1,
++      "pages": 80001,
++      "table_len": 80001,
++      "tokens": 1
++    }
++  },
++  {
++    "name": "verify1",
++    "axes": {
++      "batch": 1,
++      "length": 8,
++      "pages": 80008,
++      "table_len": 80008,
++      "tokens": 8
++    }
++  },
++  {
++    "name": "decode16",
++    "axes": {
++      "batch": 16,
++      "length": 1,
++      "pages": 1280016,
++      "table_len": 80001,
++      "tokens": 16
++    }
++  }
+ ]
 -- 
 2.53.0
 

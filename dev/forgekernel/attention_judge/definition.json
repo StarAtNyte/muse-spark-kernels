@@ -1,0 +1,17 @@
+{
+ "inputs": {
+  "qkv":{"shape":["batch","length",2304],"dtype":"bfloat16"},
+  "seq_lens":{"shape":["batch"],"dtype":"int32"},
+  "cache_loc":{"shape":["tokens"],"dtype":"int64"},
+  "k_cache":{"shape":["pages",1,2,64],"dtype":"float8_e4m3fn"},
+  "v_cache":{"shape":["pages",1,2,64],"dtype":"float8_e4m3fn"},
+  "page_table":{"shape":["batch","table_len"],"dtype":"int32"},
+  "k_scale":{"shape":[],"dtype":"float32"},
+  "v_scale":{"shape":[],"dtype":"float32"}
+ },
+ "outputs": {
+  "out":{"shape":["batch","length",1024],"dtype":"bfloat16"},
+  "k_out":{"shape":["pages",1,2,64],"dtype":"float8_e4m3fn"},
+  "v_out":{"shape":["pages",1,2,64],"dtype":"float8_e4m3fn"}
+ }
+}
