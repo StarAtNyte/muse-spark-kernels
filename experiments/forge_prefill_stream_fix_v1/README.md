@@ -1,0 +1,5 @@
+# Forge boundary current-stream diagnostic
+
+This experiment starts with the rejected Forge candidate (`experiments/forge_prefill_iter2_gate_v1/kernel.cu`, SHA-256 `839f34e9f6e13bb0bfa04ee6be1cc338f93802bf91fb9ae94c479915b56bccad`) and changes its launch to PyTorch's current stream, adding an immediate launch-error check. `driver.py` compiles this variant and compares its outputs with the mathematical boundary definition on a non-default stream for one seed and three shapes. It is an exploratory check, not the Forge gate or official challenge validation.
+
+Modal H200 job `ap-cwKSWxzjN4taFUSKUZAxkr` completed with finite outputs but large normalized maximum errors. For 128 / 753 / 3012 rows, `sout` errors were 0.0370 / 0.2580 / 1.3674 and `nout` errors were 0.7132 / 0.2633 / 0.3824. These exceed the earlier focused gate's tolerances by orders of magnitude. Fixing the launch stream alone therefore does not make this candidate numerically correct in this test; further debugging is required before performance or full-layer checks. Raw output is in `modal.log`.

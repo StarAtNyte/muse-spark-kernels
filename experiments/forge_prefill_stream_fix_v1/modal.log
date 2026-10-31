@@ -1,0 +1,33 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cwKSWxzjN4taFUSKUZAxkr
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"n": 128, "sout_normalized_max_error": 0.03703467175364494, "nout_normalized_max_error": 0.7132353186607361, "finite": true}
+ROW {"n": 753, "sout_normalized_max_error": 0.2579916715621948, "nout_normalized_max_error": 0.263325572013855, "finite": true}
+ROW {"n": 3012, "sout_normalized_max_error": 1.3674169778823853, "nout_normalized_max_error": 0.38235294818878174, "finite": true}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-cwKSWxzjN4taFUSKUZAxkr
