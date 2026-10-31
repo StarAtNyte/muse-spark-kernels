@@ -1,0 +1,174 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/p4_ncu.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 12:14:26
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+ncu_real=/tmp/forge-job-vg8a0il1/.forge-bin/ncu
+rep size=5812646
+[launch] metrics seen: launch__cluster_max_active=0, launch__cluster_max_potential_size=8, launch__occupancy_cluster_gpu_pct=0, launch__occupancy_cluster_pct=0, launch__occupancy_limit_barriers=4, launch__occupancy_limit_blocks=32, launch__occupancy_limit_registers=2, launch__occupancy_limit_shared_mem=2, launch__occupancy_limit_warps=8, launch__occupancy_per_barrier_count=784, launch__occupancy_per_block_size=532, launch__occupancy_per_cluster_size=0, launch__occupancy_per_register_count=3, launch__occupancy_per_shared_mem_size=5, launch__registers_per_thread=96, launch__registers_per_thread_allocated=96, launch__shared_mem_config_size=200.7, launch__shared_mem_per_block=95.23, launch__shared_mem_per_block_allocated=95.23, launch__shared_mem_per_block_driver=1.02, launch__shared_mem_per_block_dynamic=94.21, launch__shared_mem_per_block_static=0, launch__uses_green_context=0, launch__uses_nvlink_centric_scheduling=0, launch__waves_per_multiprocessor=0.12
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=n/a grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=0 regs=96 smem_dyn=n/a
+launch_ok=False
+SASS total lines=6564
+=== SASS first 30 lines ===
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Kernel Name        void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                   ed>::Params)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Address            Source                                                             Warp S Warp S # Samp Instru Thread Predic Avg. T Avg. P Deriva Avg. P Diverg Addres        Access     Access L1 Tag L1 Con L1 Wav L1 Wav L1 Wav L2 The L2 The L2 The L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ launch launch launch launch
+                                                                                      tall S tall S les    ctions  Instr ated-O hreads redica tive A redica ent Br s Spac         Opera      Size   Reque flicts efront efront efront oretic oretic oretic licit  licit  licit  licit  licit  licit  licit  barrie branch dispat drain  imc    lg     long_s math   membar mio    misc   no_ins not_se select short_ sleep  tex    wait   barrie branch dispat drain  imc (N lg (No long_s math ( membar mio (N misc ( no_ins not_se select short_ sleepi tex (N wait ( __clus __clus __clus __clus
+                                                                                      amplin amplin         Execu uction n Thre  Execu ted-On vg. Pr ted-On anches e             tion              sts Gl  Share s Shar s Shar s Shar al Sec al Sec al Sec Evict  Hit Po Hit Po Hit Po Hit Po Miss P Miss P r      _resol ch                          b                                  t      lected ed     sb                          r (Not _resol ch (No (Not I ot Iss t Issu b (Not Not Is  (Not  ot Iss Not Is t (Not lected ed (No sb (No ng (No ot Iss Not Is ter_di ter_di ter_di ter_ma
+                                                                                      g (All g (Not        ted    s Exec ad Ins ted     Threa edicat  Threa                                        obal   d N-Wa ed Exc ed     ed Ide tors G tors G tors G Polici licy E licy E licy E licy E olicy  olicy         ving                                                                                                                    Issue ving ( t Issu ssued) ued)   ed)     Issue sued)  Issued ued)   sued)   Issue  (Not  t Issu t Issu t Issu ued)   sued)  m_x    m_y    m_z    x_acti
+                                                                                       Sampl -issue               uted   tructi        ds Exe ed-On  ds Une                                               y      essive        al     lobal  lobal  lobal  es     vict F vict L vict N vict N Evict  Evict                                                                                                                                d)     Not Is ed)                         d)            )                    d)     Issued ed)    ed)    ed)                                       ve    
+                                                                                      es)    d Samp                      ons Ex        cuted  Thread xecute                                                                           Excess        Ideal         irst   ast    ormal  ormal  First  Normal                                                                                                                                      sued)                                                                        )                                                                    
+                                                                                             les)                        ecuted               s Exec d                                                                                ive                                              Demote                                                                                                                                                                                                                                                                                                      
+                                                                                                                                              uted                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+0x2b169fade100           LDC R1, c[0x0][0x28]                                         8      8      8      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      8      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      8      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade110           S2R R37, SR_TID.X                                            0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade120           ULDC UR4, c[0x0][0x29c]                                      4      4      4      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade130           LDC.64 R14, c[0x0][0x218]                                    0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade140           ULDC.64 UR10, c[0x0][0x208]                                  1      1      1      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade150           S2R R5, SR_CgaCtaId                                          0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade160           I2FP.F32.S32 R7, UR4                                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade170           S2R R0, SR_CTAID.Y                                           0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade180           FSETP.GEU.AND P0, PT, |R7|, 1.175494350822287508e-38, PT     1      0      1      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade190           S2UR UR9, SR_CTAID.X                                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1a0           MOV R18, 0x400                                               0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1b0           IMAD.MOV.U32 R10, RZ, RZ, 0x4b800000                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1c0           ULDC UR4, c[0x0][0x2c0]                                      3      3      3      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      3      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      3      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1d0           LDC.64 R12, c[0x0][0x2c8]                                    0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1e0           S2R R11, SR_CTAID.Z                                          0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade1f0           ULDC UR6, c[0x0][0x280]                                      0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade200           ULDC UR7, c[0x0][0x27c]                                      4      4      4      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b169fade210     @!P0  FMUL R7, R7, 16777216                                        0      0      0      264    8448   0      32     0      32     32     0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+=== end first 30 ===
+kernel ranking by duration:
+            3900  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)
+            3800  void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)
+            2900  void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)
+parsed: 6528 instructions, 36 unparsed lines, 0 tool-noise lines
+opcode histogram (top 40 of 125):
+     603  FMUL
+     417  FADD
+     381  FFMA
+     282  IMAD
+     270  FSEL
+     228  LOP3.LUT
+     219  IADD3
+     186  BRA
+     183  LDS
+     138  VIADD
+     138  CS2R
+     132  PRMT
+     126  MUFU.EX2
+     123  ISETP.GT.AND
+     120  LEA
+     120  F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C
+     117  IMAD.WIDE
+     114  FMNMX
+     108  IMAD.U32
+     102  SHFL.BFLY
+      99  SHF.R.S32.HI
+      99  ISETP.LT.OR
+      93  IMAD.MOV.U32
+      90  SHF.L.U32
+      87  IMAD.SHL.U32
+      81  IMAD.IADD
+      81  STG.E.128
+      78  ISETP.NE.AND
+      78  LDG.E.128.STRONG.GPU
+      69  ULDC
+      66  LDC.64
+      66  ISETP.GE.AND
+      63  ULDC.64
+      57  LDS.128
+      54  FSETP.GEU.AND
+      54  LDGSTS.E.BYPASS.128
+      51  MOV
+      48  BSSY
+      48  BSYNC
+      45  LDG.E.STRONG.GPU
+decisive families: {'WARPGROUP': 18, 'QGMMA': 12}
+SASS-OK kernel=void_<unnamed>::attn_kernel<8,_0,_15>(<unnamed>::Params) instructions=6528 opcodes=125
+SASS VERDICT: sass_ok=True
+[parse] 6528 instructions, unparsed=36, noise=0
+[isa] MMA census: wgmma=12 tcgen05=0 mma_sync=0 (QGMMAx12)
+[loop] backedge: 537 instrs, addr 0x2b169fae4660..0x2b169fae67e0
+[chains] 0 accumulator chains in body:
+
+=== schedule transcription (23 events) ===
+    0 elementwise x122 [IMADx26,CS2Rx26,LDGx13,LDCx10]
+    1 BSSY B0, 0x2b169fae4f70      
+    2 elementwise x17 [FADDx9,IMADx4,STGx3,ISETPx1]
+    3 BSYNC B0                      
+    4 BSSY B0, 0x2b169fae5070      
+    5 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    6 BSYNC B0                      
+    7 BSSY B0, 0x2b169fae5170      
+    8 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    9 BSYNC B0                      
+   10 BSSY B0, 0x2b169fae5270      
+   11 elementwise x13 [FADDx9,STGx3,ISETPx1]
+   12 BSYNC B0                      
+   13 BSSY B0, 0x2b169fae5d20      
+   14 elementwise x162 [FADDx72,LDGx24,STGx24,IMADx20]
+   15 BSYNC B0                      
+   16 BSSY B0, 0x2b169fae5ee0      
+   17 elementwise x24 [FADDx9,IMADx5,LDGx3,STGx3]
+   18 BSYNC B0                      
+   19 elementwise x46 [FMULx15,FFMAx8,FSETPx5,IMADx5] SHFLx3
+   20 BSSY B0, 0x2b169fae67e0      
+   21 elementwise x94 [FMULx38,MUFUx17,FADDx8,FSETPx6]
+   22 BSYNC B0                      
+
+SCHED-FAIL loop=backedge hgmma_runs=0 depbars=0 ew_runs=9 depbar_before_each_ew=['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none']
+[sched] raw samples for debugging:
+    0x2b169fae4660  S2R R4, SR_TID.X                                             1  
+    0x2b169fae4670  LDC R14, c[0x0][0x29c]                                       0  
+    0x2b169fae4680  LEA.HI.SX32 R5, R4, R77, 0x1d                                0      0   
+    0x2b169fae4690  ISETP.GE.AND P2, PT, R5, R2, PT                              0      0    
+    0x2b169fae46a0  ISETP.GE.AND P0, PT, R5, R2, PT                              0      0    
+    0x2b169fae46b0  LOP3.LUT R10, R5, 0xf, RZ, 0xc0, !PT                         0      0
+    0x2b169fae46c0  SHF.R.S32.HI R76, RZ, 0x4, R5                                0      0    
+    0x2b169fae46d0  SEL R10, R10, RZ, !P0                                        0  
+    0x2b169fae46e0  SEL R76, R76, RZ, !P0                                        0  
+    0x2b169fae46f0  LDC R7, c[0x0][0x2b0]                                        0  
+    0x2b169fae4700  LEA R5, R11, R10, 0x4                                        0  
+    0x2b169fae4710  IMAD R4, R0, 0x8, R76                                        0   
+
+=== liveness over doubled body ===
+[live] peak=89 regs at body instr 262 (STG.E.128), guessed-role instrs=0/537
+[live] peak breakdown: LDG=76, undef/param=7, addr/temp=3, SEL=2, VIADD=1
+[live] instrs    0-  66: peak  30  mean  21
+[live] instrs   67- 133: peak  66  mean  45
+[live] instrs  134- 200: peak  62  mean  39
+[live] instrs  201- 267: peak  89  mean  44
+[live] instrs  268- 334: peak  88  mean  73
+[live] instrs  335- 401: peak  50  mean  27
+[live] instrs  402- 468: peak  29  mean  27
+[live] instrs  469- 535: peak  28  mean  24
+[live] instrs  536- 536: peak  13  mean  13
+LIVE-FAIL peak=89 guessed_frac=0.00
+[live] unknown-role samples:
+SCHED VERDICT: sched_ok=False
+LIVE VERDICT: live_ok=False
+[sanity] kernel=attn_kernel
+[sanity] duration_ns=8992.0 — dominant across every captured launch
+[sanity] short kernel (8992.0ns < 20000ns) accepted: 3 launch(es) of it, 100% of the captured GPU time (vouches at >= 2 and >= 50%)
+[sanity] samples pooled over 3 launches of the dominant kernel (369 total; one launch fell short of 500)
+STALL-FAIL reason=too-few-samples (369 < 500 — was PC sampling collected? needs --set full or --set source)
+STALL VERDICT: stall_ok=False
+=== SEGMENT LEDGER BEGIN ===
+JOIN-FAIL reason=too-few-samples (369 < 500)
+=== SEGMENT LEDGER END ===
+STRUCT-WAIVED: attn_kernel<8,0,15> uses ONE path (MODE&4=true): QGMMA runs in a straight region (orch r3, no back-edge); struct_tools requires named-barrier-bounded MMA segments which this kernel does not produce (BAR.SYNC fences only epilogue/reduction segments, not the tile MMA); tile construction read from source: wgmma_m64n64k32_e4m3, 2 KV heads x (QK + PV) = 4 wgmmas, one 64-key tile per split.
+=== p4 done ===
+
+[gpu_entry.sh] task=cmd finished
