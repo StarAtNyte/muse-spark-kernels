@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-fd4Dj8SqPUgnFlYmsmZKz6
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_nvfp4_de
+│   nse_probe_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LAYER_READY NVIDIA H200
+RESULT {"m": 8, "humming_us": 14.384000096470118, "materialized_bf16_us": 19.64799966663122, "reference_over_humming": 1.3452115417361556, "relative_l2": 0.004036518279463053, "onehot_l2": 0.0}
+RESULT {"m": 32, "humming_us": 16.00000075995922, "materialized_bf16_us": 19.872000440955162, "reference_over_humming": 1.240999961000869, "relative_l2": 0.004804900847375393, "onehot_l2": 0.0}
+RESULT {"m": 128, "humming_us": 20.880000665783882, "materialized_bf16_us": 19.696000032126904, "reference_over_humming": 0.9399765663439874, "relative_l2": 0.0048045814037323, "onehot_l2": 0.0}
+RESULT {"m": 256, "humming_us": 28.07999961078167, "materialized_bf16_us": 24.383999407291412, "reference_over_humming": 0.8651134391856736, "relative_l2": 0.0040705641731619835, "onehot_l2": 0.0}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-fd4Dj8SqPUgnFlYmsmZKz6

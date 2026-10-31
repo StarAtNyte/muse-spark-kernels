@@ -30,4 +30,18 @@ The first launch (`initial_failure.log`) did not reach the benchmark: module
 import on the remote worker tried to run the local checkout's Git hash check
 against a path absent there. The run was interrupted to prevent retries. The
 runner now performs that verification in the local entry point before the
-remote function is invoked; the corrected run is pending.
+remote function is invoked.
+
+Corrected run `ap-fd4Dj8SqPUgnFlYmsmZKz6` completed with return code 0.
+Humming produced finite outputs within the probe's relative-L2 threshold at
+all four sizes; relative L2 against the materialized BF16 comparator was
+0.0040–0.0048 and the one-hot row matched it exactly. Median cold-L2 graph
+times were 14.38, 16.00, 20.88 and 28.08 µs for M=8, 32, 128 and 256;
+materialized BF16 `torch.mm` took 19.65, 19.87, 19.70 and 24.38 µs. These
+figures include the local graph/event overhead and do not compare against the
+fused MoE implementation or establish numerical compliance with all task cases.
+
+The next meaningful comparison must use the actual routed expert distribution,
+both GEMMs and their intervening activation, with end-to-end timing against
+the current MoE. It must also account for Humming's installation/dependency
+requirements and the challenge's self-contained submission environment.
