@@ -61,7 +61,7 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 | Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `kernels/muse_decode_layer/submission.py` | #33 |
 | Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with four-lane shuffle gather. | `kernels/muse_prefill_layer/submission.py` | #57 |
 
-The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score.
+The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score. The [baseline and decoder integration audit](research/baseline-integration-audit.md) records which standalone changes were tested together and why the decoder incumbent was retained.
 
 ### Latest validation against the published kernels (2026-10-28)
 
