@@ -12,3 +12,11 @@ used; output and failures are saved in `modal.log`.
 This is an exploratory component screen, not independent official correctness
 validation or a full-layer score. Any promising change needs a paired
 full-layer measurement and the complete official check before promotion.
+
+Run `ap-TN0Sr45xYhTDjZRVo1wBIc` completed with return code 0. Every variant
+passed the driver's relative-output screen, and all used one split. Every
+alternative was slower than variant 43 on both seeds at both contexts.
+Variant 8 was closest: parent/candidate median paired ratios were 0.9361 and
+0.9361 at context 32768, and 0.9285 and 0.9293 at context 65536. Retain the
+incumbent and do not submit these variants. Results are for synthetic
+component inputs; they do not rule out new implementations or tuning choices.
