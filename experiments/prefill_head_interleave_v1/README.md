@@ -47,10 +47,13 @@ prevented attention auto-validation, so both choices were pinned to the same
 variant. These are exploratory signals rather than reliable score estimates.
 Raw output: `full_layer.log`.
 
-Official private check `6a672f2beca74962` was launched against the exact
-candidate; status and profiles are tracked in
-`../prefill_head_interleave_check_v1/`. Do not promote or submit until the
-official correctness and scoring results are available.
+Official private check `6a672f2beca74962` passed with no flags and scored
+1.80145× (95% CI 1.77442–1.82847), versus the published 1.80923× (95% CI
+1.78210–1.83637). The separate-run intervals overlap; they do not resolve the
+small local gain. The exact checked hash was submitted as scored job
+`e3127297ccc1451f`, which was running at this update. The incumbent remains
+promoted until the scored result is available. Status and profiles are in
+`../prefill_head_interleave_check_v1/`.
 
 `schedule_model.py` models each CTA's cost as its number of 128-key tiles,
 with 132 identical workers greedily taking the next CTA. For query length
