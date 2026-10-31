@@ -1,0 +1,41 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-t5rbtZomLdAZDFhfJFqml9
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+PROBE_OK
+EMPTY_US 4.38
+ROW {"bs": 16, "seed": 419, "distinct": 13, "MB": 368.1, "kernel_us": 108.24, "stream_us": 105.98, "grid": 264, "threads": 512, "depth": 4}
+ROW {"bs": 16, "seed": 419, "distinct": 13, "MB": 368.1, "kernel_us": 108.24, "stream_us": 114.59, "grid": 264, "threads": 512, "depth": 8}
+ROW {"bs": 16, "seed": 419, "distinct": 13, "MB": 368.1, "kernel_us": 108.24, "stream_us": 106.18, "grid": 528, "threads": 256, "depth": 4}
+ROW {"bs": 16, "seed": 419, "distinct": 13, "MB": 368.1, "kernel_us": 108.24, "stream_us": 113.97, "grid": 528, "threads": 256, "depth": 8}
+ROW {"bs": 32, "seed": 419, "distinct": 15, "MB": 424.7, "kernel_us": 129.54, "stream_us": 118.77, "grid": 264, "threads": 512, "depth": 4}
+ROW {"bs": 32, "seed": 419, "distinct": 15, "MB": 424.7, "kernel_us": 129.54, "stream_us": 128.91, "grid": 264, "threads": 512, "depth": 8}
+ROW {"bs": 32, "seed": 419, "distinct": 15, "MB": 424.7, "kernel_us": 129.54, "stream_us": 119.38, "grid": 528, "threads": 256, "depth": 4}
+ROW {"bs": 32, "seed": 419, "distinct": 15, "MB": 424.7, "kernel_us": 129.54, "stream_us": 128.64, "grid": 528, "threads": 256, "depth": 8}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-t5rbtZomLdAZDFhfJFqml9
