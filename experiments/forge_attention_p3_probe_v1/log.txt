@@ -1,0 +1,561 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/p3_ncu.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 11:59:36
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== NCU BINARY INVESTIGATION ===
+ncu in PATH: /tmp/forge-job-sgrasp8m/.forge-bin/ncu
+Is shell script: True
+=== wrapper script ===
+#!/bin/sh
+for arg in "$@"; do
+  case "$arg" in --import|--import=*|-i) exec /usr/local/cuda/bin/ncu "$@";; esac
+done
+exec /usr/local/cuda/bin/ncu --clock-control none "$@"
+
+=== end wrapper ===
+Found: /usr/local/cuda/bin/ncu  is_script=True
+find ncu: /opt/nvidia/nsight-compute/2025.3.1/ncu
+/opt/nvidia/nsight-compute/2025.3.1/target/linux-desktop-glibc_2_11_3-x64/ncu
+/opt/nvidia/nsight-compute/2025.3.1/target/linux-desktop-t210-a64/ncu
+
+Final ncu_real=/tmp/forge-job-sgrasp8m/.forge-bin/ncu
+ncu --version: NVIDIA (R) Nsight Compute Command Line Profiler
+Copyright (c) 2018-2025 NVIDIA Corporation
+Version 2025.3.1.0 (build 36398880) (public-release)
+
+
+=== Running NCU collection (--set full, --launch-count 8) ===
+KERN filter: regex:attn_kernel.*8.*0.*15
+NCU stdout: [leaderboard] ncu: workload verify1 (1 of 3; FK_LB_WORKLOAD_SCOPE)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 152 (/usr/bin/python3.12)
+==WARNING== Unable to access the following 6 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second.
+
+
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 38 passes
+==PROF== Disconnected from process 152
+==PROF== Report: /tmp/p3_ncu.ncu-rep
+
+NCU stderr: (empty)
+NCU return code: 0
+Report file: /tmp/p3_ncu.ncu-rep, size=8965605
+
+=== §1 LAUNCH METRICS ===
+§1 rc=0
+Raw page lines: 13800
+[152] python3.12@127.0.0.1
+  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params) (33, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+  Metric Name                                                                                                        Metric Unit         Metric Value
+  -------------------------------------------------------------------------------------------------------------- --------------- --------------------
+  FBSP.TriageCompute.dramc__read_throughput.avg.pct_of_peak_sustained_elapsed                                                  %                     
+  FBSP.TriageCompute.dramc__throughput.avg.pct_of_peak_sustained_elapsed                                                       %                     
+  FBSP.TriageCompute.dramc__write_throughput.avg.pct_of_peak_sustained_elapsed                                                 %                     
+  FE_B.TriageCompute.gr__ctas_launched_realtime.sum                                                                        block                   32
+  GPC_B.TriageCompute.gpc__cgas_active_realtime.avg                                                                                                 0
+  GPC_B.TriageCompute.gpc__cgas_launched.sum                                                                                                        0
+  LTS.TriageCompute.lts__average_t_sector_hit_rate_realtime.pct                                                                %                     
+  LTS.TriageCompute.lts__average_t_sector_hit_rate_srcunit_tex_realtime.pct                                                    %                     
+  LTS.TriageCompute.lts__t_sector_throughput_aperture_device.avg.pct_of_peak_sustained_elapsed                                 %                     
+  LTS.TriageCompute.lts__t_sector_throughput_srcunit_gcc.avg.pct_of_peak_sustained_elapsed                                     %                     
+  LTS.TriageCompute.lts__t_sector_throughput_srcunit_tex.avg.pct_of_peak_sustained_elapsed                                     %                     
+  LTS.TriageCompute.lts__throughput.avg.pct_of_peak_sustained_elapsed                                                          %                     
+  SM_A.TriageCompute.l1tex__data_pipe_lsu_wavefronts.avg                                                                                       567.42
+  SM_A.TriageCompute.l1tex__throughput.avg.pct_of_peak_sustained_elapsed                                                       %                     
+  SM_A.TriageCompute.sm__inst_executed_pipe_uniform_realtime.avg.pct_of_peak_sustained_elapsed                                 %                 0.00
+  SM_A.TriageCompute.sm__inst_executed_pipe_xu_realtime.avg.pct_of_peak_sustained_elapsed                                      %                 0.03
+  SM_B.TriageCompute.l1tex__t_sector_hit_rate.pct                                                                              %                     
+  SM_B.TriageCompute.l1tex__t_sectors.sum                                                                                 sector               92,229
+  SM_B.TriageCompute.l1tex__t_sectors_lookup_hit.sum                                                                      sector                1,612
+  SM_B.TriageCompute.l1tex__t_sectors_lookup_miss.sum                                                                     sector               90,617
+  SM_C.TriageCompute.smsp__pipe_tensor_op_dmma_cycles_active.avg                                                           cycle                    0
+  TPC.TriageCompute.sm__cycles_active.avg                                                                                  cycle             3,063.83
+  TPC.TriageCompute.sm__inst_executed_pipe_alu_realtime.avg.pct_of_peak_sustained_elapsed                                      %                 0.08
+  TPC.TriageCompute.sm__inst_executed_pipe_fma_realtime.avg.pct_of_peak_sustained_elapsed                                      %                 0.04
+  TPC.TriageCompute.sm__inst_executed_pipe_fmaheavy_realtime.avg.pct_of_peak_sustained_elapsed                                 %                 0.04
+  TPC.TriageCompute.sm__inst_executed_pipe_fmalite_realtime.avg.pct_of_peak_sustained_elapsed                                  %                 0.03
+  TPC.TriageCompute.sm__inst_executed_realtime.avg.pct_of_peak_sustained_elapsed                                               %                 0.10
+  TPC.TriageCompute.sm__inst_executed_realtime.avg.per_cycle_active                                                   inst/cycle                 4.05
+  TPC.TriageCompute.sm__pipe_fp64_cycles_active_realtime.avg.pct_of_peak_sustained_elapsed                                     %                    0
+  TPC.TriageCompute.sm__pipe_tensor_cycles_active_realtime.avg.pct_of_peak_sustained_elapsed                                   %                 0.01
+  TPC.TriageCompute.sm__pipe_tensor_op_hmma_cycles_active_realtime.avg                                                     cycle                  272
+  TPC.TriageCompute.sm__pipe_tensor_op_imma_cycles_active_realtime.avg                                                     cycle                    0
+  c2clink__enabled_mask                                                                                                                             0
+  c2clink__present                                                                                                                                  0
+  derived__avg_thread_executed                                                                                            thread               51,448
+  derived__avg_thread_executed_true                                                                                       thread               47,844
+  derived__avg_thread_unexecuted_true                                                                                     thread               21,340
+  derived__derivative_avg_thread_executed_true                                                                            thread                4,530
+  derived__l1tex__lsu_writeback_bytes_mem_lgds.sum.peak_sustained                                                                              16,896
+  derived__l1tex__lsu_writeback_bytes_mem_lgds.sum.per_second                                                                       28,715,953,307.39
+  derived__local_spilling_requests                                                                                                                  0
+  derived__local_spilling_requests_pct                                                                                         %                    0
+  derived__lts__lts2xbar_bytes.sum.peak_sustained                                                                          Kbyte                 6.02
+  derived__lts__lts2xbar_bytes.sum.per_second                                                                              Gbyte               176.56
+  derived__memory_l1_conflicts_shared_nway                                                                                                        173
+  derived__memory_l1_wavefronts_shared_excessive                                                                                                4,224
+  derived__memory_l2_theoretical_sectors_global_excessive                                                                 sector                2,302
+  derived__pct_occupancy_per_barrier_count                                                                                                      1,209
+  derived__pct_occupancy_per_block_size                                                                                        %                  815
+  derived__pct_occupancy_per_register_count                                                                           %/register                4,761
+  derived__pct_occupancy_per_shared_mem_size                                                                             %/Kbyte                 8.02
+  derived__sm__sass_thread_inst_executed_op_dfma_pred_on_x2                                                               thread               16,896
+  derived__sm__sass_thread_inst_executed_op_ffma_pred_on_x2                                                               thread               33,792
+  derived__sm__sass_thread_inst_executed_op_hfma_pred_on_x4                                                               thread               67,584
+  derived__smsp__inst_executed_op_branch_pct                                                                                   %                 0.04
+  derived__smsp__sass_thread_inst_executed_op_dfma_pred_on_x2                                                             thread                    0
+... (13740 more lines)
+[launch] metrics seen: launch__cluster_max_active=0, launch__cluster_max_potential_size=8, launch__occupancy_cluster_gpu_pct=0, launch__occupancy_cluster_pct=0, launch__occupancy_limit_barriers=4, launch__occupancy_limit_blocks=32, launch__occupancy_limit_registers=2, launch__occupancy_limit_shared_mem=2, launch__occupancy_limit_warps=8, launch__occupancy_per_barrier_count=784, launch__occupancy_per_block_size=532, launch__occupancy_per_cluster_size=0, launch__occupancy_per_register_count=3, launch__occupancy_per_shared_mem_size=5, launch__registers_per_thread=96, launch__registers_per_thread_allocated=96, launch__shared_mem_config_size=200.7, launch__shared_mem_per_block=95.23, launch__shared_mem_per_block_allocated=95.23, launch__shared_mem_per_block_driver=1.02, launch__shared_mem_per_block_dynamic=94.21, launch__shared_mem_per_block_static=0, launch__uses_green_context=0, launch__uses_nvlink_centric_scheduling=0, launch__waves_per_multiprocessor=0.12
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=n/a grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=0 regs=96 smem_dyn=n/a
+launch_ok=False
+
+=== §2 SASS ===
+SASS rc=0
+SASS page total lines: 26256
+--- First 40 lines ---
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Kernel Name        void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                   ed>::Params)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Address            Source                                                             Warp S Warp S # Samp Instru Thread Predic Avg. T Avg. P Deriva Avg. P Diverg Addres        Access     Access L1 Tag L1 Con L1 Wav L1 Wav L1 Wav L2 The L2 The L2 The L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ launch launch launch launch launch launch launch launch launch launch launch launch
+                                                                                      tall S tall S les    ctions  Instr ated-O hreads redica tive A redica ent Br s Spac         Opera      Size   Reque flicts efront efront efront oretic oretic oretic licit  licit  licit  licit  licit  licit  licit  barrie branch dispat drain  imc    lg     long_s math   membar mio    misc   no_ins not_se select short_ sleep  tex    wait   barrie branch dispat drain  imc (N lg (No long_s math ( membar mio (N misc ( no_ins not_se select short_ sleepi tex (N wait ( __bloc __bloc __bloc __clus __clus __clus __clus __grid __grid __grid __regi __shar
+                                                                                      amplin amplin         Execu uction n Thre  Execu ted-On vg. Pr ted-On anches e             tion              sts Gl  Share s Shar s Shar s Shar al Sec al Sec al Sec Evict  Hit Po Hit Po Hit Po Hit Po Miss P Miss P r      _resol ch                          b                                  t      lected ed     sb                          r (Not _resol ch (No (Not I ot Iss t Issu b (Not Not Is  (Not  ot Iss Not Is t (Not lected ed (No sb (No ng (No ot Iss Not Is k_dim_ k_dim_ k_dim_ ter_di ter_di ter_di ter_ma _dim_x _dim_y _dim_z sters_ ed_mem
+                                                                                      g (All g (Not        ted    s Exec ad Ins ted     Threa edicat  Threa                                        obal   d N-Wa ed Exc ed     ed Ide tors G tors G tors G Polici licy E licy E licy E licy E olicy  olicy         ving                                                                                                                    Issue ving ( t Issu ssued) ued)   ed)     Issue sued)  Issued ued)   sued)   Issue  (Not  t Issu t Issu t Issu ued)   sued)  x      y      z      m_x    m_y    m_z    x_acti                      per_th _per_b
+                                                                                       Sampl -issue               uted   tructi        ds Exe ed-On  ds Une                                               y      essive        al     lobal  lobal  lobal  es     vict F vict L vict N vict N Evict  Evict                                                                                                                                d)     Not Is ed)                         d)            )                    d)     Issued ed)    ed)    ed)                                                            ve                          read   lock_d
+                                                                                      es)    d Samp                      ons Ex        cuted  Thread xecute                                                                           Excess        Ideal         irst   ast    ormal  ormal  First  Normal                                                                                                                                      sued)                                                                        )                                                                                                                      ynamic
+                                                                                             les)                        ecuted               s Exec d                                                                                ive                                              Demote                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                              uted                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+0x2b4c2f476500           LDC R1, c[0x0][0x28]                                         4      4      4      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476510           S2R R37, SR_TID.X                                            0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476520           ULDC UR4, c[0x0][0x29c]                                      10     10     10     264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      10     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      10     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476530           LDC.64 R14, c[0x0][0x218]                                    0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476540           ULDC.64 UR10, c[0x0][0x208]                                  1      1      1      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476550           S2R R5, SR_CgaCtaId                                          0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476560           I2FP.F32.S32 R7, UR4                                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476570           S2R R0, SR_CTAID.Y                                           0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476580           FSETP.GEU.AND P0, PT, |R7|, 1.175494350822287508e-38, PT     0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476590           S2UR UR9, SR_CTAID.X                                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765a0           MOV R18, 0x400                                               0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765b0           IMAD.MOV.U32 R10, RZ, RZ, 0x4b800000                         0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765c0           ULDC UR4, c[0x0][0x2c0]                                      1      1      1      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765d0           LDC.64 R12, c[0x0][0x2c8]                                    0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765e0           S2R R11, SR_CTAID.Z                                          0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4765f0           ULDC UR6, c[0x0][0x280]                                      0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476600           ULDC UR7, c[0x0][0x27c]                                      4      3      4      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      4      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      3      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476610     @!P0  FMUL R7, R7, 16777216                                        0      0      0      264    8448   0      32     0      32     32     0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476620           MOV R24, 0x7531                                              0      0      0      264    8448   8448   32     32     32     0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476630           ULDC UR13, c[0x0][0x27c]                                     0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476640           ULDC UR12, c[0x0][0x2b0]                                     0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476650           LDC R50, c[0x0][0x280]                                       0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476660           ULDC.64 UR14, c[0x0][0x210]                                  0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476670           ULDC.64 UR16, c[0x0][0x220]                                  0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476680           LOP3.LUT R80, R37, 0x7, RZ, 0xc0, !PT                        0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f476690           SHF.R.U32.HI R2, RZ, 0x3, R37                                0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4766a0           LDC.64 R16, c[0x0][0x250]                                    0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f4766b0           SHF.R.U32.HI R3, RZ, 0x2, R80                                0      0      0      264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+--- Last 20 lines ---
+0x2b4c2f47ebc0           STG.E.128 desc[UR10][R12.64], R4                             0      0      0      32     1024   1024   32     32     0      0      0      Global        Store      128    128    0      0      0      0      0      512    512           0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ebd0           BSYNC B0                                                     0      0      0      32     1024   1024   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ebe0     @!P1  BRA 0x2b4c2f47ca60                                           0      0      0      256    8192   0      32     0      32     32     0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ebf0           BAR.SYNC.DEFER_BLOCKING 0x0                                  0      0      0      264    8448   8448   32     32     32     0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec00           EXIT                                                         11     11     11     264    8448   8448   32     32     0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      11     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      11     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec10           BPT.TRAP 0x1                                                 0      0      0      0      0      0      0      0      32     32     0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec20           BRA 0x2b4c2f47ec20                                           0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec30           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec40           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec50           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec60           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec70           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec80           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ec90           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47eca0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ecb0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ecc0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ecd0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ece0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b4c2f47ecf0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      -             -          -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+kernel ranking by duration:
+            3900  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)
+            3800  void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)
+            2900  void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)
+parsed: 26112 instructions, 144 unparsed lines, 0 tool-noise lines
+opcode histogram (top 40 of 125):
+    2412  FMUL
+    1668  FADD
+    1524  FFMA
+    1128  IMAD
+    1080  FSEL
+     912  LOP3.LUT
+     876  IADD3
+     744  BRA
+     732  LDS
+     552  VIADD
+     552  CS2R
+     528  PRMT
+     504  MUFU.EX2
+     492  ISETP.GT.AND
+     480  LEA
+     480  F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C
+     468  IMAD.WIDE
+     456  FMNMX
+     432  IMAD.U32
+     408  SHFL.BFLY
+     396  SHF.R.S32.HI
+     396  ISETP.LT.OR
+     372  IMAD.MOV.U32
+     360  SHF.L.U32
+     348  IMAD.SHL.U32
+     324  IMAD.IADD
+     324  STG.E.128
+     312  ISETP.NE.AND
+     312  LDG.E.128.STRONG.GPU
+     276  ULDC
+     264  LDC.64
+     264  ISETP.GE.AND
+     252  ULDC.64
+     228  LDS.128
+     216  FSETP.GEU.AND
+     216  LDGSTS.E.BYPASS.128
+     204  MOV
+     192  BSSY
+     192  BSYNC
+     180  LDG.E.STRONG.GPU
+decisive families: {'WARPGROUP': 72, 'QGMMA': 48}
+SASS-OK kernel=void_<unnamed>::attn_kernel<8,_0,_15>(<unnamed>::Params) instructions=26112 opcodes=125
+sass_ok=True
+
+=== §2d/2e SCHEDULE + LIVENESS ===
+[parse] 26112 instructions, unparsed=144, noise=0
+[isa] MMA census: wgmma=48 tcgen05=0 mma_sync=0 (QGMMAx48)
+[loop] backedge: 537 instrs, addr 0x2b4c2f47ca60..0x2b4c2f47ebe0
+[chains] 0 accumulator chains in body:
+
+=== schedule transcription (23 events) ===
+    0 elementwise x122 [IMADx26,CS2Rx26,LDGx13,LDCx10]
+    1 BSSY B0, 0x2b4c2f47d370      
+    2 elementwise x17 [FADDx9,IMADx4,STGx3,ISETPx1]
+    3 BSYNC B0                      
+    4 BSSY B0, 0x2b4c2f47d470      
+    5 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    6 BSYNC B0                      
+    7 BSSY B0, 0x2b4c2f47d570      
+    8 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    9 BSYNC B0                      
+   10 BSSY B0, 0x2b4c2f47d670      
+   11 elementwise x13 [FADDx9,STGx3,ISETPx1]
+   12 BSYNC B0                      
+   13 BSSY B0, 0x2b4c2f47e120      
+   14 elementwise x162 [FADDx72,LDGx24,STGx24,IMADx20]
+   15 BSYNC B0                      
+   16 BSSY B0, 0x2b4c2f47e2e0      
+   17 elementwise x24 [FADDx9,IMADx5,LDGx3,STGx3]
+   18 BSYNC B0                      
+   19 elementwise x46 [FMULx15,FFMAx8,FSETPx5,IMADx5] SHFLx3
+   20 BSSY B0, 0x2b4c2f47ebe0      
+   21 elementwise x94 [FMULx38,MUFUx17,FADDx8,FSETPx6]
+   22 BSYNC B0                      
+
+SCHED-FAIL loop=backedge hgmma_runs=0 depbars=0 ew_runs=9 depbar_before_each_ew=['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none']
+[sched] raw samples for debugging:
+    0x2b4c2f47ca60  S2R R4, SR_TID.X                                             0  
+    0x2b4c2f47ca70  LDC R14, c[0x0][0x29c]                                       0  
+    0x2b4c2f47ca80  LEA.HI.SX32 R5, R4, R77, 0x1d                                1      1   
+    0x2b4c2f47ca90  ISETP.GE.AND P2, PT, R5, R2, PT                              0      0    
+    0x2b4c2f47caa0  ISETP.GE.AND P0, PT, R5, R2, PT                              0      0    
+    0x2b4c2f47cab0  LOP3.LUT R10, R5, 0xf, RZ, 0xc0, !PT                         0      0
+    0x2b4c2f47cac0  SHF.R.S32.HI R76, RZ, 0x4, R5                                0      0    
+    0x2b4c2f47cad0  SEL R10, R10, RZ, !P0                                        0  
+    0x2b4c2f47cae0  SEL R76, R76, RZ, !P0                                        0  
+    0x2b4c2f47caf0  LDC R7, c[0x0][0x2b0]                                        0  
+    0x2b4c2f47cb00  LEA R5, R11, R10, 0x4                                        0  
+    0x2b4c2f47cb10  IMAD R4, R0, 0x8, R76                                        0   
+
+=== liveness over doubled body ===
+[live] peak=89 regs at body instr 262 (STG.E.128), guessed-role instrs=0/537
+[live] peak breakdown: LDG=76, undef/param=7, addr/temp=3, SEL=2, VIADD=1
+[live] instrs    0-  66: peak  30  mean  21
+[live] instrs   67- 133: peak  66  mean  45
+[live] instrs  134- 200: peak  62  mean  39
+[live] instrs  201- 267: peak  89  mean  44
+[live] instrs  268- 334: peak  88  mean  73
+[live] instrs  335- 401: peak  50  mean  27
+[live] instrs  402- 468: peak  29  mean  27
+[live] instrs  469- 535: peak  28  mean  24
+[live] instrs  536- 536: peak  13  mean  13
+LIVE-FAIL peak=89 guessed_frac=0.00
+[live] unknown-role samples:
+sched_ok=False, live_ok=False
+
+=== §2f STALL LEDGER ===
+[sanity] kernel=attn_kernel
+[sanity] duration_ns=9024.0 — dominant across every captured launch
+[sanity] short kernel (9024.0ns < 20000ns) accepted: 6 launch(es) of it, 100% of the captured GPU time (vouches at >= 2 and >= 50%)
+[sanity] samples pooled over 6 launches of the dominant kernel (741 total; one launch fell short of 500)
+=== STALL LEDGER BEGIN ===
+[ledger] keying=opcode/pc-bucket (0% of samples line-resolved)
+
+--- ledger rows (cumulative to >= 90% of 741 true-stall samples) ---
+     135 18.22% (cum  18.2%)  BRA@0x15a617a3e4                             @P0   BRA 0x2b4c2f47ebf0                 | barrier:100%
+      37  4.99% (cum  23.2%)  EXIT@0x15a617a3f6                            EXIT                                     | barrier:100%
+      31  4.18% (cum  27.4%)  FADD@0x15a617a3e2                            FADD R3, R58, R3                         | short_scoreboard:100%
+      30  4.05% (cum  31.4%)  LDC@0x15a617a3b2                             LDC R1, c[0x0][0x28]                     | no_instructions:97%, wait:3%
+      28  3.78% (cum  35.2%)  BAR@0x15a617a3bb                             BAR.SYNC.DEFER_BLOCKING 0x0              | long_scoreboard:96%, wait:4%
+      28  3.78% (cum  39.0%)  IADD3@0x15a617a3df                           IADD3 R13, P2, R81, R32, RZ              | long_scoreboard:89%, branch_resolving:11%
+      28  3.78% (cum  42.8%)  BRA@0x15a617a3bb                             @!P5  BRA 0x2b4c2f477810                 | barrier:96%, wait:4%
+      25  3.37% (cum  46.2%)  BRA@0x15a617a3bc                             BRA 0x2b4c2f476ab0                       | barrier:88%, wait:12%
+      17  2.29% (cum  48.4%)  IMAD@0x15a617a3bb                            IMAD.MOV.U32 R44, RZ, RZ, R14            | long_scoreboard:100%
+      16  2.16% (cum  50.6%)  PRMT@0x15a617a3d2                            PRMT R20, R16, R26, R17                  | short_scoreboard:100%
+      16  2.16% (cum  52.8%)  BRA@0x15a617a3b9                             @!P5  BRA 0x2b4c2f477590                 | wait:100%
+      13  1.75% (cum  54.5%)  MUFU@0x15a617a3db                            MUFU.EX2 R60, R60                        | mio_throttle:46%, wait:31%, not_selected:23%
+      10  1.35% (cum  55.9%)  ERRBAR@0x15a617a3e3                          ERRBAR                                   | membar:100%
+       8  1.08% (cum  57.0%)  PRMT@0x15a617a3c2                            PRMT R55, R16, 0x7632, R55               | short_scoreboard:100%
+       7  0.94% (cum  57.9%)  PRMT@0x15a617a3c6                            PRMT R55, R16, 0x7632, R55               | short_scoreboard:100%
+       7  0.94% (cum  58.8%)  BSYNC@0x15a617a3f1                           BSYNC B0                                 | no_instructions:100%
+       6  0.81% (cum  59.6%)  FMUL@0x15a617a3df                            FMUL R13, R27, R8                        | long_scoreboard:67%, not_selected:17%, branch_resolving:17%
+       6  0.81% (cum  60.5%)  LEA@0x15a617a3e5                             @!P2  LEA.HI.X R13, R4, R13, R5, 0x1, P1 | math_pipe_throttle:50%, short_scoreboard:33%, not_selected:17%
+       6  0.81% (cum  61.3%)  CCTL@0x15a617a3e3                            CCTL.IVALL                               | long_scoreboard:100%
+       6  0.81% (cum  62.1%)  FADD@0x15a617a3f1                            FADD R59, RZ, R20                        | long_scoreboard:100%
+       5  0.67% (cum  62.8%)  FADD@0x15a617a3c3                            FADD R20, R28, R29                       | short_scoreboard:100%
+       5  0.67% (cum  63.4%)  FSEL@0x15a617a3e1                            FSEL R17, R27, R20, !P1                  | short_scoreboard:80%, math_pipe_throttle:20%
+       5  0.67% (cum  64.1%)  ISETP@0x15a617a3b9                           ISETP.NE.AND P5, PT, R6, 0x8, PT         | wait:60%, no_instructions:40%
+       5  0.67% (cum  64.8%)  SHF@0x15a617a3c0                             SHF.L.U32 R9, R10, UR4, RZ               | short_scoreboard:80%, wait:20%
+       5  0.67% (cum  65.5%)  FMUL@0x15a617a3c1                            FMUL R8, R8, R9                          | short_scoreboard:80%, wait:20%
+       5  0.67% (cum  66.1%)  MUFU@0x15a617a3da                            MUFU.EX2 R46, R46                        | mio_throttle:60%, wait:40%
+       5  0.67% (cum  66.8%)  LEA@0x15a617a3b7                             LEA.HI.X.SX32 R58, R32, R25, 0x1, P5     | math_pipe_throttle:40%, wait:40%, not_selected:20%
+       5  0.67% (cum  67.5%)  BSYNC@0x15a617a3bb                           BSYNC B0                                 | branch_resolving:60%, no_instructions:40%
+       5  0.67% (cum  68.2%)  BSSY@0x15a617a3f0                            BSSY B0, 0x2b4c2f47e2e0                  | no_instructions:100%
+       5  0.67% (cum  68.8%)  IADD3@0x15a617a3b5                           IADD3 R2, -R4, R5, RZ                    | no_instructions:60%, wait:20%, math_pipe_throttle:20%
+       4  0.54% (cum  69.4%)  FSEL@0x15a617a3e0                            FSEL R14, R15, R17, !P1                  | short_scoreboard:100%
+       4  0.54% (cum  69.9%)  LDC@0x15a617a3b6                             @!P4  LDC R28, c[0x0][0x2c0]             | wait:100%
+       4  0.54% (cum  70.4%)  SHF@0x15a617a3b8                             SHF.R.S32.HI R25, RZ, 0x1f, R13          | wait:100%
+       4  0.54% (cum  71.0%)  FENCE@0x15a617a3ca                           FENCE.VIEW.ASYNC.S                       | wait:50%, long_scoreboard:50%
+       4  0.54% (cum  71.5%)  LEA@0x15a617a3e2                             LEA.HI.X R13, R81, UR5, R28, 0x2, P0     | wait:75%, not_selected:25%
+       4  0.54% (cum  72.1%)  BRA@0x15a617a3f5                             @!P1  BRA 0x2b4c2f47ca60                 | no_instructions:100%
+       4  0.54% (cum  72.6%)  ISETP@0x15a617a3bb                           ISETP.GT.AND P5, PT, R6, 0x7f, PT        | branch_resolving:75%, wait:25%
+       4  0.54% (cum  73.1%)  BRA@0x15a617a3d0                             @!P4  BRA 0x2b4c2f47a280                 | barrier:100%
+       4  0.54% (cum  73.7%)  WARPGROUP@0x15a617a3dc                       WARPGROUP.DEPBAR.LE gsb0, 0x0            | barrier:100%
+       4  0.54% (cum  74.2%)  FADD@0x15a617a3f2                            FADD R21, R14, R21                       | short_scoreboard:100%
+       4  0.54% (cum  74.8%)  IMAD@0x15a617a3c2                            IMAD.U32 R61, R20, 0x10000, RZ           | short_scoreboard:75%, wait:25%
+       4  0.54% (cum  75.3%)  SHFL@0x15a617a3d8                            SHFL.BFLY PT, R14, R23, 0x2, 0x1f        | wait:100%
+       4  0.54% (cum  75.8%)  FMUL@0x15a617a3b4                            FMUL R9, R7, R10                         | short_scoreboard:100%
+       3  0.40% (cum  76.2%)  IMAD@0x15a617a3b5                            @P0   IMAD.HI.U32 R3, R3, R6, RZ         | short_scoreboard:33%, wait:33%, branch_resolving:33%
+       3  0.40% (cum  76.7%)  IMAD@0x15a617a3b6                            @!P4  IMAD R22, R0, R13, RZ              | short_scoreboard:67%, wait:33%
+       3  0.40% (cum  77.1%)  FADD@0x15a617a3c7                            FADD R20, R30, R31                       | short_scoreboard:100%
+       3  0.40% (cum  77.5%)  FMUL@0x15a617a3c4                            FMUL R70, R55, R16                       | short_scoreboard:67%, dispatch_stall:33%
+       3  0.40% (cum  77.9%)  LDS@0x15a617a3bf                             LDS R9, [R10]                            | no_instructions:100%
+       3  0.40% (cum  78.3%)  UMOV@0x15a617a3d1                            UMOV UR5, 0x80000020                     | barrier:67%, not_selected:33%
+       3  0.40% (cum  78.7%)  FMUL@0x15a617a3c8                            FMUL R66, R55, R16                       | short_scoreboard:67%, wait:33%
+       3  0.40% (cum  79.1%)  IMAD@0x15a617a3e1                            IMAD.MOV R12, RZ, RZ, -R13               | short_scoreboard:100%
+       3  0.40% (cum  79.5%)  FMNMX@0x15a617a3d8                           FMNMX R19, R58, R59, !PT                 | wait:67%, math_pipe_throttle:33%
+       3  0.40% (cum  79.9%)  MUFU@0x15a617a3dc                            MUFU.EX2 R62, R62                        | wait:100%
+       3  0.40% (cum  80.3%)  LDG@0x15a617a3e5                             @!P2  LDG.E.128 R4, desc[UR10][R12.64]   | wait:100%
+       3  0.40% (cum  80.7%)  LOP3@0x15a617a3da                            LOP3.LUT R19, R16, 0x10000, RZ, 0xfc, !P | not_selected:67%, math_pipe_throttle:33%
+       3  0.40% (cum  81.1%)  BRA@0x15a617a3b5                             @!P4  BRA 0x2b4c2f476bd0                 | not_selected:67%, wait:33%
+       3  0.40% (cum  81.5%)  ISETP@0x15a617a3b5                           ISETP.GE.AND P4, PT, R4, R5, PT          | wait:67%, dispatch_stall:33%
+       2  0.27% (cum  81.8%)  FENCE@0x15a617a3d7                           FENCE.VIEW.ASYNC.S                       | long_scoreboard:50%, wait:50%
+       2  0.27% (cum  82.1%)  LDGSTS@0x15a617a3b8                          LDGSTS.E.BYPASS.128 desc[UR10][R32.64],  | wait:100%
+       2  0.27% (cum  82.3%)  FFMA@0x15a617a3c3                            FFMA R9, R23, R23, R20                   | wait:50%, not_selected:50%
+       2  0.27% (cum  82.6%)  LOP3@0x15a617a3d0                            LOP3.LUT R76, R16, 0x10000, RZ, 0xfc, !P | wait:50%, no_instructions:50%
+       2  0.27% (cum  82.9%)  ISETP@0x15a617a3d0                           ISETP.GE.AND P0, PT, R44, R14, PT        | wait:100%
+       2  0.27% (cum  83.1%)  QGMMA@0x15a617a3d2                           QGMMA.64x64x32.F32.E4M3.E4M3 R44, gdesc[ | wait:100%
+       2  0.27% (cum  83.4%)  SHFL@0x15a617a3e0                            SHFL.BFLY PT, R41, R32, 0x1, 0x1f        | mio_throttle:50%, wait:50%
+       2  0.27% (cum  83.7%)  IMAD@0x15a617a3b9                            IMAD.MOV R13, RZ, RZ, -R22               | no_instructions:100%
+       2  0.27% (cum  83.9%)  IMAD@0x15a617a3ba                            IMAD.SHL.U32 R21, R6, 0x4, RZ            | no_instructions:50%, branch_resolving:50%
+       2  0.27% (cum  84.2%)  STS@0x15a617a3c1                             STS [R18+0x16000], R17                   | short_scoreboard:50%, wait:50%
+       2  0.27% (cum  84.5%)  LEA@0x15a617a3b8                             LEA.HI.X R33, R29, UR15, R58, 0x1, P5    | wait:50%, math_pipe_throttle:50%
+       2  0.27% (cum  84.8%)  LDS@0x15a617a3c4                             LDS.128 R16, [R68+0x16400]               | wait:100%
+       2  0.27% (cum  85.0%)  F2FP@0x15a617a3ca                            F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C  | wait:100%
+       2  0.27% (cum  85.3%)  SHF@0x15a617a3b3                             SHF.R.U32.HI R40, RZ, 0x4, R40           | not_selected:100%
+       2  0.27% (cum  85.6%)  IMAD@0x15a617a3b8                            IMAD R53, R54, 0x40, R45                 | not_selected:50%, long_scoreboard:50%
+       2  0.27% (cum  85.8%)  CS2R@0x15a617a3d7                            CS2R R42, SRZ                            | not_selected:50%, math_pipe_throttle:50%
+       2  0.27% (cum  86.1%)  ULDC@0x15a617a3b2                            ULDC UR4, c[0x0][0x29c]                  | no_instructions:100%
+       2  0.27% (cum  86.4%)  S2R@0x15a617a3e4                             S2R R77, SR_CTAID.X                      | no_instructions:100%
+       2  0.27% (cum  86.6%)  BRA@0x15a617a3c1                             @!P0  BRA 0x2b4c2f4783d0                 | barrier:100%
+       2  0.27% (cum  86.9%)  BRA@0x15a617a3e3                             @P1   BRA 0x2b4c2f47c960                 | barrier:100%
+       2  0.27% (cum  87.2%)  VIADDMNMX@0x15a617a3b5                       VIADDMNMX R5, R4, R3, R5, PT             | wait:100%
+       2  0.27% (cum  87.4%)  PLOP3@0x15a617a3b6                           PLOP3.LUT P4, PT, P3, P4, PT, 0x8a, 0x0  | wait:100%
+       2  0.27% (cum  87.7%)  IMAD@0x15a617a3e5                            @!P2  IMAD R4, R4, R7, RZ                | short_scoreboard:100%
+
+--- opcode family x dominant stall ---
+     220 29.69%  BRA                    | barrier=87%, wait=10%, no_instructions=2%
+      49  6.61%  IMAD                   | long_scoreboard=37%, short_scoreboard=27%, wait=18%
+      49  6.61%  FADD                   | short_scoreboard=88%, long_scoreboard=12%
+      37  4.99%  IADD3                  | long_scoreboard=68%, wait=14%, branch_resolving=8%
+      37  4.99%  EXIT                   | barrier=100%
+      35  4.72%  LDC                    | no_instructions=83%, wait=14%, branch_resolving=3%
+      32  4.32%  PRMT                   | short_scoreboard=97%, wait=3%
+      31  4.18%  BAR                    | long_scoreboard=94%, wait=3%, branch_resolving=3%
+      24  3.24%  FMUL                   | short_scoreboard=50%, wait=21%, long_scoreboard=17%
+      24  3.24%  MUFU                   | wait=50%, mio_throttle=38%, not_selected=12%
+      21  2.83%  LEA                    | wait=48%, math_pipe_throttle=29%, not_selected=14%
+      17  2.29%  ISETP                  | wait=53%, branch_resolving=18%, no_instructions=12%
+      15  2.02%  SHF                    | wait=47%, short_scoreboard=27%, not_selected=20%
+      14  1.89%  FSEL                   | short_scoreboard=57%, not_selected=14%, math_pipe_throttle=14%
+      13  1.75%  BSYNC                  | no_instructions=77%, branch_resolving=23%
+=== STALL LEDGER END ===
+STALL-FAIL reason=coverage (87.7% < 90% — the ledger does not sum; distribution too flat for 80 rows)
+stall_ok=False
+
+--- Segment ledger ---
+=== SEGMENT LEDGER BEGIN ===
+[join] samples pooled over 6 launches of the dominant kernel
+[join] 225 sampled PCs vs 2176 parsed addresses; 100.0% of 741 stall samples resolved
+[join] body backedge: 46 segments (0 HGMMA runs, 0 DEPBARs); 45 samples inside, 696 outside (prologue/epilogue)
+SEG idx=0 kind=EW depth=none pct=26.7 stalls=short_scoreboard:33,wait:33
+SEG idx=33 kind=BAR depth=none pct=11.1 stalls=no_instructions:100
+SEG idx=35 kind=EW depth=none pct=15.6 stalls=long_scoreboard:86,wait:14
+SEG idx=36 kind=BAR depth=none pct=15.6 stalls=no_instructions:100
+SEG idx=37 kind=EW depth=none pct=17.8 stalls=wait:50,short_scoreboard:50
+SEG idx=41 kind=EW depth=none pct=2.2 stalls=wait:100
+SEG idx=43 kind=EW depth=none pct=2.2 stalls=wait:100
+SEG idx=45 kind=BRA depth=none pct=8.9 stalls=no_instructions:100
+
+--- top segments by stall cost (program order; top 18) ---
+   0     0-32     EW        none       12  26.7%  elementwise                | short_scoreboard:33,wait:33
+  33   365-365    BAR       none        5  11.1%  BSSY                       | no_instructions:100
+  35   367-390    EW        none        7  15.6%  elementwise                | long_scoreboard:86,wait:14
+  36   391-391    BAR       none        7  15.6%  BSYNC                      | no_instructions:100
+  37   392-422    EW        none        8  17.8%  elementwise                | wait:50,short_scoreboard:50
+  41   440-519    EW        none        1   2.2%  elementwise                | wait:100
+  43   521-534    EW        none        1   2.2%  elementwise                | wait:100
+  45   536-536    BRA       none        4   8.9%  branch                     | no_instructions:100
+
+--- elementwise cost by DEPBAR depth in force ---
+   depth none   17 segments       29 samples  100.0% of elementwise   64.4% of body
+
+--- cost by segment kind ---
+   EW             29   64.4% of body
+   BAR            12   26.7% of body
+   BRA             4    8.9% of body
+JOIN-OK resolved=100.0% body_samples=45 segments=46 hgmma_runs=0 depbars=0
+=== SEGMENT LEDGER END ===
+
+--- Role exposure (PARTIAL without PM) ---
+[sanity] role samples pooled over 6 launches of the dominant kernel
+=== ROLE EXPOSURE BEGIN ===
+[parse] page carried 12 launches; using launch 0
+[join] 225 sampled PCs onto 10 regions; 100.0% of 741 stall samples resolved
+[tensor] active=0.0% source=ncu-aggregate duration_ns=9024.0 exposed_frac=1.000
+[read] share = the role's slice of every stall sample; exposed = share x (1 - tensor_active), an attribution estimate — a role that waits while the tensor pipe is busy is hidden, not exposed
+ROLE label=copy-producer regions=4 samples=216 share=29.1 exposed_pct=29.1 exposed_ns=2630 stalls=wait:27,long_scoreboard:24,barrier:23
+ROLE label=scalar regions=1 samples=17 share=2.3 exposed_pct=2.3 exposed_ns=207 stalls=wait:53,not_selected:12,no_instructions:12
+ROLE label=straight regions=4 samples=508 share=68.6 exposed_pct=68.5 exposed_ns=6185 stalls=barrier:37,short_scoreboard:21,wait:14
+REGION r3 straight      [0x2b4c2f477810..0x2b4c2f47c810]  1281 instrs share=39.1 stalls=short_scoreboard:35,wait:24,long_scoreboard:14
+REGION r2 copy-producer [0x2b4c2f476bd0..0x2b4c2f477800]   196 instrs share=22.7 stalls=barrier:29,wait:27,long_scoreboard:27
+REGION r5 straight      [0x2b4c2f47c8c0..0x2b4c2f47ca50]    26 instrs share=18.8 stalls=barrier:97,no_instructions:1,short_scoreboard:1
+REGION r0 straight      [0x2b4c2f476500..0x2b4c2f476aa0]    91 instrs share=5.7 stalls=no_instructions:79,not_selected:10,short_scoreboard:10
+REGION r9 straight      [0x2b4c2f47ebf0..0x2b4c2f47ecf0]    17 instrs share=5.0 stalls=barrier:100
+REGION r8 copy-producer [0x2b4c2f47d6b0..0x2b4c2f47ebe0]   340 instrs share=4.5 stalls=no_instructions:48,wait:21,long_scoreboard:18
+REGION r1 scalar        [0x2b4c2f476ab0..0x2b4c2f476bc0]    18 instrs share=2.3 stalls=wait:53,not_selected:12,no_instructions:12
+REGION r6 copy-producer [0x2b4c2f47ca60..0x2b4c2f47cdb0]    54 instrs share=1.6 stalls=short_scoreboard:33,wait:33,math_pipe_throttle:25
+REGION r4 copy-producer [0x2b4c2f47c820..0x2b4c2f47c8b0]    10 instrs share=0.4 stalls=long_scoreboard:33,wait:33,sleeping:33
+ROLE-JSON: {"duration_ns": 9024.0, "resolved_pct": 100.0, "roles": {"copy-producer": {"exposed_ns": 2630, "exposed_pct": 29.14, "regions": 4, "share_pct": 29.15, "stalls": {"barrier": 22.7, "long_scoreboard": 24.1, "wait": 26.9}}, "scalar": {"exposed_ns": 207, "exposed_pct": 2.29, "regions": 1, "share_pct": 2.29, "stalls": {"no_instructions": 11.8, "not_selected": 11.8, "wait": 52.9}}, "straight": {"exposed_ns": 6185, "exposed_pct": 68.54, "regions": 4, "share_pct": 68.56, "stalls": {"barrier": 36.6, "short_scoreboard": 21.1, "wait": 13.8}}}, "tensor_active": 0.02, "tensor_source": "ncu-aggregate"}
+=== ROLE EXPOSURE END ===
+ROLE-OK roles=3 samples=741 resolved=100.0 tensor=0.0
+
+=== §2g ORCH DOSSIER ===
+=== ORCH DOSSIER BEGIN ===
+[parse] page carried 12 launches; using launch 0 (one kernel, not 12 copies fused into one stream)
+[parse] 2176 instructions, unparsed=24
+
+=== regions (10, 6 loops, 0 spin) ===
+  r0 straight -             [0x2b4c2f476500..0x2b4c2f476aa0]    91 instrs  LDG=1
+  r1 loop     scalar        [0x2b4c2f476ab0..0x2b4c2f476bc0]    18 instrs  
+  r2 loop     copy-producer [0x2b4c2f476bd0..0x2b4c2f477800]   196 instrs  LDGSTS=11 LDS=21 SHFL=1
+  r3 straight -             [0x2b4c2f477810..0x2b4c2f47c810]  1281 instrs  QGMMA=4 LDGSTS=12 LDS=61 STS=14 LDSM=2 STSM=2 SHFL=31 LDG=1 STG=1
+  r4 loop     copy-producer [0x2b4c2f47c820..0x2b4c2f47c8b0]    10 instrs  LDG=1  (was scalar: section)
+  r5 straight -             [0x2b4c2f47c8c0..0x2b4c2f47ca50]    26 instrs  STG=2
+  r6 loop     copy-producer [0x2b4c2f47ca60..0x2b4c2f47cdb0]    54 instrs  LDG=1  (was scalar: section)
+  r7 loop     copy-producer [0x2b4c2f47cdc0..0x2b4c2f47d6a0]   143 instrs  LDG=12 STG=12  (was scalar: section)
+  r8 loop     copy-producer [0x2b4c2f47d6b0..0x2b4c2f47ebe0]   340 instrs  SHFL=3 LDG=27 STG=28  (was scalar: section)
+  r9 straight -             [0x2b4c2f47ebf0..0x2b4c2f47ecf0]    17 instrs  
+
+=== named barriers (2 ids) ===
+  id 0x0: ARV x0 @r[] SYNC x9 @r[2, 3, 5, 9] -> symmetric rendezvous (all sides SYNC -> lockstep)
+  id <reg>: ARV x0 @r[] SYNC x1 @r[3] width=128 -> symmetric rendezvous (all sides SYNC -> lockstep)
+  blocking rendezvous in loop r2: 2 per body
+
+=== mbarrier objects (0, 0 resolved) ===
+
+=== commit groups (in-flight depth) ===
+  r2(copy-producer): DEPBAR {} LDGDEPBAR x2
+
+=== merge placement ===
+  shfl_in_loop=4, shfl_out_of_loop=31
+
+=== issue-then-correct (nominations, not convictions) ===
+  none nominated
+
+=== supply order (copy-producer loops) ===
+  r2: addr-source loads 21 (3/21 in top quarter -> interleaved); copies 11; tight-chained copies 0
+
+=== cache policy bits (verbatim opcodes) ===
+  LDGSTS.E.BYPASS.128 x18
+  LDGSTS.E x4
+  LDGSTS.E.64 x1
+ORCH-SUMMARY-JSON: {"cache_ops": ["LDGSTS.E", "LDGSTS.E.64", "LDGSTS.E.BYPASS.128"], "commit": ["copy-producer: DEPBAR {} LDGDEPBAR x2"], "edges": [], "itc_candidates": 0, "loops": {"copy-producer": 5, "scalar": 1}, "mbar_objs": 0, "mbar_per_role": {}, "mbar_tiers": {}, "mbar_unresolved": 0, "merge": {"shfl_in_loop": 4, "shfl_out_of_loop": 31}, "mma_precision": {"accums": ["f32"], "inputs": ["e4m3"], "ops": {"QGMMA:e4m3/f32": 4}}, "nbar_verdicts": ["symmetric rendezvous (all sides SYNC -> lockstep)", "symmetric rendezvous (all sides SYNC -> lockstep) width=128"], "nbar_widths": [[128]], "rings": [], "spin_loops": 0, "supply": ["addr-source loads interleaved; prefetched"], "supply_counts": ["addr-source loads 21 (3/21 in top quarter -> interleaved); copies 11; tight-chained copies 0"], "verdict": "ORCH-OK"}
+=== ORCH DOSSIER END ===
+
+ORCH-OK regions=10 loops=6 nbar_ids=2 mbar_objs=0 resolved=0 edges=0 itc_candidates=0
+orch_ok=True
+
+=== §2h STRUCT TABLE ===
+CSV rc=0
+CSV text length: 9606654 chars
+[struct] parsed 26112 instructions, 2176 addresses with execution counts
+=== STRUCT TABLE BEGIN ===
+region 1: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 4 barriers -> 4 segments; copies=1
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |   299-299    | -
+    2 |   300-303    | -
+    3 |   304-466    | LDS x22  STS x4
+    4 |   467-493    | FFMA x3  MUFU x2  STS x2  LDS x1
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 3: 2 offsets, granule -, strides ['0x5f80']
+    seg 4: 3 offsets, granule -, strides ['0x400']
+  mma input types: none -> precision=none
+region 2: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 2 barriers -> 2 segments; copies=12
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |   777-947    | FFMA x17  F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C x8  LDS x4  FADD x3  MUFU x3  SHFL x3  STS x1
+    2 |   948-985    | LDS x8  STS x4
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 1: 4 offsets, granule -, strides ['0x400', '0x490', '0x2800']
+    seg 2: 5 offsets, granule -, strides ['0x400', '0xc00', '0xf800']
+  mma input types: none -> precision=none
+region 3: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 2 barriers -> 2 segments; copies=12
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |  1432-1550   | SHFL x10  F2I x2  FADD x2  MUFU x2
+    2 |  1551-1609   | LDS x5
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 2: 1 offsets, granule -, strides []
+  mma input types: none -> precision=none
+region 4: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 5 barriers -> 5 segments; copies=11
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |  2064-2159   | MUFU x17  FADD x8  F2FP.BF16.F32.PACK_AB x4
+    2 |  2160-2475   | LDS x21  F2I x1  MUFU x1  SHFL x1
+    3 |  2476-2479   | -
+    4 |  2480-2642   | LDS x22  STS x4
+    5 |  2643-2669   | FFMA x3  MUFU x2  STS x2  LDS x1
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 4: 2 offsets, granule -, strides ['0x5f80']
+    seg 5: 3 offsets, granule -, strides ['0x400']
+  mma input types: none -> precision=none
+=== STRUCT TABLE END ===
+self-check FAILED: no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+STRUCT-FAIL reason=no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+struct_ok=False
+
+[gpu_entry.sh] task=cmd finished

@@ -1,0 +1,3 @@
+# Forge attention third targeted profiling probe
+
+Reference job `1793447931` completed and produced the archived output. Its SASS and orchestration self-checks reported `SASS-OK` and `ORCH-OK`; the separate structure check reported `STRUCT-FAIL` because its segmented regions contained no recognized MMA/LDSM/STSM family. The logged parsed instruction count may include repeated report material and should not be interpreted as a unique static instruction count without further analysis. The structure summary is not validated; these profiler observations are not a candidate speedup. Full output and script are saved here.
