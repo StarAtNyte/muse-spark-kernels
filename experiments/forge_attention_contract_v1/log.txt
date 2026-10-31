@@ -1,0 +1,106 @@
+[direct] Modal H200 branch=main mode=calibrate
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      calibrate
+  hostname:  modal
+  date:      2026-10-31 11:21:00
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+[leaderboard] suite=forgekernel (forgekernel task protocol (docs/design/v1-launch.md)) definition=muse_attention_sliding workloads=decode1,verify1,decode16 (group of 3; geomean gate)
+
+=== JSON ===
+{
+  "calibration": {
+    "match": true,
+    "problems": [],
+    "max_error": {
+      "out": 0.0,
+      "k_out": 0.0,
+      "v_out": 0.0
+    },
+    "margin": 2.0,
+    "tolerance": {
+      "out": 0.0078125,
+      "k_out": 0.125,
+      "v_out": 0.125
+    },
+    "floor": {
+      "out": 0.0078125,
+      "k_out": 0.125,
+      "v_out": 0.125
+    },
+    "cap": 0.05,
+    "rows": [
+      {
+        "shape": "decode1",
+        "group": "typical",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.115031)"
+      },
+      {
+        "shape": "decode1",
+        "group": "short",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.129052)"
+      },
+      {
+        "shape": "decode1",
+        "group": "scaled",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.0783011)"
+      },
+      {
+        "shape": "verify1",
+        "group": "typical",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.123098)"
+      },
+      {
+        "shape": "verify1",
+        "group": "short",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.1418)"
+      },
+      {
+        "shape": "verify1",
+        "group": "scaled",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.131507)"
+      },
+      {
+        "shape": "decode16",
+        "group": "typical",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.121384)"
+      },
+      {
+        "shape": "decode16",
+        "group": "short",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.110721)"
+      },
+      {
+        "shape": "decode16",
+        "group": "scaled",
+        "contract": "muse_attention_challenge",
+        "pass": true,
+        "message": "challenge L2 and cache checks passed (bound 0.0945874)"
+      }
+    ]
+  }
+}
+[task] calibrate: MATCH; tolerance {'out': 0.0078125, 'k_out': 0.125, 'v_out': 0.125}
+
+[gpu_entry.sh] task=calibrate finished
