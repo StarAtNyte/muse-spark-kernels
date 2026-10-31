@@ -23,5 +23,8 @@ passed each reference screen. Parent/candidate full-layer medians were
 513.4/512.1 µs for B=1 sliding, 885.2/881.3 µs for B=1 full, and
 1644.8/1647.3 µs for B=4 sliding. These one-seed, sub-0.5% mixed results are
 too small to establish a gain. A multi-seed paired-ratio repeat of B=1 sliding
-is running in `../prefill_moe_small_order2_repeat_v1/`; retain the incumbent
-pending stronger evidence.
+is archived in `../prefill_moe_small_order2_repeat_v1/`.
+
+The repeat completed with mixed paired ratios of 1.00239, 0.99801 and
+1.00397. No consistent gain was established; retain the incumbent and do not
+submit. Details and the full log are in the repeat directory.
