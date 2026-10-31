@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 1/7] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 1/8] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 2/7] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 2/8] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 3/7] Add Hopper knowledge index for Muse task
+Subject: [PATCH 3/8] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5956,7 +5956,7 @@ index 0000000..56f73a1
 From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:36:25 +0545
-Subject: [PATCH 4/7] Add cold graph task timing and Modal profiling
+Subject: [PATCH 4/8] Add cold graph task timing and Modal profiling
 
 ---
  docs/modal-delivery.md                        |  4 +-
@@ -6144,7 +6144,7 @@ index 6f27168..100d069 100644
 From 34d14600c597f71c41826398612314f113929b1c Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:39:51 +0545
-Subject: [PATCH 5/7] Add scored attention sliding reference task
+Subject: [PATCH 5/8] Add scored attention sliding reference task
 
 ---
  tasks/muse_attention_sliding/description.md   |   14 +
@@ -9434,7 +9434,7 @@ index 0000000..fb8e705
 From a8fc5f6f39055a1258fadfaca9bf3770d53c4e62 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:49:51 +0545
-Subject: [PATCH 6/7] Add O32 projection reference task
+Subject: [PATCH 6/8] Add O32 projection reference task
 
 ---
  tasks/muse_projection_o32/description.md      |    7 +
@@ -16768,7 +16768,7 @@ index 0000000..fb8e705
 From cbe7b6231ef7c395db3deccf8a5cdf8f7469dde0 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:50:47 +0545
-Subject: [PATCH 7/7] Use highest scored projection source as task baseline
+Subject: [PATCH 7/8] Use highest scored projection source as task baseline
 
 ---
  tasks/muse_projection_o32/description.md          | 2 +-
@@ -16807,6 +16807,38 @@ index f37a24f..da6c3e7 100644
      keys = h200_keys
      configs = {key: CANDIDATE_CONFIGS[key] for key in keys}
      return {
+-- 
+2.53.0
+
+
+From bd406de32c342be04aefbd9f9982ca6f188529da Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Sat, 31 Oct 2026 11:43:03 +0545
+Subject: [PATCH 8/8] Expose virtualenv sandbox helpers to Claude agent
+
+---
+ scripts/agent-claude.sh | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/agent-claude.sh b/scripts/agent-claude.sh
+index 394ea78..0f77d93 100755
+--- a/scripts/agent-claude.sh
++++ b/scripts/agent-claude.sh
+@@ -29,7 +29,13 @@ if [ -n "${FK_PROVIDER_KEY_ENV:-}" ]; then
+ fi
+ # The agent policy is delivered in the working directory, so nothing here changes it
+ # (forge run names this script by its absolute path).
+-HERE="$(dirname "${BASH_SOURCE[0]}")"
++HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
++# Forge may be invoked by absolute venv path without activating the venv. Expose
++# its sandbox helpers (notably socat) to Claude and its child processes.
++FK_VENV_BIN="$(dirname "$HERE")/.venv/bin"
++if [ -d "$FK_VENV_BIN" ]; then
++    export PATH="$FK_VENV_BIN:$PATH"
++fi
+ PY="${FK_AGENT_PY:-python3}"
+ 
+ ARGS=(--dangerously-skip-permissions)
 -- 
 2.53.0
 
