@@ -15,3 +15,8 @@ unused event area for zeros even though the producer-wait trace intentionally
 occupies part of that area after the valid events. The checked-in driver fixes
 that assertion; if the first run fails there, retain its log and rerun the
 corrected driver. The public H200 image and 300-second runner limit apply.
+
+The first run `ap-L90buMFShMgCVVVOOP5raV` passed the seed-9400 reference
+check, then hit that reader assertion with 1344 recorded items. Its failure
+is preserved in `initial_failure.log`; it yielded no analyzed timing. A run
+with the corrected reader has been launched and writes `modal.log`.

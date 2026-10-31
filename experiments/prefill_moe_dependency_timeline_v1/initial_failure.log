@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-L90buMFShMgCVVVOOP5raV
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 1
+LT tune T=753 qkv: torch.mm 42.5us, best 42.5us algo None of 8
+LT tune T=753 o: torch.mm 24.6us, best 24.6us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.4us, best 68.4us algo None of 8
+LT tune T=753 unpooler: torch.mm 69.7us, best 69.7us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.6us, best 147.6us algo None of 8
+LT tune T=3012 o: torch.mm 75.0us, best 75.0us algo None of 8
+LT tune T=3012 router: torch.mm 40.6us, best 40.6us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.9us, best 256.9us algo None of 8
+LT tune T=3012 unpooler: torch.mm 256.2us, best 256.2us algo None of 8
+LT tune T=16384 qkv: torch.mm 770.3us, best 770.3us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 208.4us, best 208.4us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47373725785488'>")
+CHECK 9400 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 61, in <module>
+    assert n and n % 96 == 0 and all(buf[4*i] == 0 for i in range(n,maxitems)), (n,maxitems)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (1344, 24192)
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-L90buMFShMgCVVVOOP5raV
