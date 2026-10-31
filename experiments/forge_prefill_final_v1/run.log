@@ -1,0 +1,216 @@
+[forge] the judge: teacher turn 1/3
+[forge] the judge: files pass the static check
+[loop] job 1793374417: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (945 chars)
+[forge] NCU cannot profile on this machine: the run degrades to timing only (no per-kernel signatures, no timeline / stall pricing)
+[forge] the loop: muse_prefill_boundary --workspace /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/ws --hours 0.5 ...
+[forge] report: /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/report.md
+[loop] error: kb_arch = 'sm90': /home/nitiz/Projects/Self/Challenges/ForgeKernel/hw_kb/cuda/sm90 has no index.md — the prompts register every recipe there; open the tree per hw_kb/<language>/README.md before pointing a run at it
+[loop] job 1793374458: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (945 chars)
+[forge] NCU cannot profile on this machine: the run degrades to timing only (no per-kernel signatures, no timeline / stall pricing)
+[forge] the loop: muse_prefill_boundary --workspace /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/ws --hours 0.5 ...
+[loop] measuring the architecture reference (the task's reference (run.py:run)) before distillation…
+[baseline] run 1/3: 0.0436 ms (job 1793374485)  <- best so far
+[baseline] run 2/3: 0.0461 ms (job 1793374596)
+[baseline] run 3/3: 0.0445 ms (job 1793374689)
+[baseline] 3 samples, spread 5.7% (min 0.0436, max 0.0461) — anchoring to the fastest
+[baseline] archived -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/arch_baseline.json
+- ref: the task's reference (run.py:run) @ turn1 {"m": 753, "h": 8192}, turn4 {"m": 3012, "h": 8192}, nearby {"m": 128, "h": 8192} on sm90
+- end-to-end median: **0.0436 ms** [MEASURED, job 1793374485] (per-call window, includes host overhead; this run gates on the device window, the target does not anchor on this number)
+- device median: **0.0303 ms** [MEASURED, job 1793374485] (pipelined amortized window ≈ pure device — the target anchors on this number; kernel-to-kernel comparisons read this number; do not mix it with end-to-end)
+- ⚠ About 58% of this reference's plain pipelined amortized reading (0.0303 ms) is host-side enqueue overhead (host_bound_ratio=0.58): that window is invalid for it, so the device number above already uses a host-free basis. **Do not write "the reference has large host overhead" into the milestone, and do not set host-orchestration gates on that basis** — it is a fact about the measurement layer; putting it in the blueprint only teaches the score-gaming solution "make the python path thinner and you win". What this run has to reproduce is the kernel.
+- the readings above are the geomean over 3 workloads (turn1, turn4, nearby)
+- fastest of 3 measurements (0.0436, 0.0461, 0.0445; spread 5.7%)
+- NCU: no collection path; this operator writes no NCU-anchored gate line
+[baseline] HOST-BOUND REFERENCE: the task's reference (run.py:run) spends 58% of its device-window reading (0.0303 ms) on host-side enqueue (host_bound_ratio=0.58, threshold 0.5). The pipelined window never fills, so that number is dispatch cost, not kernel time. Re-measure the reference through a host-free window and anchor target there: measure_windows_with_graph() in eval/timing.py (CUDA-graph replay), or the reference's NCU kernel total. Do NOT keep the pipelined reading and do NOT hand this to the student — a thick wrapper on the reference is a fact about the measurement, and telling a kernel writer about it teaches metric-gaming, not kernel quality.
+[baseline] NOTE: no NCU signature — distillation will write no NCU-anchored gate lines (template A.4).
+[loop] NCU is unavailable on this machine ([loop] ncu_available = false): the architecture reference has no NCU signature, so the milestone is distilled from timings alone
+[loop] the ref baseline is the architecture reference — reusing its reading (0.0436 ms, job 1793374485)
+[forge] report: /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/report.md
+[loop] warning: [loop] cuda_source_dirs is empty — the CUDA student is offline, so it can read CUTLASS / CuTe C++ headers only from a local copy named here
+[loop] error: gate_window='device' but the task's reference (run.py:run) for muse_prefill_boundary is HOST-BOUND (host_bound_ratio=0.58 at threshold 0.5): its device reading is host dispatch cost, so a target derived from it is loose by whatever the wrapper costs. Re-measure the reference through a host-free window and anchor target there: measure_windows_with_graph() in eval/timing.py (CUDA-graph replay), or the reference's NCU kernel total. Do NOT keep the pipelined reading and do NOT hand this to the student — a thick wrapper on the reference is a fact about the measurement, and telling a kernel writer about it teaches metric-gaming, not kernel quality.
+[loop] job 1793374921: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (945 chars)
+[forge] NCU cannot profile on this machine: the run degrades to timing only (no per-kernel signatures, no timeline / stall pricing)
+[forge] the loop: muse_prefill_boundary --workspace /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/ws --hours 0.5 ...
+[loop] measuring the architecture reference (the task's reference (run.py:run)) before distillation…
+[baseline] run 1/3: 0.044 ms (job 1793374945)  <- best so far
+[baseline] run 2/3: 0.0441 ms (job 1793375047)
+[baseline] run 3/3: 0.0429 ms (job 1793375150)  <- best so far
+[baseline] 3 samples, spread 2.8% (min 0.0429, max 0.0441) — anchoring to the fastest
+[baseline] archived -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/arch_baseline.json
+- ref: the task's reference (run.py:run) @ turn1 {"m": 753, "h": 8192}, turn4 {"m": 3012, "h": 8192}, nearby {"m": 128, "h": 8192} on sm90
+- end-to-end median: **0.0429 ms** [MEASURED, job 1793375150] (per-call window, includes host overhead; this run gates on the device window, the target does not anchor on this number)
+- device median: **0.0272 ms** [MEASURED, job 1793375150] (CUDA graph replay, host excluded ≈ pure device — the target anchors on this number; kernel-to-kernel comparisons read this number; do not mix it with end-to-end)
+- the readings above are the geomean over 3 workloads (turn1, turn4, nearby)
+- fastest of 3 measurements (0.044, 0.0441, 0.0429; spread 2.8%)
+- NCU: no collection path; this operator writes no NCU-anchored gate line
+[baseline] NOTE: the ref script reports no host_enqueue_ms — the device window's precondition (host enqueues faster than the device drains) is UNCHECKED for this reference. Have the ref script use timing.py measure_windows / measure_windows_with_graph.
+[baseline] NOTE: no NCU signature — distillation will write no NCU-anchored gate lines (template A.4).
+[loop] NCU is unavailable on this machine ([loop] ncu_available = false): the architecture reference has no NCU signature, so the milestone is distilled from timings alone
+[loop] the ref baseline is the architecture reference — reusing its reading (0.0429 ms, job 1793375150)
+[loop] harness_guard: jobs run the card's gpu_entry.sh / eval/ / ref_bin/ (identical to the workspace's); a delivery that edits them is reverted
+[loop] precision_contract = off (default for a leaderboard card) — precision is neither measured nor read (the board's own verdict only)
+[loop] job-env: the tree's copies match the card — no overlay
+[loop] job-env preflight: OK; the NCU launch target starts on this image
+[loop] meta/distill: ref baseline 0.0429 ms (job 1793375150, ncu=no) -> authoring v1 anchored to it
+[loop] agent turn (teacher) in progress — 10 min so far
+[loop] job 1793376000: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (1358 chars)
+[loop] meta/recon: ran notes/probe1.py (1358 chars back)
+[loop] meta/recon: ran notes/probe_find_ref.py (2542 chars back)
+[loop] job 1793376922: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (1172 chars)
+[loop] meta/recon: ran notes/probe_ncu.py (1172 chars back)
+[loop] job 1793377097: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (5533 chars)
+[loop] meta/recon: ran notes/probe_ncu.py (5533 chars back)
+[loop] meta/recon: launch cluster=(0, 0, 1) read from round 4
+[loop] meta/recon: ran notes/probe_ncu.py (25556 chars back)
+[loop] meta/recon: launch cluster=(0, 0, 0) read from round 5
+[loop] meta/recon: ran notes/probe_ncu2.py (121552 chars back)
+[loop] meta/recon: banked evidence in the reconnaissance tree (round 5 ledgers)
+[loop] agent turn (teacher) in progress — 10 min so far
+[loop] agent turn (teacher) failed, attempt 1/3: rc=124 stderr='' stdout=''
+[loop] meta/recon: launch cluster=(0, 0, 0) read from round 6
+[loop] meta/recon: ran notes/probe_final.py (14106 chars back)
+[loop] meta/recon: launch cluster=(0, 0, 0) read from round 7
+[loop] meta/recon: ran notes/probe_sass_stall.py (11247 chars back)
+[loop] meta/recon: banked evidence in the reconnaissance tree (round 7 ledgers)
+[loop] meta/recon: launch cluster=(0, 0, 0) read from round 8
+[loop] meta/recon: ran notes/probe_stall_full.py (36120 chars back)
+[loop] meta/recon: banked evidence in the reconnaissance tree (round 8 ledgers)
+[loop] agent turn (teacher) in progress — 10 min so far
+[loop] agent turn (teacher) failed, attempt 1/3: rc=124 stderr='' stdout=''
+[loop] meta/recon: teacher finished reconnaissance after 9 run(s)
+[loop] meta/recon: completion persisted to /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/student/recon_complete.json
+[loop] meta/recon: banked evidence in the reconnaissance tree (gap queue)
+[loop] meta/recon: gap queue — 2 unverified candidates row(s) (0 expressibility guess(es) without an [EXPR:] verdict) -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/_muse_prefill_boundaryref/gap_queue.md, /home/nitiz/Projects/Self/Challenges/ForgeKernel/docs/kb-provenance/gaps/muse_prefill_boundary.md (never hw_kb)
+[loop] meta/recon: 9 run(s), finished, report /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/_muse_prefill_boundaryref/report.md
+[loop] agent turn (teacher) in progress — 10 min so far
+[loop] meta/distill: milestone still has 2 violation(s) -> re-prompt
+[loop] meta/distill: authored milestone v1 (violations=none)
+[loop] inner loop stopped: budget (meta_steps=0)
+[loop] confirm: no green KEEP iteration on record — nothing to confirm
+[loop] correctness monitor: no green KEEP on record — nothing to monitor
+[loop] meta/recon: gap queue — 2 unverified candidates row(s) (0 expressibility guess(es) without an [EXPR:] verdict) -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/_muse_prefill_boundaryref/gap_queue.md, /home/nitiz/Projects/Self/Challenges/ForgeKernel/docs/kb-provenance/gaps/muse_prefill_boundary.md (never hw_kb)
+[loop] gap queue: 2 unverified candidates row(s) — see evidence/gap_queue.md and docs/kb-provenance/gaps/ (not KB material)
+[harvest] nothing left behind in the main repo
+[loop] done: {"stop": "budget", "meta_steps": 0, "gap_queue": ["Estimated usage (verify-none)", "Non-accumulator working set (verify-none)"], "unharvested": []}
+[loop] status.jsonl now has 0 records at /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/student/status.jsonl
+[forge] 1 new knowledge-base file(s) wait for review: docs/kb-provenance/gaps/
+[forge] report: /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/report.md
+[loop] warning: [loop] cuda_source_dirs is empty — the CUDA student is offline, so it can read CUTLASS / CuTe C++ headers only from a local copy named here
+[loop] kb-lint reference tokens: 44 tokens from 1/1 oracle paths
+[loop] job 1793426062: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (945 chars)
+[forge] NCU cannot profile on this machine: the run degrades to timing only (no per-kernel signatures, no timeline / stall pricing)
+[forge] the loop: muse_prefill_boundary --workspace /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/ws --hours 0.5 ...
+[loop] harness_guard: jobs run the card's gpu_entry.sh / eval/ / ref_bin/ (identical to the workspace's); a delivery that edits them is reverted
+[loop] precision_contract = off (default for a leaderboard card) — precision is neither measured nor read (the board's own verdict only)
+[loop] job-env: the tree's copies match the card — no overlay
+[loop] job-env preflight: OK; the NCU launch target starts on this image
+[loop] iter 0: spawning student agent…
+[loop] agent turn (student) failed, attempt 1/3: rc=1 stderr='or: sandbox required but unavailable: sandbox is enabled but dependencies are missing: socat not installed · install missing tools (e.g. apt install bubblewrap socat) or see https://code.claude.com/docs/en/sandboxing\n  sandbox.failIfUnavailable is set — refusing to start without a working sandbox.' stdout=''
+[loop] agent turn (student) failed, attempt 2/3: rc=1 stderr='or: sandbox required but unavailable: sandbox is enabled but dependencies are missing: socat not installed · install missing tools (e.g. apt install bubblewrap socat) or see https://code.claude.com/docs/en/sandboxing\n  sandbox.failIfUnavailable is set — refusing to start without a working sandbox.' stdout=''
+[loop] agent turn (student) failed, attempt 3/3: rc=1 stderr='or: sandbox required but unavailable: sandbox is enabled but dependencies are missing: socat not installed · install missing tools (e.g. apt install bubblewrap socat) or see https://code.claude.com/docs/en/sandboxing\n  sandbox.failIfUnavailable is set — refusing to start without a working sandbox.' stdout=''
+[loop] agent failed unrecoverably: agent command failed after 3 attempts: rc=1 stderr='or: sandbox required but unavailable: sandbox is enabled but dependencies are missing: socat not installed · install missing tools (e.g. apt install bubblewrap socat) or see https://code.claude.com/docs/en/sandboxing\n  sandbox.failIfUnavailable is set — refusing to start without a working sandbox.' stdout=''
+[loop] inner loop stopped: agent_failed (meta_steps=0)
+[loop] confirm: no green KEEP iteration on record — nothing to confirm
+[loop] correctness monitor: no green KEEP on record — nothing to monitor
+[loop] meta/recon: gap queue — 2 unverified candidates row(s) (0 expressibility guess(es) without an [EXPR:] verdict) -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/_muse_prefill_boundaryref/gap_queue.md, /home/nitiz/Projects/Self/Challenges/ForgeKernel/docs/kb-provenance/gaps/muse_prefill_boundary.md (never hw_kb)
+[loop] gap queue: 2 unverified candidates row(s) — see evidence/gap_queue.md and docs/kb-provenance/gaps/ (not KB material)
+[harvest] nothing left behind in the main repo
+[loop] done: {"stop": "agent_failed", "meta_steps": 0, "gap_queue": ["Estimated usage (verify-none)", "Non-accumulator working set (verify-none)"], "unharvested": []}
+[loop] status.jsonl now has 0 records at /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/student/status.jsonl
+[forge] 1 new knowledge-base file(s) wait for review: docs/kb-provenance/gaps/
+[forge] report: /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/report.md
+[loop] warning: [loop] cuda_source_dirs is empty — the CUDA student is offline, so it can read CUTLASS / CuTe C++ headers only from a local copy named here
+[loop] kb-lint reference tokens: 44 tokens from 1/1 oracle paths
+[loop] job 1793426297: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (945 chars)
+[forge] NCU cannot profile on this machine: the run degrades to timing only (no per-kernel signatures, no timeline / stall pricing)
+[forge] the loop: muse_prefill_boundary --workspace /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/ws --hours 0.5 ...
+[loop] harness_guard: jobs run the card's gpu_entry.sh / eval/ / ref_bin/ (identical to the workspace's); a delivery that edits them is reverted
+[loop] precision_contract = off (default for a leaderboard card) — precision is neither measured nor read (the board's own verdict only)
+[loop] job-env: the tree's copies match the card — no overlay
+[loop] job-env preflight: OK; the NCU launch target starts on this image
+[loop] iter 0: spawning student agent…
+[loop] agent turn (student) in progress — 10 min so far
+[loop] iter 0: decision D0.1+D0.2+D0.3+D0.4+D0.5+D0.6+D0.7+D0.8 committed; evaluating on GPU…
+[loop] iter 0: D0.1+D0.2+D0.3+D0.4+D0.5+D0.6+D0.7+D0.8 REVERT (correctness FAIL: -D: function "__ldg(const uchar4 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ uchar4 __ldg(const uchar4 *ptr) { }
+                                                   ^
+/usr/local/cuda/include/sm_32_intrinsics.h(111): note #3326-D: function "__ldg(const uchar2 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ uchar2 __ldg(const uchar2 *ptr) { }
+                                                   ^
+/usr/local/cuda/include/sm_32_intrinsics.h(110): note #3326-D: function "__ldg(const unsigned long long *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ unsigned long long __ldg(const unsigned long long *ptr) { }
+                                                               ^
+/usr/local/cuda/include/sm_32_intrinsics.h(109): note #3326-D: function "__ldg(const unsigned int *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ unsigned int __ldg(const unsigned int *ptr) { }
+                                                         ^
+/usr/local/cuda/include/sm_32_intrinsics.h(108): note #3326-D: function "__ldg(const unsigned short *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ unsigned short __ldg(const unsigned short *ptr) { }
+                                                           ^
+/usr/local/cuda/include/sm_32_intrinsics.h(107): note #3326-D: function "__ldg(const unsigned char *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ unsigned char __ldg(const unsigned char *ptr) { }
+                                                          ^
+/usr/local/cuda/include/sm_32_intrinsics.h(105): note #3326-D: function "__ldg(const longlong2 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ longlong2 __ldg(const longlong2 *ptr) { }
+                                                      ^
+/usr/local/cuda/include/sm_32_intrinsics.h(104): note #3326-D: function "__ldg(const int4 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ int4 __ldg(const int4 *ptr) { }
+                                                 ^
+/usr/local/cuda/include/sm_32_intrinsics.h(103): note #3326-D: function "__ldg(const int2 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ int2 __ldg(const int2 *ptr) { }
+                                                 ^
+/usr/local/cuda/include/sm_32_intrinsics.h(102): note #3326-D: function "__ldg(const short4 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ short4 __ldg(const short4 *ptr) { }
+                                                   ^
+/usr/local/cuda/include/sm_32_intrinsics.h(101): note #3326-D: function "__ldg(const short2 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ short2 __ldg(const short2 *ptr) { }
+                                                   ^
+/usr/local/cuda/include/sm_32_intrinsics.h(100): note #3326-D: function "__ldg(const char4 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ char4 __ldg(const char4 *ptr) { }
+                                                  ^
+/usr/local/cuda/include/sm_32_intrinsics.h(99): note #3326-D: function "__ldg(const char2 *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ char2 __ldg(const char2 *ptr) { }
+                                                  ^
+/usr/local/cuda/include/sm_32_intrinsics.h(98): note #3326-D: function "__ldg(const long long *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ long long __ldg(const long long *ptr) { }
+                                                      ^
+/usr/local/cuda/include/sm_32_intrinsics.h(97): note #3326-D: function "__ldg(const int *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ int __ldg(const int *ptr) { }
+                                                ^
+/usr/local/cuda/include/sm_32_intrinsics.h(96): note #3326-D: function "__ldg(const short *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ short __ldg(const short *ptr) { }
+                                                  ^
+/usr/local/cuda/include/sm_32_intrinsics.h(95): note #3326-D: function "__ldg(const signed char *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ signed char __ldg(const signed char *ptr) { }
+                                                        ^
+/usr/local/cuda/include/sm_32_intrinsics.h(94): note #3326-D: function "__ldg(const char *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ char __ldg(const char *ptr) { }
+                                                 ^
+/usr/local/cuda/include/sm_32_intrinsics.h(92): note #3326-D: function "__ldg(const unsigned long *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ unsigned long __ldg(const unsigned long *ptr) { }
+                                                          ^
+/usr/local/cuda/include/sm_32_intrinsics.h(91): note #3326-D: function "__ldg(const long *)" does not match because argument #1 does not match parameter
+  static __attribute__((device)) __inline__ long __ldg(const long *ptr) { }
+                                                 ^
+
+8 errors detected in the compilation of "/tmp/fk_kernel_build/fk_kernel_9a83a6b16bc6/kernel.cu".
+ninja: build stopped: subcommand failed.)
+[loop] iter 1: spawning student agent…
+[loop] iter 1: D0.1+D0.2+D0.3+D0.4+D0.5+D0.6+D0.7+D0.8 SCAFFOLD (pre-green, [VERIFY: none] -> full eval deferred to the gate row)
+[loop] iter 2: spawning student agent…
+[loop] job 1793427817: no closing entry line for task=cmd; a finished job's log is final — taking it as complete (1022 chars)
+[loop] iter 2: probe notes/smoke_m0gate.py -> PROBE NO VERDICT (max_diff=unreported) — no 'PROBE PASS/FAIL' line in the job log — the probe did not build, or the job died before reaching the verdict
+[loop] iter 2: probe notes/smoke_m0gate.py -> PROBE PASS (max_diff=n/a (non-numeric probe))
+[loop] iter 2: decision M0-gate committed; evaluating on GPU…
+[loop] iter 2: M0-gate REVERT (correctness FAIL: workload turn1 {"m": 753, "h": 8192}: input group typical output sout: normalized error 0.8101 > tolerance 3.178e-07 (2 later workload(s) not run))
+[loop] inner loop stopped: budget (meta_steps=0)
+[loop] confirm: no green KEEP iteration on record — nothing to confirm
+[loop] correctness monitor: no green KEEP on record — nothing to monitor
+[loop] meta/recon: gap queue — 2 unverified candidates row(s) (0 expressibility guess(es) without an [EXPR:] verdict) -> /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/_muse_prefill_boundaryref/gap_queue.md, /home/nitiz/Projects/Self/Challenges/ForgeKernel/docs/kb-provenance/gaps/muse_prefill_boundary.md (never hw_kb)
+[loop] gap queue: 2 unverified candidates row(s) — see evidence/gap_queue.md and docs/kb-provenance/gaps/ (not KB material)
+[harvest] nothing left behind in the main repo
+[loop] done: {"stop": "budget", "meta_steps": 0, "gap_queue": ["Estimated usage (verify-none)", "Non-accumulator working set (verify-none)"], "unharvested": []}
+[loop] status.jsonl now has 3 records at /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/operators/muse_prefill_boundary/student/status.jsonl
+[forge] 1 new knowledge-base file(s) wait for review: docs/kb-provenance/gaps/
+[forge] report: /home/nitiz/Projects/Self/Challenges/ForgeKernel/.artifacts/muse_prefill_boundary_261030-211439-b293/report.md
+[loop] warning: [loop] cuda_source_dirs is empty — the CUDA student is offline, so it can read CUTLASS / CuTe C++ headers only from a local copy named here
+[loop] kb-lint reference tokens: 44 tokens from 1/1 oracle paths
