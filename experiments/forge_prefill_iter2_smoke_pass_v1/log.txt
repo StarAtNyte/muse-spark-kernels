@@ -1,0 +1,15 @@
+[direct] Modal H200 branch=forge-student-muse_prefill_boundary-i2probe mode=cmd:python3 notes/smoke_m0gate.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 06:31:57
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+PROBE PASS max_diff=n/a
+
+[gpu_entry.sh] task=cmd finished
