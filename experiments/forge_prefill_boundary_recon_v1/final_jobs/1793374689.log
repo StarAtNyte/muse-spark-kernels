@@ -1,0 +1,55 @@
+[direct] Modal H200 branch=HEAD mode=sealref
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      sealref
+  hostname:  modal
+  date:      2026-10-30 15:38:24
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+[sealref] payload sha256 efcaa25fc6978dc0e87f0c496d2cc53160110b130634c0ddf4ec23a442153eb9 (matches sealref.json); module sealref_637efedd8d, entry run, 2 file(s), languages ['pytorch']
+[sealref] check ok: [(753, 8192), (753, 8192)]
+[gpu_entry.sh] timeout=300s
+[leaderboard] suite=forgekernel (forgekernel task protocol (docs/design/v1-launch.md)) definition=muse_prefill_boundary workloads=turn1,turn4,nearby (group of 3; geomean gate)
+
+=== JSON ===
+{
+  "median_ms": 0.0445,
+  "device_median_ms": 0.0306,
+  "device_window_basis": "plain_batch",
+  "host_enqueue_ms": 0.0177,
+  "leaderboard_timer": "timing.py",
+  "clock": "unlocked",
+  "aggregate": "geomean",
+  "n_workloads": 3,
+  "workloads": [
+    {
+      "name": "turn1",
+      "median_ms": 0.0364,
+      "device_median_ms": 0.0208
+    },
+    {
+      "name": "turn4",
+      "median_ms": 0.0955,
+      "device_median_ms": 0.0769
+    },
+    {
+      "name": "nearby",
+      "median_ms": 0.0254,
+      "device_median_ms": 0.018
+    }
+  ]
+}
+==PROF== Connected to process 180 (/usr/bin/python3.12)
+
+==ERROR== An error was reported by the driver:
+==ERROR== Failed to lock GPU clock frequencies! Try locking the clocks externally (e.g. using 'nvidia-smi --lock-gpu-clocks=tdp,tdp') or profile without fixed frequencies (see '--clock-control').
+==ERROR== Failed to profile "boundary_kernel" in process 180
+==PROF== Trying to shutdown target application
+==ERROR== The application returned an error code (9).
+[gpu_entry.sh] NCU exited rc=9 — continuing without a profile
+
+[gpu_entry.sh] task=sealref finished

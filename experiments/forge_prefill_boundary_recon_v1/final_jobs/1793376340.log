@@ -1,0 +1,103 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe_find_ref.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 16:05:53
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== DIAGNOSTIC: submission.py search ===
+__file__   = /tmp/forge-job-jxjkav9t/notes/probe_find_ref.py
+HERE       = /tmp/forge-job-jxjkav9t/notes
+TREE_ROOT  = /tmp/forge-job-jxjkav9t
+sys.executable = /opt/sglang/bin/python3
+
+=== TREE_ROOT (/tmp/forge-job-jxjkav9t) ls ===
+  [d] .forge-bin
+  [f] .gitignore
+  [f] README.md
+  [d] eval
+  [f] gpu_entry.sh
+  [d] notes
+  [d] ref_bin
+  [f] sealref.json
+  [f] sealref.py
+  [f] submit.toml
+
+=== PARENT (/tmp) ls ===
+  [d] forge-job-jxjkav9t
+  [d] gdrcopy-2.5.1
+  [d] torchinductor_root
+  [f] uv-ce9cd633bb00c47d.lock
+  [f] uv-setuptools-6acdb0088dda2548.lock
+  [d] wheels
+
+=== GRANDPARENT (/) ls ===
+  [f] NGC-DL-CONTAINER-LICENSE
+  [d] __modal
+  [d] bin
+  [d] bin.usr-is-merged
+  [d] boot
+  [f] cuda-keyring_1.1-1_all.deb
+  [d] dev
+  [d] etc
+  [d] home
+  [d] lib
+  [d] lib.usr-is-merged
+  [d] lib64
+  [d] media
+  [d] mnt
+  [d] opt
+  [d] pkg
+  [d] proc
+  [d] root
+  [d] run
+  [d] sbin
+  [d] sbin.usr-is-merged
+  [d] sgl-workspace
+  [d] srv
+  [d] sys
+  [d] tmp
+  [d] usr
+  [d] var
+
+=== sys.path (first 15) ===
+  /tmp/forge-job-jxjkav9t/notes
+  /opt/sglang/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages
+  /opt/sglang/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages
+  /tmp/forge-job-jxjkav9t
+  /tmp/forge-job-jxjkav9t/eval
+  /pkg
+  /root
+  /usr/lib/python312.zip
+  /usr/lib/python3.12
+  /usr/lib/python3.12/lib-dynload
+  /opt/sglang/lib/python3.12/site-packages
+  __editable__.sglang-0.0.0.dev0.finder.__path_hook__
+  /usr/local/lib/python3.12/dist-packages
+  /usr/lib/python3/dist-packages
+
+=== find /tmp -maxdepth 5 -name submission.py ===
+(none found)
+
+=== find /opt -maxdepth 6 -name submission.py ===
+(none found)
+
+=== try: import submission (no path insert) ===
+FAIL: No module named 'submission'
+
+=== candidate paths ===
+  dir=True  sub=False  /tmp/forge-job-jxjkav9t
+  dir=False sub=False  /tmp/forge-job-jxjkav9t/task/reference
+  dir=False sub=False  /tmp/forge-job-jxjkav9t/reference
+  dir=False sub=False  /tmp/task/reference
+  dir=False sub=False  /tmp/reference
+  dir=False sub=False  /task/reference
+
+=== DIAGNOSTIC DONE ===
+
+[gpu_entry.sh] task=cmd finished

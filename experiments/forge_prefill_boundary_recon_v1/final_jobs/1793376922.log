@@ -1,0 +1,27 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe_ncu.py
+[direct] GPU modal is in use by another forgekernel run -- waiting
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 16:16:43
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Step 1: NCU --set source collection ===
+returncode: 9
+STDOUT:
+ ==WARNING== No metrics to collect found in sections.
+==PROF== Connected to process 132 (/usr/bin/python3.12)
+==PROF== Profiling "boundary_kernel": 0%...
+==ERROR== An error was reported by the driver:
+==ERROR== Failed to lock GPU clock frequencies! Try locking the clocks externally (e.g. using 'nvidia-smi --lock-gpu-clocks=tdp,tdp') or profile without fixed frequencies (see '--clock-control').
+==ERROR== Failed to profile "boundary_kernel" in process 132
+==PROF== Trying to shutdown target application
+==ERROR== The application returned an error code (9).
+
+FATAL: /tmp/bnd_rep.ncu-rep not created; aborting
+[direct] Modal job exited rc=1

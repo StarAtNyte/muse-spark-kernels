@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-WTPcw4ciaqejVPc7XQj6dD
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ENV 2.14.1+cu130 NVIDIA H200
+CHECK 6121 base True relative L2 error 3.486e-05 (worst row 1.725e-04); 4 probe rows exact to 0.0e+00
+CHECK 6121 candidate True relative L2 error 3.486e-05 (worst row 1.725e-04); 4 probe rows exact to 0.0e+00
+RESULT {"seed": 6121, "base_us": 16.543999314308167, "candidate_us": 21.15200087428093, "ratio": 0.7821481954657202}
+CHECK 6122 base True relative L2 error 3.550e-05 (worst row 1.634e-04); 2 probe rows exact to 0.0e+00
+CHECK 6122 candidate True relative L2 error 3.550e-05 (worst row 1.634e-04); 2 probe rows exact to 0.0e+00
+RESULT {"seed": 6122, "base_us": 16.672000288963318, "candidate_us": 21.23199962079525, "ratio": 0.7852298693823575}
+DONE
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.64 sk2=12.99 torch=18.14 -> cgemv
+[okc] tune o m=1: cgemv=8.61 sk2=9.31 torch=10.46 -> cgemv
+[okc] tune pooler m=1: cgemv=17.54 sk2=18.14 torch=24.45 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.17 sgemv=7.55 sk2=8.0 torch=10.5 -> cgemv
+[okc] tune router m=1: rgemv=7.39 sk2=8.51 torch=17.95 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.25 torch=17.7 -> sk2
+[okc] tune o m=16: sk2=9.25 torch=10.24 -> sk2
+[okc] tune pooler m=16: sk2=18.27 torch=24.54 -> sk2
+[okc] tune unpooler m=16: sk2=17.73 torch=22.53 -> sk2
+[okc] tune router m=16: sk2=8.51 torch=18.62 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.46 torch=18.14 -> sk2
+[okc] tune o m=32: sk2=9.38 torch=10.27 -> sk2
+[okc] tune pooler m=32: sk2=19.2 torch=24.96 -> sk2
+[okc] tune unpooler m=32: sk2=18.72 torch=22.66 -> sk2
+[okc] tune router m=32: sk2=8.96 torch=19.04 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.22 torch=17.57 -> sk2
+[okc] tune o m=8: sk2=9.28 torch=10.11 -> sk2
+[okc] tune pooler m=8: sk2=18.34 torch=24.58 -> sk2
+[okc] tune unpooler m=8: sk2=7.97 torch=10.69 -> sk2
+[okc] tune router m=8: sk2=8.58 torch=18.02 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.34 torch=20.48 -> gqx
+[okc] tune o m=128: torch=10.72 torchT=10.85 -> torch
+[okc] tune pooler m=128: gq=24.61 torch=28.38 -> gq
+[okc] tune unpooler m=128: torch=23.94 torchT=22.56 -> torchT
+[okc] tune router m=128: rk=9.54 wide=12.29 gemm=13.41 torch=19.71 -> rk
+[okc] tune o m=256: torch=12.7 torchT=12.48 -> torchT
+[okc] tune pooler m=256: torch=34.14 cutlass=31.14 -> cutlass
+[okc] tune unpooler m=256: torch=28.58 torchT=28.03 -> torchT
+[okc] tune router m=256: rk=10.62 wide=13.22 gemm=17.44 torch=20.83 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-WTPcw4ciaqejVPc7XQj6dD

@@ -1,0 +1,23 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe1.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 16:00:14
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== NCU COLLECT ===
+ncu --profile-from-start off --set source --metrics dram__bytes_read.sum,dram__bytes_write.sum,lts__t_sector_hit_rate.pct,sm__warps_active.avg.pct_of_peak_sustained_active,launch__block_dim_x,launch__block_dim_y,launch__block_dim_z,launch__grid_dim_x,launch__grid_dim_y,launch__grid_dim_z,launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active,sm__maximum_warps_per_active_cycle_pct --target-processes all --kernel-name-base function --kernel-name regex:boundary_kernel --launch-count 1 -f -o /tmp/bnd_probe1 /opt/sglang/bin/python3 /tmp/forge-job-b0yc7zc_/eval/ncu_run.py
+RC: 1
+==ERROR== The application returned an error code (1).
+
+Traceback (most recent call last):
+  File "/tmp/forge-job-b0yc7zc_/eval/ncu_run.py", line 15, in <module>
+    import submission as _mod
+ModuleNotFoundError: No module named 'submission'
+ERROR: report file not found: /tmp/bnd_probe1.ncu-rep
+[direct] Modal job exited rc=1

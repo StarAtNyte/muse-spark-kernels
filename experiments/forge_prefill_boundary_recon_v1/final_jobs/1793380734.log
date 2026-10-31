@@ -1,0 +1,239 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/probe_stall_full.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-30 17:19:16
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== STEP 1: NCU collect --set full ===
+returncode: 0
+NCU stdout (first 4000 chars):
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 136 (/usr/bin/python3.12)
+==WARNING== Unable to access the following 6 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second.
+
+
+==PROF== Profiling "boundary_kernel": 0%....50%....100% - 38 passes
+==PROF== Disconnected from process 136
+==PROF== Report: /tmp/bnd_full2.ncu-rep
+
+rep file size: 2570928 bytes
+
+=== STEP 2: SASS extract ===
+SASS: 274181 chars, 487 lines
+=== SASS first 30 lines ===
+    0: ------------------ ------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+    1: Kernel Name        void okc_moe::boundary_kernel<(int)512, (bool)1, (bool)0, (i                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    2:                    nt)0>(const __nv_bfloat16 *, const float *, const __nv_bfloa                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    3:                    t16 *, const float *, const float *, const __nv_bfloat16 *,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    4:                    float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    5:                     float *, const float *, const float *)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    6: ------------------ ------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+    7: Address            Source                                                       Warp S Warp S # Samp Instru Thread Predic Avg. T Avg. P Deriva Avg. P Diverg Addres Access Access L1 Tag L1 Con L1 Wav L1 Wav L1 Wav L2 The L2 The L2 The L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp L2 Exp stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ stall_ launch launch launch launch
+    8:                                                                                 tall S tall S les    ctions  Instr ated-O hreads redica tive A redica ent Br s Spac  Opera  Size   Reque flicts efront efront efront oretic oretic oretic licit  licit  licit  licit  licit  licit  licit  barrie branch dispat drain  imc    lg     long_s math   membar mio    misc   no_ins not_se select short_ sleep  tex    wait   barrie branch dispat drain  imc (N lg (No long_s math ( membar mio (N misc ( no_ins not_se select short_ sleepi tex (N wait ( __clus __clus __clus __clus
+    9:                                                                                 amplin amplin         Execu uction n Thre  Execu ted-On vg. Pr ted-On anches e      tion          sts Gl  Share s Shar s Shar s Shar al Sec al Sec al Sec Evict  Hit Po Hit Po Hit Po Hit Po Miss P Miss P r      _resol ch                          b                                  t      lected ed     sb                          r (Not _resol ch (No (Not I ot Iss t Issu b (Not Not Is  (Not  ot Iss Not Is t (Not lected ed (No sb (No ng (No ot Iss Not Is ter_di ter_di ter_di ter_ma
+   10:                                                                                 g (All g (Not        ted    s Exec ad Ins ted     Threa edicat  Threa                             obal   d N-Wa ed Exc ed     ed Ide tors G tors G tors G Polici licy E licy E licy E licy E olicy  olicy         ving                                                                                                                    Issue ving ( t Issu ssued) ued)   ed)     Issue sued)  Issued ued)   sued)   Issue  (Not  t Issu t Issu t Issu ued)   sued)  m_x    m_y    m_z    x_acti
+   11:                                                                                  Sampl -issue               uted   tructi        ds Exe ed-On  ds Une                                    y      essive        al     lobal  lobal  lobal  es     vict F vict L vict N vict N Evict  Evict                                                                                                                                d)     Not Is ed)                         d)            )                    d)     Issued ed)    ed)    ed)                                       ve    
+   12:                                                                                 es)    d Samp                      ons Ex        cuted  Thread xecute                                                                Excess        Ideal         irst   ast    ormal  ormal  First  Normal                                                                                                                                      sued)                                                                        )                                                                    
+   13:                                                                                        les)                        ecuted               s Exec d                                                                     ive                                              Demote                                                                                                                                                                                                                                                                                                      
+   14:                                                                                                                                         uted                                                                                                                                                                                                                                                                                                                                                                                                                                      
+   15: 0x2b02b17d1d00           LDC R1, c[0x0][0x28]                                   16     13     16     12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      2      0      14     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      12     0      0      0      0      0      0      0      0      0      0     
+   16: 0x2b02b17d1d10           S2R R57, SR_CTAID.X                                    2      2      2      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      2      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      2      0      0      0      0      0      0      0      0      0      0      0      0     
+   17: 0x2b02b17d1d20           LDC R6, c[0x0][0x258]                                  2      0      2      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   18: 0x2b02b17d1d30           ULDC.64 UR6, c[0x0][0x208]                             14     12     14     12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      14     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      12     0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   19: 0x2b02b17d1d40           BSSY B0, 0x2b02b17d22c0                                0      0      0      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   20: 0x2b02b17d1d50           S2R R3, SR_TID.X                                       1      1      1      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0     
+   21: 0x2b02b17d1d60           PREEXIT                                                7      3      7      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      4      0      0      1      0      0      0      0      2      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      2      0      0      0      0     
+   22: 0x2b02b17d1d70           ACQBULK                                                0      0      0      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   23: 0x2b02b17d1d80           ISETP.GE.AND P0, PT, R6, 0x1, PT                       11     5      11     12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      5      0      5      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      4      0      0      0      0      0      0      0     
+   24: 0x2b02b17d1d90           ISETP.NE.OR P0, PT, R57, RZ, !P0                       4      2      4      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      1      0      0      0      0      2      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      2      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   25: 0x2b02b17d1da0           ISETP.GE.OR P0, PT, R3, R6, P0                         18     16     18     12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      16     0      0      2      0      0      0      0      0      0      0      0      0      0      0      0      0      0      14     0      0      2      0      0      0      0     
+   26: 0x2b02b17d1db0     @P0   BRA 0x2b02b17d22b0                                     1      0      1      12048  385536 385536 32     32     0      0      0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   27: 0x2b02b17d1dc0           LOP3.LUT R0, RZ, R3, RZ, 0x33, !PT                     1      1      1      0      0      0      0      0      32     32     0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      1      0      0      0      0     
+   28: 0x2b02b17d1dd0           BSSY B1, 0x2b02b17d1ef0                                0      0      0      0      0      0      0      0      0      32     0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+   29: 0x2b02b17d1de0           MOV R7, R3                                             0      0      0      0      0      0      0      0      0      32     0      -      -      -      0      0      0      0      0      0      0      0      -      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     
+
+=== STEP 3: Metrics CSV ===
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value","Rule Name","Rule Type","Rule Description","Estimated Speedup Type","Estimated Speedup"
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","Mbyte","37.13",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","Mbyte","15.40",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_pipe_lsu_wavefronts_g2s_mem_shared_bytes.sum","","n/a",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_dim_x","","0",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_dim_y","","0",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_dim_z","","0",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","launch__cluster_max_active","cluster","0",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sector_hit_rate.pct","%","58.95",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Command line profiler metrics","sm__registers_per_warp.avg","","n/a",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","SpeedOfLight","","","","SOLBottleneck","OPT","This workload exhibits low compute throughput and memory bandwidth utilization relative to the peak performance of this device. Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate latency issues. Look at Scheduler Statistics and Warp State Statistics for potential reasons.","",""
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","SpeedOfLight_RooflineChart","","","","SOLFPRoofline","INF","The ratio of peak float (FP32) to double (FP64) performance on this device is 2:1. The workload achieved 7% of this device's FP32 peak performance and 0% of its FP64 peak performance. See the Profiling Guide (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#roofline) for more details on roofline analysis.","",""
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","ComputeWorkloadAnalysis","","","","HighPipeUtilization","OPT","All compute pipelines are under-utilized. Either this workload is very small or it doesn't issue enough warps per scheduler. Check the Launch Statistics and Scheduler Statistics sections for further details.","local","87.79"
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","Memory Workload Analysis","L2 Hit Rate","%","58.95",
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","MemoryWorkloadAnalysis_Chart","","","","MemoryL2Compression","OPT","Out of the 43387168.0 bytes sent to the L2 Compression unit only 0.00% were successfully compressed. To increase this success rate, consider marking only those memory regions as compressible that contain the most zero values and/or expose the most homogeneous values.","global","24.92"
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const float *, const float *)","1","7","(512, 1, 1)","(753, 1, 1)","0","9.0","MemoryWorkloadAnalysis_Tables","","","","MemoryCacheAccessPattern","OPT","The memory access pattern for global loads from L1TEX might not be optimal. On average, only 16.9 of the 32 bytes transmitted per sector are utilized by each thread. This could possibly be caused by a stride between threads. Check the Source Counters section for uncoalesced global loads.","global","23.41"
+"0","136","python3.12","127.0.0.1","void boundary_kernel<512, 1, 0, 0>(const __nv_bfloat16 *, const float *, const __nv_bfloat16 *, const float *, const float *, const __nv_bfloat16 *, float *, __nv_bfloat16 *, int *, int, const __nv_bfloat16 *, float *, const
+
+sass_tools.MIN_INSTRUCTIONS set to 50
+
+=== STEP 4: launch_tools (from NCU collection stdout) ===
+[launch] metrics seen: none
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=boundary_kernel grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=n/a regs=n/a smem_dyn=n/a
+
+=== STEP 5: SASS-OK ===
+kernel ranking by duration:
+           27200  boundary_kernel
+parsed: 472 instructions, 15 unparsed lines, 0 tool-noise lines
+opcode histogram (top 40 of 48):
+      80  FMUL.FTZ
+      74  FADD.FTZ
+      50  FFMA.FTZ
+      49  SHF.L.U32
+      29  STG.E
+      24  PRMT
+      14  LDG.E.128.CONSTANT
+      12  IADD3
+      10  SHFL.BFLY
+      10  NOP
+       8  BRA
+       8  LDG.E.64.CONSTANT
+       8  LDS.128
+       8  F2FP.BF16.F32.PACK_AB
+       6  MOV
+       6  LDC.64
+       6  IMAD.WIDE
+       6  LEA
+       6  STG.E.128
+       5  ULDC.64
+       4  BSSY
+       4  IADD3.X
+       4  BSYNC
+       4  LEA.HI.X
+       3  LOP3.LUT
+       3  PLOP3.LUT
+       3  SHF.R.S32.HI
+       2  LDC
+       2  S2R
+       2  ISETP.GE.AND
+       2  ISETP.GT.AND
+       2  STS
+       2  BAR.SYNC.DEFER_BLOCKING
+       2  MUFU.RSQ
+       1  PREEXIT
+       1  ACQBULK
+       1  ISETP.NE.OR
+       1  ISETP.GE.OR
+       1  LEA.HI
+       1  ISETP.GE.U32.AND
+decisive families: NONE
+SASS-OK kernel=boundary_kernel instructions=472 opcodes=48
+
+=== STEP 6: ORCH ===
+=== ORCH DOSSIER BEGIN ===
+[parse] 472 instructions, unparsed=15
+
+=== regions (5, 2 loops, 0 spin) ===
+  r0 straight -             [0x2b02b17d1d00..0x2b02b17d1e60]    23 instrs  
+  r1 loop     scalar        [0x2b02b17d1e70..0x2b02b17d1ed0]     7 instrs  STG=1
+  r2 straight -             [0x2b02b17d1ee0..0x2b02b17d1fa0]    13 instrs  
+  r3 loop     scalar        [0x2b02b17d1fb0..0x2b02b17d2110]    23 instrs  STG=16
+  r4 straight -             [0x2b02b17d2120..0x2b02b17d3a70]   406 instrs  LDS=8 STS=2 SHFL=10 LDG=22 STG=18
+
+=== named barriers (1 ids) ===
+  id 0x0: ARV x0 @r[] SYNC x2 @r[4] -> symmetric rendezvous (all sides SYNC -> lockstep)
+
+=== mbarrier objects (0, 0 resolved) ===
+
+=== merge placement ===
+  shfl_out_of_loop=10
+
+=== issue-then-correct (nominations, not convictions) ===
+  none nominated
+
+=== supply order (copy-producer loops) ===
+  no copy-producer loop found
+
+=== cache policy bits (verbatim opcodes) ===
+  none x0
+ORCH-SUMMARY-JSON: {"cache_ops": [], "commit": [], "edges": [], "itc_candidates": 0, "loops": {"scalar": 2}, "mbar_objs": 0, "mbar_per_role": {}, "mbar_tiers": {}, "mbar_unresolved": 0, "merge": {"shfl_out_of_loop": 10}, "mma_precision": {"accums": [], "inputs": [], "ops": {}}, "nbar_verdicts": ["symmetric rendezvous (all sides SYNC -> lockstep)"], "nbar_widths": [], "rings": [], "spin_loops": 0, "supply": [], "supply_counts": [], "verdict": "ORCH-OK"}
+=== ORCH DOSSIER END ===
+
+ORCH-OK regions=5 loops=2 nbar_ids=1 mbar_objs=0 resolved=0 edges=0 itc_candidates=0
+
+=== STEP 7: STALL pricing ===
+[sanity] kernel=boundary_kernel
+[sanity] duration_ns=20704.0 — dominant across every captured launch
+=== STALL LEDGER BEGIN ===
+[ledger] keying=opcode/pc-bucket (0% of samples line-resolved)
+
+--- ledger rows (cumulative to >= 90% of 2047 true-stall samples) ---
+     386 18.86% (cum  18.9%)  LDS@0x158158be99                             LDS.128 R32, [UR4+0x40]                  | barrier:87%, mio_throttle:12%, wait:1%
+     309 15.10% (cum  34.0%)  FFMA@0x158158be98                            FFMA.FTZ R28, R32, R28, R49              | long_scoreboard:99%, wait:1%
+     279 13.63% (cum  47.6%)  PRMT@0x158158be92                            PRMT R2, R13, 0x7632, R2                 | long_scoreboard:97%, math_pipe_throttle:1%, not_selected:1%
+     166  8.11% (cum  55.7%)  BRA@0x158158be9c                             BRA 0x2b02b17d39d0                       | drain:97%, branch_resolving:2%, wait:1%
+     132  6.45% (cum  62.1%)  LDS@0x158158be95                             LDS.128 R12, [UR4]                       | barrier:94%, wait:4%, mio_throttle:2%
+     116  5.67% (cum  67.8%)  FFMA@0x158158be96                            FFMA.FTZ R4, R4, R36, R33                | long_scoreboard:99%, not_selected:1%
+     102  4.98% (cum  72.8%)  FADD@0x158158be99                            FADD.FTZ R24, R35, R24                   | short_scoreboard:85%, wait:8%, not_selected:7%
+      69  3.37% (cum  76.2%)  SHF@0x158158be92                             SHF.L.U32 R0, R22, 0x10, RZ              | long_scoreboard:93%, math_pipe_throttle:3%, not_selected:3%
+      60  2.93% (cum  79.1%)  LDG@0x158158be91                             LDG.E.64.CONSTANT R8, desc[UR6][R20.64+0 | lg_throttle:73%, mio_throttle:13%, wait:7%
+      50  2.44% (cum  81.5%)  FMUL@0x158158be97                            FMUL.FTZ R49, R24, R49                   | long_scoreboard:98%, wait:2%
+      41  2.00% (cum  83.5%)  FADD@0x158158be95                            FADD.FTZ R13, R12, R13                   | short_scoreboard:83%, not_selected:12%, wait:5%
+      33  1.61% (cum  85.1%)  ISETP@0x158158be8e                           ISETP.GE.OR P0, PT, R3, R6, P0           | short_scoreboard:64%, not_selected:18%, math_pipe_throttle:9%
+      24  1.17% (cum  86.3%)  LDG@0x158158be92                             LDG.E.128.CONSTANT R28, desc[UR6][R46.64 | lg_throttle:75%, mio_throttle:12%, not_selected:8%
+      23  1.12% (cum  87.4%)  SHF@0x158158be9b                             SHF.L.U32 R9, R9, 0x10, RZ               | not_selected:57%, math_pipe_throttle:39%, dispatch_stall:4%
+      21  1.03% (cum  88.5%)  FMUL@0x158158be98                            FMUL.FTZ R15, R36, R15                   | long_scoreboard:100%
+      18  0.88% (cum  89.4%)  FADD@0x158158be98                            FADD.FTZ R2, R0, R15                     | short_scoreboard:100%
+      18  0.88% (cum  90.2%)  LDC@0x158158be8e                             LDC R1, c[0x0][0x28]                     | no_instructions:78%, mio_throttle:11%, wait:6%
+
+--- opcode family x dominant stall ---
+     518 25.31%  LDS                    | barrier=88%, mio_throttle=9%, wait=2%
+     436 21.30%  FFMA                   | long_scoreboard=98%, wait=1%, not_selected=0%
+     295 14.41%  PRMT                   | long_scoreboard=93%, not_selected=4%, math_pipe_throttle=3%
+     187  9.14%  FADD                   | short_scoreboard=79%, not_selected=11%, wait=10%
+     166  8.11%  BRA                    | drain=97%, branch_resolving=2%, wait=1%
+     110  5.37%  LDG                    | lg_throttle=67%, mio_throttle=20%, wait=7%
+      99  4.84%  SHF                    | long_scoreboard=67%, not_selected=18%, math_pipe_throttle=12%
+      82  4.01%  FMUL                   | long_scoreboard=85%, short_scoreboard=11%, not_selected=2%
+      33  1.61%  ISETP                  | short_scoreboard=64%, not_selected=18%, math_pipe_throttle=9%
+      30  1.47%  LDC                    | no_instructions=47%, mio_throttle=37%, wait=13%
+      16  0.78%  SHFL                   | wait=62%, mio_throttle=19%, not_selected=19%
+      16  0.78%  F2FP                   | not_selected=69%, wait=25%, math_pipe_throttle=6%
+      14  0.68%  STG                    | mio_throttle=79%, lg_throttle=14%, not_selected=7%
+       8  0.39%  MUFU                   | not_selected=88%, wait=12%
+       7  0.34%  ULEA                   | short_scoreboard=86%, wait=14%
+=== STALL LEDGER END ===
+STALL-OK kernel=boundary_kernel samples=2047 rows=17 coverage=90.2
+=== SEGMENT LEDGER BEGIN ===
+[join] 139 sampled PCs vs 472 parsed addresses; 100.0% of 2047 stall samples resolved
+[join] body backedge: 2 segments (0 HGMMA runs, 0 DEPBARs); 0 samples inside, 2047 outside (prologue/epilogue)
+JOIN-FAIL reason=no-samples-in-body
+=== SEGMENT LEDGER END ===
+
+=== STEP 8: ROLE exposure ===
+=== ROLE EXPOSURE BEGIN ===
+[join] 139 sampled PCs onto 5 regions; 100.0% of 2047 stall samples resolved
+[tensor] active=0.1% source=ncu-aggregate duration_ns=20704.0 exposed_frac=0.999
+[read] share = the role's slice of every stall sample; exposed = share x (1 - tensor_active), an attribution estimate — a role that waits while the tensor pipe is busy is hidden, not exposed
+ROLE label=straight regions=2 samples=2047 share=100.0 exposed_pct=99.9 exposed_ns=20680 stalls=long_scoreboard:41,barrier:22,short_scoreboard:9
+REGION r4 straight      [0x2b02b17d2120..0x2b02b17d3a70]   406 instrs share=97.0 stalls=long_scoreboard:42,barrier:23,short_scoreboard:8
+REGION r0 straight      [0x2b02b17d1d00..0x2b02b17d1e60]    23 instrs share=3.0 stalls=short_scoreboard:34,no_instructions:23,mio_throttle:14
+ROLE-JSON: {"duration_ns": 20704.0, "resolved_pct": 100.0, "roles": {"straight": {"exposed_ns": 20680, "exposed_pct": 99.89, "regions": 2, "share_pct": 100.0, "stalls": {"barrier": 22.4, "long_scoreboard": 40.9, "short_scoreboard": 9.0}}}, "tensor_active": 0.11, "tensor_source": "ncu-aggregate"}
+=== ROLE EXPOSURE END ===
+ROLE-OK roles=1 samples=2047 resolved=100.0 tensor=0.1
+
+=== WAIVERS ===
+SCHED-WAIVED: boundary_kernel has no HGMMA/HMMA/UTC*MMA instructions; it is a scalar RMSNorm+blend kernel; sched_live_tools grammar (wgmma/mma_sync/tcgen05) does not apply; calling it would emit SCHED-FAIL which is not the verdict
+LIVE-WAIVED: same reason; no MMA accumulator chains whose live-range to price
+STRUCT-WAIVED: source run; boundary_kernel uses __syncthreads (BAR.SYNC) for plain CTA reduction; no construct segments bounded by named barriers with LDSM/STSM/MMA work; struct_tools has nothing to analyze
+
+=== SMEM footprint from SASS ===
+  STS: 2 occurrences
+  LDS: 8 occurrences
+
+=== ALL DONE ===
+
+[gpu_entry.sh] task=cmd finished
