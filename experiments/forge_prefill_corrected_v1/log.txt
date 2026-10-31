@@ -1,0 +1,589 @@
+[direct] Modal H200 branch=forge-boundary-manual-fix mode=all
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      all
+  hostname:  modal
+  date:      2026-10-31 06:45:06
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+[leaderboard] suite=forgekernel (forgekernel task protocol (docs/design/v1-launch.md)) definition=muse_prefill_boundary workloads=turn1,turn4,nearby (group of 3; geomean gate)
+[task] turn1 {"m": 753, "h": 8192}: correctness PASSED
+[task] turn1: kernel device 0.0255 ms, e2e 0.0279 ms; reference device 0.0254 ms, x0.998
+[task] turn4 {"m": 3012, "h": 8192}: correctness PASSED
+[task] turn4: kernel device 0.0813 ms, e2e 0.0841 ms; reference device 0.0819 ms, x1.0079
+[task] nearby {"m": 128, "h": 8192}: correctness PASSED
+[task] nearby: kernel device 0.0097 ms, e2e 0.0153 ms; reference device 0.0096 ms, x0.9879
+[task] correctness: PASSED (3/3 shapes judged)
+[task] 3 shape(s): kernel device 0.0272 ms, e2e 0.033 ms; reference device 0.0271 ms, x0.9979; clock unlocked
+
+=== JSON ===
+{
+  "correctness": {
+    "pass": true,
+    "status": "PASSED",
+    "max_abs": 0.0,
+    "max_rel": 0.001893939393939394,
+    "matched_ratio": 1.0,
+    "n_workloads": 3,
+    "workloads": [
+      {
+        "name": "turn1",
+        "status": "PASSED",
+        "max_abs": 0.0,
+        "matched_ratio": 1.0
+      },
+      {
+        "name": "turn4",
+        "status": "PASSED",
+        "max_abs": 0.0,
+        "matched_ratio": 1.0
+      },
+      {
+        "name": "nearby",
+        "status": "PASSED",
+        "max_abs": 0.0,
+        "matched_ratio": 1.0
+      }
+    ],
+    "tolerance": {
+      "outputs": {
+        "sout": 3.1775365956889727e-07,
+        "nout": 0.0078125
+      },
+      "rule": "max|y - judge| / max|judge| <= tolerance per output (finite positions); non-finite values where the judge has them; integer / bool outputs exact"
+    },
+    "seed": null,
+    "max_diff": 0.0,
+    "checks": [
+      {
+        "workload": "turn1",
+        "group": "typical",
+        "output": "sout",
+        "error": 1.549147438325923e-07,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn1",
+        "group": "typical",
+        "output": "nout",
+        "error": 0.0008992805755395684,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "turn1",
+        "group": "near_zero",
+        "output": "sout",
+        "error": 1.45201201917469e-07,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn1",
+        "group": "near_zero",
+        "output": "nout",
+        "error": 0.0011363636363636363,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "turn1",
+        "group": "outliers",
+        "output": "sout",
+        "error": 6.429688081685844e-08,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn1",
+        "group": "outliers",
+        "output": "nout",
+        "error": 0.0012077294685990338,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "turn4",
+        "group": "typical",
+        "output": "sout",
+        "error": 1.304733913870339e-07,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn4",
+        "group": "typical",
+        "output": "nout",
+        "error": 0.00078125,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "turn4",
+        "group": "near_zero",
+        "output": "sout",
+        "error": 1.5887682978444864e-07,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn4",
+        "group": "near_zero",
+        "output": "nout",
+        "error": 0.001893939393939394,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "turn4",
+        "group": "outliers",
+        "output": "sout",
+        "error": 6.75622584522581e-08,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "turn4",
+        "group": "outliers",
+        "output": "nout",
+        "error": 0.00102880658436214,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "nearby",
+        "group": "typical",
+        "output": "sout",
+        "error": 1.5784847477727383e-07,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "nearby",
+        "group": "typical",
+        "output": "nout",
+        "error": 0.00024509803921568627,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "nearby",
+        "group": "near_zero",
+        "output": "sout",
+        "error": 9.79276549656176e-08,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "nearby",
+        "group": "near_zero",
+        "output": "nout",
+        "error": 0.0005506607929515419,
+        "tolerance": 0.0078125
+      },
+      {
+        "workload": "nearby",
+        "group": "outliers",
+        "output": "sout",
+        "error": 6.689786121516887e-08,
+        "tolerance": 3.1775365956889727e-07
+      },
+      {
+        "workload": "nearby",
+        "group": "outliers",
+        "output": "nout",
+        "error": 0.00017857142857142857,
+        "tolerance": 0.0078125
+      }
+    ]
+  },
+  "performance": {
+    "bwd_median_ms": 0.033,
+    "min_ms": 0.032,
+    "device_median_ms": 0.0272,
+    "host_enqueue_ms": 0.0067,
+    "device_window_basis": "cuda_graph",
+    "host_bound_ratio": null,
+    "in_job_ref": "paired",
+    "ref_median_ms": 0.0476,
+    "ref_device_ms": 0.0271,
+    "ref_host_enqueue_ms": 0.0203,
+    "vs_ref": 1.4457,
+    "vs_ref_device": 0.9979,
+    "ref_host_bound_ratio": null,
+    "aggregate": "geomean",
+    "n_workloads": 3,
+    "leaderboard": {
+      "suite": "forgekernel",
+      "upstream": "forgekernel task protocol (docs/design/v1-launch.md)",
+      "timer": "timing.py",
+      "protocol": {
+        "aggregate": "geomean over input groups",
+        "window": "device"
+      },
+      "definition": "muse_prefill_boundary",
+      "reference": "the task's reference (run.py:run)",
+      "clock": "unlocked",
+      "reading": "geometric mean over 3 workloads of: geometric mean over the shape's input groups of timing.py's windows",
+      "workloads": [
+        "turn1",
+        "turn4",
+        "nearby"
+      ]
+    },
+    "workloads": [
+      {
+        "name": "turn1",
+        "axes": {
+          "m": 753,
+          "h": 8192
+        },
+        "bwd_median_ms": 0.0279,
+        "min_ms": 0.0271,
+        "device_median_ms": 0.0255,
+        "host_enqueue_ms": 0.0062,
+        "host_bound_ratio": null,
+        "aggregate": "geomean",
+        "n_workloads": 3,
+        "in_job_ref": "paired",
+        "ref_median_ms": 0.0389,
+        "vs_ref": 1.3968,
+        "ref_device_ms": 0.0254,
+        "vs_ref_device": 0.998,
+        "ref_host_enqueue_ms": 0.0198,
+        "ref_host_bound_ratio": null,
+        "workloads": [
+          {
+            "bwd_median_ms": 0.0279,
+            "min_ms": 0.0269,
+            "device_median_ms": 0.0251,
+            "device_readings_ms": [
+              0.0222,
+              0.0222
+            ],
+            "host_enqueue_ms": 0.0062,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0391,
+            "vs_ref": 1.4036,
+            "ref_device_ms": 0.0251,
+            "vs_ref_device": 1.0019,
+            "ref_device_readings_ms": [
+              0.0207,
+              0.0207
+            ],
+            "ref_host_enqueue_ms": 0.0197,
+            "ref_host_bound_ratio": null,
+            "name": "typical",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0279,
+            "min_ms": 0.0271,
+            "device_median_ms": 0.0251,
+            "device_readings_ms": [
+              0.0223,
+              0.0223
+            ],
+            "host_enqueue_ms": 0.0063,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0388,
+            "vs_ref": 1.3891,
+            "ref_device_ms": 0.025,
+            "vs_ref_device": 0.9968,
+            "ref_device_readings_ms": [
+              0.0208,
+              0.0208
+            ],
+            "ref_host_enqueue_ms": 0.0197,
+            "ref_host_bound_ratio": null,
+            "name": "near_zero",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0278,
+            "min_ms": 0.0272,
+            "device_median_ms": 0.0264,
+            "device_readings_ms": [
+              0.0223,
+              0.0222
+            ],
+            "host_enqueue_ms": 0.0063,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0389,
+            "vs_ref": 1.3977,
+            "ref_device_ms": 0.0262,
+            "vs_ref_device": 0.9951,
+            "ref_device_readings_ms": [
+              0.0208,
+              0.0208
+            ],
+            "ref_host_enqueue_ms": 0.0198,
+            "ref_host_bound_ratio": null,
+            "name": "outliers",
+            "device_window_basis": "cuda_graph"
+          }
+        ],
+        "device_window_basis": "cuda_graph",
+        "leaderboard": {
+          "suite": "forgekernel",
+          "upstream": "forgekernel task protocol (docs/design/v1-launch.md)",
+          "timer": "timing.py",
+          "protocol": {
+            "aggregate": "geomean over input groups",
+            "window": "device"
+          },
+          "reading": "geometric mean over the shape's input groups of timing.py's windows",
+          "kernel_per_set_ms": [
+            0.0251,
+            0.0251,
+            0.0264
+          ],
+          "ref_per_set_ms": [
+            0.0251,
+            0.025,
+            0.0262
+          ],
+          "definition": "muse_prefill_boundary",
+          "workload": "turn1",
+          "reference": "the task's reference (run.py:run)",
+          "clock": "unlocked"
+        }
+      },
+      {
+        "name": "turn4",
+        "axes": {
+          "m": 3012,
+          "h": 8192
+        },
+        "bwd_median_ms": 0.0841,
+        "min_ms": 0.0824,
+        "device_median_ms": 0.0813,
+        "host_enqueue_ms": 0.0072,
+        "host_bound_ratio": null,
+        "aggregate": "geomean",
+        "n_workloads": 3,
+        "in_job_ref": "paired",
+        "ref_median_ms": 0.0958,
+        "vs_ref": 1.1399,
+        "ref_device_ms": 0.0819,
+        "vs_ref_device": 1.0079,
+        "ref_host_enqueue_ms": 0.0206,
+        "ref_host_bound_ratio": null,
+        "workloads": [
+          {
+            "bwd_median_ms": 0.0838,
+            "min_ms": 0.0824,
+            "device_median_ms": 0.0812,
+            "device_readings_ms": [
+              0.078,
+              0.078
+            ],
+            "host_enqueue_ms": 0.0072,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0956,
+            "vs_ref": 1.1413,
+            "ref_device_ms": 0.0819,
+            "vs_ref_device": 1.0093,
+            "ref_device_readings_ms": [
+              0.0769,
+              0.0769
+            ],
+            "ref_host_enqueue_ms": 0.0206,
+            "ref_host_bound_ratio": null,
+            "name": "typical",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0843,
+            "min_ms": 0.0822,
+            "device_median_ms": 0.0815,
+            "device_readings_ms": [
+              0.0784,
+              0.0785
+            ],
+            "host_enqueue_ms": 0.0071,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0959,
+            "vs_ref": 1.1375,
+            "ref_device_ms": 0.0822,
+            "vs_ref_device": 1.008,
+            "ref_device_readings_ms": [
+              0.0772,
+              0.0772
+            ],
+            "ref_host_enqueue_ms": 0.0207,
+            "ref_host_bound_ratio": null,
+            "name": "near_zero",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0841,
+            "min_ms": 0.0826,
+            "device_median_ms": 0.081,
+            "device_readings_ms": [
+              0.0783,
+              0.0783
+            ],
+            "host_enqueue_ms": 0.0072,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.096,
+            "vs_ref": 1.1409,
+            "ref_device_ms": 0.0816,
+            "vs_ref_device": 1.0065,
+            "ref_device_readings_ms": [
+              0.0772,
+              0.0772
+            ],
+            "ref_host_enqueue_ms": 0.0206,
+            "ref_host_bound_ratio": null,
+            "name": "outliers",
+            "device_window_basis": "cuda_graph"
+          }
+        ],
+        "device_window_basis": "cuda_graph",
+        "leaderboard": {
+          "suite": "forgekernel",
+          "upstream": "forgekernel task protocol (docs/design/v1-launch.md)",
+          "timer": "timing.py",
+          "protocol": {
+            "aggregate": "geomean over input groups",
+            "window": "device"
+          },
+          "reading": "geometric mean over the shape's input groups of timing.py's windows",
+          "kernel_per_set_ms": [
+            0.0812,
+            0.0815,
+            0.081
+          ],
+          "ref_per_set_ms": [
+            0.0819,
+            0.0822,
+            0.0816
+          ],
+          "definition": "muse_prefill_boundary",
+          "workload": "turn4",
+          "reference": "the task's reference (run.py:run)",
+          "clock": "unlocked"
+        }
+      },
+      {
+        "name": "nearby",
+        "axes": {
+          "m": 128,
+          "h": 8192
+        },
+        "bwd_median_ms": 0.0153,
+        "min_ms": 0.0147,
+        "device_median_ms": 0.0097,
+        "host_enqueue_ms": 0.0068,
+        "host_bound_ratio": null,
+        "aggregate": "geomean",
+        "n_workloads": 3,
+        "in_job_ref": "paired",
+        "ref_median_ms": 0.029,
+        "vs_ref": 1.8979,
+        "ref_device_ms": 0.0096,
+        "vs_ref_device": 0.9879,
+        "ref_host_enqueue_ms": 0.0204,
+        "ref_host_bound_ratio": null,
+        "workloads": [
+          {
+            "bwd_median_ms": 0.0152,
+            "min_ms": 0.0146,
+            "device_median_ms": 0.0098,
+            "device_readings_ms": [
+              0.007,
+              0.007
+            ],
+            "host_enqueue_ms": 0.0069,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0292,
+            "vs_ref": 1.916,
+            "ref_device_ms": 0.0095,
+            "vs_ref_device": 0.9705,
+            "ref_device_readings_ms": [
+              0.0206,
+              0.0206
+            ],
+            "ref_host_enqueue_ms": 0.0203,
+            "ref_host_bound_ratio": null,
+            "name": "typical",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0153,
+            "min_ms": 0.0148,
+            "device_median_ms": 0.0098,
+            "device_readings_ms": [
+              0.0069,
+              0.007
+            ],
+            "host_enqueue_ms": 0.0067,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.029,
+            "vs_ref": 1.8954,
+            "ref_device_ms": 0.0097,
+            "vs_ref_device": 0.9951,
+            "ref_device_readings_ms": [
+              0.0206,
+              0.0206
+            ],
+            "ref_host_enqueue_ms": 0.0204,
+            "ref_host_bound_ratio": null,
+            "name": "near_zero",
+            "device_window_basis": "cuda_graph"
+          },
+          {
+            "bwd_median_ms": 0.0154,
+            "min_ms": 0.0147,
+            "device_median_ms": 0.0096,
+            "device_readings_ms": [
+              0.007,
+              0.0071
+            ],
+            "host_enqueue_ms": 0.0068,
+            "host_bound_ratio": null,
+            "in_job_ref": "paired",
+            "ref_median_ms": 0.0289,
+            "vs_ref": 1.8824,
+            "ref_device_ms": 0.0095,
+            "vs_ref_device": 0.9983,
+            "ref_device_readings_ms": [
+              0.0206,
+              0.0206
+            ],
+            "ref_host_enqueue_ms": 0.0204,
+            "ref_host_bound_ratio": null,
+            "name": "outliers",
+            "device_window_basis": "cuda_graph"
+          }
+        ],
+        "device_window_basis": "cuda_graph",
+        "leaderboard": {
+          "suite": "forgekernel",
+          "upstream": "forgekernel task protocol (docs/design/v1-launch.md)",
+          "timer": "timing.py",
+          "protocol": {
+            "aggregate": "geomean over input groups",
+            "window": "device"
+          },
+          "reading": "geometric mean over the shape's input groups of timing.py's windows",
+          "kernel_per_set_ms": [
+            0.0098,
+            0.0098,
+            0.0096
+          ],
+          "ref_per_set_ms": [
+            0.0095,
+            0.0097,
+            0.0095
+          ],
+          "definition": "muse_prefill_boundary",
+          "workload": "nearby",
+          "reference": "the task's reference (run.py:run)",
+          "clock": "unlocked"
+        }
+      }
+    ]
+  }
+}
+
+[gpu_entry.sh] task=all finished
