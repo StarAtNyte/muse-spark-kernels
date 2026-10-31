@@ -1,0 +1,78 @@
+{
+  "op": "muse_attention_sliding",
+  "ms": 0.0393,
+  "role": "architecture",
+  "job": "1793445787",
+  "shape": "decode1 {\"batch\": 1, \"length\": 1, \"pages\": 80001, \"table_len\": 80001, \"tokens\": 1}, verify1 {\"batch\": 1, \"length\": 8, \"pages\": 80008, \"table_len\": 80008, \"tokens\": 8}, decode16 {\"batch\": 16, \"length\": 1, \"pages\": 1280016, \"table_len\": 80001, \"tokens\": 16}",
+  "hardware": "sm90",
+  "cluster": "modal:H200:lmsysorg/sglang:dev-muse-spark-open",
+  "ref_name": "the task's reference (run.py:run)",
+  "tflops": null,
+  "mfu": null,
+  "ms_device": 0.0106,
+  "device_window_basis": "cuda_graph",
+  "ms_device_plain": null,
+  "ms_device_graph": null,
+  "host_enqueue_ms": 0.0248,
+  "host_bound_ratio": null,
+  "ncu": {
+    "time_ns": 8352,
+    "regs_per_thread": 96,
+    "spill_ld_sectors": 0,
+    "spill_st_sectors": 0,
+    "bankconf_st": 429.3333333333333,
+    "bankconf_ld": 2901.3333333333335,
+    "tensor_pct": 0.02,
+    "warp_active_pct": 0.59,
+    "stall_long_sb": 1.59,
+    "stall_mio": 0.06,
+    "stall_barrier": 1.26,
+    "dram_pct": 0.31,
+    "dram_bytes_read": 476245.3333333333,
+    "dram_bytes_write": 0,
+    "smem_static": 0,
+    "smem_dynamic": 94208,
+    "block_size": 256,
+    "block_size_dims": "256x1x1",
+    "grid_size": 33,
+    "grid_size_dims": "33x1x1",
+    "dominant_launches": 3,
+    "kernel_count": 3,
+    "total_launches": 9,
+    "total_time_ns": 68544.0,
+    "dominant_time_pct": 36.55
+  },
+  "kernels": [
+    {
+      "name": "void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)",
+      "launches": 3,
+      "time_ns": 25056.0,
+      "pct": 36.55
+    },
+    {
+      "name": "void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)",
+      "launches": 3,
+      "time_ns": 24736.0,
+      "pct": 36.09
+    },
+    {
+      "name": "void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)",
+      "launches": 3,
+      "time_ns": 18752.0,
+      "pct": 27.36
+    }
+  ],
+  "n_workloads": 3,
+  "workloads": [
+    "decode1",
+    "verify1",
+    "decode16"
+  ],
+  "samples_ms": [
+    0.0393,
+    0.0455,
+    0.0439
+  ],
+  "raw_stdout": "3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio\",\"inst\",\"0\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"dram__bytes_read.sum\",\"byte\",\"8,702,464\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"dram__bytes_write.sum\",\"byte\",\"0\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"dram__throughput.avg.pct_of_peak_sustained_elapsed\",\"%\",\"19.51\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"gpu__time_active.sum\",\"ns\",\"9,312\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum\",\"\",\"36,864\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum\",\"\",\"1,244\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum\",\"sector\",\"0\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum\",\"sector\",\"0\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"launch__registers_per_thread\",\"register/thread\",\"123\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"launch__shared_mem_per_block_dynamic\",\"byte/block\",\"58,368\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"launch__shared_mem_per_block_static\",\"byte/block\",\"0\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed\",\"%\",\"4.49\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"sm__warps_active.avg.pct_of_peak_sustained_elapsed\",\"%\",\"4.35\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio\",\"inst\",\"0.88\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio\",\"inst\",\"0.44\"\n\"8\",\"178\",\"python3.12\",\"127.0.0.1\",\"void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)\",\"1\",\"7\",\"(128, 1, 1)\",\"(8, 16, 1)\",\"0\",\"9.0\",\"Command line profiler metrics\",\"smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio\",\"inst\",\"0\"\n\n[gpu_entry.sh] task=sealref finished\n",
+  "schema_version": 1
+}

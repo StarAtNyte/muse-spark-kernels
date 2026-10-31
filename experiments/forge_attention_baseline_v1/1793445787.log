@@ -1,0 +1,195 @@
+[direct] Modal H200 branch=HEAD mode=sealref
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      sealref
+  hostname:  modal
+  date:      2026-10-31 11:23:23
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+[sealref] payload sha256 1129283485ea73a709273b9302a54f10a70e6ea7d4267613a8ed706b8b1d4fd9 (matches sealref.json); module sealref_5b82aa2c32, entry run, 2 file(s), languages ['pytorch']
+[sealref] check ok: [(1, 1, 1024), (80001, 1, 2, 64), (80001, 1, 2, 64)]
+[gpu_entry.sh] timeout=300s
+[leaderboard] suite=forgekernel (forgekernel task protocol (docs/design/v1-launch.md)) definition=muse_attention_sliding workloads=decode1,verify1,decode16 (group of 3; geomean gate)
+
+=== JSON ===
+{
+  "median_ms": 0.0393,
+  "device_median_ms": 0.0106,
+  "device_window_basis": "cuda_graph",
+  "host_enqueue_ms": 0.0248,
+  "leaderboard_timer": "timing.py",
+  "clock": "unlocked",
+  "aggregate": "geomean",
+  "n_workloads": 3,
+  "workloads": [
+    {
+      "name": "decode1",
+      "median_ms": 0.039,
+      "device_median_ms": 0.0093
+    },
+    {
+      "name": "verify1",
+      "median_ms": 0.0391,
+      "device_median_ms": 0.0115
+    },
+    {
+      "name": "decode16",
+      "median_ms": 0.0399,
+      "device_median_ms": 0.0112
+    }
+  ]
+}
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 178 (/usr/bin/python3.12)
+==PROF== Disconnected from process 178
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","584,448"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","1.85"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","6,624"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","3,072"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","809"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.39"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","0.99"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","1.85"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","1.46"
+"0","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","68,864"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","0.24"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","5,920"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","192"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.02"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","0.35"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","1.22"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","2.49"
+"1","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","584,448"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","1.97"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","6,208"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","3,072"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","652"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.39"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","0.95"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","1.96"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","1.57"
+"2","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)","1","7","(128, 1, 1)","(32, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","647,936"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","1.66"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","8,128"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","4,224"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","674"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","94,208"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.44"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","2.49"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","2.67"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","0.82"
+"3","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0.14"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","132,096"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","0.31"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","8,800"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","256"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","31"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","94,208"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.02"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","0.59"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","1.26"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","1.59"
+"4","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0.06"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","648,704"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","1.66"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","8,128"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","4,224"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","583"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","96"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","94,208"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.44"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","2.48"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","2.70"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","0.90"
+"5","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)","1","7","(256, 1, 1)","(33, 1, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0.14"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","8,701,696"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","256"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","20.11"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","9,024"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","36,864"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","1,301"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","123"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","4.46"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","4.22"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","0.86"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","0.44"
+"6","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","860,416"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","2.80"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","6,400"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","4,800"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","445"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","123"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","0.57"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","1.84"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","1.52"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","1.76"
+"7","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","8,702,464"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__bytes_write.sum","byte","0"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","19.51"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","gpu__time_active.sum","ns","9,312"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum","","36,864"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum","","1,244"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_ld.sum","sector","0"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","l1tex__t_sectors_pipe_lsu_mem_local_op_st.sum","sector","0"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__registers_per_thread","register/thread","123"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_dynamic","byte/block","58,368"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","launch__shared_mem_per_block_static","byte/block","0"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed","%","4.49"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_elapsed","%","4.35"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio","inst","0.88"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio","inst","0.44"
+"8","178","python3.12","127.0.0.1","void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)","1","7","(128, 1, 1)","(8, 16, 1)","0","9.0","Command line profiler metrics","smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio","inst","0"
+
+[gpu_entry.sh] task=sealref finished
