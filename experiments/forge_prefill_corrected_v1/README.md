@@ -1,0 +1,7 @@
+# Corrected Forge boundary candidate
+
+Starting from the rejected Forge candidate, this variant uses PyTorch's current CUDA stream and checks launch errors, removes a shared-memory initialization that could race reduction writes, and applies `(1 + gpre)` in the output normalization. Self-contained `kernel.cu` SHA-256: `596525f7a28e4ccb4c0b6ec0f246ef1a0babe04a1f9ccc180d6d98e911118488`.
+
+The exploratory H200 screen (`modal.log`, app `ap-t5xk8vjCyJBzlMWpB9zRf4`) used the same stream and error-check modifications injected by `experiments/forge_prefill_stream_fix_v1/driver.py`. On one seed and a non-default stream, normalized maximum errors for FP32 `sout` were 1.09e-7 / 1.44e-7 / 1.24e-7 for 128 / 753 / 3012 rows; BF16 `nout` errors were 0.000460 / 0.000443 / 0.002262. This screen compares the mathematical formula and is not the Forge or official gate.
+
+The self-contained source is in Forge operator branch `forge-boundary-manual-fix`, commit `47ed9f9`. Focused full gate job `1793429090` is pending. It must pass all input groups and shapes and show a worthwhile gain before full-layer integration and the official challenge check; no score is claimed.
