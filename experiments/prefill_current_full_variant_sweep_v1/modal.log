@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-vT6YogxVNWBh2V31MjQ6MT
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RESULT {"batch": 1, "seed": 539, "variant": 0, "base_splits": 2, "splits": 11, "relative_l2": 0.014904147014021873, "parent_us": 368.6559945344925, "candidate_us": 567.8240060806274, "speedup": 0.6493934245874087}
+RESULT {"batch": 1, "seed": 539, "variant": 1, "base_splits": 2, "splits": 11, "relative_l2": 0.014911833219230175, "parent_us": 368.4159964323044, "candidate_us": 557.4880242347717, "speedup": 0.6612587858666059}
+RESULT {"batch": 1, "seed": 539, "variant": 8, "base_splits": 2, "splits": 2, "relative_l2": 0.0, "parent_us": 367.44000017642975, "candidate_us": 396.91200852394104, "speedup": 0.9263153996419771}
+RESULT {"batch": 1, "seed": 539, "variant": 9, "base_splits": 2, "splits": 2, "relative_l2": 0.0012016338296234608, "parent_us": 367.21599102020264, "candidate_us": 439.93599712848663, "speedup": 0.8345338966423936}
+RESULT {"batch": 1, "seed": 539, "variant": 16, "base_splits": 2, "splits": 11, "relative_l2": 0.014904147014021873, "parent_us": 367.2799915075302, "candidate_us": 486.01600527763367, "speedup": 0.7557781307464797}
+RESULT {"batch": 1, "seed": 539, "variant": 24, "base_splits": 2, "splits": 2, "relative_l2": 0.0, "parent_us": 367.42399632930756, "candidate_us": 419.13600265979767, "speedup": 0.876476052741241}
+RESULT {"batch": 1, "seed": 1427, "variant": 0, "base_splits": 2, "splits": 11, "relative_l2": 0.014853411354124546, "parent_us": 369.51999366283417, "candidate_us": 568.5279965400696, "speedup": 0.6496549385490649}
+RESULT {"batch": 1, "seed": 1427, "variant": 1, "base_splits": 2, "splits": 11, "relative_l2": 0.014857851900160313, "parent_us": 368.99200081825256, "candidate_us": 557.9040050506592, "speedup": 0.6618529646286765}
+RESULT {"batch": 1, "seed": 1427, "variant": 8, "base_splits": 2, "splits": 2, "relative_l2": 0.0, "parent_us": 368.80001425743103, "candidate_us": 397.69600331783295, "speedup": 0.9273949017008015}
+RESULT {"batch": 1, "seed": 1427, "variant": 9, "base_splits": 2, "splits": 2, "relative_l2": 0.0011003668187186122, "parent_us": 368.4320002794266, "candidate_us": 441.9039934873581, "speedup": 0.8338100518043496}
+RESULT {"batch": 1, "seed": 1427, "variant": 16, "base_splits": 2, "splits": 11, "relative_l2": 0.014853411354124546, "parent_us": 368.4320002794266, "candidate_us": 486.38400435447693, "speedup": 0.7575352464933386}
+RESULT {"batch": 1, "seed": 1427, "variant": 24, "base_splits": 2, "splits": 2, "relative_l2": 0.0, "parent_us": 368.51200461387634, "candidate_us": 420.52799463272095, "speedup": 0.8756289283307238}
+RESULT {"batch": 4, "seed": 539, "variant": 0, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1403.3600091934204, "candidate_us": 2083.6960077285767, "speedup": 0.6737007320947639}
+RESULT {"batch": 4, "seed": 539, "variant": 1, "base_splits": 1, "splits": 1, "relative_l2": 0.0012423120206221938, "parent_us": 1403.8880467414856, "candidate_us": 2112.623929977417, "speedup": 0.6643784837535484}
+RESULT {"batch": 4, "seed": 539, "variant": 8, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1400.6080031394958, "candidate_us": 1508.1440210342407, "speedup": 0.928610869030254}
+RESULT {"batch": 4, "seed": 539, "variant": 9, "base_splits": 1, "splits": 1, "relative_l2": 0.0012423120206221938, "parent_us": 1399.2959856987, "candidate_us": 1652.4320244789124, "speedup": 0.8456215535895464}
+RESULT {"batch": 4, "seed": 539, "variant": 16, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1386.5119814872742, "candidate_us": 1846.8319773674011, "speedup": 0.7512086302388647}
+RESULT {"batch": 4, "seed": 539, "variant": 24, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1388.3200287818909, "candidate_us": 1580.2879929542542, "speedup": 0.8783269984753956}
+RESULT {"batch": 4, "seed": 1427, "variant": 0, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1388.9120221138, "candidate_us": 2061.600089073181, "speedup": 0.6735868309703574}
+RESULT {"batch": 4, "seed": 1427, "variant": 1, "base_splits": 1, "splits": 1, "relative_l2": 0.0011951833730563521, "parent_us": 1386.73597574234, "candidate_us": 2090.864062309265, "speedup": 0.6631597589770514}
+RESULT {"batch": 4, "seed": 1427, "variant": 8, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1389.855980873108, "candidate_us": 1496.9279766082764, "speedup": 0.9285653630938769}
+RESULT {"batch": 4, "seed": 1427, "variant": 9, "base_splits": 1, "splits": 1, "relative_l2": 0.0011951833730563521, "parent_us": 1389.3759846687317, "candidate_us": 1641.7760252952576, "speedup": 0.846188375491322}
+RESULT {"batch": 4, "seed": 1427, "variant": 16, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1390.5600309371948, "candidate_us": 1847.487986087799, "speedup": 0.7530996882526109}
+RESULT {"batch": 4, "seed": 1427, "variant": 24, "base_splits": 1, "splits": 1, "relative_l2": 0.0, "parent_us": 1390.6399607658386, "candidate_us": 1583.3919644355774, "speedup": 0.8781307309983686}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-vT6YogxVNWBh2V31MjQ6MT
