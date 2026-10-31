@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-rnz4FI1r0RRa87F4Txq9Dv
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ARCH 90a RETURN 0 
+ DEVICE NVIDIA H200 CAP (9, 0) TORCH 2.14.1+cu130
+PRE -4.767671585083008
+LOADED /root/.cache/torch_extensions/py312_cu130/arch_probe_90a/arch_probe_90a.so
+ELF ELF file    1: arch_probe_90a.1.sm_90a.cubin
+
+POST 2.6717798709869385
+KERNEL PASS
+ 
+ 
+ARCH 100a RETURN 0 
+ DEVICE NVIDIA H200 CAP (9, 0) TORCH 2.14.1+cu130
+PRE 8.579395294189453
+LOADED /root/.cache/torch_extensions/py312_cu130/arch_probe_100a/arch_probe_100a.so
+ELF ELF file    1: arch_probe_100a.1.sm_100a.cubin
+
+POST -2.845846176147461
+KERNEL PASS
+ 
+ 
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-rnz4FI1r0RRa87F4Txq9Dv
