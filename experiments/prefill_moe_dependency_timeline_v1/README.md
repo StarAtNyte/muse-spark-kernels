@@ -36,3 +36,13 @@ in the log. `verify_trace.py` successfully decoded all three and checked item
 counts and basic timestamp consistency. Focus next on other synchronization,
 producer/consumer stalls, or work distribution rather than assuming these
 particular dependency polls dominate.
+
+`analyze_balance.py` analyzes the same traces by CTA. All 132 CTAs recorded
+items in each run; their final-item end times spanned 11.14–12.42 µs, versus
+220–232 µs between the first and last recorded item events. The first
+second-phase items began about 10–11 µs before the last first-phase items
+finished. Inter-item event gaps had 0.160 µs median and 0.192 µs 90th
+percentile. Instrumentation perturbs execution, and these event gaps exclude
+unobserved work; neither the end spread nor the event span is a theoretical
+bound. The data weakens the case for a large scheduling-tail win on these
+specific inputs.
