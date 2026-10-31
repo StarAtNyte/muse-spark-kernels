@@ -28,3 +28,12 @@ its tuner from running. The subprocess is limited to 300 seconds; raw output
 and any failure are in `modal.log`. This is an exploratory screen, not an
 official result. No submission or promotion without further race validation
 and the complete official check.
+
+Run `ap-lXiZjxlPCXfR0t6YnhrjvP` completed with return code 0. Both variants
+passed the reference check in all three cases. Parent/candidate full-layer
+median times were 511.1/511.2 µs for turn-1 sliding, 2996.8/2991.6 µs for
+turn-4 full, and 9272.2/9289.4 µs for first-turn sliding. This one-seed
+screen shows no consistent gain, so retain the barrier and do not submit this
+candidate. The checks do not establish race freedom; no race-validation run
+was undertaken after the negative performance screen. Raw output is
+`modal.log`.
