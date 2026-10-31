@@ -17,3 +17,11 @@ sliding, query length 753. It pins attention because the SGLang stub cannot
 run the attention tuner. One seed per case and local checks do not establish an
 official score; full official correctness is required before promotion. Raw
 results and failures are saved in `modal.log`.
+
+Run `ap-pW13L402n4Rysb728HVnuL` completed with return code 0. Both variants
+passed each reference screen. Parent/candidate full-layer medians were
+513.4/512.1 µs for B=1 sliding, 885.2/881.3 µs for B=1 full, and
+1644.8/1647.3 µs for B=4 sliding. These one-seed, sub-0.5% mixed results are
+too small to establish a gain. A multi-seed paired-ratio repeat of B=1 sliding
+is running in `../prefill_moe_small_order2_repeat_v1/`; retain the incumbent
+pending stronger evidence.

@@ -1,0 +1,58 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pW13L402n4Rysb728HVnuL
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+MOE SMALL ORDER 2 SCREEN
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 25.6us, best 25.6us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.7us, best 69.7us algo None of 8
+LT tune T=753 unpooler: torch.mm 71.0us, best 71.0us algo None of 8
+LT tune T=3012 qkv: torch.mm 148.6us, best 148.6us algo None of 8
+LT tune T=3012 o: torch.mm 76.3us, best 76.3us algo None of 8
+LT tune T=3012 router: torch.mm 40.8us, best 40.8us algo None of 8
+LT tune T=3012 pooler: torch.mm 257.3us, best 257.3us algo None of 8
+LT tune T=3012 unpooler: torch.mm 257.0us, best 257.0us algo None of 8
+LT tune T=16384 qkv: torch.mm 766.1us, best 766.1us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 204.1us, best 193.1us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47980073408304'>")
+SHARED_PLANS
+CHECK base True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+CHECK candidate True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+ROW {"case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "base_us": 513.4, "candidate_us": 512.1, "gain": 1.0025}
+CHECK base True update relative L2 error 6.088e-02 (worst row 9.617e-02) [bound 0.149]; attention input relative L2 error 3.942e-02 (worst row 7.055e-02) [bound 0.097]
+CHECK candidate True update relative L2 error 6.088e-02 (worst row 9.617e-02) [bound 0.149]; attention input relative L2 error 3.942e-02 (worst row 7.055e-02) [bound 0.097]
+ROW {"case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "full"}, "base_us": 885.2, "candidate_us": 881.3, "gain": 1.0044}
+CHECK base True update relative L2 error 5.219e-02 (worst row 1.280e-01) [bound 0.125]; attention input relative L2 error 3.365e-02 (worst row 9.220e-02) [bound 0.080]
+CHECK candidate True update relative L2 error 5.219e-02 (worst row 1.280e-01) [bound 0.125]; attention input relative L2 error 3.365e-02 (worst row 9.220e-02) [bound 0.080]
+ROW {"case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "base_us": 1644.8, "candidate_us": 1647.3, "gain": 0.9985}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-pW13L402n4Rysb728HVnuL
