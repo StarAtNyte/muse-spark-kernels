@@ -55,6 +55,12 @@ small local gain. The exact checked hash was submitted as scored job
 promoted until the scored result is available. Status and profiles are in
 `../prefill_head_interleave_check_v1/`.
 
+Scored job `e3127297ccc1451f` passed with no flags at **1.79978×** (95% CI
+1.77278–1.82677), below the published best **1.80923×**. The intervals overlap,
+so separate-run scores do not establish the small optimization's effect. The
+public-best source remains canonical; scored status and full profiles are
+archived with the check. No new leaderboard best is claimed.
+
 `schedule_model.py` models each CTA's cost as its number of 128-key tiles,
 with 132 identical workers greedily taking the next CTA. For query length
 16384 it predicts separate/interleaved makespans of 672/671 tiles at context

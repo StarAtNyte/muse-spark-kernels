@@ -16,3 +16,14 @@ scheduler and warp-stall sections. SGLang is stubbed and attention choice is
 pinned; the profile is diagnostic, not a judge measurement. The subprocess is
 bounded to 275 seconds inside the 300-second runner. Raw output and any errors
 are in `modal.log`.
+
+Run `ap-svbnhlEBEW1aqI8aPlmjds` completed with NCU and driver return code 0;
+the reference check passed. NCU collected 17 passes of the intended fused MoE
+kernel and reported 223.55 µs duration, 71.73% SM compute throughput, 40.77%
+DRAM throughput, 2.50 active warps and 0.55 eligible warps per scheduler, and
+0.38 issued warp per scheduler per cycle. GPU clocks were not fixed. Its
+Warp State section lacked the PC-sampling metric, so it provides no ranked
+stall causes. These counters are for one input, profiler replay and the pinned
+component setup; they do not prove a bottleneck or predict speedup. NCU's
+generic estimated speedup is not evidence that a realizable optimization
+exists. A follow-up full-set profile is required to obtain sampled stalls.
