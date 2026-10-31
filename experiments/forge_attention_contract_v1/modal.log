@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-HaScrhQad7dTeD313m2zAx
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+PARITY typical True True challenge L2 and cache checks passed (bound 0.123098) CORRUPTION False attention output L2 or row check failed (bound 0.123098)
+CASE {"group": "typical", "official_pass": true, "official_message": "relative L2 error 4.446e-02 (worst row 5.660e-02) [bound 0.123: 2.5 x the reference's 0.043 with FP8 E4M3 queries + 0.015]", "judgel2": 0.04439667612314224, "judge_maxnorm": 0.10059171915054321, "reference_l2": 0.044459033757448196, "judge_ref_l2": 0.0008979790145531297}
+PARITY short True True challenge L2 and cache checks passed (bound 0.1418) CORRUPTION False attention output L2 or row check failed (bound 0.1418)
+CASE {"group": "short", "official_pass": true, "official_message": "relative L2 error 5.245e-02 (worst row 6.938e-02) [bound 0.142: 2.5 x the reference's 0.051 with FP8 E4M3 queries + 0.015]", "judgel2": 0.052445560693740845, "judge_maxnorm": 0.11988303810358047, "reference_l2": 0.05244949832558632, "judge_ref_l2": 0.00020240746380295604}
+PARITY scaled True True challenge L2 and cache checks passed (bound 0.131507) CORRUPTION False attention output L2 or row check failed (bound 0.131507)
+CASE {"group": "scaled", "official_pass": true, "official_message": "relative L2 error 4.722e-02 (worst row 7.252e-02) [bound 0.133: 2.5 x the reference's 0.047 with FP8 E4M3 queries + 0.015]", "judgel2": 0.0472128763794899, "judge_maxnorm": 0.12355491518974304, "reference_l2": 0.047217272222042084, "judge_ref_l2": 0.0005689894314855337}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-HaScrhQad7dTeD313m2zAx

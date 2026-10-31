@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 01/10] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 01/11] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 02/10] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 02/11] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 03/10] Add Hopper knowledge index for Muse task
+Subject: [PATCH 03/11] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5956,7 +5956,7 @@ index 0000000..56f73a1
 From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:36:25 +0545
-Subject: [PATCH 04/10] Add cold graph task timing and Modal profiling
+Subject: [PATCH 04/11] Add cold graph task timing and Modal profiling
 
 ---
  docs/modal-delivery.md                        |  4 +-
@@ -6144,7 +6144,7 @@ index 6f27168..100d069 100644
 From 34d14600c597f71c41826398612314f113929b1c Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:39:51 +0545
-Subject: [PATCH 05/10] Add scored attention sliding reference task
+Subject: [PATCH 05/11] Add scored attention sliding reference task
 
 ---
  tasks/muse_attention_sliding/description.md   |   14 +
@@ -9434,7 +9434,7 @@ index 0000000..fb8e705
 From a8fc5f6f39055a1258fadfaca9bf3770d53c4e62 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:49:51 +0545
-Subject: [PATCH 06/10] Add O32 projection reference task
+Subject: [PATCH 06/11] Add O32 projection reference task
 
 ---
  tasks/muse_projection_o32/description.md      |    7 +
@@ -16768,7 +16768,7 @@ index 0000000..fb8e705
 From cbe7b6231ef7c395db3deccf8a5cdf8f7469dde0 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:50:47 +0545
-Subject: [PATCH 07/10] Use highest scored projection source as task baseline
+Subject: [PATCH 07/11] Use highest scored projection source as task baseline
 
 ---
  tasks/muse_projection_o32/description.md          | 2 +-
@@ -16814,7 +16814,7 @@ index f37a24f..da6c3e7 100644
 From bd406de32c342be04aefbd9f9982ca6f188529da Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 11:43:03 +0545
-Subject: [PATCH 08/10] Expose virtualenv sandbox helpers to Claude agent
+Subject: [PATCH 08/11] Expose virtualenv sandbox helpers to Claude agent
 
 ---
  scripts/agent-claude.sh | 8 +++++++-
@@ -16846,7 +16846,7 @@ index 394ea78..0f77d93 100755
 From 205d65138fa968f62890731ff5548e2d5e7af057 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 12:32:41 +0545
-Subject: [PATCH 09/10] Document H200 CUDA target for Muse attention
+Subject: [PATCH 09/11] Document H200 CUDA target for Muse attention
 
 ---
  tasks/muse_attention_sliding/description.md | 2 ++
@@ -16869,7 +16869,7 @@ index 46a2a00..c9f855b 100644
 From b0673b5062b0ff8f581fb25901f35f19eda71260 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 16:42:07 +0545
-Subject: [PATCH 10/10] Expose token axis for attention judge shapes
+Subject: [PATCH 10/11] Expose token axis for attention judge shapes
 
 ---
  tasks/muse_attention_sliding/shapes.json | 33 +++++++++++++++++++++---
@@ -16915,6 +16915,74 @@ index 0b40543..475a91f 100644
 +    }
 +  }
  ]
+-- 
+2.53.0
+
+
+From 3384d60ae09a50ecdf393d4ae07fb8e710d4305a Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Sat, 31 Oct 2026 17:05:13 +0545
+Subject: [PATCH 11/11] Use attention-specific correctness contract in Muse
+ task
+
+---
+ .../card_template/eval/leaderboard.py         | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/src/forgekernel/card_template/eval/leaderboard.py b/src/forgekernel/card_template/eval/leaderboard.py
+index d45e506..fe62df9 100644
+--- a/src/forgekernel/card_template/eval/leaderboard.py
++++ b/src/forgekernel/card_template/eval/leaderboard.py
+@@ -2309,6 +2309,8 @@ def task_correctness(problem: dict, impl, dps: bool, device, prec=None) -> tuple
+             return fail("INPUT_ERROR", f"input group {group['name']}: {type(exc).__name__}: {exc}")
+         sets.append(inp)
+         pristine = _precision_snapshot(prec, inp) if prec is not None and gi < PRECISION_SETS else None
++        custom = judge.__globals__.get("challenge_check") if problem["definition"].get("name") == "muse_attention_sliding" else None
++        pristine_custom = _clone(inp) if custom else None
+         refs = call_impl(problem, judge, _clone(inp), False, device, no_grad=True)
+         try:
+             outs = call_impl(problem, impl, inp, dps, device, no_grad=True)
+@@ -2319,6 +2321,16 @@ def task_correctness(problem: dict, impl, dps: bool, device, prec=None) -> tuple
+         if pristine is not None:
+             _precision_measure(problem, prec, f"group_{group['name']}", outs, refs, judge,
+                                pristine, device)
++        if custom:
++            try:
++                passed, message = custom(pristine_custom, outs)
++            except Exception as exc:
++                return fail("RUNTIME_ERROR", f"challenge check: {type(exc).__name__}: {exc}")
++            verdict["checks"].append({"group": group["name"], "contract": "muse_attention_challenge", "pass": bool(passed), "message": str(message)})
++            verdict["tolerance"] = {"rule": "muse attention dynamic FP8-query relative L2 and new-cache checks"}
++            if not passed:
++                return fail("INCORRECT_NUMERICAL", f"input group {group['name']}: {message}")
++            continue
+         for name, o, r in zip(names, outs, refs):
+             e, why = task_error(o, r, dtypes[name])
+             verdict["checks"].append({"group": group["name"], "output": name,
+@@ -2518,11 +2530,23 @@ def _task_calibrate(problem: dict, ref_fn, ref_dps: bool, device) -> int:
+             where = f"{v['_wl_name']}/{group['name']}"
+             try:
+                 inp = task_inputs(v, group, device, make_inputs)
++                custom = judge.__globals__.get("challenge_check") if v["definition"].get("name") == "muse_attention_sliding" else None
++                pristine_custom = _clone(inp) if custom else None
+                 refs = call_impl(v, judge, _clone(inp), False, device, no_grad=True)
+                 outs = call_impl(v, ref_fn, inp, ref_dps, device, no_grad=True)
+             except Exception as exc:  # noqa: BLE001
+                 problems.append(f"{where}: {type(exc).__name__}: {exc}")
+                 continue
++            if custom:
++                try:
++                    passed, message = custom(pristine_custom, outs)
++                except Exception as exc:
++                    problems.append(f"{where}: challenge check {type(exc).__name__}: {exc}")
++                    continue
++                rows.append({"shape": v["_wl_name"], "group": group["name"], "contract": "muse_attention_challenge", "pass": bool(passed), "message": str(message)})
++                if not passed:
++                    problems.append(f"{where}: {message}")
++                continue
+             for name, o, r in zip(outputs, outs, refs):
+                 e, why = task_error(o, r, outputs[name]["dtype"])
+                 rows.append({"shape": v["_wl_name"], "group": group["name"], "output": name,
 -- 
 2.53.0
 

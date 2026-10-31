@@ -2,7 +2,7 @@
 import torch
 
 
-def run(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale):
+def _reference(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale, query_fp8=False, new_kv=None):
     batch, length = qkv.shape[:2]
     qi, ki, vi, gate = qkv.split((1024,128,128,1024), dim=-1)
     q = qi.reshape(batch,length,16,64).float()
@@ -17,10 +17,13 @@ def run(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale
     def rotate(x):
         even,odd=x[...,::2],x[...,1::2]
         return torch.stack((even*c-odd*s,even*s+odd*c),dim=-1).flatten(-2)
-    q = rotate(q).bfloat16().float()
+    q = rotate(q)
+    q = (q / 5.4730064863875).to(torch.float8_e4m3fn).float() * 5.4730064863875 if query_fp8 else q.bfloat16().float()
     k = rotate(k)
     kn = (k/k_scale).to(torch.float8_e4m3fn)
     vn = (v/v_scale).to(torch.float8_e4m3fn)
+    if new_kv is not None:
+        kn, vn = new_kv
     k_cache.view(-1,2,64)[cache_loc.long()] = kn.reshape(-1,2,64)
     v_cache.view(-1,2,64)[cache_loc.long()] = vn.reshape(-1,2,64)
     result = torch.empty((batch,length,16,64),device=q.device)
@@ -37,6 +40,46 @@ def run(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale
     result=result*torch.rsqrt(result.square().mean(-1,keepdim=True)+1e-5)
     result=result*torch.sigmoid(gate.float()).reshape(batch,length,16,64)
     return result.reshape(batch,length,1024).bfloat16(),k_cache,v_cache
+
+
+def run(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale):
+    return _reference(qkv, seq_lens, cache_loc, k_cache, v_cache, page_table, k_scale, v_scale)
+
+
+def challenge_check(inputs, outputs):
+    """Challenge-relative-L2 and new-cache checks; inputs must be pristine clones."""
+    if len(inputs)!=8 or len(outputs)!=3:
+        return False, 'wrong input or output count'
+    qkv, seq, loc, kc, vc, table, ks, vs = inputs
+    out, kout, vout = outputs
+    if not all(isinstance(x,torch.Tensor) for x in outputs):
+        return False, 'outputs must be tensors'
+    if out.shape != (*qkv.shape[:2],1024) or out.dtype != torch.bfloat16:
+        return False, 'output shape or dtype mismatch'
+    if kout.shape!=kc.shape or vout.shape!=vc.shape or kout.dtype!=kc.dtype or vout.dtype!=vc.dtype:
+        return False, 'cache shape or dtype mismatch'
+    slots=loc.long(); shape=(*qkv.shape[:2],2,64)
+    gotk=kout.view(-1,2,64)[slots].reshape(shape); gotv=vout.view(-1,2,64)[slots].reshape(shape)
+    def relative(x,y):
+        x=x.float(); y=y.float()
+        return float(torch.linalg.vector_norm(x-y)/torch.linalg.vector_norm(y).clamp(min=1e-12))
+    def compare(x,y,tol):
+        if x.shape!=y.shape or x.dtype!=y.dtype or not bool(torch.isfinite(x.float()).all()): return False
+        x=x.float(); y=y.float(); diff=x-y
+        if relative(x,y)>tol: return False
+        d=diff.reshape(-1,y.shape[-1]).norm(dim=-1); r=y.reshape(-1,y.shape[-1]).norm(dim=-1)
+        floor=(0.1*r.mean()).clamp(min=1e-12)
+        return bool((d/torch.maximum(r,floor)<=5.0*tol).all())
+    expected,exk,exv=_reference(qkv,seq,loc,kc.clone(),vc.clone(),table,ks,vs)
+    exk=exk.view(-1,2,64)[slots].reshape(shape); exv=exv.view(-1,2,64)[slots].reshape(shape)
+    if not compare(gotk.float()*ks,exk.float()*ks,0.08): return False, 'new key cache differs'
+    if not compare(gotv.float()*vs,exv.float()*vs,0.08): return False, 'new value cache differs'
+    ref,_,_=_reference(qkv,seq,loc,kc.clone(),vc.clone(),table,ks,vs,new_kv=(gotk,gotv))
+    fp8,_,_=_reference(qkv,seq,loc,kc.clone(),vc.clone(),table,ks,vs,query_fp8=True,new_kv=(gotk,gotv))
+    ref=ref.bfloat16(); fp8=fp8.bfloat16()
+    tol=min(0.15,max(0.03,2.5*relative(fp8,ref)+0.015))
+    if not compare(out,ref,tol): return False, f'attention output L2 or row check failed (bound {tol:.6g})'
+    return True, f'challenge L2 and cache checks passed (bound {tol:.6g})'
 
 
 def make_inputs(axes, group, seed, device):

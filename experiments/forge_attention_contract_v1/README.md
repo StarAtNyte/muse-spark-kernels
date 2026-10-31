@@ -1,0 +1,7 @@
+# Focused attention correctness-contract parity
+
+The draft `challenge_check` in `dev/forgekernel/attention_judge/judge.py` checks newly written K/V entries using the challenge's relative-L2 and worst-row rules, then checks output against the candidate's own new entries with the dynamic FP8-query-aware bound. Inputs passed to it must be pristine clones because the candidate mutates caches.
+
+In this H200 diagnostic the draft check and the challenge's local checker both passed the same three verify1 inputs. The draft also rejected an output containing NaNs in all three cases. The calculated bounds were close but not identical (e.g. 0.1315 versus the challenge's displayed 0.133 for the scaled case), so these three examples do not prove general equivalence; the complete official challenge remains authoritative. Raw log and driver are archived here.
+
+Forge clone commit `3384d60` adds a task-name-scoped hook for this contract to its generated correctness and calibration path. A fresh run `.artifacts/muse_attention_sliding_261031-170529-76ed` passed static judge checks and calibration job `1793445645` is pending. It has not yet demonstrated end-to-end correctness. Local pytest invocation for two existing modules skipped both because local torch is unavailable; H200 evaluation is the meaningful runtime check.
