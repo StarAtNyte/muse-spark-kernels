@@ -1,0 +1,58 @@
+[direct] Modal H200 branch=forge-student-muse_prefill_boundary-i2 mode=all
+[direct] GPU modal is in use by another forgekernel run -- waiting
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      all
+  hostname:  modal
+  date:      2026-10-31 06:35:29
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+[leaderboard] suite=forgekernel (forgekernel task protocol (docs/design/v1-launch.md)) definition=muse_prefill_boundary workloads=turn1,turn4,nearby (group of 3; geomean gate)
+[task] turn1 {"m": 753, "h": 8192}: correctness INCORRECT_NUMERICAL — input group typical output sout: normalized error 0.8101 > tolerance 3.178e-07
+[task] correctness: INCORRECT_NUMERICAL (1/3 shapes judged) — workload turn1 {"m": 753, "h": 8192}: input group typical output sout: normalized error 0.8101 > tolerance 3.178e-07 (2 later workload(s) not run)
+
+=== JSON ===
+{
+  "correctness": {
+    "pass": false,
+    "status": "INCORRECT_NUMERICAL",
+    "max_abs": 0.0,
+    "max_rel": 0.810132655818865,
+    "matched_ratio": 1.0,
+    "n_workloads": 3,
+    "workloads": [
+      {
+        "name": "turn1",
+        "status": "INCORRECT_NUMERICAL",
+        "max_abs": 0.0,
+        "matched_ratio": 1.0
+      }
+    ],
+    "tolerance": {
+      "outputs": {
+        "sout": 3.1775365956889727e-07,
+        "nout": 0.0078125
+      },
+      "rule": "max|y - judge| / max|judge| <= tolerance per output (finite positions); non-finite values where the judge has them; integer / bool outputs exact"
+    },
+    "seed": null,
+    "error": "workload turn1 {\"m\": 753, \"h\": 8192}: input group typical output sout: normalized error 0.8101 > tolerance 3.178e-07 (2 later workload(s) not run)",
+    "max_diff": 0.0,
+    "checks": [
+      {
+        "workload": "turn1",
+        "group": "typical",
+        "output": "sout",
+        "error": 0.810132655818865,
+        "tolerance": 3.1775365956889727e-07
+      }
+    ]
+  },
+  "performance": null
+}
+
+[gpu_entry.sh] task=all finished
