@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-x5aKHSjCZS6D1HvKjLJ7sv
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_roundtr
+│   ip_v1/driver.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_roundtr
+│   ip_v1/modal_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /tmp/muse-unweight
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROUNDTRIP {"label": "qkv_gate", "shape": [2304, 8192], "errors": 0, "encoded_bytes": 6089104, "sm_bytes": 18874368, "verbatim_bytes": 86336, "metadata_bytes": 73728, "offset_bytes": 589824, "max_verbatim_per_tile": 4, "decode_table_entries": 16384}
+ROUNDTRIP {"label": "pooler", "shape": [4096, 8192], "errors": 0, "encoded_bytes": 10826368, "sm_bytes": 33554432, "verbatim_bytes": 147136, "metadata_bytes": 131072, "offset_bytes": 1048576, "max_verbatim_per_tile": 4, "decode_table_entries": 16384}
+ROUNDTRIP {"label": "special_bits", "shape": [512, 512], "errors": 0, "encoded_bytes": 84028, "sm_bytes": 262144, "verbatim_bytes": 1728, "metadata_bytes": 1024, "offset_bytes": 8192, "max_verbatim_per_tile": 3, "decode_table_entries": 16384}
+DONE
+
+STDERR
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-x5aKHSjCZS6D1HvKjLJ7sv
