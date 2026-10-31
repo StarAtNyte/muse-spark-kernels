@@ -1,0 +1,342 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/p2_ncu.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 11:56:19
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Running NCU collection ===
+KERN filter: regex:attn_kernel.*8.*0.*15
+NCU stdout: [leaderboard] ncu: workload verify1 (1 of 3; FK_LB_WORKLOAD_SCOPE)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 131 (/usr/bin/python3.12)
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 1 pass
+==PROF== Disconnected from process 131
+==PROF== Report: /tmp/p2_ncu.ncu-rep
+
+NCU stderr: (empty)
+NCU return code: 0
+Report file: /tmp/p2_ncu.ncu-rep, size=996628
+
+=== §1 LAUNCH METRICS ===
+[131] python3.12@127.0.0.1
+  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params) (33, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+  Metric Name                                                        Metric Unit         Metric Value
+  -------------------------------------------------------------- --------------- --------------------
+  c2clink__enabled_mask                                                                             0
+  c2clink__present                                                                                  0
+  device__attribute_architecture                                                                  384
+  device__attribute_async_engine_count                                                              3
+  device__attribute_can_flush_remote_writes                                                         0
+  device__attribute_can_map_host_memory                                                             1
+  device__attribute_can_tex2d_gather                                                                1
+  device__attribute_can_use_64_bit_stream_mem_ops                                                   1
+  device__attribute_can_use_64_bit_stream_mem_ops_v1                                                0
+  device__attribute_can_use_host_pointer_for_registered_mem                                         1
+  device__attribute_can_use_stream_mem_ops_v1                                                       0
+  device__attribute_can_use_stream_wait_value_nor                                                   1
+  device__attribute_can_use_stream_wait_value_nor_v1                                                0
+  device__attribute_chip                                                                          384
+  device__attribute_clock_rate                                                              1,980,000
+  device__attribute_cluster_launch                                                                  1
+  device__attribute_compute_capability_major                                                        9
+  device__attribute_compute_capability_minor                                                        0
+  device__attribute_compute_mode                                                                    0
+  device__attribute_compute_preemption_supported                                                    1
+  device__attribute_concurrent_kernels                                                              1
+  device__attribute_concurrent_managed_access                                                       1
+  device__attribute_confidential_computing_mode                                                 No-CC
+  device__attribute_cooperative_launch                                                              1
+  device__attribute_cooperative_multi_device_launch                                                 1
+  device__attribute_deferred_mapping_cuda_array_supported                                           1
+  device__attribute_device_index                                                                    0
+  device__attribute_direct_managed_mem_access_from_host                                             0
+  device__attribute_display_name                                                          NVIDIA H200
+  device__attribute_dma_buf_supported                                                               1
+  device__attribute_ecc_enabled                                                                     1
+  device__attribute_fb_bus_width                                                                6,016
+  device__attribute_fbp_count                                                                      12
+  device__attribute_generic_compression_supported                                                   1
+  device__attribute_global_l1_cache_supported                                                       1
+  device__attribute_global_memory_bus_width                                                     6,016
+  device__attribute_gpu_direct_rdma_flush_writes_options                                            1
+  device__attribute_gpu_direct_rdma_supported                                                       1
+  device__attribute_gpu_direct_rdma_with_cuda_vmm_supported                                         1
+  device__attribute_gpu_direct_rdma_writes_ordering                                               100
+  device__attribute_gpu_overlap                                                                     1
+  device__attribute_gpu_pci_device_id                                                     590,680,286
+  device__attribute_gpu_pci_ext_device_id                                                       9,013
+  device__attribute_gpu_pci_ext_downstream_link_rate                                           32,000
+  device__attribute_gpu_pci_ext_downstream_link_width                                              16
+  device__attribute_gpu_pci_ext_gen                       
+[launch] metrics seen: launch__barrier_count=16, launch__block_dim_x=256, launch__block_dim_y=1, launch__block_dim_z=1, launch__block_size=256, launch__cluster_dim_x=0, launch__cluster_dim_y=0, launch__cluster_dim_z=0, launch__cluster_max_active=0, launch__cluster_max_potential_size=8, launch__cluster_size=0, launch__context_id=1, launch__device_id=0, launch__function_pcs=1, launch__grid_dim_x=33, launch__grid_dim_y=1, launch__grid_dim_z=1, launch__grid_size=33, launch__occupancy_cluster_gpu_pct=0, launch__occupancy_cluster_pct=0, launch__occupancy_limit_barriers=4, launch__occupancy_limit_blocks=32, launch__occupancy_limit_registers=2, launch__occupancy_limit_shared_mem=2, launch__occupancy_limit_warps=8, launch__occupancy_per_barrier_count=784, launch__occupancy_per_block_size=532, launch__occupancy_per_cluster_size=0, launch__occupancy_per_register_count=3, launch__occupancy_per_shared_mem_size=5, launch__registers_per_thread=96, launch__registers_per_thread_allocated=96, launch__shared_mem_config_size=200.7, launch__shared_mem_per_block=95.23, launch__shared_mem_per_block_allocated=95.23, launch__shared_mem_per_block_driver=1.02, launch__shared_mem_per_block_dynamic=94.21, launch__shared_mem_per_block_static=0, launch__sm_count=132, launch__stack_size=1, launch__stream_id=7, launch__thread_count=8, launch__tpc_count=66, launch__uses_cdp=0, launch__uses_green_context=0, launch__uses_mps=0, launch__uses_nvlink_centric_scheduling=0, launch__uses_vgpu=0, launch__waves_per_multiprocessor=0.12
+[launch] cluster=(0,0,0) (no cluster: every CTA is its own cluster)
+LAUNCH-OK kernel=n/a grid=(33,1,1) block=(256,1,1) ctas=33 cluster=(0,0,0) cluster_max_active=0 regs=96 smem_dyn=n/a
+launch_ok=True
+
+=== §2 SASS ===
+SASS page total lines: 2186
+--- First 30 lines ---
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Kernel Name        void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnam                                                                                          
+                   ed>::Params)                                                                                                                                          
+------------------ ------------------------------------------------------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
+Address            Source                                                             launch launch launch launch launch launch launch launch launch launch launch launch
+                                                                                      __bloc __bloc __bloc __clus __clus __clus __clus __grid __grid __grid __regi __shar
+                                                                                      k_dim_ k_dim_ k_dim_ ter_di ter_di ter_di ter_ma _dim_x _dim_y _dim_z sters_ ed_mem
+                                                                                      x      y      z      m_x    m_y    m_z    x_acti                      per_th _per_b
+                                                                                                                                ve                          read   lock_d
+                                                                                                                                                                   ynamic
+0x2b36cd476500           LDC R1, c[0x0][0x28]                                         0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476510           S2R R37, SR_TID.X                                            0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476520           ULDC UR4, c[0x0][0x29c]                                      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476530           LDC.64 R14, c[0x0][0x218]                                    0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476540           ULDC.64 UR10, c[0x0][0x208]                                  0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476550           S2R R5, SR_CgaCtaId                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476560           I2FP.F32.S32 R7, UR4                                         0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476570           S2R R0, SR_CTAID.Y                                           0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476580           FSETP.GEU.AND P0, PT, |R7|, 1.175494350822287508e-38, PT     0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476590           S2UR UR9, SR_CTAID.X                                         0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765a0           MOV R18, 0x400                                               0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765b0           IMAD.MOV.U32 R10, RZ, RZ, 0x4b800000                         0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765c0           ULDC UR4, c[0x0][0x2c0]                                      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765d0           LDC.64 R12, c[0x0][0x2c8]                                    0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765e0           S2R R11, SR_CTAID.Z                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd4765f0           ULDC UR6, c[0x0][0x280]                                      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476600           ULDC UR7, c[0x0][0x27c]                                      0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476610     @!P0  FMUL R7, R7, 16777216                                        0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476620           MOV R24, 0x7531                                              0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd476630           ULDC UR13, c[0x0][0x27c]                                     0      0      0      0      0      0      0      0      0      0      0      0     
+--- Last 20 lines ---
+0x2b36cd47ebc0           STG.E.128 desc[UR10][R12.64], R4                             0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ebd0           BSYNC B0                                                     0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ebe0     @!P1  BRA 0x2b36cd47ca60                                           0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ebf0           BAR.SYNC.DEFER_BLOCKING 0x0                                  0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec00           EXIT                                                         0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec10           BPT.TRAP 0x1                                                 0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec20           BRA 0x2b36cd47ec20                                           0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec30           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec40           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec50           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec60           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec70           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec80           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ec90           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47eca0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ecb0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ecc0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ecd0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ece0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+0x2b36cd47ecf0           NOP                                                          0      0      0      0      0      0      0      0      0      0      0      0     
+kernel ranking by duration:
+            3900  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)
+            3800  void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)
+            2900  void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)
+parsed: 2176 instructions, 10 unparsed lines, 0 tool-noise lines
+opcode histogram (top 40 of 125):
+     201  FMUL
+     139  FADD
+     127  FFMA
+      94  IMAD
+      90  FSEL
+      76  LOP3.LUT
+      73  IADD3
+      62  BRA
+      61  LDS
+      46  VIADD
+      46  CS2R
+      44  PRMT
+      42  MUFU.EX2
+      41  ISETP.GT.AND
+      40  LEA
+      40  F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C
+      39  IMAD.WIDE
+      38  FMNMX
+      36  IMAD.U32
+      34  SHFL.BFLY
+      33  SHF.R.S32.HI
+      33  ISETP.LT.OR
+      31  IMAD.MOV.U32
+      30  SHF.L.U32
+      29  IMAD.SHL.U32
+      27  IMAD.IADD
+      27  STG.E.128
+      26  ISETP.NE.AND
+      26  LDG.E.128.STRONG.GPU
+      23  ULDC
+      22  LDC.64
+      22  ISETP.GE.AND
+      21  ULDC.64
+      19  LDS.128
+      18  FSETP.GEU.AND
+      18  LDGSTS.E.BYPASS.128
+      17  MOV
+      16  BSSY
+      16  BSYNC
+      15  LDG.E.STRONG.GPU
+decisive families: {'WARPGROUP': 6, 'QGMMA': 4}
+SASS-OK kernel=void_<unnamed>::attn_kernel<8,_0,_15>(<unnamed>::Params) instructions=2176 opcodes=125
+sass_ok=True
+
+=== §2d/2e SCHEDULE + LIVENESS ===
+[parse] 2176 instructions, unparsed=10, noise=0
+[isa] MMA census: wgmma=4 tcgen05=0 mma_sync=0 (QGMMAx4)
+[loop] backedge: 537 instrs, addr 0x2b36cd47ca60..0x2b36cd47ebe0
+[chains] 0 accumulator chains in body:
+
+=== schedule transcription (23 events) ===
+    0 elementwise x122 [IMADx26,CS2Rx26,LDGx13,LDCx10]
+    1 BSSY B0, 0x2b36cd47d370      
+    2 elementwise x17 [FADDx9,IMADx4,STGx3,ISETPx1]
+    3 BSYNC B0                      
+    4 BSSY B0, 0x2b36cd47d470      
+    5 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    6 BSYNC B0                      
+    7 BSSY B0, 0x2b36cd47d570      
+    8 elementwise x13 [FADDx9,STGx3,ISETPx1]
+    9 BSYNC B0                      
+   10 BSSY B0, 0x2b36cd47d670      
+   11 elementwise x13 [FADDx9,STGx3,ISETPx1]
+   12 BSYNC B0                      
+   13 BSSY B0, 0x2b36cd47e120      
+   14 elementwise x162 [FADDx72,LDGx24,STGx24,IMADx20]
+   15 BSYNC B0                      
+   16 BSSY B0, 0x2b36cd47e2e0      
+   17 elementwise x24 [FADDx9,IMADx5,LDGx3,STGx3]
+   18 BSYNC B0                      
+   19 elementwise x46 [FMULx15,FFMAx8,FSETPx5,IMADx5] SHFLx3
+   20 BSSY B0, 0x2b36cd47ebe0      
+   21 elementwise x94 [FMULx38,MUFUx17,FADDx8,FSETPx6]
+   22 BSYNC B0                      
+
+SCHED-FAIL loop=backedge hgmma_runs=0 depbars=0 ew_runs=9 depbar_before_each_ew=['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none']
+[sched] raw samples for debugging:
+    0x2b36cd47ca60  S2R R4, SR_TID.X                                             0  
+    0x2b36cd47ca70  LDC R14, c[0x0][0x29c]                                       0  
+    0x2b36cd47ca80  LEA.HI.SX32 R5, R4, R77, 0x1d                                0      0   
+    0x2b36cd47ca90  ISETP.GE.AND P2, PT, R5, R2, PT                              0      0    
+    0x2b36cd47caa0  ISETP.GE.AND P0, PT, R5, R2, PT                              0      0    
+    0x2b36cd47cab0  LOP3.LUT R10, R5, 0xf, RZ, 0xc0, !PT                         0      0
+    0x2b36cd47cac0  SHF.R.S32.HI R76, RZ, 0x4, R5                                0      0    
+    0x2b36cd47cad0  SEL R10, R10, RZ, !P0                                        0  
+    0x2b36cd47cae0  SEL R76, R76, RZ, !P0                                        0  
+    0x2b36cd47caf0  LDC R7, c[0x0][0x2b0]                                        0  
+    0x2b36cd47cb00  LEA R5, R11, R10, 0x4                                        0  
+    0x2b36cd47cb10  IMAD R4, R0, 0x8, R76                                        0   
+
+=== liveness over doubled body ===
+[live] peak=89 regs at body instr 262 (STG.E.128), guessed-role instrs=0/537
+[live] peak breakdown: LDG=76, undef/param=7, addr/temp=3, SEL=2, VIADD=1
+[live] instrs    0-  66: peak  30  mean  21
+[live] instrs   67- 133: peak  66  mean  45
+[live] instrs  134- 200: peak  62  mean  39
+[live] instrs  201- 267: peak  89  mean  44
+[live] instrs  268- 334: peak  88  mean  73
+[live] instrs  335- 401: peak  50  mean  27
+[live] instrs  402- 468: peak  29  mean  27
+[live] instrs  469- 535: peak  28  mean  24
+[live] instrs  536- 536: peak  13  mean  13
+LIVE-FAIL peak=89 guessed_frac=0.00
+[live] unknown-role samples:
+sched_ok=False, live_ok=False
+
+=== §2f STALL LEDGER ===
+[sanity] kernel=attn_kernel
+[sanity] duration_ns=0 — dominant across every captured launch
+STALL-FAIL reason=mis-aim (dominant kernel 0ns < 20000ns and the window does not vouch for it: 1 launch(es) of it, 0% of the captured GPU time (vouches at >= 2 and >= 50%) — the main kernel was not captured; widen --launch-count or fix --kernel-substr)
+stall_ok=False
+
+--- Segment ledger ---
+=== SEGMENT LEDGER BEGIN ===
+JOIN-FAIL reason=too-few-samples (0 < 500)
+=== SEGMENT LEDGER END ===
+
+--- Role exposure (PARTIAL without PM) ---
+ROLE-FAIL reason=too-few-samples (0 < 500)
+
+=== §2g ORCH DOSSIER ===
+=== ORCH DOSSIER BEGIN ===
+[parse] 2176 instructions, unparsed=10
+
+=== regions (10, 6 loops, 0 spin) ===
+  r0 straight -             [0x2b36cd476500..0x2b36cd476aa0]    91 instrs  LDG=1
+  r1 loop     scalar        [0x2b36cd476ab0..0x2b36cd476bc0]    18 instrs  
+  r2 loop     copy-producer [0x2b36cd476bd0..0x2b36cd477800]   196 instrs  LDGSTS=11 LDS=21 SHFL=1
+  r3 straight -             [0x2b36cd477810..0x2b36cd47c810]  1281 instrs  QGMMA=4 LDGSTS=12 LDS=61 STS=14 LDSM=2 STSM=2 SHFL=31 LDG=1 STG=1
+  r4 loop     copy-producer [0x2b36cd47c820..0x2b36cd47c8b0]    10 instrs  LDG=1  (was scalar: section)
+  r5 straight -             [0x2b36cd47c8c0..0x2b36cd47ca50]    26 instrs  STG=2
+  r6 loop     copy-producer [0x2b36cd47ca60..0x2b36cd47cdb0]    54 instrs  LDG=1  (was scalar: section)
+  r7 loop     copy-producer [0x2b36cd47cdc0..0x2b36cd47d6a0]   143 instrs  LDG=12 STG=12  (was scalar: section)
+  r8 loop     copy-producer [0x2b36cd47d6b0..0x2b36cd47ebe0]   340 instrs  SHFL=3 LDG=27 STG=28  (was scalar: section)
+  r9 straight -             [0x2b36cd47ebf0..0x2b36cd47ecf0]    17 instrs  
+
+=== named barriers (2 ids) ===
+  id 0x0: ARV x0 @r[] SYNC x9 @r[2, 3, 5, 9] -> symmetric rendezvous (all sides SYNC -> lockstep)
+  id <reg>: ARV x0 @r[] SYNC x1 @r[3] width=128 -> symmetric rendezvous (all sides SYNC -> lockstep)
+  blocking rendezvous in loop r2: 2 per body
+
+=== mbarrier objects (0, 0 resolved) ===
+
+=== commit groups (in-flight depth) ===
+  r2(copy-producer): DEPBAR {} LDGDEPBAR x2
+
+=== merge placement ===
+  shfl_in_loop=4, shfl_out_of_loop=31
+
+=== issue-then-correct (nominations, not convictions) ===
+  none nominated
+
+=== supply order (copy-producer loops) ===
+  r2: addr-source loads 21 (3/21 in top quarter -> interleaved); copies 11; tight-chained copies 0
+
+=== cache policy bits (verbatim opcodes) ===
+  LDGSTS.E.BYPASS.128 x18
+  LDGSTS.E x4
+  LDGSTS.E.64 x1
+ORCH-SUMMARY-JSON: {"cache_ops": ["LDGSTS.E", "LDGSTS.E.64", "LDGSTS.E.BYPASS.128"], "commit": ["copy-producer: DEPBAR {} LDGDEPBAR x2"], "edges": [], "itc_candidates": 0, "loops": {"copy-producer": 5, "scalar": 1}, "mbar_objs": 0, "mbar_per_role": {}, "mbar_tiers": {}, "mbar_unresolved": 0, "merge": {"shfl_in_loop": 4, "shfl_out_of_loop": 31}, "mma_precision": {"accums": ["f32"], "inputs": ["e4m3"], "ops": {"QGMMA:e4m3/f32": 4}}, "nbar_verdicts": ["symmetric rendezvous (all sides SYNC -> lockstep)", "symmetric rendezvous (all sides SYNC -> lockstep) width=128"], "nbar_widths": [[128]], "rings": [], "spin_loops": 0, "supply": ["addr-source loads interleaved; prefetched"], "supply_counts": ["addr-source loads 21 (3/21 in top quarter -> interleaved); copies 11; tight-chained copies 0"], "verdict": "ORCH-OK"}
+=== ORCH DOSSIER END ===
+
+ORCH-OK regions=10 loops=6 nbar_ids=2 mbar_objs=0 resolved=0 edges=0 itc_candidates=0
+orch_ok=True
+
+=== §2h STRUCT TABLE ===
+CSV text length: 216983 chars
+[struct] parsed 2176 instructions, 0 addresses with execution counts
+=== STRUCT TABLE BEGIN ===
+region 1: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 4 barriers -> 4 segments; copies=1
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |   299-299    | -
+    2 |   300-303    | -
+    3 |   304-466    | LDS x22  STS x4
+    4 |   467-493    | FFMA x3  MUFU x2  STS x2  LDS x1
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 3: 2 offsets, granule -, strides ['0x5f80']
+    seg 4: 3 offsets, granule -, strides ['0x400']
+  mma input types: none -> precision=none
+region 2: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 2 barriers -> 2 segments; copies=1
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |   777-947    | FFMA x17  F2FP.SATFINITE.E4M3.F32.PACK_AB_MERGE_C x8  LDS x4  FADD x3  MUFU x3  SHFL x3  STS x1
+    2 |   948-985    | LDS x8  STS x4
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 1: 4 offsets, granule -, strides ['0x400', '0x490', '0x2800']
+    seg 2: 5 offsets, granule -, strides ['0x400', '0xc00', '0xf800']
+  mma input types: none -> precision=none
+region 3: BAR.SYNC 0x0 -> warps=? (CTA-wide barrier); 2 barriers -> 2 segments; copies=1
+  seg | lines        | classes (count @ warps executing; x<n>? = per-barrier exec ratio with no warp reading: nested trips / warps outside the barrier / ARV split)
+    1 |  1432-1550   | SHFL x10  F2I x2  FADD x2  MUFU x2
+    2 |  1551-1609   | LDS x5
+  smem addressing per segment (immediate offsets of LDSM/STSM/LDS/STS):
+    seg 2: 1 offsets, granule -, strides []
+  mma input types: none -> precision=none
+=== STRUCT TABLE END ===
+self-check FAILED: no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts()
+self-check FAILED: no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+STRUCT-FAIL reason=no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts(); no region carries an MMA / LDSM / STSM family — the segmented barriers fence something other than a tile construction
+struct_ok=False
+
+[gpu_entry.sh] task=cmd finished
