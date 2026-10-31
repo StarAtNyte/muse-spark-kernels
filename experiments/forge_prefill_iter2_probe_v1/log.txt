@@ -1,0 +1,21 @@
+[direct] Modal H200 branch=forge-student-muse_prefill_boundary-i2probe mode=cmd:python3 notes/smoke_m0gate.py
+[direct] GPU modal is in use by another forgekernel run -- waiting
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_prefill_boundary, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 06:27:27
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+Traceback (most recent call last):
+  File "/tmp/forge-job-24s8bli5/notes/smoke_m0gate.py", line 18, in <module>
+    branch = torch.randn(T, H, dtype=torch.bfloat16, device=device)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device
+Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+
+[direct] Modal job exited rc=1
