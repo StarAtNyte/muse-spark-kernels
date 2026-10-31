@@ -1,0 +1,34 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/p1_all.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 11:42:48
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Running NCU collection ===
+NCU stdout: [leaderboard] ncu: workload verify1 (1 of 3; FK_LB_WORKLOAD_SCOPE)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 130 (/usr/bin/python3.12)
+==PROF== Disconnected from process 130
+==WARNING== No kernels were profiled.
+Available Kernels:
+1. attn_kernel
+
+NCU stderr: (empty)
+NCU return code: 0
+No report with verify1 scope, retrying without scope restriction...
+Retry stdout: ==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 210 (/usr/bin/python3.12)
+==PROF== Disconnected from process 210
+==WARNING== No kernels were profiled.
+Available Kernels:
+1. attn_kernel
+
+Retry stderr: 
+FATAL: no report at /tmp/p1_all.ncu-rep
+[direct] Modal job exited rc=1
