@@ -1,0 +1,78 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-smircMhkIyPXzQwzXj4TWe
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+NCU_RETURNCODE 0
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 56 (/usr/bin/python3.12)
+LT tune T=753 qkv: torch.mm 358.1us, best 265.7us algo 0 of 8
+LT tune T=753 o: torch.mm 376.7us, best 254.4us algo 0 of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 358.5us, best 255.1us algo 1 of 8
+LT tune T=753 unpooler: torch.mm 353.2us, best 252.3us algo 2 of 8
+LT tune T=3012 qkv: torch.mm 367.8us, best 295.9us algo 0 of 8
+LT tune T=3012 o: torch.mm 581.6us, best 326.6us algo 2 of 8
+LT tune T=3012 router: torch.mm 633.1us, best 314.6us algo 1 of 8
+LT tune T=3012 pooler: torch.mm 540.0us, best 445.5us algo 3 of 8
+LT tune T=3012 unpooler: torch.mm 549.3us, best 445.3us algo 0 of 8
+LT tune T=16384 qkv: torch.mm 1114.0us, best 993.7us algo 0 of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 492.6us, best 368.1us algo 0 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47506162514256'>")
+CHECK (True, 'update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]')
+==PROF== Profiling "moe_fused_persistent": 0%....50%....100% - 6 passes
+DONE
+==PROF== Disconnected from process 56
+[56] python3.12@127.0.0.1
+  void moe_fused_persistent<0>(FusedArgs) (132, 1, 1)x(384, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Warning: Data collection happened without fixed GPU frequencies. Profiling results may be inconsistent.
+    Section: Command line profiler metrics
+    --------------------------------------------------------------------------- ----------- ------------
+    Metric Name                                                                 Metric Unit Metric Value
+    --------------------------------------------------------------------------- ----------- ------------
+    smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio                   inst         1.14
+    smsp__average_warps_issue_stalled_branch_resolving_per_issue_active.ratio          inst         0.15
+    smsp__average_warps_issue_stalled_dispatch_stall_per_issue_active.ratio            inst         0.74
+    smsp__average_warps_issue_stalled_drain_per_issue_active.ratio                     inst         0.00
+    smsp__average_warps_issue_stalled_gmma_per_issue_active.ratio                      inst         0.41
+    smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio               inst            0
+    smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio           inst         0.49
+    smsp__average_warps_issue_stalled_math_pipe_throttle_per_issue_active.ratio        inst         0.34
+    smsp__average_warps_issue_stalled_membar_per_issue_active.ratio                    inst         0.01
+    smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio              inst         0.01
+    smsp__average_warps_issue_stalled_no_instruction_per_issue_active.ratio            inst         0.08
+    smsp__average_warps_issue_stalled_not_selected_per_issue_active.ratio              inst         0.43
+    smsp__average_warps_issue_stalled_short_scoreboard_per_issue_active.ratio          inst         0.41
+    smsp__average_warps_issue_stalled_wait_per_issue_active.ratio                      inst         1.17
+    --------------------------------------------------------------------------- ----------- ------------
+
+
+NCU_STDERR 
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-smircMhkIyPXzQwzXj4TWe
