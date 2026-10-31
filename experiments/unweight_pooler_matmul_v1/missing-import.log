@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PzWhvRgUzrdE91GXCug0y7
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_pooler_
+│   matmul_v1/driver.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_pooler_
+│   matmul_v1/modal_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /tmp/muse-unweight
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 1
+ROUNDTRIP {"label": "pooler", "shape": [4096, 8192], "errors": 0, "encoded_bytes": 10826368, "sm_bytes": 33554432, "verbatim_bytes": 147136, "metadata_bytes": 131072, "offset_bytes": 1048576, "max_verbatim_per_tile": 4, "decode_table_entries": 16384}
+
+STDERR
+Traceback (most recent call last):
+  File "/w/driver.py", line 61, in <module>
+    bg,bo=cap(lambda:x@w.T)
+          ^^^^^^^^^^^^^^^^^
+  File "/w/driver.py", line 51, in cap
+    with warnings.catch_warnings(record=True) as seen:
+         ^^^^^^^^
+NameError: name 'warnings' is not defined. Did you mean: 'Warning'? Or did you forget to import 'warnings'?
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-PzWhvRgUzrdE91GXCug0y7

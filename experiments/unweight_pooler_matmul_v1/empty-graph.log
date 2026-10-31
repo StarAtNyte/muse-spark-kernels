@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-J19CXojIyDEMNZgYI56Kwm
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_pooler_
+│   matmul_v1/modal_run.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_pooler_
+│   matmul_v1/driver.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /tmp/muse-unweight
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROUNDTRIP {"label": "pooler", "shape": [4096, 8192], "errors": 0, "encoded_bytes": 10826368, "sm_bytes": 33554432, "verbatim_bytes": 147136, "metadata_bytes": 131072, "offset_bytes": 1048576, "max_verbatim_per_tile": 4, "decode_table_entries": 16384}
+CHECK 128 torch True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+CHECK 128 0 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 0, "base_us": 31.39200061559677, "candidate_us": 3.3599999733269215, "ratio": 9.342857400237959}
+CHECK 128 1 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 1, "base_us": 31.79199993610382, "candidate_us": 3.3599999733269215, "ratio": 9.46190481800058}
+CHECK 128 2 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 2, "base_us": 31.295999884605408, "candidate_us": 3.3599999733269215, "ratio": 9.314285753882762}
+CHECK 128 4 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 4, "base_us": 31.328000128269196, "candidate_us": 3.3439999679103494, "ratio": 9.368421180890717}
+CHECK 128 5 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 5, "base_us": 31.568000093102455, "candidate_us": 3.3599999733269215, "ratio": 9.395238197530471}
+CHECK 128 6 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 6, "base_us": 31.279999762773514, "candidate_us": 3.3439999679103494, "ratio": 9.354067004468378}
+CHECK 128 7 True relative L2 error 2.101e-04 (worst row 4.270e-04); 20 probe rows exact to 0.0e+00
+TIMING {"m": 128, "variant": 7, "base_us": 31.58400021493435, "candidate_us": 3.3599999733269215, "ratio": 9.40000013858967}
+CHECK 256 torch True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+CHECK 256 0 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 0, "base_us": 38.60799968242645, "candidate_us": 3.3599999733269215, "ratio": 11.490476187176437}
+CHECK 256 1 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 1, "base_us": 38.59199956059456, "candidate_us": 3.3599999733269215, "ratio": 11.485714246117237}
+CHECK 256 2 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 2, "base_us": 38.24000060558319, "candidate_us": 3.3279999624937773, "ratio": 11.490384926846192}
+CHECK 256 4 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 4, "base_us": 38.36799971759319, "candidate_us": 3.3599999733269215, "ratio": 11.419047625647128}
+CHECK 256 5 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 5, "base_us": 38.63999992609024, "candidate_us": 3.3599999733269215, "ratio": 11.500000069294835}
+CHECK 256 6 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 6, "base_us": 38.60799968242645, "candidate_us": 3.3279999624937773, "ratio": 11.600961573778456}
+CHECK 256 7 True relative L2 error 2.044e-04 (worst row 4.524e-04); 36 probe rows exact to 0.0e+00
+TIMING {"m": 256, "variant": 7, "base_us": 38.256000727415085, "candidate_us": 3.3599999733269215, "ratio": 11.385714592591412}
+DONE
+
+STDERR
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-J19CXojIyDEMNZgYI56Kwm
