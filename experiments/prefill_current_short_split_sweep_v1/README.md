@@ -14,3 +14,22 @@ and uses alternating cold-L2 graph replays. This is a component screen, not an
 independent challenge-reference check or full-layer score. A promising option
 requires a paired full-layer test and the full official check before promotion.
 The bounded public-image H200 run writes `modal.log`.
+
+Run `ap-vGj0XGufTTYkK3RkwtXLRO` completed successfully. Every candidate was
+finite and within the driver's 3% relative-L2 limit against the two-split
+output; that comparison is not an independent correctness check. Median
+paired parent/candidate ratios across seeds 539 / 1427 / 7919 were:
+
+| Splits | Ratios |
+| ---: | --- |
+| 4 | 0.9688 / 0.9700 / 0.9701 |
+| 5 | 0.8083 / 0.8073 / 0.8076 |
+| 6 | 0.9382 / 0.9397 / 0.9381 |
+| 8 | 0.9152 / 0.9142 / 0.9146 |
+
+All alternatives lost in this component screen; retain two splits and do not
+launch a full-layer check on this evidence. Earlier four-split measurements
+used CUDA 12.8, while this run used the public challenge CUDA 13 image. The
+attention CUDA section is identical between those source snapshots, but these
+separate runs do not isolate the cause of the reversal. Raw logs preserve the
+measurements; the old run is in `../prefill_full_short_four_splits_v1/`.

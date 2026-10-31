@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-vGj0XGufTTYkK3RkwtXLRO
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RESULT {"seed": 539, "splits": 4, "relative_l2": 0.011555860750377178, "parent_us": 372.54399061203003, "candidate_us": 382.9759955406189, "speedup": 0.9687865452461754}
+RESULT {"seed": 539, "splits": 5, "relative_l2": 0.013772407546639442, "parent_us": 370.89599668979645, "candidate_us": 459.02399718761444, "speedup": 0.8083468772893448}
+RESULT {"seed": 539, "splits": 6, "relative_l2": 0.013338110409677029, "parent_us": 371.3440001010895, "candidate_us": 395.87199687957764, "speedup": 0.9382006515475495}
+RESULT {"seed": 539, "splits": 8, "relative_l2": 0.014130078256130219, "parent_us": 371.0400015115738, "candidate_us": 405.64799308776855, "speedup": 0.9152263113461424}
+RESULT {"seed": 1427, "splits": 4, "relative_l2": 0.01154736801981926, "parent_us": 368.3840036392212, "candidate_us": 379.4720023870468, "speedup": 0.9700086996114556}
+RESULT {"seed": 1427, "splits": 5, "relative_l2": 0.013678990304470062, "parent_us": 366.92799627780914, "candidate_us": 454.5919895172119, "speedup": 0.8072640242247946}
+RESULT {"seed": 1427, "splits": 6, "relative_l2": 0.013253249228000641, "parent_us": 366.7519986629486, "candidate_us": 390.3519958257675, "speedup": 0.9397022162977089}
+RESULT {"seed": 1427, "splits": 8, "relative_l2": 0.014050052501261234, "parent_us": 366.92799627780914, "candidate_us": 401.11999213695526, "speedup": 0.9141516977438398}
+RESULT {"seed": 7919, "splits": 4, "relative_l2": 0.011602739803493023, "parent_us": 367.2959953546524, "candidate_us": 378.54400277137756, "speedup": 0.9700722138048321}
+RESULT {"seed": 7919, "splits": 5, "relative_l2": 0.013723495416343212, "parent_us": 367.5519973039627, "candidate_us": 455.48801124095917, "speedup": 0.807647560550796}
+RESULT {"seed": 7919, "splits": 6, "relative_l2": 0.013295156881213188, "parent_us": 367.247998714447, "candidate_us": 391.34399592876434, "speedup": 0.9380646359149261}
+RESULT {"seed": 7919, "splits": 8, "relative_l2": 0.014131005853414536, "parent_us": 367.67999827861786, "candidate_us": 402.0479917526245, "speedup": 0.9146007174354086}
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-vGj0XGufTTYkK3RkwtXLRO
