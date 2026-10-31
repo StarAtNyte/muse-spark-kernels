@@ -22,3 +22,11 @@ promotion. Raw output and any errors are retained in `modal.log`.
 The launched driver and the checked-in driver differ only in corrected
 docstring/comment text inherited from an unrelated invalid-output ablation;
 the runtime code is the same.
+
+Run `ap-QxqNWdIMh5L3w7cacCeiWH` completed with return code 0 and both
+variants passed all three reference screens. Parent/candidate full-layer
+medians were 514.0/560.0 µs for turn-1 sliding, 3111.0/3158.0 µs for turn-4
+full, and 9348.1/9428.7 µs for first-turn sliding. The candidate regressed in
+all three; retain the scored WGMMA route and do not submit. These one-seed
+screens do not prove race freedom or explain the regression. Raw output is
+in `modal.log`.
