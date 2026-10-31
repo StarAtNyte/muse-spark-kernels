@@ -1,0 +1,23 @@
+{
+  "name": "prefill_head_interleave_check_v1",
+  "problem": "muse_prefill_layer",
+  "hypothesis": "Interleave KV heads for long full single-split prefill attention while retaining descending query block order; paired H200 component and full-layer screens show small gains. Require official full correctness and profile before any submission.",
+  "sha256": "8099523e1e9e97aba8ca51d6743f7331927548bc79bdf379a675635a27107099",
+  "created_at": 1793463807.5071895,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "running",
+  "job_id": "6a672f2beca74962",
+  "updated_at": 1793463817.257777
+}

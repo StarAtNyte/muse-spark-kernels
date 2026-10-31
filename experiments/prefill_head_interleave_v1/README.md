@@ -31,3 +31,23 @@ attention; SHA-256
 graphs. It compares layer outputs and routing against the incumbent, not the
 independent reference. Run output is `full_layer.log`; the bounded runner
 limits its subprocess to 300 seconds. Official correctness is still required.
+
+`verify_mapping.py` exhaustively checked query-block counts 1–1024 for one,
+two and four splits: the original and candidate formulas assign the same
+unique `(query block, head, split)` tuples. This checks index coverage only,
+not CUDA memory safety or attention numerics.
+
+Full-layer run `ap-s5ms3Gx9p0btul5CxJaOym` completed. Routing IDs matched and
+the hidden/stream relative differences were below 0.0001 in all three cases.
+The median paired parent/candidate ratios were 1.00082, 1.00286 and 1.00169
+at contexts 0, 32768 and 65536. There was substantial timing variation: ratios
+of the separately reported medians differ from the medians of paired ratios,
+and the two modules independently tuned some cuBLASLt plans. The SGLang stub
+prevented attention auto-validation, so both choices were pinned to the same
+variant. These are exploratory signals rather than reliable score estimates.
+Raw output: `full_layer.log`.
+
+Official private check `6a672f2beca74962` was launched against the exact
+candidate; status and profiles are tracked in
+`../prefill_head_interleave_check_v1/`. Do not promote or submit until the
+official correctness and scoring results are available.

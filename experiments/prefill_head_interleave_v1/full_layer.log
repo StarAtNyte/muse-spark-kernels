@@ -1,0 +1,67 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-s5ms3Gx9p0btul5CxJaOym
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 43.0us, best 43.0us algo None of 8
+LT tune T=753 o: torch.mm 24.9us, best 24.9us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.8us, best 68.8us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.4us, best 70.4us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.2us, best 147.2us algo None of 8
+LT tune T=3012 o: torch.mm 75.8us, best 75.8us algo None of 8
+LT tune T=3012 router: torch.mm 41.2us, best 41.2us algo None of 8
+LT tune T=3012 pooler: torch.mm 254.4us, best 254.4us algo None of 8
+LT tune T=3012 unpooler: torch.mm 254.5us, best 254.5us algo None of 8
+LT tune T=16384 qkv: torch.mm 770.2us, best 770.2us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 199.1us, best 199.1us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47488378417520'>")
+LT tune T=753 qkv: torch.mm 42.5us, best 42.5us algo None of 8
+LT tune T=753 o: torch.mm 24.4us, best 24.4us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.9us, best 68.9us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.2us, best 70.2us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.2us, best 147.2us algo None of 8
+LT tune T=3012 o: torch.mm 76.2us, best 76.2us algo None of 8
+LT tune T=3012 router: torch.mm 42.0us, best 42.0us algo None of 8
+LT tune T=3012 pooler: torch.mm 255.5us, best 255.5us algo None of 8
+LT tune T=3012 unpooler: torch.mm 256.1us, best 256.1us algo None of 8
+LT tune T=16384 qkv: torch.mm 768.3us, best 768.3us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 208.3us, best 208.3us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47488378417520'>")
+ROW {"ctx": 0, "base_us": 9398.54383468628, "candidate_us": 9156.1598777771, "paired_ratio": 1.0008169652927867, "relative_l2": [3.624103555921465e-05, 2.4414557628915645e-05], "ids_equal": true}
+ROW {"ctx": 32768, "base_us": 12578.256130218506, "candidate_us": 12737.855911254883, "paired_ratio": 1.0028603619649172, "relative_l2": [9.136924199992791e-05, 6.196824688231573e-05], "ids_equal": true}
+ROW {"ctx": 65536, "base_us": 15859.312057495117, "candidate_us": 15735.647678375244, "paired_ratio": 1.0016920884149532, "relative_l2": [2.972915353893768e-05, 2.033074815699365e-05], "ids_equal": true}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-s5ms3Gx9p0btul5CxJaOym
