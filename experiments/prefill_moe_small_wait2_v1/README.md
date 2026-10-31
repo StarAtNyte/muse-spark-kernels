@@ -17,3 +17,11 @@ full-layer replays on three shapes. The local attention tuner is unavailable
 under the SGLang stub, so attention is pinned. Raw output and any failure are
 in `modal.log`. A promising result requires race/synchronization validation
 and the full official check before promotion.
+
+Run `ap-TmVMwgi4GoxfAF9aWfLYnw` completed with return code 0 and both
+variants passed the three reference screens. Parent/candidate full-layer
+medians were 514.0/553.9 µs for turn-1 sliding, 3021.7/3110.7 µs for turn-4
+full, and 9211.7/9683.6 µs for first-turn sliding. All three regress; retain
+`MOE_SMALL_WAIT=1` and do not submit. This one-seed screen does not establish
+why the alternate path is slower or prove its race freedom. Raw output is
+`modal.log`.
