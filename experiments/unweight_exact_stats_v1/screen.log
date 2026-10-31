@@ -1,0 +1,39 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-OAs4mBzjdeJmmYOvO928A1
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+STATS {"seed": 5151, "layer": "qkv_gate", "shape": [2304, 8192], "weights": 18874368, "entropy_bits": 2.5435205948356847, "top16_fraction": 0.9999284214443631, "escape_count": 1351, "tile64_rows": 294912, "verbatim_rows": 1349, "row_fraction": 0.004574245876736111, "palette": [120, 119, 121, 118, 117, 116, 115, 114, 122, 113, 112, 111, 110, 109, 108, 107]}
+STATS {"seed": 5151, "layer": "o", "shape": [8192, 1024], "weights": 8388608, "entropy_bits": 2.5451185503922025, "top16_fraction": 0.9999010562896729, "escape_count": 830, "tile64_rows": 131072, "verbatim_rows": 826, "row_fraction": 0.0063018798828125, "palette": [121, 122, 120, 119, 118, 123, 117, 116, 115, 114, 113, 112, 111, 110, 109, 124]}
+STATS {"seed": 5151, "layer": "pooler", "shape": [4096, 8192], "weights": 33554432, "entropy_bits": 2.543230245179158, "top16_fraction": 0.999931275844574, "escape_count": 2306, "tile64_rows": 524288, "verbatim_rows": 2299, "row_fraction": 0.0043849945068359375, "palette": [120, 119, 121, 118, 117, 116, 115, 114, 122, 113, 112, 111, 110, 109, 108, 107]}
+STATS {"seed": 5151, "layer": "unpooler", "shape": [8192, 4096], "weights": 33554432, "entropy_bits": 2.5450796813325356, "top16_fraction": 0.999901682138443, "escape_count": 3299, "tile64_rows": 524288, "verbatim_rows": 3295, "row_fraction": 0.0062847137451171875, "palette": [120, 121, 119, 118, 117, 122, 116, 115, 114, 113, 112, 111, 110, 109, 108, 123]}
+STATS {"seed": 7919, "layer": "qkv_gate", "shape": [2304, 8192], "weights": 18874368, "entropy_bits": 2.543550860960243, "top16_fraction": 0.9999286333719889, "escape_count": 1347, "tile64_rows": 294912, "verbatim_rows": 1346, "row_fraction": 0.004564073350694444, "palette": [120, 119, 121, 118, 117, 116, 115, 114, 122, 113, 112, 111, 110, 109, 108, 107]}
+STATS {"seed": 7919, "layer": "o", "shape": [8192, 1024], "weights": 8388608, "entropy_bits": 2.5443007157772444, "top16_fraction": 0.9998950958251953, "escape_count": 880, "tile64_rows": 131072, "verbatim_rows": 879, "row_fraction": 0.00670623779296875, "palette": [121, 122, 120, 119, 118, 123, 117, 116, 115, 114, 113, 112, 111, 110, 109, 124]}
+STATS {"seed": 7919, "layer": "pooler", "shape": [4096, 8192], "weights": 33554432, "entropy_bits": 2.5435123715023784, "top16_fraction": 0.9999293386936188, "escape_count": 2371, "tile64_rows": 524288, "verbatim_rows": 2365, "row_fraction": 0.0045108795166015625, "palette": [120, 119, 121, 118, 117, 116, 115, 114, 122, 113, 112, 111, 110, 109, 108, 107]}
+STATS {"seed": 7919, "layer": "unpooler", "shape": [8192, 4096], "weights": 33554432, "entropy_bits": 2.5449158204330216, "top16_fraction": 0.9999004602432251, "escape_count": 3340, "tile64_rows": 524288, "verbatim_rows": 3329, "row_fraction": 0.0063495635986328125, "palette": [120, 121, 119, 118, 117, 122, 116, 115, 114, 113, 112, 111, 110, 109, 108, 123]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-OAs4mBzjdeJmmYOvO928A1
