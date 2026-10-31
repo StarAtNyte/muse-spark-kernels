@@ -1,7 +1,7 @@
 From ca423757878a84105159470759b725cb8c9c06f7 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:09:47 +0545
-Subject: [PATCH 01/12] Add bounded Modal H200 delivery and Muse boundary task
+Subject: [PATCH 01/13] Add bounded Modal H200 delivery and Muse boundary task
 
 ---
  docs/modal-delivery.md                        |   17 +
@@ -5853,7 +5853,7 @@ index 0000000..a41f688
 From 3e60662e53da0a95ca37d13cbd46887045d60fab Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:14:53 +0545
-Subject: [PATCH 02/12] Support sealed Modal jobs and preserve calibration logs
+Subject: [PATCH 02/13] Support sealed Modal jobs and preserve calibration logs
 
 ---
  docs/modal-delivery.md                       | 2 +-
@@ -5933,7 +5933,7 @@ index c50d128..7f3e001 100644
 From f2f3572feccbb950ffec0c2408cfe9c55c80100e Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:22:20 +0545
-Subject: [PATCH 03/12] Add Hopper knowledge index for Muse task
+Subject: [PATCH 03/13] Add Hopper knowledge index for Muse task
 
 ---
  hw_kb/cuda/sm90/index.md | 3 +++
@@ -5956,7 +5956,7 @@ index 0000000..56f73a1
 From 03c71938fd3efc08e8baf48233ef7bcf09dcac56 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:36:25 +0545
-Subject: [PATCH 04/12] Add cold graph task timing and Modal profiling
+Subject: [PATCH 04/13] Add cold graph task timing and Modal profiling
 
 ---
  docs/modal-delivery.md                        |  4 +-
@@ -6144,7 +6144,7 @@ index 6f27168..100d069 100644
 From 34d14600c597f71c41826398612314f113929b1c Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:39:51 +0545
-Subject: [PATCH 05/12] Add scored attention sliding reference task
+Subject: [PATCH 05/13] Add scored attention sliding reference task
 
 ---
  tasks/muse_attention_sliding/description.md   |   14 +
@@ -9434,7 +9434,7 @@ index 0000000..fb8e705
 From a8fc5f6f39055a1258fadfaca9bf3770d53c4e62 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:49:51 +0545
-Subject: [PATCH 06/12] Add O32 projection reference task
+Subject: [PATCH 06/13] Add O32 projection reference task
 
 ---
  tasks/muse_projection_o32/description.md      |    7 +
@@ -16768,7 +16768,7 @@ index 0000000..fb8e705
 From cbe7b6231ef7c395db3deccf8a5cdf8f7469dde0 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Fri, 30 Oct 2026 21:50:47 +0545
-Subject: [PATCH 07/12] Use highest scored projection source as task baseline
+Subject: [PATCH 07/13] Use highest scored projection source as task baseline
 
 ---
  tasks/muse_projection_o32/description.md          | 2 +-
@@ -16814,7 +16814,7 @@ index f37a24f..da6c3e7 100644
 From bd406de32c342be04aefbd9f9982ca6f188529da Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 11:43:03 +0545
-Subject: [PATCH 08/12] Expose virtualenv sandbox helpers to Claude agent
+Subject: [PATCH 08/13] Expose virtualenv sandbox helpers to Claude agent
 
 ---
  scripts/agent-claude.sh | 8 +++++++-
@@ -16846,7 +16846,7 @@ index 394ea78..0f77d93 100755
 From 205d65138fa968f62890731ff5548e2d5e7af057 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 12:32:41 +0545
-Subject: [PATCH 09/12] Document H200 CUDA target for Muse attention
+Subject: [PATCH 09/13] Document H200 CUDA target for Muse attention
 
 ---
  tasks/muse_attention_sliding/description.md | 2 ++
@@ -16869,7 +16869,7 @@ index 46a2a00..c9f855b 100644
 From b0673b5062b0ff8f581fb25901f35f19eda71260 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 16:42:07 +0545
-Subject: [PATCH 10/12] Expose token axis for attention judge shapes
+Subject: [PATCH 10/13] Expose token axis for attention judge shapes
 
 ---
  tasks/muse_attention_sliding/shapes.json | 33 +++++++++++++++++++++---
@@ -16922,7 +16922,7 @@ index 0b40543..475a91f 100644
 From 3384d60ae09a50ecdf393d4ae07fb8e710d4305a Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 17:05:13 +0545
-Subject: [PATCH 11/12] Use attention-specific correctness contract in Muse
+Subject: [PATCH 11/13] Use attention-specific correctness contract in Muse
  task
 
 ---
@@ -16990,7 +16990,7 @@ index d45e506..fe62df9 100644
 From bbea55516ae2aa32e8601b8a39e8a7c0fca167e1 Mon Sep 17 00:00:00 2001
 From: StarAtNyte <khanalnitij20@gmail.com>
 Date: Sat, 31 Oct 2026 17:15:43 +0545
-Subject: [PATCH 12/12] Mount configured CUTLASS headers for Modal jobs
+Subject: [PATCH 12/13] Mount configured CUTLASS headers for Modal jobs
 
 ---
  src/forgekernel/submit/modal_worker.py | 10 ++++++++++
@@ -17024,6 +17024,37 @@ index f8e2903..8e705b6 100644
      app = modal.App("forgekernel-gpu-job", image=image)
  
      @app.function(gpu=job["gpu"], timeout=int(job["timeout"]) + 60, scaledown_window=2, serialized=True)
+-- 
+2.53.0
+
+
+From 5d056b86c0415c666273a4071af59d232f57286f Mon Sep 17 00:00:00 2001
+From: StarAtNyte <khanalnitij20@gmail.com>
+Date: Sat, 31 Oct 2026 17:40:31 +0545
+Subject: [PATCH 13/13] Avoid clock control on Nsight report imports
+
+---
+ src/forgekernel/submit/modal_worker.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/forgekernel/submit/modal_worker.py b/src/forgekernel/submit/modal_worker.py
+index 8e705b6..b64fe2f 100644
+--- a/src/forgekernel/submit/modal_worker.py
++++ b/src/forgekernel/submit/modal_worker.py
+@@ -51,7 +51,12 @@ def main() -> int:
+                 os.mkdir(bindir)
+                 wrapper = os.path.join(bindir, "ncu")
+                 with open(wrapper, "w", encoding="utf-8") as fh:
+-                    fh.write("#!/bin/sh\nexec " + shlex.quote(ncu) + " --clock-control none \"$@\"\n")
++                    exe = shlex.quote(ncu)
++                    fh.write("#!/bin/sh\n"
++                             "for arg in \"$@\"; do\n"
++                             "  case \"$arg\" in --import|--import=*|-i) exec " + exe + " \"$@\";; esac\n"
++                             "done\n"
++                             "exec " + exe + " --clock-control none \"$@\"\n")
+                 os.chmod(wrapper, 0o755)
+                 job_env["PATH"] = bindir + os.pathsep + job_env.get("PATH", "")
+                 job_env["FK_MODAL_NCU_BIN"] = bindir
 -- 
 2.53.0
 

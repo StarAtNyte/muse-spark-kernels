@@ -1,0 +1,108 @@
+[direct] Modal H200 branch=main mode=cmd:python3 notes/p2_ncu.py
+FK_JOB_BEGIN
+=== gpu_entry.sh (muse_attention_sliding, forgekernel) ===
+  task:      cmd
+  hostname:  modal
+  date:      2026-10-31 11:53:30
+  GPU:       NVIDIA H200, 345 MHz, 3201 MHz, 1980 MHz
+  clocks:    unlocked
+  PyTorch:   2.14.1+cu130 CUDA=13.0
+  timer:     FK_LB_TIMER=auto  cupti-python: yes
+
+[gpu_entry.sh] timeout=300s
+=== Running NCU collection ===
+KERN filter: regex:attn_kernel.*8.*0.*15
+NCU stdout: [leaderboard] ncu: workload verify1 (1 of 3; FK_LB_WORKLOAD_SCOPE)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 131 (/usr/bin/python3.12)
+==PROF== Profiling "void <unnamed>::attn_kernel<(int)8, (bool)0, (int)15>(<unnamed>::Params)": 0%....50%....100% - 1 pass
+==PROF== Disconnected from process 131
+==PROF== Report: /tmp/p2_ncu.ncu-rep
+
+NCU stderr: (empty)
+NCU return code: 0
+Report file: /tmp/p2_ncu.ncu-rep, size=996634
+
+=== §1 LAUNCH METRICS ===
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+
+[launch] metrics seen: none
+[launch] no launch__cluster_dim_* metric on this page — absence is not evidence of 'no cluster'; collect it with --metrics launch__cluster_dim_x,launch__cluster_dim_y,launch__cluster_dim_z,launch__cluster_max_active or --page raw
+LAUNCH-PARTIAL reason=no-launch-metrics kernel=n/a grid=n/a block=n/a ctas=n/a cluster=n/a cluster_max_active=n/a regs=n/a smem_dyn=n/a
+launch_ok=False
+
+=== §2 SASS ===
+SASS page total lines: 3
+--- First 30 lines ---
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+--- Last 20 lines ---
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+kernel ranking by duration:
+            3900  void <unnamed>::attn_kernel<8, 0, 15>(<unnamed>::Params)
+            3800  void <unnamed>::attn_kernel<1, 0, 1>(<unnamed>::Params)
+            2900  void <unnamed>::attn_kernel<1, 0, 13>(<unnamed>::Params)
+parsed: 0 instructions, 1 unparsed lines, 1 tool-noise lines
+self-check FAILED: 1 profiler error/warning line(s) in the stream, first: '==ERROR== Invalid option --clock-control specified for --import'
+self-check FAILED: parsed 0 instructions — the parser, not the kernel, is the story
+--- raw dump (3 lines total) ---
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+--- end raw dump ---
+SASS-FAIL 1 profiler error/warning line(s) in the stream, first: '==ERROR== Invalid option --clock-control specified for --import'; parsed 0 instructions — the parser, not the kernel, is the story
+sass_ok=False
+
+=== §2d/2e SCHEDULE + LIVENESS ===
+[parse] 0 instructions, unparsed=1, noise=1
+--- raw dump (3 lines total) ---
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+--- end raw dump ---
+SCHED-FAIL too-few-instructions
+LIVE-FAIL too-few-instructions
+sched_ok=False, live_ok=False
+
+=== §2f STALL LEDGER ===
+[sanity] kernel=attn_kernel
+[sanity] duration_ns=0 — dominant across every captured launch
+STALL-FAIL reason=mis-aim (dominant kernel 0ns < 20000ns and the window does not vouch for it: 1 launch(es) of it, 0% of the captured GPU time (vouches at >= 2 and >= 50%) — the main kernel was not captured; widen --launch-count or fix --kernel-substr)
+stall_ok=False
+
+--- Segment ledger ---
+=== SEGMENT LEDGER BEGIN ===
+JOIN-FAIL reason=too-few-samples (0 < 500)
+=== SEGMENT LEDGER END ===
+
+--- Role exposure (PARTIAL without PM) ---
+ROLE-FAIL reason=too-few-samples (0 < 500)
+
+=== §2g ORCH DOSSIER ===
+[parse] 0 instructions, unparsed=1
+--- raw dump (3 lines total) ---
+==ERROR== Invalid option --clock-control specified for --import
+Use --help for further details.
+
+--- end raw dump ---
+ORCH-FAIL too-few-instructions
+orch_ok=False
+
+=== §2h STRUCT TABLE ===
+CSV text length: 97 chars
+[struct] parsed 0 instructions, 0 addresses with execution counts
+=== STRUCT TABLE BEGIN ===
+(no barrier-fenced region found)
+=== STRUCT TABLE END ===
+self-check FAILED: only 0 instructions (< 500)
+self-check FAILED: no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts()
+self-check FAILED: no recurring named barrier (BAR.SYNC <id>, <threads>) — the kernel has no barrier-fenced construction to segment; write STRUCT-WAIVED with this reason if that is what the SASS really shows
+STRUCT-FAIL reason=only 0 instructions (< 500); no per-PC execution counts — collect the source page as CSV (ncu --import rep --page source --print-source sass --csv) and pass source_csv_to_sass_and_counts(); no recurring named barrier (BAR.SYNC <id>, <threads>) — the kernel has no barrier-fenced construction to segment; write STRUCT-WAIVED with this reason if that is what the SASS really shows
+struct_ok=False
+
+[gpu_entry.sh] task=cmd finished

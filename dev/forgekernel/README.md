@@ -16,6 +16,8 @@ tail -f .artifacts/muse_prefill_boundary_261030-211439-b293/run.log
 
 Per-job logs return on completion. A run's generated judge, timing protocol and any accepted candidate must be reviewed against the challenge's actual semantics and checked on the official judge before promotion. `local.env` is gitignored and contains machine-specific configuration; do not commit credentials.
 
+The Modal Nsight wrapper passes `--clock-control none` on collection, but leaves report imports unchanged because Nsight rejects clock-control options with `--import`. This fix followed a failed attention report self-check (`experiments/forge_attention_ncu_import_v1/`); a fresh import probe is pending.
+
 Before starting a new search, run `python tools/baselines.py --forge /home/nitiz/Projects/Self/Challenges/ForgeKernel` from the project root. It locates each source matching `research/best.json`, reports a different working source, and checks the three prepared Forge reference hashes. This checks source identity, not whether a focused task covers the full official workload or whether a score difference is statistically significant.
 
 A second task, `tasks/muse_attention_sliding`, wraps the exact current scored attention source (SHA-256 `554adb3886491fa686e950773b2d5c5cc759377eae0f3a7d3abf9f15fd353293`) and includes cache outputs in its interface. Its task definition passes `forge new --dry-run`, and the wrapper passed a three-case H200 screen against the challenge reference (`experiments/forge_attention_adapter_v1/`); the generated Forge judge and full task have not yet been calibrated. It covers only three page-1 sliding cases, so the official attention suite remains necessary for any candidate.
