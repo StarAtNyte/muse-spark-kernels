@@ -1,0 +1,5 @@
+# Unweight CUDA 13 CPU-only build
+
+The upstream [Unweight](https://github.com/cloudflareresearch/unweight-kernels) checkout `db0e6d3d4505cf71379f6b9b4567acf598bc186c` with ThunderKittens submodule `6fd51f22b5489c544e4f33fb1a21b3d39a79984a` compiled with `make -j2` in `lmsysorg/sglang:dev-muse-spark-open` on Modal without a GPU. App `ap-dhR6YKzUrGWHL9bbrHWYL0` returned 0 and built `build/libunweight.a`; output, including CUDA compiler warnings, is in `build.log`. The artifact was built in an ephemeral container and is not retained in this repo.
+
+The initial app `ap-UYIUNoPGvW4x9TsqwzJNaJ` failed before compilation because our harness checked the local checkout path during remote module import; `import-failure.log` preserves that failure. Moving the check to the local entrypoint fixed the harness. Build success does not prove GPU correctness, challenge compatibility, runtime precision, or performance. The next test must bind the packing/decode interfaces and verify bitwise round trips before timing reconstructive GEMM.

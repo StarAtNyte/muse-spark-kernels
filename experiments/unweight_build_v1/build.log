@@ -1,0 +1,104 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dhR6YKzUrGWHL9bbrHWYL0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/unweight_build_v
+│   1/modal_compile.py
+├── ✓ Uploaded /tmp/muse-unweight
+└── ✓ Created Function build.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+RETURNCODE 0
+STDOUT
+make: Entering directory '/unweight'
+mkdir -p build
+/usr/local/cuda/bin/nvcc -std=c++20 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr --extended-lambda -lineinfo -Xcompiler -fPIC -DKITTENS_HOPPER -I src -I third-party/ThunderKittens/include -I third-party/ThunderKittens/prototype -c -o build/unweight.o src/unweight.cu
+ar rcs build/libunweight.a build/unweight.o
+make: Leaving directory '/unweight'
+
+STDERR
+src/reconstructive_matmul.cuh(444): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  GRID_SCHEDULE_GROUP * (task_id / group_period) + task_id % GRID_SCHEDULE_GROUP,
+                  ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+src/reconstructive_matmul.cuh(445): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  (task_id % group_period) / GRID_SCHEDULE_GROUP
+                  ^
+
+src/reconstructive_matmul.cuh(452): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  grouped_rows + (remainder_id % remainder_rows),
+                  ^
+
+src/reconstructive_matmul.cuh(453): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  remainder_id / remainder_rows
+                  ^
+
+src/compute_tile_metadata.cuh(235): warning #177-D: variable "tile_idx" was declared but never referenced
+              usize tile_idx = args.common.first_tile_idx + args.iter;
+                    ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+src/reconstructive_matmul.cuh(444): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  GRID_SCHEDULE_GROUP * (task_id / group_period) + task_id % GRID_SCHEDULE_GROUP,
+                  ^
+          detected during:
+            instantiation of "void ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::common_setup(kittens::prototype::lcf::common_setup_args<ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::layout>) [with _USE_PALETTE=true, _TILES_PER_CTA_N=2, _INPUT_PIPE_STAGES=4, _MAX_VERBATIM_ROWS=0]" at line 127 of third-party/ThunderKittens/prototype/lcf/lcf.cuh
+            instantiation of "void kittens::prototype::lcf::kernel<lcft>(lcft::layout::globals) [with lcft=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 681
+            instantiation of "int launch_reconstructive_matmul_variant<Kernel>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with Kernel=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 768
+            instantiation of "int dispatch_variant<USE_PALETTE,MAX_VERBATIM_ROWS>(ReconstructiveMatmulVariant, bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with USE_PALETTE=true, MAX_VERBATIM_ROWS=0]" at line 809
+            instantiation of "int launch_reconstructive_matmul_source_variant<USE_PALETTE>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, usize, ReconstructiveMatmulVariant, cudaStream_t) [with USE_PALETTE=true]" at line 848
+
+src/reconstructive_matmul.cuh(445): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  (task_id % group_period) / GRID_SCHEDULE_GROUP
+                  ^
+          detected during:
+            instantiation of "void ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::common_setup(kittens::prototype::lcf::common_setup_args<ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::layout>) [with _USE_PALETTE=true, _TILES_PER_CTA_N=2, _INPUT_PIPE_STAGES=4, _MAX_VERBATIM_ROWS=0]" at line 127 of third-party/ThunderKittens/prototype/lcf/lcf.cuh
+            instantiation of "void kittens::prototype::lcf::kernel<lcft>(lcft::layout::globals) [with lcft=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 681
+            instantiation of "int launch_reconstructive_matmul_variant<Kernel>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with Kernel=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 768
+            instantiation of "int dispatch_variant<USE_PALETTE,MAX_VERBATIM_ROWS>(ReconstructiveMatmulVariant, bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with USE_PALETTE=true, MAX_VERBATIM_ROWS=0]" at line 809
+            instantiation of "int launch_reconstructive_matmul_source_variant<USE_PALETTE>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, usize, ReconstructiveMatmulVariant, cudaStream_t) [with USE_PALETTE=true]" at line 848
+
+src/reconstructive_matmul.cuh(452): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  grouped_rows + (remainder_id % remainder_rows),
+                  ^
+          detected during:
+            instantiation of "void ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::common_setup(kittens::prototype::lcf::common_setup_args<ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::layout>) [with _USE_PALETTE=true, _TILES_PER_CTA_N=2, _INPUT_PIPE_STAGES=4, _MAX_VERBATIM_ROWS=0]" at line 127 of third-party/ThunderKittens/prototype/lcf/lcf.cuh
+            instantiation of "void kittens::prototype::lcf::kernel<lcft>(lcft::layout::globals) [with lcft=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 681
+            instantiation of "int launch_reconstructive_matmul_variant<Kernel>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with Kernel=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 768
+            instantiation of "int dispatch_variant<USE_PALETTE,MAX_VERBATIM_ROWS>(ReconstructiveMatmulVariant, bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with USE_PALETTE=true, MAX_VERBATIM_ROWS=0]" at line 809
+            instantiation of "int launch_reconstructive_matmul_source_variant<USE_PALETTE>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, usize, ReconstructiveMatmulVariant, cudaStream_t) [with USE_PALETTE=true]" at line 848
+
+src/reconstructive_matmul.cuh(453): warning #2361-D: invalid narrowing conversion from "unsigned int" to "int"
+                  remainder_id / remainder_rows
+                  ^
+          detected during:
+            instantiation of "void ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::common_setup(kittens::prototype::lcf::common_setup_args<ReconstructiveMatmulTemplate<_USE_PALETTE, _TILES_PER_CTA_N, _INPUT_PIPE_STAGES, _MAX_VERBATIM_ROWS>::layout>) [with _USE_PALETTE=true, _TILES_PER_CTA_N=2, _INPUT_PIPE_STAGES=4, _MAX_VERBATIM_ROWS=0]" at line 127 of third-party/ThunderKittens/prototype/lcf/lcf.cuh
+            instantiation of "void kittens::prototype::lcf::kernel<lcft>(lcft::layout::globals) [with lcft=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 681
+            instantiation of "int launch_reconstructive_matmul_variant<Kernel>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with Kernel=ReconstructiveMatmulTemplate<true, 2, 4, 0>]" at line 768
+            instantiation of "int dispatch_variant<USE_PALETTE,MAX_VERBATIM_ROWS>(ReconstructiveMatmulVariant, bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, cudaStream_t) [with USE_PALETTE=true, MAX_VERBATIM_ROWS=0]" at line 809
+            instantiation of "int launch_reconstructive_matmul_source_variant<USE_PALETTE>(bf16 *, bf16 *, usize, usize, usize, usize, u32, const u8 *, const u8 *, const u32 *, const u8 *, const u8 *, usize, usize, usize, ReconstructiveMatmulVariant, cudaStream_t) [with USE_PALETTE=true]" at line 848
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dhR6YKzUrGWHL9bbrHWYL0
