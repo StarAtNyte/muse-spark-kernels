@@ -51,3 +51,10 @@ Official private check `6a672f2beca74962` was launched against the exact
 candidate; status and profiles are tracked in
 `../prefill_head_interleave_check_v1/`. Do not promote or submit until the
 official correctness and scoring results are available.
+
+`schedule_model.py` models each CTA's cost as its number of 128-key tiles,
+with 132 identical workers greedily taking the next CTA. For query length
+16384 it predicts separate/interleaved makespans of 672/671 tiles at context
+0, 3499/3487 at 32768 and 6315/6303 at 65536. This is a simplified scheduling
+illustration, not a GPU lower bound or proof of the measured cause: it ignores
+cache, ramp, overlap, placement and variable per-tile execution time.
