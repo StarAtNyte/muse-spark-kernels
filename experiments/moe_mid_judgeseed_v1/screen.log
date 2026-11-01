@@ -1,2 +1,36 @@
 ✓ Initialized. View run at 
 https://modal.com/apps/baptinjean20/main/ap-f7pJDIGvTc2mOPycGDEaFL
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+START
+ROW {"bs": 32, "seed": 3357109366520139634, "main_us": 132.23999738693237, "mid_us": 132.1759968996048, "gain_mid": 1.0004842065793247}
+ROW {"bs": 32, "seed": 419, "main_us": 132.03199952840805, "mid_us": 138.22399824857712, "gain_mid": 0.9552031572040508}
+ROW {"bs": 32, "seed": 7919, "main_us": 150.7199928164482, "mid_us": 144.03200149536133, "gain_mid": 1.0464340650109085}
+ROW {"bs": 16, "seed": 3357068220476696277, "main_us": 118.54400113224983, "mid_us": 108.88000205159187, "gain_mid": 1.0887582558648259}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-f7pJDIGvTc2mOPycGDEaFL
