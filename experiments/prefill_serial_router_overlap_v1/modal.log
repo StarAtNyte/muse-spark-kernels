@@ -1,0 +1,73 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-BLsFSciigNN1jdCcuFi135
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 43.1us, best 43.1us algo None of 8
+LT tune T=753 o: torch.mm 25.0us, best 24.1us algo 2 of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.7us, best 69.7us algo None of 8
+LT tune T=753 unpooler: torch.mm 71.0us, best 71.0us algo None of 8
+LT tune T=3012 qkv: torch.mm 150.7us, best 150.7us algo None of 8
+LT tune T=3012 o: torch.mm 75.8us, best 75.8us algo None of 8
+LT tune T=3012 router: torch.mm 41.3us, best 41.3us algo None of 8
+LT tune T=3012 pooler: torch.mm 261.4us, best 261.4us algo None of 8
+LT tune T=3012 unpooler: torch.mm 259.3us, best 259.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 791.4us, best 791.4us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 209.4us, best 200.8us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='46946608336816'>")
+BASE_PLANS {(753, 'o'): (1, 2), (753, 'router'): (2, 6), (16384, 'o'): (11, 6), (16384, 'router'): (12, 3), (16384, 'pooler'): (13, 5), (16384, 'unpooler'): (14, 6)}
+SHARED_PLANS
+CHECK 9400 base1 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 9400 base2 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 9400 serial True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+RESULT {"seed": 9400, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 516.431987285614, "base2": 517.05601811409, "serial": 517.3279941082001}, "paired_ratios": {"base2": 0.9991326540487833, "serial": 0.9976175679430082}, "samples": {"base2": [1.0058356249256324, 0.9993808864221209, 1.0019855038226062, 1.0004336402355365, 0.9975875253699855, 0.9910141820336603, 1.0, 1.003343442891606, 0.9928593443213918, 0.9988844216754456, 0.9964210226273572, 0.9891692625254581, 1.0001238457781043, 0.9996281634239063, 0.9974014240366836, 0.9923347957463482], "serial": [0.9913725437456071, 0.9985772644602436, 0.998392440705488, 0.9998761388822192, 0.9976492530176235, 0.9974601656661521, 1.0019191483100471, 1.0042761419927555, 0.9925538894783126, 0.9975858828683927, 0.9974673824237583, 0.9908154821711119, 1.0018605660154396, 0.9979587750207614, 0.9957996424742933, 0.99062022233811]}}
+CHECK 9420 base1 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 9420 base2 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 9420 serial True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+RESULT {"seed": 9420, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 545.6800162792206, "base2": 544.4640219211578, "serial": 546.0000038146973}, "paired_ratios": {"base2": 1.0014763483278861, "serial": 0.9984726003707585}, "samples": {"base2": [0.9988290168256443, 1.001537117172973, 0.996055039713909, 1.0071352335506345, 1.0033573253037797, 1.0061929245628138, 1.001058811656768, 1.0044558894032567, 0.9974821896410182, 1.0014155794827992, 1.0023592041259213, 0.9994723870352902, 1.0258954696271823, 1.0022359858959247, 0.9954678235561829, 1.0], "serial": [0.9983029305486671, 0.9965291402214859, 0.9986422701928498, 1.0005857799942164, 1.0006461925951537, 1.0069055179501252, 0.9981230427421843, 1.0005839667617606, 0.9987687932666949, 0.9954265534029835, 0.9973591757139046, 0.9983016385495432, 1.0031004158948422, 1.00131744433723, 0.993018225014449, 0.9972520972085808]}}
+CHECK 9401 base1 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 9401 base2 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 9401 serial True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+RESULT {"seed": 9401, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 3151.6159772872925, "base2": 3114.848017692566, "serial": 3112.3679876327515}, "paired_ratios": {"base2": 1.0017041008344783, "serial": 1.0019849677609098}, "samples": {"base2": [1.0050054583792827, 1.00484640101415, 1.0022128774614198, 0.9991153931016041, 1.0046770579137227, 1.0016870647657683, 1.0012094666091618, 1.0217622720523374, 0.9967967291806792, 1.0010910564543782, 1.0010412952883814, 1.0038065670166039, 1.0017211369031882, 1.0041768733895073, 0.9984472075675511, 0.9982377441374302], "serial": [1.0028373964994781, 1.003094136224859, 1.0079803341371099, 0.9980852495077912, 1.0043808254248718, 0.9992847072734855, 1.0015992182401028, 1.0206441417509786, 1.003855100947122, 0.998661993327152, 0.9986913515927359, 1.0023707172817167, 0.9992313736969609, 1.0055904638560498, 0.9977456304821879, 0.994101411612158]}}
+CHECK 9421 base1 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 9421 base2 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 9421 serial True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+RESULT {"seed": 9421, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 3156.9920778274536, "base2": 3152.1600484848022, "serial": 3157.823920249939}, "paired_ratios": {"base2": 1.0014036655966878, "serial": 0.9999841400906669}, "samples": {"base2": [1.0019938963839223, 1.0010819476131871, 1.0007214854933353, 1.0040227583035424, 1.0022661170802174, 1.0018356285541588, 0.9573474550788612, 1.0003964202681845, 1.0052998194259437, 1.0009203680447372, 1.010885234026835, 0.9984173421330297, 1.0017253835801887, 0.993951806980004, 1.0020331206408433, 1.0003035162130944], "serial": [0.9985202940827906, 0.9986560856472217, 1.0000635930751012, 1.003799057754612, 1.0041055138073214, 0.9999046871062327, 0.9939612828616863, 0.9997867370580688, 1.001010910771024, 0.9997979779124525, 1.0014950469191362, 1.0009980009495212, 1.0015855413723695, 0.9984658955389307, 1.0014861390604348, 0.9987475632116354]}}
+CHECK 9402 base1 True update relative L2 error 3.222e-02 (worst row 1.049e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.524e-02) [b
+CHECK 9402 base2 True update relative L2 error 3.222e-02 (worst row 1.049e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.524e-02) [b
+CHECK 9402 serial True update relative L2 error 3.222e-02 (worst row 1.049e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.524e-02) [b
+RESULT {"seed": 9402, "case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "medians_us": {"base1": 9299.312114715576, "base2": 9291.247844696045, "serial": 9310.624122619629}, "paired_ratios": {"base2": 1.0002993054946532, "serial": 0.9983307936302153}, "samples": {"base2": [1.0054400061490318, 0.9988330055504477, 1.0004438421831539, 0.9959921948774537, 1.0006891773280684, 1.001261807159371, 1.0008706347599994, 1.0057848721939773, 0.9973621654204065, 0.987932760862952, 0.9914279280466756, 0.9952451008307217, 1.0009707142228408, 1.0001547688061523, 1.010183769562362, 0.988810520104568], "serial": [1.0054128196944114, 1.1067569693889827, 0.995500730957696, 0.9971178178469943, 1.0002720248234456, 0.9996421037773899, 0.9905246852073656, 0.9998670498905687, 0.9976338985065166, 0.9778952732643288, 0.9760875702716759, 0.9948215753892722, 0.9990276887539139, 0.9995497006164676, 1.0012509986275273, 0.9895029324986693]}}
+CHECK 9422 base1 True update relative L2 error 3.161e-02 (worst row 9.527e-02) [bound 0.070]; attention input relative L2 error 2.059e-02 (worst row 6.903e-02) [b
+CHECK 9422 base2 True update relative L2 error 3.161e-02 (worst row 9.527e-02) [bound 0.070]; attention input relative L2 error 2.059e-02 (worst row 6.903e-02) [b
+CHECK 9422 serial True update relative L2 error 3.161e-02 (worst row 9.527e-02) [bound 0.070]; attention input relative L2 error 2.059e-02 (worst row 6.903e-02) [b
+RESULT {"seed": 9422, "case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "medians_us": {"base1": 9336.159706115723, "base2": 9288.1441116333, "serial": 9335.519790649414}, "paired_ratios": {"base2": 1.0004922711612938, "serial": 0.9992084504687251}, "samples": {"base2": [1.0021783977076235, 1.0004589534894948, 1.0001871916876974, 1.0131552521728255, 1.0060245457642512, 1.0002674608515048, 1.0003128156140997, 1.0105371098411207, 1.000895719965057, 0.9995360999411057, 1.002108236995581, 0.9999932076209277, 1.0010977499872884, 0.9904252018046517, 0.9955918173644367, 1.000525588833093], "serial": [0.9992183226726363, 0.997542765236609, 1.1006473674726975, 1.0102435465337332, 0.9967060396510744, 0.9991985782648138, 1.0077759232624999, 0.9991687339121348, 0.9997538210955271, 1.0078101496182614, 1.0045910853922193, 0.9989295659455736, 0.9972576765935095, 0.9879833516228922, 0.9981264935408843, 1.0006059524224078]}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-BLsFSciigNN1jdCcuFi135
