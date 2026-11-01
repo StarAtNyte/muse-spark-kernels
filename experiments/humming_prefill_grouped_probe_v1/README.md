@@ -25,4 +25,16 @@ The first run `ap-aecAqH6TXOK44tIM93B0A4` stopped at Humming weight loading:
 the adapter supplied the per-expert secondary scale as `[32, 1]`, while the
 layer requires `[32]`. It did not produce a correctness or performance
 result. The failure is preserved in `initial_failure.log`; the adapter now
-uses the required shape, and the corrected run is pending.
+uses the required shape.
+
+Corrected run `ap-hzUDo0V7zOrbl0qJziw6jj` completed with return code 0.
+For 1044 synthetic local routes, the Humming output was finite and had 0.00448
+relative L2 versus the incumbent's expert outputs. The median cold-L2 graph
+times were 230.91 µs for the incumbent component including its gather/plan,
+and 489.22 µs for Humming's two grouped GEMMs plus separate SwiGLU, with
+Humming's gather and normalization precomputed. The median paired
+parent/Humming ratio was 0.4722. This is not a full challenge correctness or
+score test, and it does not isolate the cost of Humming's GEMMs versus the
+separate activation. It rules against integrating this particular unfused
+heuristic configuration; different kernels, fusion, tuning, or route sizes
+remain untested. The incumbent remains unchanged.

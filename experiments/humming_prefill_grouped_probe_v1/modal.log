@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hzUDo0V7zOrbl0qJziw6jj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   grouped_probe_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 24.7us, best 24.7us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.2us, best 69.2us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.4us, best 70.4us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.7us, best 147.7us algo None of 8
+LT tune T=3012 o: torch.mm 75.6us, best 75.6us algo None of 8
+LT tune T=3012 router: torch.mm 41.2us, best 41.2us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.2us, best 256.2us algo None of 8
+LT tune T=3012 unpooler: torch.mm 255.3us, best 255.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 768.5us, best 768.5us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 205.4us, best 193.5us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47058919683424'>")
+PARENT_READY
+HUMMING_READY
+COMPARE {"relative_l2_vs_parent": 0.004477222915738821, "finite": true, "routes": 1044}
+RESULT {"parent_with_gather_us": 230.9119999408722, "humming_pregathered_us": 489.21599984169006, "parent_over_humming": 0.472232493185199, "relative_l2_vs_parent": 0.004477222915738821}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hzUDo0V7zOrbl0qJziw6jj
