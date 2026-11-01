@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Nr4Se6pv59VemXsP6loYjL
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+READY NVIDIA H200 sfx ('-DOKC_PRMTSC=1',)
+RESULT {"batch": 32, "seed": 419, "base_us": 133.93600285053253, "candidate_us": 132.91199505329132, "base_over_candidate": 1.0019247252109147, "relative_l2": 0.0}
+RESULT {"batch": 32, "seed": 7919, "base_us": 152.8479978442192, "candidate_us": 151.88799798488617, "base_over_candidate": 1.0054919614792204, "relative_l2": 0.0}
+RESULT {"batch": 128, "seed": 419, "base_us": 194.59199905395508, "candidate_us": 194.09599900245667, "base_over_candidate": 1.0042285675526608, "relative_l2": 0.0}
+RESULT {"batch": 128, "seed": 7919, "base_us": 190.75199961662292, "candidate_us": 188.4640008211136, "base_over_candidate": 1.0075998176009724, "relative_l2": 0.0}
+RESULT {"batch": 256, "seed": 419, "base_us": 227.53600031137466, "candidate_us": 228.86400669813156, "base_over_candidate": 0.9952252639692135, "relative_l2": 0.0}
+RESULT {"batch": 256, "seed": 7919, "base_us": 210.65599471330643, "candidate_us": 210.27199923992157, "base_over_candidate": 1.003508519354982, "relative_l2": 0.0}
+MOE_GATHER_L1BYPASS_DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Nr4Se6pv59VemXsP6loYjL
