@@ -9,3 +9,12 @@ host-side packing (`_sc6_wgs` vs our `_kperm_*` / `_wgs_copy` order) or in the c
 The standalone MoE merge (experiments/moe_stack_sc6_v1) was never checked either. Safe alternatives measured on the judge:
 keell0renz decoder as-is 2.264x check / 2.243x scored; our decoder 2.226-2.260x. rs128 alone on our decoder: verify-16
 +1-2%, whole file within noise (experiments/decoder_ours_rs128_v1).
+
+## Root cause (static diff of merged file vs keell0renz decoder)
+The SC6 hunks I selected by keyword (`SC6|sc6`) leave the WGS weight-stage producer on `UNIT_BYTES` (36,864 B) for the
+per-stage global stride and the TMA `expect_tx` size, while the SC6 build uses `WGS_STG` (35,840 B). That hunk and ~60
+others across the WGS producer/consumer region (old lines ~5300-6800: st1 wp2s gating, stage addressing, host packing)
+do not mention SC6 in their text, so the keyword filter skipped them. With SC6 packed weights, every stage after the first
+is read from the wrong offset -> garbage experts at 17-32 tokens (residual error 1.05).
+Completing the merge means taking essentially all of their WGS region, i.e. their decoder plus our compact-QKV tail;
+their decoder as-is already exists (check 2.2636x, scored 2.243x). Conclusion: no separate "ours + SC6" decoder to build.
