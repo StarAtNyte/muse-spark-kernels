@@ -1,0 +1,7 @@
+# Scored KPERM3 MoE: gather batch 8 screen
+
+The exact scored parent (`experiments/scored_moe_ours_kperm3_v1/submission.py`, SHA-256 `ac008155520981cd67928bd52bb647efa64096add5acc8edabc779261105792f`) uses seven gathered activation rows per batch. This screen tests eight, which changes memory-level parallelism and register pressure in the KPERM3 gather loop. An earlier comparison on a different source does not establish how this choice performs on our current fused kernel.
+
+The public-image H200 driver uses the normal dispatch, shared prepared weights, batches 32, 128 and 256 with seeds 419 and 7919, and reference-checks both outputs. It records alternating, cold-L2 CUDA-graph pairs; this is a component screen, not the official judge. Any candidate needs a complete official correctness and performance check before promotion. See `modal.log` for raw results. The subprocess is capped at 300 seconds.
+
+Run `ap-RptApRan0NBNj1zJrRJCvg` completed successfully. Both versions passed the task reference on all six cases and outputs were identical in this screen. Median paired parent/candidate ratios were 1.0065 and 0.9972 at batch 32, 1.0075 and 0.9946 at batch 128, and 1.0027 and 0.9943 at batch 256 (seeds 419 and 7919 respectively). The mixed differences are too small to establish a useful gain; keep the scored parent and do not spend an official check on this variant. The labels in the reused driver's final `MOE_WGS_GATHB16_DONE` line are historical; `GATHB=8` is recorded in the environment and each result field.

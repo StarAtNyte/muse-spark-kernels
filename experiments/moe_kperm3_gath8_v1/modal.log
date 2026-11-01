@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-RptApRan0NBNj1zJrRJCvg
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"GATHB": "8"} RETURNCODE 0
+READY NVIDIA H200 sfx ('-DOKC_PRMTSC=1',)
+RESULT {"batch": 32, "seed": 419, "base_us": 133.34399461746216, "gath8_us": 132.88000226020813, "base_over_candidate": 1.0065104291684526, "relative_l2": 0.0}
+RESULT {"batch": 32, "seed": 7919, "base_us": 151.23199671506882, "gath8_us": 151.85599774122238, "base_over_candidate": 0.9971565398390758, "relative_l2": 0.0}
+RESULT {"batch": 128, "seed": 419, "base_us": 193.34400445222855, "gath8_us": 193.03999841213226, "base_over_candidate": 1.0074867311967106, "relative_l2": 0.0}
+RESULT {"batch": 128, "seed": 7919, "base_us": 188.36800009012222, "gath8_us": 189.12000209093094, "base_over_candidate": 0.994638258436995, "relative_l2": 0.0}
+RESULT {"batch": 256, "seed": 419, "base_us": 227.6799976825714, "gath8_us": 227.77599841356277, "base_over_candidate": 1.0026704102948323, "relative_l2": 0.0}
+RESULT {"batch": 256, "seed": 7919, "base_us": 210.4320004582405, "gath8_us": 210.4800045490265, "base_over_candidate": 0.994294046264782, "relative_l2": 0.0}
+MOE_WGS_GATHB16_DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-RptApRan0NBNj1zJrRJCvg
