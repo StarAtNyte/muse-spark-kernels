@@ -43,3 +43,10 @@ barrier and +3 us final. Perfect balancing would save at most ~8 us of 126 (6% o
 score, since only d16/d32/v-loads carry such spreads). alygg77 measured that dynamic claims / sub-unit splits move the
 last finisher later (unit 18.5 us vs 3.5 us spread; fix-up tails 1.5-4 us). Expect the rewrite to deliver +0-1.5% on the
 MoE board and well under +1% on the decoder, i.e. inside judge noise. Do not start it expecting a rank change.
+
+## Attention headroom map (2026-11-01, experiments/attention_ours_recheck_v1 profile)
+Full-context decode is at the random-gather limit (decode 32 full: ~655 MB in 166 us = ~3.9 TB/s). Remaining gaps: full
+verify (16 req: 101 us vs 87 us for same-bytes decode; 32 req: 185 vs 166) = q_len-8 compute on top of the gather, worth
+~+3-4% on those two cases if half is closed; sliding layers are 5-15 us of mostly fixed launch/ramp cost. Prior attempts at
+the verify-full gap (our wgmma wg1-wg5: parity with FA3; keell0renz A12 full-verify 2-head CTAs: no gain) were dead ends.
+The reference plants a shared direction in low-attention keys' values, so token-skipping approximations fail the check.
