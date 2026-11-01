@@ -1,0 +1,77 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dCBpyGBEyiBVdJ9gvel2s9
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 1
+ENV 2.14.1+cu130 NVIDIA H200
+PLANS ['(2, 8, 8, 2)', '(2, 8, 16, 1)', '(1, 16, 8, 1)', '(2, 16, 4, 2)']
+CHECK 419 base True relative L2 error 3.816e-06 (worst row 3.816e-06)
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.48 sk2=13.02 torch=18.08 -> cgemv
+[okc] tune o m=1: cgemv=8.64 sk2=9.28 torch=10.34 -> cgemv
+[okc] tune pooler m=1: cgemv=17.47 sk2=18.05 torch=24.38 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.04 sgemv=7.42 sk2=7.97 torch=10.5 -> cgemv
+[okc] tune router m=1: rgemv=7.36 sk2=8.45 torch=18.11 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.18 torch=17.73 -> sk2
+[okc] tune o m=16: sk2=9.18 torch=10.24 -> sk2
+[okc] tune pooler m=16: sk2=18.24 torch=24.45 -> sk2
+[okc] tune unpooler m=16: sk2=17.73 torch=22.37 -> sk2
+[okc] tune router m=16: sk2=8.45 torch=18.69 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.56 torch=18.11 -> sk2
+[okc] tune o m=32: sk2=9.31 torch=10.21 -> sk2
+[okc] tune pooler m=32: sk2=19.36 torch=24.86 -> sk2
+[okc] tune unpooler m=32: sk2=18.59 torch=22.62 -> sk2
+[okc] tune router m=32: sk2=8.9 torch=18.98 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.06 torch=17.57 -> sk2
+[okc] tune o m=8: sk2=9.25 torch=10.05 -> sk2
+[okc] tune pooler m=8: sk2=18.27 torch=24.48 -> sk2
+[okc] tune unpooler m=8: sk2=7.94 torch=10.59 -> sk2
+[okc] tune router m=8: sk2=8.45 torch=18.08 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.59 torch=20.67 -> gqx
+[okc] tune o m=128: torch=10.82 torchT=10.91 -> torch
+[okc] tune pooler m=128: gq=24.7 torch=28.8 -> gq
+[okc] tune unpooler m=128: torch=24.06 torchT=22.78 -> torchT
+[okc] tune router m=128: rk=9.89 wide=12.45 gemm=13.63 torch=19.97 -> rk
+[okc] tune o m=256: torch=12.8 torchT=12.77 -> torchT
+[okc] tune pooler m=256: torch=34.5 cutlass=31.23 -> cutlass
+[okc] tune unpooler m=256: torch=28.32 torchT=27.94 -> torchT
+[okc] tune router m=256: rk=10.62 wide=13.54 gemm=17.63 torch=20.99 -> rk
+[okc] disabled: []
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 66, in <module>
+    g,out=graph(fn);ok,msg=R.check_implementation(data,out,weights)
+          ^^^^^^^^^
+  File "/w/run/drv.py", line 23, in graph
+    fn();torch.cuda.synchronize()
+    ^^^^
+  File "/w/run/drv.py", line 65, in <lambda>
+    for name,fn in [('base',lambda:m.kernel_fn(data,state))]+[(key,lambda p=p:candidate(p)) for key,p in plans.items()]:
+                                                                              ^^^^^^^^^^^^
+  File "/w/run/drv.py", line 62, in candidate
+    if rc: raise RuntimeError(f'launch failed {rc}')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: launch failed -9
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dCBpyGBEyiBVdJ9gvel2s9
