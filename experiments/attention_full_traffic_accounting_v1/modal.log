@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-CjEELOkZ2aZJyB9R1KqmUV
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+SAMPLE {"seed": 4319, "lengths": [78756, 80340, 84051, 83963, 80701, 77434, 77574, 83927, 76467, 76681, 83173, 82087, 80395, 81683, 74184, 85379, 80767, 82575, 78316, 82534, 78440, 81687, 76520, 79610, 80209, 78302, 79006, 75381, 85916, 75507, 75161, 80930], "sum_context_rows": 2557656, "max_causal_rows": 2557912, "kv_bytes_old_context": 654759936, "page_index_bytes_old_context": 10230624}
+SAMPLE {"seed": 419, "lengths": [76159, 76092, 80156, 79150, 85015, 76308, 84062, 77235, 76284, 76447, 85373, 80227, 82593, 83556, 78960, 74654, 80130, 80209, 85373, 75621, 83524, 80932, 84404, 76139, 77086, 85657, 74346, 80742, 78155, 79780, 79368, 84823], "sum_context_rows": 2558560, "max_causal_rows": 2558816, "kv_bytes_old_context": 654991360, "page_index_bytes_old_context": 10234240}
+SAMPLE {"seed": 7919, "lengths": [81239, 82199, 74814, 79301, 84168, 81484, 76198, 84514, 76588, 81081, 78078, 78313, 76923, 84973, 83994, 78619, 80057, 78117, 85956, 78982, 78825, 74141, 79493, 74280, 83720, 77213, 75781, 78536, 82283, 76464, 78380, 74295], "sum_context_rows": 2539009, "max_causal_rows": 2539265, "kv_bytes_old_context": 649986304, "page_index_bytes_old_context": 10156036}
+SAMPLE {"seed": 22073, "lengths": [75509, 85285, 81135, 84710, 77869, 77830, 74701, 81761, 78267, 80077, 82407, 81384, 82086, 77065, 74519, 82641, 75935, 75810, 74978, 79294, 74612, 80881, 83151, 77226, 80737, 80862, 77127, 82184, 78831, 76519, 81719, 80357], "sum_context_rows": 2537469, "max_causal_rows": 2537725, "kv_bytes_old_context": 649592064, "page_index_bytes_old_context": 10149876}
+DONE NVIDIA H200
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-CjEELOkZ2aZJyB9R1KqmUV
