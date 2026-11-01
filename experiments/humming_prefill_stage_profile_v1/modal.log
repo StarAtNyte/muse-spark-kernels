@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E5Cs3qfYdTQFTiZJu4Ghgz
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   stage_profile_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.4us, best 42.4us algo None of 8
+LT tune T=753 o: torch.mm 24.5us, best 24.5us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.8us, best 68.8us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.7us, best 70.7us algo None of 8
+LT tune T=3012 qkv: torch.mm 148.9us, best 148.9us algo None of 8
+LT tune T=3012 o: torch.mm 75.0us, best 75.0us algo None of 8
+LT tune T=3012 router: torch.mm 40.7us, best 40.7us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.8us, best 256.8us algo None of 8
+LT tune T=3012 unpooler: torch.mm 255.3us, best 255.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 773.4us, best 773.4us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 199.0us, best 199.0us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47124274108544'>")
+PARENT_READY
+HUMMING_READY
+COMPARE {"relative_l2_vs_parent": 0.004439812619239092, "finite": true, "routes": 1044}
+RESULT {"parent_with_gather_us": 231.1999946832657, "humming_pregathered_us": 489.9520128965378, "parent_over_humming": 0.4719455857091417, "relative_l2_vs_parent": 0.004439812619239092}
+STAGE {"name": "gemm1", "median_us": 292.60799288749695, "min_us": 291.9679880142212, "max_us": 293.63200068473816}
+STAGE {"name": "silu_mul", "median_us": 57.5999990105629, "min_us": 56.48000165820122, "max_us": 58.27200040221214}
+STAGE {"name": "gemm2", "median_us": 149.3920013308525, "min_us": 148.3519971370697, "max_us": 150.33599734306335}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E5Cs3qfYdTQFTiZJu4Ghgz
