@@ -50,3 +50,8 @@ verify (16 req: 101 us vs 87 us for same-bytes decode; 32 req: 185 vs 166) = q_l
 ~+3-4% on those two cases if half is closed; sliding layers are 5-15 us of mostly fixed launch/ramp cost. Prior attempts at
 the verify-full gap (our wgmma wg1-wg5: parity with FA3; keell0renz A12 full-verify 2-head CTAs: no gain) were dead ends.
 The reference plants a shared direction in low-attention keys' values, so token-skipping approximations fail the check.
+
+## Update 2026-11-01 (late): the 32-token cold penalty
+See experiments/moe_phase_code_cost_v4/FINDINGS.md. With the judge's read flush the cold-vs-warm gap is real only at bs=32
+(4-7 us, in the streaming phases, not the prologue); 8/16/128 tokens show ~0-1.4%. Flushing with a read-modify-write (add_)
+fakes a 4-7 us gap at every size: use `flush.sum()`. Not built; ceiling ~+1.4% MoE, ~+0.5% decoder.
