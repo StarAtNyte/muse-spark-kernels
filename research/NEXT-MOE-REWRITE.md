@@ -36,3 +36,10 @@ best target: byte floor is ~28 MB per touched expert at 4.1 TB/s.
 - Identical source scores as "duplicate"; do not resubmit for a lucky draw: the organizers rank on medians of reruns.
 - Base: `experiments/moe_ours_kperm3_stack_v1/submission.py` (2.391x check). Modal harness:
   `dev/modal/run_judge_image.py` with `experiments/moe_mid_judgeseed_v1/driver.py` as the paired template.
+
+## Ceiling estimate (2026-11-01, from experiments/moe_timeline_v1)
+At bs=32 decode (126 us kernel) CTA finish times spread 78.3-86.5 us (phase A) and 116.2-124.9 us (phase B), then +1 us
+barrier and +3 us final. Perfect balancing would save at most ~8 us of 126 (6% on that one load; ~1-1.5% on the MoE board
+score, since only d16/d32/v-loads carry such spreads). alygg77 measured that dynamic claims / sub-unit splits move the
+last finisher later (unit 18.5 us vs 3.5 us spread; fix-up tails 1.5-4 us). Expect the rewrite to deliver +0-1.5% on the
+MoE board and well under +1% on the decoder, i.e. inside judge noise. Do not start it expecting a rank change.
