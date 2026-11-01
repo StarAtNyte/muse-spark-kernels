@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-D61PT4rq60u3J3jqpUymGo
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+BUILT ['invalid_no_angles']
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 1, "layer": "sliding", "dist": "soft"}, "seed": 11, "base": 9.31, "invalid_no_angles": 9.31, "gain_invalid_no_angles": 1.0}
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 1, "layer": "sliding", "dist": "soft", "q_len": 8}, "seed": 11, "base": 11.06, "invalid_no_angles": 10.88, "gain_invalid_no_angles": 1.016}
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 16, "layer": "sliding", "dist": "soft", "spread": "agentic"}, "seed": 11, "base": 12.82, "invalid_no_angles": 12.85, "gain_invalid_no_angles": 0.998}
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 16, "layer": "sliding", "dist": "soft", "spread": "agentic", "q_len": 8}, "seed": 11, "base": 15.84, "invalid_no_angles": 15.71, "gain_invalid_no_angles": 1.008}
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 32, "layer": "sliding", "dist": "soft", "spread": "agentic"}, "seed": 11, "base": 15.87, "invalid_no_angles": 15.97, "gain_invalid_no_angles": 0.994}
+ABLATION_INVALID_OUTPUT invalid_no_angles
+ROW {"case": {"batch": 32, "layer": "sliding", "dist": "soft", "spread": "agentic", "q_len": 8}, "seed": 11, "base": 19.55, "invalid_no_angles": 19.54, "gain_invalid_no_angles": 1.001}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-D61PT4rq60u3J3jqpUymGo
