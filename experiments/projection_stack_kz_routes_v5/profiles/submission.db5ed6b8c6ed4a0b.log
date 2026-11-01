@@ -1,0 +1,105 @@
+RT12 off: RT12 disabled
+[okc] tune qkv_gate m=1: cgemv=12.45 sk2=12.99 torch=17.34 -> cgemv
+[okc] tune o m=1: cgemv=8.74 sk2=9.15 torch=10.14 -> cgemv
+[okc] tune pooler m=1: cgemv=17.41 sk2=17.79 torch=24.26 -> cgemv
+[okc] tune unpooler m=1: cgemv=6.98 sgemv=7.2 sk2=7.71 torch=10.34 -> cgemv
+[okc] tune router m=1: rgemv=7.04 sk2=8.32 torch=18.02 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.34 torch=17.47 -> sk2
+[okc] tune o m=16: sk2=9.09 torch=9.98 -> sk2
+[okc] tune pooler m=16: sk2=18.08 torch=24.54 -> sk2
+[okc] tune unpooler m=16: sk2=17.54 torch=22.02 -> sk2
+[okc] tune router m=16: sk2=8.35 torch=18.37 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.4 torch=17.54 -> sk2
+[okc] tune o m=32: sk2=9.38 torch=10.11 -> sk2
+[okc] tune pooler m=32: sk2=18.75 torch=24.77 -> sk2
+[okc] tune unpooler m=32: sk2=18.78 torch=22.37 -> sk2
+[okc] tune router m=32: sk2=8.77 torch=18.69 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.18 torch=17.34 -> sk2
+[okc] tune o m=8: sk2=9.06 torch=9.82 -> sk2
+[okc] tune pooler m=8: sk2=17.89 torch=24.29 -> sk2
+[okc] tune unpooler m=8: sk2=7.87 torch=10.4 -> sk2
+[okc] tune router m=8: sk2=8.51 torch=18.24 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.62 torch=20.51 -> gqx
+[okc] tune o m=128: torch=10.69 torchT=10.66 -> torchT
+[okc] tune pooler m=128: gq=25.44 torch=29.47 -> gq
+[okc] tune unpooler m=128: torch=23.58 torchT=22.43 -> torchT
+[okc] tune router m=128: rk=9.6 wide=12.29 gemm=13.44 torch=19.68 -> rk
+[okc] tune o m=256: torch=12.67 torchT=12.58 -> torchT
+[okc] tune pooler m=256: torch=33.28 cutlass=30.59 -> cutlass
+[okc] tune unpooler m=256: torch=27.97 torchT=27.81 -> torchT
+[okc] tune router m=256: rk=10.56 wide=13.25 gemm=17.22 torch=20.9 -> rk
+[okc] disabled: []
+PREP rq thread started at 157s
+PREP rq32 thread started at 157s
+BUILD kz_pw57_flush 44.8s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   11.94 us   0.53 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.55 us   0.83 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.16 us   1.38 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.11 us   1.66 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.85 us two_node 5.50 us overhead 4.19 us
+PREP flush+fixed done at 206s
+lt qkv_gate m128 heur 20736.00 best 0:66.92.1.0.0.0.35.0.2 19008.00 (662 tried, 2.5s)
+lt pooler m128 heur 29536.00 best 2:66.15.1.0.0.4.35.0.5 23424.00 (1180 tried, 5.4s)
+lt unpooler m128 heur 23488.00 best 2:66.18.1.0.0.3.35.0.5 22336.00 (750 tried, 7.4s)
+gv qkv_gate m8 v12 12448.00 best 1.1.1.2.16.8.1.1.2.1 6544.68 (ref 1.1.1.2.16.8.1.1.2.1 6544.68)
+  v12:12448.00 1.1.1.2.16.8.1.1.2.1:6544.68 1.1.2.1.8.16.1.1.0.1:9308.26 1.1.1.1.16.8.1.1.2.8193:8179.15 1.1.2.1.4.16.2.1.0.0:10564.22 1.1.2.1.4.16.2.1.0.1:10468.03 1.1.2.1.4.8.4.1.0.1:14153.22
+gv qkv_gate m32 v12 13024.00 best v12 13024.00 (ref v12 13024.00)
+  v12:13024.00 1.4.2.1.8.16.1.1.2.0:13398.06 1.4.2.1.8.16.1.1.2.1:14465.14 1.4.2.1.4.16.2.1.2.0:14210.34 1.4.2.1.4.16.2.1.2.1:14358.19 1.4.2.2.4.16.2.1.2.1:15102.19 1.4.1.1.4.8.4.1.2.0:19075.36 1.4.1.1.4.8.4.1.2.1:18058.50 1.4.2.1.4.8.4.1.2.1:19084.54 1.4.1.1.4.16.2.1.2.1:12994.50
+gv o m8 v12 5280.00 best 1.1.2.1.8.2.1.1.0.1 3595.33 (ref 1.1.2.1.8.2.1.1.0.1 3595.33)
+  v12:5280.00 1.1.2.1.8.2.1.1.0.1:3595.33 1.1.2.1.8.2.1.1.0.0:4277.98 1.1.2.2.4.4.1.1.0.1:4774.12 1.1.2.1.4.4.1.1.0.1:4750.71
+gv o m16 v12 5408.00 best 1.2.2.1.8.2.1.1.0.1 3738.05 (ref 1.2.2.1.8.2.1.1.0.1 3738.05)
+  v12:5408.00 1.2.2.1.8.2.1.1.0.1:3738.05 1.2.2.1.8.2.1.1.0.0:4343.43 1.2.2.1.8.2.1.1.2.1:7032.88 1.2.2.2.4.4.1.1.0.1:5313.05 1.2.2.2.4.4.1.1.2.1:4884.77 1.2.1.1.4.4.1.1.2.1:4507.81
+gv pooler m8 v12 19136.00 best 1.1.1.2.16.8.1.1.0.3 10922.95 (ref 1.1.1.2.16.8.1.1.0.3 10922.95)
+  v12:19136.00 1.1.1.2.16.8.1.1.0.3:10922.95 1.1.2.2.8.16.1.1.0.1:12966.73 1.1.2.2.8.16.1.1.0.0:13316.85 1.1.2.1.8.16.1.1.0.1:12712.74
+gv pooler m16 v12 19008.00 best 1.2.2.2.8.16.1.1.0.1 11568.49 (ref 1.2.2.2.8.16.1.1.0.1 11568.49)
+  v12:19008.00 1.2.2.2.8.16.1.1.0.1:11568.49 1.2.2.2.8.16.1.1.0.0:13912.20 1.2.2.1.8.16.1.1.2.1:14104.48 1.2.2.1.8.16.1.1.0.1:16849.11
+PAIR ov 4.19 clamped to 4.16 (times 8.32/8.38)
+PAIR ov 4.19 clamped to 4.14 (times 9.12/8.29)
+PAIR ov 4.19 clamped to 4.08 (times 8.16/8.22)
+gv unpooler m8 v12 6240.00 best 1.1.2.1.16.4.1.1.0.1 1826.74 (ref 1.1.2.1.16.4.1.1.0.1 1826.74)
+  v12:6240.00 1.1.2.1.16.4.1.1.0.1:1826.74 1.1.2.1.16.4.1.1.0.0:3451.36 1.1.2.1.8.2.4.1.0.1:4580.22 1.1.2.1.8.4.2.1.0.1:4990.81 1.1.2.1.16.4.1.1.2.1:3109.12
+PREP r6 done in 227s
+BAKE rq skipped-budget 227s
+PREP phase rq done at 227s
+BAKE qkv_gate m=8 r6 13.06 (ref)
+BAKE qkv_gate m=8 q144k16 14.94 (ref r6 13.06)
+PICK qkv_gate m=8 r6 13.06 (ref r6 13.06)
+BAKE unpooler m=8 r6 8.03 (ref)
+BAKE unpooler m=8 uk-s4z 8.38 (ref r6 8.03)
+BAKE unpooler m=8 uk-s4x 7.84 (ref r6 8.03)
+BAKE unpooler m=8 uk-s4w4x 8.06 (ref r6 8.03)
+PICK unpooler m=8 uk-s4x 7.84 (ref uk-s4x 7.84)
+PREP phase gx done at 227s
+BAKE rq32 skipped-budget 227s
+PREP phase rq32 done at 227s
+PREP phase router done at 227s
+PREP done in 227s
+[okc] tune qkv_gate m=1: cgemv=12.64 sk2=13.22 torch=17.73 -> cgemv
+[okc] tune o m=1: cgemv=8.83 sk2=9.31 torch=10.46 -> cgemv
+[okc] tune pooler m=1: cgemv=17.47 sk2=17.79 torch=24.9 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.39 sgemv=7.52 sk2=8.0 torch=11.1 -> cgemv
+[okc] tune router m=1: rgemv=7.58 sk2=8.7 torch=19.26 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.5 torch=17.92 -> sk2
+[okc] tune unpooler m=16: sk2=17.95 torch=22.46 -> sk2
+[okc] tune o m=32: sk2=9.6 torch=10.43 -> sk2
+[okc] tune pooler m=32: sk2=19.01 torch=24.96 -> sk2
+[okc] tune unpooler m=32: sk2=18.94 torch=22.59 -> sk2
+[okc] tune router m=128: rk=9.98 wide=12.51 gemm=13.79 torch=21.38 -> rk
+[okc] tune router m=256: rk=10.88 wide=13.41 gemm=17.54 torch=22.27 -> rk
+[okc] disabled: []
+Traceback (most recent call last):
+  File "/tmp/muse_bf16_proj-neatfnxd/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_bf16_proj-neatfnxd/run/worker.py", line 322, in _setup_op
+    state["prep"] = prepare(weights)
+                    ^^^^^^^^^^^^^^^^
+  File "/tmp/muse_bf16_proj-neatfnxd/run/submission.py", line 7251, in prepare
+    state["kz_hybrid"] = _kz_mod.prepare(weights)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<kz_proj>", line 11553, in prepare
+  File "<kz_proj>", line 11074, in prepare
+  File "<kz_proj>", line 10995, in _rt
+RuntimeError: routertail launch failed: 912
