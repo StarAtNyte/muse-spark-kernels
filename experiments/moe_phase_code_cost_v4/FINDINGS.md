@@ -12,3 +12,11 @@ Reading: first-pass instruction fetch in the WGS consumer/epilogue code is the l
 is bandwidth-bound, visible at bs=32 where it is latency-bound), but this is an inference. A dry-run warm-up has no idle
 window: consumers gather x until 4.4 us and the first weight stage arrives about then. Prize: ~4-7 us of ~122 us on the 32-token
 MoE load = ~+0.9-1.4% MoE board, ~+0.5% decoder. Not built.
+
+## Build feasibility check (2026-11-01, late)
+Read wgs_seg/wgs_phase/wgs_xproducer/wgs_epi_tile in kernels/muse_moe_w4a16/submission.py:
+- Cutting the number of code copies by rounding the n-tile count up (8 variants x 2 phases -> fewer) is not possible: the xB
+  layout, npad, the x TMA byte count and the epilogue's `ntt` all derive from the exact tile count, so a wider variant reads and
+  writes a different layout.
+- A dry segment before the first stage would run the same forced-inline body that includes red.add/epilogue stores, mbarrier
+  traffic and the descriptor setup; it needs a `dry` flag through wgs_seg and has no idle window (see above). Not built.
