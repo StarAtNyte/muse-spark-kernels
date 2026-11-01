@@ -1,0 +1,65 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-poQ5TKHAN8dbltNRitMjz4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=16384 qkv: torch.mm 777.5us, best 777.5us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 185.2us, best 185.2us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47898118407232'>")
+READY NVIDIA H200
+PLAN {"name": "qkv", "N": 2304, "K": 8192, "algos": 8, "parent_choice": "None"}
+RESULT {"name": "qkv", "algo": 0, "info": [209, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 778.8479924201965, "candidate_us": 778.7840068340302, "ratio": 1.0005550295263834, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 1, "info": [24, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 780.9440195560455, "candidate_us": 773.0880081653595, "ratio": 1.0107208732528228, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 2, "info": [23, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 783.488005399704, "candidate_us": 783.7440073490143, "ratio": 0.9992454432400854, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 3, "info": [31, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 784.3199968338013, "candidate_us": 810.3040158748627, "ratio": 0.9674398837991257, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 4, "info": [32, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 783.6160063743591, "candidate_us": 816.9440031051636, "ratio": 0.9591102893265924, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 5, "info": [495, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 784.1599881649017, "candidate_us": 799.807995557785, "ratio": 0.9802195688304549, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 6, "info": [197, 1, 35, 0, 4, 66, 0, 0, 2, 0], "parent_us": 783.5839986801147, "candidate_us": 801.472008228302, "ratio": 0.9791688465913977, "max_relative": 0.0}
+RESULT {"name": "qkv", "algo": 7, "info": [184, 1, 35, 0, 4, 66, 0, 0, 2, 0], "parent_us": 830.1439881324768, "candidate_us": 816.431999206543, "ratio": 1.0162447972077224, "max_relative": 0.0}
+PLAN {"name": "pooler", "N": 4096, "K": 8192, "algos": 8, "parent_choice": "(3, 5)"}
+RESULT {"name": "pooler", "algo": 0, "info": [248, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1394.7519659996033, "candidate_us": 1467.9679870605469, "ratio": 0.9485842832931262, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 1, "info": [24, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1415.2799844741821, "candidate_us": 1471.5200066566467, "ratio": 0.9617918593176876, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 2, "info": [23, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1469.8399901390076, "candidate_us": 1523.855984210968, "ratio": 0.9628910155487153, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 3, "info": [32, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1547.2800135612488, "candidate_us": 1605.6959629058838, "ratio": 0.9641496455022951, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 4, "info": [209, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1533.6480140686035, "candidate_us": 1671.0079908370972, "ratio": 0.9177746440409258, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 5, "info": [29, 1, 35, 0, 4, 66, 0, 0, 1, 0], "parent_us": 1524.079978466034, "candidate_us": 1517.1039700508118, "ratio": 1.007166729329109, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 6, "info": [495, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1510.431945323944, "candidate_us": 1551.0720014572144, "ratio": 0.9739670916065631, "max_relative": 0.0}
+RESULT {"name": "pooler", "algo": 7, "info": [31, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1516.4799690246582, "candidate_us": 1638.704001903534, "ratio": 0.9176565354415909, "max_relative": 0.0}
+PLAN {"name": "unpooler", "N": 8192, "K": 4096, "algos": 8, "parent_choice": "(4, 6)"}
+RESULT {"name": "unpooler", "algo": 0, "info": [209, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1445.13601064682, "candidate_us": 1547.21599817276, "ratio": 0.935161929447891, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 1, "info": [248, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1470.736026763916, "candidate_us": 1584.3679904937744, "ratio": 0.9284762487605829, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 2, "info": [24, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1422.9440093040466, "candidate_us": 1496.1280226707458, "ratio": 0.9546219065280612, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 3, "info": [23, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1421.999990940094, "candidate_us": 1484.7519993782043, "ratio": 0.9570817480349659, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 4, "info": [31, 1, 35, 0, 4, 66, 0, 0, 7, 0], "parent_us": 1396.720051765442, "candidate_us": 1470.9280133247375, "ratio": 0.9530596478763576, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 5, "info": [32, 1, 35, 0, 4, 66, 0, 0, 4, 0], "parent_us": 1504.1760206222534, "candidate_us": 1581.3920497894287, "ratio": 0.9511679296665425, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 6, "info": [201, 1, 35, 0, 4, 66, 0, 0, 2, 0], "parent_us": 1360.3039979934692, "candidate_us": 1356.9440245628357, "ratio": 1.0020116721247494, "max_relative": 0.0}
+RESULT {"name": "unpooler", "algo": 7, "info": [197, 1, 35, 0, 4, 66, 0, 0, 2, 0], "parent_us": 1358.62398147583, "candidate_us": 1361.1679673194885, "ratio": 0.9980865313461008, "max_relative": 0.0}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-poQ5TKHAN8dbltNRitMjz4
