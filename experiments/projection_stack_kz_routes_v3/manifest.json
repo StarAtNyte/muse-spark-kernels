@@ -1,0 +1,22 @@
+{
+  "name": "projection_stack_kz_routes_v3",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "v2 failed in setup with routertail launch 912; bind the primary CUDA context before the embedded module's prepare",
+  "sha256": "59269a332e00871c41af54ee0bacd461a3c846963d194327d43a887ae18c38dd",
+  "created_at": 1793524055.3699646,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "received",
+  "job_id": "85ebc501b48c4d49"
+}
