@@ -1,0 +1,47 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-YgQmsukAqWdjMVtz6fqyGn
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+START
+[mfab] modules built at 63s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 0.00e+00
+ROW {"bs": 32, "seed": 3357109366520139634, "main_us": 118.04799735546112, "dry_us": 140.00000059604645, "gain": 0.8431999775205341}
+ROW {"bs": 32, "seed": 419, "main_us": 119.27999928593636, "dry_us": 140.31999558210373, "gain": 0.850057034217504}
+ROW {"bs": 32, "seed": 7919, "main_us": 133.96800309419632, "dry_us": 160.16000509262085, "gain": 0.8364635291858435}
+ROW {"bs": 16, "seed": 3357068220476696277, "main_us": 97.04000130295753, "dry_us": 96.78399935364723, "gain": 1.0026450854585465}
+ROW {"bs": 128, "seed": 11, "main_us": 168.70400309562683, "dry_us": 205.02400398254395, "gain": 0.8228500069191437}
+ROW {"bs": 64, "seed": 5, "main_us": 155.16799688339233, "dry_us": 185.85599958896637, "gain": 0.8348829051876576}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-YgQmsukAqWdjMVtz6fqyGn
