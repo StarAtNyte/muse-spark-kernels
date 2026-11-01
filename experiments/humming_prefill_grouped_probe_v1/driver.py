@@ -32,7 +32,7 @@ def layer(n, prefix):
         weight_config={'dtype':'float4e2m1','group_size':16,'scale_dtype':'float8e4m3','scale_2_type':'tensor'},
         input_config={'dtype':'bfloat16'},torch_dtype=torch.bfloat16).cuda()
     L.load_from_tensors({'weight':weights[prefix].view(torch.int32),
-        'weight_scale':weights[prefix+'_sf'], 'weight_scale_2':weights[prefix+'_gs'].reshape(32,1)})
+        'weight_scale':weights[prefix+'_sf'], 'weight_scale_2':weights[prefix+'_gs'].reshape(32)})
     L.transform()
     tune=get_heuristics_config(layer_config=L.humming_config,gemm_type=GemmType.GROUPED_CONTIGUOUS)
     return L,json.dumps(tune)

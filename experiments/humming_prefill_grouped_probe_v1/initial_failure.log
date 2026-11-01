@@ -1,0 +1,61 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-aecAqH6TXOK44tIM93B0A4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   grouped_probe_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 1
+LT tune T=753 qkv: torch.mm 42.9us, best 42.9us algo None of 8
+LT tune T=753 o: torch.mm 24.5us, best 24.5us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.7us, best 69.7us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.8us, best 70.8us algo None of 8
+LT tune T=3012 qkv: torch.mm 148.4us, best 148.4us algo None of 8
+LT tune T=3012 o: torch.mm 75.2us, best 75.2us algo None of 8
+LT tune T=3012 router: torch.mm 41.3us, best 41.3us algo None of 8
+LT tune T=3012 pooler: torch.mm 257.4us, best 257.4us algo None of 8
+LT tune T=3012 unpooler: torch.mm 257.3us, best 257.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 777.5us, best 777.5us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 207.0us, best 198.2us algo 0 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47532545093424'>")
+PARENT_READY
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/driver.py", line 40, in <module>
+    L1,T1=layer(8192,'w13'); L2,T2=layer(4096,'w2')
+          ^^^^^^^^^^^^^^^^^
+  File "/w/run/driver.py", line 34, in layer
+    L.load_from_tensors({'weight':weights[prefix].view(torch.int32),
+  File "/w/humming/humming/layer.py", line 424, in load_from_tensors
+    self.load_state_dict(tensors, strict=False)
+  File "/opt/sglang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2643, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for HummingLayer:
+	size mismatch for weight_scale_2: copying a param with shape torch.Size([32, 1]) from checkpoint, the shape in current model is torch.Size([32]).
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-aecAqH6TXOK44tIM93B0A4

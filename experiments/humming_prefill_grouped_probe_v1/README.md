@@ -20,3 +20,9 @@ external Humming dependency is assumed available on the judge.
 The runner verifies Humming commit `948e6fd547e703065be51529ac1db5569256774e`
 from the local clone before mounting its source; the subprocess has a
 300-second limit. Raw output and failures are retained in `modal.log`.
+
+The first run `ap-aecAqH6TXOK44tIM93B0A4` stopped at Humming weight loading:
+the adapter supplied the per-expert secondary scale as `[32, 1]`, while the
+layer requires `[32]`. It did not produce a correctness or performance
+result. The failure is preserved in `initial_failure.log`; the adapter now
+uses the required shape, and the corrected run is pending.
