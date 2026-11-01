@@ -21,11 +21,14 @@ best target: byte floor is ~28 MB per touched expert at 4.1 TB/s.
 ## Candidate designs (untried)
 1. Stream-K at expert-chunk granularity with a persistent producer warpgroup that never waits on unit ends (units
    fixed up through the existing WGS fixup slots, 28 free) so tails overlap the next expert's loads.
-2. ALREADY IMPLEMENTED, do not redo: the WGS kernel is stream-K over 256-row units x 16 stages with cost-weighted
-   stage ranges (`wgs_range`, `wgs_split`, `S.wgr`, cost tables OKC_WGSA/OKC_WGSB) and fix-up slots. What remains is the
-   phase A (gate/up) -> phase B (down) dependency and the phase-B end spread (3.5 us at d32). A real gain needs those
-   two phases overlapped across experts (phase B of expert i while phase A of expert i+1 streams), which means a
-   per-expert dependency counter instead of a global phase barrier.
+2. ALREADY IMPLEMENTED, do not redo: stream-K over 256-row units x 16 stages with cost-weighted stage ranges
+   (`wgs_range`, `wgs_split`, `S.wgr`, OKC_WGSA/OKC_WGSB) and fix-up slots.
+3. ALSO ALREADY IMPLEMENTED: phase A -> phase B overlap. Phase B waits per (job, stage) on `p.doneAs[j*16+st] >= 8`
+   (`ld_acquire` spin, line ~2012) and phase A publishes row readiness per job in `p.xready[j]`; there is no global
+   phase barrier. So design 1 above is the only structural lever left, and it competes with the same unit-end
+   stalls already measured (alygg77 negative result #2: sub-unit claims need fix-ups whose tails eat the gain).
+   Expected ceiling is small (MoE gap to the TMA floor is 13-33%, but every tail/overlap variant tried so far landed
+   inside judge noise). Treat the MoE kernel as structurally near its limit before investing days.
 
 ## Rules for the experiment
 - Judge noise is ~1.5% on the decoder; trust only paired Modal screens with the judge's per-case seeds (status.json
