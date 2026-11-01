@@ -1,0 +1,22 @@
+{
+  "name": "decoder_ours_sc6_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Port SC6 (lossless 6-bit NVFP4 block scales in WGS stages, +2% MoE at 32-256 tokens) and rs128 block from keell0renz into our decoder",
+  "sha256": "35c850cd2cd6ccad3f10eadb4af72a5204c50fb737c6d13e878bd4afcd344940",
+  "created_at": 1793525287.9331121,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 4,
+      "left": 16
+    }
+  },
+  "status": "received",
+  "job_id": "7b94d6fb754a4eed"
+}

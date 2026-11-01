@@ -1,0 +1,22 @@
+{
+  "name": "decoder_ours_sc6_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "v1 failed with NameError _qkv_compact_route (the big merge hunk replaced our compact tail); restore our compact QKV/O-layer tail after SC6 + rs128 merge",
+  "sha256": "9014ad31291c233ae0535234082faef3e863f32aa3b1fcc9979fd3008925902e",
+  "created_at": 1793525561.492391,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 5,
+      "left": 15
+    }
+  },
+  "status": "received",
+  "job_id": "e417dee2a9874dc1"
+}
