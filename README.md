@@ -51,6 +51,8 @@ Overall rank was **#60**. Category ranks and cutoffs were fetched on **2026-11-0
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
+Recent official prefill check: [stacked 3,012-token QKV and pooler plans](experiments/prefill_3012_lt_stack_v1/README.md) passed at 1.7827×; the published 1.8092× source remains the incumbent. The intervals overlap, so the difference does not establish a regression.
+
 ## Score progression
 
 These are published milestones; current ranks refer to the snapshot above. Intermediate ranks are omitted when not recorded. Exact scored sources and job IDs are retained under `experiments/`.

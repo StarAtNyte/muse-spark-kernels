@@ -1,0 +1,7 @@
+# Short-prefill dense projection plan screen
+
+The promoted prefill layer's short-workload profiles spend a substantial share in dense GEMMs. This screen tests the public-image cuBLASLt heuristic list for QKV, pooler and unpooler at 753 and 3012 tokens against the scored source's prepared plan. It uses actual reference weights, one synthetic input seed, baseline-relative output comparison and six alternating cold-L2 graph pairs per descriptor. Candidate output is preallocated, whereas the incumbent goes through the full `_mm` wrapper, so small leads can reflect wrapper or timing differences.
+
+This is an exploratory component screen with SGLang stubbed, not the official environment. Any lead requires randomized multi-seed A/A controls, full-layer comparisons with equivalent dispatch, and the complete official correctness and performance suite before promotion. The GPU subprocess is capped at 300 seconds; raw configurations, timings and failures are in `modal.log`.
+
+Run `ap-Yk5FZhZ3rnbXFyDh8EGLqd` completed successfully and all reported descriptors passed the baseline-relative output check. At 753 tokens no plan led by more than 0.6%. At 3012 tokens, QKV signature `(496,1,0,7)` showed 1.0138× and pooler signature `(24,1,0,7)` showed 1.0091× in this single-seed component screen; unpooler was neutral. These leads are only a few microseconds and may include wrapper and measurement effects. They are being checked together in a controlled full-layer test, not promoted on this evidence.
