@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bOAtnftaWUVAkfXhBqDgKg
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 43.0us, best 43.0us algo None of 8
+LT tune T=753 o: torch.mm 25.1us, best 25.1us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.7us, best 69.7us algo None of 8
+LT tune T=753 unpooler: torch.mm 71.3us, best 71.3us algo None of 8
+LT tune T=3012 qkv: torch.mm 150.6us, best 150.6us algo None of 8
+LT tune T=3012 o: torch.mm 75.9us, best 75.9us algo None of 8
+LT tune T=3012 router: torch.mm 41.6us, best 41.6us algo None of 8
+LT tune T=3012 pooler: torch.mm 260.9us, best 260.9us algo None of 8
+LT tune T=3012 unpooler: torch.mm 261.3us, best 261.3us algo None of 8
+ATTN validation/tuning failed: KeyError("dtype' id='47375836061552'>")
+BASE_PLANS {(753, 'router'): (2, 6)}
+SHARED_PLANS
+PLAN 753 16 [497, 1, 35, 0, 0, 66, 0, 0, 5, 0]
+PLAN 753 32 [23, 1, 35, 0, 0, 66, 0, 0, 4, 0]
+PLAN 753 48 [501, 1, 35, 0, 0, 66, 0, 0, 5, 0]
+CHECK 753 9400 base1 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 753 9400 base2 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 753 9400 reserve16 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 753 9400 reserve32 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+CHECK 753 9400 reserve48 True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [b
+RESULT {"T": 753, "seed": 9400, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 516.9920027256012, "base2": 515.9039795398712, "reserve16": 516.3360238075256, "reserve32": 522.0319926738739, "reserve48": 534.2880189418793}, "paired_ratios": {"base2": 1.001271237395187, "reserve16": 1.0031889741101403, "reserve32": 0.9905003340289963, "reserve48": 0.9675550169267468}, "samples": {"base2": [0.9990122162062087, 1.0009945995214344, 0.9966480479223586, 0.9941469725791466, 0.9943740631355521, 1.0010565793801132, 1.001485895410261, 1.0125935256355842, 1.0014945004471323, 1.0022901186653836, 1.0121075998080975, 1.0041527960170287], "reserve16": [1.0026643014763588, 0.9999378886944585, 0.9980109246317577, 1.0046070951909964, 0.9961600393525019, 0.9972139893506793, 1.00659610483481, 1.0056965802872164, 0.9911870454665206, 1.003843293034525, 1.0037136467439216, 1.0049001592410223], "reserve32": [0.9920912660768918, 0.9880353219148696, 0.9840646578502683, 0.9906071864326154, 0.9866273921483718, 0.9810573602332652, 0.9945892360326531, 0.9952815802773959, 0.9903934816253772, 0.9920970807490839, 0.9927155476485872, 0.9894949902658499], "reserve48": [0.9611546231069995, 0.9649448137812522, 0.9601722295212894, 0.9679664138370736, 0.9676333177496574, 0.9584076878496823, 0.9683328038834895, 0.9674767161038363, 0.9644399626979493, 0.9719122005718507, 0.9687575210974607, 0.9716324764689415]}}
+CHECK 753 9420 base1 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 753 9420 base2 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 753 9420 reserve16 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 753 9420 reserve32 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+CHECK 753 9420 reserve48 True update relative L2 error 5.115e-02 (worst row 9.949e-02) [bound 0.122]; attention input relative L2 error 3.297e-02 (worst row 6.294e-02) [b
+RESULT {"T": 753, "seed": 9420, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 541.9679880142212, "base2": 540.8480167388916, "reserve16": 543.615996837616, "reserve32": 548.0160117149353, "reserve48": 561.3439977169037}, "paired_ratios": {"base2": 1.0005677627498983, "reserve16": 0.997693494913286, "reserve32": 0.9894893164751075, "reserve48": 0.9649285636809071}, "samples": {"base2": [0.9973457799725316, 1.004864113530971, 1.0109230945981524, 0.9951634286075898, 1.0042605291415387, 1.002902191928802, 0.9971012419911438, 1.0080625543082833, 0.9982333335709949, 0.994798707388786, 0.9973957144718765, 1.0127231934935894], "reserve16": [0.9945885669672507, 1.000767968357811, 1.0027085840596055, 0.9928210229664132, 0.9987053667486312, 1.0028427816016763, 0.9966295727293423, 0.9973605698258691, 0.9982921364781395, 0.9933895501903871, 0.9904778796523018, 0.9980264200007029], "reserve32": [0.9838249956649905, 0.9894281480372599, 0.9981243630285532, 0.9844788995504132, 0.9895626704619013, 0.9915095748232489, 0.9854419861826229, 0.9913712573614771, 0.9895504849129553, 0.9849601866133278, 0.984574926217924, 0.9973316385593355], "reserve48": [0.9587231401851471, 0.9676682206088614, 0.9657460483624346, 0.9602185181333606, 0.9692728981998331, 0.9663299491506272, 0.9629227823731445, 0.969441257440492, 0.9641110789993796, 0.9593593196970802, 0.9625293076422287, 0.9710268512942997]}}
+PLAN 3012 16 [500, 1, 35, 0, 4, 66, 0, 0, 5, 0]
+PLAN 3012 32 [23, 1, 35, 0, 4, 66, 0, 0, 4, 0]
+PLAN 3012 48 [500, 1, 35, 0, 4, 66, 0, 0, 5, 0]
+CHECK 3012 9401 base1 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 3012 9401 base2 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 3012 9401 reserve16 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 3012 9401 reserve32 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+CHECK 3012 9401 reserve48 True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [b
+RESULT {"T": 3012, "seed": 9401, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 3159.0240001678467, "base2": 3161.5999937057495, "reserve16": 3180.7841062545776, "reserve32": 3228.543996810913, "reserve48": 3267.103910446167}, "paired_ratios": {"base2": 0.9992710107145184, "reserve16": 0.993626984929864, "reserve32": 0.9798059455634001, "reserve48": 0.9672094989774952}, "samples": {"base2": [0.9989396378873655, 0.9964415950762918, 0.948832484395263, 0.9996079351410565, 0.9966363398503311, 1.0075599149272052, 0.9952470238378823, 0.9996023835416712, 1.0051986145533867, 0.9997570675908708, 0.9988562049973871, 0.9997908541204521], "reserve16": [0.9975223109950556, 0.9937788671925782, 0.9403908845735327, 0.9934751026671497, 0.9913746814608458, 0.9999396847442813, 1.0011751323873053, 0.9916866387170988, 0.9929815548058044, 0.9926926064397505, 0.9945473448418409, 0.9940575111605224], "reserve32": [0.9836902681978745, 0.9797772165381016, 0.9242044501310972, 0.9833252633633656, 0.9726374879054843, 0.986699511572328, 0.987125754763659, 0.9798346745886986, 0.9829354417702149, 0.9789562540087906, 0.9610709812316106, 0.9791233729679566], "reserve48": [0.976046692704319, 0.9702695158524703, 0.9699644452461246, 0.9680450631478915, 0.9642032408844815, 0.975771538416432, 0.9671305247062951, 0.9672884732486953, 0.9653083446622052, 0.966284388990158, 0.9670708090309769, 0.96437187113198]}}
+CHECK 3012 9421 base1 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 3012 9421 base2 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 3012 9421 reserve16 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 3012 9421 reserve32 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+CHECK 3012 9421 reserve48 True update relative L2 error 5.833e-02 (worst row 1.033e-01) [bound 0.142]; attention input relative L2 error 3.758e-02 (worst row 7.313e-02) [b
+RESULT {"T": 3012, "seed": 9421, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 3182.86395072937, "base2": 3189.0400648117065, "reserve16": 3206.831932067871, "reserve32": 3243.7599897384644, "reserve48": 3287.9520654678345}, "paired_ratios": {"base2": 0.999081976060205, "reserve16": 0.9930658480100447, "reserve32": 0.9816216363841368, "reserve48": 0.9688259935856696}, "samples": {"base2": [0.9996715231754613, 0.9984008883760594, 0.9971094328292414, 0.9974118375639389, 1.0029658542674067, 1.000230439566272, 0.9994487412639268, 0.9934315135445335, 1.0020898062316437, 0.9987152108564832, 0.9970964101056834, 1.0009907314009137], "reserve16": [0.9967453950043675, 0.9944726392499199, 0.9922764521562948, 0.9915532695035529, 0.9915996820727357, 0.9962875729051488, 0.9933455781582842, 0.99164881505617, 0.9948781646764225, 0.9927861178618053, 0.9910435253851431, 0.9937308293859859], "reserve32": [0.9845214407731744, 0.9857589898888703, 0.9855677849217405, 0.9737630232655883, 0.9831074804429576, 0.9809088705578451, 0.9796056702964517, 0.9781067404521729, 0.9823344022104284, 0.9843590949771583, 0.980100010302403, 0.9745595546261446], "reserve48": [0.9762577852634099, 0.9758716033448024, 0.9737563657246013, 0.9640758391005728, 0.9695666572634138, 0.9691203732399953, 0.964754269234695, 0.9664568823485904, 0.9685316139313437, 0.9738194575700089, 0.9615425620230669, 0.966647937967322]}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bOAtnftaWUVAkfXhBqDgKg
