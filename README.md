@@ -41,13 +41,15 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5395x | #169 | 1.5687x | 1.6498x | beb3e26afb2544c9 |
-| Attention | 2.6177x | #110 | 2.6772x | 3.2221x | b95cd80bd3e6497f |
-| MoE | 2.3820x | #91 | 2.4203x | 2.7578x | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603x | #33 | 2.2319x | 2.4178x | b72f02c7eb8745f5 |
-| Prefill layer | 1.8092x | #57 | 1.8127x | 2.0325x | 7d1584001a32467a |
+| Projections | 1.5395x | #247 | 1.5791x | 1.6523x | beb3e26afb2544c9 |
+| Attention | 2.6177x | #161 | 2.7093x | 3.3389x | b95cd80bd3e6497f |
+| MoE | 2.3820x | #148 | 2.4533x | 2.7642x | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603x | #60 | 2.2698x | 2.4844x | b72f02c7eb8745f5 |
+| Prefill layer | 1.8092x | #89 | 1.8616x | 2.2482x | 7d1584001a32467a |
 
-Overall rank is **#33**. Category ranks and cutoffs were fetched on **2026-10-30 at 17:04 UTC**; overall was fetched immediately afterward. Ranks can move as others submit. Prefill is a separate board and does not count toward overall rank. The category snapshot is [archived](research/standings/2026-10-30-refresh.json).
+Overall rank was **#60**. Category ranks and cutoffs were fetched on **2026-11-01 at 04:56 UTC**; overall was fetched at 04:59 UTC. Ranks can move as others submit, and some leading submissions may still be under review. Prefill is a separate board and does not count toward overall rank. The snapshot is [archived](research/standings/2026-11-01-refresh.json).
+
+Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
 ## Score progression
 
@@ -55,11 +57,11 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Shape-specific BF16 kernels and cuBLASLt plans, with M32 pooler and M128 router routes. | `experiments/projection_vjeux_m32pool_m128router_v1/submission.py` | #169 |
-| Attention | 1.1305x → 2.5806x → **2.6177x** | Fused attention and optimized sliding decode plan. | `kernels/muse_attention_decode/submission.py` | #110 |
-| MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #91 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `kernels/muse_decode_layer/submission.py` | #33 |
-| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with four-lane shuffle gather. | `kernels/muse_prefill_layer/submission.py` | #57 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Shape-specific BF16 kernels and cuBLASLt plans, with M32 pooler and M128 router routes. | `experiments/projection_vjeux_m32pool_m128router_v1/submission.py` | #247 |
+| Attention | 1.1305x → 2.5806x → **2.6177x** | Fused attention and optimized sliding decode plan. | `kernels/muse_attention_decode/submission.py` | #161 |
+| MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #148 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `kernels/muse_decode_layer/submission.py` | #60 |
+| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with four-lane shuffle gather. | `kernels/muse_prefill_layer/submission.py` | #89 |
 
 The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score. The [baseline and decoder integration audit](research/baseline-integration-audit.md) records which standalone changes were tested together and why the decoder incumbent was retained.
 

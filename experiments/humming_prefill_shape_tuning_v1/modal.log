@@ -1,0 +1,57 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-xr18JcyDjITN9uh5fpkHXC
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   shape_tuning_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 24.9us, best 24.9us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.2us, best 69.2us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.8us, best 70.8us algo None of 8
+LT tune T=3012 qkv: torch.mm 149.4us, best 149.4us algo None of 8
+LT tune T=3012 o: torch.mm 76.2us, best 76.2us algo None of 8
+LT tune T=3012 router: torch.mm 41.0us, best 41.0us algo None of 8
+LT tune T=3012 pooler: torch.mm 259.6us, best 259.6us algo None of 8
+LT tune T=3012 unpooler: torch.mm 258.3us, best 258.3us algo None of 8
+LT tune T=16384 qkv: torch.mm 775.5us, best 775.5us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 205.2us, best 205.2us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47255638917344'>")
+PARENT_READY
+HUMMING_READY
+RESULT {"hint": 128, "cfg1": {"block_shape": [8, 128, 64], "warp_shape": [8, 64, 32], "mma_type": "mma", "use_stream_k": true, "num_stages": 4, "num_ctas_per_sm": 4, "use_warp_spec": false, "use_tma": false}, "cfg2": {"block_shape": [8, 128, 64], "warp_shape": [8, 64, 32], "mma_type": "mma", "use_stream_k": true, "num_stages": 4, "num_ctas_per_sm": 4, "use_warp_spec": false, "use_tma": false}, "parent_us": 232.89600014686584, "candidate_us": 1301.8400073051453, "parent_over_candidate": 0.17863067427797688, "relative_l2": 0.004148542415350676}
+RESULT {"hint": 256, "cfg1": {"block_shape": [16, 256, 64], "warp_shape": [16, 64, 64], "use_stream_k": false, "use_f16_accum": false, "num_stages": 4, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_tma_c": false, "smem_reuse_mode": "all_stages", "producer_stage_unroll": 4, "wgmma_split_issue_wait": false, "mma_type": "wgmma"}, "cfg2": {"block_shape": [16, 256, 64], "warp_shape": [16, 64, 64], "use_stream_k": false, "use_f16_accum": false, "num_stages": 4, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_tma_c": false, "smem_reuse_mode": "all_stages", "producer_stage_unroll": 4, "wgmma_split_issue_wait": false, "mma_type": "wgmma"}, "parent_us": 233.47200453281403, "candidate_us": 875.5839765071869, "parent_over_candidate": 0.2659943181424317, "relative_l2": 0.004061749670654535}
+RESULT {"hint": 512, "cfg1": {"mma_type": "wgmma", "block_shape": [24, 256, 64], "warp_shape": [24, 32, 64], "num_stages": 6, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "cfg2": {"mma_type": "wgmma", "block_shape": [24, 256, 64], "warp_shape": [24, 32, 64], "num_stages": 6, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "parent_us": 233.535997569561, "candidate_us": 646.56001329422, "parent_over_candidate": 0.36094132231256426, "relative_l2": 0.00418437086045742}
+RESULT {"hint": 753, "cfg1": {"mma_type": "wgmma", "block_shape": [32, 256, 64], "warp_shape": [32, 32, 64], "num_stages": 6, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "cfg2": {"mma_type": "wgmma", "block_shape": [32, 256, 64], "warp_shape": [32, 32, 64], "num_stages": 6, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "parent_us": 233.44000428915024, "candidate_us": 553.8559854030609, "parent_over_candidate": 0.42117919405702653, "relative_l2": 0.0045094904489815235}
+RESULT {"hint": 1044, "cfg1": {"mma_type": "wgmma", "block_shape": [40, 256, 64], "warp_shape": [40, 32, 64], "num_stages": 6, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "cfg2": {"mma_type": "wgmma", "block_shape": [48, 256, 64], "warp_shape": [48, 32, 64], "num_stages": 5, "num_ctas_per_sm": 2, "use_warp_spec": false, "use_tma": false, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4, "use_tma_c": false}, "parent_us": 233.45600068569183, "candidate_us": 490.2240037918091, "parent_over_candidate": 0.4757707575746441, "relative_l2": 0.004386423155665398}
+RESULT {"hint": 2048, "cfg1": {"mma_type": "wgmma", "block_shape": [80, 256, 64], "warp_shape": [80, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "cfg2": {"mma_type": "wgmma", "block_shape": [80, 256, 64], "warp_shape": [80, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "parent_us": 233.7760031223297, "candidate_us": 460.11199057102203, "parent_over_candidate": 0.5080828748967277, "relative_l2": 0.004308320581912994}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-xr18JcyDjITN9uh5fpkHXC
