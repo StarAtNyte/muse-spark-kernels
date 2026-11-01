@@ -1,0 +1,7 @@
+# Long-prefill QKV cuBLASLt confirmation
+
+The first `prefill_long_lt_rescreen_v1` sweep found 1–1.6% apparent gains for heuristic signatures `(24,1,0,7)` and `(184,1,0,2)`, alongside baseline drift and same-plan variation. This follow-up uses the scored prefill source, shared prepared state, and identical `_mm` dispatch for both candidates and two independently captured baseline graphs. For three input seeds, each arm is checked against the baseline output, then 20 cold-L2 graph rounds are run in randomized order. Ratios compare each candidate and the second baseline to the first baseline in the same round. The raw paired samples, signatures, and prepared parent choice are in `modal.log`.
+
+The public H200 image, synthetic QKV inputs, baseline-relative comparison and restricted preparation are diagnostic rather than an official judge check. A gain still requires full-layer paired timing and official correctness and scoring. The subprocess has a 300-second timeout.
+
+Run `ap-52br1r4LfZmtoUmQxVQF9N` completed with return code 0. The prepared parent used `torch.mm`; all alternatives matched its output exactly on these inputs. For seeds 411, 7919 and 22073, the same-plan control ratios were 1.0013, 0.9999 and 1.0011; plan 24 ratios were 1.0072, 1.0052 and 1.0053; plan 184 ratios were 0.9919, 0.9986 and 0.9999. Plan 24 is a small consistent component lead, not a demonstrated whole-layer or leaderboard gain. Full-layer testing is warranted; retain the current scored source until that and the official suite pass.

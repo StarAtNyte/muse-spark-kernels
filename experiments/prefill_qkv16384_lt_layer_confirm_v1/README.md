@@ -1,0 +1,7 @@
+# Long sliding prefill QKV plan: controlled full-layer repeat
+
+The initial whole-layer screen showed an apparent 139 µs benefit for QKV plan `(24,1,0,7)` on one sliding case, much more than its 4–6 µs component lead. This repeat compares the plan with two independently captured graphs of the same scored baseline, using three routing seeds. For each seed all outputs are checked against the task reference and 16 cold-L2 graph rounds are run in randomized order. Paired per-round ratios and raw samples are saved in `modal.log`.
+
+The candidate and baseline share prepared state and all other plans. This uses the public H200 image, SGLang stub and pinned attention, so it does not replace the full official suite. The subprocess is capped at 300 seconds; a credible and useful end-to-end gain would warrant official validation.
+
+Run `ap-L2UzM6dzaA1CodLXRTY3jb` completed with return code 0 and all nine reference checks passed. For seeds 9401, 9417 and 9429, the median paired baseline2/baseline1 speed ratios were 0.99991, 0.99975 and 0.99984; candidate ratios were 0.99999, 1.00029 and 0.99974. The earlier 1.5% sliding-layer lead did not reproduce in this controlled repeat. This experiment does not establish a useful full-layer improvement, so the scored kernel remains unchanged and no official submission is made. The small standalone QKV gain could still exist below the layer screen's resolution.

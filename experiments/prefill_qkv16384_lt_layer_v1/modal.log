@@ -1,0 +1,48 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3sHdgopgwMjISU2i2UYgZH
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=16384 qkv: torch.mm 753.1us, best 753.1us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 180.3us, best 180.3us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47171990771888'>")
+PLAN None 1
+SHARED_PLANS
+CHECK base True update relative L2 error 2.107e-02 (worst row 5.559e-02) [bound 0.044]; attention input relative L2 error 1.373e-02 (worst row 4.074e-02) [bound 0.030]
+CHECK candidate True update relative L2 error 2.107e-02 (worst row 5.559e-02) [bound 0.044]; attention input relative L2 error 1.373e-02 (worst row 4.074e-02) [bound 0.030]
+ROW {"case": {"batch": 1, "ctx": 0, "q_len": 16384, "layer": "full"}, "base_us": 9302.4, "candidate_us": 9290.6, "gain": 1.0013}
+CHECK base True update relative L2 error 3.152e-02 (worst row 1.261e-01) [bound 0.070]; attention input relative L2 error 2.051e-02 (worst row 6.929e-02) [bound 0.045]
+CHECK candidate True update relative L2 error 3.152e-02 (worst row 1.261e-01) [bound 0.070]; attention input relative L2 error 2.051e-02 (worst row 6.929e-02) [bound 0.045]
+ROW {"case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "base_us": 9316.5, "candidate_us": 9177.7, "gain": 1.0151}
+CHECK base True update relative L2 error 5.906e-02 (worst row 1.232e-01) [bound 0.141]; attention input relative L2 error 3.807e-02 (worst row 9.279e-02) [bound 0.091]
+CHECK candidate True update relative L2 error 5.906e-02 (worst row 1.232e-01) [bound 0.141]; attention input relative L2 error 3.807e-02 (worst row 9.279e-02) [bound 0.091]
+ROW {"case": {"batch": 1, "ctx": 65536, "q_len": 16384, "layer": "full"}, "base_us": 15616.4, "candidate_us": 15532.8, "gain": 1.0054}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3sHdgopgwMjISU2i2UYgZH
