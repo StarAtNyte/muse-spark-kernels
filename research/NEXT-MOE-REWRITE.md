@@ -21,8 +21,11 @@ best target: byte floor is ~28 MB per touched expert at 4.1 TB/s.
 ## Candidate designs (untried)
 1. Stream-K at expert-chunk granularity with a persistent producer warpgroup that never waits on unit ends (units
    fixed up through the existing WGS fixup slots, 28 free) so tails overlap the next expert's loads.
-2. Sort work by expert byte cost and give each CTA a contiguous byte range instead of whole units, splitting only
-   across the K loop (same fix-up path), to remove the 1-7 us unit-end stalls.
+2. ALREADY IMPLEMENTED, do not redo: the WGS kernel is stream-K over 256-row units x 16 stages with cost-weighted
+   stage ranges (`wgs_range`, `wgs_split`, `S.wgr`, cost tables OKC_WGSA/OKC_WGSB) and fix-up slots. What remains is the
+   phase A (gate/up) -> phase B (down) dependency and the phase-B end spread (3.5 us at d32). A real gain needs those
+   two phases overlapped across experts (phase B of expert i while phase A of expert i+1 streams), which means a
+   per-expert dependency counter instead of a global phase barrier.
 
 ## Rules for the experiment
 - Judge noise is ~1.5% on the decoder; trust only paired Modal screens with the judge's per-case seeds (status.json
