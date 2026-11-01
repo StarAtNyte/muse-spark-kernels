@@ -1,0 +1,22 @@
+{
+  "name": "decoder_ours_rs128_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Port chenwainuo rs128 GEMV block (T=128/256 qkv and unpooler, RQ_USE) into our decoder: keell0renz led verify-16 by 3-5%",
+  "sha256": "90042cfd63543fccc49bb91b2eddc45553f8d3eb05cb4d578e728ff355ebc2ec",
+  "created_at": 1793524964.4076695,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "received",
+  "job_id": "28bf49b830714862"
+}
