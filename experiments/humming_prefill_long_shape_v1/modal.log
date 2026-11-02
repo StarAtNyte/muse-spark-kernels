@@ -1,0 +1,58 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E1nAbs8gJWNMTBdGZHlhnO
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   long_shape_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/prefill_keell0re
+│   nz_compare_v1/submission.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LT tune T=753 qkv: torch.mm 43.3us, best 43.3us algo None of 8
+LT2 T=753 o: lay 0 cfg [66, 495, 1, 0, 0, 7, 35, 0, 5]: 24.1us vs torch.mm 24.5us (x1.017)
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT2 T=753 pooler: lay 2 cfg [66, 32, 1, 0, 0, 7, 35, 0, 5]: 67.8us vs torch.mm 69.6us (x1.026)
+LT2 T=753 unpooler: lay 2 cfg [66, 32, 1, 0, 0, 5, 35, 0, 2]: 69.0us vs torch.mm 71.0us (x1.029)
+LT2 T=3012 qkv: lay 0 cfg [66, 496, 1, 0, 0, 5, 35, 0, 2]: 145.4us vs torch.mm 149.2us (x1.026)
+LT2 T=3012 o: lay 0 cfg [66, 189, 1, 0, 0, 2, 35, 0, 5]: 71.0us vs torch.mm 76.0us (x1.071)
+LT tune T=3012 router: torch.mm 40.8us, best 40.8us algo None of 8
+LT T=3012 pooler: pinned (24, 1, 0, 7) -> algo 1
+LT tune T=3012 unpooler: torch.mm 259.4us, best 259.4us algo None of 8
+LT tune T=16384 qkv: torch.mm 781.9us, best 781.9us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 366.9us vs torch.mm 428.5us (x1.168)
+LT tune T=16384 router: torch.mm 201.0us, best 201.0us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47605942771472'>")
+ZH fmha check failed: KeyError("dtype' id='47605942771472'>")
+PARENT_READY
+HUMMING_READY
+RESULT {"hint": 16384, "cfg1": {"mma_type": "wgmma", "block_shape": [176, 256, 64], "warp_shape": [176, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": false, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "cfg2": {"mma_type": "wgmma", "block_shape": [136, 256, 64], "warp_shape": [136, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": true, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "parent_us": 3056.9759607315063, "candidate_us": 3685.968041419983, "parent_over_candidate": 0.8284891553497156, "relative_l2": 0.0041072494350373745}
+RESULT {"hint": 23497, "cfg1": {"mma_type": "wgmma", "block_shape": [152, 256, 64], "warp_shape": [152, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": false, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "cfg2": {"mma_type": "wgmma", "block_shape": [152, 256, 64], "warp_shape": [152, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": false, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "parent_us": 3056.3199520111084, "candidate_us": 3541.1839485168457, "parent_over_candidate": 0.8622094750474718, "relative_l2": 0.004099388141185045}
+RESULT {"hint": 32768, "cfg1": {"mma_type": "wgmma", "block_shape": [176, 256, 64], "warp_shape": [176, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": false, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "cfg2": {"mma_type": "wgmma", "block_shape": [176, 256, 64], "warp_shape": [176, 32, 64], "num_stages": 4, "num_ctas_per_sm": 1, "use_warp_spec": true, "use_tma": true, "use_stream_k": false, "smem_reuse_mode": "none", "producer_stage_unroll": 1, "wgmma_split_issue_wait": true, "wgmma_use_late_as": false, "raster_group_m": 4}, "parent_us": 3056.272029876709, "candidate_us": 3507.7279806137085, "parent_over_candidate": 0.8706754823328346, "relative_l2": 0.004099388141185045}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-E1nAbs8gJWNMTBdGZHlhnO
