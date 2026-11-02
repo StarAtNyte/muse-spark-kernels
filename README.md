@@ -82,6 +82,8 @@ Modal H200 experiments run through `dev/modal/run_h200.py`; see
 
 Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). Lee101's warp-independent cluster path was transferred and screened on H200; the adapted path was 0.544×/0.584× of the incumbent on its target batches, so it was rejected. The Chord semi-static MoE tile idea is already represented by our WGS compile-time tile-count dispatch.
 
+Attention WST follow-up: extending balanced full-verification WST to batch 32 passed scored job `e503062862744b16` at 2.63841× (95% CI 2.59883–2.67798), below the 2.64939× public best. The exact source and local target-case gains are archived in [the WST experiment](experiments/attention_wst_b32_v1/FINDINGS.md).
+
 Attention follow-up: VP2 three-block job `cba8e99746cb4aac` passed at 2.63778× (95% CI 2.59821–2.67735), below the 2.64939× published two-block best. The three-block candidate remains archived with its [check and screen](experiments/attention_vp2_lb3_v1/FINDINGS.md).
 
 Attention VP2 launch-bound update (2026-11-02): the two-block variant passed 16/16 and scored **2.64939×** (95% CI 2.60965–2.68913) in job `6f2b2edf215d4ea3`, up from 2.6328× and rank #166 to #137 across snapshots. The local targeted screen improved 0.6–1.1%; separate scored-run variation prevents attributing the entire board gain to the change. The exact scored source is promoted; [measurements and profiles](experiments/attention_vp2_lb2_v1/FINDINGS.md) are preserved.

@@ -1,0 +1,3 @@
+# Balanced WST grid: 128 versus 132 CTAs
+
+Candidate SHA-256 `3224252b019f88cce48ecc8a42c846213cfd01c1e52597041d7668a3d24515df` caps WST's cooperative grid at 128 CTAs instead of the H200's 132 SMs, with the B32 WST route enabled in both arms. The public judge-image H200 paired graph screen used three seeds each at B16 and B32 full verification, 24 alternating read-flushed replays; all outputs passed reference checks. Parent/candidate ratios were 0.988/0.994/0.995 at B16 and 0.993/0.997/0.993 at B32. The 128-CTA configuration was 0.3–1.2% slower in these samples; reject. No official check was spent on this variant.
