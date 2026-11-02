@@ -1,0 +1,23 @@
+Modal app: ap-ihK55SN48b5vuDncg9ckHt
+Remote driver return code: 0
+Comparison: current scored source vs RMS-denominator candidate
+All 12 output/reference checks passed for both versions.
+Candidate/parent median latency ratios (higher is faster):
+
+ROW {"case": "decode 1 sliding", "ours": 8.9, "cand": 8.9, "cand_gain": 1.0, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 1 full", "ours": 16.6, "cand": 16.5, "cand_gain": 1.005, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 16 sliding", "ours": 12.6, "cand": 12.5, "cand_gain": 1.006, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 16 full", "ours": 99.4, "cand": 99.4, "cand_gain": 1.001, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 sliding", "ours": 15.7, "cand": 15.7, "cand_gain": 1.002, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 full", "ours": 181.6, "cand": 180.9, "cand_gain": 1.004, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 1 sliding", "ours": 9.7, "cand": 9.7, "cand_gain": 1.002, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 1 full", "ours": 19.0, "cand": 18.9, "cand_gain": 1.004, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 sliding", "ours": 15.5, "cand": 15.4, "cand_gain": 1.009, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full", "ours": 107.1, "cand": 107.4, "cand_gain": 0.997, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 sliding", "ours": 19.2, "cand": 19.1, "cand_gain": 1.003, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full", "ours": 192.1, "cand": 192.1, "cand_gain": 1.0, "ok": {"ours": true, "cand": true}}
+
+The overall `modal run` command exited nonzero only because `--write-result`
+was passed for a void local entrypoint. The remote function completed with
+return code 0; no benchmark error occurred. Do not rerun solely to fix this
+wrapper-level issue.

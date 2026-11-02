@@ -38,6 +38,16 @@ This is exact real arithmetic and avoids division by l. It is NOT a proof of
 bitwise equivalence through an intermediate BF16 cast. The cluster merge
 probe tests this identity, while the integrated attention preserves the cast.
 
+Integrated follow-up (`experiments/attention_rms_denominator_v1/`) inspected
+the incumbent: its `pr8()` helper currently returns its input, so no such
+intermediate BF16 cast is present in these finalizer paths. I replaced the
+per-element `vscale/l` normalization with the corresponding scaled-RMS form
+`u/sqrt(mean(u^2)+eps*(l/vscale)^2)` in all five epilogues. All 12 H200
+reference checks passed. The paired cold-L2 geometric time ratio was only
+1.00275 overall, with a mixed per-case signal, so the branch is archived and
+not promoted. Correctness/timing evidence is only against the public image and
+does not establish an official score.
+
 Finally optimize the actual objective: for K load groups,
 log(score)=mean_k(log(baseline_k)-log(candidate_k)). For a component t_j
 inside load total T_k, -d log(score)/d log(t_j)=t_j/(K*T_k).

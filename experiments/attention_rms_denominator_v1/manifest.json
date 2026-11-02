@@ -1,0 +1,15 @@
+{
+  "name": "attention_rms_denominator_v1",
+  "problem": "muse_attention_decode",
+  "parent": "kernels/muse_attention_decode/submission.py",
+  "hypothesis": "Fold the softmax denominator into RMS using RMS(vscale*u/l)=u/sqrt(mean(u^2)+eps*(l/vscale)^2), eliminating per-element normalization multiplications. Current pr8() is identity.",
+  "source_sha256": "ef181d3c33f8e7dbff65ba13eda66da2458dc68203d2a472b762e081765e2449",
+  "status": "screened_no_promotion",
+  "driver": "dev/modal/drv_attn_pair.py",
+  "screen": "all 12 scored shapes, reference-checked, 24 paired cold-L2 replays",
+  "modal_app": "ap-ihK55SN48b5vuDncg9ckHt",
+  "remote_driver_returncode": 0,
+  "reference_passed_all_shapes": true,
+  "candidate_parent_geomean": 1.0027454203426402,
+  "decision": "archive_only; gains are too small and uneven to promote"
+}
