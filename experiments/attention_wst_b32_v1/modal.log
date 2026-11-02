@@ -1,0 +1,37 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-N9T7iOl3EvCv5o5APOCjxT
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": "verify 16 full", "ours": 100.3, "cand": 100.0, "cand_gain": 1.003, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full", "ours": 187.3, "cand": 185.9, "cand_gain": 1.008, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full", "ours": 101.8, "cand": 101.9, "cand_gain": 0.998, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full", "ours": 186.2, "cand": 184.1, "cand_gain": 1.012, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full", "ours": 101.5, "cand": 101.6, "cand_gain": 0.999, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full", "ours": 189.0, "cand": 188.2, "cand_gain": 1.004, "ok": {"ours": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-N9T7iOl3EvCv5o5APOCjxT
