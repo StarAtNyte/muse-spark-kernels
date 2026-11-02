@@ -1,19 +1,102 @@
-Effect of reducing ONE shape latency by 20%; gains refer to its own problem score.
-| Problem | Load | Layer | Current us | Load share | Track gain | Optimistic floor gain |
-|---|---|---|---:|---:|---:|---:|
-| muse_moe_w4a16 | decode 1 | experts | 31.16 | 100.0% | 3.79% | 18.22% |
-| muse_moe_w4a16 | decode 16 | experts | 103.19 | 100.0% | 3.79% | 11.91% |
-| muse_moe_w4a16 | decode 32 | experts | 151.85 | 100.0% | 3.79% | 13.57% |
-| muse_moe_w4a16 | verify 1 | experts | 76.65 | 100.0% | 3.79% | 12.74% |
-| muse_moe_w4a16 | verify 16 | experts | 228.94 | 100.0% | 3.79% | 14.55% |
-| muse_moe_w4a16 | verify 32 | experts | 287.40 | 100.0% | 3.79% | 17.55% |
-| muse_attention_decode | decode 32 | full | 183.14 | 81.0% | 2.99% | 4.94% |
-| muse_attention_decode | verify 32 | full | 337.57 | 80.6% | 2.97% | 12.38% |
-| muse_attention_decode | decode 16 | full | 96.81 | 73.9% | 2.70% | 5.07% |
-| muse_decode_layer | decode 1 | sliding | 108.95 | 73.2% | 2.67% | 10.91% |
-| muse_attention_decode | verify 16 | full | 172.67 | 72.8% | 2.66% | 10.85% |
-| muse_decode_layer | verify 1 | sliding | 170.93 | 72.7% | 2.65% | 10.88% |
-| muse_decode_layer | decode 16 | sliding | 172.91 | 66.6% | 2.41% | 8.01% |
-| muse_decode_layer | verify 16 | sliding | 327.84 | 65.1% | 2.35% | 8.87% |
-| muse_attention_decode | verify 1 | sliding | 13.48 | 63.4% | 2.29% | 17.93% |
-| muse_decode_layer | verify 32 | sliding | 432.98 | 61.5% | 2.21% | 9.22% |
+# Score-weighted kernel priorities (2026-11-02)
+
+Generated from the latest available official scored profiles with
+`tools/prioritize.py`. A 20% reduction below is a sensitivity calculation for
+one timed shape inside its own problem's geometric-mean score. It is not a
+predicted kernel gain, and the reference-model floor is optimistic rather than
+a guaranteed physical limit.
+
+Sources: projections `e5cae4f990be4df2`, attention `7d250883e6b94c50`, MoE
+`43e6e35388774f73`, whole decoder `01bd05039098464e`, and prefill
+`f3b10ea957e04ea6`. The live board snapshot and #50 gaps are in
+`standings/2026-11-02.json`.
+
+## Highest-leverage cases by kernel
+
+### BF16 projections
+
+| Load / layer | Time | Share of load | Score gain for 20% cut | Floor-model gain |
+|---|---:|---:|---:|---:|
+| Decode 1 / pooler | 13.05 us | 38.9% | 1.36% | 0.00% |
+| Verify 1 / pooler | 13.62 us | 37.4% | 1.31% | 0.00% |
+| Verify 32 / pooler | 24.04 us | 30.0% | 1.04% | 1.46% |
+
+The singleton pooler GEMV is the first candidate target; broad rewrites of
+small output projections have lower score leverage. Its time is already below
+the reference's BF16 byte-floor estimate because the incumbent compresses
+weights losslessly. A further win must beat the incumbent's compressed-byte
+traffic and kernel overhead, not merely a plain BF16 streaming floor.
+
+### Gated attention decode
+
+| Load / layer | Time | Share of load | Score gain for 20% cut | Floor-model gain |
+|---|---:|---:|---:|---:|
+| Decode 32 / full | 165.94 us | 85.2% | 3.16% | 3.86% |
+| Verify 32 / full | 184.86 us | 81.3% | 3.00% | 5.04% |
+| Decode 16 / full | 86.80 us | 77.6% | 2.85% | 4.04% |
+| Verify 16 / full | 98.98 us | 75.3% | 2.76% | 5.40% |
+
+These full-context cases dominate their respective loads. Traffic accounting
+and NCU show page-size-1 random KV reads already close to the measured H200
+gather comparator; prioritize genuine reuse or fewer instructions/syncs on the
+critical path, not generic TMA staging or CTA-count-only sweeps.
+
+### Routed MoE W4A16
+
+Each of the six scored loads has one expert-kernel case and contributes equally
+to the geometric mean. A 20% reduction in any one case raises the problem
+score by about 3.79%:
+
+| Load | Time |
+|---|---:|
+| Decode 1 | 25.16 us |
+| Decode 16 | 91.46 us |
+| Decode 32 | 127.40 us |
+| Verify 1 | 65.19 us |
+| Verify 16 | 180.31 us |
+| Verify 32 | 211.24 us |
+
+The next SC6 WGS check (`bd7ee2f9d89247c8`) tests the remaining promising
+lossless scale-traffic reduction stacked onto KPERM3. Its predecessor failed
+before timing because the candidate scratch omitted MFIN flags; v9 restores
+the incumbent allocation. Keep all shape-specific routes in view after this
+check: no single batch size dominates the MoE score.
+
+### Whole decoder layer
+
+| Load / layer | Time | Share of load | Score gain for 20% cut | Floor-model gain |
+|---|---:|---:|---:|---:|
+| Verify 1 / sliding | 106.76 us | 73.6% | 2.69% | 6.29% |
+| Decode 1 / sliding | 64.96 us | 72.5% | 2.65% | 5.59% |
+| Verify 16 / sliding | 236.37 us | 67.9% | 2.46% | 6.52% |
+| Verify 32 / sliding | 306.51 us | 65.2% | 2.36% | 7.33% |
+| Decode 16 / sliding | 123.75 us | 63.2% | 2.28% | 4.69% |
+| Decode 32 / sliding | 145.63 us | 58.4% | 2.09% | 4.80% |
+
+The integrated decoder is the overall leaderboard score. Optimize and validate
+these sliding cases in the complete layer: component-only attention or MoE
+gains do not prove whole-layer improvement when PDL and stream overlap shift
+the critical path.
+
+### Prefill layer
+
+| Load / context | Time | Share of load | Score gain for 20% cut | Floor-model gain |
+|---|---:|---:|---:|---:|
+| First turn / sliding | 8,765.88 us | 70.2% | 5.17% | 9.99% |
+| Turn 1 / sliding | 517.97 us | 66.1% | 4.84% | 14.45% |
+| Turn 4 / sliding | 1,759.35 us | 65.8% | 4.81% | 11.07% |
+
+Long sliding prefill and short sliding contexts dominate. Existing K64 and
+cuBLASLt transfers did not improve the official scored aggregate, so new
+experiments should target the measured full-layer critical path and must
+survive the official run before promotion. Prefill is a separate board.
+
+## Validation commands
+
+```bash
+python tools/prioritize.py --problem muse_bf16_proj --status /path/to/status.json
+python tools/prioritize.py --problem muse_attention_decode --status /path/to/status.json
+python tools/prioritize.py --problem muse_moe_w4a16 --status /path/to/status.json
+python tools/prioritize.py --problem muse_decode_layer --status /path/to/status.json
+python tools/prioritize.py --problem muse_prefill_layer --status /path/to/status.json
+```

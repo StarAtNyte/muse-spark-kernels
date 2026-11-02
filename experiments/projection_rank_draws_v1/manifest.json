@@ -1,0 +1,12 @@
+{
+  "name": "projection_rank_draws_v1",
+  "problem": "muse_bf16_proj",
+  "parent_source_sha256": "abdcdc0100da6ed97ac289b345f8c1358d054fdf58c45febcc9f9eceb1513c09",
+  "purpose": "Sample allowed official run-to-run score variance near the projection #50 cutoff; no timed kernel changes.",
+  "duplicate_job": "4ce51d7386044002",
+  "draws": [
+    {"file": "draw1.py", "sha256": "951525bcda7444dae78078344601e5913a0a95074c94598688789b4f9bf46aae", "job_id": "3b3cca5c023a441a", "status": "queued"},
+    {"file": "draw2.py", "sha256": "3c5741e521060b0f62d1f829486083128a8e21cd026282f2ee65c074f06d051a", "job_id": "5a25cd13386a47ee", "status": "queued"},
+    {"file": "draw3.py", "sha256": "854d1651f1295e9977a5f4c596530eb7d3b4123d8c459f905978b911789b7b78", "job_id": "1241a8bba593445d", "status": "queued"}
+  ]
+}
