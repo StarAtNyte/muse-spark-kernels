@@ -7,8 +7,8 @@
   "source_reference": "kernels/muse_decode_layer/submission.py: MOE_CUDA_SRC",
   "candidate_sha256": "91b54d18693f9c077ceb9dc4286e9fdbd827bdf16d5635a5b54c7dc7cb91d867",
   "scratch_change": "add the 4096-int MFIN flag region to scratch[0]",
-  "status": "official_score_queued",
-  "decision": "pending_official_scored_run",
+  "status": "done",
+  "decision": "reject_official_score_below_incumbent",
   "official_submission_job": "ff5cef4ac6ef4810",
   "screen": {
     "cases": 36,
@@ -19,5 +19,20 @@
     "raw": "screen.json",
     "modal_app": "ap-yoLizVBvIv9cFiWDj84MZS"
   },
-  "submitted_sha256": "91b54d18693f9c077ceb9dc4286e9fdbd827bdf16d5635a5b54c7dc7cb91d867"
+  "submitted_sha256": "91b54d18693f9c077ceb9dc4286e9fdbd827bdf16d5635a5b54c7dc7cb91d867",
+  "official_result": {
+    "job_id": "ff5cef4ac6ef4810",
+    "content_hash": "2bbfdf1eb08cf658049a048b752b75944f3f6b10fc222fe54ec4c44ad244e96a",
+    "passed": true,
+    "tests_passed": 13,
+    "score_us": 10294.416986598877,
+    "speedup": 2.197336675738585,
+    "ci95": [
+      2.164376625602506,
+      2.2302967258746635
+    ],
+    "incumbent_speedup": 2.2603208825001473,
+    "decision_reason": "Below incumbent. Paired H200 screen gain did not transfer to the judge aggregate; do not promote."
+  },
+  "official_profile": "profiles/candidate.ff5cef4ac6ef4810.json"
 }

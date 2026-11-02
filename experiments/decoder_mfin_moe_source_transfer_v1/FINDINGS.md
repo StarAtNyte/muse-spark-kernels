@@ -9,4 +9,4 @@ The transferred MoE source also includes later WGS scheduling changes, so any me
 
 All 36 candidate and parent cases passed correctness. With three seeds per shape and four alternating replays, the candidate/parent geometric timing ratio was **1.00448× overall**, **1.00706× sliding**, and **1.00190× full**. The strongest repeatable gains were on sliding batch-32 decode (about 2.1%) and verify (about 1.1%); small batch-1 verify-8 had a mixed/noisy result. Full raw measurements are in `screen.json`; Modal container log is `modal.log`.
 
-The exact candidate hash was submitted as official run `ff5cef4ac6ef4810`; it is queued/running. Keep the incumbent promoted until the judge score is available.
+The exact candidate hash was submitted as official run `ff5cef4ac6ef4810`. It passed 13/13 correctness checks but scored **2.19734×** (95% CI **2.16438–2.23030×**), below the 2.26032× incumbent. Reject it and retain the incumbent. The judge result did not confirm the small paired screen gain. Official profile files are in `profiles/`.

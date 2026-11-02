@@ -33,9 +33,10 @@ CUDA source with the newer WGS/MFIN bundle, while preserving the exact scored
 layer's attention and projections, passed all 36 paired H200 correctness cases
 and measured **1.00448×** overall (**1.00706×** sliding, **1.00190×** full).
 The source bundle includes WGS scheduling edits as well as MFIN, so this does
-not isolate MFIN. Exact candidate hash was submitted as `ff5cef4ac6ef4810`;
-the official result is pending. Keep the 2.26032× incumbent promoted until it
-beats that score. Full per-shape measurements are in
+not isolate MFIN. Official run `ff5cef4ac6ef4810` passed all 13 checks but
+scored **2.19734×** (95% CI 2.16438–2.23030×), below the 2.26032× incumbent,
+so it is rejected. The published decoder score/rank remain unchanged. Full
+per-shape screen and judge measurements are in
 [`decoder_mfin_moe_source_transfer_v1`](experiments/decoder_mfin_moe_source_transfer_v1/FINDINGS.md).
 
 Decoder WGS warp-parallel prefix (2026-11-02): the 12-case exact-parent paired
