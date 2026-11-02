@@ -18,14 +18,14 @@
     ]
   ],
   "created_at": 1793631219.3276038,
-  "status": "screened",
-  "decision": "promising_small_gain_submit_for_full_score",
+  "status": "scored",
+  "decision": "do_not_promote_inconclusive_paired_gain_official_draw_below_incumbent",
   "screen": "paired exact-parent judge-image H200, sliding decode/verify batches 1/16/32, two seeds",
   "screen_result": {
     "all_correct": true,
     "geomean_candidate_over_parent_speedup": 1.0010449,
     "batch_geomean_candidate_over_parent": {
-      "1": 0.9970,
+      "1": 0.997,
       "16": 1.0017,
       "32": 1.0045
     },
@@ -37,5 +37,31 @@
     "log": "experiments/decoder_wgs_parallel_prefix_v1/modal_judgeimage.log"
   },
   "official_submission_job": "03083a8a606d42e2",
-  "official_submission_status": "running"
+  "official_submission_status": "done",
+  "official_result": {
+    "job": "03083a8a606d42e2",
+    "all_correct": true,
+    "cases_passed": "13/13",
+    "speedup": 2.2015239254152092,
+    "speedup_ci": [
+      2.168501066533981,
+      2.234546784296437
+    ],
+    "score_us": 10274.837233819202,
+    "current_incumbent_speedup": 2.26032,
+    "profile_text": "experiments/decoder_wgs_parallel_prefix_v1/profiles/candidate.03083a8a606d42e2.txt",
+    "status_json": "experiments/decoder_wgs_parallel_prefix_v1/status.json"
+  },
+  "full_shape_paired_screen": {
+    "case_count": 12,
+    "seeds_per_case": 1,
+    "replays_per_pair": 8,
+    "all_correct": true,
+    "geomean_candidate_over_parent": 1.0022506275221066,
+    "sliding_geomean": 1.0058726755370688,
+    "full_geomean": 0.9986416221437936,
+    "log": "experiments/decoder_wgs_parallel_prefix_v1/full_modal_judgeimage.log",
+    "caveat": "single seed and eight paired rounds: supports only a small ~0.23% aggregate gain; official scored draw was 2.20152x and remains below incumbent"
+  },
+  "followup": "The initially positive screen was too narrow to establish promotion; broader full+sliding screen is only +0.23% and conflicts with lower official score. Require repeated paired seeds before reconsidering."
 }

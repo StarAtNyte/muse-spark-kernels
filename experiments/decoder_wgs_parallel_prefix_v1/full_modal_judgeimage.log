@@ -1,0 +1,18 @@
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 68.78, "cand": 68.26, "gain": 1.0077, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 100.67, "cand": 100.19, "gain": 1.0048, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 113.02, "cand": 112.72, "gain": 1.0027, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 253.63, "cand": 253.58, "gain": 1.0002, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 156.13, "cand": 153.84, "gain": 1.0149, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 313.25, "cand": 311.68, "gain": 1.0050, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 80.13, "cand": 81.36, "gain": 0.9849, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 125.06, "cand": 125.71, "gain": 0.9948, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 199.04, "cand": 198.74, "gain": 1.0015, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 323.66, "cand": 321.58, "gain": 1.0065, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 298.38, "cand": 297.92, "gain": 1.0016, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 484.96, "cand": 483.66, "gain": 1.0027, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Modal app run: https://modal.com/apps/baptinjean20/main/ap-QzBCrICAKcWLVK6SLCjBDg

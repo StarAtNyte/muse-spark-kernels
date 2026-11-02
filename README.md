@@ -25,12 +25,13 @@ an H200 screen. This is a secondary lever (the route kernel is about 2 µs;
 integrated MoE remains much larger). Candidate and pair driver:
 [`decoder_router_hier_topk_v1`](experiments/decoder_router_hier_topk_v1/FINDINGS.md).
 
-Decoder experiment in progress (2026-11-02): a warp-parallel WGS cost-prefix
-candidate passed all 12 cases in an exact-parent paired H200 screen. It measured
-1.0010× aggregate, with gains at batch 16/32 and small regressions at batch 1.
-Because the effect is small, it is not considered a confirmed improvement;
-official scored run `03083a8a606d42e2` is pending. Source, paired timings, and
-lineage are recorded in [`decoder_wgs_parallel_prefix_v1`](experiments/decoder_wgs_parallel_prefix_v1/FINDINGS.md).
+Decoder WGS warp-parallel prefix (2026-11-02): the 12-case exact-parent paired
+screen measured 1.0010×, but the official full run `03083a8a606d42e2` scored
+2.20152× (95% CI 2.16850–2.23455×), below the 2.26032× incumbent. It passed
+13/13 correctness cases. A broader 12-shape paired H200 screen measured only
+1.00225× overall, including a small full-context regression; the candidate
+remains unpromoted and the public score/rank are unchanged. Source, profiles, and
+measurements are in [`decoder_wgs_parallel_prefix_v1`](experiments/decoder_wgs_parallel_prefix_v1/FINDINGS.md).
 
 Latest whole-decoder experiment (2026-11-02): the rs128 QKV/unpooler transfer
 showed selected-case gains in a paired H200 screen, but its official run
