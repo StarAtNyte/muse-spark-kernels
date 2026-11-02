@@ -1,0 +1,62 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-u1cuh9TstORRWKPsBvoBJ4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"layer": "sliding", "batch": 1, "seed": 539, "base_us": 9.391999803483486, "candidate_us": 9.664000011980534, "speedup": 0.9784153809606979}
+RESULT {"layer": "sliding", "batch": 1, "seed": 1427, "base_us": 9.871999733150005, "candidate_us": 9.855999611318111, "speedup": 1.0016233890485873}
+SHAPE_SUMMARY {"layer": "sliding", "batch": 1, "median_speedup": 0.9900193850046426}
+RESULT {"layer": "sliding", "batch": 16, "seed": 539, "base_us": 12.655999977141619, "candidate_us": 12.703999876976013, "speedup": 0.9987624028065314}
+RESULT {"layer": "sliding", "batch": 16, "seed": 1427, "base_us": 12.671999633312225, "candidate_us": 12.335999868810177, "speedup": 1.0232859269602113}
+SHAPE_SUMMARY {"layer": "sliding", "batch": 16, "median_speedup": 1.0110241648833713}
+RESULT {"layer": "sliding", "batch": 32, "seed": 539, "base_us": 14.543999917805195, "candidate_us": 14.335999730974436, "speedup": 1.019202695193398}
+RESULT {"layer": "sliding", "batch": 32, "seed": 1427, "base_us": 14.527999795973301, "candidate_us": 14.431999996304512, "speedup": 1.00886675124472}
+SHAPE_SUMMARY {"layer": "sliding", "batch": 32, "median_speedup": 1.014034723219059}
+RESULT {"layer": "full", "batch": 1, "seed": 539, "base_us": 15.776000916957855, "candidate_us": 15.95200039446354, "speedup": 0.9939636721232088}
+RESULT {"layer": "full", "batch": 1, "seed": 1427, "base_us": 15.920000150799751, "candidate_us": 15.63199982047081, "speedup": 1.0102341981502416}
+SHAPE_SUMMARY {"layer": "full", "batch": 1, "median_speedup": 1.002098935136725}
+RESULT {"layer": "full", "batch": 16, "seed": 539, "base_us": 91.18400141596794, "candidate_us": 90.81599861383438, "speedup": 1.0019401902865928}
+RESULT {"layer": "full", "batch": 16, "seed": 1427, "base_us": 91.39200299978256, "candidate_us": 91.72799810767174, "speedup": 0.9986082009530988}
+SHAPE_SUMMARY {"layer": "full", "batch": 16, "median_speedup": 1.0002741956198458}
+RESULT {"layer": "full", "batch": 32, "seed": 539, "base_us": 171.48800194263458, "candidate_us": 171.31199687719345, "speedup": 1.002431288397788}
+RESULT {"layer": "full", "batch": 32, "seed": 1427, "base_us": 169.8239967226982, "candidate_us": 169.39199715852737, "speedup": 1.004055824587903}
+SHAPE_SUMMARY {"layer": "full", "batch": 32, "median_speedup": 1.0032435564928455}
+KEELL_Q1_SCREEN_PASSED NVIDIA H200
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-u1cuh9TstORRWKPsBvoBJ4

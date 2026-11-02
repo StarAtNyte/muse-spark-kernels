@@ -1,0 +1,15 @@
+{
+  "name": "attention_keell0renz_drycluster_remove_v1",
+  "problem": "muse_attention_decode",
+  "parent_sha256": "573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1da",
+  "candidate_sha256": "5e280d2ae66a1738d8decc677b370f6c2350321e773aace9d4fd5e41e1131e85",
+  "change": "remove only the no-load/no-store cluster_finish(..., dry=true) instruction-cache warmup from the CTA prologue",
+  "hypothesis": "avoid two cluster barriers on the critical path; q_len=1 sliding batch16/32 paired screen",
+  "status": "screened_inconclusive_no_promotion",
+  "modal_app": "ap-9Pw85CTYLioyOcr7R7reiR",
+  "results": {
+    "batch16": [1.0315, 0.9905],
+    "batch32": [0.9965, 1.0112]
+  },
+  "decision": "mixed seed results; not a reproducible win, no official check"
+}

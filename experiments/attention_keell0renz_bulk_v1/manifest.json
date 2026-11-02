@@ -1,0 +1,20 @@
+{
+  "name": "attention_keell0renz_bulk_v1",
+  "problem": "muse_attention_decode",
+  "upstream": "keell0renz/muse-open-kernel-challenge@8e30e1be99",
+  "upstream_source_sha256": "56c380b72001f88c1638c9315a02af4618b5af78263b1832ea6565e8676c95e4",
+  "hypothesis": "TMA bulk-reduction merge and 72-float row layout improve full q_len=8 attention merge on H200",
+  "screen": "bounded paired Modal screen: batch 16/32, full q_len=8, two seeds, 16 A/B rounds per seed",
+  "status": "screened_no_promotion",
+  "modal_app_q_len8": "ap-Kszu6dUHUvMwEZeaQQQrPq",
+  "modal_app_q_len1": "ap-u1cuh9TstORRWKPsBvoBJ4",
+  "q_len8_results": {
+    "sliding": {"batch16": [1.0008, 1.0008], "batch32": [0.9966, 0.9999]},
+    "decision": "neutral within measurement noise; no promotion"
+  },
+  "q_len1_results": {
+    "sliding": {"batch1": [0.9784, 1.0016], "batch16": [0.9988, 1.0233], "batch32": [1.0192, 1.0089]},
+    "full": {"batch1": [0.9940, 1.0102], "batch16": [1.0019, 0.9986], "batch32": [1.0024, 1.0041]},
+    "decision": "small localized signal for sliding batch16/32; full upstream candidate not promoted"
+  }
+}
