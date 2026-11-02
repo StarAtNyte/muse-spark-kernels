@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-YhQkmNqKmFnpTu75dIhuDd
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+PREP rq thread started at 55s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 146s
+BUILD pw57_flush 44.8s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   15.97 us   0.39 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    8.16 us   0.77 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   15.87 us   1.06 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.62 us   1.58 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 5.33 us two_node 6.80 us overhead 3.86 us
+BAKE rq skipped-budget 246s
+[rq] bake failed: 'rq_e'
+[mfab] layer prepare done at 191s
+[mfab] moe T= 32 prod median   147.7 us  speedup vs barrier twin (twin without SC6) 1.0259 (per seed 1.029 1.022 1.017 1.026)  max|d| 0
+[mfab] moe T=128 prod median   192.3 us  speedup vs barrier twin (twin without SC6) 1.0298 (per seed 1.030 1.024 1.026 1.034)  max|d| 0
+[mfab] moe T=256 prod median   223.3 us  speedup vs barrier twin (twin without SC6) 1.0198 (per seed 1.020 1.015 1.010 1.023)  max|d| 0
+ROW {"batch": 16, "seed": 4001, "active": [3, 5, 11, 14, 15, 16, 26, 27, 30], "bytes": 254803968, "reference_ok": true, "reference_msg": "update relative L2 error 1.051e-02 (worst row 2.582e-02) [bound 0.135]; attention input relative L2 error 7.456e-03 (worst row 1.695e-02) [bound 0.089", "us": {"moe": 79.44000139832497, "stream264": 66.73600152134895, "stream528": 66.56000018119812}, "stream_over_moe": 0.8378650429203237}
+ROW {"batch": 16, "seed": 4002, "active": [3, 5, 11, 14, 15, 16, 17, 20, 26, 27, 30], "bytes": 311427072, "reference_ok": true, "reference_msg": "update relative L2 error 7.969e-03 (worst row 1.283e-02) [bound 0.146]; attention input relative L2 error 5.748e-03 (worst row 9.228e-03) [bound 0.090", "us": {"moe": 86.40000224113464, "stream264": 79.28000018000603, "stream528": 79.76000010967255}, "stream_over_moe": 0.9175925708745084}
+ROW {"batch": 32, "seed": 4001, "active": [3, 5, 11, 13, 14, 15, 17, 20, 22, 26, 27, 30], "bytes": 330301440, "reference_ok": true, "reference_msg": "update relative L2 error 8.028e-03 (worst row 1.025e-02) [bound 0.143]; attention input relative L2 error 6.131e-03 (worst row 7.510e-03) [bound 0.096", "us": {"moe": 100.62399879097939, "stream264": 84.9439986050129, "stream528": 85.21600067615509}, "stream_over_moe": 0.8441723607254202}
+ROW {"batch": 32, "seed": 4002, "active": [3, 5, 11, 14, 15, 16, 17, 26, 27, 30], "bytes": 275251200, "reference_ok": true, "reference_msg": "update relative L2 error 7.780e-03 (worst row 1.108e-02) [bound 0.142]; attention input relative L2 error 5.590e-03 (worst row 7.114e-03) [bound 0.088", "us": {"moe": 88.8959988951683, "stream264": 72.7200023829937, "stream528": 72.22399860620499}, "stream_over_moe": 0.8124549980182575}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-YhQkmNqKmFnpTu75dIhuDd
