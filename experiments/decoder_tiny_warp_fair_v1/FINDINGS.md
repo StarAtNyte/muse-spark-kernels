@@ -1,0 +1,7 @@
+# Decoder tiny warp-order paired follow-up
+
+Compared incumbent SHA-256 `82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19` against the officially checked candidate `experiments/decoder_tiny_original_warp_v1/submission.py` (SHA-256 `aa21faa03140a1fabdf58381c2c0606e8024e17d54455fc603fc47e557196785`). Each module's import-time preparation clock was reset just before its own `prepare()`, avoiding the previous candidate's skipped bake. Both completed preparation and reported the same tuned route keys; keys alone do not establish identical internal choices.
+
+CUDA 13 H200, three seeds and 24 alternating cold-L2 graph replays per row; all 12 outputs passed the challenge reference check. Parent/candidate ratios: decode-1 sliding 1.0033/0.9924/1.0023; decode-1 full 1.0078/1.0066/1.0019; verify-1 sliding 1.0148/1.0136/1.0030; unchanged decode-16 sliding control 0.9961/0.9972/1.0024. This supports a small affected-shape gain but does not establish a whole-board score improvement. The private full check passed at 2.25398× (95% CI 2.22017–2.28779); public best is 2.26032×. No scored quota was available. Preserve candidate for scored evaluation when quota returns; do not infer rank from this screen.
+
+Exact invocation: `modal run dev/modal/run_cuda13_h200.py --file experiments/decoder_tiny_original_warp_v1/submission.py --drv experiments/decoder_tiny_warp_fair_v1/driver.py`. Raw result: `modal.log`.
