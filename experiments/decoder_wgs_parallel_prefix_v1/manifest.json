@@ -1,0 +1,41 @@
+{
+  "name": "decoder_wgs_parallel_prefix_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Parallelize WGS cost-prefix and range computation over the existing x-producer warp, replacing its serial lane-0 prologue. Preserve the incumbent cost table, unit weights, arithmetic, and all other kernels. This ports the high-value stream-K prologue technique documented in keell0renz public decoder while isolating it from their additional changes.",
+  "parent": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+  "parent_sha256": "9e7c8b73b0471d04f4f0cf451bea6ad372d7356e3103e7f57d7253df234aebb2",
+  "candidate_sha256": "af7620681cca64b123b28d79ee17b56da4109b631ed8288ea5e62cd42cf865c1",
+  "cuda_sources_transformed": [
+    [
+      "MOE_CUDA_SRC",
+      142182,
+      "d24c42fd85a1ed9095cb3399ff187c7b922c7f507b3508dba37cabf1f2c01f89"
+    ],
+    [
+      "_MA_ALT_SRCS['moe_helper0']",
+      138010,
+      "93fc4761b98fabbfc9c55ce4b8ae9d23f879643762f709b1e09f9f8d11883106"
+    ]
+  ],
+  "created_at": 1793631219.3276038,
+  "status": "screened",
+  "decision": "promising_small_gain_submit_for_full_score",
+  "screen": "paired exact-parent judge-image H200, sliding decode/verify batches 1/16/32, two seeds",
+  "screen_result": {
+    "all_correct": true,
+    "geomean_candidate_over_parent_speedup": 1.0010449,
+    "batch_geomean_candidate_over_parent": {
+      "1": 0.9970,
+      "16": 1.0017,
+      "32": 1.0045
+    },
+    "notable_cases": [
+      "batch 32 q_len 1: 1.0086x and 1.0091x",
+      "batch 16 q_len 8: 1.0070x and 1.0049x"
+    ],
+    "caveat": "small batch-1 regressions; aggregate paired gain is only about 0.10%, so this is not yet a confirmed leaderboard improvement",
+    "log": "experiments/decoder_wgs_parallel_prefix_v1/modal_judgeimage.log"
+  },
+  "official_submission_job": "03083a8a606d42e2",
+  "official_submission_status": "running"
+}

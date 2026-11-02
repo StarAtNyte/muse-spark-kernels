@@ -17,6 +17,13 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
+Decoder experiment in progress (2026-11-02): a warp-parallel WGS cost-prefix
+candidate passed all 12 cases in an exact-parent paired H200 screen. It measured
+1.0010× aggregate, with gains at batch 16/32 and small regressions at batch 1.
+Because the effect is small, it is not considered a confirmed improvement;
+official scored run `03083a8a606d42e2` is pending. Source, paired timings, and
+lineage are recorded in [`decoder_wgs_parallel_prefix_v1`](experiments/decoder_wgs_parallel_prefix_v1/FINDINGS.md).
+
 Latest whole-decoder experiment (2026-11-02): the rs128 QKV/unpooler transfer
 showed selected-case gains in a paired H200 screen, but its official run
 `1603d76ca92045e1` scored 2.20383x (95% CI 2.17077–2.23689), below the 2.26032x
