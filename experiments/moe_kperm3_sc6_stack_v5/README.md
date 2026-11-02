@@ -4,4 +4,4 @@ V5 exports the already-defined C++ `okc_attrs()` diagnostic through `load_inline
 
 Source SHA-256: `80d07b2d2034661317e0d853cd470a7b77d68ac8b199e415f7b84286ca8a91c2`.
 
-Official check `01fe098507f94a04` was accepted and is queued. The first CLI invocation omitted the explicit problem because this research candidate has a Python import before its `# okc` marker; it was rejected locally without creating a judge job. The second invocation named `muse_moe_w4a16` explicitly.
+Official check `01fe098507f94a04` finished before timing: C++ compilation failed because `okc_attrs()` was listed as a pybind export even though it is defined only in the CUDA compilation unit. No correctness or performance result. Full judge output is archived in `status.json`.

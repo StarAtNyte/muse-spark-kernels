@@ -6,6 +6,10 @@ Source: [keell0renz/muse-open-kernel-challenge](https://github.com/keell0renz/mu
 
 The public BF16 projection, MoE W4A16, prefill, and whole decode layer source files are byte-identical to our current kernel entrypoints. Attention is the only substantive source delta. It combines a `cp.reduce.async.bulk` TMA merge, a 72-float padded workspace row for selected q_len=1 per-request kernels, and edits to cluster finalization/prologue behavior. Its README cautions that leaderboard highs can exceed same-box scored runs; use paired local measurements and official scored submissions as the authority.
 
+The repository currently advertises a Nov 1 snapshot of decode #38, attention #35, BF16 #26, prefill #29, and MoE #58, based on roughly 460 experiments. Those results are useful as a research index, but most files are the same source we already timed. Our official scored runs of the unchanged sources were BF16 1.58528x (matches the 1.5853x incumbent), decode 2.24332x (below our 2.2603x incumbent), MoE 2.37884x (below our 2.3820x incumbent), and prefill 1.93214x (matches our 1.9321x incumbent). Their README itself reports lower judge runs than the best leaderboard rows for some files. Do not copy or resubmit those unchanged kernels. The useful next test from their stack is the lossless six-bit WGS scale packing: our v7 MoE check now selects that path and removes the diagnostic build error; score pending.
+
+Transfer summary: (1) their CUDA/measurement lessons are actionable and now captured in `research/ENGINEERING.md`; their cold-L2 flush, fresh inputs, and noisy-score observations reinforce our measurement discipline, (2) their new attention bulk-reduction/workspace changes were screened and showed no repeatable q_len=8 gain, with q_len=1 results inconclusive, and (3) their SC6 MoE method remains an unverified delta in our own timed path pending check `1b045ada84a34097`. Nothing else in the current public snapshot is an untested source-level kernel delta over our baseline.
+
 ## H200 screens
 
 Full upstream attention source, q_len=8 scored full-attention shapes, B16/B32, two seeds and 16 randomized cold-L2 pairs per seed:
