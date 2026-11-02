@@ -23,7 +23,7 @@ for offline SM90 compilation; this does not provide H200 runtime validation.
 Modal H200 experiments run through `dev/modal/run_h200.py`; see
 [the PTX and CuTe campaign](research/PTX-CAMPAIGN.md) for results and caveats.
 
-Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). One distinct not-yet-ported idea with measured headroom is lee101's warp-independent cluster path for batch-16/32 sliding attention decode.
+Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). Lee101's warp-independent cluster path was transferred and screened on H200; the adapted path was 0.544×/0.584× of the incumbent on its target batches, so it was rejected. The audit retains a separate MoE scheduling idea for a bounded follow-up.
 
 The current public scores are **1.5853×** for projections, **2.6328×** for
 attention, **2.3820×** for MoE, **2.2603×** for the whole decoder, and
