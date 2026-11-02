@@ -51,6 +51,14 @@ screen measured 1.0010×, but the official full run `03083a8a606d42e2` scored
 remains unpromoted and the public score/rank are unchanged. Source, profiles, and
 measurements are in [`decoder_wgs_parallel_prefix_v1`](experiments/decoder_wgs_parallel_prefix_v1/FINDINGS.md).
 
+Decoder SC6 skinny transfer (2026-11-02): lossless 6-bit scale packing cut 1 KB
+from each 16-row MoE transfer. H200 showed up to 2.1% on B=1, q_len=8 sliding,
+but M=16 failed correctness. Restricting it to M<=8 passed 13/13; official check
+`6194823f78374e67` scored 2.23270× (95% CI 2.19921–2.26619×), below the 2.26032×
+incumbent. Rejected; public score and rank stay unchanged. Full screen, failed
+M=16 source, check profiles, and findings are in
+[`decoder_sc6_skinny_tiny_v1`](experiments/decoder_sc6_skinny_tiny_v1/FINDINGS.md).
+
 Latest whole-decoder experiment (2026-11-02): the rs128 QKV/unpooler transfer
 showed selected-case gains in a paired H200 screen, but its official run
 `1603d76ca92045e1` scored 2.20383x (95% CI 2.17077–2.23689), below the 2.26032x

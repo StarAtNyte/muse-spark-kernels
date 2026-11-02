@@ -1,0 +1,29 @@
+{
+  "name": "decoder_sc6_skinny_tiny_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Test lossless SC6 packing only for decoder tiny MoE launches M<=8; keep M9-16 on parent after the mid build failed whole-layer correctness.",
+  "sha256": "8547b77c6cb43a870395132d31d1937ed879986aed9f0facfe43a16dacca986d",
+  "created_at": 1793639070.452565,
+  "decision": "rejected_no_score_gain",
+  "limits_before": {
+    "scored": {
+      "per_day": 5,
+      "used": 5,
+      "left": 0
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    }
+  },
+  "status": "done",
+  "job_id": "6194823f78374e67",
+  "updated_at": 1793639717.5033064,
+  "official_check": "6194823f78374e67",
+  "score": 2.2327037940958663,
+  "score_ci": [
+    2.1992132371844284,
+    2.266194351007304
+  ]
+}

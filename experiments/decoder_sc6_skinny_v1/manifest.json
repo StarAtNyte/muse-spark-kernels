@@ -1,0 +1,12 @@
+{
+  "name": "decoder_sc6_skinny_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Pack per-16-row skinny MoE scales losslessly to 6 bits for M<=16 decoder workloads, reducing each transferred 36,864-byte unit by 1,024 bytes; use the SC6-aware kernel source for these builds.",
+  "parent": "kernels/muse_decode_layer/submission.py",
+  "parent_sha256": "82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19",
+  "candidate_sha256": "5e875c54f4811c5eca12e2613e03b94eec05bfe06885b37e6419c8241995c470",
+  "paired_screen": "modal.log",
+  "decision": "rejected_mid_m16_correctness_failure",
+  "status": "rejected_local_h200_screen",
+  "created_at": "2026-11-02"
+}
