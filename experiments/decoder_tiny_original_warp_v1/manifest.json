@@ -4,7 +4,7 @@
   "hypothesis": "Isolate the original tiny MoE warp order for M<=8 with unchanged weights and no SC6 skinny packing, retaining helper0 for M16.",
   "sha256": "aa21faa03140a1fabdf58381c2c0606e8024e17d54455fc603fc47e557196785",
   "created_at": 1793640226.9366832,
-  "decision": "archive_only",
+  "decision": "pending_clean_paired_followup",
   "limits_before": {
     "scored": {
       "per_day": 5,
@@ -17,7 +17,12 @@
       "left": 8
     }
   },
-  "status": "running",
+  "status": "done",
   "job_id": "42157e3923564abf",
-  "updated_at": 1793640602.4768825
+  "updated_at": 1793640617.0806868,
+  "official_speedup": 2.2539761518756922,
+  "official_ci": [
+    2.220166509597557,
+    2.2877857941538275
+  ]
 }
