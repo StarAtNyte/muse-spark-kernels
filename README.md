@@ -103,6 +103,8 @@ Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefi
 
 Recent official prefill check: [stacked 3,012-token QKV and pooler plans](experiments/prefill_3012_lt_stack_v1/README.md) passed at 1.7827×; the published 1.8092× source remains the incumbent. The intervals overlap, so the difference does not establish a regression.
 
+Chord H200 MoE transfer audit (2026-11-02): direct conversion from Muse NVFP4 to Chord INT4/group-32 fails the challenge tolerance (0.165 output relative L2 vs 0.015 allowed), so its reported grouped-prefill speedups are not transferable as-is. Its `wait_group<1>` is already used by our WGS consumer; the remaining candidate is a schedule-only change preserving NVFP4. Full probe and source analysis: [`chord_nvfp4_quant_probe_v1`](experiments/chord_nvfp4_quant_probe_v1/FINDINGS.md).
+
 Latest MoE experiment (2026-11-02): v8 failed before timing because it omitted the MFIN scratch tail. V9 restores the 4,096-int flag region and DF sentinel, passed all correctness cases, and scored 2.36004× (95% CI 2.32464–2.39544×) against the 2.38203× incumbent; the overlapping interval is inconclusive. Scored run `1fb6b4f749ec44bb` uses the same timed code plus a prepare-only print to confirm the judge selected `-DOKC_SC6W=1`. Full artifacts are under `experiments/moe_kperm3_sc6_stack_v8/`, `v9/`, and `v10/`.
 
 Projection score sampling (2026-11-02): three comment-only variants of the exact scored projection source scored 1.56698×, 1.59192× and 1.58068×. The board keeps the higher repeat, currently #41 and inside #50. These are repeat draws, not kernel changes; confidence intervals and source copies are tracked in `experiments/projection_rank_draws_v1/`.

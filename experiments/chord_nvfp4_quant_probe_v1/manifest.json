@@ -1,0 +1,11 @@
+{
+  "name": "chord_nvfp4_quant_probe_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Determine whether Chord's H200 W4A16 grouped kernel can consume a group-32 INT4 approximation of Muse NVFP4 weights within challenge tolerance",
+  "public_source": "https://github.com/novitalabs/chord",
+  "public_source_commit": "6199d44",
+  "decision": "reject_group32_int4_weight_conversion; retain scheduling ideas only",
+  "status": "accuracy_probe_failed_no_kernel_timing",
+  "modal_run": "ap-WzNfRIOlmpxBcTmm7iLrLM",
+  "created_at": "2026-11-02"
+}
