@@ -1,0 +1,23 @@
+{
+  "name": "attention_vp2_lb2_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Allow two 256-thread blocks per SM in the selected VP2 cluster kernel to reduce register pressure for verify-1 sliding.",
+  "sha256": "691eaa9134ab68a874b73269aa5e5677c748d7cb4234a764c66949a0c8396aef",
+  "created_at": 1793642614.9322321,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 5,
+      "used": 0,
+      "left": 5
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    }
+  },
+  "status": "queued",
+  "job_id": "7f9f41ad5a5d447b",
+  "updated_at": 1793642769.0595262
+}
