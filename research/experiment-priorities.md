@@ -57,11 +57,11 @@ score by about 3.79%:
 | Verify 32 | 211.24 us |
 
 SC6 WGS v9 (`bd7ee2f9d89247c8`) passed correctness at 2.36004x
-(95% CI 2.32464–2.39544x), with the 2.38203x public score inside the interval.
-It is inconclusive, and the check log did not expose whether `sc6w` was true.
-V10 scored run `1fb6b4f749ec44bb` adds a prepare-only print to prove the actual
-compile route while leaving timed code unchanged. Keep all shape-specific
-routes in view: no single batch size dominates the MoE score.
+(95% CI 2.32464–2.39544x). Scored run `1fb6b4f749ec44bb` confirmed the
+`-DOKC_SC6W=1` route was active and scored 2.35842x (95% CI 2.32304–2.39379x),
+still below the 2.38203x incumbent point estimate. Keep the incumbent; the
+interval overlaps and the evidence does not show an aggregate gain. Keep all
+shape-specific routes in view: no single batch size dominates the MoE score.
 
 ### Whole decoder layer
 
@@ -77,7 +77,11 @@ routes in view: no single batch size dominates the MoE score.
 The integrated decoder is the overall leaderboard score. Optimize and validate
 these sliding cases in the complete layer: component-only attention or MoE
 gains do not prove whole-layer improvement when PDL and stream overlap shift
-the critical path.
+the critical path. The rs128 QKV/unpooler transfer showed paired H200 gains on
+selected verify cases, but its scored submission `1603d76ca92045e1` regressed
+to 2.20383x (95% CI 2.17077–2.23689) from the 2.26032x incumbent. Reject it.
+The official profile exposes decode-16/32 sliding regressions. Target the
+integrated MoE path next; it consumes 52–57% of those loads.
 
 ### Prefill layer
 

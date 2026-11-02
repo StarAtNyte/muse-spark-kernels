@@ -24,6 +24,14 @@
     },
     "geometric_mean_of_12_case_seed_ratios": 1.0069
   },
-  "status": "submitted",
-  "decision": "submit candidate after repeatable verify16 paired gains; retain 2.26032x incumbent unless scored result improves it"
+  "status": "scored_regression",
+  "scored_result": {
+    "job": "1603d76ca92045e1",
+    "speedup": 2.203828158871872,
+    "speedup_ci": [2.1707707364887936, 2.2368855812549495],
+    "score_us": 10264.09428019071,
+    "tests": "13/13 passed",
+    "decision": "reject; keep 2.26032x incumbent"
+  },
+  "decision": "paired selected-case gains failed to transfer to the official aggregate. Keep the incumbent and target the profiled MoE bottleneck."
 }

@@ -18,15 +18,15 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 ## Remote validation
 
 Latest whole-decoder experiment (2026-11-02): the rs128 QKV/unpooler transfer
-was paired against the exact 2.26032x scored source on H200. Across 20
-alternating cold-L2 graph replays for each of three seeds, verify-16 improved
-1.01–1.29% in both full and sliding modes; verify-32 was neutral to a small
-gain. Both outputs passed reference checks. The candidate was submitted as
-`1603d76ca92045e1`; its score is pending. Details, hashes, and measurements:
+showed selected-case gains in a paired H200 screen, but its official run
+`1603d76ca92045e1` scored 2.20383x (95% CI 2.17077–2.23689), below the 2.26032x
+incumbent despite passing all 13 correctness cases. We rejected it; the
+published decoder score and rank remain unchanged. The official profile
+exposed regressions on decode-16/32 sliding. Details, hashes, and measurements:
 [`decoder_rs128_topbase_v1`](experiments/decoder_rs128_topbase_v1/FINDINGS.md).
-The selected-case 0.69% geometric-mean gain is not a whole-decoder score
-estimate. The integrated MoE is still the largest measured lever: over 60% of
-the profile in several sliding verification loads.
+The selected-case screen failed to predict the whole-layer outcome. The
+integrated MoE remains the largest measured lever, consuming 52–57% of
+decode-16/32 sliding profile time and more than 60% in some verification loads.
 
 The development machine has an RTX 3050 (6 GB); official checks run on an H200.
 The default Python environment has no PyTorch. `.venv` contains Triton 3.6.0
@@ -57,11 +57,11 @@ Private checks have a separate daily quota from leaderboard submissions.
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5919×† | #41 | 1.5904× | 1.6596× | 5a25cd13386a47ee (same source) |
 | Attention | 2.6328× | #164 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
-| MoE | 2.3820× | #204 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #112 | 2.3097× | 2.4844× | b72f02c7eb8745f5 |
-| Prefill layer | 1.9321× | #32 | 1.9164× | 2.0727× | f3b10ea957e04ea6 |
+| MoE | 2.3820× | #205 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603× | #114 | 2.3104× | 2.4844× | b72f02c7eb8745f5 |
+| Prefill layer | 1.9321× | #33 | 1.9164× | 2.0727× | f3b10ea957e04ea6 |
 
-Overall rank is **#112**. Ranks and cutoffs above were refreshed on **2026-11-02 at 13:56 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.18%, attention +3.51%, and MoE +3.71%.
+Overall rank is **#114**. Ranks and cutoffs above were refreshed on **2026-11-02 at 14:21 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.51%, and MoE +3.71%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 

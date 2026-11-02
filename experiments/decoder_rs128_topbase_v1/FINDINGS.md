@@ -30,14 +30,23 @@ The geometric mean over these 12 case/seed ratios is 1.0069x. This is a
 selected-case screen, not a whole-decoder speedup estimate: the feature changes
 only selected QKV/unpooler shapes, and the other eight official loads were not
 included in this paired screen. It should therefore not be presented as a
-0.69% whole-score gain.
+0.69% whole-score gain. If the 12 official loads are equally weighted and the
+other eight stay unchanged, applying this selected-case ratio to one third of
+the score gives a rough projection of `1.0069^(4/12) = 1.0023x`, or +0.23%.
+That is a hypothesis for the judge run, not an observed aggregate gain.
 
 ## Decision
 
 Submitted as `1603d76ca92045e1` because verify-16 gains repeated in both layer
-modes and the candidate already passed complete correctness. The previous
-public decoder score remains the incumbent until this scored run completes and
-beats it. This is a measured, narrow optimization; the largest decoder
-opportunity remains the integrated MoE path, which occupies over 60% of the
-profile on several sliding verification loads. Do not extrapolate the rs128
-screen to those loads.
+modes and the candidate already passed complete correctness. The scored run
+passed 13/13 but regressed to 2.20383x (95% CI 2.17077–2.23689), versus the
+2.26032x incumbent, so reject it and retain the incumbent. Its profile shows
+the main regressions at decode-16 sliding (135.3 us vs 127.8 us) and decode-32
+sliding (157.8 us vs 148.2 us); verify-1 full also regressed (123.1 us vs
+114.4 us). The selected-case Modal screen did not predict this aggregate
+outcome. Do not promote the rs128 candidate.
+
+The largest remaining opportunity is still the integrated MoE path, which
+occupies 52–57% of decode-16/32 sliding profile time and over 60% on some
+verification cases. Next experiments should target that stage while keeping
+the incumbent's load-specific choices intact.
