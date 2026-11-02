@@ -1,0 +1,12 @@
+{
+  "name": "decoder_wgs_parallel_prefix_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Use serial WGS prefix/range computation only for <=16 routed jobs and retain the warp-parallel scan for larger batches. This targets the small batch-1 regressions of v1 while preserving its measured batch-16/32 gains.",
+  "parent": "experiments/decoder_wgs_parallel_prefix_v1/candidate.py",
+  "parent_sha256": "af7620681cca64b123b28d79ee17b56da4109b631ed8288ea5e62cd42cf865c1",
+  "candidate_sha256": "77754af2c265bf80767d328f5cea363c9f82f0566bfb45948a6694d041ee1729",
+  "status": "prepared",
+  "decision": "await_v1_official_result_before_h200_screen",
+  "screen": "paired exact-parent judge-image H200, sliding decode/verify batches 1/16/32, two seeds; only after decoder run 03083a8a606d42e2 completes",
+  "dispatch": "nj <= 16: serial lane-0 prefix/ranges; nj > 16: V1 warp-parallel inclusive scans"
+}
