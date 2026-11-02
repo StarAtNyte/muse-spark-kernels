@@ -1,0 +1,18 @@
+{
+  "name": "projection_kz_router_fallback_v4",
+  "problem": "muse_bf16_proj",
+  "parent": "projection_kz_router_fallback_v3",
+  "change": "disable the unsupported eager M=128 o-projection warm launch and exclude the M=32 o route; other selected KZ routes remain intact",
+  "source_sha256": "76e42224d8a8c9dfcbb943e2a812d3996dbdc9867e2181e7675daaa3516a3d3a",
+  "embedded_sha256": "d50b4373ee55e5363ad34788533c97b4be37be22c17069a7d3c5c18036ffcb5c",
+  "v3_check": "91f71fd3e4d9491a",
+  "v3_failure": "olayer launch failed: 1 during prepare",
+  "status": "official_check_received",
+  "routes_removed": [
+    [
+      32,
+      "o"
+    ]
+  ],
+  "check_id": "9f3f921904df4ab4"
+}

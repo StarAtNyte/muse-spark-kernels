@@ -5,3 +5,5 @@ V2 passed CUDA compilation but its official check failed during `prepare()` beca
 Candidate SHA-256: `0d5441bbd426c53ce3432385564cdb9bd3319beaba9e854395dfffa60c96d504`. Source parses successfully.
 
 Official check `60769e4d692d4e9c` has been received by the judge. Await correctness and timing; v2 failed before timing.
+
+Official check `60769e4d692d4e9c` reached `prepare()` but failed before timing because `_t0` was not initialized. V4 initializes it at the start of `prepare()`.

@@ -6,6 +6,8 @@
   "source_sha256": "0d5441bbd426c53ce3432385564cdb9bd3319beaba9e854395dfffa60c96d504",
   "v2_check": "d237a4892dc54420",
   "v2_failure": "NameError _time in prepare logging before timing",
-  "status": "official_check_received",
-  "check_id": "60769e4d692d4e9c"
+  "status": "official_check_failed_before_timing",
+  "check_id": "60769e4d692d4e9c",
+  "result": "prepare referenced _t0 before initialization (NameError)",
+  "decision": "initialize local timer at start of prepare and rerun"
 }
