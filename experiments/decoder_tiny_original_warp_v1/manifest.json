@@ -1,0 +1,23 @@
+{
+  "name": "decoder_tiny_original_warp_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Isolate the original tiny MoE warp order for M<=8 with unchanged weights and no SC6 skinny packing, retaining helper0 for M16.",
+  "sha256": "aa21faa03140a1fabdf58381c2c0606e8024e17d54455fc603fc47e557196785",
+  "created_at": 1793640226.9366832,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 5,
+      "used": 5,
+      "left": 0
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    }
+  },
+  "status": "running",
+  "job_id": "42157e3923564abf",
+  "updated_at": 1793640602.4768825
+}
