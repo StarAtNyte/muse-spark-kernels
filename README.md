@@ -43,16 +43,18 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5853× | #65 | 1.5893× | 1.6596× | e5cae4f990be4df2 |
-| Attention | 2.6328× | #162 | 2.7208× | 3.3389× | 7d250883e6b94c50 |
+| Attention | 2.6328× | #163 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
 | MoE | 2.3820× | #204 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #107 | 2.3028× | 2.4844× | b72f02c7eb8745f5 |
-| Prefill layer | 1.9321× | #31 | 1.9101× | 2.0727× | f3b10ea957e04ea6 |
+| Whole decoder layer | 2.2603× | #110 | 2.3097× | 2.4844× | b72f02c7eb8745f5 |
+| Prefill layer | 1.9321× | #31 | 1.9145× | 2.0727× | f3b10ea957e04ea6 |
 
-Overall rank is **#107**. Ranks and cutoffs above were refreshed on **2026-11-02 at 11:10 UTC** and are archived in [the live snapshot](research/standings/2026-11-02-live-refresh.json); the earlier refresh is retained too. Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The fastest near-term category thresholds are projection (+0.25% to #50), decoder (+1.88%), attention (+3.34%), and MoE (+3.71%); prefill is inside #50.
+Overall rank is **#110**. Ranks and cutoffs above were refreshed on **2026-11-02 at 12:11 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json); the earlier 11:10 UTC snapshot is retained at [2026-11-02-live-refresh.json](research/standings/2026-11-02-live-refresh.json). Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The nearest category cutoffs are projection (+0.25% to #50), decoder (+2.19%), attention (+3.51%), and MoE (+3.71%); prefill is inside #50.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
 Recent official prefill check: [stacked 3,012-token QKV and pooler plans](experiments/prefill_3012_lt_stack_v1/README.md) passed at 1.7827×; the published 1.8092× source remains the incumbent. The intervals overlap, so the difference does not establish a regression.
+
+Latest candidate recovery (2026-11-02): the KPERM3+SC6 MoE stack is back in the official queue as `60769e4d692d4e9c` after restoring a missing `_time` import that blocked its prior check before timing. A projection-route candidate is queued as `91f71fd3e4d9491a` after restoring its omitted embedded-module execution wrapper. Neither has a score yet; both exact candidates and repair notes are archived under `experiments/moe_kperm3_sc6_stack_v3/` and `experiments/projection_kz_router_fallback_v3/`.
 
 ## Score progression
 
@@ -61,9 +63,9 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
 | Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #65 |
-| Attention | 1.1305x → 2.5806x → 2.6177x → **2.6328x** | Fused Q/K preparation and cache writes, split-KV attention and shape-selected FA3/cluster paths. | `experiments/attention_warm_route_verify_v1/submission.py` | #162 |
+| Attention | 1.1305x → 2.5806x → 2.6177x → **2.6328x** | Fused Q/K preparation and cache writes, split-KV attention and shape-selected FA3/cluster paths. | `experiments/attention_warm_route_verify_v1/submission.py` | #163 |
 | MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #204 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #107 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #110 |
 | Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #31 |
 
 The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score. The [baseline and decoder integration audit](research/baseline-integration-audit.md) records which standalone changes were tested together and why the decoder incumbent was retained.

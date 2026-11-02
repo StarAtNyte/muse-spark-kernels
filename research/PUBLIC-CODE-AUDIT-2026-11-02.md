@@ -22,6 +22,6 @@ The broad swap-AB/weight-major direction has already been tried here: `experimen
 
 ## Current standing snapshot
 
-The latest per-board snapshot is [`standings/2026-11-02-live-refresh.json`](standings/2026-11-02-live-refresh.json), fetched at 11:10 UTC. Current ranks are projections **#65**, attention **#162**, MoE **#204**, decoder **#107**, and prefill **#31**; overall is **#107**. The public scores did not change between the earlier and latest snapshots. We are inside prefill's top 50; the closest remaining cutoff is projections at **0.25%** faster, then decoder at **1.88%**, attention at **3.34%**, and MoE at **3.71%**. The competition leaderboard moves continuously.
+At 12:11 UTC the latest per-board snapshot refreshed ranks to projections **#65**, attention **#163**, MoE **#204**, decoder **#110**, and prefill **#31**; overall is **#110**. Scores did not change. The updated cutoffs are archived in [`standings/2026-11-02.json`](standings/2026-11-02.json). We are inside prefill's top 50; the nearest remaining thresholds are projections +0.25%, decoder +2.19%, attention +3.51%, and MoE +3.71%. The competition leaderboard moves continuously.
 
 For the category leads, the score gaps from our current bests are still **4.7%** (projections), **26.8%** (attention), **16.1%** (MoE), **9.9%** (decoder), and **7.3%** (prefill). Treat top-50 entry and the #1 target as different optimization horizons; a threshold-sized change does not close the larger performance gap.
