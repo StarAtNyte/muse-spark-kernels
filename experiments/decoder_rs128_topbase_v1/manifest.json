@@ -1,0 +1,29 @@
+{
+  "name": "decoder_rs128_topbase_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "The previously checked rs128 T=128/256 QKV and unpooler routes showed a +0.3% weighted signal on verify16, but its result was compared against a different decoder base. Re-screen the exact rs128 candidate against the exact 2.26032x scored decoder on verify16/32 full and sliding shapes, using fresh seeds and paired cold-L2 graph timings.",
+  "parent": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+  "parent_sha256": "9e7c8b73b0471d04f4f0cf451bea6ad372d7356e3103e7f57d7253df234aebb2",
+  "candidate_origin": "experiments/decoder_ours_rs128_v1/submission.py",
+  "candidate_sha256": "90042cfd63543fccc49bb91b2eddc45553f8d3eb05cb4d578e728ff355ebc2ec",
+  "previous_candidate_check": "28bf49b830714862",
+  "new_check": null,
+  "new_scored_submission": "1603d76ca92045e1",
+  "modal_app": "ap-nQzMG0EsWGBXMRy7tr8sUz",
+  "screen": {
+    "gpu": "H200",
+    "seeds": [4001, 4002, 4003],
+    "cases": ["verify16 sliding", "verify16 full", "verify32 sliding", "verify32 full"],
+    "replays_per_source_per_seed": 20,
+    "correctness": "all parent and candidate outputs reference-checked",
+    "gain_candidate_over_parent_by_case_and_seed": {
+      "verify16_sliding": [1.0110, 1.0129, 1.0104],
+      "verify16_full": [1.0103, 1.0120, 1.0101],
+      "verify32_sliding": [1.0002, 0.9979, 0.9985],
+      "verify32_full": [1.0035, 1.0109, 1.0051]
+    },
+    "geometric_mean_of_12_case_seed_ratios": 1.0069
+  },
+  "status": "submitted",
+  "decision": "submit candidate after repeatable verify16 paired gains; retain 2.26032x incumbent unless scored result improves it"
+}

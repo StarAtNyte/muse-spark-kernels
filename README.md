@@ -17,6 +17,17 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
+Latest whole-decoder experiment (2026-11-02): the rs128 QKV/unpooler transfer
+was paired against the exact 2.26032x scored source on H200. Across 20
+alternating cold-L2 graph replays for each of three seeds, verify-16 improved
+1.01–1.29% in both full and sliding modes; verify-32 was neutral to a small
+gain. Both outputs passed reference checks. The candidate was submitted as
+`1603d76ca92045e1`; its score is pending. Details, hashes, and measurements:
+[`decoder_rs128_topbase_v1`](experiments/decoder_rs128_topbase_v1/FINDINGS.md).
+The selected-case 0.69% geometric-mean gain is not a whole-decoder score
+estimate. The integrated MoE is still the largest measured lever: over 60% of
+the profile in several sliding verification loads.
+
 The development machine has an RTX 3050 (6 GB); official checks run on an H200.
 The default Python environment has no PyTorch. `.venv` contains Triton 3.6.0
 for offline SM90 compilation; this does not provide H200 runtime validation.

@@ -4,7 +4,14 @@
   "hypothesis": "Log the SC6 scale predicate and actual WGS compile defines at prepare time, then score the already checked v9 timed kernel.",
   "sha256": "de6f682e8b333c633b5a29fdaff224966ad367363078f5ecc678f5659daf3d4b",
   "parent_check": "bd7ee2f9d89247c8",
-  "decision": "diagnostic_score_pending",
-  "status": "queued",
-  "job_id": "1fb6b4f749ec44bb"
+  "decision": "retain incumbent; checked SC6W route is inconclusive and scored below incumbent point estimate",
+  "status": "done",
+  "job_id": "1fb6b4f749ec44bb",
+  "result": {
+    "speedup": 2.358417712418588,
+    "ci95": [2.323041446732309, 2.3937939781048665],
+    "passed": true,
+    "sc6w_dispatch_confirmed": true
+  },
+  "updated_at": 1793626879.0899572
 }
