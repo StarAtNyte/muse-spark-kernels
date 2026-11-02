@@ -6,6 +6,7 @@
   "source_sha256": "762a156e26231698282d0d7a3263ae98119a8f7c3a087c83d3702abd9e24321d",
   "v3_check": "60769e4d692d4e9c",
   "v3_failure": "NameError _t0 in prepare logging before timing",
-  "status": "official_check_received",
-  "check_id": "31f94f4fb0bd43e9"
+  "status": "official_check_failed_setup",
+  "check_id": "31f94f4fb0bd43e9",
+  "failure": "prepare() diagnostic called module.okc_attrs(), but load_inline did not export okc_attrs"
 }
