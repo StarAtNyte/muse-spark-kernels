@@ -8,8 +8,18 @@ Reviewed public challenge implementations and experiment notes while comparing t
 
 ## What transfers and what does not
 
+- **New vLLM CUDA router (`vllm-project/vllm#64553`, merged Oct 30):** the FP32
+  `redux.sync.max.f32` fast path is SM100/Blackwell-only and cannot be used on
+  this H200/SM90 challenge. Its algorithmic idea of reducing candidate sets
+  locally before a final top-k does transfer: the decoder's existing fused
+  Triton route now has a prepared exact 4×64-local-top-8 then 32-candidate
+  top-8 experiment. Packed score keys include expert-ID tie breaking, so the
+  hierarchy is exact. It has not yet been H200-screened; the fused route is
+  only about 2 µs, so this cannot replace work on the much larger MoE path.
+
 - **Projection / MoE / decoder / prefill:** the vjeux shape routes and the alygg77 KPERM3 layout are already in our scored stacks or in completed transfer experiments. The recent K64 prefill transfer onto the current full-layer source passed the full judge check, but scored **1.92538×** (95% CI **1.89650–1.95427×**) versus the incumbent's live **1.9321×**. It did not establish an improvement and remains archived without promotion; see [`prefill_keell_k64_transfer_v1`](../experiments/prefill_keell_k64_transfer_v1/README.md).
 - **Attention:** lee101's `swk` design uses independent warps to fetch key chunks and a small Hopper cluster for the final merge. Upstream v84 notes reported 2–4% gains on batch-16/32 sliding decode, but our clean transfer did not reproduce them: v2 passed reference checks and measured candidate/incumbent speedups of **0.544×** and **0.584×**. Reject the transfer as integrated; no submission. This is a useful reminder that independent warps and cluster merging only help if their local register work and synchronization are substantially cheaper than the incumbent's pipelined split-KV loop.
+- **vjeux attention cross-check:** cloned Apache-2.0 revision `f35a41ee1c13e316dabbf772830d47b23b453393` and compared `muse_attention_decode.py` against our scored `attention_warm_route_verify_v1/submission.py`. The fused WGMMA/split-KV implementation is the same lineage; our file has the additional cold instruction-cache dry cluster-finalizer warmup and small correctness/launch adaptations. This upstream file is not an untested replacement candidate.
 - **keell0renz attention follow-up:** its public attention implementation differs from ours, but its q_len=8 full-attention route measured essentially at parity on our scored B16/B32 shapes. Removing only its dry cluster-finalizer prologue pass was then checked on six seeds and 24 randomized paired rounds for sliding q_len=1 B16/B32; all reference checks passed, but the timing signals were small and mixed. Keep the current route. Timings and exact candidate hash: [`attention_keell0renz_drycluster_remove_v1`](../experiments/attention_keell0renz_drycluster_remove_v1/README.md).
 - **Other public kernels:** operatorstack's published attention, MoE, projection and decoder runs are substantially behind our current judged kernels. They do not justify replacing or stacking any current route.
 

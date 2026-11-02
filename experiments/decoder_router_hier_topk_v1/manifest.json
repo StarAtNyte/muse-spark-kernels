@@ -1,0 +1,13 @@
+{
+  "name": "decoder_router_hier_topk_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Replace the fused route kernel's 256-element tl.topk with four independent 64-expert top-8 operations followed by an exact top-8 over the 32 candidates. Since the packed score includes expert-id tie-breaking and is unique per expert, hierarchical top-k preserves the exact chosen routes. This exploits the existing four-warp CTA without adding a launch.",
+  "parent": "experiments/decoder_wgs_parallel_prefix_v1/candidate.py",
+  "parent_sha256": "af7620681cca64b123b28d79ee17b56da4109b631ed8288ea5e62cd42cf865c1",
+  "candidate_sha256": "9cf5649a612068f5c4750ceee1103ee0564f512666fcb42e1d64c6c542a2759c",
+  "upstream_inspiration": "vLLM Muse Spark CUDA routing PR #64553 (merged Oct 30 2026); adapt only hierarchical warp-local top-k. Its redux.sync.max.f32 optimization is Blackwell-only and is not used on H200.",
+  "status": "prepared",
+  "decision": "await_decoder_job_then_screen",
+  "screen": "paired exact-parent judge-image H200, sliding decode and verify batches 1/8/16/32, randomized order, at least 4 paired rounds after compile warmup",
+  "expected_component_ceiling": "The fused route kernel is about 1.8-2.1 us in existing profiles; even a 50% route-kernel reduction bounds layer latency savings to roughly 0.4-1.0% depending on load, before critical-path overlap."
+}
