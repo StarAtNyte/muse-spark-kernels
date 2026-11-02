@@ -1,0 +1,31 @@
+[mfab] modules built at 46s
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/submission.py", line 6548, in kernel_fn
+    ext.okc_run(state["w"], state["scratch"], x[m0:m1], ids[m0:m1], tw[m0:m1], out[m0:m1],
+RuntimeError: MFIN needs the flag region in scratch[0]
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/submission.py", line 6548, in kernel_fn
+    ext.okc_run(state["w"], state["scratch"], x[m0:m1], ids[m0:m1], tw[m0:m1], out[m0:m1],
+RuntimeError: MFIN needs the flag region in scratch[0]
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/worker.py", line 415, in <lambda>
+    return functools.partial(lambda k, p, d: k(d, p), fn, state["prep"])
+                                             ^^^^^^^
+  File "/tmp/muse_moe_w4a16-ipqmfzne/run/submission.py", line 6548, in kernel_fn
+    ext.okc_run(state["w"], state["scratch"], x[m0:m1], ids[m0:m1], tw[m0:m1], out[m0:m1],
+RuntimeError: MFIN needs the flag region in scratch[0]
