@@ -1,0 +1,51 @@
+"""Single-request full-context attention: sweep launch-plan overrides (splits, coop finalize, workspace copies),
+reference-check each, paired cold-L2 graph timing vs the scored plan."""
+import importlib.util, json, statistics, sys
+from unittest.mock import MagicMock
+import torch
+class StubSGLang:
+    def find_spec(self, name, path=None, target=None):
+        if name.split('.')[0] in ('sglang', 'sgl_kernel'):
+            import importlib.machinery
+            return importlib.machinery.ModuleSpec(name, self, is_package=True)
+    def create_module(self, spec):
+        m = MagicMock(); m.__path__ = []; m.__name__ = spec.name; m.__spec__ = spec; return m
+    def exec_module(self, m): pass
+sys.meta_path.insert(0, StubSGLang())
+sys.path.insert(0, '/w/kernels/muse_attention_decode')
+import reference as R
+spec = importlib.util.spec_from_file_location('sub', '/w/run/sub.py'); S = importlib.util.module_from_spec(spec); spec.loader.exec_module(S)
+flush = torch.zeros(256 * 1024 * 1024 // 4, device='cuda')
+def cap(fn):
+    fn(); torch.cuda.synchronize(); g = torch.cuda.CUDAGraph()
+    with torch.cuda.graph(g): o = fn()
+    g.replay(); torch.cuda.synchronize(); return g, o
+def t1(g):
+    flush.sum(); a = torch.cuda.Event(enable_timing=True); b = torch.cuda.Event(enable_timing=True)
+    a.record(); g.replay(); b.record(); b.synchronize(); return a.elapsed_time(b) * 1000
+for q in (8,):
+    for layer, dist in (('sliding', 'soft'),):
+        d = R.generate_input(1, 80000, 'tp8', layer, 11, q_len=q, dist=dist, page=1)
+        variants = {'base': {}}
+        for ns in ((126, 252, 378, 504, 630, 756, 1008) if layer == 'full' else (8, 16, 32, 64)):
+            for coop in (0, 1):
+                for nc in (1, 4, 8):
+                    variants[f'ns{ns}_c{coop}_nc{nc}'] = dict(n_splits=ns, coop=coop, nc=nc)
+        graphs = {}
+        for name, ov in variants.items():
+            try:
+                g, o = cap(lambda: S._kz_attn._launch(d, **ov) if ov else S.kernel_fn(d))
+                ok, msg = R.check_implementation(d, R.collect(d, o))
+            except Exception as e:
+                try: torch.zeros(1, device='cuda').add_(1); torch.cuda.synchronize()
+                except Exception: pass
+                continue
+            if ok: graphs[name] = g
+        names = list(graphs); ts = {k: [] for k in names}
+        for rep in range(24):
+            for k in (names if rep % 2 == 0 else names[::-1]): ts[k].append(t1(graphs[k]))
+        med = sorted((statistics.median(v), k) for k, v in ts.items())
+        base = statistics.median(ts['base'])
+        print('ROW', json.dumps(dict(q=q, layer=layer, base=round(base, 2), n=len(names),
+              best=[(round(t, 2), k, round(base / t, 3)) for t, k in med[:6]])), flush=True)
+print('DONE', flush=True)
