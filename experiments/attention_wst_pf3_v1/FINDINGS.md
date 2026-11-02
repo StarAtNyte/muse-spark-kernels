@@ -1,0 +1,3 @@
+# Balanced WST prefetch depth three
+
+Candidate SHA-256 `01ee88cb1de4e5ea106c40aa9c4fa889dfc0d381388614718cf28a55837985aa` changes WST prefetch depth from two to three while retaining four stages, four producer warpgroups, and the B32 WST route in both arms. Public judge-image H200 paired screen, three seeds each at B16 and B32 full verification and 24 alternating read-flushed replays, passed all reference checks. Parent/candidate ratios were 0.985/0.982/0.987 at B16 and 0.992/0.992/0.994 at B32. Prefetch depth three was 0.6–1.8% slower; reject. Actual stalls and register usage were not profiled. No official check was spent on this variant.
