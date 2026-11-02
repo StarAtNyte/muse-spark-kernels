@@ -1,0 +1,12 @@
+{
+  "name": "projection_kz_router_fallback_v3",
+  "problem": "muse_bf16_proj",
+  "parent": "projection_kz_router_fallback_v2",
+  "change": "repair source assembly by executing the intact embedded KZ module before the route table; no kernel logic changed",
+  "source_sha256": "f7841d83a6cc2e0248f89684a04102efa03add0e85ad08464218041bed3746e3",
+  "embedded_sha256": "bfa850cda31704b9ba088b482ceea8e3c902f7b4b97b4e25b6c360767369dd98",
+  "status": "official_check_received",
+  "previous_job": "a7bd51ec7e13491a",
+  "previous_failure": "SyntaxError from missing exec wrapper around intact compressed module payload",
+  "check_id": "91f71fd3e4d9491a"
+}
