@@ -1,0 +1,17 @@
+{
+  "environment": "lmsysorg/sglang:dev-muse-spark-open, NVIDIA H200",
+  "driver": "pair_driver.py",
+  "command": "modal run dev/modal/run_judge_image.py --file experiments/decoder_o256_compact_screen_v1/submission.py --drv experiments/decoder_o256_compact_screen_v1/pair_driver.py --envs '[{\"CASES\":\"[{\\\"batch\\\":32,\\\"q_len\\\":8,\\\"layer\\\":\\\"full\\\"},{\\\"batch\\\":32,\\\"q_len\\\":8,\\\"layer\\\":\\\"sliding\\\"}]\"}]'",
+  "seeds": [4001, 4002, 4003],
+  "replays_per_implementation_seed": 24,
+  "results": [
+    {"layer":"full","batch":32,"q_len":8,"seed":4001,"parent_us":463.9,"candidate_us":465.9,"parent_over_candidate":0.9956,"parent_correct":true,"candidate_correct":true},
+    {"layer":"full","batch":32,"q_len":8,"seed":4002,"parent_us":462.8,"candidate_us":463.6,"parent_over_candidate":0.9981,"parent_correct":true,"candidate_correct":true},
+    {"layer":"full","batch":32,"q_len":8,"seed":4003,"parent_us":478.7,"candidate_us":478.5,"parent_over_candidate":1.0004,"parent_correct":true,"candidate_correct":true},
+    {"layer":"sliding","batch":32,"q_len":8,"seed":4001,"parent_us":303.9,"candidate_us":305.5,"parent_over_candidate":0.9947,"parent_correct":true,"candidate_correct":true},
+    {"layer":"sliding","batch":32,"q_len":8,"seed":4002,"parent_us":313.5,"candidate_us":314.6,"parent_over_candidate":0.9965,"parent_correct":true,"candidate_correct":true},
+    {"layer":"sliding","batch":32,"q_len":8,"seed":4003,"parent_us":315.8,"candidate_us":317.1,"parent_over_candidate":0.9957,"parent_correct":true,"candidate_correct":true}
+  ],
+  "aggregate_parent_over_candidate": 0.9968,
+  "decision": "reject"
+}

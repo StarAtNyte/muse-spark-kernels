@@ -17,9 +17,9 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
-Latest decoder stack (2026-11-02): adding our measured compact T=128 QKV and O routes to the current decoder passed all 13 official checks at **2.271×** (95% CI 2.236–2.305×, 9,962.7 µs). The three-seed, judge-image paired H200 screen passed all six batch-16/q_len-8 cases and measured **1.00294×** geometric end-to-end gain. The confidence interval overlaps the 2.26032× published incumbent, so this remains an archived candidate; live score/rank remain **2.2603× / #115**, below the roughly 2.310× top-50 line. Candidate, full check profiles, raw paired timings and driver: [`decoder_stack_compact_qkvo_v1`](experiments/decoder_stack_compact_qkvo_v1/FINDINGS.md). A follow-up enabling its pre-existing T=256 QKV config regressed verify-32 by 0.40% geometric overall, so that route is rejected; details: [`decoder_stack_compact_qkvo_t256q_v1`](experiments/decoder_stack_compact_qkvo_t256q_v1/FINDINGS.md).
+Latest decoder stack (2026-11-02): adding our measured compact T=128 QKV and O routes to the current decoder passed all 13 official checks at **2.271×** (95% CI 2.236–2.305×, 9,962.7 µs). The three-seed, judge-image paired H200 screen passed all six batch-16/q_len-8 cases and measured **1.00294×** geometric end-to-end gain. The confidence interval overlaps the 2.26032× published incumbent, so this remains an archived candidate; live score/rank remain **2.2603× / #114**, below the 2.3104× top-50 line. Candidate, full check profiles, raw paired timings and driver: [`decoder_stack_compact_qkvo_v1`](experiments/decoder_stack_compact_qkvo_v1/FINDINGS.md). Follow-ups enabling its T=256 QKV route and extending the compact O route to T=256 regressed verify-32 (−0.40% and −0.32% aggregate, respectively), so both are rejected; details: [`decoder_stack_compact_qkvo_t256q_v1`](experiments/decoder_stack_compact_qkvo_t256q_v1/FINDINGS.md) and [`decoder_o256_compact_screen_v1`](experiments/decoder_o256_compact_screen_v1/FINDINGS.md).
 
-Current live decoder rank is **#115 at 2.2603×**; the #50 cutoff is **2.310×**. The score-only repeat `d2b35ce7d0c04679` passed 13/13 checks but measured 2.212× (95% CI 2.179–2.245×), below the incumbent; the board stays at #115 / 2.2603×. No timed code changed.
+Current live decoder rank is **#114 at 2.2603×**; the #50 cutoff is **2.3104×**. The score-only repeat `d2b35ce7d0c04679` passed 13/13 checks but measured 2.212× (95% CI 2.179–2.245×), below the incumbent; the board stays at #114 / 2.2603×. No timed code changed.
 
 Prepared a fused decoder-router top-k experiment inspired by vLLM's recent
 Muse CUDA routing kernel: split the exact packed 256-expert top-k into four
@@ -92,12 +92,12 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5919×† | #41 | 1.5904× | 1.6596× | 5a25cd13386a47ee (same source) |
-| Attention | 2.6328× | #164 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
-| MoE | 2.3820× | #205 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #115 | 2.3104× | 2.4844× | b72f02c7eb8745f5 |
-| Prefill layer | 1.9321× | #33 | 1.9164× | 2.0727× | f3b10ea957e04ea6 |
+| Attention | 2.6328× | #166 | 2.7318× | 3.3389× | 7d250883e6b94c50 |
+| MoE | 2.3820× | #207 | 2.4710× | 2.7642× | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603× | #114 | 2.3104× | 2.4844× | b72f02c7eb8745f5 |
+| Prefill layer | 1.9321× | #33 | 1.9172× | 2.0997× | f3b10ea957e04ea6 |
 
-Overall rank is **#115**. Ranks and cutoffs above were refreshed on **2026-11-02 at 14:21 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.51%, and MoE +3.71%.
+Overall rank is **#114**. Ranks and cutoffs above were refreshed on **2026-11-02 at 16:49 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.76%, and MoE +3.74%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 

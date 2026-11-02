@@ -1,0 +1,20 @@
+Modal run: ap-ouCZ8aWpEkE2MduOGEE6mA
+Image: lmsysorg/sglang:dev-muse-spark-open
+GPU: H200
+Driver: experiments/decoder_o256_compact_screen_v1/pair_driver.py
+Candidate SHA-256: 58c15857645c9c119f4fb488fff3ceaf7c7c3def0dea7ef930cb5dbc53f346f8
+Return code: 0
+
+Preparation (parent and candidate):
+- SC6 scales validated; WGS SC6 build selected.
+- Decoder prepare completed at 136s for the first module, 2s for the second after shared compilation.
+- All candidate and parent reference checks passed.
+
+Rows (parent_us, candidate_us, parent/candidate):
+full verify-32 seed 4001: 463.9, 465.9, 0.9956
+full verify-32 seed 4002: 462.8, 463.6, 0.9981
+full verify-32 seed 4003: 478.7, 478.5, 1.0004
+sliding verify-32 seed 4001: 303.9, 305.5, 0.9947
+sliding verify-32 seed 4002: 313.5, 314.6, 0.9965
+sliding verify-32 seed 4003: 315.8, 317.1, 0.9957
+Aggregate parent/candidate: 0.9968315. Reject T=256 compact O route.
