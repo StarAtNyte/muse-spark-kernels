@@ -23,12 +23,13 @@ for offline SM90 compilation; this does not provide H200 runtime validation.
 Modal H200 experiments run through `dev/modal/run_h200.py`; see
 [the PTX and CuTe campaign](research/PTX-CAMPAIGN.md) for results and caveats.
 
-First private check: `3f1954adb1044e31`: passed all 9 tests and 30 timed
-cases, **1.035754x** over SGLang (95% interval **1.020217–1.051290x**).
-The current public scores are **1.5395x** for projections, **2.6177x** for
-attention, **2.3820x** for MoE, and **2.2603x** for the whole decoder. The
-private check scores and immutable sources are archived under `experiments/`;
-`research/best.json` records the best scored source for each problem.
+Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). One distinct not-yet-ported idea with measured headroom is lee101's warp-independent cluster path for batch-16/32 sliding attention decode.
+
+The current public scores are **1.5853×** for projections, **2.6328×** for
+attention, **2.3820×** for MoE, **2.2603×** for the whole decoder, and
+**1.9321×** for prefill. Private check scores and immutable sources are
+archived under `experiments/`; `research/best.json` records our best validated
+source hashes.
 
 ```bash
 ~/.okc/bin/okc status 3f1954adb1044e31 --json
@@ -41,13 +42,13 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5395x | #247 | 1.5791x | 1.6523x | beb3e26afb2544c9 |
-| Attention | 2.6177x | #161 | 2.7093x | 3.3389x | b95cd80bd3e6497f |
-| MoE | 2.3820x | #148 | 2.4533x | 2.7642x | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603x | #60 | 2.2698x | 2.4844x | b72f02c7eb8745f5 |
-| Prefill layer | 1.8092x | #89 | 1.8616x | 2.2482x | 7d1584001a32467a |
+| Projections | 1.5853× | #65 | 1.5893× | 1.6596× | e5cae4f990be4df2 |
+| Attention | 2.6328× | #162 | 2.7208× | 3.3389× | 7d250883e6b94c50 |
+| MoE | 2.3820× | #203 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603× | #106 | 2.3028× | 2.4844× | b72f02c7eb8745f5 |
+| Prefill layer | 1.9321× | #31 | 1.9101× | 2.0727× | f3b10ea957e04ea6 |
 
-Overall rank was **#60**. Category ranks and cutoffs were fetched on **2026-11-01 at 04:56 UTC**; overall was fetched at 04:59 UTC. Ranks can move as others submit, and some leading submissions may still be under review. Prefill is a separate board and does not count toward overall rank. The snapshot is [archived](research/standings/2026-11-01-refresh.json).
+Overall rank is **#106**. All ranks and cutoffs above were fetched on **2026-11-02 at 10:51 UTC** and are archived in [the live snapshot](research/standings/2026-11-02-refresh.json). Ranks move as others submit; prefill is a separate board and does not count toward overall rank. The fastest near-term category thresholds are projection (+0.25% to #50), decoder (+1.88%), attention (+3.34%), and MoE (+3.71%); prefill is inside #50.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
@@ -59,11 +60,11 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → **1.5395x** | Shape-specific BF16 kernels and cuBLASLt plans, with M32 pooler and M128 router routes. | `experiments/projection_vjeux_m32pool_m128router_v1/submission.py` | #247 |
-| Attention | 1.1305x → 2.5806x → **2.6177x** | Fused attention and optimized sliding decode plan. | `kernels/muse_attention_decode/submission.py` | #161 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #65 |
+| Attention | 1.1305x → 2.5806x → 2.6177x → **2.6328x** | Fused Q/K preparation and cache writes, split-KV attention and shape-selected FA3/cluster paths. | `experiments/attention_warm_route_verify_v1/submission.py` | #162 |
 | MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #148 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `kernels/muse_decode_layer/submission.py` | #60 |
-| Prefill layer | 1.7874x → **1.8092x** | K64 scale reuse with four-lane shuffle gather. | `kernels/muse_prefill_layer/submission.py` | #89 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #106 |
+| Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #31 |
 
 The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score. The [baseline and decoder integration audit](research/baseline-integration-audit.md) records which standalone changes were tested together and why the decoder incumbent was retained.
 
@@ -143,3 +144,5 @@ Decoder stacking: the combined compact T128 QKV and O projection routes on the K
 Prefill K64 scale reuse: the four-lane shuffle candidate passed the official check at 1.80799× and scored **1.80923×** (95% CI 1.78210–1.83637), up from 1.78740×. It ranked #54 on 2026-10-30 at 14:42 UTC; #50 was 1.8115×. Intervals overlap, so the exact effect remains uncertain. Source and profiles: `experiments/prefill_k64_shuffle_v1/`.
 
 Prefill head interleaving: the long full-attention candidate passed its official check at 1.80145× and scored **1.79978×** in `e3127297ccc1451f`, below the 1.80923× public best. Local paired tests showed a small component gain, but the score intervals overlap, so its aggregate effect is uncertain. The incumbent remains in place; details and profiles are in `experiments/prefill_head_interleave_v1/` and `experiments/prefill_head_interleave_check_v1/`.
+
+Current prefill transfer (2026-11-02): K64 scale reuse/shuffle gather stacked onto `prefill_keell0renz_compare_v1` passed full check `972b04d5768c496c` at 1.95119×, but scored submission `91310268963a4503` at **1.92538×** (95% CI 1.89650–1.95427×). The live incumbent remains **1.9321×**, so the candidate was archived without promotion. The current public source, per-kernel ranks, and moving #50 cutoffs are in the table above and [`research/standings/2026-11-02-refresh.json`](research/standings/2026-11-02-refresh.json).

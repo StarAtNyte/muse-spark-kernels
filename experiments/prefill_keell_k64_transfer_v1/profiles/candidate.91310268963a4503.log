@@ -1,0 +1,20 @@
+LT tune T=753 qkv: torch.mm 42.4us, best 42.4us algo None of 8
+LT2 T=753 o: lay 0 cfg [66, 495, 1, 0, 0, 7, 35, 0, 5]: 23.9us vs torch.mm 24.3us (x1.019)
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT2 T=753 pooler: lay 2 cfg [66, 32, 1, 0, 0, 7, 35, 0, 5]: 67.3us vs torch.mm 69.0us (x1.026)
+LT2 T=753 unpooler: lay 2 cfg [66, 32, 1, 0, 0, 5, 35, 0, 2]: 68.4us vs torch.mm 70.3us (x1.028)
+LT2 T=3012 qkv: lay 0 cfg [66, 496, 1, 0, 0, 5, 35, 0, 2]: 145.1us vs torch.mm 148.4us (x1.023)
+LT2 T=3012 o: lay 0 cfg [66, 189, 1, 0, 0, 2, 35, 0, 5]: 70.3us vs torch.mm 75.4us (x1.073)
+LT tune T=3012 router: torch.mm 41.0us, best 41.0us algo None of 8
+LT T=3012 pooler: pinned (24, 1, 0, 7) -> algo 1
+LT tune T=3012 unpooler: torch.mm 257.7us, best 257.7us algo None of 8
+LT tune T=16384 qkv: torch.mm 771.0us, best 771.0us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 363.0us vs torch.mm 424.6us (x1.170)
+LT tune T=16384 router: torch.mm 197.8us, best 197.8us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]
+ZH fmha check B1 L753 ctx3000 win2048 page1: rel err vs ref 1.89e-02
+ZH fmha check B2 L300 ctx2500 win0 page1: rel err vs ref 1.87e-02
+ZH fmha check B1 L200 ctx5000 win0 page64: rel err vs ref 1.48e-02
+ZH fmha check B1 L640 ctx4096 win2048 page64: rel err vs ref 1.84e-02
