@@ -1,0 +1,23 @@
+{
+  "name": "decoder_mfin_moe_source_transfer_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer the current layer candidate's updated MoE CUDA source, which enables MFIN for WGS builds, onto the exact scored decoder incumbent while retaining its attention, dense paths, and layer orchestration. The source also includes current WGS scheduling changes; SC6 is disabled by default, so this is a measured source bundle, not an isolated MFIN attribution.",
+  "parent": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+  "parent_sha256": "9e7c8b73b0471d04f4f0cf451bea6ad372d7356e3103e7f57d7253df234aebb2",
+  "source_reference": "kernels/muse_decode_layer/submission.py: MOE_CUDA_SRC",
+  "candidate_sha256": "91b54d18693f9c077ceb9dc4286e9fdbd827bdf16d5635a5b54c7dc7cb91d867",
+  "scratch_change": "add the 4096-int MFIN flag region to scratch[0]",
+  "status": "official_score_queued",
+  "decision": "pending_official_scored_run",
+  "official_submission_job": "ff5cef4ac6ef4810",
+  "screen": {
+    "cases": 36,
+    "all_correct": true,
+    "geomean_gain": 1.0044785888552779,
+    "sliding_geomean_gain": 1.0070610864327325,
+    "full_geomean_gain": 1.001902713809294,
+    "raw": "screen.json",
+    "modal_app": "ap-yoLizVBvIv9cFiWDj84MZS"
+  },
+  "submitted_sha256": "91b54d18693f9c077ceb9dc4286e9fdbd827bdf16d5635a5b54c7dc7cb91d867"
+}

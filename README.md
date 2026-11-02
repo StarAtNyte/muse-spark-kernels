@@ -22,10 +22,21 @@ Muse CUDA routing kernel: split the exact packed 256-expert top-k into four
 64-expert local top-k operations and one 32-candidate merge. It preserves the
 packed expert-ID tie rule and adds no launch. Its three-seed paired H200 screen
 passed all 36 measurements and measured 1.00171× aggregate (1.00355× sliding,
-0.99987× full). Scored run `d1faeb5b0a5c496d` is pending; the candidate is not
-promoted yet. This is a secondary lever (the route kernel is about 2 µs;
+0.99987× full). Scored run `d1faeb5b0a5c496d` passed correctness but measured
+2.21156× (95% CI 2.17839–2.24473×), below the 2.26032× incumbent, so it is
+rejected. This is a secondary lever (the route kernel is about 2 µs;
 integrated MoE remains much larger). Candidate and pair driver:
 [`decoder_router_hier_topk_v1`](experiments/decoder_router_hier_topk_v1/FINDINGS.md).
+
+Latest decoder transfer screen (2026-11-02): replacing only the embedded MoE
+CUDA source with the newer WGS/MFIN bundle, while preserving the exact scored
+layer's attention and projections, passed all 36 paired H200 correctness cases
+and measured **1.00448×** overall (**1.00706×** sliding, **1.00190×** full).
+The source bundle includes WGS scheduling edits as well as MFIN, so this does
+not isolate MFIN. Exact candidate hash was submitted as `ff5cef4ac6ef4810`;
+the official result is pending. Keep the 2.26032× incumbent promoted until it
+beats that score. Full per-shape measurements are in
+[`decoder_mfin_moe_source_transfer_v1`](experiments/decoder_mfin_moe_source_transfer_v1/FINDINGS.md).
 
 Decoder WGS warp-parallel prefix (2026-11-02): the 12-case exact-parent paired
 screen measured 1.0010×, but the official full run `03083a8a606d42e2` scored

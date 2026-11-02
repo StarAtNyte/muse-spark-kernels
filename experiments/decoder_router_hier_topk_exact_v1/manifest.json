@@ -16,7 +16,7 @@
     "geomean_candidate_over_parent": 1.0026373797102976,
     "log": "experiments/decoder_router_hier_topk_exact_v1/screen1_modal.log"
   },
-  "decision": "official_score_pending",
+  "decision": "reject_official_score_below_incumbent",
   "screen3": {
     "seed_count": 3,
     "replays_per_pair": 4,
@@ -28,5 +28,12 @@
     "log": "experiments/decoder_router_hier_topk_exact_v1/multiseed_modal.log"
   },
   "official_submission_job": "d1faeb5b0a5c496d",
-  "official_submission_status": "queued"
+  "official_submission_status": "done",
+  "official_result": {
+    "passed": true,
+    "speedup": 2.211559150475715,
+    "ci95": [2.178385763218579, 2.24473253773285],
+    "score_us": 10228.213880299916,
+    "decision_reason": "Below 2.26032x incumbent; retain incumbent. The paired H200 effect was too small to survive the official draw."
+  }
 }
