@@ -1,0 +1,58 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hR1LyLWtQ2fcoBJYLsKln7
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.2us, best 42.2us algo None of 8
+LT2 T=753 o: lay 0 cfg [66, 495, 1, 0, 0, 7, 35, 0, 5]: 24.0us vs torch.mm 24.5us (x1.021)
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT2 T=753 pooler: lay 2 cfg [66, 32, 1, 0, 0, 7, 35, 0, 5]: 67.5us vs torch.mm 69.0us (x1.021)
+LT2 T=753 unpooler: lay 2 cfg [66, 32, 1, 0, 0, 5, 35, 0, 2]: 68.8us vs torch.mm 70.7us (x1.027)
+LT2 T=3012 qkv: lay 0 cfg [66, 496, 1, 0, 0, 5, 35, 0, 2]: 145.1us vs torch.mm 148.8us (x1.026)
+LT2 T=3012 o: lay 0 cfg [66, 189, 1, 0, 0, 2, 35, 0, 5]: 69.9us vs torch.mm 75.8us (x1.084)
+LT tune T=3012 router: torch.mm 40.8us, best 40.8us algo None of 8
+LT T=3012 pooler: pinned (24, 1, 0, 7) -> algo 1
+LT tune T=3012 unpooler: torch.mm 260.1us, best 260.1us algo None of 8
+LT tune T=16384 qkv: torch.mm 781.5us, best 781.5us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 377.5us vs torch.mm 440.3us (x1.166)
+LT tune T=16384 router: torch.mm 202.9us, best 202.9us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47681649702048'>")
+ZH fmha check failed: KeyError("dtype' id='47681649702048'>")
+SHARED_PLANS
+CHECK base True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+CHECK candidate True update relative L2 error 5.096e-02 (worst row 9.852e-02) [bound 0.122]; attention input relative L2 error 3.270e-02 (worst row 6.799e-02) [bound 0.078]
+ROW {"case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "base_us": 522.8, "candidate_us": 518.7, "gain": 1.0079}
+CHECK base True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [bound 0.097]
+CHECK candidate True update relative L2 error 6.120e-02 (worst row 1.406e-01) [bound 0.149]; attention input relative L2 error 3.957e-02 (worst row 7.963e-02) [bound 0.097]
+ROW {"case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "full"}, "base_us": 3149.6, "candidate_us": 3140.8, "gain": 1.0028}
+CHECK base True update relative L2 error 3.222e-02 (worst row 1.050e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.527e-02) [bound 0.047]
+CHECK candidate True update relative L2 error 3.222e-02 (worst row 1.050e-01) [bound 0.071]; attention input relative L2 error 2.099e-02 (worst row 7.526e-02) [bound 0.047]
+ROW {"case": {"batch": 1, "ctx": 32768, "q_len": 16384, "layer": "sliding"}, "base_us": 9318.1, "candidate_us": 9337.6, "gain": 0.9979}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hR1LyLWtQ2fcoBJYLsKln7

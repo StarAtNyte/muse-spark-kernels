@@ -1,0 +1,73 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-R1uuXV3BnnOOBvzRgMQGxj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 41.5us, best 41.5us algo None of 8
+LT2 T=753 o: lay 0 cfg [66, 495, 1, 0, 0, 7, 35, 0, 5]: 24.0us vs torch.mm 24.3us (x1.012)
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT2 T=753 pooler: lay 2 cfg [66, 32, 1, 0, 0, 7, 35, 0, 5]: 66.2us vs torch.mm 67.8us (x1.025)
+LT2 T=753 unpooler: lay 2 cfg [66, 32, 1, 0, 0, 5, 35, 0, 2]: 68.2us vs torch.mm 69.8us (x1.023)
+LT2 T=3012 qkv: lay 0 cfg [66, 496, 1, 0, 0, 5, 35, 0, 2]: 143.6us vs torch.mm 147.5us (x1.027)
+LT2 T=3012 o: lay 0 cfg [66, 189, 1, 0, 0, 2, 35, 0, 5]: 69.1us vs torch.mm 75.3us (x1.090)
+LT tune T=3012 router: torch.mm 40.0us, best 40.0us algo None of 8
+LT T=3012 pooler: pinned (24, 1, 0, 7) -> algo 1
+LT tune T=3012 unpooler: torch.mm 254.9us, best 254.9us algo None of 8
+LT tune T=16384 qkv: torch.mm 762.0us, best 762.0us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 346.8us vs torch.mm 400.6us (x1.155)
+LT tune T=16384 router: torch.mm 192.5us, best 192.5us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47755981682448'>")
+ZH fmha check failed: KeyError("dtype' id='47755981682448'>")
+SHARED_PLANS
+CHECK 9400 base1 True update relative L2 error 6.060e-02 (worst row 9.730e-02) [bound 0.149]; attention input relative L2 error 3.872e-02 (worst row 6.966e-02) [b
+CHECK 9400 base2 True update relative L2 error 6.060e-02 (worst row 9.730e-02) [bound 0.149]; attention input relative L2 error 3.872e-02 (worst row 6.966e-02) [b
+CHECK 9400 candidate True update relative L2 error 6.060e-02 (worst row 9.730e-02) [bound 0.149]; attention input relative L2 error 3.872e-02 (worst row 6.965e-02) [b
+RESULT {"seed": 9400, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 858.5920035839081, "base2": 859.0400218963623, "candidate": 852.0000278949738}, "paired_ratios": {"base2": 0.999292649371162, "candidate": 1.0056150191688178}, "samples": {"base2": [1.0001116589012555, 0.9906007589533535, 0.9956356933347276, 0.9966596960343439, 0.9992921490510245, 1.0027636042591601, 0.9965766254184869, 1.0060261106362567, 0.994127676548553, 0.9984686432939279, 1.0048685339576284, 0.9928273489018472, 1.001117559315956, 1.0007829192763975, 0.9994040035282437, 0.9992931496912996], "candidate": [1.0000372168633558, 1.0051645270975997, 1.0032324821221426, 1.0093212070271416, 1.0006714444400746, 1.0057684298921017, 1.006047841592394, 1.0054616084455337, 1.0002617636026696, 1.0073859353546932, 1.0114976749411495, 1.0007116789161492, 1.0120128162332034, 1.0080363248317612, 0.9979913724141457, 1.009735704357895]}}
+CHECK 9417 base1 True update relative L2 error 6.291e-02 (worst row 1.058e-01) [bound 0.150]; attention input relative L2 error 4.022e-02 (worst row 6.446e-02) [b
+CHECK 9417 base2 True update relative L2 error 6.291e-02 (worst row 1.058e-01) [bound 0.150]; attention input relative L2 error 4.022e-02 (worst row 6.446e-02) [b
+CHECK 9417 candidate True update relative L2 error 6.291e-02 (worst row 1.058e-01) [bound 0.150]; attention input relative L2 error 4.022e-02 (worst row 6.447e-02) [b
+RESULT {"seed": 9417, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 846.6559946537018, "base2": 846.4959859848022, "candidate": 842.272013425827}, "paired_ratios": {"base2": 1.0000567120716224, "candidate": 1.0063040639572214}, "samples": {"base2": [0.9971437293827446, 0.9973968222735993, 0.9953181040670437, 0.996424455958491, 0.9945836442295903, 1.001170916112581, 1.0068457140176093, 1.001171358493623, 0.9998108041871958, 1.005303437306445, 1.0003026199560492, 1.0010588846358819, 0.9962588016705947, 1.0018595347883077, 0.9982590309070656, 1.003139994203413], "candidate": [1.0081312902225146, 1.0096623649788568, 1.006183435888186, 1.006424692026257, 1.004177440786991, 1.0061494017638142, 1.0120129816562906, 1.0102951162491245, 1.0000378477553251, 1.0067144539031887, 1.0039102041145358, 1.0056222532458665, 1.0066440438027806, 1.0094061692419618, 1.0014047451731862, 1.0057272539347981]}}
+CHECK 9429 base1 True update relative L2 error 6.137e-02 (worst row 1.077e-01) [bound 0.150]; attention input relative L2 error 3.966e-02 (worst row 7.087e-02) [b
+CHECK 9429 base2 True update relative L2 error 6.137e-02 (worst row 1.077e-01) [bound 0.150]; attention input relative L2 error 3.966e-02 (worst row 7.087e-02) [b
+CHECK 9429 candidate True update relative L2 error 6.137e-02 (worst row 1.077e-01) [bound 0.150]; attention input relative L2 error 3.966e-02 (worst row 7.087e-02) [b
+RESULT {"seed": 9429, "case": {"batch": 1, "ctx": 80000, "q_len": 753, "layer": "full"}, "medians_us": {"base1": 830.4159939289093, "base2": 831.3919901847839, "candidate": 828.2079994678497}, "paired_ratios": {"base2": 0.9990390479845587, "candidate": 1.0014895591651642}, "samples": {"base2": [0.9991194846118384, 1.006208051160616, 0.9913756722361345, 0.9989586113572789, 0.9963063856672284, 0.9981903560147497, 0.9933130602484567, 1.0004622178017917, 0.9995369261339326, 0.99996166130986, 1.0004246750437762, 0.9977685951716123, 0.992963688604472, 1.0014261325581022, 1.005401031356838, 0.9989262541677023], "candidate": [1.005083573702027, 1.0122187499729056, 1.0017040822443677, 1.0037594362195623, 1.0004249312068398, 0.9989596146001923, 0.9997678628191742, 1.001117644482954, 0.9956184382259067, 1.0110658698744712, 1.0012750360859608, 1.0050767258359437, 0.9986538608532979, 1.0059627434908929, 1.0001919405280315, 1.006529873572447]}}
+CHECK 9401 base1 True update relative L2 error 5.084e-02 (worst row 1.036e-01) [bound 0.122]; attention input relative L2 error 3.284e-02 (worst row 6.319e-02) [b
+CHECK 9401 base2 True update relative L2 error 5.084e-02 (worst row 1.036e-01) [bound 0.122]; attention input relative L2 error 3.284e-02 (worst row 6.319e-02) [b
+CHECK 9401 candidate True update relative L2 error 5.084e-02 (worst row 1.036e-01) [bound 0.122]; attention input relative L2 error 3.284e-02 (worst row 6.319e-02) [b
+RESULT {"seed": 9401, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 1638.975977897644, "base2": 1637.4079585075378, "candidate": 1634.4320178031921}, "paired_ratios": {"base2": 1.0006747132158362, "candidate": 1.0032714792275517}, "samples": {"base2": [1.0006650690240495, 1.0008616183703953, 1.000625603481589, 1.0015246609799293, 0.9999412881268421, 1.0007806858736574, 0.9987103896287287, 1.0017805704254308, 0.999726910869972, 1.0006843574076227, 1.0041811618901686, 0.9867404028368715, 1.0042971491256454, 0.9995984989777192, 1.0040596365258427, 0.9995801857749342], "candidate": [1.002390741423309, 1.0022944363771502, 1.005086026452312, 1.0047455355323078, 1.0012922392121806, 1.0044074453265304, 1.0006460184355195, 1.0000781514177168, 1.0040553940879526, 1.002487564367151, 1.0008803932651629, 0.9512088589043208, 1.0064687750430539, 1.005212657713562, 1.0046843049744292, 1.0058776831011975]}}
+CHECK 9418 base1 True update relative L2 error 5.148e-02 (worst row 1.026e-01) [bound 0.123]; attention input relative L2 error 3.308e-02 (worst row 7.381e-02) [b
+CHECK 9418 base2 True update relative L2 error 5.148e-02 (worst row 1.026e-01) [bound 0.123]; attention input relative L2 error 3.308e-02 (worst row 7.381e-02) [b
+CHECK 9418 candidate True update relative L2 error 5.148e-02 (worst row 1.026e-01) [bound 0.123]; attention input relative L2 error 3.308e-02 (worst row 7.381e-02) [b
+RESULT {"seed": 9418, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 1685.03999710083, "base2": 1688.1439685821533, "candidate": 1682.6560497283936}, "paired_ratios": {"base2": 0.998247262161795, "candidate": 1.0022829343419586}, "samples": {"base2": [0.9978722167477995, 0.9977336385885509, 1.0002369128105693, 0.9986223075757906, 0.9989765331418423, 0.998786927569973, 0.9970024523590784, 0.9993386958837901, 0.9993152597236946, 0.9975355879991271, 0.9663590854007802, 0.9969851054970964, 1.0039408315776357, 0.9972233280742764, 1.0005785093410402, 0.9964621172936586], "candidate": [1.0016017834952724, 1.0002766016768039, 1.002314864463569, 1.0043744878370966, 1.0022510042203479, 1.0011018683636388, 1.000418767150926, 1.003338409537998, 0.9980811598876071, 1.002782360380415, 1.0171318440937158, 1.0007973650968771, 1.006224977698435, 1.0035199443687108, 1.0011214616480062, 1.004329974002399]}}
+CHECK 9430 base1 True update relative L2 error 4.844e-02 (worst row 1.050e-01) [bound 0.115]; attention input relative L2 error 3.139e-02 (worst row 7.069e-02) [b
+CHECK 9430 base2 True update relative L2 error 4.844e-02 (worst row 1.050e-01) [bound 0.115]; attention input relative L2 error 3.139e-02 (worst row 7.069e-02) [b
+CHECK 9430 candidate True update relative L2 error 4.844e-02 (worst row 1.050e-01) [bound 0.115]; attention input relative L2 error 3.139e-02 (worst row 7.067e-02) [b
+RESULT {"seed": 9430, "case": {"batch": 4, "ctx": 80000, "q_len": 753, "layer": "sliding"}, "medians_us": {"base1": 1732.6080203056335, "base2": 1713.375985622406, "candidate": 1728.0640006065369}, "paired_ratios": {"base2": 0.9989332388982198, "candidate": 1.0029210927457552}, "samples": {"base2": [1.001052553154842, 1.0018384908519924, 0.9988123692030376, 0.9982424073729989, 1.035650816883663, 0.996018674357894, 0.9964170167338436, 1.0006751721730964, 1.0311639041891871, 0.9954825445978311, 0.9969126852953732, 0.9974595777387057, 0.9983736146288649, 0.999054108593402, 1.003222571197133, 1.0046025825127483], "candidate": [1.0036545251039382, 1.0010748633631916, 1.0010927827991685, 1.0012536332927058, 1.0400620428346221, 1.001334191012555, 1.0037787258908906, 1.0030456471674556, 1.004032462807423, 1.0039728146752795, 0.9977461919337695, 0.9975319994353756, 1.0038886310578192, 1.0024822802573081, 1.0052724141828397, 1.0027965383240551]}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-R1uuXV3BnnOOBvzRgMQGxj
