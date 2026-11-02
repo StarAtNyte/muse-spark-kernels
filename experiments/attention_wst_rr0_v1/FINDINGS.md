@@ -1,0 +1,3 @@
+# Balanced WST independent consumer issue
+
+Candidate SHA-256 `15835f6fe08e6939bb33e801a0577f7582df0c297fe4acf0a3221db4e41f5588` disables the WST consumer warpgroups' round-robin synchronization (`RR=0`) while keeping four stages, four producer warpgroups and the B32 WST route in both arms. The public judge-image H200 paired graph screen used three seeds each at B16 and B32 full verification, 24 alternating read-flushed replays; all outputs passed reference checks. Parent/candidate ratios were 0.984/0.987/0.987 at B16 and 0.997/0.990/0.996 at B32. Disabling synchronization was 0.3–1.6% slower in these samples; keep the incumbent setting. Stall and instruction causes were not profiled. No official check was spent on this variant.
