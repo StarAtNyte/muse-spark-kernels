@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-6CoS2a4UoyfRrI39q1vV0B
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/humming_prefill_
+│   long_grouped_v1/runner.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/prefill_keell0re
+│   nz_compare_v1/submission.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_prefill_layer
+├── ✓ Uploaded /tmp/muse-humming-research/humming
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.2us, best 42.2us algo None of 8
+LT2 T=753 o: lay 0 cfg [66, 495, 1, 0, 0, 7, 35, 0, 5]: 24.2us vs torch.mm 24.3us (x1.004)
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT2 T=753 pooler: lay 2 cfg [66, 32, 1, 0, 0, 7, 35, 0, 5]: 66.6us vs torch.mm 68.3us (x1.025)
+LT2 T=753 unpooler: lay 2 cfg [66, 32, 1, 0, 0, 5, 35, 0, 2]: 68.1us vs torch.mm 69.7us (x1.023)
+LT2 T=3012 qkv: lay 0 cfg [66, 496, 1, 0, 0, 5, 35, 0, 2]: 144.1us vs torch.mm 147.5us (x1.023)
+LT2 T=3012 o: lay 0 cfg [66, 189, 1, 0, 0, 2, 35, 0, 5]: 69.6us vs torch.mm 75.3us (x1.081)
+LT tune T=3012 router: torch.mm 40.5us, best 40.5us algo None of 8
+LT T=3012 pooler: pinned (24, 1, 0, 7) -> algo 1
+LT tune T=3012 unpooler: torch.mm 256.0us, best 256.0us algo None of 8
+LT tune T=16384 qkv: torch.mm 766.1us, best 766.1us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 357.4us vs torch.mm 416.9us (x1.166)
+LT tune T=16384 router: torch.mm 194.8us, best 194.8us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47346902605344'>")
+ZH fmha check failed: KeyError("dtype' id='47346902605344'>")
+PARENT_READY
+HUMMING_READY
+COMPARE {"relative_l2_vs_parent": 0.004099670331925154, "finite": true, "routes": 23497}
+RESULT {"parent_with_gather_us": 2990.864038467407, "humming_pregathered_us": 4573.632001876831, "parent_over_humming": 0.6534325326037744, "relative_l2_vs_parent": 0.004099670331925154}
+STAGE {"name": "gemm1", "median_us": 2227.4240255355835, "min_us": 2224.992036819458, "max_us": 2236.35196685791}
+STAGE {"name": "silu_mul", "median_us": 1266.9280171394348, "min_us": 1242.2080039978027, "max_us": 1267.9680585861206}
+STAGE {"name": "gemm2", "median_us": 1137.9039883613586, "min_us": 1134.5280408859253, "max_us": 1147.487998008728}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-6CoS2a4UoyfRrI39q1vV0B
