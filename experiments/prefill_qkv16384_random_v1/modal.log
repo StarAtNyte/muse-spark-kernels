@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GcNX5oI3VpsCy3Hsm42zVR
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=16384 qkv: torch.mm 766.2us, best 766.2us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 350.6us vs torch.mm 406.2us (x1.159)
+LT tune T=16384 router: torch.mm 182.8us, best 182.8us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47957603973984'>")
+ZH fmha check failed: KeyError("dtype' id='47957603973984'>")
+READY NVIDIA H200
+INFOS [[209, 1, 35, 0, 4, 66, 0, 0, 4, 0], [24, 1, 35, 0, 4, 66, 0, 0, 7, 0], [23, 1, 35, 0, 4, 66, 0, 0, 4, 0], [31, 1, 35, 0, 4, 66, 0, 0, 7, 0], [32, 1, 35, 0, 4, 66, 0, 0, 4, 0], [495, 1, 35, 0, 4, 66, 0, 0, 7, 0], [197, 1, 35, 0, 4, 66, 0, 0, 2, 0], [184, 1, 35, 0, 4, 66, 0, 0, 2, 0]]
+ROW {"seed": 411, "us": {"base_a": 773.2639908790588, "base_b": 773.5839784145355, "algo_24": 777.8559923171997, "algo_184": 785.6959998607635}, "base_a_over_b": 0.9995863570802843, "ratios": {"base_a": 1.0, "base_b": 0.9995863570802843, "algo_24": 0.994096591806844, "algo_184": 0.9841770748687688}}
+ROW {"seed": 719, "us": {"base_a": 778.7519991397858, "base_b": 778.2399952411652, "algo_24": 773.1519937515259, "algo_184": 786.0159873962402}, "base_a_over_b": 1.0006578997504, "ratios": {"base_a": 1.0, "base_b": 1.0006578997504, "algo_24": 1.0072430847149307, "algo_184": 0.990758472635503}}
+ROW {"seed": 1013, "us": {"base_a": 777.7920067310333, "base_b": 777.9839932918549, "algo_24": 772.0960080623627, "algo_184": 785.1840257644653}, "base_a_over_b": 0.9997532255644371, "ratios": {"base_a": 1.0, "base_b": 0.9997532255644371, "algo_24": 1.0073773191535664, "algo_184": 0.9905856222352014}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GcNX5oI3VpsCy3Hsm42zVR

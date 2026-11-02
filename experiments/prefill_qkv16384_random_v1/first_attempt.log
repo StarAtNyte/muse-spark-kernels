@@ -1,0 +1,61 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1ab6N2WsSkqtEx8hprXmZ4
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[gpu-health] [WARN] GPU-e4e5e7ab-1ab4-4b69-97a0-cd9abbcf9999: XID: NVRM: Xid (PCI:0000:8c:00): 31, pid=143776, name=3, channel 0x00000002, intr 00000000. MMU Fault: ENGINE GRAPHICS HUBCLIENT_FE faulted @ 0x2b55_4a000000. Fault is of type FAULT_PDE ACCESS_TYPE_VIRT_WRITE
+
+ENV {} RETURNCODE 1
+LT tune T=16384 qkv: torch.mm 774.6us, best 774.6us algo None of 8
+LT2 T=16384 o: lay 3 cfg [66, 29, 1, 0, 0, 1, 35, 0, 3]: 363.0us vs torch.mm 412.3us (x1.136)
+LT tune T=16384 router: torch.mm 182.9us, best 182.9us algo None of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN validation/tuning failed: KeyError("dtype' id='47633127995440'>")
+ZH fmha check failed: KeyError("dtype' id='47633127995440'>")
+READY NVIDIA H200
+INFOS [[209, 1, 35, 0, 4, 66, 0, 0, 4, 0], [24, 1, 35, 0, 4, 66, 0, 0, 7, 0], [23, 1, 35, 0, 4, 66, 0, 0, 4, 0], [31, 1, 35, 0, 4, 66, 0, 0, 7, 0], [32, 1, 35, 0, 4, 66, 0, 0, 4, 0], [495, 1, 35, 0, 4, 66, 0, 0, 7, 0], [197, 1, 35, 0, 4, 66, 0, 0, 2, 0], [184, 1, 35, 0, 4, 66, 0, 0, 2, 0]]
+ROW {"seed": 411, "us": {"base_a": 791.4719879627228, "base_b": 792.0640110969543, "algo_24": 786.8959903717041, "algo_184": 795.5520153045654}, "base_a_over_b": 0.9992525564525881, "ratios": {"base_a": 1.0, "base_b": 0.9992525564525881, "algo_24": 1.0058152508679796, "algo_184": 0.9948714511894227}}
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 50, in <module>
+    for k in order: ts[k].append(elapsed(graphs[k]))
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/w/run/drv.py", line 29, in elapsed
+    a.record();g.replay();b.record();b.synchronize();return a.elapsed_time(b)*1000
+                                     ^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/cuda/streams.py", line 254, in synchronize
+    super().synchronize()
+torch.AcceleratorError: CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+The CUDA driver logged these messages, which may provide useful details:
+Returning 719 (CUDA_ERROR_LAUNCH_FAILED) from cuEventSynchronize
+
+
+[W1102 17:55:19.560545527 CUDAEvent.h:57] Warning: CUDA warning: unspecified launch failure (function ~CUDAEvent)
+[W1102 17:55:19.560627624 CUDAEvent.h:57] Warning: CUDA warning: unspecified launch failure (function ~CUDAEvent)
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-1ab6N2WsSkqtEx8hprXmZ4
