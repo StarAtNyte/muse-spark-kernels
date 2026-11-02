@@ -1,0 +1,20 @@
+{
+  "parent_sha256": "aa354bd2472393cfb407a50260dbc25543dab3763c4b45bcffca4f450ca98b6e",
+  "candidate_sha256": "bc47f0e1dc9cfd1efce2c29e018c7bcd237f7eecc66cbf2115678cbf087d58d4",
+  "change": "enable compact QKV config index 2 for T=256; retain T=128 compact QKV/O routes",
+  "environment": "Modal H200, lmsysorg/sglang:dev-muse-spark-open",
+  "modal_run": "https://modal.com/apps/baptinjean20/main/ap-CJxyYbHucAw7DBt1MzqnZB",
+  "seeds": [5001,5002,5003],
+  "replays_per_source_seed": 24,
+  "all_correct": true,
+  "rows": [
+    {"mode":"full","seed":5001,"parent_us":484.7,"candidate_us":485.6,"gain":0.9982},
+    {"mode":"full","seed":5002,"parent_us":477.4,"candidate_us":478.3,"gain":0.9981},
+    {"mode":"full","seed":5003,"parent_us":466.7,"candidate_us":469.9,"gain":0.9932},
+    {"mode":"sliding","seed":5001,"parent_us":305.9,"candidate_us":309.7,"gain":0.9880},
+    {"mode":"sliding","seed":5002,"parent_us":314.1,"candidate_us":313.6,"gain":1.0017},
+    {"mode":"sliding","seed":5003,"parent_us":304.3,"candidate_us":305.3,"gain":0.9968}
+  ],
+  "geomean_gain": 0.9959904249,
+  "decision": "reject T=256 route"
+}

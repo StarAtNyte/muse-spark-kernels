@@ -1,0 +1,11 @@
+{
+  "name": "decoder_stack_compact_qkvo_t256q_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "The compact QKV route may reduce verify-32 projection time when enabled at T=256",
+  "parent": "experiments/decoder_stack_compact_qkvo_v1/submission.py",
+  "parent_sha256": "aa354bd2472393cfb407a50260dbc25543dab3763c4b45bcffca4f450ca98b6e",
+  "candidate_sha256": "bc47f0e1dc9cfd1efce2c29e018c7bcd237f7eecc66cbf2115678cbf087d58d4",
+  "decision": "rejected_paired_h200_regression",
+  "status": "screened_no_official_run",
+  "created_at": "2026-11-02"
+}
