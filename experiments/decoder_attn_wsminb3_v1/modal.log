@@ -1,0 +1,213 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IsWHIJHBe4vpfVIHbswSKy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_cuda13_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 1
+PREP rq thread started at 1s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 148s
+BUILD pw57_flush 43.7s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   15.42 us   0.41 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.90 us   0.80 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   14.56 us   1.15 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.43 us   1.61 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 5.06 us two_node 6.43 us overhead 3.68 us
+PREP rq thread ready at 54s (bake starts at 192s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 20.83 at 192s
+BAKE qkv_gate m=128 rq:d2s5hze 15.22 (ratio 1.4090 vs r6 20.83) at 192s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.47 (ratio 1.0549 vs rq:d2s5hze 15.22) at 192s
+BAKE qkv_gate m=128 rq:s4s5hzw 16.47 (ratio 0.9948 vs rq:d2s5hze 15.22) at 192s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.19 (ratio 1.0141 vs rq:d2s5hze 15.22) at 192s
+BAKE qkv_gate m=128 rq:d2s6hze 16.62 (ratio 0.9799 vs rq:d2s5hze 15.22) at 192s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.42 (ref rq:d2s5hze 15.22)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0549)
+BAKE qkv_gate m=256 r6 22.94 at 192s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 21.39 (ratio 1.0919 vs r6 22.94) at 192s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 21.93 (ratio 0.9938 vs rq:n256s5m1hzmEH 21.39) at 192s
+PICK qkv_gate m=256 rq:n256s5m1hzmEH 21.39 (ref rq:n256s5m1hzmEH 21.39)
+BAKE rq unpooler esc2 slots max=4 ok
+BAKE unpooler m=128 r6 24.00 at 193s
+BAKE unpooler m=128 rq:d2s5hze 21.62 (ratio 1.1355 vs r6 24.00) at 193s
+BAKE unpooler m=128 rq:d2s5hzwP 20.80 (ratio 1.0383 vs rq:d2s5hze 21.62) at 193s
+BAKE unpooler m=128 rq:s4s5hzw 21.20 (ratio 1.0175 vs rq:d2s5hze 21.62) at 193s
+BAKE unpooler m=128 rq:s4s5hzeEH 22.31 (ratio 0.9638 vs rq:d2s5hze 21.62) at 193s
+BAKE unpooler m=128 rq:s4s5hze 22.11 (ratio 0.9886 vs rq:d2s5hze 21.62) at 193s
+BAKE unpooler m=128 rq:d2s6hze 21.47 (ratio 1.0133 vs rq:d2s5hze 21.62) at 193s
+PICK unpooler m=128 rq:d2s5hzwP 20.82 (ref rq:d2s5hze 21.62)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0383)
+BAKE unpooler m=256 r6 27.94 at 193s
+PICK unpooler m=256 r6 27.94 (ref r6 27.94)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 192s
+[mfab] layer prepare done at 192s
+[mfab] moe T= 32 prod median   147.1 us  speedup vs barrier twin (twin without SC6) 1.0246 (per seed 1.029 1.025 1.018 1.025)  max|d| 0
+[mfab] moe T=128 prod median   191.9 us  speedup vs barrier twin (twin without SC6) 1.0325 (per seed 1.026 1.023 1.035 1.033)  max|d| 0
+[mfab] moe T=256 prod median   222.2 us  speedup vs barrier twin (twin without SC6) 1.0210 (per seed 1.031 1.018 1.021 1.021)  max|d| 0
+PREP rq thread started at 193s
+[sc6] scales ok -> wgs sc6 True
+
+STDERR:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2774, in _run_ninja_build
+    subprocess.run(
+  File "/usr/local/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 23, in <module>
+    C._T0 = time.time(); sc = C.prepare(w)
+                              ^^^^^^^^^^^^
+  File "/w/run/sub.py", line 16333, in prepare
+    st = _mfin_prior_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 16185, in prepare
+    st = _rq_prior_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 14298, in prepare
+    st = _pin_parent_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 14290, in prepare
+    return _gle_b1x_prior_prepare(weights)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 14179, in prepare
+    return _gle_prior_prepare(weights)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13630, in prepare
+    state = _router_fp32_native_parent_prepare(weights)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13539, in prepare
+    st = _router_fp32_parent_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13396, in prepare
+    return _DE_PREPARE(weights)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 13155, in prepare
+    st=_sl_previous_prepare(weights)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12731, in prepare
+    st=_policy_parent_prepare(weights)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12695, in prepare
+    st = _stack_unpinned_prepare(weights)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12550, in prepare
+    st = _vj_prepare(weights)   # the base tuner runs first, on the base kernels (no "graft" keys yet)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 11251, in prepare
+    raise errs[0]
+  File "/w/run/sub.py", line 11235, in _build
+    fn()
+  File "/w/run/sub.py", line 3735, in _att7
+    _ATT7 = load_inline(name=f"muse_att_v298w1pf_{arch}", cpp_sources=ATT7_CPP_SRC, cuda_sources=ATT7_CUDA_SRC,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2174, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2268, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2429, in _write_ninja_file_and_build_library
+    _run_ninja_build(
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2791, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error building extension 'muse_att_v298w1pf_90a_v1': [1/3] c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=muse_att_v298w1pf_90a_v1 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -fPIC -std=c++17 -c /root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/main.cpp -o main.o 
+[2/3] /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_att_v298w1pf_90a_v1 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90a,code=sm_90a --compiler-options '-fPIC' -DOKC_QDIRECT=0 -DOKC_PK2=0 -DOKC_W0ENABLE=1 -O3 -DOKC_SM90=1 --expt-relaxed-constexpr -std=c++17 -c /root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu -o cuda.cuda.o 
+FAILED: cuda.cuda.o 
+/usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=muse_att_v298w1pf_90a_v1 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /usr/local/lib/python3.12/site-packages/torch/include -isystem /usr/local/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/local/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90a,code=sm_90a --compiler-options '-fPIC' -DOKC_QDIRECT=0 -DOKC_PK2=0 -DOKC_W0ENABLE=1 -O3 -DOKC_SM90=1 --expt-relaxed-constexpr -std=c++17 -c /root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(2955): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool, __nv_bool) [with L=1]" at line 3593
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(868): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 3412
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool, __nv_bool) [with L=1]" at line 3593
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(698): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 3412
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool, __nv_bool) [with L=1]" at line 3593
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(1960): warning #177-D: variable "kdesc0" was declared but never referenced
+    const uint64_t kdesc0 = ((uint64_t)((1024 >> 4) | (1u << 30)) << 32) | klo0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 3412
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool, __nv_bool) [with L=1]" at line 3593
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(1164): warning #549-D: variable "pg" is used before its value is set
+          asm volatile("" :: "r"(pg[0]), "r"(pg[PK - 1]));
+                                 ^
+          detected during:
+            instantiation of "__nv_bool <unnamed>::segment<L,FLAT,ROLE,MODE>(const <unnamed>::Params &, <unnamed>::Smem<L, FLAT> &, int, int, __nv_bool, int, int, int, int, int, int, int, int, __nv_bool) [with L=1, FLAT=true, ROLE=1, MODE=0]" at line 3381
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=true, MODE=0]" at line 3425
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool, __nv_bool) [with L=1]" at line 3593
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(162): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(163): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = 0 > 0 ? 0 : ((L == 1 && NP <= 128) ? 56 : 32);
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(164): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(162): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(163): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = 0 > 0 ? 0 : ((L == 1 && NP <= 128) ? 56 : 32);
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(164): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/muse_att_v298w1pf_90a/cuda.cu(178): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+ptxas fatal   : (C7602) Insufficient registers (56) to compile instruction at line 87629 in function _ZN39_GLOBAL__N__fd8e1a52_7_cuda_cu_73fefd8611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE. Try to compile with register target of 66 or higher.
+ptxas fatal   : Ptx assembly aborted due to errors
+ninja: build stopped: subcommand failed.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IsWHIJHBe4vpfVIHbswSKy
