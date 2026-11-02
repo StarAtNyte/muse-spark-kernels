@@ -1,0 +1,15 @@
+{
+  "name": "attention_swk_transfer_v2",
+  "problem": "muse_attention_decode",
+  "parent": "attention_swk_transfer_v1",
+  "change": "initialize window/page table/output before early dispatch and supply the transplanted SWK path's missing D/WGEMU defaults plus RoPE, FP8 conversion, packing, and MMA helpers",
+  "sha256": "ef957fe4f5d26f6e027a88c7763ef39685a68d5e55a5dec7d5940e8c718332ea",
+  "modal_screen": {
+    "app_id": "ap-ZpFIxQC7oqGI4931trMfgd",
+    "device": "NVIDIA H200",
+    "correctness": "passed for all four cases",
+    "batch16_median_candidate_over_incumbent_speedup": 0.5435929516480923,
+    "batch32_median_candidate_over_incumbent_speedup": 0.5836098705373006,
+    "decision": "reject: candidate is substantially slower than incumbent"
+  }
+}

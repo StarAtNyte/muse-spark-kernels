@@ -1,0 +1,50 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZpFIxQC7oqGI4931trMfgd
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RESULT {"batch": 16, "seed": 539, "base_us": 12.496000155806541, "candidate_us": 24.624000303447247, "speedup": 0.5062383476152543}
+RESULT {"batch": 16, "seed": 1427, "base_us": 13.024000450968742, "candidate_us": 22.544000297784805, "speedup": 0.5809475556809303}
+BATCH_SUMMARY {"batch": 16, "median_speedup": 0.5435929516480923}
+RESULT {"batch": 32, "seed": 539, "base_us": 15.904000028967857, "candidate_us": 28.015999123454094, "speedup": 0.5680786330427674}
+RESULT {"batch": 32, "seed": 1427, "base_us": 15.744000673294067, "candidate_us": 26.399999856948853, "speedup": 0.5991411080318338}
+BATCH_SUMMARY {"batch": 32, "median_speedup": 0.5836098705373006}
+SWK_MODAL_SCREEN_PASSED NVIDIA H200
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ZpFIxQC7oqGI4931trMfgd
