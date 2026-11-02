@@ -1,0 +1,23 @@
+{
+  "name": "decoder_compact_tinywarp_stack_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack independently checked compact T128 QKV/O routes with tiny MoE original warp order; these affect different token counts.",
+  "sha256": "febc0d6edc62ce08a698f8868747cff412bbc24a5c834dbf02c1ca88a581fbde",
+  "created_at": 1793641239.110729,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 5,
+      "used": 5,
+      "left": 0
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 3,
+      "left": 7
+    }
+  },
+  "status": "running",
+  "job_id": "c411f676f4374f35",
+  "updated_at": 1793641532.0482926
+}
