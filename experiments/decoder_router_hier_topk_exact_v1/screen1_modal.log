@@ -1,0 +1,18 @@
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 69.09, "cand": 68.91, "gain": 1.0026, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 100.7, "cand": 100.51, "gain": 1.0019, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 113.01, "cand": 113.5, "gain": 0.9956, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 256.5, "cand": 255.01, "gain": 1.0058, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 156.5, "cand": 156.56, "gain": 0.9996, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 316.91, "cand": 316.62, "gain": 1.0009, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 81.76, "cand": 81.2, "gain": 1.0069, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 126.75, "cand": 126.13, "gain": 1.0049, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 201.68, "cand": 201.36, "gain": 1.0016, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 328.51, "cand": 327.17, "gain": 1.0041, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 306.43, "cand": 305.04, "gain": 1.0046, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 498.08, "cand": 496.48, "gain": 1.0032, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Modal app run: https://modal.com/apps/baptinjean20/main/ap-8C1IRQlt9a9KA9vWZBMU71

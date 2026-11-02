@@ -20,8 +20,10 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 Prepared a fused decoder-router top-k experiment inspired by vLLM's recent
 Muse CUDA routing kernel: split the exact packed 256-expert top-k into four
 64-expert local top-k operations and one 32-candidate merge. It preserves the
-packed expert-ID tie rule and adds no launch; correctness and speed are pending
-an H200 screen. This is a secondary lever (the route kernel is about 2 µs;
+packed expert-ID tie rule and adds no launch. Its three-seed paired H200 screen
+passed all 36 measurements and measured 1.00171× aggregate (1.00355× sliding,
+0.99987× full). Scored run `d1faeb5b0a5c496d` is pending; the candidate is not
+promoted yet. This is a secondary lever (the route kernel is about 2 µs;
 integrated MoE remains much larger). Candidate and pair driver:
 [`decoder_router_hier_topk_v1`](experiments/decoder_router_hier_topk_v1/FINDINGS.md).
 

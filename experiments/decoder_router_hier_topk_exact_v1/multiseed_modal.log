@@ -1,0 +1,67 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VVdT7K3qXzEnHngm47V4mK
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 69.73, "cand": 68.88, "gain": 1.0123, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 68.62, "cand": 68.67, "gain": 0.9993, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5103, "base": 69.3, "cand": 69.02, "gain": 1.0039, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 101.97, "cand": 100.67, "gain": 1.0129, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 107.34, "cand": 107.38, "gain": 0.9997, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5103, "base": 101.26, "cand": 100.75, "gain": 1.0051, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 114.21, "cand": 115.22, "gain": 0.9913, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 127.46, "cand": 127.23, "gain": 1.0018, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5103, "base": 113.86, "cand": 113.87, "gain": 0.9999, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 258.99, "cand": 257.26, "gain": 1.0067, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 239.78, "cand": 239.92, "gain": 0.9994, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5103, "base": 237.63, "cand": 237.62, "gain": 1.0001, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 157.22, "cand": 155.9, "gain": 1.0084, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 170.78, "cand": 169.25, "gain": 1.0091, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5103, "base": 150.32, "cand": 150.34, "gain": 0.9999, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 314.8, "cand": 313.06, "gain": 1.0056, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 315.5, "cand": 315.23, "gain": 1.0009, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5103, "base": 303.73, "cand": 301.39, "gain": 1.0078, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 80.11, "cand": 81.66, "gain": 0.981, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 5102, "base": 81.87, "cand": 81.54, "gain": 1.0041, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 5103, "base": 75.34, "cand": 75.36, "gain": 0.9998, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 127.26, "cand": 126.88, "gain": 1.003, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 5102, "base": 107.94, "cand": 108.19, "gain": 0.9976, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 5103, "base": 114.24, "cand": 114.35, "gain": 0.999, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 203.06, "cand": 200.93, "gain": 1.0106, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 5102, "base": 200.11, "cand": 199.79, "gain": 1.0016, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 5103, "base": 194.42, "cand": 193.74, "gain": 1.0035, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 328.88, "cand": 328.42, "gain": 1.0014, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 5102, "base": 335.58, "cand": 337.97, "gain": 0.9929, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 5103, "base": 351.26, "cand": 352.85, "gain": 0.9955, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 5101, "base": 304.86, "cand": 304.11, "gain": 1.0025, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 5102, "base": 280.24, "cand": 280.4, "gain": 0.9994, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 5103, "base": 309.65, "cand": 309.54, "gain": 1.0004, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 5101, "base": 497.97, "cand": 495.98, "gain": 1.004, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 5102, "base": 489.04, "cand": 489.1, "gain": 0.9999, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 5103, "base": 472.58, "cand": 471.78, "gain": 1.0017, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VVdT7K3qXzEnHngm47V4mK
