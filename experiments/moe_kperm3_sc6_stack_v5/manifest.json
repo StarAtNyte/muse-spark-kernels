@@ -2,10 +2,11 @@
   "name": "moe_kperm3_sc6_stack_v5",
   "problem": "muse_moe_w4a16",
   "parent": "moe_kperm3_sc6_stack_v4",
-  "change": "export the already-defined okc_attrs() C++ diagnostic to Python; no timed kernel change",
+  "change": "export the already-defined okc_attrs() C++ diagnostic to Python; timed dispatch still selects the non-SC6 module",
   "source_sha256": "80d07b2d2034661317e0d853cd470a7b77d68ac8b199e415f7b84286ca8a91c2",
   "v4_check": "31f94f4fb0bd43e9",
   "v4_failure": "prepare() called okc_attrs() but load_inline did not export it",
-  "status": "official_check_running",
-  "check_id": "01fe098507f94a04"
+  "status": "official_check_queued_setup_validation_only",
+  "check_id": "01fe098507f94a04",
+  "performance_evidence": "none; kernel_fn uses sfx instead of sfxm, so SC6 WGS is not selected"
 }
