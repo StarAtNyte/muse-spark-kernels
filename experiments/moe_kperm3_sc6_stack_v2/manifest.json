@@ -1,0 +1,19 @@
+{
+  "name": "moe_kperm3_sc6_stack_v2",
+  "problem": "muse_moe_w4a16",
+  "parent": "moe_kperm3_sc6_stack_v1",
+  "change": "restore the known-good MFIN macro defaults, Params.mfl pointer, and generation-aware readiness flag helpers pruned from v1",
+  "parent_source_sha256": "d16a09b8d488f528db0ef70914ceec38ab0dd2acd51abb4cdc9908a77352ad04",
+  "sha256": "5f88c2b9488a0bc654b0b0f24a6e7ab3ef3ec83a727f6ac8b41611879113f8cf",
+  "v1_check": "0cbe889464fe4756",
+  "v1_result": "failed during CUDA compile; full diagnostics in failed_v1_compile.log",
+  "status": "official_check_queued",
+  "cpu_compile": {
+    "result": "passed",
+    "modal_app": "ap-8DFTQl0K5OKMJQMT9kOBVC",
+    "flags": [
+      "-DOKC_PRMTSC=1"
+    ]
+  },
+  "check_id": "d237a4892dc54420"
+}
