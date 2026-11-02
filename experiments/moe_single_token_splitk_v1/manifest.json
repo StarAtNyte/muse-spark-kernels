@@ -1,0 +1,16 @@
+{
+  "name": "moe_single_token_splitk_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Split batch-1 expert down-projection K into 16-wide chunks to increase CTA parallelism and remove the full gate/up dependency",
+  "parent_experiment": "scored_moe_ours_kperm3_stack_v1",
+  "parent_sha256": "ac008155520981cd67928bd52bb647efa64096add5acc8edabc779261105792f",
+  "sha256": "28d41c4b2ed1081343266eda6282a2fafbc78db38982c140ff8b9db1cfb48cb6",
+  "modal_app_id": "ap-Mzxtrwrk7hwj1wKIiRTlds",
+  "device": "NVIDIA H200",
+  "seeds": [419, 2387, 6113, 11003, 18521, 31013],
+  "paired_replays_per_seed": 16,
+  "cold_l2_flush_bytes": 1073741824,
+  "reference_checks_passed": 6,
+  "geomean_parent_over_candidate": 0.8233463704121448,
+  "decision": "rejected: approximately 18% slower; not submitted"
+}
