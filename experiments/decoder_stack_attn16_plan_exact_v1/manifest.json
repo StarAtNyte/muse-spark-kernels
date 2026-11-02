@@ -1,0 +1,19 @@
+{
+  "name": "decoder_stack_attn16_plan_exact_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Transfer the attention board measured plan for (batch=16,q_len=1,sliding): 8 splits, no cooperative finalize, one workspace copy into exact whole-decoder incumbent. Test target plus neighboring sliding decode batch sizes.",
+  "parent": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+  "candidate_sha256": "5867686ff41d4378be716fb59364e2ca79dc2a8e0cb71959e1a14cd9ad90421e",
+  "created_at": 1793630774.1804838,
+  "status": "done",
+  "decision": "reject_no_material_gain",
+  "change": "single _TUNED7 entry; no MoE/projection changes",
+  "updated_at": 1793630989.9711874,
+  "screen": "Modal judge image H200 paired exact-parent; all 6 case-seed pairs passed correctness",
+  "summary": {
+    "batch1_q1": 1.0001,
+    "batch16_q1": 0.999,
+    "batch32_q1": 1.0008,
+    "paired_geomean_gain": 1.0
+  }
+}

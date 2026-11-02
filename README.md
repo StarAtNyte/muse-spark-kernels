@@ -28,6 +28,7 @@ The selected-case screen failed to predict the whole-layer outcome. The
 integrated MoE remains the largest measured lever, consuming 52–57% of
 decode-16/32 sliding profile time and more than 60% in some verification loads.
 An exact-incumbent paired H200 screen changed only the embedded MoE gather batch from 8 to 7, matching the standalone MoE winner. All cases passed correctness, but the six sliding decode/verify shapes aggregated to 0.9993×, so the 2.2603× incumbent remains promoted. Raw paired timings: [`decoder_stack_gathb7_exact_v1`](experiments/decoder_stack_gathb7_exact_v1/FINDINGS.md).
+A second exact-baseline stack tested the attention-board 8-split/no-cooperative-finalize plan for batch-16 sliding decode. All paired cases passed, but the batch-16 two-seed geometric gain was 0.9990× and the six-row aggregate was 1.0000×; no decoder score change. Details: [`decoder_stack_attn16_plan_exact_v1`](experiments/decoder_stack_attn16_plan_exact_v1/FINDINGS.md).
 
 The development machine has an RTX 3050 (6 GB); official checks run on an H200.
 The default Python environment has no PyTorch. `.venv` contains Triton 3.6.0

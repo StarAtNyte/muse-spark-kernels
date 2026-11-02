@@ -1,0 +1,37 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-QGrysvUMY9gKKhIGHoUiwJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 68.08, "cand": 68.62, "gain": 0.9921, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 68.83, "cand": 68.27, "gain": 1.0082, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 133.58, "cand": 133.3, "gain": 1.0022, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 119.97, "cand": 120.48, "gain": 0.9958, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 138.32, "cand": 138.02, "gain": 1.0022, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 144.16, "cand": 144.24, "gain": 0.9994, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-QGrysvUMY9gKKhIGHoUiwJ
