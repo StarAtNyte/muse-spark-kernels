@@ -58,7 +58,7 @@ Recent official prefill check: [stacked 3,012-token QKV and pooler plans](experi
 
 Latest MoE experiment (2026-11-02): v8 failed before timing because it omitted the MFIN scratch tail. V9 restores the 4,096-int flag region and DF sentinel, passed all correctness cases, and scored 2.36004× (95% CI 2.32464–2.39544×) against the 2.38203× incumbent; the overlapping interval is inconclusive. Scored run `1fb6b4f749ec44bb` uses the same timed code plus a prepare-only print to confirm the judge selected `-DOKC_SC6W=1`. Full artifacts are under `experiments/moe_kperm3_sc6_stack_v8/`, `v9/`, and `v10/`.
 
-Projection score sampling (2026-11-02): three comment-only variants of the exact scored projection source were submitted to sample judge variance. Runs `3b3cca5c023a441a` and `5a25cd13386a47ee` scored 1.56698× and 1.59192×; the third, `1241a8bba593445d`, is still running. The board keeps the higher repeat, currently #41 and inside #50. These are repeat draws, not kernel changes; source copies and outcomes are tracked in `experiments/projection_rank_draws_v1/`.
+Projection score sampling (2026-11-02): three comment-only variants of the exact scored projection source scored 1.56698×, 1.59192× and 1.58068×. The board keeps the higher repeat, currently #41 and inside #50. These are repeat draws, not kernel changes; confidence intervals and source copies are tracked in `experiments/projection_rank_draws_v1/`.
 
 Measured next priorities for all five kernels are in [the current score-weighted sensitivity report](research/experiment-priorities.md), generated from their official scored per-shape profiles.
 
