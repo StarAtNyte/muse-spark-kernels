@@ -1,0 +1,13 @@
+{
+  "name": "decoder_stack_compact_qkvo_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack the prior measured compact T=128 QKV and O routes on top of the current decoder to reduce batch-16 q_len-8 full/sliding latency",
+  "parent": "kernels/muse_decode_layer/submission.py",
+  "parent_sha256": "82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19",
+  "candidate_sha256": "aa354bd2472393cfb407a50260dbc25543dab3763c4b45bcffca4f450ca98b6e",
+  "paired_screen": "paired_screen.json",
+  "official_check": "d3ec1a729a6c4107",
+  "decision": "archive_candidate_pending_scored_run",
+  "status": "passed_check_not_scored",
+  "created_at": "2026-11-02"
+}

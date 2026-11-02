@@ -17,6 +17,8 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
+Latest decoder stack (2026-11-02): adding our measured compact T=128 QKV and O routes to the current decoder passed all 13 official checks at **2.271×** (95% CI 2.236–2.305×, 9,962.7 µs). The three-seed, judge-image paired H200 screen passed all six batch-16/q_len-8 cases and measured **1.00294×** geometric end-to-end gain. The confidence interval overlaps the 2.26032× published incumbent, so this remains an archived candidate; live score/rank remain **2.2603× / #115**, below the roughly 2.310× top-50 line. Candidate, full check profiles, raw paired timings and driver: [`decoder_stack_compact_qkvo_v1`](experiments/decoder_stack_compact_qkvo_v1/FINDINGS.md).
+
 Current live decoder rank is **#115 at 2.2603×**; the #50 cutoff is **2.310×**. The score-only repeat `d2b35ce7d0c04679` passed 13/13 checks but measured 2.212× (95% CI 2.179–2.245×), below the incumbent; the board stays at #115 / 2.2603×. No timed code changed.
 
 Prepared a fused decoder-router top-k experiment inspired by vLLM's recent

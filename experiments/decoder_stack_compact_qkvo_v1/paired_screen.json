@@ -1,0 +1,28 @@
+{
+  "parent_sha256": "82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19",
+  "candidate_sha256": "aa354bd2472393cfb407a50260dbc25543dab3763c4b45bcffca4f450ca98b6e",
+  "environment": "Modal H200, lmsysorg/sglang:dev-muse-spark-open judge image",
+  "modal_run": "https://modal.com/apps/baptinjean20/main/ap-dyFKhVLU3X7PHRuzjZiCzG",
+  "seeds": [4001, 4002, 4003],
+  "replays_per_source_seed": 24,
+  "all_correct": true,
+  "rows": [
+    {"mode":"full","seed":4001,"parent_us":315.3,"candidate_us":314.9,"gain":1.0014},
+    {"mode":"full","seed":4002,"parent_us":341.8,"candidate_us":341.0,"gain":1.0022},
+    {"mode":"full","seed":4003,"parent_us":327.2,"candidate_us":326.4,"gain":1.0025},
+    {"mode":"sliding","seed":4001,"parent_us":249.6,"candidate_us":246.9,"gain":1.0111},
+    {"mode":"sliding","seed":4002,"parent_us":251.0,"candidate_us":251.1,"gain":0.9997},
+    {"mode":"sliding","seed":4003,"parent_us":225.8,"candidate_us":225.6,"gain":1.0008}
+  ],
+  "geomean_gain": 1.0029429833,
+  "official_check": {
+    "job_id":"d3ec1a729a6c4107",
+    "passed":true,
+    "cases":"13/13",
+    "speedup":2.271,
+    "score_us":9962.7,
+    "ci95":[2.236,2.305],
+    "board_update":false
+  },
+  "decision":"archive as promising, small candidate; do not replace published source until a scored run establishes improvement"
+}
