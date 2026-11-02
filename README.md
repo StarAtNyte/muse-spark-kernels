@@ -17,7 +17,7 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
-Current live decoder rank is **#115 at 2.2603×**; the #50 cutoff is **2.310×**. The incumbent resubmission `d2b35ce7d0c04679` is queued as a score-only repeat draw, with no timed-code changes.
+Current live decoder rank is **#115 at 2.2603×**; the #50 cutoff is **2.310×**. The score-only repeat `d2b35ce7d0c04679` passed 13/13 checks but measured 2.212× (95% CI 2.179–2.245×), below the incumbent; the board stays at #115 / 2.2603×. No timed code changed.
 
 Prepared a fused decoder-router top-k experiment inspired by vLLM's recent
 Muse CUDA routing kernel: split the exact packed 256-expert top-k into four
