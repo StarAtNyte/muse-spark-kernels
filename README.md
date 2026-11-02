@@ -103,13 +103,13 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5919×† | #43 | 1.5907× | 1.6636× | 5a25cd13386a47ee (same source) |
-| Attention | 2.6494× | #137 | 2.7318× | 3.3389× | 6f2b2edf215d4ea3 |
+| Projections | 1.5919×† | #44 | 1.5908× | 1.6636× | 5a25cd13386a47ee (same source) |
+| Attention | 2.6494× | #138 | 2.7318× | 3.3389× | 6f2b2edf215d4ea3 |
 | MoE | 2.3820× | #208 | 2.4710× | 2.7642× | 190d8914bacb4aa2 |
 | Whole decoder layer | 2.2603× | #117 | 2.3104× | 2.4884× | b72f02c7eb8745f5 |
 | Prefill layer | 1.9321× | #34 | 1.9182× | 2.0997× | f3b10ea957e04ea6 |
 
-Overall rank is **#117**. Ranks and cutoffs above were refreshed on **2026-11-02 at 18:22 UTC** and are archived in [the live snapshot](research/standings/2026-11-02-1822.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.11%, and MoE +3.74%.
+Overall rank is **#117**. Ranks and cutoffs above were refreshed on **2026-11-02 at 18:32 UTC** and are archived in [the live snapshot](research/standings/2026-11-02-1832.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.11%, and MoE +3.74%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
@@ -119,7 +119,7 @@ Chord H200 MoE transfer audit (2026-11-02): direct conversion from Muse NVFP4 to
 
 Latest MoE experiment (2026-11-02): v8 failed before timing because it omitted the MFIN scratch tail. V9 restores the 4,096-int flag region and DF sentinel, passed all correctness cases, and scored 2.36004× (95% CI 2.32464–2.39544×) against the 2.38203× incumbent; the overlapping interval is inconclusive. Scored run `1fb6b4f749ec44bb` uses the same timed code plus a prepare-only print to confirm the judge selected `-DOKC_SC6W=1`. Full artifacts are under `experiments/moe_kperm3_sc6_stack_v8/`, `v9/`, and `v10/`.
 
-Projection score sampling (2026-11-02): three comment-only variants of the exact scored projection source scored 1.56698×, 1.59192× and 1.58068×. The board keeps the higher repeat, currently #43 and inside #50. These are repeat draws, not kernel changes; confidence intervals and source copies are tracked in `experiments/projection_rank_draws_v1/`.
+Projection score sampling (2026-11-02): three comment-only variants of the exact scored projection source scored 1.56698×, 1.59192× and 1.58068×. The board keeps the higher repeat, currently #44 and inside #50. These are repeat draws, not kernel changes; confidence intervals and source copies are tracked in `experiments/projection_rank_draws_v1/`.
 
 Measured next priorities for all five kernels are in [the current score-weighted sensitivity report](research/experiment-priorities.md), generated from their official scored per-shape profiles.
 
@@ -129,8 +129,8 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** → 1.5919x† | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #43 |
-| Attention | 1.1305x → 2.5806x → 2.6177x → 2.6328x → **2.6494x** | Fused Q/K preparation, selected cluster paths, and VP2 two-block launch bound. | `experiments/scored_attention_vp2_lb2_v1/submission.py` | #137 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** → 1.5919x† | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #44 |
+| Attention | 1.1305x → 2.5806x → 2.6177x → 2.6328x → **2.6494x** | Fused Q/K preparation, selected cluster paths, and VP2 two-block launch bound. | `experiments/scored_attention_vp2_lb2_v1/submission.py` | #138 |
 | MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #208 |
 | Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #117 |
 | Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #34 |
