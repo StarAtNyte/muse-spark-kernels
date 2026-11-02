@@ -1,0 +1,22 @@
+{
+  "name": "attention_vp2_lb3_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Tighten VP2 launch bound from two to three 256-thread blocks per SM; compare against the two-block variant with paired H200 timing.",
+  "sha256": "58b1caebb874188942936c321891b9ae58c07a16dac46661728e8b09bd728e65",
+  "created_at": 1793643399.548439,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 5,
+      "used": 1,
+      "left": 4
+    },
+    "checks": {
+      "per_day": 10,
+      "used": 2,
+      "left": 8
+    }
+  },
+  "status": "received",
+  "job_id": "f350069f2f614336"
+}
