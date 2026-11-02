@@ -4,7 +4,7 @@
   "hypothesis": "Stack independently checked compact T128 QKV/O routes with tiny MoE original warp order; these affect different token counts.",
   "sha256": "febc0d6edc62ce08a698f8868747cff412bbc24a5c834dbf02c1ca88a581fbde",
   "created_at": 1793641239.110729,
-  "decision": "archive_only",
+  "decision": "candidate_for_scored_run_when_quota_returns",
   "limits_before": {
     "scored": {
       "per_day": 5,
@@ -17,7 +17,12 @@
       "left": 7
     }
   },
-  "status": "running",
+  "status": "done",
   "job_id": "c411f676f4374f35",
-  "updated_at": 1793641532.0482926
+  "updated_at": 1793641582.285311,
+  "official_speedup": 2.260544693779047,
+  "official_ci": [
+    2.226636523372361,
+    2.2944528641857325
+  ]
 }

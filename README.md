@@ -51,6 +51,8 @@ screen measured 1.0010×, but the official full run `03083a8a606d42e2` scored
 remains unpromoted and the public score/rank are unchanged. Source, profiles, and
 measurements are in [`decoder_wgs_parallel_prefix_v1`](experiments/decoder_wgs_parallel_prefix_v1/FINDINGS.md).
 
+Decoder stack (2026-11-02): compact T=128 QKV/O routes plus the tiny MoE warp-order change passed private check `c411f676f4374f35` at **2.26054×** (95% CI 2.22664–2.29445×). The public best is 2.26032×; the difference is within noise. Scored quota was exhausted, so the exact [stacked candidate](experiments/decoder_compact_tinywarp_stack_v1/FINDINGS.md) awaits a scored run.
+
 Decoder SC6 skinny transfer (2026-11-02): lossless 6-bit scale packing cut 1 KB
 from each 16-row MoE transfer. H200 showed up to 2.1% on B=1, q_len=8 sliding,
 but M=16 failed correctness. Restricting it to M<=8 passed 13/13; official check
