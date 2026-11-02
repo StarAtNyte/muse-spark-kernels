@@ -17,6 +17,8 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
+Current live decoder rank is **#115 at 2.2603×**; the #50 cutoff is **2.310×**. The incumbent resubmission `d2b35ce7d0c04679` is queued as a score-only repeat draw, with no timed-code changes.
+
 Prepared a fused decoder-router top-k experiment inspired by vLLM's recent
 Muse CUDA routing kernel: split the exact packed 256-expert top-k into four
 64-expert local top-k operations and one 32-candidate merge. It preserves the
@@ -90,10 +92,10 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Projections | 1.5919×† | #41 | 1.5904× | 1.6596× | 5a25cd13386a47ee (same source) |
 | Attention | 2.6328× | #164 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
 | MoE | 2.3820× | #205 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #114 | 2.3104× | 2.4844× | b72f02c7eb8745f5 |
+| Whole decoder layer | 2.2603× | #115 | 2.3104× | 2.4844× | b72f02c7eb8745f5 |
 | Prefill layer | 1.9321× | #33 | 1.9164× | 2.0727× | f3b10ea957e04ea6 |
 
-Overall rank is **#114**. Ranks and cutoffs above were refreshed on **2026-11-02 at 14:21 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.51%, and MoE +3.71%.
+Overall rank is **#115**. Ranks and cutoffs above were refreshed on **2026-11-02 at 14:21 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). †The projection row is a higher repeat draw of identical code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Projections and prefill are inside #50; the remaining gaps are decoder +2.22%, attention +3.51%, and MoE +3.71%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
