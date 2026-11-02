@@ -1,0 +1,23 @@
+{
+  "name": "decoder_stack_gathb7_exact_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Stack standalone MoE winner GATHB=7 into the exact published decoder baseline, changing only its WGS activation gather batch (8->7). Earlier GATHB=7 decoder check used a different base; paired H200 screen isolates current integrated effect.",
+  "parent": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+  "candidate_sha256": "cc569a79783b6e88ae55645a8153aff77aae872a99ae1afd79d2b1094b2c4b43",
+  "source_replacements": 2,
+  "created_at": 1793630326.1593783,
+  "decision": "reject_no_material_gain",
+  "status": "done",
+  "cases": "sliding decode/verify batches 1,16,32; two generated seeds per shape; exact implementation correctness checked",
+  "updated_at": 1793630685.0014687,
+  "screen": "Modal judge image H200 paired exact-parent; all 12 case-seed pairs numerically correct",
+  "summary": {
+    "batch1_q1": 0.9901,
+    "batch1_q8": 1.0066,
+    "batch16_q1": 0.9966,
+    "batch16_q8": 1.0033,
+    "batch32_q1": 1.0017,
+    "batch32_q8": 0.9976,
+    "geomean_gain": 0.9993
+  }
+}

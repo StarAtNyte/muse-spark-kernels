@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oRoD5vkn0hogqO1UuRsnT8
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 67.62, "cand": 68.59, "gain": 0.9858, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 68.08, "cand": 68.46, "gain": 0.9944, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 100.26, "cand": 99.68, "gain": 1.0058, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 106.62, "cand": 105.84, "gain": 1.0074, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 112.94, "cand": 113.22, "gain": 0.9976, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 126.0, "cand": 126.56, "gain": 0.9956, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 254.03, "cand": 252.74, "gain": 1.0051, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 237.65, "cand": 237.3, "gain": 1.0015, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5101, "base": 155.62, "cand": 155.22, "gain": 1.0026, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 5102, "base": 169.23, "cand": 169.1, "gain": 1.0008, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5101, "base": 312.38, "cand": 312.43, "gain": 0.9998, "correct": {"base": true, "cand": true}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 5102, "base": 311.81, "cand": 313.26, "gain": 0.9954, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oRoD5vkn0hogqO1UuRsnT8
