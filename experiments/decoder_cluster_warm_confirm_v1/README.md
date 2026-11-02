@@ -1,0 +1,7 @@
+# Decoder cluster warming: shared-state controlled repeat
+
+`decoder_cluster_warm_layer_v1` found a small batch-16 sliding lead but separately prepared parent and candidate states. This repeat prepares the scored parent once and switches only its attention extension while capturing candidate graphs; all other state, plans and dispatch are identical. Two independently captured baseline graphs provide an A/A control. It tests batch-1 sliding, batch-16 sliding and batch-16 full decode with three seeds each, validates every complete-layer output against the decoder reference, and randomizes 24 cold-L2 graph rounds.
+
+The public image and stubbed SGLang are not the official judge. Passing this screen does not establish race freedom or full challenge correctness; a meaningful gain requires review and official validation. The runner caps its subprocess at 600 seconds, and raw samples and failures are preserved in `modal.log`.
+
+Run `ap-OQJSNj2Td18cgBOtksbdbN` completed with return code 0 and all 27 full-layer reference checks passed. Median paired parent/candidate ratios for the three seeds were 0.99731 / 1.00213 / 0.99979 for batch-1 sliding, 0.99976 / 1.00092 / 0.99759 for batch-16 sliding, and 1.00291 / 1.00313 / 0.99883 for batch-16 full. A/A ratios were 1.00096 / 1.00067 / 1.00214, 0.99748 / 0.99760 / 0.99967, and 1.00314 / 0.99945 / 0.99789 respectively. The first screen's batch-16 lead did not reproduce with shared preparation; the small mixed differences are comparable to control variation. Keep the scored decoder and do not submit this candidate.

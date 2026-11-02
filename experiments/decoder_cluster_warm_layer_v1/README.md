@@ -1,0 +1,7 @@
+# Decoder cluster-epilogue warming: whole-layer screen
+
+`decoder_current_cluster_warm_v1` transferred the standalone attention winner's cluster-epilogue dry warmup into the current best decoder and found a small isolated sliding-decode lead at batch 1 and 16. This experiment measures the exact candidate in full decoder graphs at batch 1 and 16, sliding and full attention, two seeds each. Parent and candidate have separate prepared states and distinct attention extension module names. All outputs are checked against the decoder reference, graph outputs are retained, and 24 alternating cold-L2 replays are measured per case.
+
+The public image and SGLang stub are not the official judge. Separate preparations can select different plans; no A/A control is included, so small differences are inconclusive. This screen does not prove synchronization safety or cover all decoder cases; a credible lead still requires broader paired testing and official correctness and scoring. The subprocess is capped at 600 seconds. Raw logs are in `modal.log`.
+
+Run `ap-UYV01jjjOsrbZrohznLXWK` completed with return code 0 and all 16 full-layer reference checks passed. Parent/candidate ratios for seeds 4001 / 4002 were 0.9904 / 0.9991 for batch-1 sliding, 0.9996 / 1.0128 for batch-1 full, 1.0052 / 1.0077 for batch-16 sliding, and 0.9993 / 1.0006 for batch-16 full. The batch-16 sliding lead warrants a repeat, but separate preparations, no A/A control and the small signal prevent attribution to the code change. Do not promote on this screen alone.

@@ -1,0 +1,103 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UYV01jjjOsrbZrohznLXWK
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_cluster_
+│   warm_layer_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+PREP rq thread started at 1s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 156s
+BUILD pw57_flush 42.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   13.02 us   0.48 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.65 us   0.82 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.48 us   1.34 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.14 us   1.65 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.74 us two_node 5.28 us overhead 4.19 us
+PREP rq thread ready at 62s (bake starts at 198s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 20.74 at 198s
+BAKE qkv_gate m=128 rq:d2s5hze 14.95 (ratio 1.3998 vs r6 20.74) at 198s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.64 (ratio 1.0473 vs rq:d2s5hze 14.95) at 198s
+BAKE qkv_gate m=128 rq:s4s5hzw 16.05 (ratio 1.0126 vs rq:d2s5hze 14.95) at 198s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 15.75 (ratio 1.0304 vs rq:d2s5hze 14.95) at 199s
+BAKE qkv_gate m=128 rq:d2s6hze 16.24 (ratio 0.9990 vs rq:d2s5hze 14.95) at 199s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.28 (ref rq:d2s5hze 14.95)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0473)
+BAKE qkv_gate m=256 r6 23.17 at 199s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 20.83 (ratio 1.1077 vs r6 23.17) at 199s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 21.58 (ratio 1.0009 vs rq:n256s5m1hzmEH 20.83) at 199s
+PICK qkv_gate m=256 rq:n256s5m1hzmEH 20.83 (ref rq:n256s5m1hzmEH 20.83)
+BAKE rq unpooler esc2 slots max=4 ok
+BAKE unpooler m=128 r6 24.06 at 199s
+BAKE unpooler m=128 rq:d2s5hze 21.54 (ratio 1.1407 vs r6 24.06) at 199s
+BAKE unpooler m=128 rq:d2s5hzwP 20.89 (ratio 1.0554 vs rq:d2s5hze 21.54) at 199s
+BAKE unpooler m=128 rq:s4s5hzw 21.37 (ratio 1.0094 vs rq:d2s5hze 21.54) at 199s
+BAKE unpooler m=128 rq:s4s5hzeEH 22.30 (ratio 0.9745 vs rq:d2s5hze 21.54) at 199s
+BAKE unpooler m=128 rq:s4s5hze 21.82 (ratio 1.0000 vs rq:d2s5hze 21.54) at 199s
+BAKE unpooler m=128 rq:d2s6hze 21.55 (ratio 1.0111 vs rq:d2s5hze 21.54) at 199s
+PICK unpooler m=128 rq:d2s5hzwP 20.41 (ref rq:d2s5hze 21.54)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0554)
+BAKE unpooler m=256 r6 28.32 at 199s
+PICK unpooler m=256 r6 28.32 (ref r6 28.32)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 198s
+[mfab] layer prepare done at 198s
+[mfab] moe T= 32 prod median   146.9 us  speedup vs barrier twin (twin without SC6) 1.0284 (per seed 1.030 1.021 1.028 1.023)  max|d| 0
+[mfab] moe T=128 prod median   192.3 us  speedup vs barrier twin (twin without SC6) 1.0262 (per seed 1.025 1.025 1.026 1.028)  max|d| 0
+[mfab] moe T=256 prod median   223.1 us  speedup vs barrier twin (twin without SC6) 1.0175 (per seed 1.018 1.012 1.014 1.018)  max|d| 0
+PREP rq thread started at 199s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 71s
+BUILD pw57_flush 0.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   11.10 us   0.57 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.78 us   0.81 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   11.36 us   1.48 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.37 us   1.62 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.85 us two_node 5.79 us overhead 3.90 us
+BAKE rq skipped-budget 270s
+[rq] bake failed: 'rq_e'
+[mfab] layer prepare done at 71s
+[mfab] moe T= 32 prod median   147.1 us  speedup vs barrier twin (twin without SC6) 1.0223 (per seed 1.022 1.025 1.021 1.018)  max|d| 0
+[mfab] moe T=128 prod median   192.6 us  speedup vs barrier twin (twin without SC6) 1.0228 (per seed 1.019 1.022 1.042 1.023)  max|d| 0
+[mfab] moe T=256 prod median   223.8 us  speedup vs barrier twin (twin without SC6) 1.0171 (per seed 1.026 1.013 1.011 1.017)  max|d| 0
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 82.4, "cand": 83.2, "gain": 0.9904, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.935e-03 (worst row 6.935e-03) [bound 0.143]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 75.1, "cand": 75.1, "gain": 0.9991, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.544e-03 (worst row 7.544e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 88.8, "cand": 88.8, "gain": 0.9996, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.586e-03 (worst row 8.586e-03) [bound 0.133]; attention input re"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 82.6, "cand": 81.5, "gain": 1.0128, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 6.911e-03 (worst row 6.911e-03) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "base": 140.4, "cand": 139.7, "gain": 1.0052, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.030e-03 (worst row 1.139e-02) [bound 0.124]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "base": 132.6, "cand": 131.6, "gain": 1.0077, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 8.159e-03 (worst row 1.533e-02) [bound 0.129]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4001, "base": 223.3, "cand": 223.4, "gain": 0.9993, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.793e-03 (worst row 1.021e-02) [bound 0.150]; attention input re"}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4002, "base": 206.5, "cand": 206.4, "gain": 1.0006, "ok": {"base": true, "cand": true}, "msg": "update relative L2 error 7.768e-03 (worst row 9.338e-03) [bound 0.150]; attention input re"}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UYV01jjjOsrbZrohznLXWK

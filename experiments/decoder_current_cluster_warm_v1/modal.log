@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-LPJIpvSwmacgLnxSgnjYgN
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+READY NVIDIA H200
+CHECK 1 1 419 base True relative L2 error 5.037e-03 (worst row 5.037e-03) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.01
+CHECK 1 1 419 candidate True relative L2 error 5.037e-03 (worst row 5.037e-03) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 1, "q_len": 1, "seed": 419, "base_us": 9.584000334143639, "candidate_us": 9.535999968647957, "paired_ratio": 1.0084232870328964}
+CHECK 1 1 7919 base True relative L2 error 4.574e-03 (worst row 4.574e-03) [bound 0.150: 2.5 x the reference's 0.056 with FP8 E4M3 queries + 0.01
+CHECK 1 1 7919 candidate True relative L2 error 4.574e-03 (worst row 4.574e-03) [bound 0.150: 2.5 x the reference's 0.056 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 1, "q_len": 1, "seed": 7919, "base_us": 9.64799989014864, "candidate_us": 9.37600014731288, "paired_ratio": 1.0275388172284425}
+CHECK 16 1 419 base True relative L2 error 4.588e-03 (worst row 5.713e-03) [bound 0.150: 2.5 x the reference's 0.063 with FP8 E4M3 queries + 0.01
+CHECK 16 1 419 candidate True relative L2 error 4.588e-03 (worst row 5.713e-03) [bound 0.150: 2.5 x the reference's 0.063 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 16, "q_len": 1, "seed": 419, "base_us": 13.743999879807234, "candidate_us": 13.632000423967838, "paired_ratio": 1.0068940568713542}
+CHECK 16 1 7919 base True relative L2 error 5.234e-03 (worst row 7.529e-03) [bound 0.150: 2.5 x the reference's 0.075 with FP8 E4M3 queries + 0.01
+CHECK 16 1 7919 candidate True relative L2 error 5.234e-03 (worst row 7.529e-03) [bound 0.150: 2.5 x the reference's 0.075 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 16, "q_len": 1, "seed": 7919, "base_us": 13.760000001639128, "candidate_us": 13.535999692976475, "paired_ratio": 1.0178294678529953}
+CHECK 32 1 419 base True relative L2 error 4.570e-03 (worst row 5.986e-03) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.01
+CHECK 32 1 419 candidate True relative L2 error 4.570e-03 (worst row 5.986e-03) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 32, "q_len": 1, "seed": 419, "base_us": 16.095999628305435, "candidate_us": 16.127999871969223, "paired_ratio": 1.00195154827881}
+CHECK 32 1 7919 base True relative L2 error 5.004e-03 (worst row 6.659e-03) [bound 0.150: 2.5 x the reference's 0.069 with FP8 E4M3 queries + 0.01
+CHECK 32 1 7919 candidate True relative L2 error 5.004e-03 (worst row 6.659e-03) [bound 0.150: 2.5 x the reference's 0.069 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 32, "q_len": 1, "seed": 7919, "base_us": 16.256000846624374, "candidate_us": 16.383999958634377, "paired_ratio": 0.9863280823928968}
+CHECK 1 8 419 base True relative L2 error 6.802e-02 (worst row 9.314e-02) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.01
+CHECK 1 8 419 candidate True relative L2 error 6.802e-02 (worst row 9.314e-02) [bound 0.150: 2.5 x the reference's 0.068 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 1, "q_len": 8, "seed": 419, "base_us": 11.680000461637974, "candidate_us": 11.775999795645475, "paired_ratio": 0.983834675033316}
+CHECK 1 8 7919 base True relative L2 error 7.547e-02 (worst row 1.117e-01) [bound 0.150: 2.5 x the reference's 0.076 with FP8 E4M3 queries + 0.01
+CHECK 1 8 7919 candidate True relative L2 error 7.547e-02 (worst row 1.117e-01) [bound 0.150: 2.5 x the reference's 0.076 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 1, "q_len": 8, "seed": 7919, "base_us": 11.711999773979187, "candidate_us": 11.807999573647976, "paired_ratio": 1.0068870647103227}
+CHECK 16 8 419 base True relative L2 error 6.236e-02 (worst row 9.104e-02) [bound 0.150: 2.5 x the reference's 0.061 with FP8 E4M3 queries + 0.01
+CHECK 16 8 419 candidate True relative L2 error 6.236e-02 (worst row 9.104e-02) [bound 0.150: 2.5 x the reference's 0.061 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 16, "q_len": 8, "seed": 419, "base_us": 16.448000445961952, "candidate_us": 16.447999514639378, "paired_ratio": 1.0049099228993201}
+CHECK 16 8 7919 base True relative L2 error 7.216e-02 (worst row 1.142e-01) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.01
+CHECK 16 8 7919 candidate True relative L2 error 7.216e-02 (worst row 1.142e-01) [bound 0.150: 2.5 x the reference's 0.071 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 16, "q_len": 8, "seed": 7919, "base_us": 16.543999314308167, "candidate_us": 16.656000167131424, "paired_ratio": 0.9864862941409351}
+CHECK 32 8 419 base True relative L2 error 6.599e-02 (worst row 1.013e-01) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.01
+CHECK 32 8 419 candidate True relative L2 error 6.599e-02 (worst row 1.013e-01) [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 32, "q_len": 8, "seed": 419, "base_us": 20.096000283956528, "candidate_us": 20.06400004029274, "paired_ratio": 1.0023384793583547}
+CHECK 32 8 7919 base True relative L2 error 7.351e-02 (worst row 1.084e-01) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.01
+CHECK 32 8 7919 candidate True relative L2 error 7.351e-02 (worst row 1.084e-01) [bound 0.150: 2.5 x the reference's 0.072 with FP8 E4M3 queries + 0.01
+RESULT {"batch": 32, "q_len": 8, "seed": 7919, "base_us": 20.096000283956528, "candidate_us": 20.304000005126, "paired_ratio": 0.9913037430777096}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-LPJIpvSwmacgLnxSgnjYgN
