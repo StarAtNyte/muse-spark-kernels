@@ -42,13 +42,13 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5853× | #65 | 1.5893× | 1.6596× | e5cae4f990be4df2 |
+| Projections | 1.5853× | #66 | 1.5897× | 1.6596× | e5cae4f990be4df2 |
 | Attention | 2.6328× | #163 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
 | MoE | 2.3820× | #204 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #110 | 2.3097× | 2.4844× | b72f02c7eb8745f5 |
+| Whole decoder layer | 2.2603× | #112 | 2.3097× | 2.4844× | b72f02c7eb8745f5 |
 | Prefill layer | 1.9321× | #31 | 1.9145× | 2.0727× | f3b10ea957e04ea6 |
 
-Overall rank is **#110**. Ranks and cutoffs above were refreshed on **2026-11-02 at 12:11 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json); the earlier 11:10 UTC snapshot is retained at [2026-11-02-live-refresh.json](research/standings/2026-11-02-live-refresh.json). Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The nearest category cutoffs are projection (+0.25% to #50), decoder (+2.19%), attention (+3.51%), and MoE (+3.71%); prefill is inside #50.
+Overall rank is **#112**. Ranks and cutoffs above were refreshed on **2026-11-02 at 12:28 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json); the prior 12:11 UTC snapshot is retained at [2026-11-02-1211.json](research/standings/2026-11-02-1211.json), and the earlier snapshot at [2026-11-02-live-refresh.json](research/standings/2026-11-02-live-refresh.json). Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The nearest category cutoffs are projection (+0.28% to #50), decoder (+2.19%), attention (+3.51%), and MoE (+3.71%); prefill is inside #50.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 

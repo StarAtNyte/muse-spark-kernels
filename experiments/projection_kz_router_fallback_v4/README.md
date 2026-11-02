@@ -4,4 +4,4 @@ The repaired v3 check failed before scoring when the helper eagerly launched its
 
 Candidate SHA-256: `76e42224d8a8c9dfcbb943e2a812d3996dbdc9867e2181e7675daaa3516a3d3a`. Embedded module SHA-256: `d50b4373ee55e5363ad34788533c97b4be37be22c17069a7d3c5c18036ffcb5c`.
 
-Official check `9f3f921904df4ab4` has been received by the judge; timing/correctness result pending.
+Official check `9f3f921904df4ab4` completed on H200 with all checks passing and no flags, scoring **1.53238×** (95% CI **1.50940–1.55537×**). This is below the live projection incumbent **1.5853×**, so the candidate is rejected. The profile repeatedly reports an `olayer` warm-launch failure during optional profiling; it did not prevent the scored shapes from passing, but it reinforces that this fallback does not improve the incumbent. Full judge status and profile artifacts are archived in this directory.
