@@ -1,0 +1,7 @@
+{
+  "name": "projection_kz_router_fallback_v2",
+  "problem": "muse_bf16_proj",
+  "parent": "projection_kz_router_fallback_v1",
+  "change": "use supported 8-CTA router helper specialization during eager prepare; scored routing unchanged",
+  "sha256": "ea17ccc5d829e6359876dd864b4d3092d539fb8277d4a6af6e369b85dcfd9880"
+}
