@@ -56,11 +56,12 @@ score by about 3.79%:
 | Verify 16 | 180.31 us |
 | Verify 32 | 211.24 us |
 
-The next SC6 WGS check (`bd7ee2f9d89247c8`) tests the remaining promising
-lossless scale-traffic reduction stacked onto KPERM3. Its predecessor failed
-before timing because the candidate scratch omitted MFIN flags; v9 restores
-the incumbent allocation. Keep all shape-specific routes in view after this
-check: no single batch size dominates the MoE score.
+SC6 WGS v9 (`bd7ee2f9d89247c8`) passed correctness at 2.36004x
+(95% CI 2.32464–2.39544x), with the 2.38203x public score inside the interval.
+It is inconclusive, and the check log did not expose whether `sc6w` was true.
+V10 scored run `1fb6b4f749ec44bb` adds a prepare-only print to prove the actual
+compile route while leaving timed code unchanged. Keep all shape-specific
+routes in view: no single batch size dominates the MoE score.
 
 ### Whole decoder layer
 
