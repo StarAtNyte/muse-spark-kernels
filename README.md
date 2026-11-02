@@ -42,13 +42,13 @@ Private checks have a separate daily quota from leaderboard submissions.
 
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
-| Projections | 1.5853× | #66 | 1.5897× | 1.6596× | e5cae4f990be4df2 |
-| Attention | 2.6328× | #163 | 2.7253× | 3.3389× | 7d250883e6b94c50 |
-| MoE | 2.3820× | #204 | 2.4703× | 2.7642× | 190d8914bacb4aa2 |
-| Whole decoder layer | 2.2603× | #112 | 2.3097× | 2.4844× | b72f02c7eb8745f5 |
-| Prefill layer | 1.9321× | #31 | 1.9145× | 2.0727× | f3b10ea957e04ea6 |
+| Projections | 1.5853× | #66 | 1.590× | 1.660× | e5cae4f990be4df2 |
+| Attention | 2.6328× | #163 | 2.725× | 3.339× | 7d250883e6b94c50 |
+| MoE | 2.3820× | #204 | 2.470× | 2.764× | 190d8914bacb4aa2 |
+| Whole decoder layer | 2.2603× | #112 | 2.310× | 2.484× | b72f02c7eb8745f5 |
+| Prefill layer | 1.9321× | #32 | 1.916× | 2.073× | f3b10ea957e04ea6 |
 
-Overall rank is **#112**. Ranks and cutoffs above were refreshed on **2026-11-02 at 12:28 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json); the prior 12:11 UTC snapshot is retained at [2026-11-02-1211.json](research/standings/2026-11-02-1211.json), and the earlier snapshot at [2026-11-02-live-refresh.json](research/standings/2026-11-02-live-refresh.json). Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The nearest category cutoffs are projection (+0.28% to #50), decoder (+2.19%), attention (+3.51%), and MoE (+3.71%); prefill is inside #50.
+Overall rank is **#112**. Ranks and cutoffs above were refreshed on **2026-11-02 at 13:02 UTC** and are archived in [the live snapshot](research/standings/2026-11-02.json). Ranks move as others submit, so score changes and rank movement are tracked separately. Prefill is a separate board and does not count toward overall rank. The #50 gaps are projections +0.30%, decoder +2.20%, attention +3.50%, and MoE +3.69%; prefill is inside #50.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
@@ -62,11 +62,11 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
-| Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #65 |
+| Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** | Shape-specific BF16 GEMV/GEMM routes, pooler split-K and high/low router split. | `experiments/bf16_keell0renz_compare_v1/submission.py` | #66 |
 | Attention | 1.1305x → 2.5806x → 2.6177x → **2.6328x** | Fused Q/K preparation and cache writes, split-KV attention and shape-selected FA3/cluster paths. | `experiments/attention_warm_route_verify_v1/submission.py` | #163 |
 | MoE | 1.1465x → 2.3263x → 2.3290x → **2.3820x** | Persistent WGS experts, gather tuning and weight/activation permutation. | `kernels/muse_moe_w4a16/submission.py` | #204 |
-| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #110 |
-| Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #31 |
+| Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → **2.2603x** | Stacked attention, projection and routed-expert improvements. | `experiments/decode_keell0renz_compare_v1/submission.py` | #112 |
+| Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #32 |
 
 The working projection file contains later experiments and is not byte-identical to the best scored source. See `research/best.json` for hashes and official jobs, and the experiment logs for checks that did not improve the public score. The [baseline and decoder integration audit](research/baseline-integration-audit.md) records which standalone changes were tested together and why the decoder incumbent was retained.
 
@@ -108,8 +108,8 @@ Latest decoder transfer check `04a138c2ac314122` passed correctness at
 2.08635x (95% CI 2.05506–2.11765) after changing only the WGS activation
 gather batch from 8 to 7. It did not beat the prior same-source check
 (2.09091x), so it was archived without submission. The live board remains
-overall #94; continue targeting integrated decoder dataflow and the category
-cutoffs above.
+overall #112; continue targeting integrated decoder dataflow and the larger
+attention and MoE gaps to the leaders.
 
 `serving/sglang` is the pinned SGLang checkout. `serving/patch.diff` currently
 contains the fused Hopper router and a guarded small-batch expert-reduction
@@ -149,4 +149,6 @@ Prefill head interleaving: the long full-attention candidate passed its official
 
 Current prefill transfer (2026-11-02): K64 scale reuse/shuffle gather stacked onto `prefill_keell0renz_compare_v1` passed full check `972b04d5768c496c` at 1.95119×, but scored submission `91310268963a4503` at **1.92538×** (95% CI 1.89650–1.95427×). The live incumbent remains **1.9321×**, so the candidate was archived without promotion. The current public source, per-kernel ranks, and moving #50 cutoffs are in the table above and [`research/standings/2026-11-02.json`](research/standings/2026-11-02.json).
 
-MoE research: screened MonoMoE's new H200 weight-major persistent design against our WGS implementation. Its central scheduling ideas—expert-grouped token jobs, persistent expert-weight streaming, one-launch fusion, and readiness flags—are already present in our current kernel; the paper's FP8 shapes and format are not directly comparable to this NVFP4 task. See the [transfer audit](research/MONOMOE_TRANSFER_AUDIT_2026-11-02.md). A source audit found the earlier KPERM3 + SC6 candidates compiled the six-bit scale module but dispatched the non-SC6 build. V5/V6 checks failed or are still pending before timing due an optional C++/CUDA diagnostic binding error. V7 removes that diagnostic while retaining SC6 dispatch; check `1b045ada84a34097` is pending. No SC6 gain is claimed until it passes and produces timed results.
+MoE research: screened MonoMoE's new H200 weight-major persistent design against our WGS implementation. Its central scheduling ideas—expert-grouped token jobs, persistent expert-weight streaming, one-launch fusion, and readiness flags—are already present in our current kernel; the paper's FP8 shapes and format are not directly comparable to this NVFP4 task. See the [transfer audit](research/MONOMOE_TRANSFER_AUDIT_2026-11-02.md). The KPERM3 + SC6 line had a setup failure because optional `okc_attrs()` diagnostics remained in `prepare()`; this affected v5 through v7, so none supplied SC6 performance evidence. V8 removes every such call and keeps the SC6 WGS timed dispatch; official check `a5bdd94d9dc7460b` is queued. No SC6 gain is claimed before correctness and timing complete.
+
+Prefill research: a CuTe WGMMA/TMA screen tested the 16K-token QKV GEMM against the exact cuBLASLt route selected by the current scored source. All three candidates were bit-exact but slower (0.840×, 0.637×, and 0.917× parent/candidate); the CuTe route was rejected. The H200 logs and decision are under [`prefill_cute_qkv_long_v1`](experiments/prefill_cute_qkv_long_v1/README.md). No CuTe route is part of the scored submission.

@@ -4,4 +4,4 @@ V7 keeps v6's corrected timed dispatch to the validated `-DOKC_SC6W=1` WGS modul
 
 Source SHA-256: `db8dcb2a5438178a52fd09a3e888942f1c54cc056a7be4146ae1ea64dd2b6f24`.
 
-Official check `1b045ada84a34097` was accepted; latest status was `received`. No correctness or score result is available yet. The previous v5/v6 checks did not reach timing.
+Official check `1b045ada84a34097` failed during prepare: two remaining diagnostic loops called `_ext(d).okc_attrs()` even though that optional function was not exported. It did not reach correctness or timing. V8 removes the remaining calls; its check is `a5bdd94d9dc7460b`.

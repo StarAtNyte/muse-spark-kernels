@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-02",
+  "hardware": "NVIDIA H200",
+  "app_id": "ap-lwXmxy8Vh9JenOO2seicmq",
+  "experiment": "remove only the dry cluster finalizer from q_len=1 sliding attention",
+  "parent_sha256": "573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1da",
+  "candidate_sha256": "5e280d2ae66a1738d8decc677b370f6c2350321e773aace9d4fd5e41e1131e85",
+  "seeds": [539, 1427, 1021, 2207, 7243, 8801],
+  "repetitions_per_seed": 24,
+  "correctness": "all 12 candidate/reference comparisons passed",
+  "rows": [
+    {"batch": 16, "seed": 539, "parent_us": 12.272, "candidate_us": 12.304, "reported_speedup": 0.9948908082},
+    {"batch": 16, "seed": 1427, "parent_us": 12.512, "candidate_us": 12.464, "reported_speedup": 1.0051748622},
+    {"batch": 16, "seed": 1021, "parent_us": 12.480, "candidate_us": 12.528, "reported_speedup": 1.000},
+    {"batch": 16, "seed": 2207, "parent_us": 12.608, "candidate_us": 12.512, "reported_speedup": 1.0089981386},
+    {"batch": 16, "seed": 7243, "parent_us": 12.480, "candidate_us": 12.480, "reported_speedup": 0.99871793896},
+    {"batch": 16, "seed": 8801, "parent_us": 12.624, "candidate_us": 12.576, "reported_speedup": 1.0038396047},
+    {"batch": 32, "seed": 539, "parent_us": 14.304, "candidate_us": 14.336, "reported_speedup": 1.000},
+    {"batch": 32, "seed": 1427, "parent_us": 15.552, "candidate_us": 15.552, "reported_speedup": 1.0102208197},
+    {"batch": 32, "seed": 1021, "parent_us": 14.496, "candidate_us": 14.224, "reported_speedup": 1.0214473516},
+    {"batch": 32, "seed": 2207, "parent_us": 14.416, "candidate_us": 14.432, "reported_speedup": 0.9966740646},
+    {"batch": 32, "seed": 7243, "parent_us": 14.528, "candidate_us": 14.256, "reported_speedup": 1.0190558598},
+    {"batch": 32, "seed": 8801, "parent_us": 14.400, "candidate_us": 14.320, "reported_speedup": 1.0112868660}
+  ],
+  "decision": "inconclusive small-shape timing; no official check or promotion",
+  "runner_note": "Remote experiment completed and Modal app stopped. The local CLI wrapper returned exit code 1 after the void entrypoint because --write-result expected a local return value."
+}

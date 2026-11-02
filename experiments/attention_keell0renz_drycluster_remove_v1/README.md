@@ -7,3 +7,14 @@ Parent SHA-256: `573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1d
 Candidate SHA-256: `5e280d2ae66a1738d8decc677b370f6c2350321e773aace9d4fd5e41e1131e85`
 
 Screen: batch 16/32, q_len=1 sliding, two seeds, 16 randomized cold-L2 paired rounds; both outputs passed the reference check. Results were B16 1.0315×/0.9905× and B32 0.9965×/1.0112× across the two seeds. The mixed seed outcomes do not support a repeatable gain; no official check or promotion. Modal app: `ap-9Pw85CTYLioyOcr7R7reiR`.
+
+## Six-seed confirmation (2026-11-02)
+
+Expanded to six seeds and 24 paired rounds per shape, still restricted to the
+two q_len=1 sliding cases. All 12 candidate/reference comparisons passed on
+H200. Per-seed timings and reported candidate speed ratios are archived in
+[`modal_screen_confirm.json`](modal_screen_confirm.json). The paired results
+remain small and mixed, so this change is rejected for promotion and should
+not consume an official check. The CLI wrapper exited 1 after the remote
+screen completed because `--write-result` expected a non-void local return;
+the remote Modal task itself completed successfully.

@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-02",
+  "hardware": "NVIDIA H200",
+  "app_id": "ap-ZUOOziUJ56PWVvRFXie6Sg",
+  "image": "nvidia/cuda:12.8.1; PyTorch 2.9.1; nvidia-cutlass-dsl",
+  "parent_source": "experiments/prefill_keell0renz_compare_v1/submission.py",
+  "shape_mnk": [16384, 2304, 8192],
+  "method": "alternating CUDA graph replay, 256 MiB cold-L2 flush, 16 paired replays per variant",
+  "correctness": "all variants exactly matched production BF16 output on the checked input",
+  "results": [
+    {
+      "tile_mn": [128, 128],
+      "cluster": [1, 1],
+      "parent_median_us": 784.4319939613342,
+      "candidate_median_us": 933.7279796600342,
+      "parent_over_candidate_speedup": 0.8397434853953705,
+      "max_relative_error": 0.0,
+      "rms_relative_error": 0.0
+    },
+    {
+      "tile_mn": [128, 256],
+      "cluster": [1, 1],
+      "parent_median_us": 783.9840054512024,
+      "candidate_median_us": 1230.3520441055298,
+      "parent_over_candidate_speedup": 0.6365469001702566,
+      "max_relative_error": 0.0,
+      "rms_relative_error": 0.0
+    },
+    {
+      "tile_mn": [128, 128],
+      "cluster": [2, 1],
+      "parent_median_us": 783.407986164093,
+      "candidate_median_us": 853.3279895782471,
+      "parent_over_candidate_speedup": 0.9170514046836835,
+      "max_relative_error": 0.0,
+      "rms_relative_error": 0.0
+    }
+  ],
+  "decision": "reject generic CuTe WGMMA/TMA path for this production QKV shape; no official check"
+}
