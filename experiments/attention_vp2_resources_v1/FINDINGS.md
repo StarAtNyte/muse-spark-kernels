@@ -1,0 +1,3 @@
+# VP2 compiled resource inspection
+
+`cuobjdump --dump-resource-usage` on the public judge image reports the VP2 kernel at 80 registers and zero stack for the two-block bound, 78 registers and zero stack for the three-block bound, and 64 registers with a 96-byte stack frame for the four-block bound. All report 1,024 bytes static shared memory; dynamic shared memory is separate. The four-block version was 5–6% slower in the paired screen. A stack frame is consistent with additional local storage, but these counts alone do not measure spill traffic or achieved occupancy. Raw output and exact driver are in this directory.
