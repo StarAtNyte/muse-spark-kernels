@@ -1,0 +1,41 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hGVpvHqcQgRsHzfx9JPAOD
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 124
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 159s
+[mfab] moe T= 32 prod median   147.1 us  speedup vs barrier twin (twin without SC6) 1.0295 (per seed 1.030 1.022 1.025 1.035)  max|d| 0
+[mfab] moe T=128 prod median   192.6 us  speedup vs barrier twin (twin without SC6) 1.0308 (per seed 1.023 1.024 1.034 1.031)  max|d| 0
+[mfab] moe T=256 prod median   222.6 us  speedup vs barrier twin (twin without SC6) 1.0218 (per seed 1.022 1.022 1.013 1.021)  max|d| 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 0, 0, 96, 0, 0]
+[mfab] layer prepare done at 82s
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hGVpvHqcQgRsHzfx9JPAOD

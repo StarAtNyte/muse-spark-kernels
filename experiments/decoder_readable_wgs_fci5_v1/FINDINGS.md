@@ -1,0 +1,5 @@
+# Readable decoder WGS deferred-flush schedule
+
+Candidate changes the main embedded MoE `OKC_WGSFCI` from 4 to 5, testing whether a later deferred flush improves whole-layer overlap. The alternative MoE source and precision are unchanged. This is a scheduling hypothesis; FCI=4 had previously won a standalone sweep.
+
+The bounded H200 whole-layer paired screen timed out (return code 124) after 300 seconds during preparation, before any paired timing rows or complete correctness results. No gain or correctness conclusion can be drawn. The full `modal.log`, candidate and driver are preserved. The temporary parent source used by the driver was a copy of `experiments/decoder_readable_fp32_reduction_v1/submission.py` in `dev/modal/_decoder_readable_parent.py`; the copy was removed after the screen. A cheaper next attempt should capture and time the MoE in isolation after one preparation or avoid duplicate heavyweight prepare calls, then validate any positive result against the full layer. Do not promote based on the setup output.
