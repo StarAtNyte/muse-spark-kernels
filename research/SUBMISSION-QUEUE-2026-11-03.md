@@ -11,3 +11,6 @@ Audit time: 2026-11-03 03:37 UTC. The official CLI reported decoder scored quota
 The stacked candidate and components are alternatives, not three independent gains to add numerically. Verify quota, current judge status and exact SHA-256, submit one file, save the returned job ID immediately, and collect that same job before taking a further decision. Existing scored WST attention `e503062862744b16` passed at 2.63841×, below public 2.64939×; it has already been submitted and is not in this queue. The selected VP2 two-block attention source was publicly scored and promoted at 2.64939×.
 
 Raw official `status.json`, `profiles/` logs and exact submission files are retained in the linked experiment directories. `research/best.json` records validation history; the board's public best and rank are recorded separately in the README and timestamped standings snapshots.
+
+
+**Update:** Scored job `db40bea1008841dc` was submitted for the exact combined stack after quota reopened. Collect this job before deciding on the component fallback candidates.

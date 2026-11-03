@@ -80,6 +80,8 @@ for offline SM90 compilation; this does not provide H200 runtime validation.
 Modal H200 experiments run through `dev/modal/run_h200.py`; see
 [the PTX and CuTe campaign](research/PTX-CAMPAIGN.md) for results and caveats.
 
+Decoder stack submission: exact checked compact projection + tiny MoE warp-order source is in scored job `db40bea1008841dc`; result pending.
+
 Pending scored candidates and exact checked hashes are tracked in [the submission queue](research/SUBMISSION-QUEUE-2026-11-03.md). The latest [public-code refresh](research/PUBLIC-CODE-REFRESH-2026-11-03.md) records the repositories and commits reviewed.
 
 Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). Lee101's warp-independent cluster path was transferred and screened on H200; the adapted path was 0.544×/0.584× of the incumbent on its target batches, so it was rejected. The Chord semi-static MoE tile idea is already represented by our WGS compile-time tile-count dispatch.
