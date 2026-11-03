@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_qkv32_sk2_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Use the existing SK2 FP32-split backend for qkv m32 after disabling BF16 split reductions; measure correctness and full score.",
+  "sha256": "4517d601b840b2959746c038ffcc2796630055dec0da174094f97a5c98f7f0dc",
+  "created_at": 1793679058.3986392,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "received",
+  "job_id": "e4df402a11e94f52"
+}
