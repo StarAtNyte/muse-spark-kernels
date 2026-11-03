@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oIpsg5HdNbiJmnwB6b1mUl
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RT12 off: RT12 disabled
+BUILD pw57_flush 51.4s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   12.48 us   0.50 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.81 us   0.81 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.96 us   1.29 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.46 us   1.60 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.98 us two_node 5.55 us overhead 4.40 us
+PREP flush+fixed done at 58s
+gv qkv_gate m32 v12 13568.00 best 1.4.1.1.4.16.2.1.2.1 12525.19 (ref v12 13568.00)
+  v12:13568.00 1.4.2.1.8.16.1.1.2.0:13675.32 1.4.2.1.8.16.1.1.2.1:13836.00 1.4.2.1.4.16.2.1.2.0:13538.84 1.4.2.1.4.16.2.1.2.1:14048.53 1.4.2.2.4.16.2.1.2.1:15574.00 1.4.1.1.4.8.4.1.2.0:19758.75 1.4.1.1.4.8.4.1.2.1:18682.35 1.4.2.1.4.8.4.1.2.1:19008.88 1.4.1.1.4.16.2.1.2.1:12525.19
+PREP r6 done in 83s
+PREP phase rq done at 83s
+PREP phase gx done at 83s
+PREP phase rq32 done at 83s
+PREP phase router done at 83s
+PREP done in 83s
+ROW {"seed": 61, "base_us": 18.816, "cand_us": 15.248, "gain": 1.234, "correct": {"base": true, "cand": true}}
+ROW {"seed": 62, "base_us": 18.832, "cand_us": 15.232, "gain": 1.2363, "correct": {"base": true, "cand": true}}
+ROW {"seed": 63, "base_us": 18.656, "cand_us": 15.328, "gain": 1.2171, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+[okc] tune qkv_gate m=32: sk2=14.98 torch=18.69 -> sk2
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-oIpsg5HdNbiJmnwB6b1mUl
