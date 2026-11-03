@@ -1,0 +1,22 @@
+{
+  "name": "decoder_readable_fp32_fallback_v2",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Keep decoder BF16 projection library fallbacks in FP32 through the complete GEMM before final BF16 output, without changing global flags.",
+  "sha256": "c43759b54b6b32399f4a1f45fb078029d0ce565ab5764197fc488f1c56953045",
+  "created_at": 1793680609.4060788,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "received",
+  "job_id": "5efc65e1619a483c"
+}
