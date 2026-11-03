@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_splits_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Disable BF16 partial-sum rs128/rs32 and non-router atomic-red-add candidates, preserving FP32 router paths; measure correctness and performance.",
+  "sha256": "98d9b2ef30a62f4438a0185b50bd5dc379f2a61dd5c8539c425db1203106ecf3",
+  "created_at": 1793678073.0173557,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "65ff350aa9884888"
+}
