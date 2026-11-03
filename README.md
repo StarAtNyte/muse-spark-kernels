@@ -21,9 +21,9 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
-Projection submission (2026-11-03): the FP32 bucketed candidate passed 9/9 at **1.55635×** and scored job `1f5bfe33160a4deb` is pending. [Source and record](experiments/scored_projection_fp32_bucket_v7/FINDINGS.md).
+Projection submission (2026-11-03): the FP32 bucketed candidate passed 9/9 at **1.55635×** and scored job `1f5bfe33160a4deb` passed 9/9 at **1.53881×**. [Source and record](experiments/scored_projection_fp32_bucket_v7/FINDINGS.md).
 
-Decoder submission (2026-11-03): readable FP32-storage candidate passed private check 13/13 at **2.24462×** and is now in scored job `529df1f504434040`; the scored result is pending. [Source and record](experiments/scored_decoder_fp32_ybuf_v4/FINDINGS.md).
+Decoder submission (2026-11-03): readable FP32-storage candidate passed private check 13/13 at **2.24462×** and is now in scored job `529df1f504434040`, which passed 13/13 at **2.23863×**. [Source and record](experiments/scored_decoder_fp32_ybuf_v4/FINDINGS.md).
 
 Projection update (2026-11-03): the readable FP32-split candidate routes QKV m=32 to SK2 and passed 9/9 at **1.54234×**. A three-seed H200 paired screen measured **1.217–1.236×** on that case; both outputs passed. Overall score gain remains uncertain across separate checks, and the full submission needs a precision audit before public submission. [Details and logs](experiments/projection_qkv32_paired_v1/FINDINGS.md).
 

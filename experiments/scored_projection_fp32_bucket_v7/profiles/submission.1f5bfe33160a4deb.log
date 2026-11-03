@@ -1,0 +1,48 @@
+RT12 off: RT12 disabled
+BUILD pw57_flush 31.6s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB    9.63 us   0.65 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.42 us   0.85 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB    9.73 us   1.72 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB    9.95 us   1.69 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.43 us two_node 5.33 us overhead 3.54 us
+PREP flush+fixed done at 36s
+lt qkv_gate m128 heur 22368.00 best 0:66.92.1.0.0.0.35.0.5 19200.00 (722 tried, 2.4s)
+lt pooler m128 heur 30624.00 best 3:66.15.1.0.0.6.35.0.5 23008.00 (1178 tried, 5.5s)
+lt unpooler m128 heur 25440.00 best 2:66.18.1.0.0.6.35.0.5 22112.00 (907 tried, 7.5s)
+gv qkv_gate m8 v12 12864.00 best 1.1.1.2.16.8.1.1.2.1 7144.76 (ref 1.1.1.2.16.8.1.1.2.1 7144.76)
+  v12:12864.00 1.1.1.2.16.8.1.1.2.1:7144.76 1.1.2.1.8.16.1.1.0.1:9199.20 1.1.1.1.16.8.1.1.2.8193:8372.25 1.1.2.1.4.16.2.1.0.0:11289.09 1.1.2.1.4.16.2.1.0.1:10740.22 1.1.2.1.4.8.4.1.0.1:14153.54
+gv o m8 v12 5440.00 best 1.1.2.1.8.2.1.1.0.1 3707.30 (ref 1.1.2.1.8.2.1.1.0.1 3707.30)
+  v12:5440.00 1.1.2.1.8.2.1.1.0.1:3707.30 1.1.2.1.8.2.1.1.0.0:4394.81 1.1.2.2.4.4.1.1.0.1:5225.74 1.1.2.1.4.4.1.1.0.1:5016.23
+gv o m16 v12 5376.00 best 1.2.2.1.8.2.1.1.0.1 3981.52 (ref 1.2.2.1.8.2.1.1.0.1 3981.52)
+  v12:5376.00 1.2.2.1.8.2.1.1.0.1:3981.52 1.2.2.1.8.2.1.1.0.0:4779.06 1.2.2.1.8.2.1.1.2.1:7279.30 1.2.2.2.4.4.1.1.0.1:5814.77 1.2.2.2.4.4.1.1.2.1:5144.13 1.2.1.1.4.4.1.1.2.1:4834.67
+gv pooler m8 v12 19008.00 best 1.1.1.2.16.8.1.1.0.3 11346.95 (ref 1.1.1.2.16.8.1.1.0.3 11346.95)
+  v12:19008.00 1.1.1.2.16.8.1.1.0.3:11346.95 1.1.2.2.8.16.1.1.0.1:12904.90 1.1.2.2.8.16.1.1.0.0:12683.92 1.1.2.1.8.16.1.1.0.1:13107.07
+gv pooler m16 v12 18912.00 best 1.2.2.2.8.16.1.1.0.1 12336.18 (ref 1.2.2.2.8.16.1.1.0.1 12336.18)
+  v12:18912.00 1.2.2.2.8.16.1.1.0.1:12336.18 1.2.2.2.8.16.1.1.0.0:13404.82 1.2.2.1.8.16.1.1.2.1:13857.24 1.2.2.1.8.16.1.1.0.1:16933.09
+gv unpooler m8 v12 6304.00 best 1.1.2.1.16.4.1.1.0.1 1790.78 (ref 1.1.2.1.16.4.1.1.0.1 1790.78)
+  v12:6304.00 1.1.2.1.16.4.1.1.0.1:1790.78 1.1.2.1.16.4.1.1.0.0:3876.11 1.1.2.1.8.2.4.1.0.1:4425.19 1.1.2.1.8.4.2.1.0.1:5589.13 1.1.2.1.16.4.1.1.2.1:3586.71
+PREP r6 done in 55s
+PREP phase rq done at 55s
+BAKE qkv_gate m=8 r6 12.93 (ref)
+BAKE qkv_gate m=8 q144k16 14.82 (ref r6 12.93)
+PICK qkv_gate m=8 r6 12.93 (ref r6 12.93)
+PREP phase gx done at 55s
+PREP phase rq32 done at 55s
+PREP phase router done at 55s
+PREP done in 55s
+[okc] tune qkv_gate m=1: cgemv=12.58 sk2=13.09 torch=19.78 -> cgemv
+[okc] tune o m=1: cgemv=8.67 sk2=9.18 torch=12.06 -> cgemv
+[okc] tune pooler m=1: cgemv=17.22 sk2=17.92 torch=26.82 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.07 sgemv=7.23 sk2=7.9 torch=12.35 -> cgemv
+[okc] tune router m=1: rgemv=7.23 sk2=8.45 torch=18.94 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.02 torch=19.9 -> sk2
+[okc] tune unpooler m=16: sk2=17.7 torch=23.94 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.56 torch=20.22 -> sk2
+[okc] tune o m=32: sk2=9.54 torch=12.29 -> sk2
+[okc] tune pooler m=32: sk2=18.66 torch=27.58 -> sk2
+[okc] tune unpooler m=32: sk2=18.59 torch=24.03 -> sk2
+[okc] tune router m=128: rk=9.63 wide=12.22 gemm=13.5 torch=21.02 -> rk
+[okc] tune router m=256: rk=10.5 wide=13.5 gemm=17.18 torch=22.56 -> rk
+[okc] disabled: []
