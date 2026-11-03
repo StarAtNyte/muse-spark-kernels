@@ -1,0 +1,22 @@
+{
+  "name": "decoder_readable_fp32_fallback_v3",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Also keep the small-token pooler fallback FP32 until final BF16 output, in addition to the QKV and dense fallbacks.",
+  "sha256": "edf84ccc98437e324cbaa8093a563048dffc8b8e0c7cef333e09d38907310ef6",
+  "created_at": 1793680698.024011,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "received",
+  "job_id": "f08d0cc2e617467e"
+}
