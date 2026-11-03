@@ -1,0 +1,3 @@
+# Earlier WGS flush, full-decoder verification
+
+Using one preparation, swapped the readable decoder's main MoE extension between FCI=4 and FCI=3 and timed complete sliding verify graphs on H200 with cold-L2 alternating replays. All eight outputs passed the reference. Two seeds at batch 16 gave 224.50 → 225.33 µs (0.9963×) and 259.55 → 259.81 µs (0.9990×); batch 32 gave 306.32 → 306.35 µs (0.9999×) and 311.02 → 310.96 µs (1.0002×). This schedule is neutral to slightly slower on these samples and is not promoted. Source is `../decoder_readable_wgs_fci3_singleprep_v1/submission.py`; driver and full run log are retained here.
