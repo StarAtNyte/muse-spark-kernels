@@ -1,0 +1,3 @@
+# Scored FP32 projection with general buckets
+
+Exact source SHA-256 `d785aa19a58a8fe5be5d34406496f649340273ffc8086ed46051dba46bacd483`; private check `a6d1ceab0bc24fb5` passed 9/9 at 1.55635× (95% CI 1.53301–1.57970×). The candidate stacks QKV-32 SK2 and QKV-128 compact kernels, disables the identified BF16 split reductions, uses FP32-output PyTorch fallbacks and replaces the exhaustive nearby-route search with general buckets. Its local nearby screen passed 60 shapes for both candidate and baseline. Public job `1f5bfe33160a4deb` is pending. A passing check and targeted audit do not guarantee all-input correctness or final organizer eligibility.
