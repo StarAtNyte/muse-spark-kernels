@@ -16,13 +16,13 @@ Justin Wang also clarified that BF16 projection partial sums must remain FP32 un
 
 - `experiments/attention_readable_expanded_v1` expands the encoded module into readable source byte-for-byte; it is not cleared for submission because of the precision audit.
 - `experiments/attention_readable_fp32_path_v1` removes that backend and uses the existing unencoded routes. Private check `12167249d81c46ee` passed at 2.60414× (95% CI 2.56508–2.64320×). Static inspection found FP32 MMA accumulator instructions but does not by itself prove all paths compliant.
-- `experiments/decoder_readable_fp32_reduction_v1` expands encoded CUDA and the escaped single-line helper into readable source and disables the BF16 rs128 backend. It is 895 KB, parses, and still requires a complete precision audit and judge check. Other fast routes are retained pending verification.
+- `experiments/decoder_readable_fp32_reduction_v1` expands encoded CUDA and the escaped single-line helper into readable source and disables the BF16 rs128 backend. It is 895 KB, parses, and private check `bbe34f0cbe494c88` passed 13/13 at 2.23574× (95% CI 2.20220–2.26928×). It still requires a complete precision audit. Other fast routes are retained pending verification.
 
 The 5-producer attention WST local screen is preserved in `experiments/attention_wst_npw5_v1/modal.log`: measured target cases were 2.4–3.5% slower; its encoded-source candidate is not eligible.
 
 ## Decoder projection follow-up
 
-The readable decoder candidate's embedded `bfp_prepare` allocates both skinny and GEMM split-K workspaces as `torch.float32`; the respective CUDA kernel entry points declare these workspaces as `float*`. The Triton `dense` split-K path allocates FP32 partials, and the paired compact QKV route uses `float4` cluster exchange and sums before its final BF16 store. These observations support those particular paths but are not a proof covering every epilogue, library dispatch, router operation or dynamic route. The removed rs128 backend was a separate path. The official decoder check remains queued; no compliance or correctness conclusion follows from the static inspection alone.
+The readable decoder candidate's embedded `bfp_prepare` allocates both skinny and GEMM split-K workspaces as `torch.float32`; the respective CUDA kernel entry points declare these workspaces as `float*`. The Triton `dense` split-K path allocates FP32 partials, and the paired compact QKV route uses `float4` cluster exchange and sums before its final BF16 store. These observations support those particular paths but are not a proof covering every epilogue, library dispatch, router operation or dynamic route. The removed rs128 backend was a separate path. The official decoder check passed; the static inspection does not establish full compliance.
 
 The standalone projection candidate `experiments/projection_fp32_splits_v1` additionally removes the forced unpooler BF16 atomic split reduction, which the earlier rs128-only mitigation did not cover. Its private check is pending and the rest of its backends remain under audit.
 
