@@ -1,0 +1,22 @@
+{
+  "name": "attention_packed_exp2_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Use packed FP16 exp2 only for attention P before E4M3 conversion; retain FP32 QK, PV and partials. Measure correctness and speed against readable baseline.",
+  "sha256": "9d85a5c2608942f070192da88a8c959cce7951efa303dc5075d3110b41b8b636",
+  "created_at": 1793678026.637558,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 1,
+      "left": 19
+    }
+  },
+  "status": "received",
+  "job_id": "001105f5c7f74313"
+}
