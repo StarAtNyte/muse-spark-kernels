@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-N3LEQdPtJDUWMQPnYEevpR
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VARIANTS": "base,h16,h16all", "CASES": "v16f,v32f,v16s,v32s,v1s,v1f", "TESTS": "t5s,t2f,t4e,t1m,t3k,t4s,t2ds,t2dc", "SEEDS": "21,22", "REPS": "20"} RETURNCODE 0
+TEST {"case": "t5s", "seed": 21, "res": {"base": [true, "relative L2 error 8.067e-02 (worst row 1.061e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.067e-02 (worst row 1.061e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.063e-02 (worst row 1.061e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t5s", "seed": 22, "res": {"base": [true, "relative L2 error 8.016e-02 (worst row 1.035e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.016e-02 (worst row 1.035e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.016e-02 (worst row 1.034e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2f", "seed": 21, "res": {"base": [true, "relative L2 error 9.223e-02 (worst row 1.189e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 9.237e-02 (worst row 1.187e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 9.237e-02 (worst row 1.187e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2f", "seed": 22, "res": {"base": [true, "relative L2 error 9.106e-02 (worst row 1.176e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 9.115e-02 (worst row 1.177e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 9.115e-02 (worst row 1.177e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 21, "res": {"base": [true, "relative L2 error 8.334e-02 (worst row 1.203e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.320e-02 (worst row 1.175e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.320e-02 (worst row 1.175e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 22, "res": {"base": [true, "relative L2 error 8.505e-02 (worst row 1.044e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.495e-02 (worst row 1.044e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.495e-02 (worst row 1.044e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t1m", "seed": 21, "res": {"base": [true, "relative L2 error 1.047e-01 (worst row 1.251e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 1.047e-01 (worst row 1.251e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 1.046e-01 (worst row 1.244e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t1m", "seed": 22, "res": {"base": [true, "relative L2 error 1.026e-01 (worst row 1.294e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 1.026e-01 (worst row 1.294e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 1.029e-01 (worst row 1.294e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t3k", "seed": 21, "res": {"base": [true, "relative L2 error 8.255e-02 (worst row 1.159e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.255e-02 (worst row 1.159e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.247e-02 (worst row 1.158e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t3k", "seed": 22, "res": {"base": [true, "relative L2 error 8.291e-02 (worst row 1.119e-01) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 8.291e-02 (worst row 1.119e-01) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 8.284e-02 (worst row 1.120e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4s", "seed": 21, "res": {"base": [true, "relative L2 error 6.473e-02 (worst row 9.487e-02) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 6.473e-02 (worst row 9.487e-02) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 6.474e-02 (worst row 9.488e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4s", "seed": 22, "res": {"base": [true, "relative L2 error 6.511e-02 (worst row 9.155e-02) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 6.511e-02 (worst row 9.155e-02) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 6.501e-02 (worst row 9.117e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2ds", "seed": 21, "res": {"base": [true, "relative L2 error 7.297e-02 (worst row 7.980e-02) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 7.284e-02 (worst row 8.003e-02) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 7.284e-02 (worst row 8.003e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2ds", "seed": 22, "res": {"base": [true, "relative L2 error 7.340e-02 (worst row 7.906e-02) [bound 0.150: 2.5 x "], "h16": [true, "relative L2 error 7.348e-02 (worst row 7.900e-02) [bound 0.150: 2.5 x "], "h16all": [true, "relative L2 error 7.348e-02 (worst row 7.900e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 21, "res": {"base": [true, "relative L2 error 3.919e-02 (worst row 4.720e-02) [bound 0.109: 2.5 x "], "h16": [true, "relative L2 error 3.913e-02 (worst row 4.706e-02) [bound 0.109: 2.5 x "], "h16all": [true, "relative L2 error 3.913e-02 (worst row 4.706e-02) [bound 0.109: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 22, "res": {"base": [true, "relative L2 error 3.890e-02 (worst row 4.462e-02) [bound 0.110: 2.5 x "], "h16": [true, "relative L2 error 3.896e-02 (worst row 4.461e-02) [bound 0.110: 2.5 x "], "h16all": [true, "relative L2 error 3.896e-02 (worst row 4.461e-02) [bound 0.110: 2.5 x "]}}
+ROW {"case": "v16f", "seed": 21, "med": {"base": 102.19, "h16": 106.45, "h16all": 106.35}, "gain": {"base": 1.0, "h16": 0.96, "h16all": 0.961}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v16f", "seed": 22, "med": {"base": 102.86, "h16": 107.46, "h16all": 107.63}, "gain": {"base": 1.0, "h16": 0.957, "h16all": 0.956}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 21, "med": {"base": 184.34, "h16": 191.57, "h16all": 191.36}, "gain": {"base": 1.0, "h16": 0.962, "h16all": 0.963}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 22, "med": {"base": 185.02, "h16": 192.0, "h16all": 192.11}, "gain": {"base": 1.0, "h16": 0.964, "h16all": 0.963}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v16s", "seed": 21, "med": {"base": 15.81, "h16": 15.62, "h16all": 15.86}, "gain": {"base": 1.0, "h16": 1.012, "h16all": 0.997}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v16s", "seed": 22, "med": {"base": 15.58, "h16": 15.7, "h16all": 15.82}, "gain": {"base": 1.0, "h16": 0.993, "h16all": 0.985}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v32s", "seed": 21, "med": {"base": 18.93, "h16": 19.04, "h16all": 19.12}, "gain": {"base": 1.0, "h16": 0.994, "h16all": 0.99}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v32s", "seed": 22, "med": {"base": 19.01, "h16": 18.9, "h16all": 19.02}, "gain": {"base": 1.0, "h16": 1.006, "h16all": 0.999}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v1s", "seed": 21, "med": {"base": 10.98, "h16": 10.98, "h16all": 11.01}, "gain": {"base": 1.0, "h16": 1.0, "h16all": 0.997}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v1s", "seed": 22, "med": {"base": 11.01, "h16": 10.99, "h16all": 10.98}, "gain": {"base": 1.0, "h16": 1.001, "h16all": 1.003}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v1f", "seed": 21, "med": {"base": 18.46, "h16": 18.53, "h16all": 18.74}, "gain": {"base": 1.0, "h16": 0.997, "h16all": 0.985}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+ROW {"case": "v1f", "seed": 22, "med": {"base": 18.43, "h16": 18.38, "h16all": 18.69}, "gain": {"base": 1.0, "h16": 1.003, "h16all": 0.986}, "ok": {"base": true, "h16": true, "h16all": true}, "msg": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-N3LEQdPtJDUWMQPnYEevpR

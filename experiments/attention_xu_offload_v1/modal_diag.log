@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VNl1TJo2UpmhtQb8lgOZkK
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 102.38, "nomufu": 125.2, "nocvt": 107.71, "p25": 107.09, "p50": 118.72, "p75": 130.29, "p100": 142.16}, "gain": {"base": 1.0, "nomufu": 0.818, "nocvt": 0.951, "p25": 0.956, "p50": 0.862, "p75": 0.786, "p100": 0.72}, "ok": {"base": true, "nomufu": false, "nocvt": false, "p25": true, "p50": true, "p75": true, "p100": true}, "msg": {"nomufu": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "nocvt": "relative L2 error 3.997e-01 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027"}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 99.62, "nomufu": 121.23, "nocvt": 104.56, "p25": 104.43, "p50": 115.31, "p75": 126.66, "p100": 139.01}, "gain": {"base": 1.0, "nomufu": 0.822, "nocvt": 0.953, "p25": 0.954, "p50": 0.864, "p75": 0.787, "p100": 0.717}, "ok": {"base": true, "nomufu": false, "nocvt": false, "p25": true, "p50": true, "p75": true, "p100": true}, "msg": {"nomufu": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "nocvt": "relative L2 error 4.027e-01 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 184.19, "nomufu": 229.44, "nocvt": 195.31, "p25": 192.96, "p50": 213.82, "p75": 235.15, "p100": 258.06}, "gain": {"base": 1.0, "nomufu": 0.803, "nocvt": 0.943, "p25": 0.955, "p50": 0.861, "p75": 0.783, "p100": 0.714}, "ok": {"base": true, "nomufu": false, "nocvt": false, "p25": true, "p50": true, "p75": true, "p100": true}, "msg": {"nomufu": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "nocvt": "relative L2 error 4.018e-01 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 182.66, "nomufu": 227.3, "nocvt": 193.39, "p25": 190.88, "p50": 211.47, "p75": 232.9, "p100": 254.58}, "gain": {"base": 1.0, "nomufu": 0.804, "nocvt": 0.944, "p25": 0.957, "p50": 0.864, "p75": 0.784, "p100": 0.717}, "ok": {"base": true, "nomufu": false, "nocvt": false, "p25": true, "p50": true, "p75": true, "p100": true}, "msg": {"nomufu": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "nocvt": "relative L2 error 3.971e-01 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02"}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-VNl1TJo2UpmhtQb8lgOZkK

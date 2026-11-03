@@ -1,2 +1,5 @@
 time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdict	why
 2026-11-03T19:45Z	muse_moe_w4a16	modal-only	wild/smoe	SMOE M<=8 dynamic-claim kernel (v1-v3 Modal screens, no judge run)	WILD	modal 8/8 correct	0.57-0.67x vs parent	n/a	bs1 46 vs 29us, bs8 133 vs 76us	REJECT	epilogue fence + slower ring than TINY build; not sent to judge
+2026-11-03T20:10Z	muse_attention_decode	modal-only	attention_xu_offload_v1	exp offload / fp16 P / early PV (Modal screens)	normal	modal 16/16	0.72-1.00x	n/a	verify16/32 full targeted	REJECT	per-tile chain latency bound
+2026-11-03T21:00Z	muse_decode_layer	modal-only	decoder_smallT_unfin_v1	merge unpooler+finish; L2 prefetch; PCX depth (Modal screens)	normal	modal pass	0.944-1.009x	n/a	decode-1/verify-1	REJECT	in-kernel barrier slower than launch boundary
+2026-11-03T21:30Z	muse_moe_w4a16	modal-only	moe_tail_stripe_v1/nw16_v1	two-segment schedule; 16 warps; DF=1 (Modal)	normal	modal pass	0.88-1.015x	n/a	bs1/bs8	REJECT	spread already at unit granularity

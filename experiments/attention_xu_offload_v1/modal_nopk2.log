@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bZZJ6jN2kd8yVMacOipZtM
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VARIANTS": "base,nopk2", "CASES": "v16f,v32f", "TESTS": "t2f,t4e,t1m,t2dc", "SEEDS": "31,32", "REPS": "20"} RETURNCODE 0
+TEST {"case": "t2f", "seed": 31, "res": {"base": [true, "relative L2 error 9.373e-02 (worst row 1.247e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 9.361e-02 (worst row 1.245e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2f", "seed": 32, "res": {"base": [true, "relative L2 error 8.783e-02 (worst row 1.284e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 8.810e-02 (worst row 1.281e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 31, "res": {"base": [true, "relative L2 error 8.644e-02 (worst row 1.323e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 8.642e-02 (worst row 1.323e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 32, "res": {"base": [true, "relative L2 error 8.272e-02 (worst row 1.073e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 8.275e-02 (worst row 1.073e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t1m", "seed": 31, "res": {"base": [true, "relative L2 error 9.323e-02 (worst row 1.075e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 9.323e-02 (worst row 1.075e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t1m", "seed": 32, "res": {"base": [true, "relative L2 error 8.881e-02 (worst row 1.095e-01) [bound 0.150: 2.5 x "], "nopk2": [true, "relative L2 error 8.881e-02 (worst row 1.095e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 31, "res": {"base": [true, "relative L2 error 3.984e-02 (worst row 5.178e-02) [bound 0.112: 2.5 x "], "nopk2": [true, "relative L2 error 3.974e-02 (worst row 5.140e-02) [bound 0.112: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 32, "res": {"base": [true, "relative L2 error 3.994e-02 (worst row 4.420e-02) [bound 0.111: 2.5 x "], "nopk2": [true, "relative L2 error 3.989e-02 (worst row 4.444e-02) [bound 0.111: 2.5 x "]}}
+ROW {"case": "v16f", "seed": 31, "med": {"base": 102.62, "nopk2": 102.18}, "gain": {"base": 1.0, "nopk2": 1.004}, "ok": {"base": true, "nopk2": true}, "msg": {}}
+ROW {"case": "v16f", "seed": 32, "med": {"base": 101.14, "nopk2": 100.98}, "gain": {"base": 1.0, "nopk2": 1.002}, "ok": {"base": true, "nopk2": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 31, "med": {"base": 183.39, "nopk2": 183.41}, "gain": {"base": 1.0, "nopk2": 1.0}, "ok": {"base": true, "nopk2": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 32, "med": {"base": 184.29, "nopk2": 184.46}, "gain": {"base": 1.0, "nopk2": 0.999}, "ok": {"base": true, "nopk2": true}, "msg": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bZZJ6jN2kd8yVMacOipZtM
