@@ -5,3 +5,5 @@ Transfers the readable compact QKV kernel and packing code from `decoder_readabl
 Private check `7ecb1b41c2444395` submitted; correctness and speed pending. Source parses. The full submission still needs a precision and source audit before public use. In particular, check fresh-thread CUDA context binding on the new fast path; the original parent wrapper binds context before dispatch.
 
 Local import failed because transferred type annotations use `torch` at module scope and this source did not import it there. V1 is invalid; its pending official check cannot validate later versions. Corrected v3 is in `../projection_fp32_compactq128_ctx_v3`.
+
+Official private check `7ecb1b41c2444395` failed at import with `NameError: name 'torch' is not defined`, confirming the local failure. It produced no score. Corrected v3/v4/v5 checks are independent and remain pending.
