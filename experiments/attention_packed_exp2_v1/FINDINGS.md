@@ -11,3 +11,5 @@ CPU sensitivity sweep (`analyze_rounding.py`, `rounding-analysis.txt`): with ide
 ## H200 paired screen: rejected
 
 Judge-image paired cold-L2 CUDA-graph screen, two seeds each for full verification at batches 16 and 32; 16 alternating replays per candidate. Both implementations passed the reference on all four cases. Parent → candidate median µs: 99.0 → 111.0, 180.8 → 203.7, 101.3 → 112.7, 180.0 → 201.6. Paired speedups were 0.887–0.899×, so reject this variant; no inference about other exp approximations or shapes. See `modal.log` and `driver.py`. To reproduce, copy the readable parent's `submission.py` to `dev/modal/_attention_readable_parent.py` before launching `run_judge_image.py`; remove that temporary copy afterwards. Private check `001105f5c7f74313` was still queued at the last poll.
+
+Official private check `001105f5c7f74313` passed at 2.48923× (95% CI 2.45189–2.54378×), below the readable parent check's 2.60414× (95% CI 2.56508–2.64320×). The official result reinforces the local regression; the candidate remains rejected.
