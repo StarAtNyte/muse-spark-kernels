@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_compactq128_safe_v4",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Preserve compact QKV and SK2 wins while making PyTorch BF16 GEMM fallbacks produce FP32 outputs before final BF16 cast.",
+  "sha256": "648d9409ccdfe5f92484e340e34137a53011935a763b02e0886f446974c210d6",
+  "created_at": 1793680553.1215763,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "received",
+  "job_id": "6dea36df13e74a6a"
+}
