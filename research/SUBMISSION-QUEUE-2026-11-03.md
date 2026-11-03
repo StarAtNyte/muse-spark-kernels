@@ -1,5 +1,7 @@
 # Checked candidates awaiting scored submissions
 
+> **2026-11-03 compliance hold:** The recommendations below predate the organizer clarification. Do not submit these historical decoder candidates: they contain encoded source and/or BF16 projection split reductions. The scored stack finished at 2.242× and also contains encoded source. Retain this queue for provenance only; use the [rule audit](compliance/2026-11-03-rule-audit.md) and complete source and precision audits on replacement candidates before any submission.
+
 Audit time: 2026-11-03 03:37 UTC. The official CLI reported decoder scored quota **0/5 left**, with 6 private checks left. Quotas and ranks can change; query `okc problems` and `okc jobs` before submission. There were no live jobs at the audit. No candidate below has a scored submission recorded. Check scores are private measurements and their confidence intervals overlap the public decoder best **2.26032×**; none establishes a leaderboard improvement.
 
 | Candidate | What changed | Full private check | Exact source SHA-256 | Next step |
