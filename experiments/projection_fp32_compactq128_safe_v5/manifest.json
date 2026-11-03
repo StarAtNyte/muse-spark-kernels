@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_compactq128_safe_v5",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Tune cuBLASLt alternatives against the FP32-output fallback actually used at runtime; retain stacked QKV improvements.",
+  "sha256": "4d0355100383ae164c8013c5d911a8e0fbda8dfd25bedc50e5f02889630a538c",
+  "created_at": 1793680655.1132724,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "received",
+  "job_id": "e62a07b64045453a"
+}
