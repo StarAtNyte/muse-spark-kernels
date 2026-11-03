@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-eX4HSRk8dRgC5n25g75d9A
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "6:100,6:80,6:0"} RETURNCODE 0
+START
+[mfab] modules built at 90s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 7.02e-06
+prepare_s 203.3 True
+empty_graph_us 2.94
+CHECK old 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+CHECK n6s100 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+CHECK n6s80 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+CHECK n6s0 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+ROW {"bs": 1, "seed": 5041226219440759413, "dist": "normal", "experts": 3, "us_minus_empty": {"old": 29.5, "n6s100": 46.78, "n6s80": 46.69, "n6s0": 45.41}, "gain": {"n6s100": 0.631, "n6s80": 0.632, "n6s0": 0.65}}
+CHECK old 1 12 normal True relative L2 error 2.588e-03 (worst row 2.588e-03)
+CHECK n6s100 1 12 normal True relative L2 error 2.589e-03 (worst row 2.589e-03)
+CHECK n6s80 1 12 normal True relative L2 error 2.589e-03 (worst row 2.589e-03)
+CHECK n6s0 1 12 normal True relative L2 error 2.589e-03 (worst row 2.589e-03)
+ROW {"bs": 1, "seed": 12, "dist": "normal", "experts": 2, "us_minus_empty": {"old": 22.99, "n6s100": 35.6, "n6s80": 35.73, "n6s0": 34.18}, "gain": {"n6s100": 0.646, "n6s80": 0.643, "n6s0": 0.673}}
+CHECK old 4 13 normal True relative L2 error 2.523e-03 (worst row 2.575e-03)
+CHECK n6s100 4 13 normal True relative L2 error 2.523e-03 (worst row 2.575e-03)
+CHECK n6s80 4 13 normal True relative L2 error 2.523e-03 (worst row 2.575e-03)
+CHECK n6s0 4 13 normal True relative L2 error 2.523e-03 (worst row 2.575e-03)
+ROW {"bs": 4, "seed": 13, "dist": "normal", "experts": 5, "us_minus_empty": {"old": 43.31, "n6s100": 71.95, "n6s80": 70.8, "n6s0": 68.74}, "gain": {"n6s100": 0.602, "n6s80": 0.612, "n6s0": 0.63}}
+CHECK old 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.711e-03)
+CHECK n6s100 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.710e-03)
+CHECK n6s80 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.710e-03)
+CHECK n6s0 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.710e-03)
+ROW {"bs": 8, "seed": 5041622730710591082, "dist": "normal", "experts": 10, "us_minus_empty": {"old": 76.37, "n6s100": 133.22, "n6s80": 130.22, "n6s0": 128.88}, "gain": {"n6s100": 0.573, "n6s80": 0.586, "n6s0": 0.593}}
+CHECK old 8 15 skewed True relative L2 error 2.537e-03 (worst row 2.607e-03)
+CHECK n6s100 8 15 skewed True relative L2 error 2.537e-03 (worst row 2.606e-03)
+CHECK n6s80 8 15 skewed True relative L2 error 2.537e-03 (worst row 2.606e-03)
+CHECK n6s0 8 15 skewed True relative L2 error 2.537e-03 (worst row 2.606e-03)
+ROW {"bs": 8, "seed": 15, "dist": "skewed", "experts": 4, "us_minus_empty": {"old": 38.32, "n6s100": 61.39, "n6s80": 60.8, "n6s0": 58.42}, "gain": {"n6s100": 0.624, "n6s80": 0.63, "n6s0": 0.656}}
+DONE
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-eX4HSRk8dRgC5n25g75d9A

@@ -1,1 +1,2 @@
 time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdict	why
+2026-11-03T19:45Z	muse_moe_w4a16	modal-only	wild/smoe	SMOE M<=8 dynamic-claim kernel (v1-v3 Modal screens, no judge run)	WILD	modal 8/8 correct	0.57-0.67x vs parent	n/a	bs1 46 vs 29us, bs8 133 vs 76us	REJECT	epilogue fence + slower ring than TINY build; not sent to judge

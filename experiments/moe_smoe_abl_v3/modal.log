@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3GbQQ5NLHMESrv20YZTH32
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VAR": "6:100:0:1,6:100:1:1,6:100:2:1,6:100:0:4"} RETURNCODE 0
+START
+[mfab] modules built at 78s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+prepare_s 173.2 True
+empty_graph_us 3.23
+CHECK old 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+CHECK n6s100x0c1 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+CHECK n6s100x0c4 1 5041226219440759413 normal True relative L2 error 2.579e-03 (worst row 2.579e-03)
+ROW {"bs": 1, "seed": 5041226219440759413, "dist": "normal", "experts": 3, "us_minus_empty": {"old": 29.09, "n6s100x0c1": 46.08, "n6s100x1c1": 36.27, "n6s100x2c1": 33.79, "n6s100x0c4": 46.5}, "gain": {"n6s100x0c1": 0.631, "n6s100x1c1": 0.802, "n6s100x2c1": 0.861, "n6s100x0c4": 0.626}}
+CHECK old 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.711e-03)
+CHECK n6s100x0c1 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.710e-03)
+CHECK n6s100x0c4 8 5041622730710591082 normal True relative L2 error 2.577e-03 (worst row 2.710e-03)
+ROW {"bs": 8, "seed": 5041622730710591082, "dist": "normal", "experts": 10, "us_minus_empty": {"old": 76.54, "n6s100x0c1": 133.52, "n6s100x1c1": 95.49, "n6s100x2c1": 96.26, "n6s100x0c4": 134.53}, "gain": {"n6s100x0c1": 0.573, "n6s100x1c1": 0.802, "n6s100x2c1": 0.795, "n6s100x0c4": 0.569}}
+DONE
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-3GbQQ5NLHMESrv20YZTH32
