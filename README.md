@@ -1,5 +1,7 @@
 # Muse Spark kernel experiments
 
+> **Rule audit, 2026-11-03:** The attention and decoder leaderboard bests below use encoded source and are at risk under the organizer's readable-source rule. Some BF16 projection paths also require a precision audit. Historical scores and experiment logs are retained; they must not be interpreted as confirmed eligible results. The latest decoder stack scored 2.242× (13/13) but has the same encoded-source issue. See the [rule audit](research/compliance/2026-11-03-rule-audit.md) for evidence, replacement work, and pending withdrawal decisions.
+
 Account: `StarAtNyte`. CLI: `~/.okc/bin/okc`.
 
 The first target is `kernels/muse_bf16_proj/submission.py`. Its adjacent
@@ -80,7 +82,7 @@ for offline SM90 compilation; this does not provide H200 runtime validation.
 Modal H200 experiments run through `dev/modal/run_h200.py`; see
 [the PTX and CuTe campaign](research/PTX-CAMPAIGN.md) for results and caveats.
 
-Decoder stack submission: exact checked compact projection + tiny MoE warp-order source is in scored job `db40bea1008841dc`; result pending.
+Decoder stack submission `db40bea1008841dc` scored 2.242× (13/13); it contains encoded source and is not an eligible replacement under the clarified rule.
 
 Pending scored candidates and exact checked hashes are tracked in [the submission queue](research/SUBMISSION-QUEUE-2026-11-03.md). The latest [public-code refresh](research/PUBLIC-CODE-REFRESH-2026-11-03.md) records the repositories and commits reviewed.
 

@@ -1,0 +1,23 @@
+{
+  "name": "attention_readable_fp32_path_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "Restore readable nonencoded attention path using FP32 tensor-core accumulation and FP32 cross-CTA reductions after rule clarification.",
+  "sha256": "ea65a78fd87b50539b5ffbdec6b703ee6444dd393890de79a16297e1377245f8",
+  "created_at": 1793677644.7829022,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "queued",
+  "job_id": "12167249d81c46ee",
+  "updated_at": 1793677895.2426364
+}

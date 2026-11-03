@@ -1,0 +1,22 @@
+{
+  "name": "decoder_readable_fp32_reduction_v1",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Replace encoded source with readable CUDA and disable rs128 BF16 split reduction; measure correctness and performance before full precision audit.",
+  "sha256": "d9b86ecfaa3906ea864f4a27a6735d5a1bff5c0b0cc84e4aa87a65fb61d38ed5",
+  "created_at": 1793677879.0611713,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    }
+  },
+  "status": "received",
+  "job_id": "bbe34f0cbe494c88"
+}

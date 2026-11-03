@@ -1,0 +1,340 @@
+{
+  "captured_at_utc": "2026-11-03T03:49:05.586557+00:00",
+  "method": "AST scan of archived scored submissions; official status polled by job ID",
+  "jobs": [
+    {
+      "job_id": "6f2b2edf215d4ea3",
+      "problem": "muse_attention_decode",
+      "source": "experiments/scored_attention_vp2_lb2_v1/submission.py",
+      "sha256": "691eaa9134ab68a874b73269aa5e5677c748d7cb4234a764c66949a0c8396aef",
+      "markers": [
+        "_kz_b64.b64decode",
+        "_kz_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.6493911822625438,
+      "error": null
+    },
+    {
+      "job_id": "7983e444100b40d5",
+      "problem": "muse_attention_decode",
+      "source": "experiments/scored_attention_stack_kz_routes_v2/submission.py",
+      "sha256": "8b3f125b166c82688c1892888234e48541c09891a2f946948b0e2d3007cea9a9",
+      "markers": [
+        "_kz_b64.b64decode",
+        "_kz_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.595052295138727,
+      "error": null
+    },
+    {
+      "job_id": "7d250883e6b94c50",
+      "problem": "muse_attention_decode",
+      "source": "experiments/scored_attention_warm_route_verify_v1/submission.py",
+      "sha256": "573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1da",
+      "markers": [
+        "_kz_b64.b64decode",
+        "_kz_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.6328107251706654,
+      "error": null
+    },
+    {
+      "job_id": "cba8e99746cb4aac",
+      "problem": "muse_attention_decode",
+      "source": "experiments/scored_attention_vp2_lb3_v1/submission.py",
+      "sha256": "58b1caebb874188942936c321891b9ae58c07a16dac46661728e8b09bd728e65",
+      "markers": [
+        "_kz_b64.b64decode",
+        "_kz_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.63778111350484,
+      "error": null
+    },
+    {
+      "job_id": "e503062862744b16",
+      "problem": "muse_attention_decode",
+      "source": "experiments/scored_attention_wst_b32_v1/submission.py",
+      "sha256": "2235ca0ca95ac673bfb9f4c2013e27743ff3f149c01191f03b1ce327246a0066",
+      "markers": [
+        "_kz_b64.b64decode",
+        "_kz_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.638408100180329,
+      "error": null
+    },
+    {
+      "job_id": "4ed546f6ab2748cb",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_four_routes_v1/submission.py",
+      "sha256": "e270e24d3613bf41fe747fb2ed1da009a6737c466b1621908ea49ad9b09002c1",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.518260011822942,
+      "error": null
+    },
+    {
+      "job_id": "658927e88d4f4221",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_nathen_v18/submission.py",
+      "sha256": "6a8f153a5cb6331c97c279bb732df4d3d8ea4b780be63daff310d398d9a80f06",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.5176841446072515,
+      "error": null
+    },
+    {
+      "job_id": "790be595ca8f431a",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_stack_alygg_routes_v1/submission.py",
+      "sha256": "fd777982e19718118a94e7d5565bd42af5d94121203a8c63db82cc96905fdeed",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.5530172334707082,
+      "error": null
+    },
+    {
+      "job_id": "beb3e26afb2544c9",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_vjeux_hybrid_v1/submission.py",
+      "sha256": "d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.539506245183982,
+      "error": null
+    },
+    {
+      "job_id": "d2dd2aec03f94dbf",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_stack_pool_unpool_v1/submission.py",
+      "sha256": "b8f85e80b0b75ea75eb452d60bab7e49840c3151206712b72b72894661544b69",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.5345576789857185,
+      "error": null
+    },
+    {
+      "job_id": "df44909a5b3540ff",
+      "problem": "muse_bf16_proj",
+      "source": "experiments/scored_projection_router256_v1/submission.py",
+      "sha256": "d2700a04446d44a03be32c3fc7e56acc2498196b45c6f4a1303438c24d4fa3e6",
+      "markers": [
+        "_zsrc",
+        "_zsrc_b64.b64decode",
+        "_zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.5229685326963995,
+      "error": null
+    },
+    {
+      "job_id": "0dc7807a48754dfc",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_stack_verify_bucket_v2/submission.py",
+      "sha256": "c2ececd7c9af01b6c575ecb02f2bf1faf1d48f8242056bfe9e3df0d273206a68",
+      "markers": [
+        "_np__zsrc_b64.b64decode",
+        "_np__zsrc_zlib.decompress",
+        "_stack_base64.b64decode",
+        "_stack_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.7204333856168732,
+      "error": null
+    },
+    {
+      "job_id": "1c4e4524414c407f",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_projection_o_small_v1/submission.py",
+      "sha256": "fc381d7c31b744b067c979f64a5846fe6de59697f597cb6bcc29f91c1d7bd7f9",
+      "markers": [
+        "_proj_b64.b64decode",
+        "_proj_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.087434184167175,
+      "error": null
+    },
+    {
+      "job_id": "62c58c7e3c3d4305",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_stack_m128_fullverify4_repeat_v1/submission.py",
+      "sha256": "841aa48059c1ff7635d59ffbe31a9b71e90bc665c13dc7e7784180f14ec8c63e",
+      "markers": [
+        "_np__zsrc_b64.b64decode",
+        "_np__zsrc_zlib.decompress",
+        "_stack_base64.b64decode",
+        "_stack_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.7469483559774144,
+      "error": null
+    },
+    {
+      "job_id": "6cf1be8d60e84ac7",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_projection_gathb7_v1/submission.py",
+      "sha256": "abea8df7eeea8ebff55d4eb46dbe24caf96d6fc6ca95b79f022965e09fe3f3c5",
+      "markers": [
+        "_proj_b64.b64decode",
+        "_proj_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.0926188702783133,
+      "error": null
+    },
+    {
+      "job_id": "6cfa2796327a4496",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_public_projection_router_v2/submission.py",
+      "sha256": "eca36c047514202813ddf2219c3f8507ab8865c9cf0a9de8ec9f8d4dee771f11",
+      "markers": [
+        "_np__zsrc_b64.b64decode",
+        "_np__zsrc_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.6473079752503683,
+      "error": null
+    },
+    {
+      "job_id": "b72f02c7eb8745f5",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_compact_qkv_o_v1/submission.py",
+      "sha256": "9e7c8b73b0471d04f4f0cf451bea6ad372d7356e3103e7f57d7253df234aebb2",
+      "markers": [
+        "_qkv_b64.b64decode",
+        "_qkv_zlib.decompress",
+        "_zsrc"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.2603208825001473,
+      "error": null
+    },
+    {
+      "job_id": "cc5bca81d4194820",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_bigproj_qkv128_o128_256_v1/submission.py",
+      "sha256": "7e006f27297901699e39755f2f2cba8238b91c16abd6af85b37acec1dd8531d6",
+      "markers": [
+        "_proj_b64.b64decode",
+        "_proj_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 2.080174877711709,
+      "error": null
+    },
+    {
+      "job_id": "db40bea1008841dc",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_compact_tinywarp_stack_v1/submission.py",
+      "sha256": "febc0d6edc62ce08a698f8868747cff412bbc24a5c834dbf02c1ca88a581fbde",
+      "markers": [
+        "_qkv_b64.b64decode",
+        "_qkv_zlib.decompress",
+        "_zsrc"
+      ],
+      "status": "running",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": null,
+      "speedup": null,
+      "error": null
+    },
+    {
+      "job_id": "df660fdeb1c241a7",
+      "problem": "muse_decode_layer",
+      "source": "experiments/scored_decoder_stack_v3/submission.py",
+      "sha256": "1aac7a8e9c7b4318a236ff63cfc3849656ca4bbe1fa0d866be25b1002ca28e12",
+      "markers": [
+        "_np__zsrc_b64.b64decode",
+        "_np__zsrc_zlib.decompress",
+        "_stack_base64.b64decode",
+        "_stack_zlib.decompress"
+      ],
+      "status": "done",
+      "mode": "run",
+      "withdrawn": null,
+      "passed": true,
+      "speedup": 1.7155856216851488,
+      "error": null
+    }
+  ]
+}
