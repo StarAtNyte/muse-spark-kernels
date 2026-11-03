@@ -1,0 +1,23 @@
+{
+  "name": "projection_fp32_compactq128_bucket_v7",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Replace exhaustive off-score route tuning with general token-count buckets using existing prepared FP32-safe kernels.",
+  "sha256": "d785aa19a58a8fe5be5d34406496f649340273ffc8086ed46051dba46bacd483",
+  "created_at": 1793704590.316272,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "queued",
+  "job_id": "a6d1ceab0bc24fb5",
+  "updated_at": 1793704632.3618042
+}

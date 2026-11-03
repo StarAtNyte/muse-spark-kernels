@@ -1,0 +1,139 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-opzeA3sTGLi1ZibJYTWeDC
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RT12 off: RT12 disabled
+BUILD pw57_flush 47.3s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   10.05 us   0.63 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.46 us   0.84 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   10.18 us   1.65 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.08 us   1.66 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.50 us two_node 5.18 us overhead 3.81 us
+PREP flush+fixed done at 54s
+lt qkv_gate m128 heur 22656.00 best 0:66.92.1.0.0.2.35.0.5 18784.00 (662 tried, 2.5s)
+lt pooler m128 heur 30944.00 best 2:66.15.1.0.0.5.35.0.5 23168.00 (1161 tried, 5.5s)
+lt unpooler m128 heur 25792.00 best 2:66.18.1.0.0.2.35.0.5 22240.00 (799 tried, 7.5s)
+gv qkv_gate m8 v12 12832.00 best 1.1.1.2.16.8.1.1.2.1 6590.77 (ref 1.1.1.2.16.8.1.1.2.1 6590.77)
+  v12:12832.00 1.1.1.2.16.8.1.1.2.1:6590.77 1.1.2.1.8.16.1.1.0.1:9484.07 1.1.1.1.16.8.1.1.2.8193:8825.84 1.1.2.1.4.16.2.1.0.0:10422.83 1.1.2.1.4.16.2.1.0.1:9985.68 1.1.2.1.4.8.4.1.0.1:13760.92
+gv o m8 v12 5184.00 best 1.1.2.1.8.2.1.1.0.1 3283.31 (ref 1.1.2.1.8.2.1.1.0.1 3283.31)
+  v12:5184.00 1.1.2.1.8.2.1.1.0.1:3283.31 1.1.2.1.8.2.1.1.0.0:4244.66 1.1.2.2.4.4.1.1.0.1:4495.44 1.1.2.1.4.4.1.1.0.1:4920.88
+gv o m16 v12 4960.00 best 1.2.2.1.8.2.1.1.0.1 3847.90 (ref 1.2.2.1.8.2.1.1.0.1 3847.90)
+  v12:4960.00 1.2.2.1.8.2.1.1.0.1:3847.90 1.2.2.1.8.2.1.1.0.0:4354.06 1.2.2.1.8.2.1.1.2.1:7102.93 1.2.2.2.4.4.1.1.0.1:5197.48 1.2.2.2.4.4.1.1.2.1:5118.10 1.2.1.1.4.4.1.1.2.1:5042.46
+gv pooler m8 v12 18816.00 best 1.1.1.2.16.8.1.1.0.3 11054.63 (ref 1.1.1.2.16.8.1.1.0.3 11054.63)
+  v12:18816.00 1.1.1.2.16.8.1.1.0.3:11054.63 1.1.2.2.8.16.1.1.0.1:13106.65 1.1.2.2.8.16.1.1.0.0:12859.60 1.1.2.1.8.16.1.1.0.1:12943.85
+gv pooler m16 v12 19008.00 best 1.2.2.2.8.16.1.1.0.1 11533.22 (ref 1.2.2.2.8.16.1.1.0.1 11533.22)
+  v12:19008.00 1.2.2.2.8.16.1.1.0.1:11533.22 1.2.2.2.8.16.1.1.0.0:12813.54 1.2.2.1.8.16.1.1.2.1:14000.82 1.2.2.1.8.16.1.1.0.1:16153.19
+gv unpooler m8 v12 5888.00 best 1.1.2.1.16.4.1.1.0.1 1930.13 (ref 1.1.2.1.16.4.1.1.0.1 1930.13)
+  v12:5888.00 1.1.2.1.16.4.1.1.0.1:1930.13 1.1.2.1.16.4.1.1.0.0:3675.23 1.1.2.1.8.2.4.1.0.1:4501.49 1.1.2.1.8.4.2.1.0.1:4941.94 1.1.2.1.16.4.1.1.2.1:3624.15
+PREP r6 done in 73s
+PREP phase rq done at 73s
+BAKE qkv_gate m=8 r6 12.93 (ref)
+BAKE qkv_gate m=8 q144k16 15.10 (ref r6 12.93)
+PICK qkv_gate m=8 r6 12.93 (ref r6 12.93)
+PREP phase gx done at 73s
+PREP phase rq32 done at 73s
+PREP phase router done at 73s
+PREP done in 73s
+ROW {"layer": "qkv_gate", "m": 7, "correct": {"base": true, "cand": true}, "base_us": 13.392, "cand_us": 13.328, "gain": 1.0048}
+ROW {"layer": "qkv_gate", "m": 9, "correct": {"base": true, "cand": true}, "base_us": 20.336, "cand_us": 13.888, "gain": 1.4643}
+ROW {"layer": "qkv_gate", "m": 15, "correct": {"base": true, "cand": true}, "base_us": 20.24, "cand_us": 13.952, "gain": 1.4507}
+ROW {"layer": "qkv_gate", "m": 17, "correct": {"base": true, "cand": true}, "base_us": 20.304, "cand_us": 14.608, "gain": 1.3899}
+ROW {"layer": "qkv_gate", "m": 31, "correct": {"base": true, "cand": true}, "base_us": 20.64, "cand_us": 15.072, "gain": 1.3694}
+ROW {"layer": "qkv_gate", "m": 33, "correct": {"base": true, "cand": true}, "base_us": 20.944, "cand_us": 21.072, "gain": 0.9939}
+ROW {"layer": "qkv_gate", "m": 63, "correct": {"base": true, "cand": true}, "base_us": 21.328, "cand_us": 21.344, "gain": 0.9993}
+ROW {"layer": "qkv_gate", "m": 127, "correct": {"base": true, "cand": true}, "base_us": 23.504, "cand_us": 23.12, "gain": 1.0166}
+ROW {"layer": "qkv_gate", "m": 129, "correct": {"base": true, "cand": true}, "base_us": 22.912, "cand_us": 23.136, "gain": 0.9903}
+ROW {"layer": "qkv_gate", "m": 200, "correct": {"base": true, "cand": true}, "base_us": 31.856, "cand_us": 31.856, "gain": 1.0}
+ROW {"layer": "qkv_gate", "m": 255, "correct": {"base": true, "cand": true}, "base_us": 25.84, "cand_us": 25.68, "gain": 1.0062}
+ROW {"layer": "qkv_gate", "m": 300, "correct": {"base": true, "cand": true}, "base_us": 26.656, "cand_us": 26.384, "gain": 1.0103}
+ROW {"layer": "o", "m": 7, "correct": {"base": true, "cand": true}, "base_us": 9.456, "cand_us": 9.456, "gain": 1.0}
+ROW {"layer": "o", "m": 9, "correct": {"base": true, "cand": true}, "base_us": 9.472, "cand_us": 9.552, "gain": 0.9916}
+ROW {"layer": "o", "m": 15, "correct": {"base": true, "cand": true}, "base_us": 9.648, "cand_us": 9.712, "gain": 0.9934}
+ROW {"layer": "o", "m": 17, "correct": {"base": true, "cand": true}, "base_us": 12.864, "cand_us": 9.792, "gain": 1.3137}
+ROW {"layer": "o", "m": 31, "correct": {"base": true, "cand": true}, "base_us": 12.56, "cand_us": 10.192, "gain": 1.2323}
+ROW {"layer": "o", "m": 33, "correct": {"base": true, "cand": true}, "base_us": 12.928, "cand_us": 12.816, "gain": 1.0087}
+ROW {"layer": "o", "m": 63, "correct": {"base": true, "cand": true}, "base_us": 13.056, "cand_us": 12.816, "gain": 1.0187}
+ROW {"layer": "o", "m": 127, "correct": {"base": true, "cand": true}, "base_us": 14.24, "cand_us": 14.048, "gain": 1.0137}
+ROW {"layer": "o", "m": 129, "correct": {"base": true, "cand": true}, "base_us": 15.424, "cand_us": 15.184, "gain": 1.0158}
+ROW {"layer": "o", "m": 200, "correct": {"base": true, "cand": true}, "base_us": 15.888, "cand_us": 15.728, "gain": 1.0102}
+ROW {"layer": "o", "m": 255, "correct": {"base": true, "cand": true}, "base_us": 17.568, "cand_us": 17.616, "gain": 0.9973}
+ROW {"layer": "o", "m": 300, "correct": {"base": true, "cand": true}, "base_us": 18.992, "cand_us": 18.944, "gain": 1.0025}
+ROW {"layer": "pooler", "m": 7, "correct": {"base": true, "cand": true}, "base_us": 17.696, "cand_us": 17.904, "gain": 0.9884}
+ROW {"layer": "pooler", "m": 9, "correct": {"base": true, "cand": true}, "base_us": 18.704, "cand_us": 18.32, "gain": 1.021}
+ROW {"layer": "pooler", "m": 15, "correct": {"base": true, "cand": true}, "base_us": 18.112, "cand_us": 18.192, "gain": 0.9956}
+ROW {"layer": "pooler", "m": 17, "correct": {"base": true, "cand": true}, "base_us": 26.784, "cand_us": 19.344, "gain": 1.3846}
+ROW {"layer": "pooler", "m": 31, "correct": {"base": true, "cand": true}, "base_us": 26.8, "cand_us": 19.344, "gain": 1.3854}
+ROW {"layer": "pooler", "m": 33, "correct": {"base": true, "cand": true}, "base_us": 27.296, "cand_us": 26.992, "gain": 1.0113}
+ROW {"layer": "pooler", "m": 63, "correct": {"base": true, "cand": true}, "base_us": 28.336, "cand_us": 27.904, "gain": 1.0155}
+ROW {"layer": "pooler", "m": 127, "correct": {"base": true, "cand": true}, "base_us": 28.96, "cand_us": 28.656, "gain": 1.0106}
+ROW {"layer": "pooler", "m": 129, "correct": {"base": true, "cand": true}, "base_us": 30.048, "cand_us": 30.432, "gain": 0.9874}
+ROW {"layer": "pooler", "m": 200, "correct": {"base": true, "cand": true}, "base_us": 36.976, "cand_us": 37.296, "gain": 0.9914}
+ROW {"layer": "pooler", "m": 255, "correct": {"base": true, "cand": true}, "base_us": 41.152, "cand_us": 40.336, "gain": 1.0202}
+ROW {"layer": "pooler", "m": 300, "correct": {"base": true, "cand": true}, "base_us": 45.92, "cand_us": 45.488, "gain": 1.0095}
+ROW {"layer": "unpooler", "m": 7, "correct": {"base": true, "cand": true}, "base_us": 8.656, "cand_us": 8.624, "gain": 1.0037}
+ROW {"layer": "unpooler", "m": 9, "correct": {"base": true, "cand": true}, "base_us": 24.208, "cand_us": 18.224, "gain": 1.3284}
+ROW {"layer": "unpooler", "m": 15, "correct": {"base": true, "cand": true}, "base_us": 23.968, "cand_us": 17.968, "gain": 1.3339}
+ROW {"layer": "unpooler", "m": 17, "correct": {"base": true, "cand": true}, "base_us": 24.56, "cand_us": 18.912, "gain": 1.2986}
+ROW {"layer": "unpooler", "m": 31, "correct": {"base": true, "cand": true}, "base_us": 24.288, "cand_us": 19.312, "gain": 1.2577}
+ROW {"layer": "unpooler", "m": 33, "correct": {"base": true, "cand": true}, "base_us": 24.72, "cand_us": 24.624, "gain": 1.0039}
+ROW {"layer": "unpooler", "m": 63, "correct": {"base": true, "cand": true}, "base_us": 24.96, "cand_us": 24.88, "gain": 1.0032}
+ROW {"layer": "unpooler", "m": 127, "correct": {"base": true, "cand": true}, "base_us": 27.056, "cand_us": 26.208, "gain": 1.0324}
+ROW {"layer": "unpooler", "m": 129, "correct": {"base": true, "cand": true}, "base_us": 29.232, "cand_us": 28.992, "gain": 1.0083}
+ROW {"layer": "unpooler", "m": 200, "correct": {"base": true, "cand": true}, "base_us": 28.304, "cand_us": 28.704, "gain": 0.9861}
+ROW {"layer": "unpooler", "m": 255, "correct": {"base": true, "cand": true}, "base_us": 33.248, "cand_us": 32.896, "gain": 1.0107}
+ROW {"layer": "unpooler", "m": 300, "correct": {"base": true, "cand": true}, "base_us": 37.184, "cand_us": 37.456, "gain": 0.9927}
+ROW {"layer": "router", "m": 7, "correct": {"base": true, "cand": true}, "base_us": 10.032, "cand_us": 8.48, "gain": 1.183}
+ROW {"layer": "router", "m": 9, "correct": {"base": true, "cand": true}, "base_us": 10.224, "cand_us": 8.576, "gain": 1.1922}
+ROW {"layer": "router", "m": 15, "correct": {"base": true, "cand": true}, "base_us": 10.288, "cand_us": 8.592, "gain": 1.1974}
+ROW {"layer": "router", "m": 17, "correct": {"base": true, "cand": true}, "base_us": 10.656, "cand_us": 9.12, "gain": 1.1684}
+ROW {"layer": "router", "m": 31, "correct": {"base": true, "cand": true}, "base_us": 11.296, "cand_us": 9.264, "gain": 1.2193}
+ROW {"layer": "router", "m": 33, "correct": {"base": true, "cand": true}, "base_us": 14.784, "cand_us": 9.392, "gain": 1.5741}
+ROW {"layer": "router", "m": 63, "correct": {"base": true, "cand": true}, "base_us": 14.928, "cand_us": 9.472, "gain": 1.576}
+ROW {"layer": "router", "m": 127, "correct": {"base": true, "cand": true}, "base_us": 16.352, "cand_us": 10.336, "gain": 1.582}
+ROW {"layer": "router", "m": 129, "correct": {"base": true, "cand": true}, "base_us": 15.552, "cand_us": 10.56, "gain": 1.4727}
+ROW {"layer": "router", "m": 200, "correct": {"base": true, "cand": true}, "base_us": 16.784, "cand_us": 11.216, "gain": 1.4964}
+ROW {"layer": "router", "m": 255, "correct": {"base": true, "cand": true}, "base_us": 16.464, "cand_us": 11.28, "gain": 1.4596}
+ROW {"layer": "router", "m": 300, "correct": {"base": true, "cand": true}, "base_us": 17.44, "cand_us": 17.264, "gain": 1.0102}
+DONE
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.51 sk2=13.09 torch=20.13 -> cgemv
+[okc] tune o m=1: cgemv=8.83 sk2=9.41 torch=11.97 -> cgemv
+[okc] tune pooler m=1: cgemv=17.47 sk2=18.02 torch=27.2 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.3 sgemv=7.3 sk2=8.06 torch=12.74 -> cgemv
+[okc] tune router m=1: rgemv=7.42 sk2=8.61 torch=19.46 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.34 torch=20.0 -> sk2
+[okc] tune unpooler m=16: sk2=17.73 torch=24.06 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.82 torch=20.38 -> sk2
+[okc] tune o m=32: sk2=9.6 torch=12.22 -> sk2
+[okc] tune pooler m=32: sk2=18.94 torch=27.97 -> sk2
+[okc] tune unpooler m=32: sk2=18.88 torch=24.54 -> sk2
+[okc] tune router m=128: rk=10.05 wide=12.45 gemm=13.54 torch=21.89 -> rk
+[okc] tune router m=256: rk=10.53 wide=13.6 gemm=17.31 torch=22.78 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-opzeA3sTGLi1ZibJYTWeDC
