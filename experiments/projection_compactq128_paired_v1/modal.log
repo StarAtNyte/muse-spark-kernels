@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2QCYmMYzudnC1HHKPqiK35
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RT12 off: RT12 disabled
+BUILD pw57_flush 62.7s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   12.93 us   0.49 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.36 us   0.86 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.93 us   1.30 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB    9.92 us   1.69 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.46 us two_node 5.22 us overhead 3.71 us
+PREP flush+fixed done at 71s
+lt qkv_gate m128 heur 20672.00 best 1:66.80.1.0.0.2.35.0.5 18976.00 (1154 tried, 3.9s)
+PREP r6 done in 97s
+PREP phase rq done at 97s
+PREP phase gx done at 97s
+PREP phase rq32 done at 97s
+PREP phase router done at 97s
+PREP done in 97s
+ROW {"seed": 61, "base_us": 19.552, "cand_us": 18.016, "gain": 1.0853, "correct": {"base": true, "cand": true}}
+ROW {"seed": 62, "base_us": 19.696, "cand_us": 17.984, "gain": 1.0952, "correct": {"base": true, "cand": true}}
+ROW {"seed": 63, "base_us": 19.52, "cand_us": 17.968, "gain": 1.0864, "correct": {"base": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-2QCYmMYzudnC1HHKPqiK35
