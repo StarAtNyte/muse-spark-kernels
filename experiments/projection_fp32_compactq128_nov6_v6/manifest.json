@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_compactq128_nov6_v6",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Disable exhaustive 973-entry per-token-count routing while retaining stacked FP32 QKV paths and verify judge correctness and speed.",
+  "sha256": "f994988bd664c0f07fbeb0efa26315433efa383668147c8382ccd08b8b5fda8d",
+  "created_at": 1793704240.4219186,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 6,
+      "left": 14
+    }
+  },
+  "status": "received",
+  "job_id": "05a1587da81d4434"
+}
