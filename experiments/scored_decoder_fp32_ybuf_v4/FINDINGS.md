@@ -1,0 +1,3 @@
+# Scored decoder FP32-storage candidate
+
+Exact checked source SHA-256 `616187c9dac236851cc4b76bb65cd1cf9c85490db96f241a2fb1fa3d0fcff2cc`; private check `2996c1822f9d417a` passed 13/13 at 2.24462× (95% CI 2.21095–2.27829×). Readable source disables the identified BF16 split-reduction backend, retains the identified PyTorch GEMM fallbacks in FP32 through final output, and uses FP32 per-expert WGS storage for the previously uncertain MoE path. Scored job `529df1f504434040` submitted; result pending. Source-level reviews are retained in `research/compliance/2026-11-03-rule-audit.md`; correctness on the official test set does not prove all possible inputs.

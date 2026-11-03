@@ -1,0 +1,7 @@
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 104s
+[mfab] moe T= 32 prod median   146.7 us  speedup vs barrier twin (twin without SC6) 1.0256 (per seed 1.026 1.028 1.006 1.022)  max|d| 0
+[mfab] moe T=128 prod median   193.2 us  speedup vs barrier twin (twin without SC6) 1.0278 (per seed 1.022 1.024 1.037 1.028)  max|d| 0
+[mfab] moe T=256 prod median   224.4 us  speedup vs barrier twin (twin without SC6) 1.0137 (per seed 1.021 1.014 1.008 1.013)  max|d| 0
