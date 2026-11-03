@@ -1,0 +1,9 @@
+# SGLang Muse Spark recipe review — 2026-11-03
+
+Source: https://docs.sglang.io/cookbook/autoregressive/Meta/MuseSparkOpen (B300 / low latency / NVFP4 selected). This is deployment guidance, not a kernel benchmark or proof of a leaderboard improvement.
+
+- The recipe selects modelopt FP4 and FlashInfer TRT-LLM MoE on B200/B300/GB300. H200 instead uses Marlin W4A16; the documentation says TRT-LLM FP4 MoE, prefill sequence parallel and MegaMoE require newer architecture support. Do not assume B300 kernels or their performance transfer to the H200 kernel judge.
+- Low-latency recipes use DFlash2 with eight draft tokens; verify workloads therefore matter. The cookbook distinguishes speculative decoding from optional block verification, which is off by default. These are serving-level ideas subject to the serving track's rules and workload; they cannot simply be added to an isolated kernel submission.
+- The experimental persistent Helion megakernel fuses attention, projection, normalization boundaries, routing, MoE and the layer tail. Its reported approximately 10% decode gain is for BS=1 plus DFlash2 on four GB300 GPUs, compared with the specified TP4/EP4 baseline. Inspect its implementation for fusion and scheduling ideas, but do not claim that measured result on H200; its published recipe requires GB300 and a disaggregated decode worker.
+- The examples use FP8 E4M3 KV cache and separate sliding-window/full-cache budgeting. Preserve these as serving investigation ideas; our kernel attention already has a specific fixed interface and must obey the judge contract and FP32-accumulation clarification.
+- For future serving experiments, evaluate the actual allowed hardware, software, model, speculative-decoding rules, concurrency and scoring first. Pin the chosen image and checkpoint and compare end-to-end throughput/latency against the challenge baseline; no deployment or GPU spend was initiated from this page.
