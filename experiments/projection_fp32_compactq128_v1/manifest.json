@@ -1,0 +1,22 @@
+{
+  "name": "projection_fp32_compactq128_v1",
+  "problem": "muse_bf16_proj",
+  "hypothesis": "Transfer decoder compact QKV with FP32 cluster partial reductions into readable projection baseline; preserve fallback and measure qkv m128.",
+  "sha256": "6442350d7a12dfd8ce5a6b71fe632cdd2ad1ee57e6caa02807c4c9512f52257d",
+  "created_at": 1793680218.68588,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 0,
+      "left": 10
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 2,
+      "left": 18
+    }
+  },
+  "status": "received",
+  "job_id": "7ecb1b41c2444395"
+}
