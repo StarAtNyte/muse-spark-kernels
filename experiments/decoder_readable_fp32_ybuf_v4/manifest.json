@@ -1,0 +1,22 @@
+{
+  "name": "decoder_readable_fp32_ybuf_v4",
+  "problem": "muse_decode_layer",
+  "hypothesis": "Store WGS per-expert output values in FP32 before normalization and route combination; preserve FP32 projection fallbacks and compare full decoder.",
+  "sha256": "616187c9dac236851cc4b76bb65cd1cf9c85490db96f241a2fb1fa3d0fcff2cc",
+  "created_at": 1793704322.3282187,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 3,
+      "left": 17
+    }
+  },
+  "status": "received",
+  "job_id": "2996c1822f9d417a"
+}
