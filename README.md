@@ -4,6 +4,8 @@
 
 Account: `StarAtNyte`. CLI: `~/.okc/bin/okc`.
 
+Follow the [challenge rules and organizer clarifications](RULES.md) for all kernel experiments and submissions.
+
 The first target is `kernels/muse_bf16_proj/submission.py`. Its adjacent
 `TASK.md`, `AGENTS.md`, and `reference.py` describe the contract and rules.
 `experiments/bf16_starter.py` preserves the original PyTorch starter.
