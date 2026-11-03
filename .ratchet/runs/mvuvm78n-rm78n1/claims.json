@@ -1,0 +1,252 @@
+[
+  {
+    "id": "w2.c0",
+    "agent": "w2",
+    "by": "codex-2",
+    "harness": "codex",
+    "text": "The current supported attention path already uses one fused CUDA kernel.",
+    "source": "kernels/muse_attention_decode/submission.py",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w2.c1",
+    "agent": "w2",
+    "by": "codex-2",
+    "harness": "codex",
+    "text": "Two-tile page-index lookahead produced neutral paired H200 results.",
+    "source": "experiments/attention_page_lookahead2_w2_v1/modal.log",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w2.c2",
+    "agent": "w2",
+    "by": "codex-2",
+    "harness": "codex",
+    "text": "Official check passed 16 tests and 12 benchmarks at 2.601847138x, insufficient for promotion.",
+    "source": "experiments/attention_page_lookahead2_w2_v1/status.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.c0",
+    "agent": "w4",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Transplanting GATHB=7 MoE and tuned decode16 sliding attention into the compact decoder passed all 13 official tests but scored 2.19787x (95% CI [2.16491, 2.23084]), below the 2.2603x incumbent gate.",
+    "source": "experiments/decoder_w4_gath7_plan16_v1/status.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.c1",
+    "agent": "w4",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Disabling PDL chaining at T16/32 across whole-decoder boundary configurations regressed latency by 1.5% to 6.6% across 64 passing reference checks on H200.",
+    "source": "experiments/decoder_w4_boundary_screen_v1/modal.log",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.c2",
+    "agent": "w4",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Extending MoE B4 column-parallel finalization scratch to M<=256 passed 16 reference checks but added 1.04 to 3.60 us of overhead across all 8 paired H200 timing cases.",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w4-work/b4_results.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.c3",
+    "agent": "w4",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Blindly stacking standalone operator winners in decoder_vjeux_operatorstack_stack_v1 regressed to 1.853x due to falling back to two Marlin expert calls totaling 306.7 us in sliding verify16.",
+    "source": "experiments/decoder_vjeux_operatorstack_stack_v1/profiles/submission.a246d52c81b642a7.txt",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w5.c0",
+    "agent": "w5",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "The fused prefill K64 MoE candidate achieved a geometric mean speedup of only 1.0019x on Modal H200 full-layer screens, regressing 2 out of 4 tested shapes and failing to justify an official check.",
+    "source": "experiments/prefill_k64_fused_v1/bench.log",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w5.c1",
+    "agent": "w5",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "The incumbent custom Hopper attention kernel with fused norm-gate epilogue is 1.05x to 1.18x faster than FlashAttention-3 across all 8 scored prefill shapes on H200 (e.g. 31.1 µs vs 36.7 µs on turn1_slide and 6772.8 µs vs 7974.1 µs on ft_full_64k).",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w5-work/test_attn_bench.log",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w5.c2",
+    "agent": "w5",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "cuBLASLt algorithm tuning on the T=16384 QKV dense projection yields at most a 1.009x kernel gain (757.90 µs vs 764.88 µs for torch.mm), contributing less than 0.08% whole-layer prefill speedup at ~82% peak BF16 tensor core utilization.",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w5-work/test_qkv_lt.log",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w6.c0",
+    "agent": "w6",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "The overall leaderboard evaluates decode step speedup, meaning StarAtNyte's overall rank #28 is strictly determined by muse_decode_layer (2.2603x), which outperforms our synthetic isolated component combination (2.0950x).",
+    "source": "kernels/muse_decode_layer/TASK.md (lines 142-144) and .ratchet/runs/mvuvm78n-rm78n1/findings/w6-work/check_decoder_rule.py",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w6.c1",
+    "agent": "w6",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "MoE represents 59.45% of the total decode step baseline (13,448.54 us of 22,620.25 us); transferring MoE leader dolanzhao's 2.7578x speedup saves 769.35 us and lifts our integrated decoder to 2.4485x, which beats #1 overall mpeng19 (2.4178x).",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w6-work/print_sensitivity.py and /tmp/board_muse_moe_w4a16.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w6.c2",
+    "agent": "w6",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Today's quota usage is 4 of 50 scored runs used (46 remaining) and 11 of 100 private check runs used (89 remaining) across all five problems.",
+    "source": "~/.okc/bin/okc problems --json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.c0",
+    "agent": "w3",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "Check da14d2b1148a4849 (projection_vjeux_router256_m1_v1: base 1.5395x source plus rk_kernel router m256, cgemv unpooler m1, rgemv router m1) passed at 1.5258x, CI [1.5029,1.5486], below the 1.5395x public best; not submitted",
+    "source": "~/.okc/bin/okc status da14d2b1148a4849 --json; .ratchet/runs/mvuvm78n-rm78n1/findings/w3-work/check_da14d2b1148a4849.md",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.c1",
+    "agent": "w3",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "In that check the targeted shapes improved (unpooler m1 2.002x vs 1.851x public, router m256 2.436x vs 2.205x) while untouched code paths drifted by up to -7% (qkv_gate m1 1.439x vs 1.541x), so single route tweaks of about +0.3% are below the judge's noise",
+    "source": "okc status da14d2b1148a4849 records vs findings/w3-work/sensitivity_table.json (from beb3e26afb2544c9)",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.c2",
+    "agent": "w3",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "With public per-shape speedups, bringing M=128/256 qkv_gate/o/pooler/unpooler to 1.15x the HBM floor gives a modelled score of 1.659x, above #1 at 1.6498x; qkv_gate m256 (+1.4%) and m128 (+1.2%) are the largest single-shape levers",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3-work/per_shape_lever.txt (load-weighted geomean model over sensitivity_table.json)",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.c3",
+    "agent": "w3",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "At M=256, qkv_gate runs cuBLASLt nvjet_sm90_tst_72x64 at 18.7 us (floor 9.8 us) and pooler runs nvjet 128x64 2x1 coopB at 25.8 us (floor 17.4 us); router rk_kernel takes 4.7/6.0 us at M=128/256 vs floors of 2.2/2.7 us",
+    "source": "profile events in okc status da14d2b1148a4849 --json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.c4",
+    "agent": "w3",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "prepare() of the vjeux-hybrid lineage took 153.6 s of the 300 s limit because autotune runs in prepare",
+    "source": "okc status da14d2b1148a4849 records[0].prepare_s",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.1.c0",
+    "agent": "w4.1",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "Fusing RMSNorm into the projection prologue with exact BF16 intermediate rounding passes reference checks across all 12 decoder evaluation shapes, eliminates up to 12.3 MB of intermediate activation DRAM traffic per step, and yields a projected 1.0284x geomean speedup (2.3245x vs 2.2603x incumbent)",
+    "source": "/home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n1/findings/w4.1-work/evaluation_across_12_shapes.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w4.2.c0",
+    "agent": "w4.2",
+    "by": "antigravity-1",
+    "harness": "antigravity",
+    "text": "The fused cooperative router and dispatch kernel achieves 100% bit-exact expert ID matches (0/3528 mismatches, weight relative L2 error < 1.1e-7) across all six challenge batch sizes T in {1, 8, 16, 32, 128, 256} compared to the PyTorch reference, while speeding up T=1 decode routing from 73.43 us to 48.81 us (1.50x speedup) by eliminating intermediate global memory writes.",
+    "source": "/home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n1/findings/w4.2-work/verification_results.json",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.2.c0",
+    "agent": "w3.2",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "vjeux rk_kernel already uses split-K (S=12 at M=128, S=8 at M=256 via RK_SPLITS) and issues the hi and lo wgmmas against the same staged x tile",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3.2-work/vjeux_module.py lines 2546-2720, 3639-3650 (decompressed from experiments/scored_projection_vjeux_hybrid_v1/submission.py)",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.2.c1",
+    "agent": "w3.2",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "In cold-L2 graph-replay timing on H200, rk takes ~10.8-11.1 us at M=128 and ~12.1-12.4 us at M=256, versus 5.2-5.4 us for a graph with one trivial kernel",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3.2-work/screen1.log, screen4_floor.log (RESULT base_us, TINY_GRAPH_US)",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.2.c2",
+    "agent": "w3.2",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "With MMA and reduction disabled, the rk-identical tile config's load phase takes ~9.95-10.2 us at M=128 and ~11.1-11.4 us at M=256 (≈4.7/6.2 us after overhead), and contiguous packed W at M=64 takes ≈9.5-9.7 us; i.e. ~2.1 TB/s effective for ~10 MB cold reads",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3.2-work/screen4_floor.log, screen6_m64floor.log (ABLATION mode7/mode3)",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.2.c3",
+    "agent": "w3.2",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "No split-K tile/S configuration (1-4 consumer warpgroups x BN 64/128/256) beat rk at M=128; the best at M=256 was within 0.13 us of rk, and larger tiles were 1-9 us slower",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3.2-work/screen1.log SUMMARY",
+    "verdict": "pending",
+    "note": ""
+  },
+  {
+    "id": "w3.2.c4",
+    "agent": "w3.2",
+    "by": "claude-3",
+    "harness": "claude",
+    "text": "Storing lo as int8 relative to hi's exponent passes reference.check_implementation (weight rel rms 6.6e-6) but is 2-5 us slower than rk; with the expansion skipped its upper bound is only +0.38 to +0.61 us faster",
+    "source": ".ratchet/runs/mvuvm78n-rm78n1/findings/w3.2-work/screen5_q8.log, screen7_cw.log, screen8_noexp.log",
+    "verdict": "pending",
+    "note": ""
+  }
+]

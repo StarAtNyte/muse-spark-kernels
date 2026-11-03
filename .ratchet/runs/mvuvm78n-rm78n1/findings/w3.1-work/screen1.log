@@ -1,0 +1,120 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Mfoa52LE9Gi4xjzPQ6UwLy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w3.1-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"SKV": "1"} RETURNCODE 0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=sk_splitk_313a39d8d938 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/sk_splitk_313a39d8d938/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=sk_splitk_313a39d8d938 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++20 -gencode=arch=compute_90a,code=sm_90a --ptxas-options=-v -c /root/.cache/torch_extensions/py312_cu130/sk_splitk_313a39d8d938/cuda.cu -o cuda.cuda.o 
+ptxas info    : 28 bytes gmem
+ptxas info    : Compiling entry function '_Z9sk_kernelILi3ELi128ELi5ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi3ELi128ELi5ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 92 registers, used 2 barriers
+ptxas info    : Compile time = 66.556 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi256ELi4ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi256ELi4ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 154 registers, used 2 barriers
+ptxas info    : Compile time = 110.086 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi128ELi6ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi128ELi6ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 61.493 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi1ELi256ELi6ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi1ELi256ELi6ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 154 registers, used 2 barriers
+ptxas info    : Compile time = 107.250 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi1ELi128ELi8ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi1ELi128ELi8ELi0EEv14CUtensorMap_stS0_P13__nv_bfloat16PfPiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 61.796 ms
+/root/.cache/torch_extensions/py312_cu130/sk_splitk_313a39d8d938/cuda.cu: In function ‘CUresult (* get_encode())(CUtensorMap*, CUtensorMapDataType, cuuint32_t, void*, const cuuint64_t*, const cuuint64_t*, const cuuint32_t*, const cuuint32_t*, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill)’:
+/root/.cache/torch_extensions/py312_cu130/sk_splitk_313a39d8d938/cuda.cu:165:24: warning: ‘cudaError_t cudaGetDriverEntryPoint(const char*, void**, long long unsigned int, cudaDriverEntryPointQueryResult*)’ is deprecated [-Wdeprecated-declarations]
+  165 |     cudaGetDriverEntryPoint("cuTensorMapEncodeTiled", &p, cudaEnableDefault, &q);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/include/cuda_runtime_api.h:13101:46: note: declared here
+13101 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGetDriverEntryPoint(const char *symbol, void **funcPtr, unsigned long long flags, enum cudaDriverEntryPointQueryResult *driverStatus = NULL);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o sk_splitk_313a39d8d938.so
+built in 55.7s
+SCREEN_ROW {"layer": "qkv_gate", "m": 128, "sol": 8.42, "cublas": 24.97, "cands": {"(2, 128, 6, 0, 7)": 24.42, "(3, 128, 5, 0, 11)": 25.81, "(1, 128, 8, 0, 3)": 23.23, "(2, 128, 6, 0, 6)": 23.98}}
+CFG_FAIL qkv_gate m=256 (1, 256, 6, 0, 3): CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+
+SCREEN_ROW {"layer": "qkv_gate", "m": 256, "sol": 9.77, "cublas": 28.62, "cands": {"(2, 256, 4, 0, 7)": 29.93, "(2, 256, 4, 0, 6)": 31.64}}
+SCREEN_ROW {"layer": "pooler", "m": 128, "sol": 14.64, "cublas": 30.62, "cands": {"(2, 128, 6, 0, 4)": 31.15, "(1, 128, 8, 0, 2)": 32.43}}
+CFG_FAIL pooler m=256 (1, 256, 6, 0, 2): CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+
+SCREEN_ROW {"layer": "pooler", "m": 256, "sol": 17.36, "cublas": 38.57, "cands": {"(2, 256, 4, 0, 4)": 37.54}}
+base prepare 201.9s
+SCREEN_ROW {"layer": "qkv_gate", "m": 128, "sol": 8.42, "base": 19.59, "cands": {"(2, 128, 6, 0, 7)": 24.34, "(3, 128, 5, 0, 11)": 25.69, "(1, 128, 8, 0, 3)": 23.23, "(2, 128, 6, 0, 6)": 23.93}}
+CFG_FAIL qkv_gate m=256 (1, 256, 6, 0, 3): CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+
+SCREEN_ROW {"layer": "qkv_gate", "m": 256, "sol": 9.77, "base": 26.14, "cands": {"(2, 256, 4, 0, 7)": 29.7, "(2, 256, 4, 0, 6)": 31.48}}
+SCREEN_ROW {"layer": "pooler", "m": 128, "sol": 14.64, "base": 29.74, "cands": {"(2, 128, 6, 0, 4)": 31.23, "(1, 128, 8, 0, 2)": 32.46}}
+CFG_FAIL pooler m=256 (1, 256, 6, 0, 2): CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+
+SCREEN_ROW {"layer": "pooler", "m": 256, "sol": 17.36, "base": 35.01, "cands": {"(2, 256, 4, 0, 4)": 37.45}}
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.67 sk2=13.57 torch=17.86 -> cgemv
+[okc] tune o m=1: cgemv=8.9 sk2=9.57 torch=10.59 -> cgemv
+[okc] tune pooler m=1: cgemv=17.66 sk2=18.24 torch=25.38 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.39 sgemv=7.68 sk2=8.26 torch=10.59 -> cgemv
+[okc] tune router m=1: rgemv=7.42 sk2=8.86 torch=18.02 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.6 torch=17.86 -> sk2
+[okc] tune o m=16: sk2=9.44 torch=10.4 -> sk2
+[okc] tune pooler m=16: sk2=18.43 torch=25.6 -> sk2
+[okc] tune unpooler m=16: sk2=18.05 torch=22.62 -> sk2
+[okc] tune router m=16: sk2=8.9 torch=18.5 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.72 torch=18.37 -> sk2
+[okc] tune o m=32: sk2=9.47 torch=10.59 -> sk2
+[okc] tune pooler m=32: sk2=19.14 torch=26.05 -> sk2
+[okc] tune unpooler m=32: sk2=19.1 torch=22.72 -> sk2
+[okc] tune router m=32: sk2=9.22 torch=19.23 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.5 torch=17.92 -> sk2
+[okc] tune o m=8: sk2=9.57 torch=10.3 -> sk2
+[okc] tune pooler m=8: sk2=18.27 torch=25.5 -> sk2
+[okc] tune unpooler m=8: sk2=8.13 torch=10.85 -> sk2
+[okc] tune router m=8: sk2=8.64 torch=18.18 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.62 torch=20.77 -> gqx
+[okc] tune o m=128: torch=11.1 torchT=11.17 -> torch
+[okc] tune pooler m=128: gq=25.73 torch=29.76 -> gq
+[okc] tune unpooler m=128: torch=24.32 torchT=23.07 -> torchT
+[okc] tune router m=128: rk=9.86 wide=12.58 gemm=14.05 torch=20.0 -> rk
+[okc] tune o m=256: torch=12.93 torchT=13.12 -> torch
+[okc] tune pooler m=256: torch=34.18 cutlass=31.23 -> cutlass
+[okc] tune unpooler m=256: torch=28.38 torchT=27.94 -> torchT
+[okc] tune router m=256: rk=10.78 wide=13.57 gemm=17.15 torch=21.12 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-Mfoa52LE9Gi4xjzPQ6UwLy

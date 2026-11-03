@@ -1,0 +1,170 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-7TEAPOJABpMi3fGDZZCSdJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"ONLY": "{\"128\": [[0, 16], [100, 16], [110, 16], [111, 32]], \"256\": [[0, 8], [100, 8], [110, 8], [111, 16]]}", "REPS": "61"} RETURNCODE 0
+[1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=rk2_screen_v5 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -Xptxas=-v -gencode=arch=compute_90a,code=sm_90a -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/rk2_screen_v5/cuda.cu -o cuda.cuda.o 
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 12761 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi128ELi4ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 12845 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi128ELi4ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 11827 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi64ELi5ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 11911 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi64ELi5ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 10788 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi128ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 10872 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi128ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 9784 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi64ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 9868 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi64ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 8721 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi4ELi128ELi2ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 8807 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi4ELi128ELi2ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 7861 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi4ELi64ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 7947 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi4ELi64ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 6693 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi256ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 6779 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi256ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 5618 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi128ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 5702 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi128ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 4688 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi64ELi5ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 4772 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi2ELi64ELi5ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 3459 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi256ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 3545 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi256ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 2372 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi128ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 2456 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi128ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 1371 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi64ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 1455 by compiler to allow use of registers in GMMA in function '_Z10rk2_kernelILi1ELi64ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc'
+ptxas info    : 28 bytes gmem
+ptxas info    : Compiling entry function '_Z10rk3_kernelILi128ELi6ELb1EEv14CUtensorMap_stPKcPfiiiPii' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk3_kernelILi128ELi6ELb1EEv14CUtensorMap_stPKcPfiiiPii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 3 barriers
+ptxas info    : Compile time = 72.045 ms
+ptxas info    : Compiling entry function '_Z10rk3_kernelILi64ELi6ELb1EEv14CUtensorMap_stPKcPfiiiPii' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk3_kernelILi64ELi6ELb1EEv14CUtensorMap_stPKcPfiiiPii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 3 barriers
+ptxas info    : Compile time = 49.532 ms
+ptxas info    : Compiling entry function '_Z10rk3_kernelILi128ELi6ELb0EEv14CUtensorMap_stPKcPfiiiPii' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk3_kernelILi128ELi6ELb0EEv14CUtensorMap_stPKcPfiiiPii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 102 registers, used 2 barriers
+ptxas info    : Compile time = 68.002 ms
+ptxas info    : Compiling entry function '_Z10rk3_kernelILi64ELi6ELb0EEv14CUtensorMap_stPKcPfiiiPii' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk3_kernelILi64ELi6ELb0EEv14CUtensorMap_stPKcPfiiiPii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, used 2 barriers
+ptxas info    : Compile time = 47.714 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi2ELi128ELi4ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi2ELi128ELi4ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 58.569 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi2ELi64ELi5ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi2ELi64ELi5ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 40.819 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi1ELi128ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi1ELi128ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 59.909 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi1ELi64ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi1ELi64ELi6ELb1EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 40.531 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi4ELi128ELi2ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi4ELi128ELi2ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 53.262 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi4ELi64ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi4ELi64ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 37.513 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi2ELi256ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi2ELi256ELi3ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 154 registers, used 2 barriers
+ptxas info    : Compile time = 133.397 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi2ELi128ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi2ELi128ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 52.999 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi2ELi64ELi5ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi2ELi64ELi5ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 38.564 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi1ELi256ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi1ELi256ELi4ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 154 registers, used 2 barriers
+ptxas info    : Compile time = 121.637 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi1ELi128ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi1ELi128ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 54.408 ms
+ptxas info    : Compiling entry function '_Z10rk2_kernelILi1ELi64ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc' for 'sm_90a'
+ptxas info    : Function properties for _Z10rk2_kernelILi1ELi64ELi6ELb0EEv14CUtensorMap_stS0_PfiiiPiiPKc
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 38.756 ms
+ptxas info    : Compiling entry function '_Z9rk_kernel14CUtensorMap_stS_PfiiiPi' for 'sm_90a'
+ptxas info    : Function properties for _Z9rk_kernel14CUtensorMap_stS_PfiiiPi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, used 2 barriers
+ptxas info    : Compile time = 35.709 ms
+/root/.cache/torch_extensions/py312_cu130/rk2_screen_v5/cuda.cu: In function ‘CUresult (* rk_encode())(CUtensorMap*, CUtensorMapDataType, cuuint32_t, void*, const cuuint64_t*, const cuuint64_t*, const cuuint32_t*, const cuuint32_t*, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill)’:
+/root/.cache/torch_extensions/py312_cu130/rk2_screen_v5/cuda.cu:156:24: warning: ‘cudaError_t cudaGetDriverEntryPoint(const char*, void**, long long unsigned int, cudaDriverEntryPointQueryResult*)’ is deprecated [-Wdeprecated-declarations]
+  156 |     cudaGetDriverEntryPoint("cuTensorMapEncodeTiled", &p, cudaEnableDefault, &qr);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/include/cuda_runtime_api.h:13101:46: note: declared here
+13101 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGetDriverEntryPoint(const char *symbol, void **funcPtr, unsigned long long flags, enum cudaDriverEntryPointQueryResult *driverStatus = NULL);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~
+[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=rk2_screen_v5 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/rk2_screen_v5/main.cpp -o main.o 
+[3/3] ccache c++ main.o cuda.cuda.o -shared -lcuda -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o rk2_screen_v5.so
+built in 17.9s
+nsm 132 NVIDIA H200
+q8 weight rel err: rms 6.561516153641407e-06 max 3.0398832684824903e-05 | bf16 hi+lo rms 2.4492837478136294e-06
+base check 33 True relative L2 error 2.732e-06 (worst row 3.112e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.909e-06 (worst row 3.419e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.487e-06 (worst row 4.113e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.111e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 11.04, "cand_us": 11.168, "cand_min": 10.912, "base_min": 10.752, "delta_us": -0.128}
+RESULT {"m": 128, "cfg": 100, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 12.928, "cand_min": 12.64, "base_min": 10.688, "delta_us": -1.952}
+RESULT {"m": 128, "cfg": 110, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": false, "base_us": 11.008, "cand_us": 10.528, "cand_min": 10.208, "base_min": 10.752, "delta_us": 0.48}
+RESULT {"m": 128, "cfg": 111, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": false, "base_us": 10.976, "cand_us": 11.264, "cand_min": 11.008, "base_min": 10.752, "delta_us": -0.288}
+RESULT {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 13.28, "cand_min": 13.056, "base_min": 12.096, "delta_us": -0.896}
+RESULT {"m": 256, "cfg": 100, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 17.312, "cand_min": 17.088, "base_min": 12.064, "delta_us": -4.928}
+RESULT {"m": 256, "cfg": 110, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": false, "base_us": 12.384, "cand_us": 12.0, "cand_min": 11.776, "base_min": 12.0, "delta_us": 0.384}
+RESULT {"m": 256, "cfg": 111, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": false, "base_us": 12.416, "cand_us": 11.808, "cand_min": 11.584, "base_min": 11.68, "delta_us": 0.608}
+TINY_GRAPH_US 5.248
+SUMMARY [{"m": 128, "cfg": 110, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": false, "base_us": 11.008, "cand_us": 10.528, "cand_min": 10.208, "base_min": 10.752, "delta_us": 0.48}, {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 11.04, "cand_us": 11.168, "cand_min": 10.912, "base_min": 10.752, "delta_us": -0.128}, {"m": 128, "cfg": 111, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": false, "base_us": 10.976, "cand_us": 11.264, "cand_min": 11.008, "base_min": 10.752, "delta_us": -0.288}, {"m": 128, "cfg": 100, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 12.928, "cand_min": 12.64, "base_min": 10.688, "delta_us": -1.952}, {"m": 256, "cfg": 111, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": false, "base_us": 12.416, "cand_us": 11.808, "cand_min": 11.584, "base_min": 11.68, "delta_us": 0.608}, {"m": 256, "cfg": 110, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": false, "base_us": 12.384, "cand_us": 12.0, "cand_min": 11.776, "base_min": 12.0, "delta_us": 0.384}, {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 13.28, "cand_min": 13.056, "base_min": 12.096, "delta_us": -0.896}, {"m": 256, "cfg": 100, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 17.312, "cand_min": 17.088, "base_min": 12.064, "delta_us": -4.928}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-7TEAPOJABpMi3fGDZZCSdJ

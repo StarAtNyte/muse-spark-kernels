@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-mUSPRtGLoooTb6qNkS02Oc
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w3.1-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+TINY_GRAPH_US 5.44
+TL qkv_gate 128 (2, 128, 6, 0, 4, 1, 1) event_us 22.9 start (0.0, 0.06, 0.1) first_tile (1.63, 2.08, 2.4) mainloop_end (12.9, 13.52, 14.3) sync_done (12.9, 13.52, 14.3) end (15.9, 16.35, 17.06) main_dur_med 11.44
+TL qkv_gate 128 (2, 128, 6, 0, 7, 1, 1) event_us 32.98 start (0.0, 0.1, 14.82) first_tile (1.6, 2.18, 16.7) mainloop_end (9.63, 10.67, 22.82) sync_done (9.63, 10.67, 22.82) end (12.7, 14.37, 26.43) main_dur_med 8.27
+TL qkv_gate 256 (2, 256, 4, 0, 4, 1, 1) event_us 32.96 start (0.0, 0.06, 0.1) first_tile (1.63, 1.98, 2.43) mainloop_end (21.54, 21.97, 22.62) sync_done (21.54, 21.97, 22.62) end (26.11, 26.66, 27.07) main_dur_med 19.95
+TL qkv_gate 256 (2, 256, 4, 0, 7, 1, 1) event_us 44.35 start (0.0, 0.06, 20.19) first_tile (1.63, 2.18, 21.66) mainloop_end (12.83, 13.42, 32.42) sync_done (12.83, 13.42, 32.42) end (17.66, 19.23, 38.02) main_dur_med 11.18
+TL pooler 128 (2, 128, 6, 0, 4, 1, 1) event_us 42.0 start (0.0, 0.06, 21.47) first_tile (1.7, 2.21, 22.91) mainloop_end (17.22, 19.97, 33.57) sync_done (17.22, 19.97, 33.57) end (20.64, 24.14, 36.1) main_dur_med 17.41
+TL pooler 256 (2, 256, 4, 0, 4, 1, 1) event_us 59.17 start (0.0, 0.1, 27.42) first_tile (1.7, 2.24, 28.67) mainloop_end (21.57, 22.08, 48.03) sync_done (21.57, 22.08, 48.03) end (26.4, 26.85, 52.54) main_dur_med 19.81
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-mUSPRtGLoooTb6qNkS02Oc

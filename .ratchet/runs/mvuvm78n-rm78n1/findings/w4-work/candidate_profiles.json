@@ -1,0 +1,139 @@
+[
+  {
+    "case": "batch=1 ctx=80000 dist=soft layer=sliding load=decode 1 page=1",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           22.9 \u00b5s  31.2%      1",
+      "void sk2_kernel_gle35a06ad35022<1, 8, 4, 1, 8, 1, 6, true...      18.5 \u00b5s  25.2%      1",
+      "void sk2_kernel<1, 8, 3, 1, 4, 2, 6, true, false, 1, 1, _...      11.3 \u00b5s  15.4%      1"
+    ],
+    "busy_or_total": [
+      "total                                                             73.5 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=1 ctx=80000 dist=soft layer=full load=decode 1 page=1",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           28.9 \u00b5s  34.0%      1",
+      "void sk2_kernel_gle35a06ad35022<1, 8, 4, 1, 8, 1, 6, true...      19.8 \u00b5s  23.3%      1",
+      "void (anonymous namespace)::attn_kernel<1, false, 11>((an...      10.8 \u00b5s  12.7%      1"
+    ],
+    "busy_or_total": [
+      "total                                                             85.1 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=16 ctx=80000 dist=soft layer=sliding load=decode 16 page=1 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           59.5 \u00b5s  46.6%      1",
+      "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, false, 2, 1, ...      19.0 \u00b5s  14.9%      1",
+      "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, false, 2, 1, ...      15.6 \u00b5s  12.2%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            127.5 \u00b5s",
+      "GPU busy (kernels overlap: PDL or streams)                       125.2 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=16 ctx=80000 dist=soft layer=full load=decode 16 page=1 spread=agentic",
+    "largest_kernel_rows": [
+      "void (anonymous namespace)::attn_kernel<1, true, 0>((anon...      89.3 \u00b5s  40.1%      1",
+      "void okc::moe_fused<false>(okc::Params)                           73.9 \u00b5s  33.2%      1",
+      "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, false, 2, 1, ...      17.3 \u00b5s   7.8%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            222.8 \u00b5s",
+      "GPU busy (kernels overlap: PDL or streams)                       216.5 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=32 ctx=80000 dist=soft layer=sliding load=decode 32 page=1 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           94.6 \u00b5s  55.2%      1",
+      "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, false, 1, 1, ...      18.3 \u00b5s  10.7%      1",
+      "void sk2_kernel<2, 32, 2, 2, 2, 2, 5, true, false, 1, 1, ...      16.7 \u00b5s   9.7%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            171.5 \u00b5s",
+      "GPU busy (kernels overlap: PDL or streams)                       168.3 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=32 ctx=80000 dist=soft layer=full load=decode 32 page=1 spread=agentic",
+    "largest_kernel_rows": [
+      "void (anonymous namespace)::attn_kernel<1, true, 0>((anon...     171.5 \u00b5s  52.6%      1",
+      "void okc::moe_fused<false>(okc::Params)                           86.2 \u00b5s  26.5%      1",
+      "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, false, 1, 1, ...      17.9 \u00b5s   5.5%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            326.1 \u00b5s",
+      "GPU busy (kernels overlap: PDL or streams)                       318.4 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=1 ctx=80000 dist=soft layer=sliding load=verify 1 page=1 q_len=8",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           56.9 \u00b5s  51.5%      1",
+      "void sk2_kernel_gle35a06ad35022<1, 8, 4, 1, 8, 1, 6, true...      19.4 \u00b5s  17.6%      1",
+      "void sk2_kernel_narrow_12cf58219a16<1, 8, 3, 1, 4, 2, 5, ...       9.6 \u00b5s   8.7%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            110.5 \u00b5s",
+      "GPU busy (kernels overlap: PDL or streams)                       109.2 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=1 ctx=80000 dist=soft layer=full load=verify 1 page=1 q_len=8",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<false>(okc::Params)                           63.9 \u00b5s  50.1%      1",
+      "void sk2_kernel_gle35a06ad35022<1, 8, 4, 1, 8, 1, 6, true...      20.6 \u00b5s  16.2%      1",
+      "void (anonymous namespace)::attn_kernel<8, false, 11>((an...      14.5 \u00b5s  11.4%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            127.4 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=16 ctx=80000 dist=soft layer=sliding load=verify 16 page=1 q_len=8 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<true>(okc::Params)                           153.4 \u00b5s  62.6%      1",
+      "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN                     25.6 \u00b5s  10.5%      1",
+      "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT                           21.2 \u00b5s   8.6%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            244.9 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=16 ctx=80000 dist=soft layer=full load=verify 16 page=1 q_len=8 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<true>(okc::Params)                           142.1 \u00b5s  43.4%      1",
+      "void (anonymous namespace)::attn_kernel<8, true, 0>((anon...     105.8 \u00b5s  32.3%      1",
+      "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN                     25.2 \u00b5s   7.7%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            327.0 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=32 ctx=80000 dist=soft layer=sliding load=verify 32 page=1 q_len=8 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<true>(okc::Params)                           199.2 \u00b5s  62.7%      1",
+      "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN                           31.9 \u00b5s  10.0%      1",
+      "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT                    25.4 \u00b5s   8.0%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            317.9 \u00b5s"
+    ]
+  },
+  {
+    "case": "batch=32 ctx=80000 dist=soft layer=full load=verify 32 page=1 q_len=8 spread=agentic",
+    "largest_kernel_rows": [
+      "void okc::moe_fused<true>(okc::Params)                           187.0 \u00b5s  39.2%      1",
+      "void (anonymous namespace)::attn_kernel<8, true, 0>((anon...     185.9 \u00b5s  39.0%      1",
+      "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN                           31.2 \u00b5s   6.5%      1"
+    ],
+    "busy_or_total": [
+      "total                                                            477.1 \u00b5s"
+    ]
+  }
+]

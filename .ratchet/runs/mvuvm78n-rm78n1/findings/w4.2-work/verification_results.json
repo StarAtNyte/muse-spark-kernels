@@ -1,0 +1,84 @@
+{
+  "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "shapes": {
+    "1": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.9802322387695312e-08,
+      "weight_rel_err": 1.0918787296532173e-07,
+      "total_local_routes": 0,
+      "fat_jobs": 0,
+      "skinny_jobs": 0,
+      "latency_pytorch_us": 195697.25,
+      "latency_fused_zero_gmem_us": 5612.23,
+      "latency_fused_diag_us": 5907.23,
+      "speedup_vs_pytorch": 34.87
+    },
+    "8": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.2351741790771484e-08,
+      "weight_rel_err": 7.377974498012918e-08,
+      "total_local_routes": 10,
+      "fat_jobs": 0,
+      "skinny_jobs": 2,
+      "latency_pytorch_us": 186712.05,
+      "latency_fused_zero_gmem_us": 5883.77,
+      "latency_fused_diag_us": 5732.72,
+      "speedup_vs_pytorch": 31.73
+    },
+    "16": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.9802322387695312e-08,
+      "weight_rel_err": 7.930415080181774e-08,
+      "total_local_routes": 23,
+      "fat_jobs": 1,
+      "skinny_jobs": 1,
+      "latency_pytorch_us": 193961.0,
+      "latency_fused_zero_gmem_us": 5886.49,
+      "latency_fused_diag_us": 5701.83,
+      "speedup_vs_pytorch": 32.95
+    },
+    "32": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.2351741790771484e-08,
+      "weight_rel_err": 6.396354734761189e-08,
+      "total_local_routes": 94,
+      "fat_jobs": 4,
+      "skinny_jobs": 0,
+      "latency_pytorch_us": 196099.79,
+      "latency_fused_zero_gmem_us": 5917.99,
+      "latency_fused_diag_us": 5777.53,
+      "speedup_vs_pytorch": 33.14
+    },
+    "128": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.9802322387695312e-08,
+      "weight_rel_err": 6.426338217124794e-08,
+      "total_local_routes": 135,
+      "fat_jobs": 3,
+      "skinny_jobs": 0,
+      "latency_pytorch_us": 196182.13,
+      "latency_fused_zero_gmem_us": 4484.85,
+      "latency_fused_diag_us": 5909.06,
+      "speedup_vs_pytorch": 43.74
+    },
+    "256": {
+      "passed": true,
+      "id_mismatches": 0,
+      "weight_max_diff": 2.9802322387695312e-08,
+      "weight_rel_err": 6.827686860333415e-08,
+      "total_local_routes": 352,
+      "fat_jobs": 6,
+      "skinny_jobs": 0,
+      "latency_pytorch_us": 14476.45,
+      "latency_fused_zero_gmem_us": 1746.59,
+      "latency_fused_diag_us": 1849.23,
+      "speedup_vs_pytorch": 8.29
+    }
+  },
+  "overall_status": "PASSED"
+}

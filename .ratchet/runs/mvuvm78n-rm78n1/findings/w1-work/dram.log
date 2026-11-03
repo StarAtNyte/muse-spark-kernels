@@ -1,0 +1,109 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dZi1Zl9zii2F8HBecMxx2P
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 48 (/usr/local/bin/python3)
+CASE bs=8 seed=403 U=11 jobs64=11 uniqueMB=311.4 jobMB=311.4 ok=True
+CASE bs=8 seed=419 U=9 jobs64=9 uniqueMB=254.8 jobMB=254.8 ok=True
+CASE bs=8 seed=1234 U=10 jobs64=10 uniqueMB=283.1 jobMB=283.1 ok=True
+CASE bs=16 seed=403 U=14 jobs64=14 uniqueMB=396.4 jobMB=396.4 ok=True
+CASE bs=16 seed=419 U=13 jobs64=13 uniqueMB=368.1 jobMB=368.1 ok=True
+CASE bs=16 seed=1234 U=12 jobs64=12 uniqueMB=339.7 jobMB=339.7 ok=True
+CASE bs=32 seed=403 U=21 jobs64=21 uniqueMB=594.5 jobMB=594.5 ok=True
+CASE bs=32 seed=419 U=15 jobs64=15 uniqueMB=424.7 jobMB=424.7 ok=True
+CASE bs=32 seed=1234 U=17 jobs64=17 uniqueMB=481.3 jobMB=481.3 ok=True
+CASE bs=128 seed=403 U=27 jobs64=27 uniqueMB=764.4 jobMB=764.4 ok=True
+CASE bs=128 seed=419 U=24 jobs64=24 uniqueMB=679.5 jobMB=679.5 ok=True
+CASE bs=128 seed=1234 U=26 jobs64=26 uniqueMB=736.1 jobMB=736.1 ok=True
+CASE bs=256 seed=403 U=27 jobs64=27 uniqueMB=764.4 jobMB=764.4 ok=True
+CASE bs=256 seed=419 U=28 jobs64=28 uniqueMB=792.7 jobMB=792.7 ok=True
+CASE bs=256 seed=1234 U=26 jobs64=27 uniqueMB=736.1 jobMB=764.4 ok=True
+DONE
+==PROF== Disconnected from process 48
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","311588352"
+"0","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","86752"
+"0","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","9793003"
+"1","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","254961408"
+"1","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","72928"
+"1","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","8037322"
+"2","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","283272960"
+"2","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","78752"
+"2","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","8921467"
+"3","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","396582144"
+"3","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","110624"
+"3","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","12500935"
+"4","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","368273920"
+"4","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","103872"
+"4","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","11584856"
+"5","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","339957248"
+"5","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","96512"
+"5","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(288, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","10727410"
+"6","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","598933760"
+"6","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","161024"
+"6","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","20536199"
+"7","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","429020928"
+"7","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","122656"
+"7","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","14829942"
+"8","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","485581824"
+"8","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","135200"
+"8","48","python3","127.0.0.1","void moe_fused<0>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","16661799"
+"9","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","770737664"
+"9","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","200960"
+"9","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","27850601"
+"10","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","685129984"
+"10","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","180384"
+"10","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","24337344"
+"11","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","742425856"
+"11","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","194624"
+"11","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","26700570"
+"12","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","773745408"
+"12","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","220768"
+"12","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","30181053"
+"13","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","801589248"
+"13","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","218688"
+"13","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","30499771"
+"14","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","dram__bytes_read.sum","byte","770701312"
+"14","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","gpu__time_duration.sum","ns","215936"
+"14","48","python3","127.0.0.1","void moe_fused<1>(Params)","1","7","(576, 1, 1)","(132, 1, 1)","0","9.0","Command line profiler metrics","lts__t_sectors_srcunit_tex_op_read.sum","sector","29844571"
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-dZi1Zl9zii2F8HBecMxx2P

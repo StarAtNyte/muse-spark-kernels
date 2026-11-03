@@ -1,0 +1,37 @@
+PREP rq thread started at 0s
+[rq] layer prepare done at 118s
+BUILD pw57_flush 30.9s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB    9.63 us   0.65 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.62 us   0.83 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB    9.60 us   1.75 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.24 us   1.64 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.64 us two_node 5.36 us overhead 3.92 us
+PREP rq thread ready at 50s (bake starts at 149s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 20.80 at 149s
+BAKE qkv_gate m=128 rq:d2s5hze 14.48 (ratio 1.4277 vs r6 20.80) at 149s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.63 (ratio 1.0340 vs rq:d2s5hze 14.48) at 149s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.61 (ratio 1.0473 vs rq:d2s5hze 14.48) at 149s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.15 (ratio 1.0066 vs rq:d2s5hze 14.48) at 149s
+BAKE qkv_gate m=128 rq:d2s6hze 16.17 (ratio 0.9816 vs rq:d2s5hze 14.48) at 149s
+PICK qkv_gate m=128 rq:s4s5hzw 13.83 (ref rq:d2s5hze 14.48)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0340)
+BAKE qkv_gate m=256 r6 23.10 at 149s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 20.95 (ratio 1.1180 vs r6 23.10) at 149s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 21.99 (ratio 0.9749 vs rq:n256s5m1hzmEH 20.95) at 149s
+PICK qkv_gate m=256 rq:n256s5m1hzmEH 20.95 (ref rq:n256s5m1hzmEH 20.95)
+BAKE rq unpooler esc2 slots max=3 ok
+BAKE unpooler m=128 r6 23.07 at 149s
+BAKE unpooler m=128 rq:d2s5hze 21.88 (ratio 1.0779 vs r6 23.07) at 149s
+BAKE unpooler m=128 rq:d2s5hzwP 21.20 (ratio 1.0323 vs rq:d2s5hze 21.88) at 149s
+BAKE unpooler m=128 rq:s4s5hzw 21.32 (ratio 1.0070 vs rq:d2s5hze 21.88) at 149s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.56 (ratio 1.0139 vs rq:d2s5hze 21.88) at 149s
+BAKE unpooler m=128 rq:s4s5hze 21.20 (ratio 1.0294 vs rq:d2s5hze 21.88) at 149s
+BAKE unpooler m=128 rq:d2s6hze 22.33 (ratio 0.9787 vs rq:d2s5hze 21.88) at 149s
+PICK unpooler m=128 rq:d2s5hzwP 21.19 (ref rq:d2s5hze 21.88)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0323)
+BAKE unpooler m=256 r6 28.42 at 149s
+PICK unpooler m=256 r6 28.42 (ref r6 28.42)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 149s

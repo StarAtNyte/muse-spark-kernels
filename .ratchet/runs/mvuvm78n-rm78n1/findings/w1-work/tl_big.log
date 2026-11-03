@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-SwkEqwWoyOKOnpRv5YrFlZ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+TL {"bs": 32, "seed": 403, "distinct": 21, "start": [0.0, 0.0, 0.3], "routed": [1.8, 1.8, 2.0], "gathered": [3.3, 4.1, 9.2], "joined": [3.3, 4.1, 9.2], "A_done": [103.7, 110.1, 115.5], "B_done": [153.3, 156.9, 161.3], "barrier": [162.0, 162.0, 162.3], "final": [162.0, 162.3, 165.1]}
+TL {"bs": 32, "seed": 419, "distinct": 15, "start": [0.0, 0.3, 0.3], "routed": [1.8, 2.0, 2.0], "gathered": [3.6, 3.8, 5.9], "joined": [3.6, 4.1, 5.9], "A_done": [77.6, 82.4, 88.3], "B_done": [113.9, 117.5, 121.1], "barrier": [121.9, 122.1, 122.1], "final": [122.1, 122.4, 125.4]}
+TL {"bs": 32, "seed": 1234, "distinct": 17, "start": [0.0, 0.0, 0.3], "routed": [2.8, 2.8, 3.1], "gathered": [4.4, 5.1, 7.2], "joined": [4.4, 5.1, 7.2], "A_done": [79.9, 90.1, 97.0], "B_done": [126.0, 130.8, 138.0], "barrier": [138.5, 138.8, 138.8], "final": [138.8, 139.0, 141.8]}
+TL {"bs": 128, "seed": 403, "distinct": 27, "start": [0.0, 0.3, 0.5], "routed": [2.6, 2.6, 2.8], "gathered": [4.4, 6.4, 8.4], "joined": [4.4, 6.4, 8.4], "A_done": [126.0, 139.8, 143.9], "B_done": [190.7, 199.2, 202.5], "barrier": [203.3, 203.3, 203.5], "final": [204.5, 206.3, 208.1]}
+TL {"bs": 128, "seed": 419, "distinct": 24, "start": [0.0, 0.3, 0.3], "routed": [2.6, 2.6, 2.6], "gathered": [4.1, 5.6, 8.2], "joined": [4.1, 5.6, 8.4], "A_done": [109.3, 123.4, 128.5], "B_done": [168.4, 176.9, 183.3], "barrier": [184.1, 184.1, 184.3], "final": [184.3, 186.6, 188.7]}
+TL {"bs": 128, "seed": 1234, "distinct": 26, "start": [0.0, 0.3, 0.3], "routed": [2.3, 2.6, 2.6], "gathered": [4.1, 5.6, 8.4], "joined": [4.1, 5.6, 8.4], "A_done": [117.5, 133.4, 137.0], "B_done": [185.6, 191.7, 195.8], "barrier": [196.6, 196.9, 196.9], "final": [196.9, 200.2, 200.7]}
+TL {"bs": 256, "seed": 403, "distinct": 27, "start": [0.0, 0.3, 0.5], "routed": [3.3, 3.3, 3.3], "gathered": [5.1, 8.2, 9.5], "joined": [5.1, 8.2, 9.5], "A_done": [131.3, 140.3, 150.5], "B_done": [198.1, 206.8, 213.8], "barrier": [214.5, 214.5, 214.8], "final": [217.6, 219.9, 221.4]}
+TL {"bs": 256, "seed": 419, "distinct": 28, "start": [0.0, 0.3, 0.3], "routed": [3.3, 3.3, 3.6], "gathered": [5.1, 7.9, 10.2], "joined": [5.4, 7.9, 10.2], "A_done": [133.6, 143.6, 151.3], "B_done": [199.4, 209.4, 215.3], "barrier": [215.8, 216.1, 216.1], "final": [217.6, 220.7, 222.2]}
+TL {"bs": 256, "seed": 1234, "distinct": 26, "start": [0.0, 0.3, 0.3], "routed": [2.8, 3.1, 3.3], "gathered": [4.9, 8.2, 10.5], "joined": [4.9, 8.2, 10.5], "A_done": [129.3, 138.5, 150.3], "B_done": [196.6, 204.3, 212.0], "barrier": [212.7, 212.7, 213.0], "final": [213.8, 218.6, 220.2]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-SwkEqwWoyOKOnpRv5YrFlZ

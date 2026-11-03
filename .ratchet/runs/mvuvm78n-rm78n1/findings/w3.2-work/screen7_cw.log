@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-TpXWVjJuS5a3Jv1kFNGKnx
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"ONLY": "{\"128\": [[0, 12], [0, 16], [102, 12], [102, 16], [103, 24], [103, 32]], \"256\": [[0, 8], [102, 8], [103, 12], [103, 16]]}", "REPS": "61"} RETURNCODE 0
+built in 19.5s
+nsm 132 NVIDIA H200
+q8 weight rel err: rms 6.561516153641407e-06 max 3.0398832684824903e-05 | bf16 hi+lo rms 2.4492837478136294e-06
+base check 33 True relative L2 error 2.729e-06 (worst row 3.112e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.910e-06 (worst row 3.422e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.487e-06 (worst row 4.102e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.109e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 11.04, "cand_us": 11.712, "cand_min": 11.424, "base_min": 10.752, "delta_us": -0.672}
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 11.296, "cand_min": 10.976, "base_min": 10.784, "delta_us": -0.32}
+RESULT {"m": 128, "cfg": 102, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 14.624, "cand_min": 14.208, "base_min": 10.752, "delta_us": -3.648}
+RESULT {"m": 128, "cfg": 102, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 13.12, "cand_min": 12.896, "base_min": 10.528, "delta_us": -2.144}
+RESULT {"m": 128, "cfg": 103, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 12.8, "cand_min": 12.352, "base_min": 10.688, "delta_us": -1.824}
+RESULT {"m": 128, "cfg": 103, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 12.32, "cand_min": 12.16, "base_min": 10.752, "delta_us": -1.344}
+RESULT {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 13.28, "cand_min": 13.024, "base_min": 11.968, "delta_us": -0.928}
+RESULT {"m": 256, "cfg": 102, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 17.696, "cand_min": 17.472, "base_min": 12.032, "delta_us": -5.344}
+RESULT {"m": 256, "cfg": 103, "nwg_bn": [1, 128], "S": 12, "grid": 96, "ok": true, "base_us": 12.384, "cand_us": 15.936, "cand_min": 15.584, "base_min": 12.064, "delta_us": -3.552}
+RESULT {"m": 256, "cfg": 103, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 14.336, "cand_min": 14.112, "base_min": 12.032, "delta_us": -1.952}
+TINY_GRAPH_US 5.376
+SUMMARY [{"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 11.296, "cand_min": 10.976, "base_min": 10.784, "delta_us": -0.32}, {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 11.04, "cand_us": 11.712, "cand_min": 11.424, "base_min": 10.752, "delta_us": -0.672}, {"m": 128, "cfg": 103, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 12.32, "cand_min": 12.16, "base_min": 10.752, "delta_us": -1.344}, {"m": 128, "cfg": 103, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 12.8, "cand_min": 12.352, "base_min": 10.688, "delta_us": -1.824}, {"m": 128, "cfg": 102, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.976, "cand_us": 13.12, "cand_min": 12.896, "base_min": 10.528, "delta_us": -2.144}, {"m": 128, "cfg": 102, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 14.624, "cand_min": 14.208, "base_min": 10.752, "delta_us": -3.648}, {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 13.28, "cand_min": 13.024, "base_min": 11.968, "delta_us": -0.928}, {"m": 256, "cfg": 103, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 14.336, "cand_min": 14.112, "base_min": 12.032, "delta_us": -1.952}, {"m": 256, "cfg": 103, "nwg_bn": [1, 128], "S": 12, "grid": 96, "ok": true, "base_us": 12.384, "cand_us": 15.936, "cand_min": 15.584, "base_min": 12.064, "delta_us": -3.552}, {"m": 256, "cfg": 102, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 17.696, "cand_min": 17.472, "base_min": 12.032, "delta_us": -5.344}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-TpXWVjJuS5a3Jv1kFNGKnx

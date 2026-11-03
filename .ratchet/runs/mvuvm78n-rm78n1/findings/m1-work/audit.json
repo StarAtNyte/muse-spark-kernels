@@ -1,0 +1,318 @@
+{
+  "above_best": [
+    {
+      "name": "attention_page_lookahead2_w2_v1",
+      "problem": "muse_attention_decode",
+      "score": 2.6018471380466175,
+      "ci": [
+        2.5628194309759182,
+        2.657391703009373
+      ],
+      "mode": null,
+      "sha": "0d792eeedfc3dd7127c1a4e3c3202574c3872ce7386344ad257cfd450cd41eb7"
+    },
+    {
+      "name": "prefill_split_penalty20_v1",
+      "problem": "muse_prefill_layer",
+      "score": 1.8039581492074255,
+      "ci": [
+        1.776898776969314,
+        1.8310175214455366
+      ],
+      "mode": null,
+      "sha": "d775cc88bb4f55993f2606f20ddc0dc8191de7b5067aa62b4ad4607fcb115992"
+    },
+    {
+      "name": "scored_attention_plan16_v1",
+      "problem": "muse_attention_decode",
+      "score": 2.6176787949075724,
+      "ci": [
+        2.5784136129839585,
+        2.6569439768311858
+      ],
+      "mode": "run",
+      "sha": "554adb3886491fa686e950773b2d5c5cc759377eae0f3a7d3abf9f15fd353293"
+    },
+    {
+      "name": "moe_ours_kperm3_stack_v1",
+      "problem": "muse_moe_w4a16",
+      "score": 2.39111761477841,
+      "ci": [
+        2.3552508505567338,
+        2.426984379000086
+      ],
+      "mode": null,
+      "sha": "ac008155520981cd67928bd52bb647efa64096add5acc8edabc779261105792f"
+    },
+    {
+      "name": "prefill_vjeux_public_check_v1",
+      "problem": "muse_prefill_layer",
+      "score": 1.7978258100080722,
+      "ci": [
+        1.7708584228579511,
+        1.824793197158193
+      ],
+      "mode": null,
+      "sha": "9a12398e9db70abb59ee3a914e185a5e8010e2557056ece22528f6b0b8c24217"
+    },
+    {
+      "name": "prefill_moe_large_order2_v1",
+      "problem": "muse_prefill_layer",
+      "score": 1.7935186648296715,
+      "ci": [
+        1.7666158848572264,
+        1.8204214448021163
+      ],
+      "mode": null,
+      "sha": "5c02350361fd169844dc8ca8f0b96beecabc13e244b00681d6b365ef9fae021b"
+    },
+    {
+      "name": "prefill_boundary_256_hint_v1",
+      "problem": "muse_prefill_layer",
+      "score": 1.793963938528213,
+      "ci": [
+        1.7670544794502896,
+        1.820873397606136
+      ],
+      "mode": null,
+      "sha": "8f3fcc00c56a8457f96178d9bf7b35349a84406f01c3924201cb731ca242dc5a"
+    }
+  ],
+  "pending": [
+    [
+      "moe_wgs_costcurve_v1",
+      null,
+      null
+    ],
+    [
+      "attention_infraax_bn128_transfer_v1",
+      null,
+      null
+    ],
+    [
+      "attention_full_decode32_cluster_v1",
+      null,
+      null
+    ],
+    [
+      "scored_moe_vjeux_public_check_v1",
+      "a834a3c9bf6e44f6",
+      "received"
+    ],
+    [
+      "scored_decoder_vjeux_public_check_v1",
+      "2a5a87f725fd47d2",
+      "received"
+    ],
+    [
+      "moe_dq4_rotate_v1",
+      null,
+      null
+    ],
+    [
+      "moe_vjeux_wgs_ncu_v1",
+      null,
+      null
+    ],
+    [
+      "moe_wgs_ft128_nx1_v1",
+      null,
+      null
+    ],
+    [
+      "decoder_moe_hybrid_m32_v1",
+      null,
+      "prepared"
+    ],
+    [
+      "scored_projection_vjeux_hybrid_v1",
+      "beb3e26afb2544c9",
+      null
+    ],
+    [
+      "decoder_m128_pooler_alt2_v1",
+      null,
+      null
+    ],
+    [
+      "projection_stack_m256_unpool_alt_v1",
+      "d81b3c71ea914fbd",
+      null
+    ],
+    [
+      "projection_vjeux_m32pool_m128router_v1",
+      null,
+      null
+    ],
+    [
+      "scored_attention_vjeux_public_check_v1",
+      "0d181df6ffc2480b",
+      "received"
+    ],
+    [
+      "scored_projection_four_routes_v1",
+      "4ed546f6ab2748cb",
+      null
+    ],
+    [
+      "serving_layer_lab1",
+      null,
+      "prepared"
+    ],
+    [
+      "moe_wgs_l2hint_v1",
+      null,
+      null
+    ],
+    [
+      "scored_decoder_projection_stack_m256_m128_v1",
+      null,
+      null
+    ],
+    [
+      "moe_wgs_nx2_v1",
+      null,
+      null
+    ],
+    [
+      "decoder_stack_v1",
+      null,
+      "prepared"
+    ],
+    [
+      "moe_wgs_costcurve_v2",
+      null,
+      null
+    ],
+    [
+      "scored_prefill_four_splits_v1",
+      "69464bf8cbce4588",
+      null
+    ],
+    [
+      "moe_wgs_w2x4_v1",
+      null,
+      null
+    ],
+    [
+      "scored_attention_plan16_v1",
+      "b95cd80bd3e6497f",
+      "received"
+    ],
+    [
+      "moe_wgs_fci0_v1",
+      null,
+      null
+    ],
+    [
+      "moe_wgs_ft32_v1",
+      null,
+      null
+    ],
+    [
+      "decoder_vjeux_sota_stack_v1",
+      null,
+      "prepared"
+    ],
+    [
+      "scored_prefill_vjeux_v1",
+      "68ac9af85a3a4e3d",
+      null
+    ],
+    [
+      "decoder_wgs_gathb7_check_v1",
+      null,
+      null
+    ],
+    [
+      "decoder_m128_bm32_w2_v1",
+      null,
+      null
+    ],
+    [
+      "decoder_attn16_plan_v1",
+      "113d223d543c42da",
+      "received"
+    ],
+    [
+      "attention_full_decode32_segk600_v1",
+      null,
+      null
+    ],
+    [
+      "moe_dq4_rotate_v2",
+      null,
+      null
+    ],
+    [
+      "decoder_stack_v2",
+      null,
+      "prepared"
+    ],
+    [
+      "scored_decoder_moe_hybrid_m32_v1",
+      null,
+      null
+    ],
+    [
+      "attention_full_decode32_flat_split_v1",
+      null,
+      null
+    ],
+    [
+      "moe_wgs_gathb7_v1",
+      null,
+      "screened"
+    ],
+    [
+      "scored_projection_router256_v1",
+      "df44909a5b3540ff",
+      null
+    ],
+    [
+      "attention_full_decode32_perreq_v1",
+      null,
+      null
+    ],
+    [
+      "moe_wgs_gs1_v1",
+      null,
+      null
+    ],
+    [
+      "attention_full_decode32_flat_fine_v1",
+      null,
+      null
+    ],
+    [
+      "scored_decoder_projection_o_small_v1",
+      "1c4e4524414c407f",
+      null
+    ],
+    [
+      "decoder_vjeux_operatorstack_stack_v1",
+      null,
+      null
+    ],
+    [
+      "scored_decoder_projection_gathb7_v1",
+      "6cf1be8d60e84ac7",
+      null
+    ],
+    [
+      "moe_vjeux_sota_stack_v1",
+      null,
+      "prepared"
+    ],
+    [
+      "scored_moe_reord0_m32_v1",
+      "6ae96ed05c124b5f",
+      null
+    ],
+    [
+      "decoder_m128_operatorstack_stack_v1",
+      null,
+      "prepared"
+    ]
+  ]
+}

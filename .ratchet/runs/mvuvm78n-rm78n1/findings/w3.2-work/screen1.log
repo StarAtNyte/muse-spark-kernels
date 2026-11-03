@@ -1,0 +1,79 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bSvvGWvZ7oBeCzq1bdZqsq
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+built in 17.3s
+nsm 132 NVIDIA H200
+base check 33 True relative L2 error 2.731e-06 (worst row 3.111e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.909e-06 (worst row 3.419e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.487e-06 (worst row 4.111e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.113e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.88, "cand_us": 11.232, "cand_min": 10.944, "base_min": 10.56, "delta_us": -0.352}
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 10.976, "cand_min": 10.72, "base_min": 10.56, "delta_us": -0.128}
+RESULT {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.848, "cand_us": 11.744, "cand_min": 11.488, "base_min": 10.592, "delta_us": -0.896}
+RESULT {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.648, "cand_min": 11.36, "base_min": 10.592, "delta_us": -0.736}
+RESULT {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": true, "base_us": 10.944, "cand_us": 11.872, "cand_min": 11.584, "base_min": 10.528, "delta_us": -0.928}
+RESULT {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 16, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 11.936, "cand_min": 11.712, "base_min": 10.592, "delta_us": -1.024}
+RESULT {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 24, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.84, "cand_min": 11.584, "base_min": 10.624, "delta_us": -0.928}
+RESULT {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 32, "grid": 128, "ok": true, "base_us": 10.912, "cand_us": 12.128, "cand_min": 12.0, "base_min": 10.656, "delta_us": -1.216}
+RESULT {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 32, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 13.248, "cand_min": 12.8, "base_min": 10.592, "delta_us": -2.336}
+RESULT {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 48, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 13.696, "cand_min": 13.312, "base_min": 10.592, "delta_us": -2.784}
+RESULT {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 64, "grid": 128, "ok": true, "base_us": 10.912, "cand_us": 14.592, "cand_min": 14.304, "base_min": 10.624, "delta_us": -3.68}
+RESULT {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 32, "grid": 64, "ok": true, "base_us": 10.88, "cand_us": 13.824, "cand_min": 13.376, "base_min": 10.624, "delta_us": -2.944}
+RESULT {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 48, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 13.984, "cand_min": 13.664, "base_min": 10.624, "delta_us": -3.072}
+RESULT {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 64, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 15.2, "cand_min": 15.072, "base_min": 10.656, "delta_us": -4.352}
+RESULT {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 64, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 17.76, "cand_min": 17.472, "base_min": 10.656, "delta_us": -6.848}
+RESULT {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 96, "grid": 96, "ok": true, "base_us": 10.816, "cand_us": 18.144, "cand_min": 17.856, "base_min": 10.592, "delta_us": -7.328}
+RESULT {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 128, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 19.712, "cand_min": 19.392, "base_min": 10.656, "delta_us": -8.864}
+RESULT {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 12.736, "cand_min": 12.448, "base_min": 11.872, "delta_us": -0.544}
+RESULT {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 8, "grid": 64, "ok": true, "base_us": 12.224, "cand_us": 13.888, "cand_min": 13.664, "base_min": 11.904, "delta_us": -1.664}
+RESULT {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 12, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 12.64, "cand_min": 12.32, "base_min": 11.744, "delta_us": -0.448}
+RESULT {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 12.32, "cand_min": 12.096, "base_min": 11.904, "delta_us": -0.128}
+RESULT {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 16, "grid": 64, "ok": true, "base_us": 12.16, "cand_us": 14.784, "cand_min": 14.56, "base_min": 11.872, "delta_us": -2.624}
+RESULT {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 24, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 14.08, "cand_min": 13.76, "base_min": 11.776, "delta_us": -1.888}
+RESULT {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 32, "grid": 128, "ok": true, "base_us": 12.16, "cand_us": 14.24, "cand_min": 14.112, "base_min": 11.904, "delta_us": -2.08}
+RESULT {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 8, "grid": 64, "ok": true, "base_us": 12.192, "cand_us": 14.784, "cand_min": 14.496, "base_min": 11.936, "delta_us": -2.592}
+RESULT {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 12, "grid": 96, "ok": true, "base_us": 12.16, "cand_us": 13.216, "cand_min": 12.864, "base_min": 11.776, "delta_us": -1.056}
+RESULT {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 16, "grid": 128, "ok": true, "base_us": 12.256, "cand_us": 12.768, "cand_min": 12.512, "base_min": 11.808, "delta_us": -0.512}
+RESULT {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 16, "grid": 64, "ok": true, "base_us": 12.128, "cand_us": 14.688, "cand_min": 14.368, "base_min": 11.904, "delta_us": -2.56}
+RESULT {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 24, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 14.112, "cand_min": 13.696, "base_min": 11.904, "delta_us": -1.92}
+RESULT {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 32, "grid": 128, "ok": true, "base_us": 12.128, "cand_us": 14.368, "cand_min": 14.144, "base_min": 11.872, "delta_us": -2.24}
+RESULT {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 32, "grid": 64, "ok": true, "base_us": 12.128, "cand_us": 18.4, "cand_min": 18.112, "base_min": 11.84, "delta_us": -6.272}
+RESULT {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 48, "grid": 96, "ok": true, "base_us": 12.128, "cand_us": 18.208, "cand_min": 17.248, "base_min": 11.776, "delta_us": -6.08}
+RESULT {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 64, "grid": 128, "ok": true, "base_us": 12.096, "cand_us": 19.488, "cand_min": 19.264, "base_min": 11.84, "delta_us": -7.392}
+RESULT {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 16, "grid": 64, "ok": true, "base_us": 12.16, "cand_us": 17.216, "cand_min": 16.832, "base_min": 11.872, "delta_us": -5.056}
+RESULT {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 24, "grid": 96, "ok": true, "base_us": 12.16, "cand_us": 15.296, "cand_min": 14.848, "base_min": 11.872, "delta_us": -3.136}
+RESULT {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 32, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 15.104, "cand_min": 14.88, "base_min": 11.904, "delta_us": -2.912}
+RESULT {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 32, "grid": 64, "ok": true, "base_us": 12.192, "cand_us": 20.704, "cand_min": 20.352, "base_min": 11.808, "delta_us": -8.512}
+RESULT {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 48, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 18.432, "cand_min": 17.856, "base_min": 11.936, "delta_us": -6.24}
+RESULT {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 64, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 19.552, "cand_min": 19.296, "base_min": 11.872, "delta_us": -7.36}
+SUMMARY [{"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 10.976, "cand_min": 10.72, "base_min": 10.56, "delta_us": -0.128}, {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.88, "cand_us": 11.232, "cand_min": 10.944, "base_min": 10.56, "delta_us": -0.352}, {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.648, "cand_min": 11.36, "base_min": 10.592, "delta_us": -0.736}, {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.848, "cand_us": 11.744, "cand_min": 11.488, "base_min": 10.592, "delta_us": -0.896}, {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 24, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.84, "cand_min": 11.584, "base_min": 10.624, "delta_us": -0.928}, {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 32, "grid": 128, "ok": true, "base_us": 10.944, "cand_us": 11.872, "cand_min": 11.584, "base_min": 10.528, "delta_us": -0.928}, {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 16, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 11.936, "cand_min": 11.712, "base_min": 10.592, "delta_us": -1.024}, {"m": 128, "cfg": 3, "nwg_bn": [2, 64], "S": 32, "grid": 128, "ok": true, "base_us": 10.912, "cand_us": 12.128, "cand_min": 12.0, "base_min": 10.656, "delta_us": -1.216}, {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 32, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 13.248, "cand_min": 12.8, "base_min": 10.592, "delta_us": -2.336}, {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 48, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 13.696, "cand_min": 13.312, "base_min": 10.592, "delta_us": -2.784}, {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 32, "grid": 64, "ok": true, "base_us": 10.88, "cand_us": 13.824, "cand_min": 13.376, "base_min": 10.624, "delta_us": -2.944}, {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 48, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 13.984, "cand_min": 13.664, "base_min": 10.624, "delta_us": -3.072}, {"m": 128, "cfg": 4, "nwg_bn": [2, 128], "S": 64, "grid": 128, "ok": true, "base_us": 10.912, "cand_us": 14.592, "cand_min": 14.304, "base_min": 10.624, "delta_us": -3.68}, {"m": 128, "cfg": 6, "nwg_bn": [4, 64], "S": 64, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 15.2, "cand_min": 15.072, "base_min": 10.656, "delta_us": -4.352}, {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 64, "grid": 64, "ok": true, "base_us": 10.912, "cand_us": 17.76, "cand_min": 17.472, "base_min": 10.656, "delta_us": -6.848}, {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 96, "grid": 96, "ok": true, "base_us": 10.816, "cand_us": 18.144, "cand_min": 17.856, "base_min": 10.592, "delta_us": -7.328}, {"m": 128, "cfg": 7, "nwg_bn": [4, 128], "S": 128, "grid": 128, "ok": true, "base_us": 10.848, "cand_us": 19.712, "cand_min": 19.392, "base_min": 10.656, "delta_us": -8.864}, {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 12.32, "cand_min": 12.096, "base_min": 11.904, "delta_us": -0.128}, {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 12, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 12.64, "cand_min": 12.32, "base_min": 11.744, "delta_us": -0.448}, {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 12.736, "cand_min": 12.448, "base_min": 11.872, "delta_us": -0.544}, {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 16, "grid": 128, "ok": true, "base_us": 12.256, "cand_us": 12.768, "cand_min": 12.512, "base_min": 11.808, "delta_us": -0.512}, {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 12, "grid": 96, "ok": true, "base_us": 12.16, "cand_us": 13.216, "cand_min": 12.864, "base_min": 11.776, "delta_us": -1.056}, {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 8, "grid": 64, "ok": true, "base_us": 12.224, "cand_us": 13.888, "cand_min": 13.664, "base_min": 11.904, "delta_us": -1.664}, {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 24, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 14.08, "cand_min": 13.76, "base_min": 11.776, "delta_us": -1.888}, {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 24, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 14.112, "cand_min": 13.696, "base_min": 11.904, "delta_us": -1.92}, {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 32, "grid": 128, "ok": true, "base_us": 12.16, "cand_us": 14.24, "cand_min": 14.112, "base_min": 11.904, "delta_us": -2.08}, {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 32, "grid": 128, "ok": true, "base_us": 12.128, "cand_us": 14.368, "cand_min": 14.144, "base_min": 11.872, "delta_us": -2.24}, {"m": 256, "cfg": 4, "nwg_bn": [2, 128], "S": 16, "grid": 64, "ok": true, "base_us": 12.128, "cand_us": 14.688, "cand_min": 14.368, "base_min": 11.904, "delta_us": -2.56}, {"m": 256, "cfg": 2, "nwg_bn": [1, 256], "S": 16, "grid": 64, "ok": true, "base_us": 12.16, "cand_us": 14.784, "cand_min": 14.56, "base_min": 11.872, "delta_us": -2.624}, {"m": 256, "cfg": 3, "nwg_bn": [2, 64], "S": 8, "grid": 64, "ok": true, "base_us": 12.192, "cand_us": 14.784, "cand_min": 14.496, "base_min": 11.936, "delta_us": -2.592}, {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 32, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 15.104, "cand_min": 14.88, "base_min": 11.904, "delta_us": -2.912}, {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 24, "grid": 96, "ok": true, "base_us": 12.16, "cand_us": 15.296, "cand_min": 14.848, "base_min": 11.872, "delta_us": -3.136}, {"m": 256, "cfg": 6, "nwg_bn": [4, 64], "S": 16, "grid": 64, "ok": true, "base_us": 12.16, "cand_us": 17.216, "cand_min": 16.832, "base_min": 11.872, "delta_us": -5.056}, {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 48, "grid": 96, "ok": true, "base_us": 12.128, "cand_us": 18.208, "cand_min": 17.248, "base_min": 11.776, "delta_us": -6.08}, {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 32, "grid": 64, "ok": true, "base_us": 12.128, "cand_us": 18.4, "cand_min": 18.112, "base_min": 11.84, "delta_us": -6.272}, {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 48, "grid": 96, "ok": true, "base_us": 12.192, "cand_us": 18.432, "cand_min": 17.856, "base_min": 11.936, "delta_us": -6.24}, {"m": 256, "cfg": 5, "nwg_bn": [2, 256], "S": 64, "grid": 128, "ok": true, "base_us": 12.096, "cand_us": 19.488, "cand_min": 19.264, "base_min": 11.84, "delta_us": -7.392}, {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 64, "grid": 128, "ok": true, "base_us": 12.192, "cand_us": 19.552, "cand_min": 19.296, "base_min": 11.872, "delta_us": -7.36}, {"m": 256, "cfg": 7, "nwg_bn": [4, 128], "S": 32, "grid": 64, "ok": true, "base_us": 12.192, "cand_us": 20.704, "cand_min": 20.352, "base_min": 11.808, "delta_us": -8.512}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-bSvvGWvZ7oBeCzq1bdZqsq

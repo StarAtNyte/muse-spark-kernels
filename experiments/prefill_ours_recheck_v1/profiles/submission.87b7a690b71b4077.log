@@ -1,0 +1,16 @@
+LT tune T=753 qkv: torch.mm 42.5us, best 42.5us algo None of 8
+LT tune T=753 o: torch.mm 24.5us, best 24.5us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.1us, best 69.1us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.4us, best 70.4us algo None of 8
+LT tune T=3012 qkv: torch.mm 149.1us, best 149.1us algo None of 8
+LT tune T=3012 o: torch.mm 75.6us, best 75.6us algo None of 8
+LT tune T=3012 router: torch.mm 40.6us, best 40.6us algo None of 8
+LT tune T=3012 pooler: torch.mm 260.1us, best 260.1us algo None of 8
+LT tune T=3012 unpooler: torch.mm 259.1us, best 259.1us algo None of 8
+LT tune T=16384 qkv: torch.mm 793.0us, best 793.0us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 214.9us, best 203.3us algo 1 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]

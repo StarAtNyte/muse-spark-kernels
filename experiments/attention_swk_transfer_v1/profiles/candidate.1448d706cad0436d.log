@@ -1,0 +1,256 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3392, in _launch
+    if (L == 1 and window and B in (16, 32) and P == 1 and hq == 16 and hkv == 2 and d == 64
+                   ^^^^^^
+UnboundLocalError: cannot access local variable 'window' where it is not associated with a value
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3392, in _launch
+    if (L == 1 and window and B in (16, 32) and P == 1 and hq == 16 and hkv == 2 and d == 64
+                   ^^^^^^
+UnboundLocalError: cannot access local variable 'window' where it is not associated with a value
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3392, in _launch
+    if (L == 1 and window and B in (16, 32) and P == 1 and hq == 16 and hkv == 2 and d == 64
+                   ^^^^^^
+UnboundLocalError: cannot access local variable 'window' where it is not associated with a value
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3392, in _launch
+    if (L == 1 and window and B in (16, 32) and P == 1 and hq == 16 and hkv == 2 and d == 64
+                   ^^^^^^
+UnboundLocalError: cannot access local variable 'window' where it is not associated with a value
+Traceback (most recent call last):
+  File "/tmp/muse_attention_decode-0ar24a66/run/worker.py", line 484, in child_main
+    out = kernel()(state.get("data"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3530, in kernel_fn
+    return _kz_base_kernel(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3512, in kernel_fn
+    return _launch(data)
+           ^^^^^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3437, in _launch
+    (_mod or _module()).run(qkv, data["seq_lens"], data["cache_loc"], data["k_cache"], data["v_cache"], page_table,
+             ^^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3285, in _module
+    _MOD = _build()
+           ^^^^^^^^
+  File "/tmp/muse_attention_decode-0ar24a66/run/submission.py", line 3271, in _build
+    return load_inline(
+           ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2420, in _jit_compile
+    return _import_module_from_library(name, build_directory, is_python_module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2944, in _import_module_from_library
+    module = importlib.util.module_from_spec(spec)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1289, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /tmp/muse_attention_decode-0ar24a66/sandbox/cache/torch_extensions/okc_attn_swk_v1_90a/okc_attn_swk_v1_90a.so: cannot open shared object file: No such file or directory

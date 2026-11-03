@@ -1,0 +1,47 @@
+--- kernels/muse_attention_decode/submission.py	2026-10-29 15:31:53.965980854 +0545
++++ experiments/attention_page_lookahead2_w2_v1/submission.py	2026-10-30 17:03:14.681180214 +0545
+@@ -1001,7 +1001,7 @@
+       const int ch = q & 7, r0 = q >> 3;
+       const int* ptr = p.page_table + (ix_t)b * p.max_pages;
+       const int cache_end = min(end, seq);
+-      int pg[PK];
++      int pg[PK], pg_next[PK];
+       static_assert(PR % 8 == 0, "PFAST: the swizzle chunk is the same for all of a thread's rows");
+       const bool pfast = p.off32 && p.lp == 0;
+       const uint32_t pcol = (uint32_t)(pair * 128 + ch * 16);
+@@ -1056,7 +1056,7 @@
+           dst[k] = (x < ntiles && pos < cache_end) ? __ldg(ptr + (pos >> p.lp)) : 0;
+         }
+       };
+-      if constexpr (!TMAPG_ON) load_pages(0, pg);
++      if constexpr (!TMAPG_ON) { load_pages(0, pg); load_pages(1, pg_next); }
+       
+       // tile y's V (both KV heads) -> V^T slot y & 1 (72 x 64 per head: 64 dims + 8 rows of e4m3 ones for the
+       // row sums, keys permuted to the P register order, K-major, 64B swizzle), the layout the PV wgmma reads
+@@ -1067,7 +1067,7 @@
+           fetch_pages(x + PD);
+           load_pages_t(x, pg);
+         } else {
+-          load_pages(x + 1, pgn);   // in flight while this tile's copies issue
++          load_pages(x + 2, pgn);   // in flight while this tile's copies issue
+         }
+         if (tb + x >= STAGES) mbar_wait_full(&S.empty[st], (((tb + x) / STAGES) - 1) & 1);
+         const uint32_t kb = smem_u32(S.k + st * STAGE_BYTES), vb = smem_u32(S.v + st * STAGE_BYTES);
+@@ -1109,7 +1109,7 @@
+           asm volatile("bar.sync 2, %0;\n" ::"n"(NP) : "memory");   // slot x % PS is free for tile x + PS
+         } else {
+ #pragma unroll
+-          for (int k = 0; k < PK; ++k) pg[k] = pgn[k];
++          for (int k = 0; k < PK; ++k) { pg[k] = pg_next[k]; pg_next[k] = pgn[k]; }
+         }
+       }
+       
+@@ -2949,7 +2949,7 @@
+     from torch.utils.cpp_extension import load_inline
+ 
+     return load_inline(
+-        name=f"okc_attn_v298{tag}_90a",
++        name=f"okc_attn_w2look2{tag}_90a",
+         cpp_sources=CPP_SRC,
+         cuda_sources=CUDA_SRC,
+         functions=["run"],

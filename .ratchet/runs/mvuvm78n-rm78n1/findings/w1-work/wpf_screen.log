@@ -1,0 +1,64 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IJ7x67VnziQiewZJWGHq8T
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+START
+COMPILED 179.1
+ROW {"bs": 32, "seed": 403, "var": "-DOKC_WPF=3", "base_us": 172.18, "cand_us": 181.17, "gain": 0.9504, "bitwise": true}
+ROW {"bs": 32, "seed": 403, "var": "-DOKC_WPF=6", "base_us": 172.69, "cand_us": 189.74, "gain": 0.9101, "bitwise": true}
+ROW {"bs": 32, "seed": 403, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 169.82, "cand_us": 190.4, "gain": 0.8919, "bitwise": true}
+ROW {"bs": 32, "seed": 419, "var": "-DOKC_WPF=3", "base_us": 132.66, "cand_us": 139.55, "gain": 0.9506, "bitwise": true}
+ROW {"bs": 32, "seed": 419, "var": "-DOKC_WPF=6", "base_us": 132.46, "cand_us": 149.1, "gain": 0.8884, "bitwise": true}
+ROW {"bs": 32, "seed": 419, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 131.01, "cand_us": 150.69, "gain": 0.8694, "bitwise": true}
+ROW {"bs": 128, "seed": 403, "var": "-DOKC_WPF=3", "base_us": 213.17, "cand_us": 230.35, "gain": 0.9254, "bitwise": true}
+ROW {"bs": 128, "seed": 403, "var": "-DOKC_WPF=6", "base_us": 213.79, "cand_us": 247.81, "gain": 0.8627, "bitwise": true}
+ROW {"bs": 128, "seed": 403, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 212.45, "cand_us": 245.44, "gain": 0.8656, "bitwise": true}
+ROW {"bs": 128, "seed": 419, "var": "-DOKC_WPF=3", "base_us": 193.07, "cand_us": 207.25, "gain": 0.9316, "bitwise": true}
+ROW {"bs": 128, "seed": 419, "var": "-DOKC_WPF=6", "base_us": 193.17, "cand_us": 224.69, "gain": 0.8597, "bitwise": true}
+ROW {"bs": 128, "seed": 419, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 192.38, "cand_us": 221.02, "gain": 0.8704, "bitwise": true}
+ROW {"bs": 256, "seed": 403, "var": "-DOKC_WPF=3", "base_us": 224.5, "cand_us": 243.78, "gain": 0.9209, "bitwise": true}
+ROW {"bs": 256, "seed": 403, "var": "-DOKC_WPF=6", "base_us": 223.71, "cand_us": 272.43, "gain": 0.8212, "bitwise": true}
+ROW {"bs": 256, "seed": 403, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 223.65, "cand_us": 260.8, "gain": 0.8575, "bitwise": true}
+ROW {"bs": 256, "seed": 419, "var": "-DOKC_WPF=3", "base_us": 227.12, "cand_us": 247.49, "gain": 0.9177, "bitwise": true}
+ROW {"bs": 256, "seed": 419, "var": "-DOKC_WPF=6", "base_us": 226.29, "cand_us": 272.5, "gain": 0.8304, "bitwise": true}
+ROW {"bs": 256, "seed": 419, "var": "-DOKC_WPF=6 -DOKC_WPFH=1", "base_us": 226.26, "cand_us": 261.41, "gain": 0.8655, "bitwise": true}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-IJ7x67VnziQiewZJWGHq8T

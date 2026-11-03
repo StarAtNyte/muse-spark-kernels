@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-85ee9iX7TmlMLYcxl07i4r
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"ONLY": "{\"128\":[[0,12],[1,16]],\"256\":[[0,8],[1,16]]}", "ABL": "[[128,0,12],[128,1,16],[128,4,32],[256,0,8],[256,1,16],[256,4,32]]"} RETURNCODE 0
+built in 24.8s
+nsm 132 NVIDIA H200
+base check 33 True relative L2 error 2.731e-06 (worst row 3.123e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.909e-06 (worst row 3.432e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.486e-06 (worst row 4.109e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.110e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.816, "cand_us": 11.456, "cand_min": 11.296, "base_min": 10.528, "delta_us": -0.64}
+RESULT {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.784, "cand_us": 12.352, "cand_min": 12.032, "base_min": 10.624, "delta_us": -1.568}
+RESULT {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.064, "cand_us": 12.992, "cand_min": 12.736, "base_min": 11.808, "delta_us": -0.928}
+RESULT {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.128, "cand_us": 12.832, "cand_min": 12.576, "base_min": 11.808, "delta_us": -0.704}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 12, "mode0": 11.52, "mode1": 11.008, "mode2": 10.496, "mode3": 10.048, "mode4": 11.488, "mode5": 10.944, "mode7": 9.92}
+ABLATION {"m": 128, "cfg": [1, 128], "S": 16, "mode0": 12.256, "mode1": 11.36, "mode2": 10.976, "mode3": 10.016, "mode4": 12.288, "mode5": 11.264, "mode7": 9.888}
+ABLATION {"m": 128, "cfg": [2, 128], "S": 32, "mode0": 13.376, "mode1": 11.552, "mode2": 12.448, "mode3": 10.4, "mode4": 13.472, "mode5": 11.648, "mode7": 10.304}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 13.088, "mode1": 12.48, "mode2": 11.712, "mode3": 11.104, "mode4": 12.992, "mode5": 12.512, "mode7": 11.104}
+ABLATION {"m": 256, "cfg": [1, 128], "S": 16, "mode0": 12.704, "mode1": 11.84, "mode2": 11.904, "mode3": 10.848, "mode4": 12.864, "mode5": 11.84, "mode7": 10.656}
+ABLATION {"m": 256, "cfg": [2, 128], "S": 32, "mode0": 14.624, "mode1": 12.416, "mode2": 13.536, "mode3": 11.104, "mode4": 14.56, "mode5": 12.224, "mode7": 10.944}
+TINY_GRAPH_US 5.248
+SUMMARY [{"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.816, "cand_us": 11.456, "cand_min": 11.296, "base_min": 10.528, "delta_us": -0.64}, {"m": 128, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.784, "cand_us": 12.352, "cand_min": 12.032, "base_min": 10.624, "delta_us": -1.568}, {"m": 256, "cfg": 1, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.128, "cand_us": 12.832, "cand_min": 12.576, "base_min": 11.808, "delta_us": -0.704}, {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.064, "cand_us": 12.992, "cand_min": 12.736, "base_min": 11.808, "delta_us": -0.928}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+[modal-client] 2026-10-30T19:49:53+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-85ee9iX7TmlMLYcxl07i4r

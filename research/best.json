@@ -1,16 +1,16 @@
 {
   "muse_bf16_proj": {
-    "experiment": "projection_vjeux_m32pool_m128router_v1",
-    "job_id": "beb3e26afb2544c9",
-    "sha256": "d12bdc54efaa1c8eca185c723a97188ba7e303d67a1671597a3a722500ba7de9",
-    "speedup": 1.539506245183982,
+    "experiment": "bf16_keell0renz_compare_v1",
+    "job_id": "4ee45f6070944569",
+    "sha256": "abdcdc0100da6ed97ac289b345f8c1358d054fdf58c45febcc9f9eceb1513c09",
+    "speedup": 1.559452648319779,
     "speedup_ci": [
-      1.5164136515062223,
-      1.5625988388617416
+      1.5360608585949824,
+      1.5828444380445756
     ],
     "tests": 9,
     "timed_cases": 30,
-    "public_submission": "beb3e26afb2544c9"
+    "public_submission": "e5cae4f990be4df2"
   },
   "muse_attention_decode": {
     "experiment": "scored_attention_vp2_lb2_v1",
@@ -26,42 +26,42 @@
     "public_submission": "6f2b2edf215d4ea3"
   },
   "muse_decode_layer": {
-    "experiment": "scored_decoder_compact_qkv_o_v1",
-    "job_id": "b72f02c7eb8745f5",
-    "sha256": "9e7c8b73b0471d04f4f0cf451bea6ad372d7356e3103e7f57d7253df234aebb2",
-    "speedup": 2.2603208825001473,
+    "experiment": "decode_keell0renz_compare_v1",
+    "job_id": "c1b314a3eeaa4d36",
+    "sha256": "82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19",
+    "speedup": 2.2635520804170337,
     "speedup_ci": [
-      2.226416069262645,
-      2.2942256957376492
+      2.229598799210778,
+      2.2975053616232888
     ],
     "tests": 13,
     "timed_cases": 12,
-    "public_submission": "b72f02c7eb8745f5"
+    "public_submission": "01bd05039098464e"
   },
   "muse_moe_w4a16": {
-    "experiment": "scored_moe_ours_kperm3_v1",
-    "job_id": "190d8914bacb4aa2",
-    "sha256": "ac008155520981cd67928bd52bb647efa64096add5acc8edabc779261105792f",
-    "speedup": 2.382027073527661,
+    "experiment": "moe_keell0renz_compare_v1",
+    "job_id": "98be7cf25e0c494f",
+    "sha256": "795ac642adc3370460ff04166ae19b5aac172a48aba0170b94dac2a6a3430410",
+    "speedup": 2.404708984379434,
     "speedup_ci": [
-      2.3462966674247463,
-      2.417757479630576
+      2.368638349613742,
+      2.440779619145125
     ],
     "tests": 5,
     "timed_cases": 6,
-    "public_submission": "190d8914bacb4aa2"
+    "public_submission": "43e6e35388774f73"
   },
   "muse_prefill_layer": {
-    "experiment": "prefill_k64_shuffle_v1",
-    "job_id": "7d1584001a32467a",
-    "sha256": "f49c8edacb851cb979891cb886d43f4329ee82a4c05acc20630e5605a565f7b9",
-    "speedup": 1.809233689198659,
+    "experiment": "prefill_keell0renz_compare_v1",
+    "job_id": "8c1f0611d9d641bf",
+    "sha256": "f1807a75ec056b7f3874d4fce02331ca0043ac38a45af7710a8287a252421a92",
+    "speedup": 1.9051309691668907,
     "speedup_ci": [
-      1.7820951838606789,
-      1.8363721945366387
+      1.8765540046293874,
+      1.9337079337043939
     ],
     "tests": 5,
     "timed_cases": 8,
-    "public_submission": "7d1584001a32467a"
+    "public_submission": "f3b10ea957e04ea6"
   }
 }

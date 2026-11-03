@@ -527,5 +527,108 @@
     "sha256": "554adb3886491fa686e950773b2d5c5cc759377eae0f3a7d3abf9f15fd353293",
     "submitted_at": 1793267213.9615474,
     "status": "received"
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "79417e4173a14f71",
+    "experiment": "moe_ours_kperm3_stack_v1",
+    "sha256": "ac008155520981cd67928bd52bb647efa64096add5acc8edabc779261105792f",
+    "submitted_at": 1793520517.620901,
+    "status": "received"
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "790be595ca8f431a",
+    "experiment": "projection_stack_alygg_routes_v1",
+    "sha256": "fd777982e19718118a94e7d5565bd42af5d94121203a8c63db82cc96905fdeed",
+    "submitted_at": 1793521940.7182198,
+    "status": "received"
+  },
+  {
+    "problem": "muse_prefill_layer",
+    "job_id": "f3b10ea957e04ea6",
+    "experiment": "prefill_keell0renz_compare_v1",
+    "sha256": "f1807a75ec056b7f3874d4fce02331ca0043ac38a45af7710a8287a252421a92",
+    "submitted_at": 1793523708.5633073,
+    "status": "received"
+  },
+  {
+    "problem": "muse_moe_w4a16",
+    "job_id": "43e6e35388774f73",
+    "experiment": "moe_keell0renz_compare_v1",
+    "sha256": "795ac642adc3370460ff04166ae19b5aac172a48aba0170b94dac2a6a3430410",
+    "submitted_at": 1793523712.737216,
+    "status": "received"
+  },
+  {
+    "problem": "muse_decode_layer",
+    "job_id": "01bd05039098464e",
+    "experiment": "decode_keell0renz_compare_v1",
+    "sha256": "82c098ae7534b20b5d80f59d547650cb0853fc7d5e313fe29e1e9d9373e1bb19",
+    "submitted_at": 1793523816.1117578,
+    "status": "received"
+  },
+  {
+    "problem": "muse_bf16_proj",
+    "job_id": "e5cae4f990be4df2",
+    "experiment": "bf16_keell0renz_compare_v1",
+    "sha256": "abdcdc0100da6ed97ac289b345f8c1358d054fdf58c45febcc9f9eceb1513c09",
+    "submitted_at": 1793524599.435031,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "7983e444100b40d5",
+    "experiment": "attention_stack_kz_routes_v2",
+    "sha256": "8b3f125b166c82688c1892888234e48541c09891a2f946948b0e2d3007cea9a9",
+    "submitted_at": 1793526384.6357236,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "7d250883e6b94c50",
+    "experiment": "attention_warm_route_verify_v1",
+    "sha256": "573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1da",
+    "submitted_at": 1793532687.446404,
+    "status": "received"
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "6f2b2edf215d4ea3",
+    "experiment": "attention_vp2_lb2_v1",
+    "sha256": "691eaa9134ab68a874b73269aa5e5677c748d7cb4234a764c66949a0c8396aef",
+    "submitted_at": 1793643162.9049065,
+    "status": "done",
+    "speedup": 2.6493911822625438,
+    "speedup_ci": [
+      2.6096503145286056,
+      2.6891320499964815
+    ]
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "cba8e99746cb4aac",
+    "experiment": "attention_vp2_lb3_v1",
+    "sha256": "58b1caebb874188942936c321891b9ae58c07a16dac46661728e8b09bd728e65",
+    "submitted_at": 1793643985.1504593,
+    "status": "done",
+    "speedup": 2.63778111350484,
+    "speedup_ci": [
+      2.5982143968022675,
+      2.6773478302074123
+    ]
+  },
+  {
+    "problem": "muse_attention_decode",
+    "job_id": "e503062862744b16",
+    "experiment": "attention_wst_b32_v1",
+    "sha256": "2235ca0ca95ac673bfb9f4c2013e27743ff3f149c01191f03b1ce327246a0066",
+    "submitted_at": 1793645691.4273565,
+    "status": "done",
+    "speedup": 2.638408100180329,
+    "speedup_ci": [
+      2.598831978677624,
+      2.6779842216830336
+    ]
   }
 ]

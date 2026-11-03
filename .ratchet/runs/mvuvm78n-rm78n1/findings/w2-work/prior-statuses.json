@@ -1,0 +1,242 @@
+[
+  {
+    "path": "experiments/attention_all_splitkv_v3/status.json",
+    "status": "done",
+    "passed": false,
+    "speedup": null
+  },
+  {
+    "path": "experiments/attention_all_splitkv_v4/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.019025446237317
+  },
+  {
+    "path": "experiments/attention_cluster16_small_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.726756147833819
+  },
+  {
+    "path": "experiments/attention_cluster_sliding_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7062347193639134
+  },
+  {
+    "path": "experiments/attention_fp8_hybrid_v7/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.316820993659481
+  },
+  {
+    "path": "experiments/attention_fp8_qk_v6/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.175689163300726
+  },
+  {
+    "path": "experiments/attention_fp8p_cluster_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7326086494446995
+  },
+  {
+    "path": "experiments/attention_fp8p_joint_serial/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7112269500331407
+  },
+  {
+    "path": "experiments/attention_fullverify_bn256_b32_v1/status.json",
+    "status": "done",
+    "passed": false,
+    "speedup": null
+  },
+  {
+    "path": "experiments/attention_fullverify_bn256_reg160_b32_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7889017827092009
+  },
+  {
+    "path": "experiments/attention_fullverify_split16_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.8333898160731859
+  },
+  {
+    "path": "experiments/attention_fullverify_split4_b32_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.8840102236147696
+  },
+  {
+    "path": "experiments/attention_fullverify_split4_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7948627800122265
+  },
+  {
+    "path": "experiments/attention_fullverify_stages5_b32_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.8685653103470052
+  },
+  {
+    "path": "experiments/attention_fullverify_wgmma_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.8353854925152933
+  },
+  {
+    "path": "experiments/attention_fused_io_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.1335643317819648
+  },
+  {
+    "path": "experiments/attention_hybrid_full_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7680889302201506
+  },
+  {
+    "path": "experiments/attention_hybrid_v5/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.238320467410452
+  },
+  {
+    "path": "experiments/attention_hybrid_verify_v2/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.879812885895077
+  },
+  {
+    "path": "experiments/attention_operatorstack_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.786690288135838
+  },
+  {
+    "path": "experiments/attention_plan16_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 2.600612335371733
+  },
+  {
+    "path": "experiments/attention_plan_b1s_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 2.5744003591736084
+  },
+  {
+    "path": "experiments/attention_ptx_merge_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.5731117170333142
+  },
+  {
+    "path": "experiments/attention_slide_fa3_nosplit/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.5742462903474943
+  },
+  {
+    "path": "experiments/attention_splitkv_v2/status.json",
+    "status": "done",
+    "passed": false,
+    "speedup": null
+  },
+  {
+    "path": "experiments/attention_swizzle_split_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.5586370122049205
+  },
+  {
+    "path": "experiments/attention_transpose_selected/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.7096881131840214
+  },
+  {
+    "path": "experiments/attention_verify_onehead_s2/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.6046747726411952
+  },
+  {
+    "path": "experiments/attention_verify_small128/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.6114169361270052
+  },
+  {
+    "path": "experiments/attention_vjeux_public_check_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 2.5731285410493276
+  },
+  {
+    "path": "experiments/attn_fd3_a/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.4591180755529045
+  },
+  {
+    "path": "experiments/attn_fd3_b/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.4849334720365166
+  },
+  {
+    "path": "experiments/attn_fd3_lab1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.33368828627513
+  },
+  {
+    "path": "experiments/attn_fd3_pdl/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.4967079637026395
+  },
+  {
+    "path": "experiments/attn_fd3_pdl2/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.5221399175200414
+  },
+  {
+    "path": "experiments/attn_fd3v_lab1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.3410713735431616
+  },
+  {
+    "path": "experiments/attn_fd3v_lab2/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.3389125587995139
+  },
+  {
+    "path": "experiments/attn_fd3v_lab3/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.3484170727790177
+  },
+  {
+    "path": "experiments/attn_fd3w_lab1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 1.3363075391851447
+  },
+  {
+    "path": "experiments/scored_attention_plan16_v1/status.json",
+    "status": "done",
+    "passed": true,
+    "speedup": 2.6176787949075724
+  }
+]

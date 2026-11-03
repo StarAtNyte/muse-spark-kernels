@@ -1,0 +1,25 @@
+{
+  "name": "scored_attention_warm_route_verify_v1",
+  "problem": "muse_attention_decode",
+  "hypothesis": "icache-warm base; route sliding verify b1 and full verify b16/b32 to the keell0renz module (their verify kernels paired slightly ahead)",
+  "sha256": "573f179558bb2eae13faa7a58ecfdd924196bb15e9bfd25fd552289ae903c1da",
+  "created_at": 1793532311.9517906,
+  "decision": "submitted_for_scoring",
+  "limits_before": {
+    "scored": {
+      "per_day": 10,
+      "used": 1,
+      "left": 9
+    },
+    "checks": {
+      "per_day": 20,
+      "used": 7,
+      "left": 13
+    }
+  },
+  "status": "received",
+  "updated_at": 1793532682.8045042,
+  "parent_experiment": "attention_warm_route_verify_v1",
+  "mode": "run",
+  "job_id": "7d250883e6b94c50"
+}

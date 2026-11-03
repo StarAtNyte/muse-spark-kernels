@@ -1,0 +1,236 @@
+--- standalone_MoE
++++ decoder_MoE
+@@ -1,15 +1,4 @@
+ 
+-// ---------------------------------------------------------------- roadmap
+-// Compile-time knobs (the OKC_* values the host actually passes, plus
+-// defaults for the rest) -> Params / Smem -> small helpers (dequant,
+-// mma, mbarrier, L2 hints) -> route() -> skinny ring (two variants:
+-// dynamic-pool SKDYN / static, see below) -> fat stream (cp.async +
+-// mma.sync, wgmma variant) -> WS helper warp -> WGS (RS-wgmma,
+-// producer/consumer) -> run_phase -> moe_fused -> C++ launcher okc_run.
+-// v2: dead #if branches pruned for the only builds the host compiles
+-// (MAIN / TINY / TINY2 / MID, each with and without -DOKC_PRMTSC=1, plus
+-// the MAIN fallback; BW with no -D), sm_90a only; dead functions,
+-// defines and BW switch cases removed. Taken-path code is unchanged.
+ // muse_moe_w4a16 v2: one persistent kernel: routing prologue, GEMM1+SwiGLU, GEMM2+norm stats, final norm/sum.
+ #include <cuda_bf16.h>
+ #include <type_traits>
+@@ -17,13 +6,15 @@
+ #include <stdint.h>
+ #define OKC_DEBUG 0
+ #define OKC_USE_TMA 1
+-#ifndef OKC_NACC
+-#define OKC_NACC 2
+-#endif
+ #define OKC_RLOAD 1  // routing: all topk_ids loads issued before the smem stores
+-                     // OKC_FTSC2; the TINY builds measured -0.5%, so off by default)
+ #define OKC_F1EARLY 1  // tiny builds: FAST1 warp issues its topk loads before lane 0's barrier inits
+-#define OKC_WGSFINSS 1  // WGS: the final pass forms each route's sum of squares (the phase-B epilogue only writes y)
++#define OKC_WGSFINSS 1
++#ifndef OKC_B4FIN
++#define OKC_B4FIN 0  // bet4_claude: column-parallel final pass, fixed-order ss partials (own build at 16 < M <= 32)
++#endif
++#ifndef B4_EARLY_Y
++#define B4_EARLY_Y 1
++#endif  // WGS: the final pass forms each route's sum of squares (the phase-B epilogue only writes y)
+ #ifndef OKC_FINCOL
+ #define OKC_FINCOL 1
+ #endif
+@@ -147,8 +138,10 @@
+ static_assert((1 << RB_A_LOG) == RB_A, "RB_A must be 512");
+ static_assert(OKC_NSF <= 7 && OKC_NS <= 5, "barrier slots");   // 256-row blocks (fat units)
+ constexpr int MMAX = 384, EMAX = MMAX * 8, JMAX = 32 + EMAX / FT_T + 8;
++constexpr int XP_SK = HD + 8;   // skinny x row pitch (bf16)
+ constexpr int KS = 256;         // fat: K per x stage (4 chunks)
+ constexpr int XP_FT = KS + 8;   // fat x row pitch (bf16)
++constexpr int NST = 3;          // fat x stages
+ constexpr float TWO62 = 4.611686018427388e18f;
+ 
+ struct Params {
+@@ -173,6 +166,7 @@
+   float* ss1;      // [EMAX]
+   __nv_bfloat16* out;
+   unsigned long long* dbg;
++  float* sspart;  // bet4_claude B4FIN: per-(route, 16-column tile) sum-of-squares partials (WGS only)
+ };
+ 
+ struct Smem {
+@@ -206,11 +200,12 @@
+   int cnt[64], off[64];
+   int wc[NW][32];
+   int jE[JMAX], jS[JMAX], jC[JMAX], forder[JMAX];
+-  int njF, njS;
++  int njF, njS, unit;
+   int gen;          // the grid barrier's generation at launch start (+1 per launch): picks this launch's ss copy
+   float* ssp;       // this launch's ss copy
+   int uslot[8];    // unit id per skinny ring slot (-1: none; BFLAG | v: phase-B unit prefetched in phase A)
+   int dync[JMAX];  // phase A: pool units this CTA processed, per job (credited to doneA at the end of phase A)
++  int unit_next, unit_next2;
+   signed char eid[EMAX];
+   short ent[EMAX];   // sorted entries (token*8+slot) by expert
+   short pos[EMAX];   // entry -> pair position, -1 if not local
+@@ -410,6 +405,8 @@
+   CTA_SYNC();
+ }
+ 
++
++
+ // ---------------------------------------------------------------- epilogues (one 16-row block, tokens 2t,2t+1 of n-tile)
+ // r[0..1] rows g (gate / out row n0), r[2..3] rows g+8 (up / out row n1), tokens tk0 = 2t, 2t+1 relative to tile
+ __device__ __forceinline__ float probe_q(float v) {
+@@ -455,11 +452,12 @@
+   }
+ }
+ 
++// ---------------------------------------------------------------- the persistent kernel
+ 
+ 
+ // ---------------------------------------------------------------- skinny path: shared-memory weight ring
+ // A unit = (job <= 16 tokens, 16-row block) x full K = 32 KB codes + 4 KB scales, contiguous in global memory.
+-// Units of the CTA's range stream through OKC_NS smem slots (TMA bulk copies on sm_90).
++// Units of the CTA's range stream through OKC_NS smem slots (TMA bulk copies on sm_90, cp.async elsewhere).
+ // All 8 warps work on the same unit, each on its own 512-K range, with x for that K range held in registers.
+ constexpr int UNIT_CODES = 32768, UNIT_SC = 4096, UNIT_BYTES = UNIT_CODES + UNIT_SC;
+ 
+@@ -546,11 +544,6 @@
+   __syncwarp();
+ }
+ 
+-// skinny_ring exists twice, deliberately: the SKDYN variant claims tail units
+-// from a run-time atomic pool, the #else variant issues a fixed static
+-// range. The bodies share most of their epilogue code, but the pool-claim
+-// logic interleaves with the ring refill in ways a merge would risk
+-// changing; keep them in sync by hand.
+ #if SKDYN
+ template <bool PB>
+ __device__ void skinny_ring(const Params& p, Smem& S, int v0, int v1, unsigned char* ring, uint64_t* bars, int& seq,
+@@ -765,7 +758,7 @@
+   if (PB && tid == 0) S.preissuedB = 0;
+   CTA_SYNC();
+ }
+-#else  // static skinny_ring: fixed range, no run-time pool
++#else
+ template <bool PB>
+ __device__ void skinny_ring(const Params& p, Smem& S, int v0, int v1, unsigned char* ring, uint64_t* bars, int& seq,
+                             __nv_bfloat16* x1base, bool cpf_ok, int cB0, int cBn, int nSall, int poolBase) {
+@@ -1657,7 +1650,7 @@
+   return (int)(((pb ? WGS_PB : WGS_PA) >> (8 * (((cnt + 7) >> 3) - 1))) & 255ull);
+ }
+ #define OKC_WGSREORD 1  // WGS: phase A starts with the trailing partial unit (see wgs_split)
+-#define OKC_GATHB 7  // WGS: x rows gathered per batch (loads first, then stores); 0 = one row at a time
++#define OKC_GATHB 8  // WGS: x rows gathered per batch (loads first, then stores); 0 = one row at a time
+ #define OKC_WGSPR 1  // WGS: the x producer warp computes the stage ranges while the consumers gather
+ #define OKC_WGSDFIN 2  // WGS: stream-K split units finished by a designated share (see wgs_flush): bit0 phase A, bit1 phase B
+ #define OKC_WGSFCI 3
+@@ -1914,6 +1907,22 @@
+         st_keep_f32(p.ybuf + ((size_t)(jst + tk) * HD + n0 + 8), d4[2 + h] * w1);
+       }
+     }
++#if OKC_B4FIN
++    {  // bet4_claude: this tile's 16-column sum of squares per token, reduced over the 8 column lanes (fixed tree)
++      float q0 = 0.f, q1 = 0.f;
++      if (tok0 < cnt) { const float a = d4[0] * w0, b = d4[2] * w1; q0 = a * a + b * b; }
++      if (tok0 + 1 < cnt) { const float a = d4[1] * w0, b = d4[3] * w1; q1 = a * a + b * b; }
++#pragma unroll
++      for (int o = 4; o < 32; o <<= 1) {
++        q0 += __shfl_xor_sync(0xffffffffu, q0, o);
++        q1 += __shfl_xor_sync(0xffffffffu, q1, o);
++      }
++      if (g == 0) {
++        if (tok0 < cnt) p.sspart[(size_t)(jst + tok0) * 256 + r16] = q0;
++        if (tok0 + 1 < cnt) p.sspart[(size_t)(jst + tok0 + 1) * 256 + r16] = q1;
++      }
++    }
++#endif
+   }
+ }
+ template <bool PB>
+@@ -2453,7 +2462,56 @@
+ #endif
+   }
+   // final: out[t] = sum_s w * rsqrt(ss/HD + eps) * ybuf[pos]
+-#if OKC_WGS && OKC_WGSFINSS
++#if OKC_WGS && OKC_B4FIN
++  // bet4_claude: item = (token, 1024-column segment), thread = 2 columns: 4 x M items over all CTAs. Each route's sum
++  // of squares = fixed-order sum of its 256 epilogue partials (warp w: route w / 2, half w & 1; xor tree; 2 halves)
++  {
++    static_assert(NT == 512 && NW == 16, "B4FIN: 16 warps = 8 routes x 2 halves, 512 threads x 2 columns");
++    float* red = reinterpret_cast<float*>(xbuf);
++    const int lane = tid & 31, warp = WARP_IDX(tid);
++    constexpr int SEG = 1024, NSEG = HD / SEG;
++    for (int it = blockIdx.x; it < p.M * NSEG; it += gridDim.x) {
++      const int tk = it / NSEG, col = (it % NSEG) * SEG + tid * 2;
++#if B4_EARLY_Y
++      float2 yv[8];  // A2: the 8 routes' y loads go out before the ss partial loads and the reduction
++#pragma unroll
++      for (int sl = 0; sl < 8; ++sl) {
++        const int q = S.pos[tk * 8 + sl];
++        yv[sl] = q >= 0 ? __ldcg(reinterpret_cast<const float2*>(p.ybuf + (size_t)q * HD + col)) : make_float2(0.f, 0.f);
++      }
++#endif
++      {
++        const int sl = warp >> 1, hh = warp & 1;
++        const int q = S.pos[tk * 8 + sl];
++        float v = 0.f;
++        if (q >= 0) {
++          const float4 a = __ldcg(reinterpret_cast<const float4*>(p.sspart + (size_t)q * 256 + hh * 128 + lane * 4));
++          v = (a.x + a.y) + (a.z + a.w);
++        }
++#pragma unroll
++        for (int o = 16; o > 0; o >>= 1) v += __shfl_xor_sync(0xffffffffu, v, o);
++        if (lane == 0) red[warp] = v;
++      }
++      CTA_SYNC();
++      float2 acc = make_float2(0.f, 0.f);
++#pragma unroll
++      for (int sl = 0; sl < 8; ++sl) {
++        const int q = S.pos[tk * 8 + sl];
++        if (q >= 0) {
++          const float r = p.topk_w[tk * 8 + sl] * rsqrtf((red[2 * sl] + red[2 * sl + 1]) * (1.f / HD) + 1e-8f);
++#if B4_EARLY_Y
++          const float2 v = yv[sl];
++#else
++          const float2 v = __ldcg(reinterpret_cast<const float2*>(p.ybuf + (size_t)q * HD + col));
++#endif
++          acc.x += r * v.x; acc.y += r * v.y;
++        }
++      }
++      *reinterpret_cast<__nv_bfloat162*>(p.out + (size_t)tk * HD + col) = __floats2bfloat162_rn(acc.x, acc.y);
++      CTA_SYNC();  // red is reused by the next item
++    }
++  }
++#elif OKC_WGS && OKC_WGSFINSS
+   // item = one token's whole row (thread = 8 columns): pass 1 sums each local route's y^2 over the row (warp
+   // shuffles, then the 16 warps' partials through smem: the ring is free now), pass 2 re-reads the rows (L2 hits)
+   {
+@@ -2518,6 +2576,7 @@
+   // column-parallel: item = (token, 1024-column segment); thread = 4 columns
+   constexpr int FSEG = HD / (NT * 4);  // column segments per token (thread = 4 columns)
+   int it0 = blockIdx.x;
++#if OKC_FINPF
+   if (hasp) {   // first item: weights / positions from before the barrier; all 16 loads issued before the math
+     const int col = (itp % FSEG) * (NT * 4) + tid * 4;
+     float ssv[8];
+@@ -2542,6 +2601,7 @@
+     *reinterpret_cast<uint2*>(p.out + (size_t)tkp * HD + col) = o;
+   }
+   it0 += gridDim.x;
++#endif
+   for (int it = it0; it < p.M * FSEG; it += gridDim.x) {
+     const int tk = it / FSEG, col = (it % FSEG) * (NT * 4) + tid * 4;
+     float4 acc = make_float4(0.f, 0.f, 0.f, 0.f);
+@@ -2641,6 +2701,13 @@
+   TORCH_CHECK(scratch[0].numel() >= 8 + 1024 + okc::EMAX, "scratch[0] needs the second ss copy");
+   p.ss1 = reinterpret_cast<float*>(ib + 8 + 1024);
+   p.ybuf = p.ss + okc::EMAX;
++#if OKC_WGS && OKC_B4FIN
++  // B4FIN runs only at M <= 32: ybuf rows (sorted routes) stay below M * 8 <= 256, so its last 64 rows (1024 routes x 256 partials) are free
++  TORCH_CHECK(x.size(0) <= 32 && x.size(0) * 8 <= okc::EMAX - 64, "B4FIN build is for M <= 32");
++  p.sspart = p.ybuf + (size_t)(okc::EMAX - 64) * okc::HD;
++#else
++  p.sspart = nullptr;
++#endif
+   p.inter = (__nv_bfloat16*)scratch[2].data_ptr();
+ #if OKC_WGS
+   TORCH_CHECK((size_t)scratch[2].numel() >= ((size_t)okc::EMAX + 2 * (size_t)okc::WGS_XROWS) * okc::HD,

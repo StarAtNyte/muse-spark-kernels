@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2906, in _run_ninja_build
+    subprocess.run(
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 2.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-5jm0hxs7/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-5jm0hxs7/run/worker.py", line 322, in _setup_op
+    state["prep"] = prepare(weights)
+                    ^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-5jm0hxs7/run/submission.py", line 6345, in prepare
+    list(_pool.map(_ext, _todo))
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-5jm0hxs7/run/submission.py", line 6046, in _ext
+    _EXTS[defines] = load_inline(
+                     ^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2398, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2555, in _write_ninja_file_and_build_library
+    _run_ninja_build(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2923, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error building extension 'okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a': [1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DOKC_NS=3 -DOKC_NSF=3 -DOKC_NW=16 -DOKC_FAST1=0 -DOKC_EPI4=0 -DOKC_WGS=1 -DOKC_PRMTSC=1 -DOKC_SC6W=1 -DOKC_DQ7=1 -std=c++20 -c /tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu -o cuda.cuda.o 
+FAILED: [code=2] cuda.cuda.o 
+ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DOKC_NS=3 -DOKC_NSF=3 -DOKC_NW=16 -DOKC_FAST1=0 -DOKC_EPI4=0 -DOKC_WGS=1 -DOKC_PRMTSC=1 -DOKC_SC6W=1 -DOKC_DQ7=1 -std=c++20 -c /tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu -o cuda.cuda.o 
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(1852): error: identifier "mf_xr" is undefined
+          if (!pb && !(0 & 8)) { while (ld_acquire(mf_xr(p, S) + j) < npad) __nanosleep(32); }
+                                                   ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(1855): error: identifier "mf_da" is undefined
+        if (pb && !(0 & 8)) { while (ld_acquire(mf_da(p, S) + j * 16 + st) < 8) __nanosleep(32); }
+                                                ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(1910): error: identifier "mf_xr" is undefined
+        asm volatile("red.release.gpu.global.add.s32 [%0], %1;\n" ::"l"(mf_xr(p, S) + jj), "r"(e - q) : "memory");
+                                                                        ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(1980): error: identifier "mf_da" is undefined
+      if (wt == 0) asm volatile("red.release.gpu.global.add.s32 [%0], %1;\n" ::"l"(mf_da(p, S) + j * 16 + (ub >> 1)), "r"(1) : "memory");
+                                                                                   ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(2036): error: identifier "mf_da" is undefined
+      if (wt == 0) asm volatile("red.release.gpu.global.add.s32 [%0], %1;\n" ::"l"(mf_da(p, S) + j * 16 + (ub >> 1)), "r"(1) : "memory");
+                                                                                   ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(2786): error: class "okc::Params" has no member "mfl"
+    p.mfl = ib + 8 + 1024 + okc::EMAX;
+      ^
+
+/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu(2805): error: namespace "okc" has no member "MF_INTS"
+   (size_t)scratch[0].numel() >= (size_t)(8 + 1024 + okc::EMAX + okc::MF_INTS)
+                                                                      ^
+
+7 errors detected in the compilation of "/tmp/muse_moe_w4a16-5jm0hxs7/sandbox/cache/torch_extensions/okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a/cuda.cu".
+ninja: build stopped: subcommand failed.
+

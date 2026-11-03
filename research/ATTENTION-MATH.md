@@ -100,3 +100,31 @@ versus the stable-max parent were1.00342/1.00340/1.00459x respectively across
 two batches/two seeds. Correct but too small to justify promotion/submission.
 The exact real-arithmetic rescaling identity is preserved; FP8 rounding may
 differ, hence the independent checks rather than a bitwise-equivalence claim.
+
+## Current attention priorities from the official scored run (2026-11-02)
+
+The current public candidate is `7d250883e6b94c50`, score 2.6328x, rank #163;
+the live #1 is 3.3389x. The official result and complete per-case timing
+records are preserved in
+[`scored_attention_warm_route_verify_v1/status.json`](../experiments/scored_attention_warm_route_verify_v1/status.json).
+Use the actual scoring objective: a geometric mean of six loads, each load
+being a weighted sum of full and sliding attention. `tools/prioritize.py`
+shows that the four full-attention cases at batch 16/32 dominate their loads:
+
+| Load | Full-attention time | Share of load | Score gain if this one time falls 20% |
+|---|---:|---:|---:|
+| Decode 32 | 165.94 us | 85.2% | 3.16% |
+| Verify 32 | 184.86 us | 81.3% | 3.00% |
+| Decode 16 | 86.80 us | 77.6% | 2.85% |
+| Verify 16 | 98.98 us | 75.3% | 2.76% |
+
+These are conditional sensitivities, not predicted attainable wins. The
+separate B32 full-verify traffic reconstruction measured roughly 3.64 TB/s
+from random KV gathers, near the 3.6--3.76 TB/s H200 gather comparator; see
+`H200-LOWER-BOUNDS.md` and `experiments/attention_full_traffic_accounting_v1/`.
+Therefore the next high-value full-attention experiment must improve actual
+transaction efficiency, exploit reuse without adding a costly staging pass,
+or lower instruction/synchronization cost that lies on the critical path.
+Generic TMA replacement is not a justified hypothesis for page-size-1
+bandwidth-bound decode. A small-shape-only 20% win would move the score less
+than a similar improvement to these four dominant cases.

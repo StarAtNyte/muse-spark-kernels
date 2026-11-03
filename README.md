@@ -80,6 +80,8 @@ for offline SM90 compilation; this does not provide H200 runtime validation.
 Modal H200 experiments run through `dev/modal/run_h200.py`; see
 [the PTX and CuTe campaign](research/PTX-CAMPAIGN.md) for results and caveats.
 
+Pending scored candidates and exact checked hashes are tracked in [the submission queue](research/SUBMISSION-QUEUE-2026-11-03.md). The latest [public-code refresh](research/PUBLIC-CODE-REFRESH-2026-11-03.md) records the repositories and commits reviewed.
+
 Public-code review for the current sprint: [what we checked and what is still worth porting](research/PUBLIC-CODE-AUDIT-2026-11-02.md). Lee101's warp-independent cluster path was transferred and screened on H200; the adapted path was 0.544×/0.584× of the incumbent on its target batches, so it was rejected. The Chord semi-static MoE tile idea is already represented by our WGS compile-time tile-count dispatch.
 
 Attention WST follow-up: extending balanced full-verification WST to batch 32 passed scored job `e503062862744b16` at 2.63841× (95% CI 2.59883–2.67798), below the 2.64939× public best. The exact source and local target-case gains are archived in [the WST experiment](experiments/attention_wst_b32_v1/FINDINGS.md).

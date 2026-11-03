@@ -1,0 +1,170 @@
+1.4.2.1.4.8.4.1.2.1:18948.23 1.4.1.1.4.16.2.1.2.1:12831.63
+gv o m8 v12 5344.00 best 1.1.2.1.8.2.1.1.0.1 3683.44 (ref 1.1.2.1.8.2.1.1.0.1 3683.44)
+  v12:5344.00 1.1.2.1.8.2.1.1.0.1:3683.44 1.1.2.1.8.2.1.1.0.0:4298.82 1.1.2.2.4.4.1.1.0.1:4824.70 1.1.2.1.4.4.1.1.0.1:4916.30
+gv o m16 v12 5376.00 best 1.2.2.1.8.2.1.1.0.1 3392.23 (ref 1.2.2.1.8.2.1.1.0.1 3392.23)
+  v12:5376.00 1.2.2.1.8.2.1.1.0.1:3392.23 1.2.2.1.8.2.1.1.0.0:4341.02 1.2.2.1.8.2.1.1.2.1:7363.95 1.2.2.2.4.4.1.1.0.1:5001.07 1.2.2.2.4.4.1.1.2.1:5129.94 1.2.1.1.4.4.1.1.2.1:4740.40
+gv pooler m8 v12 19072.00 best 1.1.1.2.16.8.1.1.0.3 11550.02 (ref 1.1.1.2.16.8.1.1.0.3 11550.02)
+  v12:19072.00 1.1.1.2.16.8.1.1.0.3:11550.02 1.1.2.2.8.16.1.1.0.1:13106.55 1.1.2.2.8.16.1.1.0.0:13080.02 1.1.2.1.8.16.1.1.0.1:13012.73
+gv pooler m16 v12 19520.00 best 1.2.2.2.8.16.1.1.0.1 11515.23 (ref 1.2.2.2.8.16.1.1.0.1 11515.23)
+  v12:19520.00 1.2.2.2.8.16.1.1.0.1:11515.23 1.2.2.2.8.16.1.1.0.0:13928.09 1.2.2.1.8.16.1.1.2.1:13974.82 1.2.2.1.8.16.1.1.0.1:16982.89
+gv unpooler m8 v12 6304.00 best 1.1.2.1.16.4.1.1.0.1 1679.95 (ref 1.1.2.1.16.4.1.1.0.1 1679.95)
+  v12:6304.00 1.1.2.1.16.4.1.1.0.1:1679.95 1.1.2.1.16.4.1.1.0.0:3893.76 1.1.2.1.8.2.4.1.0.1:4983.38 1.1.2.1.8.4.2.1.0.1:5287.52 1.1.2.1.16.4.1.1.2.1:3618.61
+PREP r6 done in 65s
+PREP rq thread ready at 47s (bake starts at 65s)
+BAKE rq pooler esc2 slots max=4 ok
+BAKE pooler m=128 r6 23.94 at 65s
+BAKE pooler m=128 rq:d2s5hze 21.65 (ratio 1.1425 vs r6 23.94) at 65s
+BAKE pooler m=128 rq:d2s5hzwP 20.26 (ratio 1.0932 vs rq:d2s5hze 21.65) at 65s
+BAKE pooler m=128 rq:s4s5hzw 21.46 (ratio 1.0274 vs rq:d2s5hze 21.65) at 65s
+BAKE pooler m=128 rq:s4s5hzeEH 21.63 (ratio 1.0210 vs rq:d2s5hze 21.65) at 65s
+BAKE pooler m=128 rq:d2s6hze 21.98 (ratio 1.0002 vs rq:d2s5hze 21.65) at 65s
+PICK pooler m=128 rq:d2s5hzwP 19.80 (ref rq:d2s5hze 21.65)
+PICK pooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0932)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 19.33 at 65s
+BAKE qkv_gate m=128 rq:d2s5hze 15.71 (ratio 1.2673 vs r6 19.33) at 65s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.61 (ratio 1.0680 vs rq:d2s5hze 15.71) at 65s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.88 (ratio 1.0337 vs rq:d2s5hze 15.71) at 65s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.94 (ratio 0.9767 vs rq:d2s5hze 15.71) at 65s
+BAKE qkv_gate m=128 rq:d2s6hze 17.10 (ratio 0.9565 vs rq:d2s5hze 15.71) at 65s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.71 (ref rq:d2s5hze 15.71)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0680)
+BAKE rq unpooler esc2 slots max=3 ok
+BAKE unpooler m=128 r6 22.50 at 65s
+BAKE unpooler m=128 rq:d2s5hze 21.12 (ratio 1.0635 vs r6 22.50) at 65s
+BAKE unpooler m=128 rq:d2s5hzwP 20.67 (ratio 1.0561 vs rq:d2s5hze 21.12) at 65s
+BAKE unpooler m=128 rq:s4s5hzw 21.35 (ratio 1.0328 vs rq:d2s5hze 21.12) at 65s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.76 (ratio 0.9955 vs rq:d2s5hze 21.12) at 65s
+BAKE unpooler m=128 rq:s4s5hze 21.98 (ratio 1.0120 vs rq:d2s5hze 21.12) at 65s
+BAKE unpooler m=128 rq:d2s6hze 22.32 (ratio 0.9734 vs rq:d2s5hze 21.12) at 65s
+PICK unpooler m=128 rq:d2s5hzwP 20.00 (ref rq:d2s5hze 21.12)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0561)
+PREP phase rq done at 65s
+BAKE qkv_gate m=8 r6 12.99 (ref)
+BAKE qkv_gate m=8 q144k16 15.01 (ref r6 12.99)
+PICK qkv_gate m=8 r6 12.99 (ref r6 12.99)
+BAKE unpooler m=8 r6 8.35 (ref)
+BAKE unpooler m=8 uk-s4z 8.42 (ref r6 8.35)
+BAKE unpooler m=8 uk-s4x 8.06 (ref r6 8.35)
+BAKE unpooler m=8 uk-s4w4x 8.26 (ref r6 8.35)
+PICK unpooler m=8 uk-s4x 8.06 (ref uk-s4x 8.06)
+PROBE p1alt unpooler m=8 uk-s4x 8.03 r6=8.22 delta=-0.19
+PREP phase gx done at 65s
+PREP rq32 thread ready at 48s
+PREP rq32 bake starts at 65s
+BAKE pooler m=16 r6 17.89 at 65s
+BAKE pooler m=16 rq:t16s5hze-k4 19.57 (ratio 0.9106 vs r6 17.89) at 65s
+BAKE pooler m=16 rq:t16s4hze-k4 19.81 (ratio 0.8996 vs r6 17.89) at 65s
+BAKE pooler m=16 rq:t16s6hze-k4 18.73 (ratio 0.9602 vs r6 17.89) at 66s
+BAKE pooler m=16 rq:t16s7hze-k4 19.16 (ratio 0.9386 vs r6 17.89) at 66s
+BAKE pooler m=16 rq:h16s5hze2-k3 21.39 (ratio 0.8380 vs r6 17.89) at 66s
+BAKE pooler m=16 rq:h16s5hze2-k5 29.15 (ratio 0.6092 vs r6 17.89) at 66s
+PICK pooler m=16 r6 17.89 (ref r6 17.89)
+BAKE qkv_gate m=32 r6 18.08 at 66s
+BAKE rq32 qkv_gate esc2 ks=7 slots max=3 ok
+PICK qkv_gate m=32 rq:t32s6hzw-k7 (forced: NT=32 cursor, resident -0.70..-1.38 us, bake 12.98 vs r6 18.08)
+BAKE o m=16 r6 9.60 at 66s
+BAKE o m=16 rq:t16s5hze-k2 10.28 (ratio 0.9184 vs r6 9.60) at 66s
+BAKE o m=16 rq:t16s6hze-k2 11.11 (ratio 0.8494 vs r6 9.60) at 66s
+BAKE o m=16 rq:t16s5ze-k2 10.77 (ratio 0.8769 vs r6 9.60) at 66s
+BAKE o m=16 rq:h16s5hze2-k2 10.56 (ratio 0.9000 vs r6 9.60) at 66s
+PICK o m=16 r6 9.60 (ref r6 9.60)
+PREP phase rq32 done at 66s
+PREP phase router done at 66s
+PREP done in 66s
+[okc] tune qkv_gate m=1: cgemv=12.7 sk2=13.38 torch=17.86 -> cgemv
+[okc] tune o m=1: cgemv=9.09 sk2=9.28 torch=10.27 -> cgemv
+[okc] tune pooler m=1: cgemv=17.5 sk2=18.3 torch=25.6 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.23 sgemv=7.42 sk2=8.03 torch=11.01 -> cgemv
+[okc] tune router m=1: rgemv=7.33 sk2=8.61 torch=19.52 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.41 torch=17.92 -> sk2
+[okc] tune unpooler m=16: sk2=17.92 torch=22.69 -> sk2
+[okc] tune o m=32: sk2=9.41 torch=10.27 -> sk2
+[okc] tune pooler m=32: sk2=18.91 torch=25.95 -> sk2
+[okc] tune unpooler m=32: sk2=18.94 torch=22.88 -> sk2
+[okc] tune router m=128: rk=9.92 wide=12.45 gemm=13.66 torch=21.12 -> rk
+[okc] tune router m=256: rk=10.66 wide=13.44 gemm=17.34 torch=22.59 -> rk
+[okc] disabled: []
+V6|D|qkv_gate|20|def 18.0 rq32 0.80 rq128 1.06 ag 1.44 tT 1.03
+V6|D|qkv_gate|28|def 18.3 rq32 0.80 rq128 1.01 ag 1.48 tT 1.01
+V6|D|o|20|def 11.0 v32 0.94 nbol 1.35 ag 1.31 tT 1.00
+V6|D|o|28|def 11.2 v32 0.92 nbol 1.31 ag 1.27 tT 1.00
+V6|D|pooler|20|def 26.0 v32 0.77 rq128 1.18 ag 1.32 tT 0.98
+V6|D|pooler|28|def 26.1 v32 0.76 rq128 1.00 ag 1.35 tT 0.97
+V6|D|unpooler|20|def 23.4 v32 0.83 rq128 1.37 ag 1.67 tT 0.97
+V6|D|unpooler|28|def 23.2 v32 0.85 rq128 1.29 ag 1.62 tT 1.00
+V6|D|router|20|def 10.4 n32 0.88
+V6|D|router|28|def 10.7 n32 0.88
+V6|D|qkv_gate|33|def 19.2 rq128 1.03 ag 1.32 tT 0.99
+V6|D|qkv_gate|40|def 19.3 rq128 0.96 ag 1.23 tT 0.99
+V6|D|qkv_gate|48|def 19.5 rq128 0.95 ag 1.19 tT 0.99
+V6|D|qkv_gate|64|def 19.5 rq128 0.92 ag 1.13 tT 0.98
+V6|D|qkv_gate|80|def 19.8 rq128 0.88 ag 1.30 tT 0.99
+V6|D|qkv_gate|100|def 20.7 rq128 0.79 ag 1.07 tT 0.99
+V6|D|qkv_gate|127|def 21.9 rq128 0.75 ag 0.99 tT 1.00
+V6|D|o|33|def 11.1 n128 1.30 ag 1.25 tT 0.99
+V6|D|o|40|def 11.3 n128 1.28 ag 1.22 tT 0.99
+V6|D|o|48|def 11.1 n128 1.26 ag 1.19 tT 0.99
+V6|D|o|64|def 11.6 n128 1.18 ag 1.11 tT 0.98
+V6|D|o|80|def 11.3 n128 1.15 ag 1.11 tT 1.01
+V6|D|o|100|def 11.8 n128 1.05 ag 1.09 tT 1.02
+V6|D|o|127|def 11.4 n128 0.96 ag 1.12 tT 1.01
+V6|D|pooler|33|def 26.2 rq128 1.18 ag 1.29 tT 0.98
+V6|D|pooler|40|def 27.0 rq128 0.97 ag 1.21 tT 0.96
+V6|D|pooler|48|def 26.7 rq128 0.97 ag 1.17 tT 0.96
+V6|D|pooler|64|def 27.8 rq128 0.86 ag 1.11 tT 0.95
+V6|D|pooler|80|def 27.7 rq128 0.85 ag 1.09 tT 1.00
+V6|D|pooler|100|def 29.4 rq128 0.75 ag 1.01 tT 0.98
+V6|D|pooler|127|def 26.0 rq128 0.83 ag 1.06 tT 0.97
+V6|D|unpooler|33|def 23.5 rq128 1.41 ag 1.67 tT 0.97
+V6|D|unpooler|40|def 23.3 rq128 1.39 ag 1.63 tT 0.98
+V6|D|unpooler|48|def 23.6 rq128 1.30 ag 1.54 tT 0.96
+V6|D|unpooler|64|def 24.4 rq128 1.19 ag 1.37 tT 0.94
+V6|D|unpooler|80|def 23.9 rq128 1.07 ag 1.17 tT 0.97
+V6|D|unpooler|100|def 24.4 rq128 0.93 ag 1.09 tT 0.98
+V6|D|unpooler|127|def 24.2 rq128 0.89 ag 1.11 tT 0.96
+V6|D|router|33|def 13.7 v128 0.67
+V6|D|router|40|def 13.9 v128 0.67
+V6|D|router|48|def 13.8 v128 0.68
+V6|D|router|64|def 13.7 v128 0.69
+V6|D|router|80|def 14.0 v128 0.67
+V6|D|router|100|def 14.4 v128 0.67
+V6|D|router|127|def 15.5 v128 0.64
+V6|D|qkv_gate|129|def 21.7 ag 1.61 tT 1.00
+V6|D|qkv_gate|160|def 22.2 ag 1.18 tT 1.05
+V6|D|qkv_gate|200|def 33.8 ag 1.07 tT 0.70
+V6|D|qkv_gate|255|def 23.9 ag 0.92 tT 1.05
+V6|D|o|129|def 11.8 nbol 1.84 ag 1.40 tT 1.02
+V6|D|o|160|def 11.9 nbol 1.80 ag 1.34 tT 0.97
+V6|D|o|200|def 12.5 nbol 1.58 ag 1.22 tT 0.99
+V6|D|o|255|def 13.4 nbol 1.22 ag 0.96 tT 0.98
+V6|D|pooler|129|def 28.0 ag 1.42 tT 0.94
+V6|D|pooler|160|def 29.9 ag 1.07 tT 0.97
+V6|D|pooler|200|def 34.1 ag 1.05 tT 1.00
+V6|D|pooler|255|def 38.1 ag 0.75 tT 1.00
+V6|D|unpooler|129|def 26.7 ag 1.78 tT 0.95
+V6|D|unpooler|160|def 25.2 ag 1.70 tT 0.95
+V6|D|unpooler|200|def 26.1 ag 1.33 tT 0.95
+V6|D|unpooler|255|def 28.6 ag 0.98 tT 0.99
+V6|D|router|129|def 14.5 v256 0.71
+V6|D|router|160|def 15.7 v256 0.67
+V6|D|router|200|def 15.9 v256 0.69
+V6|D|router|255|def 15.0 v256 0.73
+V6|D|qkv_gate|257|def 23.3 ag 2.50 tT 1.08
+V6|D|qkv_gate|300|def 26.1 ag 1.87 tT 1.00
+V6|D|qkv_gate|384|def 32.8 ag 1.18 tT 1.02
+V6|D|o|257|def 13.9 nbol 2.01 ag 1.66 tT 1.00
+V6|D|o|300|def 14.2 nbol 1.87 ag 1.58 tT 0.99
+V6|D|o|384|def 16.0 nbol 1.37 ag 1.15 tT 1.00
+V6|D|pooler|257|def 39.7 ag 1.97 tT 1.00
+V6|D|pooler|300|def 41.2 ag 1.25 tT 0.98
+V6|D|pooler|384|def 51.5 ag 0.98 tT 1.06
+V6|D|unpooler|257|def 29.8 ag 2.29 tT 0.98
+V6|D|unpooler|300|def 32.4 ag 1.79 tT 0.99
+V6|D|unpooler|384|def 39.5 ag 1.20 tT 1.00
+V6|SUM|qkv_gate|9-15:v16@0.75 17-31:rq32@0.81 34-34:tT@0.96 38-42:rq128@0.95 44-50:rq128@0.94 52-52:rq128@0.93 54-127:rq128@0.83 146-146:tT@0.97 148-152:tT@0.96 167-167:tT@0.94 176-177:tT@0.94 183-183:ag@0.91 184-185:tT@0.94 189-189:tT@0.97 193-204:tT@0.77 208-208:tT@0.96 214-214:tT@0.91 216-216:tT@0.94 225-225:tT@0.94 232-232:tT@0.94 234-234:tT@0.91 236-236:tT@0.93 241-241:ag@0.91 243-243:ag@0.91 245-245:ag@0.93 247-255:ag@0.92 262-262:tT@0.94 266-266:tT@0.92 268-268:tT@0.95 273-273:tT@0.94 279-279:tT@0.96 281-282:tT@0.95 284-286:tT@0.94 288-288:tT@0.94 305-305:tT@0.95 307-307:tT@0.97 310-312:tT@0.95 321-321:tT@0.96 326-326:tT@0.93 328-328:tT@0.96 335-335:tT@0.96 352-352:tT@0.84 358-358:tT@0.95 360-360:tT@0.97
+V6|SUM|o|17-31:v32@0.93 113-127:n128@0.95 172-172:tT@0.96 187-187:tT@0.97 249-255:ag@0.96
+V6|SUM|pooler|17-31:v32@0.77 40-40:tT@0.96 46-46:tT@0.97 48-49:tT@0.96 50-50:rq128@0.95 52-52:rq128@0.93 59-59:tT@0.97 60-60:rq128@0.96 62-127:rq128@0.84 129-143:tT@0.94 152-152:tT@0.94 158-158:tT@0.97 161-192:ag@0.87 194-195:tT@0.97 204-204:tT@0.97 207-255:ag@0.80 258-258:tT@0.96 260-260:tT@0.96 273-273:tT@0.96 277-277:tT@0.95 279-280:tT@0.93 288-289:tT@0.96 304-313:tT@0.93 315-315:tT@0.92 317-320:tT@0.93 323-323:tT@0.97 360-360:ag@0.93 373-374:ag@0.96
+V6|SUM|unpooler|9-15:v16@0.80 17-31:v32@0.84 36-37:tT@0.97 42-42:tT@0.96 44-44:tT@0.97 46-48:tT@0.97 53-53:tT@0.96 55-57:tT@0.96 64-64:tT@0.94 69-70:tT@0.96 80-80:tT@0.97 83-83:rq128@0.95 86-86:tT@0.96 87-87:rq128@0.97 89-89:rq128@0.96 91-127:rq128@0.90 129-129:tT@0.95 131-131:tT@0.97 133-144:tT@0.96 146-146:tT@0.96 149-163:tT@0.95 165-191:tT@0.94 193-197:tT@0.96 199-205:tT@0.96 207-207:tT@0.97 217-217:tT@0.95 224-224:ag@0.86 225-225:tT@0.96 239-239:tT@0.97 240-240:ag@0.79
+V6|SUM|router|2-7:n8@0.86 9-15:n16@0.86 17-31:n32@0.88 33-127:v128@0.67 129-255:v256@0.72
+V6|DONE|836 routes, 1738 cells timed, 0 skipped, 24.4 s

@@ -1,0 +1,72 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-kR8auH92bjhDxtrNhTOXAw
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run.
+├── ✓ Created Function run_sgl.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+START
+COMPILED 1 79.8
+ROW {"bs": 1, "seed": 401, "var": "-DOKC_UPF=3", "base_us": 38.77, "cand_us": 44.08, "gain": 0.8795, "bitwise": true}
+ROW {"bs": 1, "seed": 401, "var": "-DOKC_UPF=6", "base_us": 38.77, "cand_us": 47.71, "gain": 0.8125, "bitwise": true}
+COMPILED 1 0.0
+ROW {"bs": 1, "seed": 404, "var": "-DOKC_UPF=3", "base_us": 39.2, "cand_us": 44.3, "gain": 0.8848, "bitwise": true}
+ROW {"bs": 1, "seed": 404, "var": "-DOKC_UPF=6", "base_us": 39.09, "cand_us": 48.98, "gain": 0.7981, "bitwise": true}
+COMPILED 1 0.0
+ROW {"bs": 1, "seed": 402, "var": "-DOKC_UPF=3", "base_us": 39.42, "cand_us": 44.19, "gain": 0.8921, "bitwise": false}
+ROW {"bs": 1, "seed": 402, "var": "-DOKC_UPF=6", "base_us": 39.34, "cand_us": 48.94, "gain": 0.8039, "bitwise": true}
+COMPILED 8 77.1
+ROW {"bs": 8, "seed": 401, "var": "-DOKC_UPF=3", "base_us": 80.59, "cand_us": 87.17, "gain": 0.9246, "bitwise": false}
+ROW {"bs": 8, "seed": 401, "var": "-DOKC_UPF=6", "base_us": 80.59, "cand_us": 94.66, "gain": 0.8514, "bitwise": true}
+COMPILED 8 0.0
+ROW {"bs": 8, "seed": 404, "var": "-DOKC_UPF=3", "base_us": 79.79, "cand_us": 86.53, "gain": 0.9222, "bitwise": false}
+ROW {"bs": 8, "seed": 404, "var": "-DOKC_UPF=6", "base_us": 80.13, "cand_us": 93.7, "gain": 0.8552, "bitwise": false}
+COMPILED 8 0.0
+ROW {"bs": 8, "seed": 402, "var": "-DOKC_UPF=3", "base_us": 74.69, "cand_us": 81.63, "gain": 0.9149, "bitwise": false}
+ROW {"bs": 8, "seed": 402, "var": "-DOKC_UPF=6", "base_us": 74.8, "cand_us": 88.98, "gain": 0.8407, "bitwise": false}
+COMPILED 16 80.6
+ROW {"bs": 16, "seed": 401, "var": "-DOKC_UPF=3", "base_us": 110.78, "cand_us": 116.82, "gain": 0.9484, "bitwise": false}
+ROW {"bs": 16, "seed": 401, "var": "-DOKC_UPF=6", "base_us": 110.35, "cand_us": 125.9, "gain": 0.8765, "bitwise": false}
+COMPILED 16 0.0
+ROW {"bs": 16, "seed": 404, "var": "-DOKC_UPF=3", "base_us": 77.31, "cand_us": 82.21, "gain": 0.9404, "bitwise": false}
+ROW {"bs": 16, "seed": 404, "var": "-DOKC_UPF=6", "base_us": 77.3, "cand_us": 91.66, "gain": 0.8433, "bitwise": false}
+COMPILED 16 0.0
+ROW {"bs": 16, "seed": 402, "var": "-DOKC_UPF=3", "base_us": 91.84, "cand_us": 100.16, "gain": 0.9169, "bitwise": false}
+ROW {"bs": 16, "seed": 402, "var": "-DOKC_UPF=6", "base_us": 91.63, "cand_us": 109.41, "gain": 0.8375, "bitwise": false}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-kR8auH92bjhDxtrNhTOXAw

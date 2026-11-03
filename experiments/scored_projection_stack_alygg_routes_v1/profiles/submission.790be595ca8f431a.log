@@ -1,0 +1,31 @@
+[okc] tune qkv_gate m=1: cgemv=12.48 sk2=13.09 torch=17.38 -> cgemv
+[okc] tune o m=1: cgemv=8.64 sk2=9.12 torch=10.3 -> cgemv
+[okc] tune pooler m=1: cgemv=17.31 sk2=17.86 torch=24.8 -> cgemv
+[okc] tune unpooler m=1: cgemv=6.98 sgemv=7.26 sk2=7.84 torch=10.3 -> cgemv
+[okc] tune router m=1: rgemv=7.04 sk2=8.32 torch=17.89 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.12 torch=17.63 -> sk2
+[okc] tune o m=16: sk2=9.06 torch=10.24 -> sk2
+[okc] tune pooler m=16: sk2=18.34 torch=25.18 -> sk2
+[okc] tune unpooler m=16: sk2=17.63 torch=22.24 -> sk2
+[okc] tune router m=16: sk2=8.48 torch=18.75 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.11 torch=17.86 -> sk2
+[okc] tune o m=32: sk2=9.38 torch=10.3 -> sk2
+[okc] tune pooler m=32: sk2=19.07 torch=25.7 -> sk2
+[okc] tune unpooler m=32: sk2=18.43 torch=22.43 -> sk2
+[okc] tune router m=32: sk2=8.93 torch=18.82 -> sk2
+[okc] tune qkv_gate m=8: sk2=13.25 torch=17.73 -> sk2
+[okc] tune o m=8: sk2=9.09 torch=9.98 -> sk2
+[okc] tune pooler m=8: sk2=17.89 torch=25.12 -> sk2
+[okc] tune unpooler m=8: sk2=7.9 torch=10.46 -> sk2
+[okc] tune router m=8: sk2=8.45 torch=18.43 -> sk2
+[okc] tune qkv_gate m=128: gqx=18.66 torch=20.1 -> gqx
+[okc] tune o m=128: torch=11.04 torchT=11.01 -> torchT
+[okc] tune pooler m=128: gq=24.8 torch=29.47 -> gq
+[okc] tune unpooler m=128: torch=23.97 torchT=22.91 -> torchT
+[okc] tune router m=128: rk=9.57 wide=12.45 gemm=13.44 torch=19.58 -> rk
+[okc] tune o m=256: torch=12.9 torchT=12.54 -> torchT
+[okc] tune pooler m=256: torch=35.42 cutlass=31.49 -> cutlass
+[okc] tune unpooler m=256: torch=28.22 torchT=27.78 -> torchT
+[okc] tune router m=256: rk=10.37 wide=13.31 gemm=17.15 torch=21.09 -> rk
+[okc] disabled: []
+[proj] pinned choices: {('qkv_gate', 1): ('cgemv',), ('o', 1): ('cgemv',), ('pooler', 1): ('cgemv',), ('unpooler', 1): ('cgemv',), ('router', 1): ('rgemv',), ('qkv_gate', 16): ('sk2',), ('o', 16): ('sk2',), ('pooler', 16): ('sk2',), ('unpooler', 16): ('sk2',), ('router', 16): ('rsmall',), ('qkv_gate', 32): ('sk2',), ('o', 32): ('sk2',), ('pooler', 32): ('sk2',), ('unpooler', 32): ('sk2',), ('router', 32): ('sk2',), ('qkv_gate', 8): ('sk2',), ('o', 8): ('sk2',), ('pooler', 8): ('sk2',), ('unpooler', 8): ('sk2',), ('router', 8): ('rsmall',), ('qkv_gate', 128): ('gqx',), ('o', 128): ('torchT',), ('pooler', 128): ('gq',), ('unpooler', 128): ('torchT',), ('router', 128): ('rk',), ('qkv_gate', 256): ('torch',), ('o', 256): ('torchT',), ('pooler', 256): ('cutlass',), ('unpooler', 256): ('torchT',), ('router', 256): ('rk',)}

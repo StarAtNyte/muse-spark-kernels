@@ -1,0 +1,410 @@
+[
+  {
+    "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "layer": "sliding",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8101
+    },
+    "variant": "base",
+    "kernels": [
+      [
+        "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)",
+        14.463999999999942
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)",
+        11.583999999999833
+      ],
+      [
+        "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)",
+        7.199999999999818
+      ],
+      [
+        "_graft_row_boundary",
+        4.6720000000000255
+      ],
+      [
+        "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN",
+        26.657000000000153
+      ],
+      [
+        "_graft_route",
+        2.7200000000002547
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        164.9630000000002
+      ],
+      [
+        "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT",
+        20.83199999999988
+      ],
+      [
+        "_graft_row_boundary",
+        4.991999999999734
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "layer": "sliding",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8101
+    },
+    "variant": "b4",
+    "kernels": [
+      [
+        "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)",
+        14.40099999999984
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)",
+        11.808999999999969
+      ],
+      [
+        "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)",
+        6.913000000000011
+      ],
+      [
+        "_graft_row_boundary",
+        4.448999999999842
+      ],
+      [
+        "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN",
+        25.826999999999998
+      ],
+      [
+        "_graft_route",
+        2.655999999999949
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        169.875
+      ],
+      [
+        "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT",
+        21.314000000000078
+      ],
+      [
+        "_graft_row_boundary",
+        5.121000000000095
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "layer": "full",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8111
+    },
+    "variant": "base",
+    "kernels": [
+      [
+        "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)",
+        14.338999999999942
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)",
+        99.76600000000008
+      ],
+      [
+        "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)",
+        8.32100000000014
+      ],
+      [
+        "_graft_row_boundary",
+        4.416999999999916
+      ],
+      [
+        "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN",
+        24.77300000000014
+      ],
+      [
+        "_graft_route",
+        2.625
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        143.77499999999986
+      ],
+      [
+        "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT",
+        21.701000000000022
+      ],
+      [
+        "_graft_row_boundary",
+        4.992999999999938
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "layer": "full",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8111
+    },
+    "variant": "b4",
+    "kernels": [
+      [
+        "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, 5, false>(CUtensorMap_st, CUtensorMap_st, __nv_bfloat16*, int, unsigned long long*)",
+        14.17599999999993
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)",
+        99.77500000000009
+      ],
+      [
+        "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, CUtensorMap_st, unsigned char const*, __nv_bfloat16*, int)",
+        7.008000000000038
+      ],
+      [
+        "_graft_row_boundary",
+        4.4809999999999945
+      ],
+      [
+        "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN",
+        24.958999999999833
+      ],
+      [
+        "_graft_route",
+        2.5920000000000982
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        147.10199999999986
+      ],
+      [
+        "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT",
+        20.86299999999983
+      ],
+      [
+        "_graft_row_boundary",
+        5.503999999999905
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "layer": "sliding",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8121
+    },
+    "variant": "base",
+    "kernels": [
+      [
+        "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN",
+        20.64199999999994
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)",
+        14.799000000000092
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN",
+        8.82899999999995
+      ],
+      [
+        "_graft_row_boundary",
+        7.736000000000104
+      ],
+      [
+        "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN",
+        30.947000000000116
+      ],
+      [
+        "_graft_route",
+        3.1779999999998836
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        185.586
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT",
+        26.067000000000007
+      ],
+      [
+        "_graft_row_boundary",
+        7.255000000000109
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "layer": "sliding",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8121
+    },
+    "variant": "b4",
+    "kernels": [
+      [
+        "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN",
+        20.961000000000013
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, false, 3>((anonymous namespace)::Params)",
+        14.817000000000007
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN",
+        8.896999999999935
+      ],
+      [
+        "_graft_row_boundary",
+        6.720999999999776
+      ],
+      [
+        "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN",
+        31.746000000000095
+      ],
+      [
+        "_graft_route",
+        3.2640000000001237
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        186.92700000000013
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT",
+        26.786000000000058
+      ],
+      [
+        "_graft_row_boundary",
+        7.457000000000107
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "layer": "full",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8131
+    },
+    "variant": "base",
+    "kernels": [
+      [
+        "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN",
+        21.690000000000055
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)",
+        177.01699999999983
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN",
+        9.09900000000016
+      ],
+      [
+        "_graft_row_boundary",
+        6.5349999999998545
+      ],
+      [
+        "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN",
+        31.846000000000004
+      ],
+      [
+        "_graft_route",
+        3.268000000000029
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        208.63899999999967
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT",
+        25.791999999999916
+      ],
+      [
+        "_graft_row_boundary",
+        7.24100000000044
+      ]
+    ]
+  },
+  {
+    "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "layer": "full",
+      "page": 1,
+      "dist": "soft",
+      "q_len": 8,
+      "spread": "agentic",
+      "seed": 8131
+    },
+    "variant": "b4",
+    "kernels": [
+      [
+        "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN",
+        20.519999999999982
+      ],
+      [
+        "void (anonymous namespace)::attn_kernel<8, true, 0>((anonymous namespace)::Params)",
+        178.12300000000005
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN",
+        8.995999999999981
+      ],
+      [
+        "_graft_row_boundary",
+        6.594000000000051
+      ],
+      [
+        "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN",
+        31.117000000000075
+      ],
+      [
+        "_graft_route",
+        3.298000000000002
+      ],
+      [
+        "void okc::moe_fused<true>(okc::Params)",
+        209.5279999999999
+      ],
+      [
+        "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT",
+        25.770999999999958
+      ],
+      [
+        "_graft_row_boundary",
+        7.266000000000076
+      ]
+    ]
+  }
+]

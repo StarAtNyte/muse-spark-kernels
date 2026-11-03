@@ -1,0 +1,57 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-NUkXiUoXmXkJTevEKl8uo1
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"ONLY": "{\"128\": [[0, 12], [8, 12], [8, 16], [9, 16], [9, 24], [10, 16], [10, 24], [11, 32]], \"256\": [[0, 8], [8, 8], [9, 16], [10, 16], [11, 32]]}", "ABL": "[[128, 8, 12], [256, 8, 8]]"} RETURNCODE 0
+built in 19.3s
+nsm 132 NVIDIA H200
+base check 33 True relative L2 error 2.730e-06 (worst row 3.116e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.908e-06 (worst row 3.417e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.486e-06 (worst row 4.103e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.113e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.648, "cand_min": 11.36, "base_min": 10.72, "delta_us": -0.736}
+RESULT {"m": 128, "cfg": 8, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 11.456, "cand_min": 11.264, "base_min": 10.72, "delta_us": -0.48}
+RESULT {"m": 128, "cfg": 8, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.944, "cand_us": 11.008, "cand_min": 10.848, "base_min": 10.72, "delta_us": -0.064}
+RESULT {"m": 128, "cfg": 9, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 12.352, "cand_min": 12.064, "base_min": 10.784, "delta_us": -1.376}
+RESULT {"m": 128, "cfg": 9, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.944, "cand_us": 12.064, "cand_min": 11.84, "base_min": 10.784, "delta_us": -1.12}
+RESULT {"m": 128, "cfg": 10, "nwg_bn": [2, 64], "S": 16, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 12.384, "cand_min": 12.096, "base_min": 10.752, "delta_us": -1.408}
+RESULT {"m": 128, "cfg": 10, "nwg_bn": [2, 64], "S": 24, "grid": 96, "ok": true, "base_us": 11.008, "cand_us": 12.128, "cand_min": 11.904, "base_min": 10.752, "delta_us": -1.12}
+RESULT {"m": 128, "cfg": 11, "nwg_bn": [2, 128], "S": 32, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 13.44, "cand_min": 13.184, "base_min": 10.752, "delta_us": -2.464}
+RESULT {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.288, "cand_us": 13.248, "cand_min": 12.96, "base_min": 11.968, "delta_us": -0.96}
+RESULT {"m": 256, "cfg": 8, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 13.152, "cand_min": 12.8, "base_min": 12.064, "delta_us": -0.768}
+RESULT {"m": 256, "cfg": 9, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.32, "cand_us": 12.992, "cand_min": 12.576, "base_min": 11.968, "delta_us": -0.672}
+RESULT {"m": 256, "cfg": 10, "nwg_bn": [2, 64], "S": 16, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 12.928, "cand_min": 12.704, "base_min": 12.032, "delta_us": -0.576}
+RESULT {"m": 256, "cfg": 11, "nwg_bn": [2, 128], "S": 32, "grid": 128, "ok": true, "base_us": 12.288, "cand_us": 14.464, "cand_min": 14.304, "base_min": 12.064, "delta_us": -2.176}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 12, "mode0": 11.424, "mode1": 11.04, "mode2": 10.752, "mode3": 10.304, "mode4": 11.552, "mode5": 11.008, "mode7": 10.24}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 13.12, "mode1": 12.672, "mode2": 11.904, "mode3": 11.424, "mode4": 13.088, "mode5": 12.544, "mode7": 11.36}
+TINY_GRAPH_US 5.28
+SUMMARY [{"m": 128, "cfg": 8, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 10.944, "cand_us": 11.008, "cand_min": 10.848, "base_min": 10.72, "delta_us": -0.064}, {"m": 128, "cfg": 8, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.976, "cand_us": 11.456, "cand_min": 11.264, "base_min": 10.72, "delta_us": -0.48}, {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 12, "grid": 96, "ok": true, "base_us": 10.912, "cand_us": 11.648, "cand_min": 11.36, "base_min": 10.72, "delta_us": -0.736}, {"m": 128, "cfg": 9, "nwg_bn": [1, 128], "S": 24, "grid": 96, "ok": true, "base_us": 10.944, "cand_us": 12.064, "cand_min": 11.84, "base_min": 10.784, "delta_us": -1.12}, {"m": 128, "cfg": 10, "nwg_bn": [2, 64], "S": 24, "grid": 96, "ok": true, "base_us": 11.008, "cand_us": 12.128, "cand_min": 11.904, "base_min": 10.752, "delta_us": -1.12}, {"m": 128, "cfg": 9, "nwg_bn": [1, 128], "S": 16, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 12.352, "cand_min": 12.064, "base_min": 10.784, "delta_us": -1.376}, {"m": 128, "cfg": 10, "nwg_bn": [2, 64], "S": 16, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 12.384, "cand_min": 12.096, "base_min": 10.752, "delta_us": -1.408}, {"m": 128, "cfg": 11, "nwg_bn": [2, 128], "S": 32, "grid": 64, "ok": true, "base_us": 10.976, "cand_us": 13.44, "cand_min": 13.184, "base_min": 10.752, "delta_us": -2.464}, {"m": 256, "cfg": 10, "nwg_bn": [2, 64], "S": 16, "grid": 128, "ok": true, "base_us": 12.352, "cand_us": 12.928, "cand_min": 12.704, "base_min": 12.032, "delta_us": -0.576}, {"m": 256, "cfg": 9, "nwg_bn": [1, 128], "S": 16, "grid": 128, "ok": true, "base_us": 12.32, "cand_us": 12.992, "cand_min": 12.576, "base_min": 11.968, "delta_us": -0.672}, {"m": 256, "cfg": 8, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.384, "cand_us": 13.152, "cand_min": 12.8, "base_min": 12.064, "delta_us": -0.768}, {"m": 256, "cfg": 0, "nwg_bn": [1, 64], "S": 8, "grid": 128, "ok": true, "base_us": 12.288, "cand_us": 13.248, "cand_min": 12.96, "base_min": 11.968, "delta_us": -0.96}, {"m": 256, "cfg": 11, "nwg_bn": [2, 128], "S": 32, "grid": 128, "ok": true, "base_us": 12.288, "cand_us": 14.464, "cand_min": 14.304, "base_min": 12.064, "delta_us": -2.176}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+[modal-client] 2026-10-30T19:52:05+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-NUkXiUoXmXkJTevEKl8uo1

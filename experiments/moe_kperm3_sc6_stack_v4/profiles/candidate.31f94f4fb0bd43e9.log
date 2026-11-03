@@ -1,0 +1,12 @@
+[mfab] modules built at 48s
+Traceback (most recent call last):
+  File "/tmp/muse_moe_w4a16-w8hor12f/run/worker.py", line 423, in child_main
+    send(_setup_op(msg, module, state, sync, perf))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-w8hor12f/run/worker.py", line 322, in _setup_op
+    state["prep"] = prepare(weights)
+                    ^^^^^^^^^^^^^^^^
+  File "/tmp/muse_moe_w4a16-w8hor12f/run/submission.py", line 6389, in prepare
+    print("[mfab] regs/local/smem (<false>, <true>)", [x for x in d if x.startswith(("-DOKC_WGS", "-DOKC_MFIN", "-DOKC_B4L", "-DOKC_MFP", "-DOKC_MFQ"))], _ext(d).okc_attrs(), flush=True)
+                                                                                                                                                          ^^^^^^^^^^^^^^^^^
+AttributeError: module 'okc_moe_w4a16_v216x_okc_nw16_okc_fast10_okc_epi40_okc_wgs1_okc_prmtsc1_okc_sc6w1_okc_dq71_sm90a' has no attribute 'okc_attrs'

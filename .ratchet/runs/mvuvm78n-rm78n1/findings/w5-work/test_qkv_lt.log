@@ -1,0 +1,57 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-19J0OIi3WvMGrvsHBQjD2e
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.7us, best 42.7us algo None of 8
+LT tune T=753 o: torch.mm 25.4us, best 24.4us algo 1 of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 68.9us, best 68.9us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.3us, best 70.3us algo None of 8
+LT tune T=3012 qkv: torch.mm 147.8us, best 147.8us algo None of 8
+LT tune T=3012 o: torch.mm 75.6us, best 75.6us algo None of 8
+LT tune T=3012 router: torch.mm 41.1us, best 41.1us algo None of 8
+LT tune T=3012 pooler: torch.mm 256.1us, best 256.1us algo None of 8
+LT tune T=3012 unpooler: torch.mm 255.7us, best 255.7us algo None of 8
+LT tune T=16384 qkv: torch.mm 769.6us, best 769.6us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 210.8us, best 200.1us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]
+torch.mm T=16384 qkv: 764.88 us
+Number of heuristic algos returned: 8
+Algo 0: info=[209, 1, 35, 0, 4, 66, 0, 0, 4, 0] time=765.78 us (gain vs torch.mm = 0.9988x, rel_err=0.0000e+00)
+Algo 1: info=[24, 1, 35, 0, 4, 66, 0, 0, 7, 0] time=757.90 us (gain vs torch.mm = 1.0092x, rel_err=0.0000e+00)
+Algo 2: info=[23, 1, 35, 0, 4, 66, 0, 0, 4, 0] time=773.81 us (gain vs torch.mm = 0.9885x, rel_err=0.0000e+00)
+Algo 3: info=[31, 1, 35, 0, 4, 66, 0, 0, 7, 0] time=798.56 us (gain vs torch.mm = 0.9578x, rel_err=0.0000e+00)
+Algo 4: info=[32, 1, 35, 0, 4, 66, 0, 0, 4, 0] time=824.10 us (gain vs torch.mm = 0.9281x, rel_err=0.0000e+00)
+Algo 5: info=[495, 1, 35, 0, 4, 66, 0, 0, 7, 0] time=810.62 us (gain vs torch.mm = 0.9436x, rel_err=0.0000e+00)
+Algo 6: info=[197, 1, 35, 0, 4, 66, 0, 0, 2, 0] time=795.20 us (gain vs torch.mm = 0.9619x, rel_err=0.0000e+00)
+Algo 7: info=[184, 1, 35, 0, 4, 66, 0, 0, 2, 0] time=787.18 us (gain vs torch.mm = 0.9717x, rel_err=0.0000e+00)
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-19J0OIi3WvMGrvsHBQjD2e

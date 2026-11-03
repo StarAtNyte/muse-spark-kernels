@@ -1,0 +1,55 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-r23oyq3FYAY4C9Br6zc5rz
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+LT tune T=753 qkv: torch.mm 42.9us, best 42.9us algo None of 8
+LT tune T=753 o: torch.mm 24.4us, best 24.4us algo None of 8
+LT T=753 router: pinned (33, 4, 2, 3) -> algo 6
+LT tune T=753 pooler: torch.mm 69.0us, best 69.0us algo None of 8
+LT tune T=753 unpooler: torch.mm 70.3us, best 70.3us algo None of 8
+LT tune T=3012 qkv: torch.mm 148.6us, best 148.6us algo None of 8
+LT tune T=3012 o: torch.mm 75.2us, best 75.2us algo None of 8
+LT tune T=3012 router: torch.mm 41.1us, best 41.1us algo None of 8
+LT tune T=3012 pooler: torch.mm 257.3us, best 257.3us algo None of 8
+LT tune T=3012 unpooler: torch.mm 256.8us, best 256.8us algo None of 8
+LT tune T=16384 qkv: torch.mm 787.5us, best 787.5us algo None of 8
+LT T=16384 o: pinned (201, 1, 0, 2) -> algo 6
+LT tune T=16384 router: torch.mm 209.2us, best 199.5us algo 3 of 8
+LT T=16384 pooler: pinned (29, 1, 0, 1) -> algo 5
+LT T=16384 unpooler: pinned (201, 1, 0, 2) -> algo 6
+ATTN own kernel validation (worst rel err): {0: 0.0151, 1: 0.0151, 8: 0.0151, 9: 0.0151, 16: 0.0151, 24: 0.0151, 43: 0.0151} -> [0, 1, 8, 9, 16, 24, 43]
+CASE turn1_slide: {"own_v8_ns2": 31.1, "fa3_default": 37.8, "fa3_ns1": 42.4, "fa3_ns2": 37.4, "fa3_ns4": 36.7}
+CASE turn1_full: {"own_v43_ns2": 367.6, "fa3_default": 429.8, "fa3_ns1": 826.7, "fa3_ns2": 429.4, "fa3_ns4": 430.0}
+CASE turn4_slide: {"own_v8_ns1": 68.7, "fa3_default": 72.7, "fa3_ns1": 72.3, "fa3_ns2": 74.3, "fa3_ns4": 74.0}
+CASE turn4_full: {"own_v43_ns1": 1403.6, "fa3_default": 1642.3, "fa3_ns1": 1640.9, "fa3_ns2": 1642.6, "fa3_ns4": 1643.0}
+CASE ft_full_0: {"own_v43_ns1": 837.0, "fa3_default": 930.9, "fa3_ns1": 930.0, "fa3_ns2": 947.3, "fa3_ns4": 947.6}
+CASE ft_slide_32k: {"own_v8_ns1": 309.6, "fa3_default": 335.6, "fa3_ns1": 334.4, "fa3_ns2": 342.1, "fa3_ns4": 341.2}
+CASE ft_full_32k: {"own_v43_ns1": 3831.3, "fa3_default": 4522.2, "fa3_ns1": 4519.4, "fa3_ns2": 4446.9, "fa3_ns4": 4446.7}
+CASE ft_full_64k: {"own_v43_ns1": 6772.8, "fa3_default": 8105.5, "fa3_ns1": 8106.0, "fa3_ns2": 7974.1, "fa3_ns4": 7977.9}
+ALL_DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-r23oyq3FYAY4C9Br6zc5rz

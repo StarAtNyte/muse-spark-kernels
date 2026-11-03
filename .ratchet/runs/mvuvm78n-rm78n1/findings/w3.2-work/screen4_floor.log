@@ -1,0 +1,88 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wTooFc1ubu0bSCIcrtjTJj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"ONLY": "{\"128\": [[0, 16]]}", "ABL": "[[128, 7, 128], [128, 0, 12], [128, 0, 16], [128, 8, 16], [256, 5, 64], [256, 0, 8], [256, 8, 8]]"} RETURNCODE 0
+built in 17.1s
+nsm 132 NVIDIA H200
+base check 33 True relative L2 error 2.729e-06 (worst row 3.101e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.909e-06 (worst row 3.411e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.487e-06 (worst row 4.114e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.487e-06 (worst row 4.105e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 11.104, "cand_us": 11.2, "cand_min": 10.976, "base_min": 10.848, "delta_us": -0.096}
+ABLATION {"m": 128, "cfg": [4, 128], "S": 128, "mode0": 19.648, "mode1": 11.872, "mode2": 18.752, "mode3": 10.848, "mode4": 19.872, "mode5": 11.904, "mode7": 10.592}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 12, "mode0": 11.648, "mode1": 11.2, "mode2": 10.816, "mode3": 10.208, "mode4": 11.552, "mode5": 11.136, "mode7": 10.176}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 16, "mode0": 11.04, "mode1": 10.4, "mode2": 10.848, "mode3": 10.176, "mode4": 11.072, "mode5": 10.4, "mode7": 9.952}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 16, "mode0": 11.136, "mode1": 10.592, "mode2": 10.976, "mode3": 10.4, "mode4": 11.136, "mode5": 10.56, "mode7": 10.144}
+ABLATION {"m": 256, "cfg": [2, 256], "S": 64, "mode0": 19.52, "mode1": 13.536, "mode2": 17.6, "mode3": 11.648, "mode4": 19.328, "mode5": 13.632, "mode7": 11.392}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 13.248, "mode1": 12.704, "mode2": 11.904, "mode3": 11.36, "mode4": 13.184, "mode5": 12.64, "mode7": 11.392}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 13.088, "mode1": 12.64, "mode2": 12.064, "mode3": 11.616, "mode4": 13.12, "mode5": 12.736, "mode7": 11.552}
+TINY_GRAPH_US 5.216
+SUMMARY [{"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 11.104, "cand_us": 11.2, "cand_min": 10.976, "base_min": 10.848, "delta_us": -0.096}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+ENV {"ONLY": "{\"128\": [[0, 16]]}", "ABL": "[[128, 7, 128], [128, 0, 12], [128, 0, 16], [128, 8, 16], [256, 5, 64], [256, 0, 8], [256, 8, 8]]", "WARM": "1"} RETURNCODE 0
+built in 23.4s
+nsm 132 NVIDIA H200
+base check 33 True relative L2 error 2.731e-06 (worst row 3.107e-06); 6 probe rows exact to 2.7e-06
+base check 128 True relative L2 error 2.908e-06 (worst row 3.418e-06); 20 probe rows exact to 2.7e-06
+base check 200 True relative L2 error 3.486e-06 (worst row 4.108e-06); 23 probe rows exact to 2.7e-06
+base check 256 True relative L2 error 3.486e-06 (worst row 4.113e-06); 30 probe rows exact to 2.7e-06
+correctness failures: 0
+RESULT {"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 9.568, "cand_us": 9.696, "cand_min": 9.376, "base_min": 9.344, "delta_us": -0.128}
+ABLATION {"m": 128, "cfg": [4, 128], "S": 128, "mode0": 17.472, "mode1": 9.6, "mode2": 16.384, "mode3": 8.704, "mode4": 17.632, "mode5": 9.568, "mode7": 8.704}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 12, "mode0": 9.728, "mode1": 9.632, "mode2": 9.6, "mode3": 8.704, "mode4": 9.664, "mode5": 9.664, "mode7": 8.736}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 16, "mode0": 9.6, "mode1": 9.408, "mode2": 9.504, "mode3": 8.672, "mode4": 9.568, "mode5": 9.088, "mode7": 8.64}
+ABLATION {"m": 128, "cfg": [1, 64], "S": 16, "mode0": 9.632, "mode1": 8.96, "mode2": 8.832, "mode3": 8.704, "mode4": 9.664, "mode5": 8.896, "mode7": 8.704}
+ABLATION {"m": 256, "cfg": [2, 256], "S": 64, "mode0": 16.064, "mode1": 9.984, "mode2": 14.24, "mode3": 8.64, "mode4": 16.0, "mode5": 10.016, "mode7": 8.608}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 11.456, "mode1": 10.88, "mode2": 9.632, "mode3": 8.864, "mode4": 11.456, "mode5": 10.88, "mode7": 8.928}
+ABLATION {"m": 256, "cfg": [1, 64], "S": 8, "mode0": 11.456, "mode1": 11.008, "mode2": 9.632, "mode3": 9.568, "mode4": 11.456, "mode5": 11.072, "mode7": 9.6}
+TINY_GRAPH_US 8.576
+SUMMARY [{"m": 128, "cfg": 0, "nwg_bn": [1, 64], "S": 16, "grid": 128, "ok": true, "base_us": 9.568, "cand_us": 9.696, "cand_min": 9.376, "base_min": 9.344, "delta_us": -0.128}]
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+[modal-client] 2026-10-30T19:53:24+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-wTooFc1ubu0bSCIcrtjTJj

@@ -1,0 +1,11 @@
+# Public kernel source refresh — 2026-11-03
+
+Read-only GitHub repository and commit audit at 03:37 UTC, supplemented by web search. Update timestamps can reflect README changes, so inspect the actual kernel commits before treating an updated repository as a new implementation.
+
+- [keell0renz/muse-open-kernel-challenge](https://github.com/keell0renz/muse-open-kernel-challenge), HEAD `890809cee421500b00126d084e81b338ef9181ab`, Apache-2.0: comparison from the previously reviewed code commit `34352903efb5` to HEAD changes only `README.md` (8 changed lines). No new kernel implementation was found in that range.
+- [nibague/open-kernel-challenge](https://github.com/nibague/open-kernel-challenge), HEAD `7a26501b73675ae22f5b9d16be05f01eb82c9151`, Apache-2.0: newly found in this refresh; the five submission files are challenge starter implementations. The projection submission uses plain PyTorch matrix multiplication and its last code commit was the starter-file initial commit. No new optimized route was identified.
+- [alygg77/okc-muse-spark-kernels](https://github.com/alygg77/okc-muse-spark-kernels), HEAD `6cae49a639ee6d14b929a5fd4a63c627f96d7dc0`, Apache-2.0: latest code snapshot is the previously reviewed KPERM3 lineage. Repository metadata updated later, but the default branch's last push remains 2026-10-29.
+- [ruwwww/open-kernel-challenge](https://github.com/ruwwww/open-kernel-challenge), HEAD `c035bf9d5a7d2445d8c8ee5ce49e63b8bb36f49d`: previously inspected in the prefill plan-stack comparison. No newer default-branch commit was found in this refresh.
+- [jacobpmiller/open-kernel-challenge-2026](https://github.com/jacobpmiller/open-kernel-challenge-2026), HEAD `3035b292a2b0c894a1b67407f51812430045850c`: a public historical archive with experiments and a strategy log. Its README reports substantially lower best scores than our current entries; no repository license was identified in the metadata. It can be studied for ideas; no code was copied or tested in this refresh.
+
+This is not an exhaustive search of all GitHub repositories, branches, tweets or private submissions. It establishes that these checked default-branch updates do not yet supply a new measured route to stack. Prior findings and experiment links remain in `PUBLIC-CODE-AUDIT-2026-11-02.md`.

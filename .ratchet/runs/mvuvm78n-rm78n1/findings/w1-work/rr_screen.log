@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UWdlGZGp2QbYx4cofQsQR1
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_h200.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bw
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg6
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg5
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attention_fp8_hy
+│   brid_v7
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg4
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg2
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/bf16c
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/wg3
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/agent-skills-src/cutlass/examples/python/CuTeDSL
+├── ✓ Created Function run_sgl.
+├── ✓ Created Function run.
+└── ✓ Created Function run_cute.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.8.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+START
+COMPILED 1 40.2
+ROW {"bs": 1, "seed": 401, "var": "-DOKC_RR=1", "base_us": 39.2, "cand_us": 41.79, "gain": 0.938, "bitwise": true}
+COMPILED 1 0.0
+ROW {"bs": 1, "seed": 402, "var": "-DOKC_RR=1", "base_us": 39.95, "cand_us": 41.87, "gain": 0.9541, "bitwise": false}
+COMPILED 1 0.0
+ROW {"bs": 1, "seed": 403, "var": "-DOKC_RR=1", "base_us": 31.18, "cand_us": 34.62, "gain": 0.9006, "bitwise": true}
+COMPILED 4 0.0
+ROW {"bs": 4, "seed": 401, "var": "-DOKC_RR=1", "base_us": 68.42, "cand_us": 73.36, "gain": 0.9326, "bitwise": true}
+COMPILED 4 0.0
+ROW {"bs": 4, "seed": 402, "var": "-DOKC_RR=1", "base_us": 61.1, "cand_us": 66.37, "gain": 0.9207, "bitwise": false}
+COMPILED 4 0.0
+ROW {"bs": 4, "seed": 403, "var": "-DOKC_RR=1", "base_us": 75.34, "cand_us": 80.9, "gain": 0.9314, "bitwise": false}
+COMPILED 8 38.6
+ROW {"bs": 8, "seed": 401, "var": "-DOKC_RR=1", "base_us": 80.66, "cand_us": 85.17, "gain": 0.947, "bitwise": false}
+COMPILED 8 0.0
+ROW {"bs": 8, "seed": 402, "var": "-DOKC_RR=1", "base_us": 75.25, "cand_us": 78.94, "gain": 0.9532, "bitwise": false}
+COMPILED 8 0.0
+ROW {"bs": 8, "seed": 403, "var": "-DOKC_RR=1", "base_us": 94.85, "cand_us": 101.09, "gain": 0.9383, "bitwise": true}
+COMPILED 16 38.9
+ROW {"bs": 16, "seed": 401, "var": "-DOKC_RR=1", "base_us": 110.66, "cand_us": 119.52, "gain": 0.9258, "bitwise": false}
+COMPILED 16 0.0
+ROW {"bs": 16, "seed": 402, "var": "-DOKC_RR=1", "base_us": 92.18, "cand_us": 106.16, "gain": 0.8683, "bitwise": false}
+COMPILED 16 0.0
+ROW {"bs": 16, "seed": 403, "var": "-DOKC_RR=1", "base_us": 116.93, "cand_us": 127.52, "gain": 0.9169, "bitwise": false}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+[modal-client] 2026-10-30T19:56:39+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-UWdlGZGp2QbYx4cofQsQR1

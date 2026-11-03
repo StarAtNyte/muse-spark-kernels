@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jFMow0VppR08mNZ2iNiA3o
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w3.1-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+TINY_GRAPH_US 5.09
+TL qkv_gate 128 (2, 128, 6, 0, 7, 1) event_us 25.84 start (0.0, 0.06, 0.16) first_tile (1.73, 2.19, 3.07) mainloop_end (10.66, 12.38, 13.66) sync_done (15.01, 15.39, 16.19) end (16.96, 17.7, 19.2) main_dur_med 10.14
+TL qkv_gate 128 (2, 128, 6, 0, 4, 1) event_us 25.54 start (0.0, 0.1, 0.13) first_tile (1.6, 2.05, 2.62) mainloop_end (12.96, 13.41, 13.95) sync_done (15.55, 16.0, 16.32) end (17.6, 18.11, 18.43) main_dur_med 11.38
+TL qkv_gate 256 (2, 256, 4, 0, 7, 1) event_us 30.96 start (0.0, 0.06, 0.16) first_tile (1.76, 2.26, 2.94) mainloop_end (14.62, 15.26, 16.22) sync_done (19.84, 20.16, 20.61) end (23.68, 24.74, 25.76) main_dur_med 13.04
+TL pooler 128 (2, 128, 6, 0, 4, 1) event_us 32.88 start (0.0, 0.1, 0.16) first_tile (1.6, 2.29, 2.98) mainloop_end (16.54, 19.17, 21.86) sync_done (21.6, 23.71, 24.1) end (23.62, 25.82, 26.3) main_dur_med 16.88
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-jFMow0VppR08mNZ2iNiA3o

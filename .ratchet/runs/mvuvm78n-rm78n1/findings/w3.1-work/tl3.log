@@ -1,0 +1,106 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-s0KuRQfAwNAEYvucRKWoP0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/.ratchet/runs/mvuvm78n-rm78n
+│   1/findings/w3.1-work/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"SKV": "1"} RETURNCODE 0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=sk_splitk_c0c7ccbe6ca4 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/sk_splitk_c0c7ccbe6ca4/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=sk_splitk_c0c7ccbe6ca4 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++20 -gencode=arch=compute_90a,code=sm_90a --ptxas-options=-v -c /root/.cache/torch_extensions/py312_cu130/sk_splitk_c0c7ccbe6ca4/cuda.cu -o cuda.cuda.o 
+ptxas info    : 28 bytes gmem
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi0ELi7EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi0ELi7EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 163 registers, used 2 barriers
+ptxas info    : Compile time = 89.922 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi1ELi6EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi1ELi6EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 164 registers, used 2 barriers
+ptxas info    : Compile time = 91.597 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi0ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi256ELi4ELi0ELi1ELi0ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 160 registers, used 2 barriers
+ptxas info    : Compile time = 90.851 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi0ELi7EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi0ELi7EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 116 registers, used 2 barriers
+ptxas info    : Compile time = 36.390 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi1ELi6EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi1ELi6EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers
+ptxas info    : Compile time = 38.387 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi1ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi1ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 36.245 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi0ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi2ELi128ELi6ELi0ELi1ELi0ELi4EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 95 registers, used 2 barriers
+ptxas info    : Compile time = 35.265 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi1ELi256ELi5ELi0ELi1ELi1ELi2EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi1ELi256ELi5ELi0ELi1ELi1ELi2EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 217 registers, used 2 barriers
+ptxas info    : Compile time = 114.240 ms
+ptxas info    : Compiling entry function '_Z9sk_kernelILi1ELi128ELi8ELi0ELi1ELi1ELi2EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy' for 'sm_90a'
+ptxas info    : Function properties for _Z9sk_kernelILi1ELi128ELi8ELi0ELi1ELi1ELi2EEv14CUtensorMap_stS0_PK13__nv_bfloat16PS1_PfPiiiiiPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 126 registers, used 2 barriers
+ptxas info    : Compile time = 43.452 ms
+/root/.cache/torch_extensions/py312_cu130/sk_splitk_c0c7ccbe6ca4/cuda.cu: In function ‘CUresult (* get_encode())(CUtensorMap*, CUtensorMapDataType, cuuint32_t, void*, const cuuint64_t*, const cuuint64_t*, const cuuint32_t*, const cuuint32_t*, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill)’:
+/root/.cache/torch_extensions/py312_cu130/sk_splitk_c0c7ccbe6ca4/cuda.cu:235:24: warning: ‘cudaError_t cudaGetDriverEntryPoint(const char*, void**, long long unsigned int, cudaDriverEntryPointQueryResult*)’ is deprecated [-Wdeprecated-declarations]
+  235 |     cudaGetDriverEntryPoint("cuTensorMapEncodeTiled", &p, cudaEnableDefault, &q);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/include/cuda_runtime_api.h:13101:46: note: declared here
+13101 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGetDriverEntryPoint(const char *symbol, void **funcPtr, unsigned long long flags, enum cudaDriverEntryPointQueryResult *driverStatus = NULL);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o sk_splitk_c0c7ccbe6ca4.so
+TINY_GRAPH_US 5.31
+CHECK qkv_gate 128 (2, 128, 6, 0, 4, 1, 1) True relative L2 error 8.211e-05 (worst row 2.772e-04); 12 probe rows exact to 0.0e+0
+TL qkv_gate 128 (2, 128, 6, 0, 4, 1, 1) event_us 23.02 start (0.0, 0.05, 0.1) first_tile (1.28, 1.76, 2.14) mainloop_end (12.8, 13.41, 14.4) sync_done (12.8, 13.41, 14.4) end (15.65, 16.19, 17.28) main_dur_med 11.63
+CHECK qkv_gate 128 (2, 128, 6, 0, 6, 1, 1) True relative L2 error 6.820e-05 (worst row 2.334e-04); 12 probe rows exact to 0.0e+0
+TL qkv_gate 128 (2, 128, 6, 0, 6, 1, 1) event_us 33.07 start (0.0, 0.06, 14.85) first_tile (1.28, 1.92, 16.03) mainloop_end (10.5, 11.66, 23.33) sync_done (10.5, 11.66, 23.33) end (13.34, 14.82, 26.11) main_dur_med 9.66
+CHECK qkv_gate 128 (2, 128, 6, 0, 7, 1, 0) True relative L2 error 5.367e-05 (worst row 1.786e-04); 12 probe rows exact to 0.0e+0
+TL qkv_gate 128 (2, 128, 6, 0, 7, 1, 0) event_us 22.94 start (0.0, 0.06, 0.16) first_tile (1.38, 2.08, 2.85) mainloop_end (10.11, 11.81, 14.24) sync_done (14.88, 16.19, 16.64) end (15.68, 17.23, 17.79) main_dur_med 9.82
+CHECK qkv_gate 256 (2, 256, 4, 0, 6, 1, 1) True relative L2 error 6.980e-05 (worst row 3.332e-04); 36 probe rows exact to 0.0e+0
+TL qkv_gate 256 (2, 256, 4, 0, 6, 1, 1) event_us 48.37 start (0.0, 0.1, 21.79) first_tile (1.57, 2.02, 22.98) mainloop_end (14.72, 15.23, 35.46) sync_done (14.72, 15.23, 35.46) end (20.48, 21.06, 40.93) main_dur_med 13.15
+CHECK qkv_gate 256 (2, 256, 4, 0, 7, 1, 0) True relative L2 error 6.004e-05 (worst row 3.304e-04); 36 probe rows exact to 0.0e+0
+TL qkv_gate 256 (2, 256, 4, 0, 7, 1, 0) event_us 27.34 start (0.0, 0.06, 0.13) first_tile (1.47, 2.02, 2.72) mainloop_end (13.15, 13.76, 14.59) sync_done (18.3, 18.59, 18.78) end (20.29, 21.25, 21.82) main_dur_med 11.74
+CHECK pooler 128 (1, 128, 8, 0, 2, 1, 1) True relative L2 error 1.532e-04 (worst row 3.853e-04); 12 probe rows exact to 0.0e+0
+TL pooler 128 (1, 128, 8, 0, 2, 1, 1) event_us 28.9 start (0.0, 0.1, 0.16) first_tile (1.18, 1.66, 2.59) mainloop_end (17.09, 19.5, 20.8) sync_done (17.09, 19.5, 20.8) end (20.0, 21.44, 22.59) main_dur_med 17.87
+CHECK pooler 128 (2, 128, 6, 0, 4, 1, 0) True relative L2 error 1.059e-04 (worst row 3.027e-04); 12 probe rows exact to 0.0e+0
+TL pooler 128 (2, 128, 6, 0, 4, 1, 0) event_us 30.35 start (0.0, 0.06, 0.16) first_tile (1.63, 2.05, 2.94) mainloop_end (16.64, 19.02, 20.96) sync_done (21.38, 22.69, 23.42) end (22.3, 23.87, 24.42) main_dur_med 16.96
+CHECK pooler 256 (1, 256, 5, 0, 2, 1, 1) True relative L2 error 1.431e-04 (worst row 3.853e-04); 36 probe rows exact to 0.0e+0
+TL pooler 256 (1, 256, 5, 0, 2, 1, 1) event_us 36.21 start (0.0, 0.1, 0.19) first_tile (1.09, 1.63, 2.27) mainloop_end (25.63, 26.45, 28.45) sync_done (25.63, 26.45, 28.45) end (30.14, 30.88, 32.67) main_dur_med 24.86
+CHECK pooler 256 (2, 256, 4, 0, 4, 1, 0) True relative L2 error 9.682e-05 (worst row 3.027e-04); 36 probe rows exact to 0.0e+0
+TL pooler 256 (2, 256, 4, 0, 4, 1, 0) event_us 36.19 start (0.0, 0.06, 0.13) first_tile (1.5, 1.98, 2.72) mainloop_end (21.82, 22.43, 23.01) sync_done (26.98, 27.23, 27.46) end (29.31, 30.08, 30.34) main_dur_med 20.42
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-s0KuRQfAwNAEYvucRKWoP0
