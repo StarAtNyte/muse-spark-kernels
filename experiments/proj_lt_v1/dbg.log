@@ -1,0 +1,109 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-5rue6xQS1uIvrjcBOz95b0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_lt_v1/modal
+│   _search.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+=== ENV {"CELL": "qkv_gate:256", "BUDGET": "60"} rc=0
+HEADER /usr/local/cuda-13.0/include/cublasLt.h 858
+CAPS 0 1 2 6 7 13 15
+PIN (68, 'tn', (66, 124, 1, 0, 0, 0, 35, 0, 2)) 21.407999098300934
+HEUR 68 tn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 135, 2, 2, 0, 2, 35, 0, 6), (66, 165, 3, 2, 0, 0, 35, 0, 3)]
+HEUR 68 nn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 28, 2, 2, 0, 2, 35, 0, 7), (66, 20, 3, 2, 0, 3, 35, 0, 7)]
+HEUR 68 rownn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 28, 2, 2, 0, 2, 35, 0, 7), (66, 20, 3, 2, 0, 3, 35, 0, 7)]
+HEUR 68 rowtn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 135, 2, 2, 0, 2, 35, 0, 6), (66, 165, 3, 2, 0, 0, 35, 0, 3)]
+HEUR 75 tn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 135, 2, 2, 0, 2, 35, 0, 6), (66, 165, 3, 2, 0, 0, 35, 0, 3)]
+HEUR 75 nn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 28, 2, 2, 0, 2, 35, 0, 7), (66, 20, 3, 2, 0, 3, 35, 0, 7)]
+HEUR 75 rownn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 28, 2, 2, 0, 2, 35, 0, 7), (66, 20, 3, 2, 0, 3, 35, 0, 7)]
+HEUR 75 rowtn 8 [(66, 27, 1, 0, 0, 2, 35, 0, 9), (66, 135, 2, 2, 0, 2, 35, 0, 6), (66, 165, 3, 2, 0, 0, 35, 0, 3)]
+HEURBEST (21.407999098300934, 68, 'tn', (66, 124, 1, 0, 0, 0, 35, 0, 2), 0.0016548248240724206) tried [65, 65] 1.6
+ID 5 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 6 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 11 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20201
+ID 12 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20201
+ID 13 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20201
+ID 14 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20201
+ID 16 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20201
+ID 21 tiles 10 stages 15 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 23 tiles 10 stages 15 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 24 tiles 8 stages 2 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 30 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 31 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 39 tiles 8 stages 1 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 41 tiles 8 stages 1 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 42 tiles 8 stages 1 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 58 tiles 1 stages 1 sk 0 red 0 swz 0 cust 0 num 0x20202
+ID 66 tiles 634 stages 1 sk 0 red 0 swz 0 cust 0 num 0x10202
+ID 67 tiles 627 stages 5 sk 0 red 0 swz 0 cust 0 num 0x30202
+ID 70 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x0
+ID 71 tiles 0 stages 0 sk 0 red 0 swz 0 cust 0 num 0x0
+IDS75 [5, 6, 11, 12, 13, 14, 16, 21, 23, 24, 30, 31, 39, 41, 42, 58, 66, 67, 70, 71] IDS68 [5, 6, 11, 12, 13, 14, 16, 21, 23, 24, 30, 31, 39, 41, 42, 58, 66, 67, 70, 71]
+GRID id 66 combos 3000 timed 477 best (21.47199958562851, 68, 'rowtn', (66, 124, 1, 0, 0, 0, 35, 0, 2), 0.0016548248240724206) 5.7
+GRID id 5 combos 4 timed 0 best None 5.7
+GRID id 6 combos 4 timed 0 best None 5.7
+GRID id 11 combos 4 timed 0 best None 5.7
+GRID id 12 combos 4 timed 0 best None 5.7
+GRID id 13 combos 4 timed 0 best None 5.7
+GRID id 14 combos 4 timed 0 best None 5.7
+GRID id 16 combos 4 timed 4 best (574.944019317627, 68, 'rownn', (16, 0, 1, 0, 0, 0, 0, 0, 0), 0.0016547999111935496) 5.7
+GRID id 21 combos 600 timed 152 best (50.624001771211624, 68, 'rownn', (21, 18, 1, 0, 0, 0, 18, 0, 0), 0.0016548248240724206) 6.5
+GRID id 23 combos 600 timed 132 best (115.61600118875504, 68, 'rownn', (23, 17, 1, 0, 0, 0, 16, 0, 0), 0.0016548248240724206) 7.4
+GRID id 24 combos 64 timed 28 best (290.8799946308136, 68, 'nn', (24, 17, 1, 0, 0, 0, 0, 0, 0), 0.001654876279644668) 7.6
+GRID id 30 combos 4 timed 0 best None 7.6
+GRID id 31 combos 4 timed 0 best None 7.6
+GRID id 39 combos 32 timed 0 best None 7.6
+GRID id 41 combos 32 timed 0 best None 7.6
+GRID id 42 combos 32 timed 0 best None 7.6
+GRID id 58 combos 4 timed 0 best None 7.6
+GRID id 67 combos 3000 timed 0 best None 7.7
+GRID id 70 combos 4 timed 0 best None 7.7
+GRID id 71 combos 4 timed 0 best None 7.7
+LEADERS [(21.41, 68, 'tn', (66, 124, 1, 0, 0, 0, 35, 0, 2)), (21.47, 68, 'rowtn', (66, 124, 1, 0, 0, 0, 35, 0, 2)), (23.2, 75, 'tn', (66, 27, 1, 0, 0, 2, 35, 0, 9)), (23.42, 68, 'rowtn', (66, 27, 1, 0, 0, 2, 35, 0, 9)), (24.03, 75, 'nn', (66, 27, 1, 0, 0, 2, 35, 0, 9)), (24.13, 68, 'rownn', (66, 27, 1, 0, 0, 2, 35, 0, 9)), (24.35, 68, 'tn', (66, 93, 1, 0, 0, 0, 35, 0, 2)), (24.45, 68, 'rowtn', (66, 164, 1, 0, 0, 0, 35, 0, 2)), (24.48, 75, 'tn', (66, 184, 4, 2, 0, 2, 35, 0, 5)), (24.54, 68, 'rowtn', (66, 184, 4, 2, 0, 2, 35, 0, 5))]
+REFINED (21.41, 'tn', (66, 124, 1, 0, 0, 0, 35, 0, 2)) -> (21.41, 68, 'tn', (66, 124, 1, 0, 0, 0, 35, 0, 2)) 7.7
+REFINED (21.47, 'rowtn', (66, 124, 1, 0, 0, 0, 35, 0, 2)) -> (21.47, 68, 'rowtn', (66, 124, 1, 0, 0, 0, 35, 0, 2)) 7.8
+REFINED (23.2, 'tn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) -> (23.2, 75, 'tn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) 7.8
+REFINED (23.42, 'rowtn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) -> (23.39, 68, 'rowtn', (66, 27, 1, 0, 0, 2, 35, 0, 10)) 7.8
+REFINED (24.03, 'nn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) -> (24.03, 75, 'nn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) 7.9
+REFINED (24.13, 'rownn', (66, 27, 1, 0, 0, 2, 35, 0, 9)) -> (23.84, 68, 'rownn', (66, 27, 1, 0, 0, 2, 35, 0, 8)) 7.9
+REFINED (24.35, 'tn', (66, 93, 1, 0, 0, 0, 35, 0, 2)) -> (24.35, 68, 'tn', (66, 93, 1, 0, 0, 0, 35, 0, 2)) 8.0
+REFINED (24.45, 'rowtn', (66, 164, 1, 0, 0, 0, 35, 0, 2)) -> (24.45, 68, 'rowtn', (66, 164, 1, 0, 0, 0, 35, 0, 2)) 8.0
+REFINED (24.48, 'tn', (66, 184, 4, 2, 0, 2, 35, 0, 5)) -> (24.48, 75, 'tn', (66, 184, 4, 2, 0, 2, 35, 0, 5)) 8.1
+REFINED (24.54, 'rowtn', (66, 184, 4, 2, 0, 2, 35, 0, 5)) -> (24.54, 68, 'rowtn', (66, 184, 4, 2, 0, 2, 35, 0, 5)) 8.2
+TRIED [7982, 949] timed 949
+FINAL {"cell": "qkv_gate:256", "us": 21.056, "ratio_vs_ref": 1.0015, "key": [75, "rowtn", [66, 124, 1, 0, 0, 0, 35, 0, 2]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 21.064, "ratio_vs_ref": 1.0, "key": [68, "tn", [66, 124, 1, 0, 0, 0, 35, 0, 2]], "ref": true}
+FINAL {"cell": "qkv_gate:256", "us": 21.12, "ratio_vs_ref": 0.9996, "key": [75, "tn", [66, 124, 1, 0, 0, 0, 35, 0, 2]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 21.144, "ratio_vs_ref": 0.9989, "key": [68, "rowtn", [66, 124, 1, 0, 0, 0, 35, 0, 2]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 21.272, "ratio_vs_ref": 0.9899, "key": [68, "tn", [66, 124, 1, 0, 0, 0, 35, 0, 3]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 21.552, "ratio_vs_ref": 0.9781, "key": [68, "rowtn", [66, 124, 1, 0, 0, 0, 35, 0, 3]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.008, "ratio_vs_ref": 0.9154, "key": [68, "rowtn", [66, 27, 1, 0, 0, 2, 35, 0, 9]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.024, "ratio_vs_ref": 0.9165, "key": [75, "rowtn", [66, 27, 1, 0, 0, 2, 35, 0, 9]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.04, "ratio_vs_ref": 0.915, "key": [75, "tn", [66, 27, 1, 0, 0, 2, 35, 0, 9]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.056, "ratio_vs_ref": 0.9137, "key": ["torch"], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.064, "ratio_vs_ref": 0.9148, "key": [68, "tn", [66, 27, 1, 0, 0, 2, 35, 0, 9]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.072, "ratio_vs_ref": 0.9147, "key": [75, "tn", [66, 27, 1, 0, 0, 2, 35, 0, 10]], "ref": false}
+FINAL {"cell": "qkv_gate:256", "us": 23.136, "ratio_vs_ref": 0.91, "key": [68, "rowtn", [66, 27, 1, 0, 0, 2, 35, 0, 10]], "ref": false}
+DONE qkv_gate 256 8.5
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-5rue6xQS1uIvrjcBOz95b0
