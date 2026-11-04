@@ -1,0 +1,258 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ZaXr5sZuALtLa6ssImOKHk
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_11b_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"G11_VERBOSE": "1"} RETURNCODE 0
+RT12 off: RT12 disabled
+PREP rq thread started at 6s
+PREP rq32 thread started at 6s
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=g11_a5ca4cfad5 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/g11_a5ca4cfad5/main.cpp -o main.o 
+BUILD pw57_flush 78.6s
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=g11_a5ca4cfad5 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 -Xptxas=-v -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/g11_a5ca4cfad5/cuda.cu -o cuda.cuda.o 
+ptxas info    : 28 bytes gmem
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi16ELi2ELi16ELi8ELi6ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi16ELi2ELi16ELi8ELi6ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers
+ptxas info    : Compile time = 126.710 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi9ELi2ELi16ELi8ELi6ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi9ELi2ELi16ELi8ELi6ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 122 registers, used 2 barriers
+ptxas info    : Compile time = 89.967 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi16ELi4ELi16ELi4ELi3ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi16ELi4ELi16ELi4ELi3ELi0EEv3P11
+    96 bytes stack frame, 88 bytes spill stores, 88 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers, 96 bytes cumulative stack size
+ptxas info    : Compile time = 192.312 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi16ELi2ELi16ELi4ELi4ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi16ELi2ELi16ELi4ELi4ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers
+ptxas info    : Compile time = 111.121 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi16ELi4ELi16ELi8ELi3ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi16ELi4ELi16ELi8ELi3ELi0EEv3P11
+    96 bytes stack frame, 88 bytes spill stores, 88 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers, 96 bytes cumulative stack size
+ptxas info    : Compile time = 192.372 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi16ELi2ELi16ELi8ELi4ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi16ELi2ELi16ELi8ELi4ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers
+ptxas info    : Compile time = 108.349 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi16ELi1ELi16ELi8ELi6ELi1EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi16ELi1ELi16ELi8ELi6ELi1EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 72.229 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi16ELi1ELi16ELi8ELi4ELi1EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi16ELi1ELi16ELi8ELi4ELi1EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 2 barriers
+ptxas info    : Compile time = 74.529 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi9ELi3ELi16ELi8ELi4ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi9ELi3ELi16ELi8ELi4ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 168 registers, used 2 barriers
+ptxas info    : Compile time = 178.011 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi9ELi2ELi16ELi8ELi4ELi0EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi9ELi2ELi16ELi8ELi4ELi0EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 122 registers, used 2 barriers
+ptxas info    : Compile time = 84.414 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi9ELi1ELi16ELi8ELi8ELi1EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi9ELi1ELi16ELi8ELi8ELi1EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 88 registers, used 2 barriers
+ptxas info    : Compile time = 64.464 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi9ELi1ELi16ELi8ELi4ELi1EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi9ELi1ELi16ELi8ELi4ELi1EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, used 2 barriers
+ptxas info    : Compile time = 63.452 ms
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o g11_a5ca4cfad5.so
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   13.89 us   0.45 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.52 us   0.84 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   13.50 us   1.24 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.18 us   1.65 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.77 us two_node 5.44 us overhead 4.10 us
+PREP flush+fixed done at 89s
+lt qkv_gate m128 heur 20800.00 best 0:66.92.1.0.0.0.35.0.2 18816.00 (583 tried, 2.5s)
+lt pooler m128 heur 29088.00 best 2:66.15.1.0.0.6.35.0.5 23552.00 (983 tried, 5.5s)
+lt unpooler m128 heur 23296.00 best 2:66.18.1.0.0.4.35.0.2 22368.00 (717 tried, 7.5s)
+gv qkv_gate m8 v12 12640.00 best 1.1.1.2.16.8.1.1.2.1 6348.76 (ref 1.1.1.2.16.8.1.1.2.1 6348.76)
+  v12:12640.00 1.1.1.2.16.8.1.1.2.1:6348.76 1.1.2.1.8.16.1.1.0.1:9074.43 1.1.1.1.16.8.1.1.2.8193:8419.64 1.1.2.1.4.16.2.1.0.0:10537.92 1.1.2.1.4.16.2.1.0.1:9694.44 1.1.2.1.4.8.4.1.0.1:14223.28
+gv qkv_gate m32 v12 12928.00 best 1.4.1.1.4.16.2.1.2.1 12185.48 (ref v12 12928.00)
+  v12:12928.00 1.4.2.1.8.16.1.1.2.0:13935.91 1.4.2.1.8.16.1.1.2.1:13193.16 1.4.2.1.4.16.2.1.2.0:14214.07 1.4.2.1.4.16.2.1.2.1:13620.34 1.4.2.2.4.16.2.1.2.1:15265.86 1.4.1.1.4.8.4.1.2.0:18166.17 1.4.1.1.4.8.4.1.2.1:18131.58 1.4.2.1.4.8.4.1.2.1:19599.52 1.4.1.1.4.16.2.1.2.1:12185.48
+gv o m8 v12 4960.00 best 1.1.2.1.8.2.1.1.0.1 3709.51 (ref 1.1.2.1.8.2.1.1.0.1 3709.51)
+  v12:4960.00 1.1.2.1.8.2.1.1.0.1:3709.51 1.1.2.1.8.2.1.1.0.0:4252.10 1.1.2.2.4.4.1.1.0.1:5427.98 1.1.2.1.4.4.1.1.0.1:5240.60
+gv o m16 v12 5280.00 best 1.2.2.1.8.2.1.1.0.1 3615.54 (ref 1.2.2.1.8.2.1.1.0.1 3615.54)
+  v12:5280.00 1.2.2.1.8.2.1.1.0.1:3615.54 1.2.2.1.8.2.1.1.0.0:4327.07 1.2.2.1.8.2.1.1.2.1:7850.25 1.2.2.2.4.4.1.1.0.1:4489.00 1.2.2.2.4.4.1.1.2.1:4960.83 1.2.1.1.4.4.1.1.2.1:4646.46
+gv pooler m8 v12 19136.00 best 1.1.1.2.16.8.1.1.0.3 11283.82 (ref 1.1.1.2.16.8.1.1.0.3 11283.82)
+  v12:19136.00 1.1.1.2.16.8.1.1.0.3:11283.82 1.1.2.2.8.16.1.1.0.1:12834.84 1.1.2.2.8.16.1.1.0.0:12994.93 1.1.2.1.8.16.1.1.0.1:12861.52
+gv pooler m16 v12 19808.00 best 1.2.2.2.8.16.1.1.0.1 10881.85 (ref 1.2.2.2.8.16.1.1.0.1 10881.85)
+  v12:19808.00 1.2.2.2.8.16.1.1.0.1:10881.85 1.2.2.2.8.16.1.1.0.0:13455.46 1.2.2.1.8.16.1.1.2.1:13684.03 1.2.2.1.8.16.1.1.0.1:17208.11
+gv unpooler m8 v12 5792.00 best 1.1.2.1.16.4.1.1.0.1 1696.86 (ref 1.1.2.1.16.4.1.1.0.1 1696.86)
+  v12:5792.00 1.1.2.1.16.4.1.1.0.1:1696.86 1.1.2.1.16.4.1.1.0.0:3507.38 1.1.2.1.8.2.4.1.0.1:4275.54 1.1.2.1.8.4.2.1.0.1:4680.68 1.1.2.1.16.4.1.1.2.1:2618.35
+PREP r6 done in 115s
+PREP rq thread ready at 89s (bake starts at 115s)
+BAKE rq pooler esc2 slots max=3 ok
+BAKE pooler m=128 r6 23.90 at 115s
+BAKE pooler m=128 rq:d2s5hze 21.99 (ratio 1.0928 vs r6 23.90) at 115s
+BAKE pooler m=128 rq:d2s5hzwP 20.84 (ratio 1.0532 vs rq:d2s5hze 21.99) at 115s
+BAKE pooler m=128 rq:s4s5hzw 21.09 (ratio 1.0423 vs rq:d2s5hze 21.99) at 115s
+BAKE pooler m=128 rq:s4s5hzeEH 21.75 (ratio 0.9991 vs rq:d2s5hze 21.99) at 115s
+BAKE pooler m=128 rq:d2s6hze 21.71 (ratio 1.0082 vs rq:d2s5hze 21.99) at 115s
+PICK pooler m=128 rq:d2s5hzwP 20.88 (ref rq:d2s5hze 21.99)
+PICK pooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0532)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 19.17 at 115s
+BAKE qkv_gate m=128 rq:d2s5hze 15.85 (ratio 1.2312 vs r6 19.17) at 115s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.42 (ratio 1.0460 vs rq:d2s5hze 15.85) at 116s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.42 (ratio 1.0524 vs rq:d2s5hze 15.85) at 116s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.32 (ratio 1.0078 vs rq:d2s5hze 15.85) at 116s
+BAKE qkv_gate m=128 rq:d2s6hze 16.60 (ratio 0.9832 vs rq:d2s5hze 15.85) at 116s
+PICK qkv_gate m=128 rq:s4s5hzw 15.06 (ref rq:d2s5hze 15.85)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0460)
+BAKE rq unpooler esc2 slots max=3 ok
+BAKE unpooler m=128 r6 22.21 at 116s
+BAKE unpooler m=128 rq:d2s5hze 21.67 (ratio 1.0782 vs r6 22.21) at 116s
+BAKE unpooler m=128 rq:d2s5hzwP 21.42 (ratio 1.0175 vs rq:d2s5hze 21.67) at 116s
+BAKE unpooler m=128 rq:s4s5hzw 20.92 (ratio 1.0462 vs rq:d2s5hze 21.67) at 116s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.69 (ratio 0.9972 vs rq:d2s5hze 21.67) at 116s
+BAKE unpooler m=128 rq:s4s5hze 21.52 (ratio 1.0289 vs rq:d2s5hze 21.67) at 116s
+BAKE unpooler m=128 rq:d2s6hze 21.96 (ratio 1.0084 vs rq:d2s5hze 21.67) at 116s
+PICK unpooler m=128 rq:s4s5hzw 20.71 (ref rq:d2s5hze 21.67)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0175)
+PREP phase rq done at 116s
+BAKE qkv_gate m=8 r6 13.31 (ref)
+BAKE qkv_gate m=8 q144k16 15.55 (ref r6 13.31)
+PICK qkv_gate m=8 r6 13.31 (ref r6 13.31)
+BAKE unpooler m=8 r6 8.38 (ref)
+BAKE unpooler m=8 uk-s4z 8.54 (ref r6 8.38)
+BAKE unpooler m=8 uk-s4x 8.19 (ref r6 8.38)
+BAKE unpooler m=8 uk-s4w4x 8.48 (ref r6 8.38)
+PICK unpooler m=8 uk-s4x 8.19 (ref uk-s4x 8.19)
+PROBE p1alt unpooler m=8 uk-s4x 8.19 r6=8.58 delta=-0.38
+PREP phase gx done at 116s
+PREP rq32 thread ready at 89s
+PREP rq32 bake starts at 116s
+BAKE pooler m=16 r6 17.79 at 116s
+BAKE pooler m=16 rq:t16s5hze-k4 19.05 (ratio 0.9491 vs r6 17.79) at 116s
+BAKE pooler m=16 rq:t16s4hze-k4 20.02 (ratio 0.9157 vs r6 17.79) at 116s
+BAKE pooler m=16 rq:t16s6hze-k4 18.97 (ratio 0.9380 vs r6 17.79) at 116s
+BAKE pooler m=16 rq:t16s7hze-k4 19.19 (ratio 0.9340 vs r6 17.79) at 116s
+BAKE pooler m=16 rq:h16s5hze2-k3 21.13 (ratio 0.8465 vs r6 17.79) at 116s
+BAKE pooler m=16 rq:h16s5hze2-k5 30.27 (ratio 0.5942 vs r6 17.79) at 116s
+PICK pooler m=16 r6 17.79 (ref r6 17.79)
+BAKE qkv_gate m=32 r6 18.18 at 116s
+BAKE rq32 qkv_gate esc2 ks=7 slots max=3 ok
+PICK qkv_gate m=32 rq:t32s6hzw-k7 (forced: NT=32 cursor, resident -0.70..-1.38 us, bake 12.90 vs r6 18.18)
+BAKE o m=16 r6 9.50 at 116s
+BAKE o m=16 rq:t16s5hze-k2 10.99 (ratio 0.8645 vs r6 9.50) at 116s
+BAKE o m=16 rq:t16s6hze-k2 10.87 (ratio 0.8534 vs r6 9.50) at 116s
+BAKE o m=16 rq:t16s5ze-k2 10.91 (ratio 0.8620 vs r6 9.50) at 116s
+BAKE o m=16 rq:h16s5hze2-k2 11.00 (ratio 0.8905 vs r6 9.50) at 117s
+PICK o m=16 r6 9.50 (ref r6 9.50)
+PREP phase rq32 done at 117s
+PREP phase router done at 117s
+PREP done in 117s
+compact qkv m=128: compact 19.84 us, dispatcher 17.92 us -> dispatcher
+G11 pack qkv_gate base 57 esc 0.01357 bits/weight 11.466
+G11 qkv_gate m=1 cfg 0 (1, 9, 1, 16, 8, 4, 1) g11 33.60 us parent 15.71 us ratio 2.138
+G11 qkv_gate m=1 cfg 1 (1, 9, 1, 16, 8, 8, 1) g11 33.28 us parent 15.65 us ratio 2.127
+G11 qkv_gate m=8 cfg 0 (1, 9, 1, 16, 8, 4, 1) g11 35.36 us parent 14.91 us ratio 2.371
+G11 qkv_gate m=8 cfg 1 (1, 9, 1, 16, 8, 8, 1) g11 35.26 us parent 14.98 us ratio 2.355
+G11 qkv_gate m=16 cfg 2 (2, 9, 2, 16, 8, 4, 0) g11 59.90 us parent 16.64 us ratio 3.600
+G11 qkv_gate m=16 cfg 10 (2, 9, 2, 16, 8, 6, 0) g11 59.90 us parent 16.58 us ratio 3.614
+G11 qkv_gate m=32 cfg 3 (4, 9, 3, 16, 8, 4, 0) g11 78.69 us parent 16.42 us ratio 4.793
+G11 pack pooler base 57 esc 0.01353 bits/weight 11.465
+G11 pooler m=1 cfg 4 (1, 16, 1, 16, 8, 4, 1) g11 51.94 us parent 21.79 us ratio 2.383
+G11 pooler m=1 cfg 5 (1, 16, 1, 16, 8, 6, 1) g11 52.03 us parent 21.73 us ratio 2.395
+G11 pooler m=8 cfg 4 (1, 16, 1, 16, 8, 4, 1) g11 140.03 us parent 20.54 us ratio 6.816
+G11 pooler m=8 cfg 5 (1, 16, 1, 16, 8, 6, 1) g11 139.87 us parent 20.54 us ratio 6.808
+G11 pooler m=16 cfg 6 (2, 16, 2, 16, 8, 4, 0) g11 87.23 us parent 20.61 us ratio 4.233
+G11 pooler m=16 cfg 11 (2, 16, 2, 16, 8, 6, 0) g11 88.26 us parent 20.45 us ratio 4.316
+G11 pooler m=32 cfg 7 (4, 16, 4, 16, 8, 3, 0) g11 100.80 us parent 24.03 us ratio 4.194
+G11 pack unpooler base 58 esc 0.02490 bits/weight 11.828
+G11 unpooler m=16 cfg 8 (2, 16, 2, 16, 4, 4, 0) g11 124.54 us parent 22.62 us ratio 5.505
+G11 unpooler m=32 cfg 9 (4, 16, 4, 16, 4, 3, 0) g11 134.46 us parent 23.58 us ratio 5.701
+PREP done 122s
+ROW {"layer": "qkv_gate", "m": 1, "cid": 0, "cfg": [1, 9, 1, 16, 8, 4, 1], "fails": 0, "g11_us": 33.344, "noesc_us": 15.104, "parent_us": 15.68, "ratio": 2.1265, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 1, "cid": 1, "cfg": [1, 9, 1, 16, 8, 8, 1], "fails": 0, "g11_us": 33.344, "noesc_us": 15.232, "parent_us": 15.52, "ratio": 2.1485, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 8, "cid": 0, "cfg": [1, 9, 1, 16, 8, 4, 1], "fails": 0, "g11_us": 35.296, "noesc_us": 15.712, "parent_us": 14.88, "ratio": 2.372, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 8, "cid": 1, "cfg": [1, 9, 1, 16, 8, 8, 1], "fails": 0, "g11_us": 35.328, "noesc_us": 15.68, "parent_us": 14.88, "ratio": 2.3742, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 16, "cid": 2, "cfg": [2, 9, 2, 16, 8, 4, 0], "fails": 0, "g11_us": 59.936, "noesc_us": 22.336, "parent_us": 16.672, "ratio": 3.595, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 16, "cid": 10, "cfg": [2, 9, 2, 16, 8, 6, 0], "fails": 0, "g11_us": 59.872, "noesc_us": 22.304, "parent_us": 16.704, "ratio": 3.5843, "msg": ""}
+ROW {"layer": "qkv_gate", "m": 32, "cid": 3, "cfg": [4, 9, 3, 16, 8, 4, 0], "fails": 0, "g11_us": 78.752, "noesc_us": 26.784, "parent_us": 16.544, "ratio": 4.7602, "msg": ""}
+ROW {"layer": "pooler", "m": 1, "cid": 4, "cfg": [1, 16, 1, 16, 8, 4, 1], "fails": 0, "g11_us": 52.032, "noesc_us": 25.152, "parent_us": 21.76, "ratio": 2.3912, "msg": ""}
+ROW {"layer": "pooler", "m": 1, "cid": 5, "cfg": [1, 16, 1, 16, 8, 6, 1], "fails": 0, "g11_us": 52.0, "noesc_us": 24.992, "parent_us": 21.728, "ratio": 2.3932, "msg": ""}
+ROW {"layer": "pooler", "m": 8, "cid": 4, "cfg": [1, 16, 1, 16, 8, 4, 1], "fails": 0, "g11_us": 140.096, "noesc_us": 25.888, "parent_us": 20.544, "ratio": 6.8193, "msg": ""}
+ROW {"layer": "pooler", "m": 8, "cid": 5, "cfg": [1, 16, 1, 16, 8, 6, 1], "fails": 0, "g11_us": 140.192, "noesc_us": 25.888, "parent_us": 20.32, "ratio": 6.8992, "msg": ""}
+ROW {"layer": "pooler", "m": 16, "cid": 6, "cfg": [2, 16, 2, 16, 8, 4, 0], "fails": 0, "g11_us": 87.36, "noesc_us": 29.472, "parent_us": 20.576, "ratio": 4.2457, "msg": ""}
+ROW {"layer": "pooler", "m": 16, "cid": 11, "cfg": [2, 16, 2, 16, 8, 6, 0], "fails": 0, "g11_us": 88.704, "noesc_us": 30.848, "parent_us": 20.608, "ratio": 4.3043, "msg": ""}
+ROW {"layer": "pooler", "m": 32, "cid": 7, "cfg": [4, 16, 4, 16, 8, 3, 0], "fails": 0, "g11_us": 101.184, "noesc_us": 45.472, "parent_us": 24.16, "ratio": 4.1881, "msg": ""}
+ROW {"layer": "unpooler", "m": 16, "cid": 8, "cfg": [2, 16, 2, 16, 4, 4, 0], "fails": 0, "g11_us": 124.928, "noesc_us": 28.992, "parent_us": 22.944, "ratio": 5.4449, "msg": ""}
+ROW {"layer": "unpooler", "m": 32, "cid": 9, "cfg": [4, 16, 4, 16, 4, 3, 0], "fails": 0, "g11_us": 134.464, "noesc_us": 45.088, "parent_us": 23.872, "ratio": 5.6327, "msg": ""}
+E2E 1 qkv_gate normal True relative L2 error 0.000e+00 (worst row 0.000e+00)
+E2E 7 pooler normal True relative L2 error 9.760e-08 (worst row 2.413e-07); 1 probe rows exact to 0.0e+00
+E2E 33 o normal True relative L2 error 5.374e-05 (worst row 1.762e-04); 3 probe rows exact to 0.0e+00
+E2E 130 unpooler normal True relative L2 error 1.497e-04 (worst row 3.325e-04); 16 probe rows exact to 0.0e+00
+E2E 5 unpooler normal True relative L2 error 3.454e-03 (worst row 3.651e-03)
+E2E 8 router normal True relative L2 error 2.473e-06 (worst row 2.754e-06); 3 probe rows exact to 2.5e-06
+E2E 9 router outliers True relative L2 error 2.470e-06 (worst row 2.740e-06); 3 probe rows exact to 2.6e-06
+E2E 512 qkv_gate outliers True relative L2 error 2.224e-04 (worst row 6.102e-04); 64 probe rows exact to 0.0e+00
+E2E 1000 unpooler outliers True relative L2 error 1.542e-04 (worst row 3.427e-04); 126 probe rows exact to 0.0e+00
+E2E 1 qkv_gate normal True relative L2 error 0.000e+00 (worst row 0.000e+00)
+E2E 8 qkv_gate normal True relative L2 error 1.505e-08 (worst row 4.039e-08); 1 probe rows exact to 0.0e+00
+E2E 16 qkv_gate normal True relative L2 error 5.379e-05 (worst row 1.583e-04); 2 probe rows exact to 0.0e+00
+E2E 32 qkv_gate normal True relative L2 error 3.917e-03 (worst row 4.302e-03); 6 probe rows exact to 0.0e+00
+E2E 1 pooler normal True relative L2 error 0.000e+00 (worst row 0.000e+00); 1 probe rows exact to 0.0e+00
+E2E 8 pooler normal True relative L2 error 2.462e-06 (worst row 7.438e-06); 3 probe rows exact to 0.0e+00
+E2E 16 pooler normal True relative L2 error 6.627e-05 (worst row 1.783e-04); 2 probe rows exact to 0.0e+00
+E2E 32 pooler normal True relative L2 error 1.373e-04 (worst row 2.602e-04); 3 probe rows exact to 0.0e+00
+E2E 16 unpooler normal True relative L2 error 1.098e-04 (worst row 2.483e-04); 2 probe rows exact to 0.0e+00
+E2E 32 unpooler normal True relative L2 error 1.090e-04 (worst row 2.262e-04); 6 probe rows exact to 0.0e+00
+ROUTES []
+DONE 123s
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.7 sk2=13.54 torch=18.18 -> cgemv
+[okc] tune o m=1: cgemv=8.74 sk2=9.41 torch=10.46 -> cgemv
+[okc] tune pooler m=1: cgemv=17.44 sk2=18.3 torch=25.31 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.39 sgemv=7.74 sk2=8.48 torch=11.04 -> cgemv
+[okc] tune router m=1: rgemv=7.42 sk2=8.29 torch=19.49 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.22 torch=18.05 -> sk2
+[okc] tune unpooler m=16: sk2=17.92 torch=22.37 -> sk2
+[okc] tune o m=32: sk2=9.54 torch=10.53 -> sk2
+[okc] tune pooler m=32: sk2=19.04 torch=26.3 -> sk2
+[okc] tune unpooler m=32: sk2=18.98 torch=22.53 -> sk2
+[okc] tune router m=128: rk=9.89 wide=12.51 gemm=13.63 torch=21.6 -> rk
+[okc] tune router m=256: rk=10.62 wide=13.6 gemm=17.22 torch=22.62 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ZaXr5sZuALtLa6ssImOKHk

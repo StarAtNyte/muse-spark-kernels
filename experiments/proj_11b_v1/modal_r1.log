@@ -1,0 +1,204 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-T3d7gBBOn8MtI9n3CrfUSl
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_11b_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"G11_VERBOSE": "1"} RETURNCODE 1
+RT12 off: RT12 disabled
+PREP rq thread started at 5s
+PREP rq32 thread started at 5s
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=g11_5695fc62ca -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/main.cpp -o main.o 
+FAILED: [code=1] main.o 
+ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=g11_5695fc62ca -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/main.cpp -o main.o 
+/root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/main.cpp: In function ‘void pybind11_init_g11_5695fc62ca(pybind11::module_&)’:
+/root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/main.cpp:4:45: error: ‘g11run’ was not declared in this scope
+    4 | m.def("g11run", torch::wrap_pybind_function(g11run), "g11run");
+      |                                             ^~~~~~
+BUILD pw57_flush 69.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   11.20 us   0.56 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.84 us   0.80 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   11.46 us   1.46 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.46 us   1.60 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.99 us two_node 5.66 us overhead 4.32 us
+PREP flush+fixed done at 77s
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=g11_5695fc62ca -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_90,code=compute_90 -gencode=arch=compute_90,code=sm_90 --compiler-options '-fPIC' -O3 -Xptxas=-v -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/cuda.cu -o cuda.cuda.o 
+ptxas info    : 28 bytes gmem
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi16ELi3ELi16ELi4ELi3EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi16ELi3ELi16ELi4ELi3EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 1 barriers
+ptxas info    : Compile time = 118.757 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi16ELi2ELi16ELi4ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi16ELi2ELi16ELi4ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 78 registers, used 1 barriers
+ptxas info    : Compile time = 64.037 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi16ELi4ELi16ELi8ELi3EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi16ELi4ELi16ELi8ELi3EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 1 barriers
+ptxas info    : Compile time = 110.495 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi16ELi3ELi16ELi8ELi3EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi16ELi3ELi16ELi8ELi3EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 1 barriers
+ptxas info    : Compile time = 112.194 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi16ELi2ELi16ELi8ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi16ELi2ELi16ELi8ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 78 registers, used 1 barriers
+ptxas info    : Compile time = 63.555 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi16ELi1ELi16ELi8ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi16ELi1ELi16ELi8ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, used 1 barriers
+ptxas info    : Compile time = 54.736 ms
+ptxas info    : Compiling entry function '_Z4g11kILi4ELi9ELi3ELi16ELi8ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi4ELi9ELi3ELi16ELi8ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 103 registers, used 1 barriers
+ptxas info    : Compile time = 98.879 ms
+ptxas info    : Compiling entry function '_Z4g11kILi2ELi9ELi2ELi16ELi8ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi2ELi9ELi2ELi16ELi8ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 78 registers, used 1 barriers
+ptxas info    : Compile time = 61.610 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi9ELi1ELi16ELi8ELi6EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi9ELi1ELi16ELi8ELi6EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 96 registers, used 1 barriers
+ptxas info    : Compile time = 55.192 ms
+ptxas info    : Compiling entry function '_Z4g11kILi1ELi9ELi1ELi16ELi8ELi4EEv3P11' for 'sm_90'
+ptxas info    : Function properties for _Z4g11kILi1ELi9ELi1ELi16ELi8ELi4EEv3P11
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 78 registers, used 1 barriers
+ptxas info    : Compile time = 55.678 ms
+ninja: build stopped: subcommand failed.
+lt qkv_gate m128 heur 21312.00 best 3:66.15.1.0.0.2.35.0.6 19456.00 (698 tried, 2.5s)
+lt pooler m128 heur 29536.00 best 2:66.15.1.0.0.5.35.0.5 23616.00 (1008 tried, 5.4s)
+lt unpooler m128 heur 23808.00 best 2:66.18.1.0.0.4.35.0.2 22432.00 (737 tried, 7.5s)
+gv qkv_gate m8 v12 12768.00 best 1.1.1.2.16.8.1.1.2.1 6650.95 (ref 1.1.1.2.16.8.1.1.2.1 6650.95)
+  v12:12768.00 1.1.1.2.16.8.1.1.2.1:6650.95 1.1.2.1.8.16.1.1.0.1:9591.58 1.1.1.1.16.8.1.1.2.8193:8286.15 1.1.2.1.4.16.2.1.0.0:10768.53 1.1.2.1.4.16.2.1.0.1:10215.23 1.1.2.1.4.8.4.1.0.1:14041.49
+gv qkv_gate m32 v12 13376.00 best 1.4.1.1.4.16.2.1.2.1 12476.79 (ref v12 13376.00)
+  v12:13376.00 1.4.2.1.8.16.1.1.2.0:13684.66 1.4.2.1.8.16.1.1.2.1:13737.95 1.4.2.1.4.16.2.1.2.0:14083.16 1.4.2.1.4.16.2.1.2.1:13793.83 1.4.2.2.4.16.2.1.2.1:15029.17 1.4.1.1.4.8.4.1.2.0:17333.71 1.4.1.1.4.8.4.1.2.1:18881.02 1.4.2.1.4.8.4.1.2.1:19375.78 1.4.1.1.4.16.2.1.2.1:12476.79
+gv o m8 v12 5152.00 best 1.1.2.1.8.2.1.1.0.1 3692.16 (ref 1.1.2.1.8.2.1.1.0.1 3692.16)
+  v12:5152.00 1.1.2.1.8.2.1.1.0.1:3692.16 1.1.2.1.8.2.1.1.0.0:4056.35 1.1.2.2.4.4.1.1.0.1:4306.42 1.1.2.1.4.4.1.1.0.1:4958.61
+gv o m16 v12 5280.00 best 1.2.2.1.8.2.1.1.0.1 3774.22 (ref 1.2.2.1.8.2.1.1.0.1 3774.22)
+  v12:5280.00 1.2.2.1.8.2.1.1.0.1:3774.22 1.2.2.1.8.2.1.1.0.0:4764.41 1.2.2.1.8.2.1.1.2.1:7109.00 1.2.2.2.4.4.1.1.0.1:5289.38 1.2.2.2.4.4.1.1.2.1:5879.79 1.2.1.1.4.4.1.1.2.1:4694.49
+gv pooler m8 v12 19008.00 best 1.1.1.2.16.8.1.1.0.3 11631.39 (ref 1.1.1.2.16.8.1.1.0.3 11631.39)
+  v12:19008.00 1.1.1.2.16.8.1.1.0.3:11631.39 1.1.2.2.8.16.1.1.0.1:12650.88 1.1.2.2.8.16.1.1.0.0:13298.20 1.1.2.1.8.16.1.1.0.1:12976.97
+gv pooler m16 v12 19456.00 best 1.2.2.2.8.16.1.1.0.1 11728.29 (ref 1.2.2.2.8.16.1.1.0.1 11728.29)
+  v12:19456.00 1.2.2.2.8.16.1.1.0.1:11728.29 1.2.2.2.8.16.1.1.0.0:13790.85 1.2.2.1.8.16.1.1.2.1:14283.56 1.2.2.1.8.16.1.1.0.1:16278.95
+PAIR ov 4.32 clamped to 4.30 (times 8.61/11.49)
+PAIR ov 4.32 clamped to 4.30 (times 9.12/8.61)
+PAIR ov 4.32 clamped to 4.27 (times 8.54/8.58)
+gv unpooler m8 v12 6528.00 best 1.1.2.1.16.4.1.1.0.1 1668.38 (ref 1.1.2.1.16.4.1.1.0.1 1668.38)
+  v12:6528.00 1.1.2.1.16.4.1.1.0.1:1668.38 1.1.2.1.16.4.1.1.0.0:4082.53 1.1.2.1.8.2.4.1.0.1:4516.42 1.1.2.1.8.4.2.1.0.1:4816.74 1.1.2.1.16.4.1.1.2.1:3750.13
+PREP r6 done in 100s
+PREP rq thread ready at 78s (bake starts at 100s)
+BAKE rq pooler esc2 slots max=3 ok
+BAKE pooler m=128 r6 23.94 at 100s
+BAKE pooler m=128 rq:d2s5hze 22.14 (ratio 1.1243 vs r6 23.94) at 100s
+BAKE pooler m=128 rq:d2s5hzwP 20.97 (ratio 1.0591 vs rq:d2s5hze 22.14) at 100s
+BAKE pooler m=128 rq:s4s5hzw 21.39 (ratio 1.0350 vs rq:d2s5hze 22.14) at 100s
+BAKE pooler m=128 rq:s4s5hzeEH 22.71 (ratio 0.9946 vs rq:d2s5hze 22.14) at 100s
+BAKE pooler m=128 rq:d2s6hze 22.86 (ratio 0.9771 vs rq:d2s5hze 22.14) at 100s
+PICK pooler m=128 rq:d2s5hzwP 20.91 (ref rq:d2s5hze 22.14)
+PICK pooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0591)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 19.58 at 100s
+BAKE qkv_gate m=128 rq:d2s5hze 15.94 (ratio 1.2247 vs r6 19.58) at 100s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.83 (ratio 1.0493 vs rq:d2s5hze 15.94) at 100s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.73 (ratio 1.0561 vs rq:d2s5hze 15.94) at 100s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.43 (ratio 1.0246 vs rq:d2s5hze 15.94) at 100s
+BAKE qkv_gate m=128 rq:d2s6hze 17.24 (ratio 0.9781 vs rq:d2s5hze 15.94) at 100s
+PICK qkv_gate m=128 rq:s4s5hzw 15.09 (ref rq:d2s5hze 15.94)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0493)
+BAKE rq unpooler esc2 slots max=3 ok
+BAKE unpooler m=128 r6 22.75 at 100s
+BAKE unpooler m=128 rq:d2s5hze 20.96 (ratio 1.1234 vs r6 22.75) at 100s
+BAKE unpooler m=128 rq:d2s5hzwP 21.15 (ratio 1.0547 vs rq:d2s5hze 20.96) at 100s
+BAKE unpooler m=128 rq:s4s5hzw 21.23 (ratio 1.0398 vs rq:d2s5hze 20.96) at 100s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.75 (ratio 1.0138 vs rq:d2s5hze 20.96) at 100s
+BAKE unpooler m=128 rq:s4s5hze 21.90 (ratio 0.9964 vs rq:d2s5hze 20.96) at 100s
+BAKE unpooler m=128 rq:d2s6hze 22.71 (ratio 0.9467 vs rq:d2s5hze 20.96) at 100s
+PICK unpooler m=128 rq:d2s5hzwP 19.88 (ref rq:d2s5hze 20.96)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0547)
+PREP phase rq done at 100s
+BAKE qkv_gate m=8 r6 13.22 (ref)
+BAKE qkv_gate m=8 q144k16 15.49 (ref r6 13.22)
+PICK qkv_gate m=8 r6 13.22 (ref r6 13.22)
+BAKE unpooler m=8 r6 8.64 (ref)
+BAKE unpooler m=8 uk-s4z 8.48 (ref r6 8.64)
+BAKE unpooler m=8 uk-s4x 8.16 (ref r6 8.64)
+BAKE unpooler m=8 uk-s4w4x 8.54 (ref r6 8.64)
+PICK unpooler m=8 uk-s4x 8.16 (ref uk-s4x 8.16)
+PROBE p1alt unpooler m=8 uk-s4x 8.13 r6=8.54 delta=-0.42
+PREP phase gx done at 100s
+PREP rq32 thread ready at 78s
+PREP rq32 bake starts at 100s
+BAKE pooler m=16 r6 17.86 at 100s
+BAKE pooler m=16 rq:t16s5hze-k4 19.14 (ratio 0.9496 vs r6 17.86) at 100s
+BAKE pooler m=16 rq:t16s4hze-k4 20.42 (ratio 0.8762 vs r6 17.86) at 100s
+BAKE pooler m=16 rq:t16s6hze-k4 19.17 (ratio 0.9364 vs r6 17.86) at 100s
+BAKE pooler m=16 rq:t16s7hze-k4 19.15 (ratio 0.9524 vs r6 17.86) at 101s
+BAKE pooler m=16 rq:h16s5hze2-k3 21.42 (ratio 0.8353 vs r6 17.86) at 101s
+BAKE pooler m=16 rq:h16s5hze2-k5 29.51 (ratio 0.6159 vs r6 17.86) at 101s
+PICK pooler m=16 r6 17.86 (ref r6 17.86)
+BAKE qkv_gate m=32 r6 18.14 at 101s
+BAKE rq32 qkv_gate esc2 ks=7 slots max=3 ok
+PICK qkv_gate m=32 rq:t32s6hzw-k7 (forced: NT=32 cursor, resident -0.70..-1.38 us, bake 12.85 vs r6 18.14)
+BAKE o m=16 r6 9.63 at 101s
+BAKE o m=16 rq:t16s5hze-k2 10.33 (ratio 0.9631 vs r6 9.63) at 101s
+BAKE o m=16 rq:t16s6hze-k2 10.88 (ratio 0.8736 vs r6 9.63) at 101s
+BAKE o m=16 rq:t16s5ze-k2 10.86 (ratio 0.8811 vs r6 9.63) at 101s
+BAKE o m=16 rq:h16s5hze2-k2 10.93 (ratio 0.8694 vs r6 9.63) at 101s
+PICK o m=16 r6 9.63 (ref r6 9.63)
+PREP phase rq32 done at 101s
+PREP phase router done at 101s
+PREP done in 101s
+compact qkv m=128: compact 19.97 us, dispatcher 17.98 us -> dispatcher
+G11 build failed: RuntimeError("Error building extension 'g11_5695fc62ca'")
+G11 unavailable: ImportError('/root/.cache/torch_extensions/py312_cu130/g11_5695fc62ca/g11_5695fc62ca.so: cannot open shared object file: No such file or directory')
+PREP done 105s
+NO EXT
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=13.09 sk2=13.47 torch=18.69 -> cgemv
+[okc] tune o m=1: cgemv=9.34 sk2=9.54 torch=10.69 -> cgemv
+[okc] tune pooler m=1: cgemv=17.98 sk2=18.27 torch=26.08 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.49 sgemv=7.68 sk2=8.42 torch=11.17 -> cgemv
+[okc] tune router m=1: rgemv=7.65 sk2=8.93 torch=19.71 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.54 torch=18.4 -> sk2
+[okc] tune unpooler m=16: sk2=18.34 torch=22.82 -> sk2
+[okc] tune o m=32: sk2=9.95 torch=10.69 -> sk2
+[okc] tune pooler m=32: sk2=19.23 torch=26.56 -> sk2
+[okc] tune unpooler m=32: sk2=19.17 torch=23.01 -> sk2
+[okc] tune router m=128: rk=10.18 wide=12.8 gemm=13.95 torch=21.5 -> rk
+[okc] tune router m=256: rk=11.01 wide=13.73 gemm=17.89 torch=22.62 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-T3d7gBBOn8MtI9n3CrfUSl
