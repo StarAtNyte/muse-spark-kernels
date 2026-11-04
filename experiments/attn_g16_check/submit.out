@@ -11,3 +11,35 @@
 › running the tests, then timing against SGLang  2:57
 › running the tests, then timing against SGLang  3:27
 › running the tests, then timing against SGLang  3:57
+› running the tests, then timing against SGLang  4:27
+› running the tests, then timing against SGLang  4:57
+› running the tests, then timing against SGLang  5:27
+
+ran for 5:37 · queued 0:31
+
+✓ muse_attention_decode  passed  job 6b6665e8a59843e1
+
+  2.624×  ━━━━━━━━━╋━━━━━━━━━━━━──────  faster than SGLang  95%: 2.585–2.664×
+
+  time        1,435.2 µs
+  tests       16/16 passed
+  profile     profiles/submission.6b6665e8a59843e1.txt  and .json
+  output      profiles/submission.6b6665e8a59843e1.log
+
+  CASE                    SGLANG      YOURS   SPEEDUP
+  ──────────────────────────────────────────────────────────────────
+  decode 1 · sliding     20.5 µs     5.2 µs    3.967×   ━━━━━━╋━━━━━
+  decode 1 · full        31.5 µs    10.9 µs    2.877×   ━━━━━━╋━━━━━
+  decode 16 · sliding    27.0 µs     8.3 µs    3.268×   ━━━━━━╋━━━━━
+  decode 16 · full      201.1 µs    87.2 µs    2.306×   ━━━━━━╋━━━━━
+  decode 32 · sliding    31.4 µs    10.0 µs    3.138×   ━━━━━━╋━━━━━
+  decode 32 · full      383.6 µs   166.3 µs    2.308×   ━━━━━━╋━━━━━
+  verify 1 · sliding     22.9 µs     6.6 µs    3.463×   ━━━━━━╋━━━━━
+  verify 1 · full        35.9 µs    13.7 µs    2.630×   ━━━━━━╋━━━━━
+  verify 16 · sliding    29.5 µs    11.6 µs    2.546×   ━━━━━━╋━━━━━
+  verify 16 · full      205.2 µs    97.2 µs    2.111×   ━━━━━━╋━━━━━
+  verify 32 · sliding    34.4 µs    14.7 µs    2.335×   ━━━━━━╋━━━━━
+  verify 32 · full      388.0 µs   178.4 µs    2.175×   ━━━━━━╋━━━━━
+
+next  okc leaderboard muse_attention_decode
+  18 of 20 runs left today, 38 of 40 checks on muse_attention_decode

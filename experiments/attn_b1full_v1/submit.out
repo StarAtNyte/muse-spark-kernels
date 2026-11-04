@@ -1,0 +1,43 @@
+✓ submitted submission.py to muse_attention_decode  job af4f8d1bedd24c9f
+› received
+› running the tests, then timing against SGLang  0:22
+› running the tests, then timing against SGLang  0:08
+› running the tests, then timing against SGLang  0:38
+› running the tests, then timing against SGLang  1:08
+› running the tests, then timing against SGLang  1:38
+› running the tests, then timing against SGLang  2:08
+› running the tests, then timing against SGLang  2:38
+› running the tests, then timing against SGLang  3:08
+› running the tests, then timing against SGLang  3:38
+› running the tests, then timing against SGLang  4:08
+› running the tests, then timing against SGLang  4:38
+› running the tests, then timing against SGLang  5:08
+
+ran for 5:24 · queued 0:22
+
+✓ muse_attention_decode  passed  job af4f8d1bedd24c9f
+
+  2.682×  ━━━━━━━━━╋━━━━━━━━━━━━━─────  faster than SGLang  95%: 2.642–2.722×
+
+  time        1,404.3 µs
+  tests       16/16 passed
+  profile     profiles/submission.af4f8d1bedd24c9f.txt  and .json
+  output      profiles/submission.af4f8d1bedd24c9f.log
+
+  CASE                    SGLANG      YOURS   SPEEDUP
+  ──────────────────────────────────────────────────────────────────
+  decode 1 · sliding     20.3 µs     5.0 µs    4.087×   ━━━━━━╋━━━━━
+  decode 1 · full        31.4 µs    10.6 µs    2.949×   ━━━━━━╋━━━━━
+  decode 16 · sliding    27.1 µs     8.5 µs    3.204×   ━━━━━━╋━━━━━
+  decode 16 · full      199.7 µs    86.3 µs    2.314×   ━━━━━━╋━━━━━
+  decode 32 · sliding    32.0 µs    10.4 µs    3.067×   ━━━━━━╋━━━━━
+  decode 32 · full      382.9 µs   166.2 µs    2.303×   ━━━━━━╋━━━━━
+  verify 1 · sliding     22.9 µs     6.3 µs    3.640×   ━━━━━━╋━━━━━
+  verify 1 · full        35.8 µs    12.7 µs    2.832×   ━━━━━━╋━━━━━
+  verify 16 · sliding    29.1 µs    10.0 µs    2.922×   ━━━━━━╋━━━━━
+  verify 16 · full      205.3 µs    98.4 µs    2.087×   ━━━━━━╋━━━━━
+  verify 32 · sliding    34.2 µs    12.4 µs    2.755×   ━━━━━━╋━━━━━
+  verify 32 · full      388.4 µs   179.6 µs    2.163×   ━━━━━━╋━━━━━
+
+next  okc leaderboard muse_attention_decode
+  16 of 20 runs left today, 33 of 40 checks on muse_attention_decode

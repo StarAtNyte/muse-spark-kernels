@@ -1,0 +1,41 @@
+✓ submitted submission.py to muse_decode_layer  job 643515fbfd0e4810
+› received
+› running the tests, then timing against SGLang  0:22
+› running the tests, then timing against SGLang  0:08
+› running the tests, then timing against SGLang  0:38
+› running the tests, then timing against SGLang  1:08
+› running the tests, then timing against SGLang  1:38
+› running the tests, then timing against SGLang  2:08
+› running the tests, then timing against SGLang  2:38
+› running the tests, then timing against SGLang  3:08
+› running the tests, then timing against SGLang  3:38
+› running the tests, then timing against SGLang  4:08
+
+ran for 4:15 · queued 0:22
+
+✓ muse_decode_layer  passed  job 643515fbfd0e4810
+
+  2.266×  ━━━━━━━━━╋━━━━━━━━━━────────  faster than SGLang  95%: 2.232–2.300×
+
+  time        9,980.4 µs
+  tests       13/13 passed
+  profile     profiles/submission.643515fbfd0e4810.txt  and .json
+  output      profiles/submission.643515fbfd0e4810.log
+
+  CASE                      SGLANG      YOURS   SPEEDUP
+  ────────────────────────────────────────────────────────────────────
+  decode 1 · sliding      171.6 µs    66.4 µs    2.585×   ━━━━━━╋━━━━━
+  decode 1 · full         182.4 µs    74.1 µs    2.463×   ━━━━━━╋━━━━━
+  decode 16 · sliding     268.2 µs   128.3 µs    2.091×   ━━━━━━╋━━━━━
+  decode 16 · full        442.8 µs   206.7 µs    2.142×   ━━━━━━╋━━━━━
+  decode 32 · sliding     264.0 µs   144.4 µs    1.828×   ━━━━━━╋━━━━─
+  decode 32 · full        617.8 µs   283.3 µs    2.181×   ━━━━━━╋━━━━━
+  verify 1 · sliding      271.2 µs   107.5 µs    2.523×   ━━━━━━╋━━━━━
+  verify 1 · full         273.8 µs   110.8 µs    2.470×   ━━━━━━╋━━━━━
+  verify 16 · sliding     514.6 µs   230.5 µs    2.232×   ━━━━━━╋━━━━━
+  verify 16 · full        723.0 µs   331.0 µs    2.184×   ━━━━━━╋━━━━━
+  verify 32 · sliding     721.6 µs   310.3 µs    2.325×   ━━━━━━╋━━━━━
+  verify 32 · full      1,070.8 µs   476.1 µs    2.249×   ━━━━━━╋━━━━━
+
+next  okc leaderboard muse_decode_layer
+  19 of 20 runs left today, 34 of 40 checks on muse_decode_layer

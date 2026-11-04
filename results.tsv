@@ -70,3 +70,5 @@ time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdic
 2026-11-05T01:20Z	muse_attention_decode	eeb6cd9dd01b440d,1c022f61098a41af	attn_b1full_v1	bv: BF16 v4 reds for decode-1 full merge + 16B v4.bf16x2 q8 reds	normal	16/16 x2	2.672x / 2.665x	2.632-2.712	d1f 11.2->10.3, v1f 13.3->12.7us reproducible	KEEP	scored submit
 2026-11-05T01:50Z	muse_moe_w4a16	modal-only	moe_ovl_v1 r4-r6	phase-B tail: stamps + flatter A cost table + lateness-offset B boundaries	normal	modal pass	0.81-0.996x	n/a	spread deterministic: late CTAs stream skinny jobs in phase A; table at optimum	REJECT	next: job order (skinny phase A first)
 2026-11-05T02:20Z	muse_moe_w4a16	modal-only	moe_ovl_v1 r7	job-list order: skinny-first, LPT, interleaved	normal	modal pass	0.984-1.000x	n/a	order irrelevant within static stream-K	REJECT	MoE lane closed for freeze
+2026-11-05T02:25Z	muse_attention_decode	af4f8d1bedd24c9f	attn_b1full_v1	SCORED bv	normal	16/16	2.682x	2.642-2.722	new best	KEEP	
+2026-11-05T02:25Z	muse_decode_layer	643515fbfd0e4810	decoder_stack_v1	SCORED stack	normal	13/13	2.266x	2.232-2.300	new best	KEEP	
