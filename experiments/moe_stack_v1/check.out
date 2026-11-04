@@ -1,0 +1,30 @@
+✓ checking submission.py on muse_moe_w4a16  job fa0eaf92b27c45ff
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› running the tests, then timing against SGLang  0:23
+› running the tests, then timing against SGLang  0:07
+› running the tests, then timing against SGLang  0:37
+› running the tests, then timing against SGLang  1:07
+› running the tests, then timing against SGLang  1:37
+› running the tests, then timing against SGLang  2:07
+
+ran for 2:26 · queued 0:21
+
+✓ muse_moe_w4a16  passed  check run, off the board  job fa0eaf92b27c45ff
+
+  2.392×  ━━━━━━━━━╋━━━━━━━━━━━───────  faster than SGLang  95%: 2.356–2.427×
+
+  time        5,623.3 µs
+  tests       5/5 passed
+  profile     profiles/submission.fa0eaf92b27c45ff.txt  and .json
+  output      profiles/submission.fa0eaf92b27c45ff.log
+
+  CASE                       SGLANG      YOURS   SPEEDUP
+  ─────────────────────────────────────────────────────────────────────
+  decode 1                  79.4 µs    25.6 µs    3.098×   ━━━━━━╋━━━━━
+  decode 16                188.2 µs    90.5 µs    2.078×   ━━━━━━╋━━━━━
+  decode 32                205.3 µs   122.6 µs    1.674×   ━━━━━━╋━━━──
+  verify 1 · 8 tokens      142.3 µs    62.3 µs    2.283×   ━━━━━━╋━━━━━
+  verify 16 · 128 tokens   470.9 µs   180.4 µs    2.610×   ━━━━━━╋━━━━━
+  verify 32 · 256 tokens   636.2 µs   218.4 µs    2.913×   ━━━━━━╋━━━━━
+  19 of 20 runs left today, 37 of 40 checks on muse_moe_w4a16
