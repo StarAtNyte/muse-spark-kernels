@@ -1,0 +1,82 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-U7JjU4HjJD2evULD0kEfQE
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_mid_v2/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 74s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 7.02e-06
+[mfab] modules built at 63s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [145, 0, 0, 145, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [147, 0, 0, 147, 0, 0] rel vs base 4.28e-10
+[ps] bs 17: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 2.90e-09
+[ps] bs 18: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 2.88e-06
+[ps] bs 19: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 2.29e-05
+[ps] bs 20: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 3.27e-05
+[ps] bs 21: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.22e-06
+[ps] bs 22: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 7.34e-07
+[ps] bs 23: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 3.08e-05
+[ps] bs 24: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 3.23e-06
+[ps] bs 25: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.01e-05
+[ps] bs 26: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.82e-05
+[ps] bs 27: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.18e-05
+[ps] bs 28: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 3.17e-05
+[ps] bs 29: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.33e-06
+[ps] bs 30: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 6.91e-05
+[ps] bs 31: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 6.63e-06
+[ps] bs 32: main  {'OKC_WGSFINPAR': 1} regs [96, 0, 0, 96, 0, 0] rel vs base 1.49e-05
+PREPARED 253
+CHECKS_DONE fails 0 254
+ROW {"bs": 1, "base": 36.4, "cand": 36.5, "gain": 0.9973, "paired": 0.9993, "seeds": [1.003, 1.001, 0.995, 1.002, 0.994, 1.001]}
+ROW {"bs": 8, "base": 77.44, "cand": 76.45, "gain": 1.013, "paired": 1.0139, "seeds": [1.016, 1.031, 1.013, 1.001, 1.005, 1.017]}
+ROW {"bs": 16, "base": 101.3, "cand": 101.53, "gain": 0.9977, "paired": 0.9992, "seeds": [1.002, 1.0, 0.994, 0.999, 1.006, 0.994]}
+ROW {"bs": 32, "base": 126.9, "cand": 126.16, "gain": 1.0059, "paired": 1.0062, "seeds": [0.999, 1.01, 1.002, 1.01, 1.004, 1.012]}
+ROW {"bs": 128, "base": 189.13, "cand": 188.87, "gain": 1.0014, "paired": 1.0003, "seeds": [0.996, 1.0, 1.0, 1.003, 1.004, 1.0]}
+ROW {"bs": 256, "base": 212.17, "cand": 212.46, "gain": 0.9986, "paired": 0.9999, "seeds": [0.997, 0.997, 0.995, 1.007, 1.002, 1.001]}
+BOARD_GEOMEAN 1.0023 fails 0 255
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-U7JjU4HjJD2evULD0kEfQE
+EXIT 0
