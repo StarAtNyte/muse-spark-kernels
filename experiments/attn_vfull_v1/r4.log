@@ -1,0 +1,36 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iDMBxBBLXxjvnFwkqY137v
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "ALLOWBAD": "1", "VARIANTS": "base,pd2,pd3,tmapg,dconspd3,dmrg,dcons", "CASES": "v16f,v32f", "SEEDS": "11,12"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 103.6, "pd2": 104.21, "pd3": 104.54, "tmapg": 107.09, "dconspd3": 96.82, "dmrg": 100.4, "dcons": 96.83}, "gain": {"base": 1.0, "pd2": 0.994, "pd3": 0.991, "tmapg": 0.967, "dconspd3": 1.07, "dmrg": 1.032, "dcons": 1.07}, "bad": {"dconspd3": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dmrg": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dcons": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027"}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 100.64, "pd2": 100.82, "pd3": 101.14, "tmapg": 104.53, "dconspd3": 93.82, "dmrg": 95.44, "dcons": 94.18}, "gain": {"base": 1.0, "pd2": 0.998, "pd3": 0.995, "tmapg": 0.963, "dconspd3": 1.073, "dmrg": 1.054, "dcons": 1.069}, "bad": {"dconspd3": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "dcons": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 188.32, "pd2": 187.94, "pd3": 188.77, "tmapg": 193.01, "dconspd3": 181.73, "dmrg": 183.17, "dcons": 181.06}, "gain": {"base": 1.0, "pd2": 1.002, "pd3": 0.998, "tmapg": 0.976, "dconspd3": 1.036, "dmrg": 1.028, "dcons": 1.04}, "bad": {"dconspd3": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dcons": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 185.07, "pd2": 185.84, "pd3": 186.61, "tmapg": 190.05, "dconspd3": 177.78, "dmrg": 178.91, "dcons": 177.23}, "gain": {"base": 1.0, "pd2": 0.996, "pd3": 0.992, "tmapg": 0.974, "dconspd3": 1.041, "dmrg": 1.034, "dcons": 1.044}, "bad": {"dconspd3": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "dcons": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02"}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iDMBxBBLXxjvnFwkqY137v

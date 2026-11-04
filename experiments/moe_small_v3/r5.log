@@ -1,0 +1,138 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-9Qyn6bp0Uo203X1Ae9V8NW
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_small_v3/run
+│   _modal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 99s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+[v3] small kernel on for M <= 8: regs/local/smem [114, 0, 227904]
+PREPARED 144.1 True
+BUILT nol2h [114, 0, 227904] 144.1
+BUILD_FAIL ns4 Error building extension 'okc_moe_small_v3_1ddaae29262d_sm90a': [1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_1ddaae29262d_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_1ddaae29262d_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NS=4 -DSM_SROWS=7 -DSM_NRB=2 -DSM_NWBF=1 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/cuda.cu -o cuda.cuda.o 
+FAILED: [code=2] cuda.cuda.o 
+ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_1ddaae29262d_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NS=4 -DSM_SROWS=7 -DSM_NRB=2 -DSM_NWBF=1 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+              ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+                                                ^
+
+2 errors detected in the compilation of "/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_1ddaae29262d_sm90a/cuda.cu".
+ninja: build stopped: subcommand failed.
+
+BUILD_FAIL ns4h Error building extension 'okc_moe_small_v3_df894b2931e0_sm90a': [1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_df894b2931e0_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_df894b2931e0_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NS=4 -DSM_SROWS=7 -DSM_NRB=2 -DSM_NWBF=1 -DSM_L2H=0 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/cuda.cu -o cuda.cuda.o 
+FAILED: [code=2] cuda.cuda.o 
+ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_df894b2931e0_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NS=4 -DSM_SROWS=7 -DSM_NRB=2 -DSM_NWBF=1 -DSM_L2H=0 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+              ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+                                                ^
+
+2 errors detected in the compilation of "/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_df894b2931e0_sm90a/cuda.cu".
+ninja: build stopped: subcommand failed.
+
+BUILD_FAIL nrb2 Error building extension 'okc_moe_small_v3_7dad0964267c_sm90a': [1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_7dad0964267c_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_7dad0964267c_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NRB=2 -DSM_NWBF=1 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/cuda.cu -o cuda.cuda.o 
+FAILED: [code=2] cuda.cuda.o 
+ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_moe_small_v3_7dad0964267c_sm90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -lineinfo -DSM_NRB=2 -DSM_NWBF=1 -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+              ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/cuda.cu(307): error: class "sm3::Smem" has no member "nw1"
+            S.nw1[8 * j + 2 * q] = 1.f + f.x; S.nw1[8 * j + 2 * q + 1] = 1.f + f.y;
+                                                ^
+
+2 errors detected in the compilation of "/root/.cache/torch_extensions/py312_cu130/okc_moe_small_v3_7dad0964267c_sm90a/cuda.cu".
+ninja: build stopped: subcommand failed.
+
+BUILT dbg [126, 0, 227904] 144.1
+CHECK {"bs": 1, "seed": 0, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "1.15e-04", "msg": "relative L2 error 2.533e-03 (worst row 2.533e-03)"}
+CHECK {"bs": 1, "seed": 1, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.58e-04", "msg": "relative L2 error 2.474e-03 (worst row 2.474e-03)"}
+CHECK {"bs": 1, "seed": 2, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.12e-05", "msg": "relative L2 error 2.539e-03 (worst row 2.539e-03)"}
+CHECK {"bs": 1, "seed": 3, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "4.25e-06", "msg": "relative L2 error 2.462e-03 (worst row 2.462e-03)"}
+CHECK {"bs": 1, "seed": 4, "dist": "normal", "D": 2, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "3.06e-06", "msg": "relative L2 error 2.456e-03 (worst row 2.456e-03)"}
+CHECK {"bs": 1, "seed": 5, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "3.51e-05", "msg": "relative L2 error 2.408e-03 (worst row 2.408e-03)"}
+CHECK {"bs": 2, "seed": 12, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.97e-08", "msg": "relative L2 error 2.543e-03 (worst row 2.589e-03)"}
+CHECK {"bs": 3, "seed": 13, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.41e-06", "msg": "relative L2 error 2.534e-03 (worst row 2.575e-03)"}
+CHECK {"bs": 4, "seed": 14, "dist": "normal", "D": 6, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.76e-04", "msg": "relative L2 error 2.585e-03 (worst row 2.631e-03)"}
+CHECK {"bs": 5, "seed": 15, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.54e-04", "msg": "relative L2 error 2.529e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 6, "seed": 16, "dist": "normal", "D": 5, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.33e-05", "msg": "relative L2 error 2.597e-03 (worst row 2.687e-03)"}
+CHECK {"bs": 7, "seed": 17, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.07e-05", "msg": "relative L2 error 2.547e-03 (worst row 2.614e-03)"}
+CHECK {"bs": 8, "seed": 18, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.89e-05", "msg": "relative L2 error 2.511e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 1, "seed": 31, "dist": "skewed", "D": 2, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.45e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.570e-03)"}
+CHECK {"bs": 2, "seed": 32, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.67e-05", "msg": "relative L2 error 2.523e-03 (worst row 2.542e-03)"}
+CHECK {"bs": 4, "seed": 34, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.05e-05", "msg": "relative L2 error 2.588e-03 (worst row 2.716e-03)"}
+CHECK {"bs": 8, "seed": 38, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.07e-05", "msg": "relative L2 error 2.516e-03 (worst row 2.598e-03)"}
+CHECK {"bs": 8, "seed": 40, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.45e-04", "msg": "relative L2 error 2.543e-03 (worst row 2.619e-03)"}
+CHECK {"bs": 8, "seed": 41, "dist": "normal", "D": 12, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.35e-04", "msg": "relative L2 error 2.579e-03 (worst row 2.730e-03)"}
+CHECK {"bs": 8, "seed": 42, "dist": "normal", "D": 11, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.40e-05", "msg": "relative L2 error 2.549e-03 (worst row 2.611e-03)"}
+CHECK {"bs": 8, "seed": 43, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.52e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.639e-03)"}
+CHECK {"bs": 4, "seed": 50, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "7.31e-05", "msg": "relative L2 error 2.560e-03 (worst row 2.605e-03)"}
+CHECK {"bs": 4, "seed": 51, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "1.64e-04", "msg": "relative L2 error 2.526e-03 (worst row 2.561e-03)"}
+CHECK {"bs": 4, "seed": 52, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.62e-04", "msg": "relative L2 error 2.513e-03 (worst row 2.580e-03)"}
+VCHECK nol2h 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK nol2h 8 normal True relative L2 error 2.496e-03 (worst row 2.582e-03)
+VCHECK nol2h 4 skewed True relative L2 error 2.625e-03 (worst row 2.661e-03)
+ALLOK_CORRECT True 144.6
+EMPTY_US 3.3
+ROW {"bs": 1, "seed": 7131, "D": 2, "parent": 22.96, "cand": 24.26, "nol2h": 24.42, "r_cand": 0.9453, "r_nol2h": 0.9319}
+ROW {"bs": 1, "seed": 7132, "D": 2, "parent": 22.94, "cand": 24.3, "nol2h": 24.27, "r_cand": 0.9457, "r_nol2h": 0.952}
+ROW {"bs": 1, "seed": 7133, "D": 2, "parent": 23.02, "cand": 24.86, "nol2h": 24.35, "r_cand": 0.9312, "r_nol2h": 0.9492}
+ROW {"bs": 1, "seed": 7134, "D": 2, "parent": 22.91, "cand": 24.43, "nol2h": 24.56, "r_cand": 0.9453, "r_nol2h": 0.9385}
+ROW {"bs": 4, "seed": 7524, "D": 7, "parent": 57.01, "cand": 58.99, "nol2h": 59.57, "r_cand": 0.9737, "r_nol2h": 0.9623}
+ROW {"bs": 4, "seed": 7525, "D": 3, "parent": 29.6, "cand": 31.84, "nol2h": 32.34, "r_cand": 0.9314, "r_nol2h": 0.9217}
+ROW {"bs": 4, "seed": 7526, "D": 3, "parent": 30.05, "cand": 31.36, "nol2h": 31.57, "r_cand": 0.9632, "r_nol2h": 0.9469}
+ROW {"bs": 4, "seed": 7527, "D": 6, "parent": 50.1, "cand": 52.59, "nol2h": 53.62, "r_cand": 0.9492, "r_nol2h": 0.9376}
+SUMMARY 1 {'r_cand': 0.9419, 'r_nol2h': 0.9429} {'D': 2, 'parent': 22.96, 'cand': 24.46, 'nol2h': 24.4}
+SUMMARY 4 {'r_cand': 0.9542, 'r_nol2h': 0.942} {'D': 4.75, 'parent': 41.69, 'cand': 43.7, 'nol2h': 44.27}
+ALLOK True ELAPSED 144.8
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-9Qyn6bp0Uo203X1Ae9V8NW

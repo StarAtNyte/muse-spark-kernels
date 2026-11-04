@@ -1,0 +1,46 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-4ny86voEEyHtM0aI3RmICF
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_proj128_
+│   v1/modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 151s
+[mfab] moe T= 32 prod median   146.8 us  speedup vs barrier twin (twin without SC6) 1.0265 (per seed 1.026 1.027 1.011 1.037)  max|d| 0
+[mfab] moe T=128 prod median   191.8 us  speedup vs barrier twin (twin without SC6) 1.0262 (per seed 1.025 1.016 1.026 1.028)  max|d| 0
+[mfab] moe T=256 prod median   223.5 us  speedup vs barrier twin (twin without SC6) 1.0202 (per seed 1.020 1.008 1.019 1.020)  max|d| 0
+[ 160.6s] PREPARED in 159.1 s; p128 plans [('o', 256), ('pr', 128), ('pr', 256), ('un', 128), ('un', 256)] qkv_compact routes {128: 0}
+ROW {"i": 0, "T": 128, "case": {"batch": 16, "layer": "sliding", "q_len": 8}, "med_us": {"ctrl": 253.71, "cand": 253.2, "cand+un": 255.97, "cand+pr": 266.14}, "ctrl_over_var_paired": {"cand": 1.0019, "cand+un": 0.9895, "cand+pr": 0.9538}, "ok": {"ctrl": [true, "update relative L2 error 6.120e-02 (worst row 8.672e-02) [bound 0.148]; attention input re"], "cand": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"], "cand+un": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"], "cand+pr": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+un": false, "cand+pr": false}}
+ROW {"i": 1, "T": 256, "case": {"batch": 32, "layer": "sliding", "q_len": 8}, "med_us": {"ctrl": 309.34, "cand": 309.39, "cand+pr": 327.78, "o_only": 310.02, "un_only": 309.81}, "ctrl_over_var_paired": {"cand": 1.0008, "cand+pr": 0.9438, "o_only": 0.9979, "un_only": 1.0001}, "ok": {"ctrl": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "cand+pr": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "o_only": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "un_only": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+pr": false, "o_only": false, "un_only": false}}
+ROW {"i": 2, "T": 128, "case": {"batch": 16, "layer": "full", "q_len": 8}, "med_us": {"ctrl": 333.9, "cand": 334.42, "cand+un": 336.69, "cand+pr": 348.18}, "ctrl_over_var_paired": {"cand": 0.997, "cand+un": 0.9896, "cand+pr": 0.9564}, "ok": {"ctrl": [true, "update relative L2 error 6.576e-02 (worst row 9.723e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 6.575e-02 (worst row 9.701e-02) [bound 0.150]; attention input re"], "cand+un": [true, "update relative L2 error 6.575e-02 (worst row 9.701e-02) [bound 0.150]; attention input re"], "cand+pr": [true, "update relative L2 error 6.575e-02 (worst row 9.701e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+un": false, "cand+pr": false}}
+ROW {"i": 3, "T": 256, "case": {"batch": 32, "layer": "full", "q_len": 8}, "med_us": {"ctrl": 497.02, "cand": 496.34, "cand+pr": 514.3, "o_only": 497.76, "un_only": 497.9}, "ctrl_over_var_paired": {"cand": 1.0016, "cand+pr": 0.9648, "o_only": 0.9992, "un_only": 0.9978}, "ok": {"ctrl": [true, "update relative L2 error 6.441e-02 (worst row 9.581e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 6.441e-02 (worst row 9.581e-02) [bound 0.150]; attention input re"], "cand+pr": [true, "update relative L2 error 6.441e-02 (worst row 9.581e-02) [bound 0.150]; attention input re"], "o_only": [true, "update relative L2 error 6.441e-02 (worst row 9.581e-02) [bound 0.150]; attention input re"], "un_only": [true, "update relative L2 error 6.441e-02 (worst row 9.581e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+pr": false, "o_only": false, "un_only": false}}
+ROW {"i": 4, "T": 16, "case": {"batch": 16, "layer": "sliding", "q_len": 1}, "med_us": {"ctrl": 118.02, "cand": 118.42}, "ctrl_over_var_paired": {"cand": 0.9981}, "ok": {"ctrl": [true, "update relative L2 error 8.301e-03 (worst row 1.292e-02) [bound 0.140]; attention input re"], "cand": [true, "update relative L2 error 8.301e-03 (worst row 1.292e-02) [bound 0.140]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false}}
+ROW {"i": 5, "T": 32, "case": {"batch": 32, "layer": "full", "q_len": 1}, "med_us": {"ctrl": 307.42, "cand": 307.38}, "ctrl_over_var_paired": {"cand": 0.9993}, "ok": {"ctrl": [true, "update relative L2 error 7.724e-03 (worst row 1.022e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 7.724e-03 (worst row 1.022e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": true}}
+ROW {"i": 6, "T": 1, "case": {"batch": 1, "layer": "sliding", "q_len": 1}, "med_us": {"ctrl": 75.54, "cand": 75.86}, "ctrl_over_var_paired": {"cand": 0.9977}, "ok": {"ctrl": [true, "update relative L2 error 1.321e-02 (worst row 1.321e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 1.321e-02 (worst row 1.321e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": true}}
+[ 165.3s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-4ny86voEEyHtM0aI3RmICF

@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-b1DYNZ2fiQX9NoGs9mMfxW
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"B1_SPIN": "64"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.056, "cand": 9.024}, "gain": {"base": 1.0, "cand": 1.0035}, "bad": {}}
+ROW {"case": "d1s", "seed": 4242, "med": {"base": 9.216, "cand": 9.024}, "gain": {"base": 1.0, "cand": 1.0213}, "bad": {}}
+ROW {"case": "d1s", "seed": 777, "med": {"base": 9.088, "cand": 9.248}, "gain": {"base": 1.0, "cand": 0.9827}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.976, "cand": 11.184}, "gain": {"base": 1.0, "cand": 0.9814}, "bad": {}}
+ROW {"case": "v1s", "seed": 4242, "med": {"base": 11.072, "cand": 11.12}, "gain": {"base": 1.0, "cand": 0.9957}, "bad": {}}
+ROW {"case": "v1s", "seed": 777, "med": {"base": 11.04, "cand": 11.136}, "gain": {"base": 1.0, "cand": 0.9914}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.36, "cand": 15.52}, "gain": {"base": 1.0, "cand": 0.9897}, "bad": {}}
+ROW {"case": "d1f", "seed": 4242, "med": {"base": 15.488, "cand": 15.472}, "gain": {"base": 1.0, "cand": 1.001}, "bad": {}}
+ROW {"case": "d1f", "seed": 777, "med": {"base": 15.536, "cand": 15.568}, "gain": {"base": 1.0, "cand": 0.9979}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 18.32, "cand": 18.256}, "gain": {"base": 1.0, "cand": 1.0035}, "bad": {}}
+ROW {"case": "v1f", "seed": 4242, "med": {"base": 18.288, "cand": 18.24}, "gain": {"base": 1.0, "cand": 1.0026}, "bad": {}}
+ROW {"case": "v1f", "seed": 777, "med": {"base": 18.32, "cand": 18.272}, "gain": {"base": 1.0, "cand": 1.0026}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"B1_SPIN": "0"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.088, "cand": 8.992}, "gain": {"base": 1.0, "cand": 1.0107}, "bad": {}}
+ROW {"case": "d1s", "seed": 4242, "med": {"base": 8.992, "cand": 9.008}, "gain": {"base": 1.0, "cand": 0.9982}, "bad": {}}
+ROW {"case": "d1s", "seed": 777, "med": {"base": 9.056, "cand": 9.232}, "gain": {"base": 1.0, "cand": 0.9809}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.88, "cand": 10.976}, "gain": {"base": 1.0, "cand": 0.9913}, "bad": {}}
+ROW {"case": "v1s", "seed": 4242, "med": {"base": 10.752, "cand": 11.072}, "gain": {"base": 1.0, "cand": 0.9711}, "bad": {}}
+ROW {"case": "v1s", "seed": 777, "med": {"base": 10.992, "cand": 11.232}, "gain": {"base": 1.0, "cand": 0.9786}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.152, "cand": 15.184}, "gain": {"base": 1.0, "cand": 0.9979}, "bad": {}}
+ROW {"case": "d1f", "seed": 4242, "med": {"base": 15.152, "cand": 15.136}, "gain": {"base": 1.0, "cand": 1.0011}, "bad": {}}
+ROW {"case": "d1f", "seed": 777, "med": {"base": 15.136, "cand": 15.152}, "gain": {"base": 1.0, "cand": 0.9989}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 18.4, "cand": 18.208}, "gain": {"base": 1.0, "cand": 1.0105}, "bad": {}}
+ROW {"case": "v1f", "seed": 4242, "med": {"base": 18.4, "cand": 18.272}, "gain": {"base": 1.0, "cand": 1.007}, "bad": {}}
+ROW {"case": "v1f", "seed": 777, "med": {"base": 18.384, "cand": 18.256}, "gain": {"base": 1.0, "cand": 1.007}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-b1DYNZ2fiQX9NoGs9mMfxW

@@ -1,0 +1,63 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-lykiz3fWmblejU31SheQ5G
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_small_v2
+│   /modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 22s
+[mfab] moe T= 32 prod median   146.9 us  speedup vs barrier twin (twin without SC6) 1.0250 (per seed 1.025 1.025 1.023 1.034)  max|d| 0
+[mfab] moe T=128 prod median   191.4 us  speedup vs barrier twin (twin without SC6) 1.0319 (per seed 1.025 1.018 1.032 1.035)  max|d| 0
+[mfab] moe T=256 prod median   222.8 us  speedup vs barrier twin (twin without SC6) 1.0175 (per seed 1.017 1.016 1.008 1.019)  max|d| 0
+[  24.7s] PREPARED ma_ext keys ['tiny', 'tiny2', 'mid', 'b4', 'main']
+AB d1s 9400 {"base": {"us": 83.25, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 79.95, "pratio": 1.0398, "ok": true}, "T1mid": {"us": 79.06, "pratio": 1.0506, "ok": true}}
+AB d1f 9401 {"base": {"us": 89.49, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 87.89, "pratio": 1.0214, "ok": true}, "T1mid": {"us": 87.17, "pratio": 1.028, "ok": true}}
+AB v1s 9402 {"base": {"us": 104.85, "pratio": 1.0, "ok": true}, "T8mid": {"us": 104.21, "pratio": 1.0058, "ok": true}}
+AB v1f 9403 {"base": {"us": 120.61, "pratio": 1.0, "ok": true}, "T8mid": {"us": 119.54, "pratio": 1.0087, "ok": true}}
+AB d1s 9410 {"base": {"us": 75.31, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 72.67, "pratio": 1.0336, "ok": true}, "T1mid": {"us": 72.96, "pratio": 1.0326, "ok": true}}
+AB d1f 9411 {"base": {"us": 89.39, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 87.62, "pratio": 1.0174, "ok": true}, "T1mid": {"us": 87.14, "pratio": 1.0284, "ok": true}}
+AB v1s 9412 {"base": {"us": 118.96, "pratio": 1.0, "ok": true}, "T8mid": {"us": 118.29, "pratio": 1.008, "ok": true}}
+AB v1f 9413 {"base": {"us": 105.89, "pratio": 1.0, "ok": true}, "T8mid": {"us": 106.13, "pratio": 0.9983, "ok": true}}
+AB d1s 9420 {"base": {"us": 83.57, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 80.0, "pratio": 1.0423, "ok": true}, "T1mid": {"us": 79.66, "pratio": 1.0487, "ok": true}}
+AB d1f 9421 {"base": {"us": 89.68, "pratio": 1.0, "ok": true}, "T1tiny2": {"us": 88.0, "pratio": 1.0159, "ok": true}, "T1mid": {"us": 86.51, "pratio": 1.037, "ok": true}}
+AB v1s 9422 {"base": {"us": 134.85, "pratio": 1.0, "ok": true}, "T8mid": {"us": 134.16, "pratio": 1.0063, "ok": true}}
+AB v1f 9423 {"base": {"us": 133.82, "pratio": 1.0, "ok": true}, "T8mid": {"us": 132.66, "pratio": 1.0072, "ok": true}}
+GM ('d1s', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('d1s', 'T1tiny2') 1.0386 [1.0398, 1.0336, 1.0423]
+GM ('d1s', 'T1mid') 1.044 [1.0506, 1.0326, 1.0487]
+GM ('d1f', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('d1f', 'T1tiny2') 1.0182 [1.0214, 1.0174, 1.0159]
+GM ('d1f', 'T1mid') 1.0311 [1.028, 1.0284, 1.037]
+GM ('v1s', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('v1s', 'T8mid') 1.0067 [1.0058, 1.008, 1.0063]
+GM ('v1f', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('v1f', 'T8mid') 1.0047 [1.0087, 0.9983, 1.0072]
+TESTS T1tiny2 26 / 26
+TESTS T1mid 26 / 26
+[  31.4s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-lykiz3fWmblejU31SheQ5G

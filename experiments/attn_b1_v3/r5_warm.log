@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-NbHE0jdf9ldtuL52hiebLy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1_v3/modal
+│   _run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[gpu-health] [WARN] GPU-a9f4347b-dc6b-6521-636d-a719b69be970: XID: NVRM: Xid (PCI:0000:59:00): 31, pid=1469741, name=3, channel 0x00000002, intr 00000000. MMU Fault: ENGINE GRAPHICS GPC5 GPCCLIENT_T1_0 faulted @ 0x0_00000000. Fault is of type FAULT_PDE ACCESS_TYPE_VIRT_WRITE
+
+ENV {"CASES": "d1s,v1s,d1f", "FLAGSETS": "[[],[\"-DB1_WEAK=1\"]]", "PROF": "1"} RETURNCODE 1
+CHK d1s base True relative L2 error 4.306e-03 (worst row 4.306e-03) 
+CHK d1s b1 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+CHK d1s b1-DB1_WEAK=1 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+ROW {"case": "d1s", "res": {"base": {"cold": 9.056, "warm": 4.912}, "b1": {"cold": 11.664, "warm": 6.704}, "b1-DB1_WEAK=1": {"cold": 11.664, "warm": 7.008}}}
+PROF d1s  cold {"0": 0.06, "1": 0.7, "2": 1.22, "3": 1.76, "4": 2.24, "5": 2.64, "6": 4.48, "7": 6.18, "8": 5.07, "9": 5.52, "10": 6.03}
+
+STDERR:
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 63, in <module>
+    gp = cap(fns); st = []
+         ^^^^^^^^
+  File "/w/run/drv.py", line 26, in cap
+    torch.cuda.synchronize(); g = torch.cuda.CUDAGraph()
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1281, in synchronize
+    return torch._C._cuda_synchronize()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+The CUDA driver logged these messages, which may provide useful details:
+Returning 700 (CUDA_ERROR_ILLEGAL_ADDRESS) from cuCtxSynchronize_v2
+
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-NbHE0jdf9ldtuL52hiebLy

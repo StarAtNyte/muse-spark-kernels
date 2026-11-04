@@ -1,0 +1,101 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Rc1oJ7cSglFBlDrVwHc0LJ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_small_v3/run
+│   _modal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 96s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 0.00e+00
+[v3] small kernel on for M <= 8: regs/local/smem [114, 0, 227904]
+PREPARED 141.2 True
+BUILT nw16 [78, 0, 227872] 141.2
+BUILT ns4 [116, 0, 223744] 141.2
+BUILT nw16ns4 [80, 0, 231936] 141.2
+BUILT dbg [126, 0, 227904] 141.2
+CHECK {"bs": 1, "seed": 0, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.15e-04", "msg": "relative L2 error 2.533e-03 (worst row 2.533e-03)"}
+CHECK {"bs": 1, "seed": 1, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.58e-04", "msg": "relative L2 error 2.474e-03 (worst row 2.474e-03)"}
+CHECK {"bs": 1, "seed": 2, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "4.12e-05", "msg": "relative L2 error 2.539e-03 (worst row 2.539e-03)"}
+CHECK {"bs": 1, "seed": 3, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.28e-06", "msg": "relative L2 error 2.462e-03 (worst row 2.462e-03)"}
+CHECK {"bs": 1, "seed": 4, "dist": "normal", "D": 2, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "3.06e-06", "msg": "relative L2 error 2.456e-03 (worst row 2.456e-03)"}
+CHECK {"bs": 1, "seed": 5, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.19e-06", "msg": "relative L2 error 2.409e-03 (worst row 2.409e-03)"}
+CHECK {"bs": 2, "seed": 12, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.97e-08", "msg": "relative L2 error 2.543e-03 (worst row 2.589e-03)"}
+CHECK {"bs": 3, "seed": 13, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.30e-06", "msg": "relative L2 error 2.534e-03 (worst row 2.575e-03)"}
+CHECK {"bs": 4, "seed": 14, "dist": "normal", "D": 6, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "2.71e-04", "msg": "relative L2 error 2.586e-03 (worst row 2.632e-03)"}
+CHECK {"bs": 5, "seed": 15, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.30e-04", "msg": "relative L2 error 2.529e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 6, "seed": 16, "dist": "normal", "D": 5, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.33e-05", "msg": "relative L2 error 2.597e-03 (worst row 2.687e-03)"}
+CHECK {"bs": 7, "seed": 17, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "4.70e-06", "msg": "relative L2 error 2.547e-03 (worst row 2.614e-03)"}
+CHECK {"bs": 8, "seed": 18, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "5.13e-05", "msg": "relative L2 error 2.511e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 1, "seed": 31, "dist": "skewed", "D": 2, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.45e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.570e-03)"}
+CHECK {"bs": 2, "seed": 32, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.72e-05", "msg": "relative L2 error 2.523e-03 (worst row 2.542e-03)"}
+CHECK {"bs": 4, "seed": 34, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.05e-05", "msg": "relative L2 error 2.588e-03 (worst row 2.716e-03)"}
+CHECK {"bs": 8, "seed": 38, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.07e-05", "msg": "relative L2 error 2.516e-03 (worst row 2.598e-03)"}
+CHECK {"bs": 8, "seed": 40, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.45e-04", "msg": "relative L2 error 2.543e-03 (worst row 2.619e-03)"}
+CHECK {"bs": 8, "seed": 41, "dist": "normal", "D": 12, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.35e-04", "msg": "relative L2 error 2.579e-03 (worst row 2.729e-03)"}
+CHECK {"bs": 8, "seed": 42, "dist": "normal", "D": 11, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.40e-05", "msg": "relative L2 error 2.549e-03 (worst row 2.611e-03)"}
+CHECK {"bs": 8, "seed": 43, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.51e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.639e-03)"}
+CHECK {"bs": 4, "seed": 50, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "7.31e-05", "msg": "relative L2 error 2.560e-03 (worst row 2.605e-03)"}
+CHECK {"bs": 4, "seed": 51, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "1.64e-04", "msg": "relative L2 error 2.526e-03 (worst row 2.561e-03)"}
+CHECK {"bs": 4, "seed": 52, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.63e-04", "msg": "relative L2 error 2.512e-03 (worst row 2.580e-03)"}
+VCHECK nw16 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK nw16 8 normal True relative L2 error 2.496e-03 (worst row 2.582e-03)
+VCHECK nw16 4 skewed True relative L2 error 2.622e-03 (worst row 2.661e-03)
+VCHECK ns4 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK ns4 4 skewed True relative L2 error 2.625e-03 (worst row 2.661e-03)
+VCHECK nw16ns4 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK nw16ns4 4 skewed True relative L2 error 2.622e-03 (worst row 2.661e-03)
+ALLOK_CORRECT True 141.7
+EMPTY_US 3.36
+ROW {"bs": 1, "seed": 7131, "D": 2, "parent": 22.86, "cand": 24.37, "nw16": 24.7, "ns4": 24.59, "nw16ns4": 24.64, "r_cand": 0.9375, "r_nw16": 0.928, "r_ns4": 0.9302, "r_nw16ns4": 0.9299}
+ROW {"bs": 1, "seed": 7132, "D": 2, "parent": 22.69, "cand": 24.3, "nw16": 24.45, "ns4": 24.43, "nw16ns4": 24.61, "r_cand": 0.9392, "r_nw16": 0.9352, "r_ns4": 0.9253, "r_nw16ns4": 0.9242}
+ROW {"bs": 1, "seed": 7133, "D": 2, "parent": 22.9, "cand": 24.7, "nw16": 24.58, "ns4": 24.53, "nw16ns4": 24.61, "r_cand": 0.9383, "r_nw16": 0.9449, "r_ns4": 0.9342, "r_nw16ns4": 0.9303}
+ROW {"bs": 8, "seed": 8048, "D": 7, "parent": 56.38, "cand": 59.63, "nw16": 60.26, "r_cand": 0.9466, "r_nw16": 0.9368}
+ROW {"bs": 8, "seed": 8049, "D": 10, "parent": 75.5, "cand": 79.52, "nw16": 80.82, "r_cand": 0.9521, "r_nw16": 0.9374}
+ROW {"bs": 8, "seed": 8050, "D": 12, "parent": 87.01, "cand": 93.65, "nw16": 94.94, "r_cand": 0.9281, "r_nw16": 0.9283}
+ROW {"bs": 4, "seed": 7524, "D": 7, "parent": 57.31, "cand": 58.72, "nw16": 59.49, "ns4": 60.24, "nw16ns4": 59.71, "r_cand": 0.9684, "r_nw16": 0.9565, "r_ns4": 0.9439, "r_nw16ns4": 0.9551}
+ROW {"bs": 4, "seed": 7525, "D": 3, "parent": 29.52, "cand": 32.62, "nw16": 32.75, "ns4": 33.04, "nw16ns4": 32.74, "r_cand": 0.9107, "r_nw16": 0.9064, "r_ns4": 0.8949, "r_nw16ns4": 0.9012}
+ROW {"bs": 4, "seed": 7526, "D": 3, "parent": 29.76, "cand": 31.2, "nw16": 31.47, "ns4": 31.95, "nw16ns4": 31.76, "r_cand": 0.9632, "r_nw16": 0.9542, "r_ns4": 0.9353, "r_nw16ns4": 0.9362}
+SUMMARY 1 {'r_cand': 0.9383, 'r_nw16': 0.936, 'r_ns4': 0.9299, 'r_nw16ns4': 0.9281} {'D': 2, 'parent': 22.82, 'cand': 24.46, 'nw16': 24.58, 'ns4': 24.52, 'nw16ns4': 24.62}
+SUMMARY 8 {'r_cand': 0.9422, 'r_nw16': 0.9342} {'D': 9.67, 'parent': 72.96, 'cand': 77.6, 'nw16': 78.67}
+SUMMARY 4 {'r_cand': 0.9471, 'r_nw16': 0.9387, 'r_ns4': 0.9245, 'r_nw16ns4': 0.9306} {'D': 4.33, 'parent': 38.86, 'cand': 40.85, 'nw16': 41.24, 'ns4': 41.74, 'nw16ns4': 41.4}
+ALLOK True ELAPSED 142.0
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Rc1oJ7cSglFBlDrVwHc0LJ

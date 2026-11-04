@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-AEclSPLemrNEVqBnAOC0Q5
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_proj128_
+│   v1/modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 156s
+[mfab] moe T= 32 prod median   146.9 us  speedup vs barrier twin (twin without SC6) 1.0260 (per seed 1.022 1.026 1.013 1.027)  max|d| 0
+[mfab] moe T=128 prod median   192.2 us  speedup vs barrier twin (twin without SC6) 1.0224 (per seed 1.027 1.017 1.022 1.022)  max|d| 0
+[mfab] moe T=256 prod median   224.7 us  speedup vs barrier twin (twin without SC6) 1.0127 (per seed 1.013 1.011 1.002 1.016)  max|d| 0
+[ 165.9s] PREPARED in 164.7 s; p128 plans [('o', 256), ('pr', 128), ('pr', 256), ('un', 128), ('un', 256)] qkv_compact routes {128: 0}
+ROW {"i": 0, "T": 128, "case": {"batch": 16, "layer": "sliding", "q_len": 8}, "med_us": {"ctrl": 255.79, "cand": 255.84, "cand+un": 258.9, "cand+pr": 267.22}, "ctrl_over_var_paired": {"cand": 1.0014, "cand+un": 0.9905, "cand+pr": 0.9561}, "ok": {"ctrl": [true, "update relative L2 error 6.120e-02 (worst row 8.672e-02) [bound 0.148]; attention input re"], "cand": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"], "cand+un": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"], "cand+pr": [true, "update relative L2 error 6.118e-02 (worst row 8.669e-02) [bound 0.148]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+un": false, "cand+pr": false}}
+PROF 128 ctrl {"void okc::moe_fused<true>(okc::Params)": 153.23, "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN": 25.61, "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT": 21.28, "nvjet_sm90_tst_48x64_64x15_1x2_h_bz_TNN": 19.48, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 11.89, "_graft_row_boundary": 9.42, "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, ": 7.2, "_graft_route": 2.83}
+PROF 128 cand {"void okc::moe_fused<true>(okc::Params)": 149.47, "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN": 27.24, "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT": 20.56, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, ": 15.21, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 11.55, "_graft_row_boundary": 9.37, "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, ": 7.68, "_graft_route": 2.85}
+PROF 128 cand+un {"void okc::moe_fused<true>(okc::Params)": 161.06, "nvjet_sm90_tss_80x64_64x11_4x2_h_bz_coopB_TNN": 30.08, "nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN": 25.34, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, ": 16.35, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 12.57, "_graft_row_boundary": 10.17, "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, ": 8.03, "_graft_route": 2.96}
+PROF 128 cand+pr {"void okc::moe_fused<true>(okc::Params)": 154.34, "nvjet_sm90_tss_64x64_64x13_1x1_v_bz_coopB_NNN": 40.71, "nvjet_sm90_tst_128x64_64x8_1x2_h_bz_NNT": 20.93, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 128, 3, 8, 539, ": 16.23, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 11.68, "_graft_row_boundary": 9.75, "void ol_projection<128, 128, 4, 3, 1, 1, 1>(CUtensorMap_st, ": 7.55, "_graft_route": 2.86}
+ROW {"i": 1, "T": 256, "case": {"batch": 32, "layer": "sliding", "q_len": 8}, "med_us": {"ctrl": 312.08, "cand": 311.07, "cand+pr": 329.5, "o_only": 311.09, "un_only": 311.23}, "ctrl_over_var_paired": {"cand": 1.0029, "cand+pr": 0.9499, "o_only": 1.0033, "un_only": 1.0042}, "ok": {"ctrl": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "cand": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "cand+pr": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "o_only": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"], "un_only": [true, "update relative L2 error 6.187e-02 (worst row 9.766e-02) [bound 0.150]; attention input re"]}, "bitwise_same_as_ctrl": {"cand": false, "cand+pr": false, "o_only": false, "un_only": false}}
+PROF 256 ctrl {"void okc::moe_fused<true>(okc::Params)": 181.9, "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN": 31.64, "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT": 25.98, "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN": 23.37, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 15.08, "_graft_row_boundary": 13.95, "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN": 8.92, "_graft_route": 3.38}
+PROF 256 cand {"void okc::moe_fused<true>(okc::Params)": 182.52, "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN": 31.81, "nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN": 25.48, "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN": 22.62, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 15.07, "_graft_row_boundary": 13.73, "nvjet_sm90_tst_128x128_64x6_1x1_h_bz_coopA_TNN": 8.93, "_graft_route": 3.23}
+PROF 256 cand+pr {"void okc::moe_fused<true>(okc::Params)": 183.81, "nvjet_sm90_tss_128x64_64x8_1x1_v_bz_NNN": 47.83, "nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN": 25.3, "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN": 23.03, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 15.03, "_graft_row_boundary": 13.88, "nvjet_sm90_tst_128x128_64x6_1x1_h_bz_coopA_TNN": 9.01, "_graft_route": 3.55}
+PROF 256 o_only {"void okc::moe_fused<true>(okc::Params)": 181.55, "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN": 31.56, "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNT": 26.03, "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN": 23.37, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 14.89, "_graft_row_boundary": 13.73, "nvjet_sm90_tst_128x128_64x6_1x1_h_bz_coopA_TNN": 9.18, "_graft_route": 3.3}
+PROF 256 un_only {"void okc::moe_fused<true>(okc::Params)": 182.55, "nvjet_sm90_tss_144x64_64x8_1x1_v_bz_TNN": 31.87, "nvjet_sm90_tst_128x128_64x6_1x1_v_bz_coopA_NNN": 25.35, "nvjet_sm90_tst_72x64_64x12_1x1_v_bz_TNN": 22.98, "void (anonymous namespace)::attn_kernel<8, false, 3>((anonym": 15.23, "_graft_row_boundary": 13.92, "nvjet_sm90_tst_128x128_64x6_1x2_h_bz_coopA_NNN": 8.98, "_graft_route": 3.27}
+[ 168.7s] DONE
+
+STDERR:
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:32 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 12:21:33 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-AEclSPLemrNEVqBnAOC0Q5

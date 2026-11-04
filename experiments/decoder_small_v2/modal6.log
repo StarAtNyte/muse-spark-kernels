@@ -1,0 +1,141 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-mMjrU2hN55LPhFxdjQNtPB
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_small_v2
+│   /modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+[modal-client] 2026-11-04T17:58:11+0545 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_grpc_client.py", line 164, in direct
+    return await self.client._call_unary(self.wrapped_method, req, timeout=timeout, metadata=metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/client.py", line 533, in _call_unary
+    return await self._call_safely(coro, grpclib_method.name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/client.py", line 489, in _call_safely
+    return await request_task
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/grpclib/client.py", line 912, in __call__
+    await stream.send_message(message, end=True)
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/grpclib/client.py", line 242, in send_message
+    await self.send_request()
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/grpclib/client.py", line 174, in send_request
+    protocol = await self._channel.__connect__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/grpc_utils.py", line 136, in __connect__
+    return await super().__connect__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/grpclib/client.py", line 748, in __connect__
+    self._protocol = await self._create_connection()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/grpc_utils.py", line 146, in _create_connection
+    protocol = await self._open_connection()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/grpc_utils.py", line 168, in _open_connection
+    return await super()._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/grpclib/client.py", line 725, in _create_connection
+    _, protocol = await self._loop.create_connection(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/base_events.py", line 1119, in create_connection
+    infos = await self._ensure_resolved(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (host, port), family=family,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        type=socket.SOCK_STREAM, proto=proto, flags=flags, loop=self)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/base_events.py", line 1515, in _ensure_resolved
+    return await loop.getaddrinfo(host, port, family=family, type=type,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                  proto=proto, flags=flags)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/base_events.py", line 936, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nitiz/miniconda3/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/home/nitiz/miniconda3/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/nitiz/miniconda3/lib/python3.14/socket.py", line 987, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConnectionError: [Errno -3] Temporary failure in name resolution
+[modal-client] 2026-11-04T17:58:27+0545 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+Stopping app - local client disconnected. Use `modal run --detach` to keep apps running even if your local client disconnects.
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 22s
+[mfab] moe T= 32 prod median   147.3 us  speedup vs barrier twin (twin without SC6) 1.0229 (per seed 1.020 1.021 1.028 1.023)  max|d| 0
+[mfab] moe T=128 prod median   192.6 us  speedup vs barrier twin (twin without SC6) 1.0288 (per seed 1.025 1.018 1.029 1.031)  max|d| 0
+[mfab] moe T=256 prod median   224.5 us  speedup vs barrier twin (twin without SC6) 1.0114 (per seed 1.011 1.009 1.006 1.019)  max|d| 0
+[  24.3s] PREPARED ma_ext keys ['mid', 'tiny', 'b4', 'main']
+[  24.3s] file default {1: 'mid', 8: 'mid'}
+AB d1s 9600 {"base": {"us": 75.52, "pratio": 1.0, "ok": true}, "c18": {"us": 73.06, "pratio": 1.0344, "ok": true}}
+AB d1f 9601 {"base": {"us": 88.66, "pratio": 1.0, "ok": true}, "c18": {"us": 87.23, "pratio": 1.0238, "ok": true}}
+AB v1s 9602 {"base": {"us": 119.28, "pratio": 1.0, "ok": true}, "c18": {"us": 118.64, "pratio": 1.0112, "ok": true}}
+AB v1f 9603 {"base": {"us": 113.65, "pratio": 1.0, "ok": true}, "c18": {"us": 112.29, "pratio": 1.0111, "ok": true}}
+AB d1s 9610 {"base": {"us": 75.62, "pratio": 1.0, "ok": true}, "c18": {"us": 72.62, "pratio": 1.0346, "ok": true}}
+AB d1f 9611 {"base": {"us": 82.7, "pratio": 1.0, "ok": true}, "c18": {"us": 79.73, "pratio": 1.037, "ok": true}}
+AB v1s 9612 {"base": {"us": 140.75, "pratio": 1.0, "ok": true}, "c18": {"us": 140.16, "pratio": 1.0033, "ok": true}}
+AB v1f 9613 {"base": {"us": 120.38, "pratio": 1.0, "ok": true}, "c18": {"us": 119.09, "pratio": 1.0106, "ok": true}}
+GM ('d1s', 'base') 1.0 [1.0, 1.0]
+GM ('d1s', 'c18') 1.0345 [1.0344, 1.0346]
+GM ('d1f', 'base') 1.0 [1.0, 1.0]
+GM ('d1f', 'c18') 1.0304 [1.0238, 1.037]
+GM ('v1s', 'base') 1.0 [1.0, 1.0]
+GM ('v1s', 'c18') 1.0072 [1.0112, 1.0033]
+GM ('v1f', 'base') 1.0 [1.0, 1.0]
+GM ('v1f', 'c18') 1.0108 [1.0111, 1.0106]
+TESTS file_default 26 / 26
+SCORED graph-checked 12 / 12
+[  29.1s] DONE
+
+STDERR:
+
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-mMjrU2hN55LPhFxdjQNtPB

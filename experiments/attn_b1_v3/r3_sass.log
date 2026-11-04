@@ -1,0 +1,114 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ccF0kWOaRBroo9WaWkarkf
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1_v3/modal
+│   _run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"DUMP": "Lb8ELi2ELb0"} RETURNCODE 0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=b1sass187 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/b1sass187/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=b1sass187 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a -Xptxas=-v -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/b1sass187/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/b1sass187/cuda.cu(152): warning #177-D: function "<unnamed>::gtime" was declared but never referenced
+                            long long gtime() {
+                                      ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+ptxas info    : 52 bytes gmem
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb0EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb0EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 117 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 364.777 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb0EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb0EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 118 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 475.098 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb1EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb1EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 118 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 386.364 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb1EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb1EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 119 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 475.505 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb0EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb0EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 110 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 273.796 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb0EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb0EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 272.406 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb1EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb1EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 274.774 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb1EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb1EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 113 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 270.571 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi1ELb1EEEvNS_3B1PE' for 'sm_90a'
+ptxas info    : Function properties for _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi1ELb1EEEvNS_3B1PE
+    32 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 113 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 305.351 ms
+ptxas info    : Function properties for _ZN37_INTERNAL_984d0272_7_cuda_cu_9858eb7639_GLOBAL__N__984d0272_7_cuda_cu_9858eb7612b1_spin_failEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o b1sass187.so
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb0EEEvNS_3B1PE instr 4096 LDL 36 STL 24 STG 17 LDG 90 MEMBAR 0 CALL 12 BRA 269
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb0EEEvNS_3B1PE instr 4096 LDL 60 STL 40 STG 17 LDG 100 MEMBAR 0 CALL 12 BRA 310
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi2ELb1EEEvNS_3B1PE instr 4096 LDL 36 STL 24 STG 17 LDG 90 MEMBAR 0 CALL 12 BRA 268
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi8ELi1ELb1EEEvNS_3B1PE instr 4096 LDL 60 STL 40 STG 17 LDG 100 MEMBAR 0 CALL 12 BRA 309
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb0EEEvNS_3B1PE instr 4096 LDL 24 STL 16 STG 12 LDG 85 MEMBAR 0 CALL 12 BRA 250
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb0EEEvNS_3B1PE instr 4096 LDL 24 STL 16 STG 12 LDG 85 MEMBAR 0 CALL 12 BRA 249
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi4ELb1EEEvNS_3B1PE instr 4096 LDL 24 STL 16 STG 12 LDG 85 MEMBAR 0 CALL 12 BRA 249
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi2ELb1EEEvNS_3B1PE instr 4096 LDL 24 STL 16 STG 12 LDG 85 MEMBAR 0 CALL 12 BRA 248
+FN _ZN39_GLOBAL__N__984d0272_7_cuda_cu_9858eb767b1_attnILi1ELi1ELb1EEEvNS_3B1PE instr 4096 LDL 36 STL 24 STG 12 LDG 90 MEMBAR 0 CALL 12 BRA 268
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ccF0kWOaRBroo9WaWkarkf

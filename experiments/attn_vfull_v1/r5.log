@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-sE5DMNzyOsFAO1KNofB9pX
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,g16,base_nc2,base_nc4,g16_nc2,g16_nc4", "CASES": "v16f,v32f", "SEEDS": "11,12,13"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 102.32, "g16": 101.47, "base_nc2": 103.41, "base_nc4": 103.7, "g16_nc2": 102.11, "g16_nc4": 102.02}, "gain": {"base": 1.0, "g16": 1.008, "base_nc2": 0.989, "base_nc4": 0.987, "g16_nc2": 1.002, "g16_nc4": 1.003}, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 98.64, "g16": 98.54, "base_nc2": 100.02, "base_nc4": 100.14, "g16_nc2": 98.13, "g16_nc4": 98.7}, "gain": {"base": 1.0, "g16": 1.001, "base_nc2": 0.986, "base_nc4": 0.985, "g16_nc2": 1.005, "g16_nc4": 0.999}, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"base": 103.44, "g16": 101.01, "base_nc2": 103.46, "base_nc4": 103.73, "g16_nc2": 102.13, "g16_nc4": 101.76}, "gain": {"base": 1.0, "g16": 1.024, "base_nc2": 1.0, "base_nc4": 0.997, "g16_nc2": 1.013, "g16_nc4": 1.017}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 185.84, "g16": 184.78, "base_nc2": 186.96, "base_nc4": 186.99, "g16_nc2": 185.14, "g16_nc4": 185.34}, "gain": {"base": 1.0, "g16": 1.006, "base_nc2": 0.994, "base_nc4": 0.994, "g16_nc2": 1.004, "g16_nc4": 1.003}, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 183.26, "g16": 181.62, "base_nc2": 183.95, "base_nc4": 184.7, "g16_nc2": 182.46, "g16_nc4": 182.77}, "gain": {"base": 1.0, "g16": 1.009, "base_nc2": 0.996, "base_nc4": 0.992, "g16_nc2": 1.004, "g16_nc4": 1.003}, "bad": {}}
+ROW {"case": "v32f", "seed": 13, "med": {"base": 184.03, "g16": 181.1, "base_nc2": 184.78, "base_nc4": 185.5, "g16_nc2": 181.66, "g16_nc4": 182.67}, "gain": {"base": 1.0, "g16": 1.016, "base_nc2": 0.996, "base_nc4": 0.992, "g16_nc2": 1.013, "g16_nc4": 1.007}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "base,g16_nc2,g16_nc4", "TESTS": "5,8,13,15", "XCASES": "v16f,v32f", "SEEDS": "11"} RETURNCODE 0
+RES okc_attn_v298_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_v298_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6416, "region": 1563, "hist_region": {"ISETP": 202, "MUFU": 198, "FFMA": 192, "FMNMX": 186, "FMUL": 118, "FSEL": 100, "F2FP": 96, "UIADD3": 48, "VIADD": 48, "UISETP": 34, "IMAD": 33, "PRMT": 28, "STS": 26, "LOP3": 25, "IADD3": 24, "USEL": 20, "SHFL": 20, "BRA": 18, "UMOV": 14, "MOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "PLOP3": 7, "LDSM": 6, "FADD": 6, "SYNCS": 5, "BAR": 5, "ULOP3": 5, "S2R": 4, "FSETP": 4, "SHF": 4, "SEL": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "S2UR": 2, "CALL": 2, "LEA": 2, "UIMAD": 1, "ULDC": 1}}
+RES okc_attn_vfg16n2_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_vfg16n2_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_vfg16n4_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_vfg16n4_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST 5 11 {"base": [true, ["9.362e-02", "1.121e-01", "0.150"]], "g16_nc2": [true, ["9.338e-02", "1.147e-01", "0.150"]], "g16_nc4": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.361e-02", "1.190e-01", "0.150"]], "g16_nc2": [true, ["9.361e-02", "1.190e-01", "0.150"]], "g16_nc4": [true, ["9.361e-02", "1.190e-01", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.229e-02", "7.844e-02", "0.150"]], "g16_nc2": [true, ["7.471e-02", "7.959e-02", "0.150"]], "g16_nc4": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 15 11 {"base": [true, ["3.866e-02", "4.499e-02", "0.109"]], "g16_nc2": [true, ["4.559e-02", "5.149e-02", "0.109"]], "g16_nc4": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST S0 11 {"base": [true, ["2.863e-02", "5.364e-02", "0.082"]], "g16_nc2": [true, ["3.944e-02", "7.663e-02", "0.082"]], "g16_nc4": [true, ["3.944e-02", "7.663e-02", "0.082"]]}
+TEST S1 11 {"base": [true, ["3.049e-02", "6.970e-02", "0.080"]], "g16_nc2": [true, ["4.696e-02", "1.026e-01", "0.080"]], "g16_nc4": [true, ["4.696e-02", "1.026e-01", "0.080"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-sE5DMNzyOsFAO1KNofB9pX

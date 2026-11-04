@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-UDRF10fBUK6rC4DcPWWgj1
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_mid_v2/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 122s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+PREPARED 167.2
+BUILT 167.2
+EMPTY_US 3.1
+CHECK 16 (True, 'relative L2 error 2.532e-03 (worst row 2.655e-03)')
+CHECK 32 (True, 'relative L2 error 2.530e-03 (worst row 2.703e-03)')
+ROW {"bs": 16, "seed": 16000, "distinct": 12, "base": 88.03, "blk1": 87.92, "wsbl0": 88.53, "ns4": 89.14, "r_blk1": 0.9987, "r_wsbl0": 0.991, "r_ns4": 0.9876}
+ROW {"bs": 16, "seed": 16037, "distinct": 14, "base": 99.94, "blk1": 100.06, "wsbl0": 101.17, "ns4": 101.38, "r_blk1": 0.9982, "r_wsbl0": 0.9897, "r_ns4": 0.9864}
+ROW {"bs": 16, "seed": 16074, "distinct": 12, "base": 94.14, "blk1": 95.01, "wsbl0": 95.2, "ns4": 98.19, "r_blk1": 0.9904, "r_wsbl0": 0.9889, "r_ns4": 0.9556}
+ROW {"bs": 16, "seed": 16111, "distinct": 10, "base": 74.7, "blk1": 75.25, "wsbl0": 75.97, "ns4": 76.74, "r_blk1": 0.9938, "r_wsbl0": 0.9882, "r_ns4": 0.9725}
+ROW {"bs": 16, "seed": 16148, "distinct": 12, "base": 87.9, "blk1": 88.19, "wsbl0": 88.91, "ns4": 89.01, "r_blk1": 0.9957, "r_wsbl0": 0.9883, "r_ns4": 0.9892}
+ROW {"bs": 16, "seed": 16185, "distinct": 14, "base": 100.4, "blk1": 100.34, "wsbl0": 101.33, "ns4": 103.33, "r_blk1": 1.0022, "r_wsbl0": 0.9901, "r_ns4": 0.972}
+ROW {"bs": 32, "seed": 32000, "distinct": 16, "base": 122.22, "ub40": 122.82, "ub110": 122.82, "u50": 121.71, "u110": 122.94, "df0": 123.15, "df3": 126.82, "r_ub40": 0.9878, "r_ub110": 0.9966, "r_u50": 1.0035, "r_u110": 0.9892, "r_df0": 0.9905, "r_df3": 0.9652}
+ROW {"bs": 32, "seed": 32037, "distinct": 16, "base": 120.61, "ub40": 120.69, "ub110": 120.38, "u50": 120.77, "u110": 120.53, "df0": 121.22, "df3": 120.4, "r_ub40": 0.9985, "r_ub110": 1.0029, "r_u50": 0.997, "r_u110": 1.0011, "r_df0": 0.996, "r_df3": 1.0019}
+ROW {"bs": 32, "seed": 32074, "distinct": 21, "base": 151.57, "ub40": 151.68, "ub110": 151.9, "u50": 152.51, "u110": 150.78, "df0": 152.32, "df3": 158.78, "r_ub40": 0.9952, "r_ub110": 0.9979, "r_u50": 0.9957, "r_u110": 1.0051, "r_df0": 0.9977, "r_df3": 0.957}
+ROW {"bs": 32, "seed": 32111, "distinct": 17, "base": 126.02, "ub40": 126.51, "ub110": 126.58, "u50": 126.75, "u110": 126.56, "df0": 126.4, "df3": 134.78, "r_ub40": 0.9978, "r_ub110": 0.9927, "r_u50": 0.9938, "r_u110": 0.9932, "r_df0": 0.9947, "r_df3": 0.9329}
+ROW {"bs": 32, "seed": 32148, "distinct": 14, "base": 108.61, "ub40": 108.64, "ub110": 107.87, "u50": 108.61, "u110": 108.4, "df0": 109.62, "df3": 112.38, "r_ub40": 0.9982, "r_ub110": 1.0022, "r_u50": 1.0001, "r_u110": 1.0009, "r_df0": 0.9905, "r_df3": 0.9681}
+ROW {"bs": 32, "seed": 32185, "distinct": 14, "base": 109.87, "ub40": 110.64, "ub110": 110.06, "u50": 110.51, "u110": 110.99, "df0": 110.69, "df3": 113.07, "r_ub40": 1.0014, "r_ub110": 0.9983, "r_u50": 0.9965, "r_u110": 0.9941, "r_df0": 0.9959, "r_df3": 0.9735}
+SUMMARY 16 {'r_blk1': 0.9965, 'r_wsbl0': 0.9894, 'r_ns4': 0.9771} base_us 90.9 distinct 12.3
+SUMMARY 32 {'r_ub40': 0.9965, 'r_ub110': 0.9984, 'r_u50': 0.9978, 'r_u110': 0.9973, 'r_df0': 0.9942, 'r_df3': 0.9662} base_us 123.2 distinct 16.3
+DONE 167.9
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-UDRF10fBUK6rC4DcPWWgj1

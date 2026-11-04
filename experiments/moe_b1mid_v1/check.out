@@ -1,0 +1,64 @@
+✓ checking submission.py on muse_moe_w4a16  job 417b343fdd6c4ff5
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› received  0:30
+› received  1:00
+› queued for a GPU  1:16
+› queued for a GPU  0:14
+› queued for a GPU  0:44
+› queued for a GPU  1:14
+› queued for a GPU  1:44
+› queued for a GPU  2:14
+› queued for a GPU  2:44
+› queued for a GPU  3:14
+› queued for a GPU  3:44
+› queued for a GPU  4:14
+› queued for a GPU  4:44
+› queued for a GPU  5:14
+› queued for a GPU  5:44
+› queued for a GPU  6:14
+› queued for a GPU  6:44
+› queued for a GPU  7:14
+› queued for a GPU  7:44
+› queued for a GPU  8:14
+› queued for a GPU  8:44
+› queued for a GPU  9:14
+› queued for a GPU  9:44
+› queued for a GPU  10:14
+› queued for a GPU  10:44
+› queued for a GPU  11:14
+› queued for a GPU  11:44
+› queued for a GPU  12:14
+› running the tests, then timing against SGLang  13:52
+› running the tests, then timing against SGLang  0:08
+› running the tests, then timing against SGLang  0:38
+› running the tests, then timing against SGLang  1:08
+› running the tests, then timing against SGLang  1:38
+› running the tests, then timing against SGLang  2:08
+› running the tests, then timing against SGLang  2:38
+› running the tests, then timing against SGLang  3:08
+› running the tests, then timing against SGLang  3:38
+› running the tests, then timing against SGLang  4:08
+› running the tests, then timing against SGLang  4:38
+› running the tests, then timing against SGLang  5:08
+
+ran for 4:15 · queued 14:45
+
+✓ muse_moe_w4a16  passed  check run, off the board  job 417b343fdd6c4ff5
+
+  2.381×  ━━━━━━━━━╋━━━━━━━━━━━───────  faster than SGLang  95%: 2.345–2.417×
+
+  time        5,648.7 µs
+  tests       5/5 passed
+  profile     profiles/submission.417b343fdd6c4ff5.txt  and .json
+  output      profiles/submission.417b343fdd6c4ff5.log
+
+  CASE                       SGLANG      YOURS   SPEEDUP
+  ─────────────────────────────────────────────────────────────────────
+  decode 1                  80.0 µs    26.3 µs    3.036×   ━━━━━━╋━━━━━
+  decode 16                186.5 µs    90.0 µs    2.073×   ━━━━━━╋━━━━━
+  decode 32                204.6 µs   122.4 µs    1.672×   ━━━━━━╋━━━──
+  verify 1 · 8 tokens      143.2 µs    63.1 µs    2.269×   ━━━━━━╋━━━━━
+  verify 16 · 128 tokens   458.2 µs   175.1 µs    2.618×   ━━━━━━╋━━━━━
+  verify 32 · 256 tokens   623.2 µs   213.9 µs    2.913×   ━━━━━━╋━━━━━
+  19 of 20 runs left today, 38 of 40 checks on muse_moe_w4a16

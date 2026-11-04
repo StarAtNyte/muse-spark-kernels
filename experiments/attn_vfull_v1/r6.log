@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ES5h1Onth5xd0JV5lGQShK
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "ALLOWBAD": "1", "VARIANTS": "base,dcons,dconsmrg,dmrg,dst,st3,st5", "CASES": "v16f,v32f,d16f", "SEEDS": "11,12"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 103.1, "dcons": 96.75, "dconsmrg": 94.37, "dmrg": 99.17, "dst": 102.94, "st3": 103.09, "st5": 133.04}, "gain": {"base": 1.0, "dcons": 1.066, "dconsmrg": 1.093, "dmrg": 1.04, "dst": 1.002, "st3": 1.0, "st5": 0.775}, "bad": {"dcons": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dconsmrg": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dmrg": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dst": "relative L2 error 5.361e-01 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027"}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 99.98, "dcons": 94.38, "dconsmrg": 92.08, "dmrg": 96.27, "dst": 99.58, "st3": 100.1, "st5": 128.48}, "gain": {"base": 1.0, "dcons": 1.059, "dconsmrg": 1.086, "dmrg": 1.039, "dst": 1.004, "st3": 0.999, "st5": 0.778}, "bad": {"dcons": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "dconsmrg": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02", "dst": "relative L2 error 5.468e-01 > 0.0846137 [bound 0.085: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 187.57, "dcons": 180.4, "dconsmrg": 176.37, "dmrg": 180.98, "dst": 186.88, "st3": 187.57, "st5": 234.06}, "gain": {"base": 1.0, "dcons": 1.04, "dconsmrg": 1.064, "dmrg": 1.036, "dst": 1.004, "st3": 1.0, "st5": 0.801}, "bad": {"dcons": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dconsmrg": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dst": "relative L2 error 5.037e-01 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02"}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 183.78, "dcons": 177.18, "dconsmrg": 174.66, "dmrg": 178.5, "dst": 183.66, "st3": 184.61, "st5": 230.83}, "gain": {"base": 1.0, "dcons": 1.037, "dconsmrg": 1.052, "dmrg": 1.03, "dst": 1.001, "st3": 0.995, "st5": 0.796}, "bad": {"dcons": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "dconsmrg": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "dmrg": "relative L2 error 1.000e+00 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02", "dst": "relative L2 error 4.998e-01 > 0.0831414 [bound 0.083: 2.5 x the reference's 0.02"}}
+ROW {"case": "d16f", "seed": 11, "med": {"base": 91.36, "dcons": 91.23, "dconsmrg": 91.39, "dmrg": 91.6, "dst": 91.41, "st3": 91.26, "st5": 91.17}, "gain": {"base": 1.0, "dcons": 1.001, "dconsmrg": 1.0, "dmrg": 0.997, "dst": 0.999, "st3": 1.001, "st5": 1.002}, "bad": {}}
+ROW {"case": "d16f", "seed": 12, "med": {"base": 88.91, "dcons": 88.94, "dconsmrg": 88.75, "dmrg": 89.52, "dst": 89.07, "st3": 88.99, "st5": 89.6}, "gain": {"base": 1.0, "dcons": 1.0, "dconsmrg": 1.002, "dmrg": 0.993, "dst": 0.998, "st3": 0.999, "st5": 0.992}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-ES5h1Onth5xd0JV5lGQShK

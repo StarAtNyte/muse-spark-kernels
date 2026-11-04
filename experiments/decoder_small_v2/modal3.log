@@ -1,0 +1,55 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-KUJjyNS1b5yVL9DRZTiCHe
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_small_v2
+│   /modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 22s
+[mfab] moe T= 32 prod median   147.2 us  speedup vs barrier twin (twin without SC6) 1.0278 (per seed 1.026 1.026 1.028 1.030)  max|d| 0
+[mfab] moe T=128 prod median   192.0 us  speedup vs barrier twin (twin without SC6) 1.0287 (per seed 1.029 1.016 1.032 1.026)  max|d| 0
+[mfab] moe T=256 prod median   224.0 us  speedup vs barrier twin (twin without SC6) 1.0155 (per seed 1.016 1.012 1.009 1.018)  max|d| 0
+[  24.4s] PREPARED ma_ext keys ['tiny', 'tiny2', 'mid', 'b4', 'main']
+[  24.4s] empty-ish graph (1 tiny kernel) 5.7
+[  24.4s] stream ref torch.sum bytes 28310000.0 us 20.38
+[  24.4s] stream ref torch.sum bytes 56620000.0 us 29.22
+[  24.4s] stream ref torch.sum bytes 84930000.0 us 37.41
+[  24.5s] stream ref torch.sum bytes 113240000.0 us 44.5
+[  24.5s] stream ref torch.sum bytes 226480000.0 us 71.25
+MOE T1E1 {"tiny": 22.08, "tiny_sum": 407.85980224609375, "mid": 20.94, "mid_sum": 407.85980224609375, "main": 29.62, "main_sum": 407.85980224609375}
+MOE T1E2 {"tiny": 31.78, "tiny_sum": 580.9732666015625, "mid": 29.34, "mid_sum": 580.9732666015625, "main": 37.02, "main_sum": 580.9732666015625}
+MOE T1E3 {"tiny": 39.36, "tiny_sum": 701.6846313476562, "mid": 36.24, "mid_sum": 701.6846313476562, "main": 44.24, "main_sum": 701.689697265625}
+MOE T1E4 {"tiny": 46.56, "tiny_sum": 804.4857177734375, "mid": 43.71, "mid_sum": 804.4857177734375, "main": 51.92, "main_sum": 804.4906005859375}
+MOE T1E8 {"tiny": 74.9, "tiny_sum": 1156.93310546875, "mid": 73.62, "mid_sum": 1156.93310546875, "main": 82.27, "main_sum": 1156.9208984375}
+MOE T8E7r13 {"tiny": 62.02, "tiny_sum": 4069.50341796875, "mid": 58.35, "mid_sum": 4069.50341796875, "main": 65.95, "main_sum": 4069.49609375}
+MOE T8E1r8 {"tiny": 24.24, "tiny_sum": 3256.32421875, "mid": 23.18, "mid_sum": 3256.3251953125, "main": 29.73, "main_sum": 3256.323486328125}
+MOE T8E2r16 {"tiny": 33.9, "tiny_sum": 4594.3369140625, "mid": 31.46, "mid_sum": 4594.3369140625, "main": 36.9, "main_sum": 4594.326171875}
+[  24.7s] unpooler sk2 T1 9.38
+[  24.7s] unpooler sk2 T8 9.34
+[  24.7s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-KUJjyNS1b5yVL9DRZTiCHe

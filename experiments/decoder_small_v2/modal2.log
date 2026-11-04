@@ -1,0 +1,71 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-wahcZSQH3zv85tj38SOsDs
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_small_v2
+│   /modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[  50.6s] pf ext built
+[mfab] layer prepare done at 92s
+[mfab] moe T= 32 prod median   147.7 us  speedup vs barrier twin (twin without SC6) 1.0300 (per seed 1.030 1.025 1.010 1.032)  max|d| 0
+[mfab] moe T=128 prod median   192.2 us  speedup vs barrier twin (twin without SC6) 1.0253 (per seed 1.024 1.017 1.025 1.027)  max|d| 0
+[mfab] moe T=256 prod median   223.3 us  speedup vs barrier twin (twin without SC6) 1.0170 (per seed 1.017 1.010 1.008 1.019)  max|d| 0
+[  95.0s] PREPARED
+[  95.0s] unpooler stream bytes T1 6291456 T8 6291456
+TL d1s base [["void sk2_kernel<1, 8, 3, 1, 4, 2, 6, true, false", 0.0, 10.95], ["void (anonymous namespace)::attn_kernel<1, false", 9.11, 16.43], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 4, 1", 11.67, 20.45], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 8, 1", 19.02, 38.72], ["_gle_route", 35.2, 40.24], ["void okc::moe_fused<false>(okc::Params)", 39.33, 80.86], ["void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false", 79.16, 83.57], ["_sl_cluster_finish", 81.85, 85.36]]
+TL d1s pf0h [["void sk2_kernel<1, 8, 3, 1, 4, 2, 6, true, false", 0.0, 11.12], ["void (anonymous namespace)::attn_kernel<1, false", 9.2, 16.5], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 4, 1", 11.78, 20.58], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 8, 1", 19.2, 38.99], ["_gle_route", 35.54, 40.53], ["void okc::moe_fused<false>(okc::Params)", 39.71, 85.66], ["pf_l2_kernel(char const*, long long, int, long l", 40.83, 64.9], ["void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false", 84.62, 88.78], ["_sl_cluster_finish", 87.15, 90.59]]
+TL v1s base [["void sk2_kernel_narrow_1858d55769b5<1, 8, 3, 1, ", 0.0, 10.62], ["void (anonymous namespace)::attn_kernel<8, false", 8.98, 17.31], ["void sk2_kernel<1, 8, 4, 1, 4, 1, 4, true, false", 11.3, 21.1], ["void glue_cluster_boundary<4, 32, false, false, ", 19.31, 24.1], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 8, 1", 21.58, 42.22], ["_sl_tile_route", 38.56, 43.86], ["void okc::moe_fused<false>(okc::Params)", 40.29, 96.0], ["void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false", 94.45, 99.23], ["_sl_cluster_finish", 97.33, 101.23]]
+TL v1s pf0h [["void sk2_kernel_narrow_1858d55769b5<1, 8, 3, 1, ", 0.0, 10.53], ["void (anonymous namespace)::attn_kernel<8, false", 9.01, 17.15], ["void sk2_kernel<1, 8, 4, 1, 4, 1, 4, true, false", 11.23, 21.07], ["void glue_cluster_boundary<4, 32, false, false, ", 19.55, 23.9], ["void sk2_kernel_glef4c6d3331426<1, 8, 4, 1, 8, 1", 21.74, 42.06], ["_sl_tile_route", 38.5, 43.82], ["void okc::moe_fused<false>(okc::Params)", 39.95, 97.52], ["pf_l2_kernel(char const*, long long, int, long l", 44.24, 60.54], ["void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false", 96.13, 100.61], ["_sl_cluster_finish", 98.91, 102.54]]
+AB d1s 9301 {"base": {"us": 75.5, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 77.52, "pratio": 0.9788, "ok": [true, 2]}, "pf0n": {"us": 77.34, "pratio": 0.9717, "ok": [true, 2]}, "pf8h": {"us": 75.07, "pratio": 1.0109, "ok": [true, 2]}, "pf15h": {"us": 75.74, "pratio": 0.9972, "ok": [true, 2]}}
+AB d1f 9302 {"base": {"us": 90.82, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 90.58, "pratio": 1.0016, "ok": [true, 2]}, "pf0n": {"us": 91.86, "pratio": 0.9881, "ok": [true, 2]}, "pf8h": {"us": 90.7, "pratio": 1.0019, "ok": [true, 2]}, "pf15h": {"us": 91.2, "pratio": 0.9974, "ok": [true, 2]}}
+AB v1s 9303 {"base": {"us": 112.02, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 115.74, "pratio": 0.9641, "ok": [true, 2]}, "pf0n": {"us": 114.32, "pratio": 0.9775, "ok": [true, 2]}, "pf8h": {"us": 116.26, "pratio": 0.9593, "ok": [true, 2]}, "pf15h": {"us": 118.91, "pratio": 0.9438, "ok": [true, 2]}}
+AB v1f 9304 {"base": {"us": 126.34, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 128.05, "pratio": 0.9866, "ok": [true, 2]}, "pf0n": {"us": 127.36, "pratio": 0.9916, "ok": [true, 2]}, "pf8h": {"us": 128.94, "pratio": 0.9791, "ok": [true, 2]}, "pf15h": {"us": 128.8, "pratio": 0.9847, "ok": [true, 2]}}
+AB d1s 9305 {"base": {"us": 75.49, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 77.44, "pratio": 0.9791, "ok": [true, 2]}, "pf0n": {"us": 76.99, "pratio": 0.9764, "ok": [true, 2]}, "pf8h": {"us": 74.88, "pratio": 1.0073, "ok": [true, 2]}, "pf15h": {"us": 76.18, "pratio": 0.9915, "ok": [true, 2]}}
+AB d1f 9306 {"base": {"us": 89.28, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 91.58, "pratio": 0.9723, "ok": [true, 2]}, "pf0n": {"us": 91.04, "pratio": 0.9772, "ok": [true, 2]}, "pf8h": {"us": 90.48, "pratio": 0.9825, "ok": [true, 2]}, "pf15h": {"us": 89.46, "pratio": 0.9907, "ok": [true, 2]}}
+AB v1s 9307 {"base": {"us": 111.98, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 116.93, "pratio": 0.9595, "ok": [true, 2]}, "pf0n": {"us": 115.15, "pratio": 0.975, "ok": [true, 2]}, "pf8h": {"us": 118.91, "pratio": 0.942, "ok": [true, 2]}, "pf15h": {"us": 118.24, "pratio": 0.9491, "ok": [true, 2]}}
+AB v1f 9308 {"base": {"us": 127.44, "pratio": 1.0, "ok": [true, 0]}, "pf0h": {"us": 128.61, "pratio": 0.9896, "ok": [true, 2]}, "pf0n": {"us": 127.97, "pratio": 0.9961, "ok": [true, 2]}, "pf8h": {"us": 128.37, "pratio": 0.9926, "ok": [true, 2]}, "pf15h": {"us": 129.49, "pratio": 0.9891, "ok": [true, 2]}}
+GM ('d1', 'base') 1.0
+GM ('d1', 'pf0h') 0.9829
+GM ('d1', 'pf0n') 0.9783
+GM ('d1', 'pf8h') 1.0006
+GM ('d1', 'pf15h') 0.9942
+GM ('v1', 'base') 1.0
+GM ('v1', 'pf0h') 0.9749
+GM ('v1', 'pf0n') 0.985
+GM ('v1', 'pf8h') 0.9681
+GM ('v1', 'pf15h') 0.9665
+[  99.0s] DONE
+
+STDERR:
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 11:37:46 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-wahcZSQH3zv85tj38SOsDs

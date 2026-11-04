@@ -1,0 +1,66 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Z8ems0NJMqBp0t07viBi1t
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_small_v2
+│   /modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 23s
+[mfab] moe T= 32 prod median   146.0 us  speedup vs barrier twin (twin without SC6) 1.0278 (per seed 1.028 1.021 1.017 1.028)  max|d| 0
+[mfab] moe T=128 prod median   190.6 us  speedup vs barrier twin (twin without SC6) 1.0271 (per seed 1.025 1.018 1.027 1.028)  max|d| 0
+[mfab] moe T=256 prod median   222.0 us  speedup vs barrier twin (twin without SC6) 1.0176 (per seed 1.018 1.016 1.009 1.019)  max|d| 0
+[  24.5s] PREPARED ma_ext keys ['mid', 'tiny', 'tiny2', 'b4', 'main']
+[  24.5s] file default {1: 'mid'}
+AB d1s 9500 {"base": {"us": 82.78, "pratio": 1.0, "ok": true}, "c1": {"us": 78.75, "pratio": 1.051, "ok": true}, "c18": {"us": 78.83, "pratio": 1.0514, "ok": true}}
+AB d1f 9501 {"base": {"us": 82.64, "pratio": 1.0, "ok": true}, "c1": {"us": 80.35, "pratio": 1.0251, "ok": true}, "c18": {"us": 80.43, "pratio": 1.025, "ok": true}}
+AB v1s 9502 {"base": {"us": 98.67, "pratio": 1.0, "ok": true}, "c1": {"us": 98.29, "pratio": 1.0008, "ok": true}, "c18": {"us": 98.05, "pratio": 1.0066, "ok": true}}
+AB v1f 9503 {"base": {"us": 140.03, "pratio": 1.0, "ok": true}, "c1": {"us": 139.92, "pratio": 0.9984, "ok": true}, "c18": {"us": 138.34, "pratio": 1.01, "ok": true}}
+AB d1s 9510 {"base": {"us": 75.9, "pratio": 1.0, "ok": true}, "c1": {"us": 72.48, "pratio": 1.0391, "ok": true}, "c18": {"us": 72.61, "pratio": 1.0399, "ok": true}}
+AB d1f 9511 {"base": {"us": 82.59, "pratio": 1.0, "ok": true}, "c1": {"us": 80.64, "pratio": 1.0224, "ok": true}, "c18": {"us": 80.06, "pratio": 1.0358, "ok": true}}
+AB v1s 9512 {"base": {"us": 111.74, "pratio": 1.0, "ok": true}, "c1": {"us": 111.42, "pratio": 0.9993, "ok": true}, "c18": {"us": 111.07, "pratio": 1.0069, "ok": true}}
+AB v1f 9513 {"base": {"us": 132.59, "pratio": 1.0, "ok": true}, "c1": {"us": 132.45, "pratio": 0.9977, "ok": true}, "c18": {"us": 131.58, "pratio": 1.0068, "ok": true}}
+AB d1s 9520 {"base": {"us": 75.7, "pratio": 1.0, "ok": true}, "c1": {"us": 72.72, "pratio": 1.0372, "ok": true}, "c18": {"us": 72.1, "pratio": 1.0513, "ok": true}}
+AB d1f 9521 {"base": {"us": 88.58, "pratio": 1.0, "ok": true}, "c1": {"us": 86.48, "pratio": 1.025, "ok": true}, "c18": {"us": 86.03, "pratio": 1.0248, "ok": true}}
+AB v1s 9522 {"base": {"us": 105.12, "pratio": 1.0, "ok": true}, "c1": {"us": 105.22, "pratio": 0.9989, "ok": true}, "c18": {"us": 104.14, "pratio": 1.0075, "ok": true}}
+AB v1f 9523 {"base": {"us": 119.17, "pratio": 1.0, "ok": true}, "c1": {"us": 118.74, "pratio": 1.0058, "ok": true}, "c18": {"us": 117.98, "pratio": 1.0127, "ok": true}}
+GM ('d1s', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('d1s', 'c1') 1.0424 [1.051, 1.0391, 1.0372]
+GM ('d1s', 'c18') 1.0475 [1.0514, 1.0399, 1.0513]
+GM ('d1f', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('d1f', 'c1') 1.0242 [1.0251, 1.0224, 1.025]
+GM ('d1f', 'c18') 1.0285 [1.025, 1.0358, 1.0248]
+GM ('v1s', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('v1s', 'c1') 0.9997 [1.0008, 0.9993, 0.9989]
+GM ('v1s', 'c18') 1.007 [1.0066, 1.0069, 1.0075]
+GM ('v1f', 'base') 1.0 [1.0, 1.0, 1.0]
+GM ('v1f', 'c1') 1.0006 [0.9984, 0.9977, 1.0058]
+GM ('v1f', 'c18') 1.0099 [1.01, 1.0068, 1.0127]
+TESTS file_default 26 / 26
+SCORED graph-checked 12 / 12
+[  32.7s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Z8ems0NJMqBp0t07viBi1t

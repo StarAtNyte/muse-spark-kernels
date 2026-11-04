@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-BWTsb07y2EDJsp4UlGA596
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1_v3/modal
+│   _run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"CASES": "d1s,v1s", "SEEDS": "3", "REPS": "20", "PROF": "1", "SASS": "1", "VAR": "{\"ns1\":{\"NS\":1},\"ns2\":{\"NS\":2}}"} RETURNCODE 0
+parent build 58.5
+b1 build 43.8
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.216, "cand": 11.072, "ns1": 11.328, "ns2": 11.136}, "gain": {"base": 1.0, "cand": 0.8324, "ns1": 0.8136, "ns2": 0.8276}, "bad": {}, "err": {"base": "relative L2 error 4.347e-03 (worst row 4.347e-03) [bound 0.1", "cand": "relative L2 error 4.385e-03 (worst row 4.385e-03) [bound 0.1", "ns1": "relative L2 error 4.385e-03 (worst row 4.385e-03) [bound 0.1", "ns2": "relative L2 error 4.385e-03 (worst row 4.385e-03) [bound 0.1"}}
+PROF {"case": "d1s", "ncta": 32, "stamps": {"0": [0.0, 0.06, 0.1], "1": [0.8, 0.85, 1.04], "2": [1.26, 1.44, 1.65], "3": [2.02, 2.19, 2.34], "4": [4.4, 4.62, 5.01], "5": [4.96, 5.2, 5.47]}}
+ROW {"case": "d1s", "seed": 4242, "med": {"base": 9.392, "cand": 10.976, "ns1": 11.056, "ns2": 10.848}, "gain": {"base": 1.0, "cand": 0.8557, "ns1": 0.8495, "ns2": 0.8658}, "bad": {}, "err": {"base": "relative L2 error 4.306e-03 (worst row 4.306e-03) [bound 0.1", "cand": "relative L2 error 4.351e-03 (worst row 4.351e-03) [bound 0.1", "ns1": "relative L2 error 4.358e-03 (worst row 4.358e-03) [bound 0.1", "ns2": "relative L2 error 4.351e-03 (worst row 4.351e-03) [bound 0.1"}}
+ROW {"case": "d1s", "seed": 777, "med": {"base": 9.216, "cand": 11.152, "ns1": 11.2, "ns2": 11.056}, "gain": {"base": 1.0, "cand": 0.8264, "ns1": 0.8229, "ns2": 0.8336}, "bad": {}, "err": {"base": "relative L2 error 3.255e-03 (worst row 3.255e-03) [bound 0.1", "cand": "relative L2 error 3.144e-03 (worst row 3.144e-03) [bound 0.1", "ns1": "relative L2 error 3.145e-03 (worst row 3.145e-03) [bound 0.1", "ns2": "relative L2 error 3.144e-03 (worst row 3.144e-03) [bound 0.1"}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.928, "cand": 15.952, "ns1": 15.888, "ns2": 19.824}, "gain": {"base": 1.0, "cand": 0.6851, "ns1": 0.6878, "ns2": 0.5513}, "bad": {}, "err": {"base": "relative L2 error 6.615e-02 (worst row 8.740e-02) [bound 0.1", "cand": "relative L2 error 4.205e-03 (worst row 4.886e-03) [bound 0.1", "ns1": "relative L2 error 4.205e-03 (worst row 4.886e-03) [bound 0.1", "ns2": "relative L2 error 4.203e-03 (worst row 4.887e-03) [bound 0.1"}}
+PROF {"case": "v1s", "ncta": 33, "stamps": {"0": [0.0, 0.08, 0.13], "1": [0.88, 0.96, 1.07], "2": [2.0, 2.08, 2.4], "3": [4.78, 5.47, 5.92], "4": [8.45, 9.22, 9.84], "5": [9.09, 9.84, 10.27]}}
+ROW {"case": "v1s", "seed": 4242, "med": {"base": 10.976, "cand": 16.224, "ns1": 16.032, "ns2": 19.824}, "gain": {"base": 1.0, "cand": 0.6765, "ns1": 0.6846, "ns2": 0.5537}, "bad": {}, "err": {"base": "relative L2 error 5.981e-02 (worst row 6.923e-02) [bound 0.1", "cand": "relative L2 error 4.670e-03 (worst row 5.642e-03) [bound 0.1", "ns1": "relative L2 error 4.670e-03 (worst row 5.642e-03) [bound 0.1", "ns2": "relative L2 error 4.666e-03 (worst row 5.636e-03) [bound 0.1"}}
+ROW {"case": "v1s", "seed": 777, "med": {"base": 11.04, "cand": 15.968, "ns1": 15.92, "ns2": 19.712}, "gain": {"base": 1.0, "cand": 0.6914, "ns1": 0.6935, "ns2": 0.5601}, "bad": {}, "err": {"base": "relative L2 error 5.824e-02 (worst row 6.538e-02) [bound 0.1", "cand": "relative L2 error 4.039e-03 (worst row 5.182e-03) [bound 0.1", "ns1": "relative L2 error 4.039e-03 (worst row 5.182e-03) [bound 0.1", "ns2": "relative L2 error 4.036e-03 (worst row 5.178e-03) [bound 0.1"}}
+DONE
+SASS _cu_da3638b77b1_attnILi8ELi2EEEvNS_3B1PE 2776 {'IMAD': 437, 'ISETP': 224, 'FMUL': 204, 'FADD': 198, 'LEA': 168, 'LOP3': 138, 'IADD3': 132, 'VIADD': 120, 'LDS': 106, 'F2FP': 85, 'SHF': 79, 'FFMA': 64, 'LDC': 61, 'MUFU': 61}
+SASS _cu_da3638b77b1_attnILi8ELi1EEEvNS_3B1PE 3216 {'IMAD': 464, 'ISETP': 259, 'FMUL': 256, 'FADD': 208, 'LEA': 180, 'IADD3': 152, 'LOP3': 139, 'VIADD': 129, 'SHF': 115, 'LDS': 115, 'FFMA': 98, 'F2FP': 93, 'MUFU': 79, 'BRA': 73}
+SASS _cu_da3638b77b1_attnILi1ELi2EEEvNS_3B1PE 2608 {'IMAD': 447, 'ISETP': 238, 'FADD': 172, 'LEA': 158, 'VIADD': 142, 'LDS': 129, 'FMUL': 120, 'LOP3': 110, 'SHF': 104, 'IADD3': 87, 'F2FP': 77, 'BRA': 76, 'LDG': 49, 'FFMA': 46}
+SASS _cu_da3638b77b1_attnILi1ELi1EEEvNS_3B1PE 3224 {'IMAD': 571, 'ISETP': 297, 'LEA': 181, 'FADD': 177, 'LOP3': 165, 'LDS': 165, 'SHF': 155, 'VIADD': 153, 'FMUL': 146, 'BRA': 113, 'IADD3': 96, 'F2FP': 81, 'LD': 65, 'FFMA': 63}
+
+STDERR:
+
+ENV {"CASES": "t1e,tv8,tv8k,t2047,t1,d1f", "SEEDS": "1", "REPS": "6"} RETURNCODE 0
+parent build 54.5
+b1 build 42.7
+ROW {"case": "t1e", "seed": 11, "med": {"base": 9.024, "cand": 10.88}, "gain": {"base": 1.0, "cand": 0.8294}, "bad": {}, "err": {"base": "relative L2 error 5.048e-03 (worst row 5.048e-03) [bound 0.1", "cand": "relative L2 error 5.397e-03 (worst row 5.397e-03) [bound 0.1"}}
+ROW {"case": "tv8", "seed": 11, "med": {"base": 11.04, "cand": 15.68}, "gain": {"base": 1.0, "cand": 0.7041}, "bad": {}, "err": {"base": "relative L2 error 8.280e-02 (worst row 9.790e-02) [bound 0.1", "cand": "relative L2 error 5.423e-03 (worst row 6.272e-03) [bound 0.1"}}
+ROW {"case": "tv8k", "seed": 11, "med": {"base": 10.72, "cand": 15.968}, "gain": {"base": 1.0, "cand": 0.6713}, "bad": {}, "err": {"base": "relative L2 error 7.992e-02 (worst row 9.173e-02) [bound 0.1", "cand": "relative L2 error 5.741e-03 (worst row 6.722e-03) [bound 0.1"}}
+ROW {"case": "t2047", "seed": 11, "med": {"base": 9.184, "cand": 10.832}, "gain": {"base": 1.0, "cand": 0.8479}, "bad": {}, "err": {"base": "relative L2 error 4.624e-03 (worst row 4.624e-03) [bound 0.1", "cand": "relative L2 error 4.491e-03 (worst row 4.491e-03) [bound 0.1"}}
+ROW {"case": "t1", "seed": 11, "med": {"base": 9.328, "cand": 9.056}, "gain": {"base": 1.0, "cand": 1.03}, "bad": {}, "err": {"base": "relative L2 error 1.954e-03 (worst row 1.954e-03) [bound 0.0", "cand": "relative L2 error 1.954e-03 (worst row 1.954e-03) [bound 0.0"}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 14.816, "cand": 14.752}, "gain": {"base": 1.0, "cand": 1.0043}, "bad": {}, "err": {"base": "relative L2 error 2.651e-03 (worst row 2.651e-03) [bound 0.1", "cand": "relative L2 error 2.651e-03 (worst row 2.651e-03) [bound 0.1"}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-BWTsb07y2EDJsp4UlGA596

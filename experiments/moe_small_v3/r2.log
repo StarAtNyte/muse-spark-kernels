@@ -1,0 +1,119 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Jq7G9fDEXZL0RzcvSicESZ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_small_v3/run
+│   _modal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 104s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+[v3] small kernel on for M <= 8: regs/local/smem [168, 0, 218928]
+PREPARED 148.7 True
+BUILT nopf [114, 0, 218928] 148.7
+BUILT ord2 [118, 0, 218928] 148.7
+BUILT nocmp [52, 0, 218928] 148.7
+BUILT nocmp2 [54, 0, 218928] 148.7
+BUILT ns3 [114, 0, 145168] 148.7
+BUILT dbg [168, 0, 218928] 148.7
+CHECK {"bs": 1, "seed": 0, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.28e-04", "msg": "relative L2 error 2.533e-03 (worst row 2.533e-03)"}
+CHECK {"bs": 1, "seed": 1, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.58e-04", "msg": "relative L2 error 2.474e-03 (worst row 2.474e-03)"}
+CHECK {"bs": 1, "seed": 2, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.12e-05", "msg": "relative L2 error 2.539e-03 (worst row 2.539e-03)"}
+CHECK {"bs": 1, "seed": 3, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.28e-06", "msg": "relative L2 error 2.462e-03 (worst row 2.462e-03)"}
+CHECK {"bs": 1, "seed": 4, "dist": "normal", "D": 2, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "4.38e-05", "msg": "relative L2 error 2.456e-03 (worst row 2.456e-03)"}
+CHECK {"bs": 1, "seed": 5, "dist": "normal", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.19e-06", "msg": "relative L2 error 2.409e-03 (worst row 2.409e-03)"}
+CHECK {"bs": 2, "seed": 12, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "2.46e-07", "msg": "relative L2 error 2.543e-03 (worst row 2.589e-03)"}
+CHECK {"bs": 3, "seed": 13, "dist": "normal", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.30e-06", "msg": "relative L2 error 2.534e-03 (worst row 2.575e-03)"}
+CHECK {"bs": 4, "seed": 14, "dist": "normal", "D": 6, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "2.76e-04", "msg": "relative L2 error 2.585e-03 (worst row 2.631e-03)"}
+CHECK {"bs": 5, "seed": 15, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.30e-04", "msg": "relative L2 error 2.529e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 6, "seed": 16, "dist": "normal", "D": 5, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "5.33e-05", "msg": "relative L2 error 2.597e-03 (worst row 2.687e-03)"}
+CHECK {"bs": 7, "seed": 17, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.70e-06", "msg": "relative L2 error 2.547e-03 (worst row 2.614e-03)"}
+CHECK {"bs": 8, "seed": 18, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "4.82e-05", "msg": "relative L2 error 2.511e-03 (worst row 2.596e-03)"}
+CHECK {"bs": 1, "seed": 31, "dist": "skewed", "D": 2, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "5.45e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.570e-03)"}
+CHECK {"bs": 2, "seed": 32, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "3.82e-05", "msg": "relative L2 error 2.523e-03 (worst row 2.542e-03)"}
+CHECK {"bs": 4, "seed": 34, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.05e-05", "msg": "relative L2 error 2.588e-03 (worst row 2.716e-03)"}
+CHECK {"bs": 8, "seed": 38, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.06e-05", "msg": "relative L2 error 2.516e-03 (worst row 2.598e-03)"}
+CHECK {"bs": 8, "seed": 40, "dist": "normal", "D": 8, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.44e-04", "msg": "relative L2 error 2.543e-03 (worst row 2.619e-03)"}
+CHECK {"bs": 8, "seed": 41, "dist": "normal", "D": 12, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "2.35e-04", "msg": "relative L2 error 2.579e-03 (worst row 2.729e-03)"}
+CHECK {"bs": 8, "seed": 42, "dist": "normal", "D": 11, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "8.40e-05", "msg": "relative L2 error 2.549e-03 (worst row 2.611e-03)"}
+CHECK {"bs": 8, "seed": 43, "dist": "normal", "D": 7, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "1.52e-04", "msg": "relative L2 error 2.570e-03 (worst row 2.639e-03)"}
+CHECK {"bs": 4, "seed": 50, "dist": "skewed", "D": 4, "ok": true, "ok_rep": true, "same_rep": false, "rel_vs_parent": "7.31e-05", "msg": "relative L2 error 2.560e-03 (worst row 2.605e-03)"}
+CHECK {"bs": 4, "seed": 51, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "1.64e-04", "msg": "relative L2 error 2.526e-03 (worst row 2.561e-03)"}
+CHECK {"bs": 4, "seed": 52, "dist": "skewed", "D": 3, "ok": true, "ok_rep": true, "same_rep": true, "rel_vs_parent": "2.62e-04", "msg": "relative L2 error 2.513e-03 (worst row 2.580e-03)"}
+VCHECK nopf 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK nopf 8 normal True relative L2 error 2.496e-03 (worst row 2.582e-03)
+VCHECK nopf 4 skewed True relative L2 error 2.625e-03 (worst row 2.661e-03)
+VCHECK ord2 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK ord2 8 normal True relative L2 error 2.496e-03 (worst row 2.582e-03)
+VCHECK ord2 4 skewed True relative L2 error 2.625e-03 (worst row 2.661e-03)
+VCHECK nocmp 1 normal False relative L2 error 1.000e+00 > 0.015
+VCHECK nocmp 8 normal False relative L2 error 1.000e+00 > 0.015
+VCHECK nocmp 4 skewed False relative L2 error 1.000e+00 > 0.015
+VCHECK nocmp2 1 normal False relative L2 error 1.000e+00 > 0.015
+VCHECK nocmp2 8 normal False relative L2 error 1.000e+00 > 0.015
+VCHECK nocmp2 4 skewed False relative L2 error 1.000e+00 > 0.015
+VCHECK ns3 1 normal True relative L2 error 2.462e-03 (worst row 2.462e-03)
+VCHECK ns3 8 normal True relative L2 error 2.496e-03 (worst row 2.582e-03)
+VCHECK ns3 4 skewed True relative L2 error 2.625e-03 (worst row 2.661e-03)
+ALLOK_CORRECT False 149.3
+EMPTY_US 3.3
+TIMED_CHECK_FAIL nocmp 1 7131
+TIMED_CHECK_FAIL nocmp2 1 7131
+ROW {"bs": 1, "seed": 7131, "D": 2, "parent": 23.26, "cand": 28.96, "nopf": 24.26, "ord2": 25.97, "nocmp": 21.33, "nocmp2": 20.93, "ns3": 23.22, "r_cand": 0.8036, "r_nopf": 0.9581, "r_ord2": 0.8944, "r_nocmp": 1.0765, "r_nocmp2": 1.1136, "r_ns3": 0.9924}
+TIMED_CHECK_FAIL nocmp 1 7132
+TIMED_CHECK_FAIL nocmp2 1 7132
+ROW {"bs": 1, "seed": 7132, "D": 2, "parent": 22.91, "cand": 29.22, "nopf": 24.56, "ord2": 26.1, "nocmp": 21.71, "nocmp2": 20.96, "ns3": 23.17, "r_cand": 0.7834, "r_nopf": 0.932, "r_ord2": 0.8751, "r_nocmp": 1.0483, "r_nocmp2": 1.0893, "r_ns3": 0.9958}
+TIMED_CHECK_FAIL nocmp 1 7133
+TIMED_CHECK_FAIL nocmp2 1 7133
+ROW {"bs": 1, "seed": 7133, "D": 2, "parent": 23.04, "cand": 29.38, "nopf": 25.04, "ord2": 26.11, "nocmp": 21.31, "nocmp2": 20.86, "ns3": 23.41, "r_cand": 0.7839, "r_nopf": 0.9203, "r_ord2": 0.8912, "r_nocmp": 1.0796, "r_nocmp2": 1.1087, "r_ns3": 0.9862}
+TIMED_CHECK_FAIL nocmp 8 8048
+TIMED_CHECK_FAIL nocmp2 8 8048
+ROW {"bs": 8, "seed": 8048, "D": 7, "parent": 56.37, "cand": 75.44, "nopf": 60.11, "ord2": 60.18, "nocmp": 53.97, "nocmp2": 55.84, "ns3": 58.85, "r_cand": 0.7491, "r_nopf": 0.9396, "r_ord2": 0.9371, "r_nocmp": 1.0261, "r_nocmp2": 1.0109, "r_ns3": 0.9538}
+TIMED_CHECK_FAIL nocmp 8 8049
+TIMED_CHECK_FAIL nocmp2 8 8049
+ROW {"bs": 8, "seed": 8049, "D": 10, "parent": 74.98, "cand": 103.31, "nopf": 80.35, "ord2": 80.48, "nocmp": 73.87, "nocmp2": 75.82, "ns3": 79.86, "r_cand": 0.726, "r_nopf": 0.9331, "r_ord2": 0.9375, "r_nocmp": 1.0138, "r_nocmp2": 0.9899, "r_ns3": 0.9331}
+TIMED_CHECK_FAIL nocmp 8 8050
+TIMED_CHECK_FAIL nocmp2 8 8050
+ROW {"bs": 8, "seed": 8050, "D": 12, "parent": 87.36, "cand": 121.28, "nopf": 94.56, "ord2": 94.14, "nocmp": 86.88, "nocmp2": 88.38, "ns3": 94.35, "r_cand": 0.7207, "r_nopf": 0.9236, "r_ord2": 0.9283, "r_nocmp": 1.0095, "r_nocmp2": 0.9856, "r_ns3": 0.9298}
+SUMMARY 1 {'r_cand': 0.7902, 'r_nopf': 0.9367, 'r_ord2': 0.8869, 'r_nocmp': 1.068, 'r_nocmp2': 1.1038, 'r_ns3': 0.9915} {'D': 2, 'parent': 23.07, 'cand': 29.19, 'nopf': 24.62, 'ord2': 26.06, 'nocmp': 21.45, 'nocmp2': 20.92, 'ns3': 23.27}
+SUMMARY 8 {'r_cand': 0.7318, 'r_nopf': 0.9321, 'r_ord2': 0.9343, 'r_nocmp': 1.0164, 'r_nocmp2': 0.9954, 'r_ns3': 0.9388} {'D': 9.67, 'parent': 72.9, 'cand': 100.01, 'nopf': 78.34, 'ord2': 78.27, 'nocmp': 71.57, 'nocmp2': 73.35, 'ns3': 77.69}
+ALLOK False ELAPSED 149.7
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Jq7G9fDEXZL0RzcvSicESZ

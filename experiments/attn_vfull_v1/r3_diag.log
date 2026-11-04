@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JBRYWhVMN1qQ2oZ5UvgiUb
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "ALLOWBAD": "1", "VARIANTS": "base,dnop,dcons,dnopv", "CASES": "v16f,v32f,d16f", "SEEDS": "11"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 104.03, "dnop": 98.9, "dcons": 96.46, "dnopv": 101.66}, "gain": {"base": 1.0, "dnop": 1.052, "dcons": 1.078, "dnopv": 1.023}, "bad": {"dnop": "relative L2 error 3.997e-01 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dcons": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027", "dnopv": "relative L2 error 1.000e+00 > 0.082375 [bound 0.082: 2.5 x the reference's 0.027"}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 187.2, "dnop": 182.93, "dcons": 180.32, "dnopv": 186.16}, "gain": {"base": 1.0, "dnop": 1.023, "dcons": 1.038, "dnopv": 1.006}, "bad": {"dnop": "relative L2 error 4.018e-01 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dcons": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02", "dnopv": "relative L2 error 1.000e+00 > 0.0802731 [bound 0.080: 2.5 x the reference's 0.02"}}
+ROW {"case": "d16f", "seed": 11, "med": {"base": 91.36, "dnop": 91.63, "dcons": 91.33, "dnopv": 91.68}, "gain": {"base": 1.0, "dnop": 0.997, "dcons": 1.0, "dnopv": 0.997}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JBRYWhVMN1qQ2oZ5UvgiUb

@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Cxw9yw8lQbZfTjXkEU8zdc
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1_v3/modal
+│   _run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"CASES": "d1s,v1s", "FLAGSETS": "[[],[\"-DB1_FENCE=1\"],[\"-DB1_LD=2\"],[\"-DB1_FENCE=1\",\"-DB1_LD=1\"]]", "PROF": "1"} RETURNCODE 0
+CHK d1s base True relative L2 error 4.306e-03 (worst row 4.306e-03) 
+CHK d1s b1 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+CHK d1s b1-DB1_FENCE=1 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+CHK d1s b1-DB1_LD=2 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+CHK d1s b1-DB1_FENCE=1-DB1_LD=1 True relative L2 error 6.298e-02 (worst row 6.298e-02) 
+ROW {"case": "d1s", "res": {"base": {"cold": 9.088, "warm": 4.64}, "b1": {"cold": 13.136, "warm": 8.432}, "b1-DB1_FENCE=1": {"cold": 12.736, "warm": 8.288}, "b1-DB1_LD=2": {"cold": 12.976, "warm": 8.576}, "b1-DB1_FENCE=1-DB1_LD=1": {"cold": 18.128, "warm": 13.472}}}
+PROF d1s  cold {"0": 0.03, "1": 0.82, "2": 1.38, "3": 2.43, "4": 6.11, "5": 6.91}
+PROF d1s  warm {"0": 0.03, "1": 0.8, "2": 1.38, "3": 2.48, "4": 5.94, "5": 6.38}
+PROF d1s -DB1_FENCE=1 cold {"0": 0.03, "1": 0.8, "2": 1.41, "3": 3.17, "4": 6.54, "5": 6.99}
+PROF d1s -DB1_FENCE=1 warm {"0": 0.03, "1": 0.78, "2": 1.36, "3": 3.1, "4": 6.42, "5": 6.88}
+PROF d1s -DB1_LD=2 cold {"0": 0.03, "1": 0.8, "2": 1.38, "3": 2.46, "4": 6.13, "5": 6.58}
+PROF d1s -DB1_LD=2 warm {"0": 0.03, "1": 0.8, "2": 1.38, "3": 2.43, "4": 5.89, "5": 6.3}
+PROF d1s -DB1_FENCE=1-DB1_LD=1 cold {"0": 0.03, "1": 0.8, "2": 1.34, "3": 3.14, "4": 11.55, "5": 12.13}
+PROF d1s -DB1_FENCE=1-DB1_LD=1 warm {"0": 0.03, "1": 0.8, "2": 1.38, "3": 3.07, "4": 11.31, "5": 11.82}
+CHK v1s base True relative L2 error 5.981e-02 (worst row 6.923e-02) 
+CHK v1s b1 True relative L2 error 5.969e-02 (worst row 6.928e-02) 
+CHK v1s b1-DB1_FENCE=1 True relative L2 error 5.969e-02 (worst row 6.928e-02) 
+CHK v1s b1-DB1_LD=2 True relative L2 error 5.969e-02 (worst row 6.928e-02) 
+CHK v1s b1-DB1_FENCE=1-DB1_LD=1 True relative L2 error 5.969e-02 (worst row 6.928e-02) 
+ROW {"case": "v1s", "res": {"base": {"cold": 10.752, "warm": 6.64}, "b1": {"cold": 17.376, "warm": 12.0}, "b1-DB1_FENCE=1": {"cold": 16.672, "warm": 12.112}, "b1-DB1_LD=2": {"cold": 17.568, "warm": 12.368}, "b1-DB1_FENCE=1-DB1_LD=1": {"cold": 22.88, "warm": 18.416}}}
+PROF v1s  cold {"0": 0.05, "1": 1.06, "2": 2.16, "3": 5.31, "4": 9.38, "5": 10.03}
+PROF v1s  warm {"0": 0.03, "1": 0.99, "2": 2.11, "3": 5.3, "4": 9.23, "5": 9.81}
+PROF v1s -DB1_FENCE=1 cold {"0": 0.03, "1": 1.02, "2": 2.16, "3": 6.22, "4": 9.9, "5": 10.62}
+PROF v1s -DB1_FENCE=1 warm {"0": 0.03, "1": 1.07, "2": 2.19, "3": 6.14, "4": 9.84, "5": 10.42}
+PROF v1s -DB1_LD=2 cold {"0": 0.06, "1": 1.1, "2": 2.19, "3": 5.02, "4": 9.34, "5": 9.95}
+PROF v1s -DB1_LD=2 warm {"0": 0.03, "1": 0.99, "2": 2.05, "3": 5.3, "4": 9.18, "5": 9.76}
+PROF v1s -DB1_FENCE=1-DB1_LD=1 cold {"0": 0.06, "1": 1.02, "2": 2.18, "3": 6.05, "4": 15.57, "5": 16.53}
+PROF v1s -DB1_FENCE=1-DB1_LD=1 warm {"0": 0.0, "1": 0.99, "2": 2.13, "3": 6.08, "4": 15.42, "5": 16.22}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Cxw9yw8lQbZfTjXkEU8zdc

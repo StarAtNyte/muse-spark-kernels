@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-AzEvfMlTSq16HpULh3YBD8
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"OVR": "{\"v1s\":{\"rs4\":{\"rs\":4,\"coop\":1},\"rs8\":{\"rs\":8,\"coop\":1}},\"v1f\":{\"rs2\":{\"rs\":2},\"rs2n126\":{\"rs\":2,\"n_splits\":126},\"rs4n66\":{\"rs\":4,\"n_splits\":66}}}"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 8.896, "cand": 9.04}, "gain": {"base": 1.0, "cand": 0.9841}, "bad": {}}
+ROW {"case": "d1s", "seed": 4242, "med": {"base": 9.2, "cand": 9.216}, "gain": {"base": 1.0, "cand": 0.9983}, "bad": {}}
+ROW {"case": "d1s", "seed": 777, "med": {"base": 9.04, "cand": 9.216}, "gain": {"base": 1.0, "cand": 0.9809}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.992, "cand": 11.04, "rs4": 11.376, "rs8": 12.672}, "gain": {"base": 1.0, "cand": 0.9957, "rs4": 0.9662, "rs8": 0.8674}, "bad": {}}
+ROW {"case": "v1s", "seed": 4242, "med": {"base": 10.896, "cand": 10.944, "rs4": 11.472, "rs8": 12.72}, "gain": {"base": 1.0, "cand": 0.9956, "rs4": 0.9498, "rs8": 0.8566}, "bad": {}}
+ROW {"case": "v1s", "seed": 777, "med": {"base": 10.912, "cand": 10.912, "rs4": 11.36, "rs8": 12.848}, "gain": {"base": 1.0, "cand": 1.0, "rs4": 0.9606, "rs8": 0.8493}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.056, "cand": 15.168}, "gain": {"base": 1.0, "cand": 0.9926}, "bad": {}}
+ROW {"case": "d1f", "seed": 4242, "med": {"base": 15.168, "cand": 15.2}, "gain": {"base": 1.0, "cand": 0.9979}, "bad": {}}
+ROW {"case": "d1f", "seed": 777, "med": {"base": 15.104, "cand": 15.328}, "gain": {"base": 1.0, "cand": 0.9854}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 18.208, "cand": 18.4, "rs2": 37.104, "rs2n126": 23.856, "rs4n66": 34.528}, "gain": {"base": 1.0, "cand": 0.9896, "rs2": 0.4907, "rs2n126": 0.7632, "rs4n66": 0.5273}, "bad": {}}
+ROW {"case": "v1f", "seed": 4242, "med": {"base": 18.256, "cand": 18.432, "rs2": 37.2, "rs2n126": 23.936, "rs4n66": 34.72}, "gain": {"base": 1.0, "cand": 0.9905, "rs2": 0.4908, "rs2n126": 0.7627, "rs4n66": 0.5258}, "bad": {}}
+ROW {"case": "v1f", "seed": 777, "med": {"base": 18.304, "cand": 18.64, "rs2": 37.024, "rs2n126": 23.936, "rs4n66": 34.832}, "gain": {"base": 1.0, "cand": 0.982, "rs2": 0.4944, "rs2n126": 0.7647, "rs4n66": 0.5255}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"CASES": "v16f,v32f,t9,tv8,tv8k,t1", "SEEDS": "2", "REPS": "12"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 101.824, "cand": 101.888}, "gain": {"base": 1.0, "cand": 0.9994}, "bad": {}}
+ROW {"case": "v16f", "seed": 4242, "med": {"base": 101.504, "cand": 101.904}, "gain": {"base": 1.0, "cand": 0.9961}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 183.776, "cand": 183.84}, "gain": {"base": 1.0, "cand": 0.9997}, "bad": {}}
+ROW {"case": "v32f", "seed": 4242, "med": {"base": 183.44, "cand": 183.68}, "gain": {"base": 1.0, "cand": 0.9987}, "bad": {}}
+ROW {"case": "t9", "seed": 11, "med": {"base": 99.808, "cand": 102.88}, "gain": {"base": 1.0, "cand": 0.9701}, "bad": {}}
+ROW {"case": "t9", "seed": 4242, "med": {"base": 100.8, "cand": 103.616}, "gain": {"base": 1.0, "cand": 0.9728}, "bad": {}}
+ROW {"case": "tv8", "seed": 11, "med": {"base": 11.136, "cand": 11.264}, "gain": {"base": 1.0, "cand": 0.9886}, "bad": {}}
+ROW {"case": "tv8", "seed": 4242, "med": {"base": 11.2, "cand": 11.152}, "gain": {"base": 1.0, "cand": 1.0043}, "bad": {}}
+ROW {"case": "tv8k", "seed": 11, "med": {"base": 11.104, "cand": 10.912}, "gain": {"base": 1.0, "cand": 1.0176}, "bad": {}}
+ROW {"case": "tv8k", "seed": 4242, "med": {"base": 11.008, "cand": 10.944}, "gain": {"base": 1.0, "cand": 1.0058}, "bad": {}}
+ROW {"case": "t1", "seed": 11, "med": {"base": 9.04, "cand": 9.216}, "gain": {"base": 1.0, "cand": 0.9809}, "bad": {}}
+ROW {"case": "t1", "seed": 4242, "med": {"base": 9.024, "cand": 9.344}, "gain": {"base": 1.0, "cand": 0.9658}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-AzEvfMlTSq16HpULh3YBD8

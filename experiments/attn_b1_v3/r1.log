@@ -1,0 +1,78 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-kpLRRPSvQhkSf3tct0U7jI
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1_v3/modal
+│   _run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"CASES": "d1s,v1s,d1f,v1f", "SEEDS": "2", "REPS": "16", "VAR": "{\"ns1\":{\"NS\":1},\"hs\":{\"HS\":1,\"NS\":1},\"hs2\":{\"HS\":1,\"NS\":2}}"} RETURNCODE 0
+parent build 62.0
+b1 build 48.5
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.216, "cand": 12.256, "hs": 15.024, "hs2": 12.88}, "gain": {"base": 1.0, "cand": 0.752, "hs": 0.6134, "hs2": 0.7155}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 4.347e-03 (worst row 4.347e-03) [bound 0.1", "cand": "relative L2 error 6.755e-02 (worst row 6.755e-02) [bound 0.1", "hs": "relative L2 error 6.754e-02 (worst row 6.754e-02) [bound 0.1", "hs2": "relative L2 error 6.755e-02 (worst row 6.755e-02) [bound 0.1"}}
+ROW {"case": "d1s", "seed": 4242, "med": {"base": 9.2, "cand": 12.48, "hs": 14.656, "hs2": 12.784}, "gain": {"base": 1.0, "cand": 0.7372, "hs": 0.6277, "hs2": 0.7196}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 4.306e-03 (worst row 4.306e-03) [bound 0.1", "cand": "relative L2 error 6.298e-02 (worst row 6.298e-02) [bound 0.1", "hs": "relative L2 error 6.298e-02 (worst row 6.298e-02) [bound 0.1", "hs2": "relative L2 error 6.298e-02 (worst row 6.298e-02) [bound 0.1"}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 11.008, "cand": 16.56, "ns1": 20.992, "hs": 19.216, "hs2": 15.216}, "gain": {"base": 1.0, "cand": 0.6647, "ns1": 0.5244, "hs": 0.5729, "hs2": 0.7234}, "bad": {}, "err": {"base": "relative L2 error 6.615e-02 (worst row 8.740e-02) [bound 0.1", "cand": "relative L2 error 6.561e-02 (worst row 8.761e-02) [bound 0.1", "ns1": "relative L2 error 6.561e-02 (worst row 8.761e-02) [bound 0.1", "hs": "relative L2 error 6.561e-02 (worst row 8.761e-02) [bound 0.1", "hs2": "relative L2 error 6.561e-02 (worst row 8.761e-02) [bound 0.1"}}
+ROW {"case": "v1s", "seed": 4242, "med": {"base": 10.912, "cand": 16.752, "ns1": 21.024, "hs": 19.424, "hs2": 15.776}, "gain": {"base": 1.0, "cand": 0.6514, "ns1": 0.519, "hs": 0.5618, "hs2": 0.6917}, "bad": {}, "err": {"base": "relative L2 error 5.981e-02 (worst row 6.923e-02) [bound 0.1", "cand": "relative L2 error 5.969e-02 (worst row 6.928e-02) [bound 0.1", "ns1": "relative L2 error 5.969e-02 (worst row 6.928e-02) [bound 0.1", "hs": "relative L2 error 5.969e-02 (worst row 6.928e-02) [bound 0.1", "hs2": "relative L2 error 5.969e-02 (worst row 6.928e-02) [bound 0.1"}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.104, "cand": 20.208}, "gain": {"base": 1.0, "cand": 0.7474}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)", "hs": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 2.651e-03 (worst row 2.651e-03) [bound 0.1", "cand": "relative L2 error 3.717e-02 (worst row 3.717e-02) [bound 0.1"}}
+ROW {"case": "d1f", "seed": 4242, "med": {"base": 15.104, "cand": 20.16}, "gain": {"base": 1.0, "cand": 0.7492}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)", "hs": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 3.817e-03 (worst row 3.817e-03) [bound 0.1", "cand": "relative L2 error 4.097e-02 (worst row 4.097e-02) [bound 0.1"}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 18.352, "cand": 33.488, "ns1": 37.904}, "gain": {"base": 1.0, "cand": 0.548, "ns1": 0.4842}, "bad": {"hs": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)"}, "err": {"base": "relative L2 error 3.540e-02 (worst row 4.588e-02) [bound 0.1", "cand": "relative L2 error 3.457e-02 (worst row 4.527e-02) [bound 0.1", "ns1": "relative L2 error 3.457e-02 (worst row 4.527e-02) [bound 0.1"}}
+ROW {"case": "v1f", "seed": 4242, "med": {"base": 18.288, "cand": 33.408, "ns1": 38.128}, "gain": {"base": 1.0, "cand": 0.5474, "ns1": 0.4796}, "bad": {"hs": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)"}, "err": {"base": "relative L2 error 2.640e-02 (worst row 5.145e-02) [bound 0.0", "cand": "relative L2 error 2.583e-02 (worst row 5.113e-02) [bound 0.0", "ns1": "relative L2 error 2.583e-02 (worst row 5.113e-02) [bound 0.0"}}
+DONE
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+ENV {"CASES": "t1,t1v,t1e,t1f,t1fe,tv8,tv8k,t2047,tf100k,t9", "SEEDS": "1", "REPS": "4", "VAR": "{\"ns1\":{\"NS\":1},\"hs\":{\"HS\":1,\"NS\":1},\"hs2\":{\"HS\":1,\"NS\":2}}"} RETURNCODE 0
+parent build 55.6
+b1 build 48.3
+ROW {"case": "t1", "seed": 11, "med": {"base": 9.456, "cand": 14.512, "hs": 19.776, "hs2": 14.752}, "gain": {"base": 1.0, "cand": 0.6516, "hs": 0.4782, "hs2": 0.641}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 1.954e-03 (worst row 1.954e-03) [bound 0.0", "cand": "relative L2 error 2.313e-02 (worst row 2.313e-02) [bound 0.0", "hs": "relative L2 error 2.313e-02 (worst row 2.313e-02) [bound 0.0", "hs2": "relative L2 error 2.313e-02 (worst row 2.313e-02) [bound 0.0"}}
+ROW {"case": "t1v", "seed": 11, "med": {"base": 13.52, "cand": 25.472, "ns1": 38.304, "hs": 35.28, "hs2": 23.232}, "gain": {"base": 1.0, "cand": 0.5308, "ns1": 0.353, "hs": 0.3832, "hs2": 0.582}, "bad": {}, "err": {"base": "relative L2 error 5.549e-02 (worst row 8.132e-02) [bound 0.1", "cand": "relative L2 error 5.316e-02 (worst row 7.711e-02) [bound 0.1", "ns1": "relative L2 error 5.316e-02 (worst row 7.711e-02) [bound 0.1", "hs": "relative L2 error 5.316e-02 (worst row 7.711e-02) [bound 0.1", "hs2": "relative L2 error 5.316e-02 (worst row 7.711e-02) [bound 0.1"}}
+ROW {"case": "t1e", "seed": 11, "med": {"base": 9.392, "cand": 12.512, "hs": 14.752, "hs2": 12.608}, "gain": {"base": 1.0, "cand": 0.7506, "hs": 0.6367, "hs2": 0.7449}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 5.050e-03 (worst row 5.050e-03) [bound 0.1", "cand": "relative L2 error 6.610e-02 (worst row 6.610e-02) [bound 0.1", "hs": "relative L2 error 6.610e-02 (worst row 6.610e-02) [bound 0.1", "hs2": "relative L2 error 6.610e-02 (worst row 6.610e-02) [bound 0.1"}}
+ROW {"case": "t1f", "seed": 11, "med": {"base": 10.048, "cand": 16.224, "hs": 17.76, "hs2": 15.232}, "gain": {"base": 1.0, "cand": 0.6193, "hs": 0.5658, "hs2": 0.6597}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 4.522e-03 (worst row 4.522e-03) [bound 0.1", "cand": "relative L2 error 8.315e-02 (worst row 8.315e-02) [bound 0.1", "hs": "relative L2 error 8.315e-02 (worst row 8.315e-02) [bound 0.1", "hs2": "relative L2 error 8.315e-02 (worst row 8.315e-02) [bound 0.1"}}
+ROW {"case": "t1fe", "seed": 11, "med": {"base": 11.568, "cand": 21.2, "ns1": 24.32, "hs": 22.176, "hs2": 19.28}, "gain": {"base": 1.0, "cand": 0.5457, "ns1": 0.4757, "hs": 0.5216, "hs2": 0.6}, "bad": {}, "err": {"base": "relative L2 error 7.976e-02 (worst row 9.543e-02) [bound 0.1", "cand": "relative L2 error 7.975e-02 (worst row 9.515e-02) [bound 0.1", "ns1": "relative L2 error 7.975e-02 (worst row 9.515e-02) [bound 0.1", "hs": "relative L2 error 7.975e-02 (worst row 9.515e-02) [bound 0.1", "hs2": "relative L2 error 7.975e-02 (worst row 9.515e-02) [bound 0.1"}}
+ROW {"case": "tv8", "seed": 11, "med": {"base": 11.312, "cand": 16.96, "ns1": 20.624, "hs": 19.328, "hs2": 15.856}, "gain": {"base": 1.0, "cand": 0.667, "ns1": 0.5485, "hs": 0.5853, "hs2": 0.7134}, "bad": {}, "err": {"base": "relative L2 error 8.280e-02 (worst row 9.790e-02) [bound 0.1", "cand": "relative L2 error 8.267e-02 (worst row 9.792e-02) [bound 0.1", "ns1": "relative L2 error 8.267e-02 (worst row 9.792e-02) [bound 0.1", "hs": "relative L2 error 8.267e-02 (worst row 9.792e-02) [bound 0.1", "hs2": "relative L2 error 8.267e-02 (worst row 9.792e-02) [bound 0.1"}}
+ROW {"case": "tv8k", "seed": 11, "med": {"base": 11.312, "cand": 16.528, "ns1": 20.96, "hs": 19.04, "hs2": 15.024}, "gain": {"base": 1.0, "cand": 0.6844, "ns1": 0.5397, "hs": 0.5941, "hs2": 0.7529}, "bad": {}, "err": {"base": "relative L2 error 7.992e-02 (worst row 9.173e-02) [bound 0.1", "cand": "relative L2 error 8.000e-02 (worst row 9.182e-02) [bound 0.1", "ns1": "relative L2 error 7.999e-02 (worst row 9.182e-02) [bound 0.1", "hs": "relative L2 error 7.999e-02 (worst row 9.182e-02) [bound 0.1", "hs2": "relative L2 error 8.000e-02 (worst row 9.182e-02) [bound 0.1"}}
+ROW {"case": "t2047", "seed": 11, "med": {"base": 9.6, "cand": 12.272, "hs": 14.512, "hs2": 12.384}, "gain": {"base": 1.0, "cand": 0.7823, "hs": 0.6615, "hs2": 0.7752}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 1, 1024)"}, "err": {"base": "relative L2 error 4.624e-03 (worst row 4.624e-03) [bound 0.1", "cand": "relative L2 error 6.374e-02 (worst row 6.374e-02) [bound 0.1", "hs": "relative L2 error 6.374e-02 (worst row 6.374e-02) [bound 0.1", "hs2": "relative L2 error 6.374e-02 (worst row 6.374e-02) [bound 0.1"}}
+ROW {"case": "tf100k", "seed": 11, "med": {"base": 21.216, "cand": 38.912, "ns1": 43.984}, "gain": {"base": 1.0, "cand": 0.5452, "ns1": 0.4824}, "bad": {"hs": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)"}, "err": {"base": "relative L2 error 9.950e-02 (worst row 1.148e-01) [bound 0.1", "cand": "relative L2 error 9.902e-02 (worst row 1.144e-01) [bound 0.1", "ns1": "relative L2 error 9.902e-02 (worst row 1.144e-01) [bound 0.1"}}
+ROW {"case": "t9", "seed": 11, "med": {"base": 101.504, "cand": 101.184}, "gain": {"base": 1.0, "cand": 1.0032}, "bad": {"ns1": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)", "hs": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)", "hs2": "ERR expected a bfloat16 tensor of shape (1, 8, 1024)"}, "err": {"base": "relative L2 error 9.361e-02 (worst row 1.190e-01) [bound 0.1", "cand": "relative L2 error 9.361e-02 (worst row 1.190e-01) [bound 0.1"}}
+DONE
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-kpLRRPSvQhkSf3tct0U7jI
