@@ -1,0 +1,113 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-N2hOYJFv8gou4PPLj2vU4g
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"REPS": "20"} RETURNCODE 0
+RT12 off: RT12 disabled
+PB compile 5s
+BUILD pw57_flush 56.5s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   12.19 us   0.52 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.74 us   0.81 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.42 us   1.35 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.37 us   1.62 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.77 us two_node 5.38 us overhead 4.16 us
+PREP flush+fixed done at 67s
+lt qkv_gate m128 heur 23072.00 best 0:66.104.1.0.0.2.35.0.5 19232.00 (676 tried, 2.6s)
+lt pooler m128 heur 32416.00 best 3:66.15.1.0.0.4.35.0.2 23712.00 (1030 tried, 5.5s)
+lt unpooler m128 heur 26080.00 best 3:66.18.1.0.0.0.35.0.2 22720.00 (731 tried, 7.5s)
+gv qkv_gate m8 v12 12640.00 best 1.1.1.2.16.8.1.1.2.1 6825.20 (ref 1.1.1.2.16.8.1.1.2.1 6825.20)
+  v12:12640.00 1.1.1.2.16.8.1.1.2.1:6825.20 1.1.2.1.8.16.1.1.0.1:9392.16 1.1.1.1.16.8.1.1.2.8193:8626.70 1.1.2.1.4.16.2.1.0.0:10826.92 1.1.2.1.4.16.2.1.0.1:10326.67 1.1.2.1.4.8.4.1.0.1:14052.75
+gv o m8 v12 5408.00 best 1.1.2.1.8.2.1.1.0.1 3678.62 (ref 1.1.2.1.8.2.1.1.0.1 3678.62)
+  v12:5408.00 1.1.2.1.8.2.1.1.0.1:3678.62 1.1.2.1.8.2.1.1.0.0:4177.58 1.1.2.2.4.4.1.1.0.1:4946.31 1.1.2.1.4.4.1.1.0.1:4986.06
+gv o m16 v12 5568.00 best 1.2.2.1.8.2.1.1.0.1 3215.45 (ref 1.2.2.1.8.2.1.1.0.1 3215.45)
+  v12:5568.00 1.2.2.1.8.2.1.1.0.1:3215.45 1.2.2.1.8.2.1.1.0.0:4550.21 1.2.2.1.8.2.1.1.2.1:7054.74 1.2.2.2.4.4.1.1.0.1:5059.32 1.2.2.2.4.4.1.1.2.1:4523.27 1.2.1.1.4.4.1.1.2.1:4539.96
+gv pooler m8 v12 18912.00 best 1.1.1.2.16.8.1.1.0.3 11191.48 (ref 1.1.1.2.16.8.1.1.0.3 11191.48)
+  v12:18912.00 1.1.1.2.16.8.1.1.0.3:11191.48 1.1.2.2.8.16.1.1.0.1:13019.82 1.1.2.2.8.16.1.1.0.0:12878.87 1.1.2.1.8.16.1.1.0.1:13039.01
+gv pooler m16 v12 19200.00 best 1.2.2.2.8.16.1.1.0.1 11934.25 (ref 1.2.2.2.8.16.1.1.0.1 11934.25)
+  v12:19200.00 1.2.2.2.8.16.1.1.0.1:11934.25 1.2.2.2.8.16.1.1.0.0:13900.22 1.2.2.1.8.16.1.1.2.1:14033.86 1.2.2.1.8.16.1.1.0.1:16920.55
+PAIR ov 4.16 clamped to 4.16 (times 8.64/8.32)
+gv unpooler m8 v12 6432.00 best 1.1.2.1.16.4.1.1.0.1 1628.41 (ref 1.1.2.1.16.4.1.1.0.1 1628.41)
+  v12:6432.00 1.1.2.1.16.4.1.1.0.1:1628.41 1.1.2.1.16.4.1.1.0.0:3542.76 1.1.2.1.8.2.4.1.0.1:4239.06 1.1.2.1.8.4.2.1.0.1:5487.50 1.1.2.1.16.4.1.1.2.1:3167.17
+PREP r6 done in 91s
+PREP phase rq done at 91s
+BAKE qkv_gate m=8 r6 13.28 (ref)
+BAKE qkv_gate m=8 q144k16 15.52 (ref r6 13.28)
+PICK qkv_gate m=8 r6 13.28 (ref r6 13.28)
+PREP phase gx done at 91s
+PREP phase rq32 done at 91s
+PREP phase router done at 91s
+PREP done in 91s
+
+PREP parent done 95s
+FIXED one-node graph 5.70 us
+CELL pooler:128 (0, 4, 0, 8) selftest True ok rel 1.65e-03 occ_clusters 15 esc_max 50
+CELL pooler:128 (0, 4, 1, 8) selftest True ok rel 2.35e-03 occ_clusters 15 esc_max 50
+CELL pooler:128 (0, 5, 1, 8) selftest True ok rel 2.35e-03 occ_clusters 15 esc_max 50
+ROW {"cell": "pooler:128", "seed": 61, "base_us": 29.97, "base_net": 24.27, "correct": {"base": true, "(0, 4, 0, 8)": true, "(0, 4, 1, 8)": true, "(0, 5, 1, 8)": true}, "(0, 4, 0, 8)": {"us": 69.33, "net": 63.63, "gain_raw": 0.4323, "gain_net": 0.3814}, "(0, 4, 1, 8)": {"us": 62.0, "net": 56.3, "gain_raw": 0.4834, "gain_net": 0.4311}, "(0, 5, 1, 8)": {"us": 63.89, "net": 58.19, "gain_raw": 0.4691, "gain_net": 0.4171}}
+CELL unpooler:128 (0, 4, 0, 4) selftest True ok rel 1.65e-03 occ_clusters 30 esc_max 43
+CELL unpooler:128 (0, 4, 1, 4) selftest True ok rel 2.36e-03 occ_clusters 30 esc_max 43
+CELL unpooler:128 (2, 6, 0, 2) selftest True ok rel 1.65e-03 occ_clusters 66 esc_max 39
+ROW {"cell": "unpooler:128", "seed": 61, "base_us": 28.14, "base_net": 22.45, "correct": {"base": true, "(0, 4, 0, 4)": true, "(0, 4, 1, 4)": true, "(2, 6, 0, 2)": true}, "(0, 4, 0, 4)": {"us": 61.86, "net": 56.16, "gain_raw": 0.455, "gain_net": 0.3997}, "(0, 4, 1, 4)": {"us": 56.19, "net": 50.5, "gain_raw": 0.5009, "gain_net": 0.4446}, "(2, 6, 0, 2)": {"us": 35.92, "net": 30.22, "gain_raw": 0.7835, "gain_net": 0.7427}}
+CELL o:128 (0, 4, 0, 4) selftest True ok rel 1.65e-03 occ_clusters 30 esc_max 16
+CELL o:128 (0, 4, 1, 4) selftest True ok rel 2.36e-03 occ_clusters 30 esc_max 16
+CELL o:128 (2, 6, 0, 2) selftest True ok rel 1.65e-03 occ_clusters 66 esc_max 16
+ROW {"cell": "o:128", "seed": 61, "base_us": 12.22, "base_net": 6.53, "correct": {"base": true, "(0, 4, 0, 4)": true, "(0, 4, 1, 4)": true, "(2, 6, 0, 2)": true}, "(0, 4, 0, 4)": {"us": 32.54, "net": 26.85, "gain_raw": 0.3756, "gain_net": 0.2431}, "(0, 4, 1, 4)": {"us": 28.46, "net": 22.77, "gain_raw": 0.4295, "gain_net": 0.2867}, "(2, 6, 0, 2)": {"us": 19.7, "net": 14.0, "gain_raw": 0.6206, "gain_net": 0.4663}}
+CELL qkv_gate:128 (2, 6, 0, 7) selftest True ok rel 1.66e-03 occ_clusters 15 esc_max 32
+CELL qkv_gate:128 (0, 4, 1, 8) selftest True ok rel 2.35e-03 occ_clusters 15 esc_max 55
+CELL qkv_gate:128 (2, 6, 0, 4) selftest True ok rel 1.66e-03 occ_clusters 30 esc_max 49
+ROW {"cell": "qkv_gate:128", "seed": 61, "base_us": 19.71, "base_net": 14.02, "correct": {"base": true, "(2, 6, 0, 7)": true, "(0, 4, 1, 8)": true, "(2, 6, 0, 4)": true}, "(2, 6, 0, 7)": {"us": 48.62, "net": 42.93, "gain_raw": 0.4054, "gain_net": 0.3265}, "(0, 4, 1, 8)": {"us": 35.74, "net": 30.05, "gain_raw": 0.5515, "gain_net": 0.4665}, "(2, 6, 0, 4)": {"us": 36.99, "net": 31.3, "gain_raw": 0.5329, "gain_net": 0.4479}}
+CELL pooler:256 (1, 4, 0, 4) selftest True ok rel 1.66e-03 occ_clusters 30 esc_max 54
+CELL pooler:256 (1, 4, 1, 4) selftest True ok rel 2.37e-03 occ_clusters 30 esc_max 54
+ROW {"cell": "pooler:256", "seed": 61, "base_us": 35.97, "base_net": 30.27, "correct": {"base": true, "(1, 4, 0, 4)": true, "(1, 4, 1, 4)": true}, "(1, 4, 0, 4)": {"us": 108.03, "net": 102.34, "gain_raw": 0.3329, "gain_net": 0.2958}, "(1, 4, 1, 4)": {"us": 98.1, "net": 92.4, "gain_raw": 0.3667, "gain_net": 0.3276}}
+CELL unpooler:256 (1, 4, 0, 2) selftest True ok rel 1.66e-03 occ_clusters 66 esc_max 39
+CELL unpooler:256 (1, 4, 1, 2) selftest True ok rel 2.45e-03 occ_clusters 66 esc_max 39
+ROW {"cell": "unpooler:256", "seed": 61, "base_us": 32.43, "base_net": 26.74, "correct": {"base": true, "(1, 4, 0, 2)": true, "(1, 4, 1, 2)": true}, "(1, 4, 0, 2)": {"us": 57.54, "net": 51.84, "gain_raw": 0.5637, "gain_net": 0.5157}, "(1, 4, 1, 2)": {"us": 53.09, "net": 47.39, "gain_raw": 0.6109, "gain_net": 0.5641}}
+CELL o:256 (1, 4, 0, 2) selftest True ok rel 1.65e-03 occ_clusters 66 esc_max 16
+CELL o:256 (1, 4, 1, 2) selftest True ok rel 2.46e-03 occ_clusters 66 esc_max 16
+ROW {"cell": "o:256", "seed": 61, "base_us": 14.3, "base_net": 8.61, "correct": {"base": true, "(1, 4, 0, 2)": true, "(1, 4, 1, 2)": true}, "(1, 4, 0, 2)": {"us": 26.88, "net": 21.18, "gain_raw": 0.5321, "gain_net": 0.4063}, "(1, 4, 1, 2)": {"us": 24.48, "net": 18.78, "gain_raw": 0.5843, "gain_net": 0.4583}}
+CELL qkv_gate:256 (1, 4, 1, 7) selftest True ok rel 2.35e-03 occ_clusters 15 esc_max 32
+CELL qkv_gate:256 (1, 4, 1, 4) selftest True ok rel 2.37e-03 occ_clusters 30 esc_max 49
+ROW {"cell": "qkv_gate:256", "seed": 61, "base_us": 26.78, "base_net": 21.09, "correct": {"base": true, "(1, 4, 1, 7)": true, "(1, 4, 1, 4)": true}, "(1, 4, 1, 7)": {"us": 69.18, "net": 63.49, "gain_raw": 0.3871, "gain_net": 0.3322}, "(1, 4, 1, 4)": {"us": 54.61, "net": 48.91, "gain_raw": 0.4905, "gain_net": 0.4311}}
+DONE 95s
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.96 sk2=13.25 torch=19.97 -> cgemv
+[okc] tune o m=1: cgemv=8.99 sk2=9.47 torch=12.51 -> cgemv
+[okc] tune pooler m=1: cgemv=17.76 sk2=18.53 torch=26.53 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.52 sgemv=7.87 sk2=8.26 torch=12.96 -> cgemv
+[okc] tune router m=1: rgemv=7.62 sk2=8.93 torch=20.0 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.73 torch=20.29 -> sk2
+[okc] tune unpooler m=16: sk2=17.82 torch=24.54 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.88 torch=20.64 -> sk2
+[okc] tune o m=32: sk2=9.7 torch=12.64 -> sk2
+[okc] tune pooler m=32: sk2=19.3 torch=27.2 -> sk2
+[okc] tune unpooler m=32: sk2=18.88 torch=24.58 -> sk2
+[okc] tune router m=128: rk=10.11 wide=12.51 gemm=13.57 torch=21.54 -> rk
+[okc] tune router m=256: rk=10.88 wide=14.02 gemm=17.57 torch=22.56 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-N2hOYJFv8gou4PPLj2vU4g

@@ -1,0 +1,166 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-IjUxlJjH21pnqnPERysksQ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"REPS": "20", "PB_VERBOSE": "1"} RETURNCODE 0
+RT12 off: RT12 disabled
+[1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=pbk_5a7282bf32105585 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -gencode=arch=compute_90a,code=sm_90a --ptxas-options=-v -c /root/.cache/torch_extensions/py312_cu130/pbk_5a7282bf32105585/cuda.cu -o cuda.cuda.o 
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi5ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi5ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 66.785 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi5ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi5ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 65.958 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 65.435 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 64.505 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 63.141 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi7ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi7ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 65.436 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 65.403 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 65.588 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 106 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 63.598 ms
+/root/.cache/torch_extensions/py312_cu130/pbk_5a7282bf32105585/cuda.cu: In function ‘CUresult (* pbk::get_encode())(CUtensorMap*, CUtensorMapDataType, cuuint32_t, void*, const cuuint64_t*, const cuuint64_t*, const cuuint32_t*, const cuuint32_t*, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill)’:
+/root/.cache/torch_extensions/py312_cu130/pbk_5a7282bf32105585/cuda.cu:267:24: warning: ‘cudaError_t cudaGetDriverEntryPoint(const char*, void**, long long unsigned int, cudaDriverEntryPointQueryResult*)’ is deprecated [-Wdeprecated-declarations]
+  267 |     cudaGetDriverEntryPoint("cuTensorMapEncodeTiled", &p, cudaEnableDefault, &q);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/include/cuda_runtime_api.h:13101:46: note: declared here
+13101 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGetDriverEntryPoint(const char *symbol, void **funcPtr, unsigned long long flags, enum cudaDriverEntryPointQueryResult *driverStatus = NULL);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~
+[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=pbk_5a7282bf32105585 -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/pbk_5a7282bf32105585/main.cpp -o main.o 
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o pbk_5a7282bf32105585.so
+PB compile 4s
+BUILD pw57_flush 56.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   13.60 us   0.46 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.68 us   0.82 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.32 us   1.36 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.46 us   1.60 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.96 us two_node 5.86 us overhead 4.06 us
+PREP flush+fixed done at 67s
+lt qkv_gate m128 heur 23200.00 best 0:66.92.1.0.0.0.35.0.2 18880.00 (694 tried, 2.6s)
+lt pooler m128 heur 31488.00 best 3:66.15.1.0.0.6.35.0.5 23648.00 (1086 tried, 5.5s)
+lt unpooler m128 heur 26432.00 best 2:66.18.1.0.0.7.35.0.5 22496.00 (749 tried, 7.5s)
+gv qkv_gate m8 v12 12576.00 best 1.1.1.2.16.8.1.1.2.1 6398.49 (ref 1.1.1.2.16.8.1.1.2.1 6398.49)
+  v12:12576.00 1.1.1.2.16.8.1.1.2.1:6398.49 1.1.2.1.8.16.1.1.0.1:8592.33 1.1.1.1.16.8.1.1.2.8193:8254.66 1.1.2.1.4.16.2.1.0.0:10343.38 1.1.2.1.4.16.2.1.0.1:10110.32 1.1.2.1.4.8.4.1.0.1:13701.02
+gv o m8 v12 5152.00 best 1.1.2.1.8.2.1.1.0.1 3531.04 (ref 1.1.2.1.8.2.1.1.0.1 3531.04)
+  v12:5152.00 1.1.2.1.8.2.1.1.0.1:3531.04 1.1.2.1.8.2.1.1.0.0:3886.29 1.1.2.2.4.4.1.1.0.1:4439.74 1.1.2.1.4.4.1.1.0.1:4978.51
+gv o m16 v12 5408.00 best 1.2.2.1.8.2.1.1.0.1 3707.73 (ref 1.2.2.1.8.2.1.1.0.1 3707.73)
+  v12:5408.00 1.2.2.1.8.2.1.1.0.1:3707.73 1.2.2.1.8.2.1.1.0.0:4260.99 1.2.2.1.8.2.1.1.2.1:7106.19 1.2.2.2.4.4.1.1.0.1:5089.66 1.2.2.2.4.4.1.1.2.1:4683.40 1.2.1.1.4.4.1.1.2.1:4712.60
+gv pooler m8 v12 19328.00 best 1.1.1.2.16.8.1.1.0.3 10941.32 (ref 1.1.1.2.16.8.1.1.0.3 10941.32)
+  v12:19328.00 1.1.1.2.16.8.1.1.0.3:10941.32 1.1.2.2.8.16.1.1.0.1:13117.00 1.1.2.2.8.16.1.1.0.0:13042.91 1.1.2.1.8.16.1.1.0.1:12771.51
+gv pooler m16 v12 19072.00 best 1.2.2.2.8.16.1.1.0.1 10849.78 (ref 1.2.2.2.8.16.1.1.0.1 10849.78)
+  v12:19072.00 1.2.2.2.8.16.1.1.0.1:10849.78 1.2.2.2.8.16.1.1.0.0:12761.10 1.2.2.1.8.16.1.1.2.1:13513.86 1.2.2.1.8.16.1.1.0.1:17086.22
+gv unpooler m8 v12 6048.00 best 1.1.2.1.16.4.1.1.0.1 1658.44 (ref 1.1.2.1.16.4.1.1.0.1 1658.44)
+  v12:6048.00 1.1.2.1.16.4.1.1.0.1:1658.44 1.1.2.1.16.4.1.1.0.0:3733.76 1.1.2.1.8.2.4.1.0.1:4468.64 1.1.2.1.8.4.2.1.0.1:4918.10 1.1.2.1.16.4.1.1.2.1:2527.84
+PREP r6 done in 91s
+PREP phase rq done at 91s
+BAKE qkv_gate m=8 r6 13.63 (ref)
+BAKE qkv_gate m=8 q144k16 15.33 (ref r6 13.63)
+PICK qkv_gate m=8 r6 13.63 (ref r6 13.63)
+PREP phase gx done at 91s
+PREP phase rq32 done at 91s
+PREP phase router done at 91s
+PREP done in 91s
+
+PREP parent done 95s
+FIXED one-node graph 5.57 us
+CELL pooler:128 (4, 5, 2, 1, 8) SKIP not resident 128 0
+CELL pooler:128 (4, 4, 1, 1, 8) SKIP not resident 128 0
+CELL pooler:128 (2, 6, 2, 1, 4) selftest True ok rel 3.11e-03 ctas 128 resident 132 esc_max 54
+ROW {"cell": "pooler:128", "seed": 61, "base_us": 30.24, "base_net": 24.67, "correct": {"base": true, "(2, 6, 2, 1, 4)": true}, "(2, 6, 2, 1, 4)": {"us": 55.5, "net": 49.94, "gain_raw": 0.5448, "gain_net": 0.4941}}
+CELL unpooler:128 (4, 5, 2, 1, 4) SKIP not resident 128 0
+CELL unpooler:128 (2, 6, 2, 1, 2) selftest True ok rel 2.45e-03 ctas 128 resident 132 esc_max 39
+ROW {"cell": "unpooler:128", "seed": 61, "base_us": 28.22, "base_net": 22.66, "correct": {"base": true, "(2, 6, 2, 1, 2)": true}, "(2, 6, 2, 1, 2)": {"us": 52.34, "net": 46.77, "gain_raw": 0.5393, "gain_net": 0.4844}}
+CELL o:128 (4, 4, 2, 1, 4) SKIP not resident 128 0
+CELL o:128 (2, 6, 2, 1, 2) selftest True ok rel 2.43e-03 ctas 128 resident 132 esc_max 16
+ROW {"cell": "o:128", "seed": 61, "base_us": 12.24, "base_net": 6.67, "correct": {"base": true, "(2, 6, 2, 1, 2)": true}, "(2, 6, 2, 1, 2)": {"us": 22.43, "net": 16.86, "gain_raw": 0.5456, "gain_net": 0.3956}}
+CELL qkv_gate:128 (4, 4, 1, 1, 14) SKIP not resident 126 0
+CELL qkv_gate:128 (2, 6, 2, 1, 7) selftest True ok rel 3.76e-03 ctas 126 resident 132 esc_max 32
+ROW {"cell": "qkv_gate:128", "seed": 61, "base_us": 19.82, "base_net": 14.26, "correct": {"base": true, "(2, 6, 2, 1, 7)": true}, "(2, 6, 2, 1, 7)": {"us": 36.16, "net": 30.59, "gain_raw": 0.5482, "gain_net": 0.466}}
+CELL pooler:256 (4, 5, 1, 2, 4) SKIP not resident 128 0
+CELL pooler:256 (4, 5, 2, 1, 4) SKIP not resident 128 0
+CELL pooler:256 (2, 6, 1, 2, 2) selftest True ok rel 2.45e-03 ctas 128 resident 132 esc_max 99
+ROW {"cell": "pooler:256", "seed": 61, "base_us": 35.22, "base_net": 29.65, "correct": {"base": true, "(2, 6, 1, 2, 2)": true}, "(2, 6, 1, 2, 2)": {"us": 93.12, "net": 87.55, "gain_raw": 0.3782, "gain_net": 0.3386}}
+CELL unpooler:256 (4, 5, 1, 2, 2) SKIP not resident 128 0
+CELL unpooler:256 (4, 5, 2, 1, 2) SKIP not resident 128 0
+ROW {"cell": "unpooler:256", "seed": 61, "base_us": 33.74, "base_net": 28.18, "correct": {"base": true}}
+CELL o:256 (4, 4, 1, 2, 2) SKIP not resident 128 0
+CELL o:256 (2, 6, 1, 2, 1) selftest True ok rel 1.65e-03 ctas 128 resident 132 esc_max 27
+ROW {"cell": "o:256", "seed": 61, "base_us": 14.22, "base_net": 8.66, "correct": {"base": true, "(2, 6, 1, 2, 1)": true}, "(2, 6, 1, 2, 1)": {"us": 30.59, "net": 25.02, "gain_raw": 0.465, "gain_net": 0.3459}}
+CELL qkv_gate:256 (4, 5, 1, 2, 7) SKIP not resident 126 0
+CELL qkv_gate:256 (2, 6, 1, 2, 3) selftest True ok rel 2.84e-03 ctas 108 resident 132 esc_max 62
+ROW {"cell": "qkv_gate:256", "seed": 61, "base_us": 26.26, "base_net": 20.69, "correct": {"base": true, "(2, 6, 1, 2, 3)": true}, "(2, 6, 1, 2, 3)": {"us": 65.15, "net": 59.58, "gain_raw": 0.403, "gain_net": 0.3472}}
+DONE 95s
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.99 sk2=13.38 torch=20.64 -> cgemv
+[okc] tune o m=1: cgemv=9.12 sk2=9.38 torch=12.51 -> cgemv
+[okc] tune pooler m=1: cgemv=17.79 sk2=18.27 torch=26.69 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.52 sgemv=7.68 sk2=8.26 torch=12.96 -> cgemv
+[okc] tune router m=1: rgemv=7.62 sk2=8.83 torch=19.49 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.79 torch=20.32 -> sk2
+[okc] tune unpooler m=16: sk2=18.05 torch=24.48 -> sk2
+[okc] tune qkv_gate m=32: sk2=14.94 torch=20.7 -> sk2
+[okc] tune o m=32: sk2=9.95 torch=12.42 -> sk2
+[okc] tune pooler m=32: sk2=19.17 torch=27.58 -> sk2
+[okc] tune unpooler m=32: sk2=18.98 torch=25.09 -> sk2
+[okc] tune router m=128: rk=10.18 wide=13.18 gemm=13.92 torch=21.31 -> rk
+[okc] tune router m=256: rk=11.01 wide=13.6 gemm=17.41 torch=22.66 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-IjUxlJjH21pnqnPERysksQ

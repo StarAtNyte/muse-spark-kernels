@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-HEtk3FaijwGeZ3D0gm0G6T
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+Stopping app - local client disconnected. Use `modal run --detach` to keep apps running even if your local client disconnects.
+[modal-client] 2026-11-04T21:57:11+0545 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/home/nitiz/miniconda3/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/nitiz/.local/share/uv/tools/modal/lib/python3.14/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+ENV {"DBGS": "[0,23,87,151,215,48,80,64]", "CFGS": "[[\"pooler\",128,[2,6,1,1,4]],[\"unpooler\",256,[2,6,1,1,1]]]"} RETURNCODE 124
+RT12 off: RT12 disabled
+FIXED 5.36
+ATTR pooler 128 [2, 6, 1, 1, 4] regs 107 maxthr 320 static 1024 resident 132 ctas 128
+
+STDERR:
+
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-HEtk3FaijwGeZ3D0gm0G6T

@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-t4nm6PHAeToa8GqHFvDjmt
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"DBGS": "[0,7,16,23,32,48,8]", "CFGS": "[[\"pooler\",128,[2,6,1,1,4]],[\"pooler\",128,[2,6,1,1,1]],[\"unpooler\",256,[2,6,1,1,1]],[\"o\",128,[2,6,1,1,2]],[\"qkv_gate\",128,[2,6,1,1,7]]]"} RETURNCODE 0
+RT12 off: RT12 disabled
+FIXED 5.22
+ATTR pooler 128 [2, 6, 1, 1, 4] regs 109 maxthr 320 static 1024 resident 132 ctas 128
+ABL pooler 128 [2, 6, 1, 1, 4] {"ok": true, "0": 27.97, "7": 20.0, "16": 19.58, "23": 11.26, "32": 10.59, "48": 2.37, "8": 26.37}
+ATTR pooler 128 [2, 6, 1, 1, 1] regs 109 maxthr 320 static 1024 resident 132 ctas 32
+ABL pooler 128 [2, 6, 1, 1, 1] {"ok": true, "0": 77.09, "7": 53.15, "16": 59.01, "23": 35.23, "32": 20.19, "48": 2.72, "8": 77.25}
+ATTR unpooler 256 [2, 6, 1, 1, 1] regs 109 maxthr 320 static 1024 resident 132 ctas 128
+ABL unpooler 256 [2, 6, 1, 1, 1] {"ok": true, "0": 39.07, "7": 25.34, "16": 31.01, "23": 16.77, "32": 10.53, "48": 2.24, "8": 39.1}
+ATTR o 128 [2, 6, 1, 1, 2] regs 109 maxthr 320 static 1024 resident 132 ctas 128
+ABL o 128 [2, 6, 1, 1, 2] {"ok": true, "0": 11.9, "7": 8.77, "16": 8.38, "23": 4.03, "32": 6.59, "48": 1.86, "8": 11.14}
+ATTR qkv_gate 128 [2, 6, 1, 1, 7] regs 109 maxthr 320 static 1024 resident 132 ctas 126
+ABL qkv_gate 128 [2, 6, 1, 1, 7] {"ok": true, "0": 17.76, "7": 12.83, "16": 12.77, "23": 7.26, "32": 7.81, "48": 1.82, "8": 17.25}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-t4nm6PHAeToa8GqHFvDjmt

@@ -1,0 +1,46 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Z1GU0XXmrNO7SM8SDpPO4D
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"CFGS": "[[\"pooler\",128,[2,6,1,1,4]],[\"pooler\",128,[2,6,2,1,4]],[\"unpooler\",256,[2,6,1,1,1]],[\"unpooler\",256,[2,6,1,2,1]],[\"o\",128,[2,6,1,1,2]],[\"pooler\",128,[4,4,1,1,8]],[\"pooler\",128,[4,5,2,1,8]]]"} RETURNCODE 0
+RT12 off: RT12 disabled
+FIXED 5.12
+ATTR pooler 128 [2, 6, 1, 1, 4] regs 106 maxthr 512 static 1024 resident 132 ctas 128
+ABL pooler 128 [2, 6, 1, 1, 4] {"ok": true, "0": 33.31, "1": 32.7, "2": 33.02, "4": 30.91, "3": 31.84, "5": 22.3, "7": 21.25, "8": 31.94}
+ATTR pooler 128 [2, 6, 2, 1, 4] regs 106 maxthr 512 static 1024 resident 132 ctas 128
+ABL pooler 128 [2, 6, 2, 1, 4] {"ok": true, "0": 50.37, "1": 43.97, "2": 49.06, "4": 42.75, "3": 43.55, "5": 33.57, "7": 27.84, "8": 49.92}
+ATTR unpooler 256 [2, 6, 1, 1, 1] regs 106 maxthr 512 static 1024 resident 132 ctas 128
+ABL unpooler 256 [2, 6, 1, 1, 1] {"ok": true, "0": 47.9, "1": 40.06, "2": 47.42, "4": 45.44, "3": 37.15, "5": 28.83, "7": 26.88, "8": 48.16}
+ATTR unpooler 256 [2, 6, 1, 2, 1] regs 106 maxthr 512 static 1024 resident 132 ctas 128
+ABL unpooler 256 [2, 6, 1, 2, 1] {"ok": true, "0": 81.76, "1": 64.67, "2": 78.91, "4": 69.63, "3": 65.18, "5": 53.66, "7": 41.7, "8": 81.66}
+ATTR o 128 [2, 6, 1, 1, 2] regs 106 maxthr 512 static 1024 resident 132 ctas 128
+ABL o 128 [2, 6, 1, 1, 2] {"ok": true, "0": 13.38, "1": 12.42, "2": 13.41, "4": 12.0, "3": 12.48, "5": 9.63, "7": 9.12, "8": 12.42}
+ATTR pooler 128 [4, 4, 1, 1, 8] regs 106 maxthr 512 static 1024 resident 0 ctas 128
+ATTR pooler 128 [4, 5, 2, 1, 8] regs 106 maxthr 512 static 1024 resident 0 ctas 128
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Z1GU0XXmrNO7SM8SDpPO4D

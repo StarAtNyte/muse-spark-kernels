@@ -1,0 +1,97 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-9DK2JqG8CUCMLi0CVQH6ty
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_big_v1/moda
+│   l_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PB_VERBOSE": "1", "CFGS": "[[\"pooler\",128,[2,6,1,1,4]],[\"pooler\",128,[2,6,2,1,4]],[\"unpooler\",256,[2,6,1,1,1]],[\"qkv_gate\",128,[2,6,2,1,7]],[\"o\",128,[2,6,1,1,2]],[\"pooler\",128,[4,4,1,1,8]],[\"pooler\",128,[4,5,2,1,8]],[\"unpooler\",128,[4,5,2,1,4]]]"} RETURNCODE 124
+RT12 off: RT12 disabled
+[1/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=pbk_79ef10e80862f5af -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -gencode=arch=compute_90a,code=sm_90a --ptxas-options=-v -c /root/.cache/torch_extensions/py312_cu130/pbk_79ef10e80862f5af/cuda.cu -o cuda.cuda.o 
+ptxas info    : (C7512) Potential Performance Loss: wgmma.mma_async instructions are serialized due to insufficient register resources for the function '_ZN3pbk9pb_kernelILi4ELi5ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii'
+ptxas info    : (C7512) Potential Performance Loss: wgmma.mma_async instructions are serialized due to insufficient register resources for the function '_ZN3pbk9pb_kernelILi4ELi5ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii'
+ptxas info    : (C7512) Potential Performance Loss: wgmma.mma_async instructions are serialized due to insufficient register resources for the function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii'
+ptxas info    : (C7512) Potential Performance Loss: wgmma.mma_async instructions are serialized due to insufficient register resources for the function '_ZN3pbk9pb_kernelILi4ELi4ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii'
+ptxas info    : (C7512) Potential Performance Loss: wgmma.mma_async instructions are serialized due to insufficient register resources for the function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii'
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi5ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi5ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers, 32 bytes cumulative stack size, 1024 bytes smem
+ptxas info    : Compile time = 96.984 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi5ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi5ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers, 32 bytes cumulative stack size, 1024 bytes smem
+ptxas info    : Compile time = 93.430 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers, 32 bytes cumulative stack size, 1024 bytes smem
+ptxas info    : Compile time = 90.306 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers, 32 bytes cumulative stack size, 1024 bytes smem
+ptxas info    : Compile time = 89.879 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi4ELi4ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi4ELi4ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers, 32 bytes cumulative stack size, 1024 bytes smem
+ptxas info    : Compile time = 90.263 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi7ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi7ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 72.722 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi1ELi2EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 73.458 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi2ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 72.428 ms
+ptxas info    : Compiling entry function '_ZN3pbk9pb_kernelILi2ELi6ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii' for 'sm_90a'
+ptxas info    : Function properties for _ZN3pbk9pb_kernelILi2ELi6ELi1ELi1EEEv14CUtensorMap_stPKhP13__nv_bfloat16PK4int4PKiPKS4_Pijiiiiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 109 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 70.719 ms
+/root/.cache/torch_extensions/py312_cu130/pbk_79ef10e80862f5af/cuda.cu: In function ‘CUresult (* pbk::get_encode())(CUtensorMap*, CUtensorMapDataType, cuuint32_t, void*, const cuuint64_t*, const cuuint64_t*, const cuuint32_t*, const cuuint32_t*, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill)’:
+/root/.cache/torch_extensions/py312_cu130/pbk_79ef10e80862f5af/cuda.cu:304:24: warning: ‘cudaError_t cudaGetDriverEntryPoint(const char*, void**, long long unsigned int, cudaDriverEntryPointQueryResult*)’ is deprecated [-Wdeprecated-declarations]
+  304 |     cudaGetDriverEntryPoint("cuTensorMapEncodeTiled", &p, cudaEnableDefault, &q);
+      |     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda/include/cuda_runtime_api.h:13101:46: note: declared here
+13101 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGetDriverEntryPoint(const char *symbol, void **funcPtr, unsigned long long flags, enum cudaDriverEntryPointQueryResult *driverStatus = NULL);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~
+[2/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=pbk_79ef10e80862f5af -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/pbk_79ef10e80862f5af/main.cpp -o main.o 
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o pbk_79ef10e80862f5af.so
+FIXED 5.28
+ATTR pooler 128 [2, 6, 1, 1, 4] regs 109 maxthr 320 static 1024 resident 132 ctas 128
+ABL pooler 128 [2, 6, 1, 1, 4] {"ok": true, "0": 27.71, "1": 25.54, "2": 27.42, "4": 26.3, "3": 25.09, "5": 20.03, "7": 19.87, "8": 26.21}
+ATTR pooler 128 [2, 6, 2, 1, 4] regs 109 maxthr 320 static 1024 resident 132 ctas 128
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-9DK2JqG8CUCMLi0CVQH6ty
