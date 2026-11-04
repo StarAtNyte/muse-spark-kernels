@@ -50,8 +50,12 @@ _ce.load_inline = _load_inline
 def load(name, path):
     sp = importlib.util.spec_from_file_location(name, path); m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m); return m
 NAMES = os.environ.get('VARIANTS', 'base,g16,l32').split(',')
-MODS = {n: load('m_' + n, f'/w/modal/_vfull/{n}.py') for n in NAMES}
-for n, M in MODS.items(): M._module()
+MODS = {}
+for n in list(NAMES):
+    try:
+        M = load('m_' + n, f'/w/modal/_vfull/{n}.py'); M._module(); MODS[n] = M
+    except Exception as e:
+        print('BUILDFAIL', n, str(e)[-1500:], flush=True); NAMES.remove(n)
 flush = torch.zeros(256 * 1024 * 1024 // 4, device='cuda')
 def cap(M, d):
     o = M.kernel_fn(d); torch.cuda.synchronize(); g = torch.cuda.CUDAGraph()

@@ -1,0 +1,42 @@
+✓ checking submission_g16b.py on muse_attention_decode  job 979f4c2f587f4325
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› running the tests, then timing against SGLang  0:12
+› running the tests, then timing against SGLang  0:18
+› running the tests, then timing against SGLang  0:48
+› running the tests, then timing against SGLang  1:18
+› running the tests, then timing against SGLang  1:48
+› running the tests, then timing against SGLang  2:18
+› running the tests, then timing against SGLang  2:48
+› running the tests, then timing against SGLang  3:18
+› running the tests, then timing against SGLang  3:48
+› running the tests, then timing against SGLang  4:18
+› running the tests, then timing against SGLang  4:48
+› running the tests, then timing against SGLang  5:18
+
+ran for 5:36 · queued 0:19
+
+✓ muse_attention_decode  passed  check run, off the board  job 979f4c2f587f4325
+
+  2.652×  ━━━━━━━━━╋━━━━━━━━━━━━──────  faster than SGLang  95%: 2.612–2.708×
+
+  time        1,420.2 µs
+  tests       16/16 passed
+  profile     profiles/submission_g16b.979f4c2f587f4325.txt  and .json
+  output      profiles/submission_g16b.979f4c2f587f4325.log
+
+  CASE                    SGLANG      YOURS   SPEEDUP
+  ──────────────────────────────────────────────────────────────────
+  decode 1 · sliding     20.4 µs     5.2 µs    3.918×   ━━━━━━╋━━━━━
+  decode 1 · full        31.6 µs    11.2 µs    2.825×   ━━━━━━╋━━━━━
+  decode 16 · sliding    26.5 µs     8.0 µs    3.325×   ━━━━━━╋━━━━━
+  decode 16 · full      199.9 µs    86.6 µs    2.307×   ━━━━━━╋━━━━━
+  decode 32 · sliding    31.2 µs    10.1 µs    3.077×   ━━━━━━╋━━━━━
+  decode 32 · full      384.8 µs   166.5 µs    2.311×   ━━━━━━╋━━━━━
+  verify 1 · sliding     22.8 µs     6.4 µs    3.558×   ━━━━━━╋━━━━━
+  verify 1 · full        36.6 µs    13.3 µs    2.742×   ━━━━━━╋━━━━━
+  verify 16 · sliding    29.4 µs    10.4 µs    2.814×   ━━━━━━╋━━━━━
+  verify 16 · full      204.9 µs    97.2 µs    2.109×   ━━━━━━╋━━━━━
+  verify 32 · sliding    34.8 µs    13.1 µs    2.647×   ━━━━━━╋━━━━━
+  verify 32 · full      389.2 µs   179.2 µs    2.172×   ━━━━━━╋━━━━━
+  18 of 20 runs left today, 36 of 40 checks on muse_attention_decode

@@ -1,0 +1,136 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-a6oi0eJCPcCHVIk7YcEnpT
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+=======
+====
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+=========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+ENV {"PHASE": "time", "VARIANTS": "g16,g16b,g16bs", "CASES": "d1s,d1f,d16s,d16f,d32s,d32f,v1s,v1f,v16s,v16f,v32s,v32f", "SEEDS": "11,12,13", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"g16": 8.8, "g16b": 8.86, "g16bs": 8.86}, "gain": null, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"g16": 8.86, "g16b": 8.83, "g16bs": 8.98}, "gain": null, "bad": {}}
+ROW {"case": "d1s", "seed": 13, "med": {"g16": 8.96, "g16b": 8.86, "g16bs": 8.9}, "gain": null, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"g16": 14.85, "g16b": 14.94, "g16bs": 15.2}, "gain": null, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"g16": 14.8, "g16b": 14.98, "g16bs": 15.25}, "gain": null, "bad": {}}
+ROW {"case": "d1f", "seed": 13, "med": {"g16": 14.88, "g16b": 14.83, "g16bs": 15.1}, "gain": null, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"g16": 12.13, "g16b": 12.29, "g16bs": 12.32}, "gain": null, "bad": {}}
+ROW {"case": "d16s", "seed": 12, "med": {"g16": 12.13, "g16b": 12.26, "g16bs": 12.35}, "gain": null, "bad": {}}
+ROW {"case": "d16s", "seed": 13, "med": {"g16": 12.13, "g16b": 12.18, "g16bs": 12.26}, "gain": null, "bad": {}}
+ROW {"case": "d16f", "seed": 11, "med": {"g16": 91.82, "g16b": 91.46, "g16bs": 91.55}, "gain": null, "bad": {}}
+ROW {"case": "d16f", "seed": 12, "med": {"g16": 88.26, "g16b": 88.34, "g16bs": 88.67}, "gain": null, "bad": {}}
+ROW {"case": "d16f", "seed": 13, "med": {"g16": 92.37, "g16b": 91.9, "g16bs": 91.95}, "gain": null, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"g16": 14.03, "g16b": 14.24, "g16bs": 14.21}, "gain": null, "bad": {}}
+ROW {"case": "d32s", "seed": 12, "med": {"g16": 14.08, "g16b": 14.16, "g16bs": 14.18}, "gain": null, "bad": {}}
+ROW {"case": "d32s", "seed": 13, "med": {"g16": 14.03, "g16b": 14.08, "g16bs": 13.98}, "gain": null, "bad": {}}
+ROW {"case": "d32f", "seed": 11, "med": {"g16": 171.52, "g16b": 171.31, "g16bs": 171.68}, "gain": null, "bad": {}}
+ROW {"case": "d32f", "seed": 12, "med": {"g16": 168.61, "g16b": 169.04, "g16bs": 169.14}, "gain": null, "bad": {}}
+ROW {"case": "d32f", "seed": 13, "med": {"g16": 169.76, "g16b": 169.89, "g16bs": 169.38}, "gain": null, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"g16": 10.78, "g16b": 10.56, "g16bs": 10.4}, "gain": null, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"g16": 10.7, "g16b": 10.75, "g16bs": 10.58}, "gain": null, "bad": {}}
+ROW {"case": "v1s", "seed": 13, "med": {"g16": 10.72, "g16b": 10.59, "g16bs": 10.46}, "gain": null, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"g16": 18.34, "g16b": 17.6, "g16bs": 17.17}, "gain": null, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"g16": 18.24, "g16b": 17.49, "g16bs": 17.14}, "gain": null, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"g16": 18.21, "g16b": 17.41, "g16bs": 17.22}, "gain": null, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"g16": 15.14, "g16b": 14.54, "g16bs": 14.3}, "gain": null, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"g16": 15.28, "g16b": 14.72, "g16bs": 14.4}, "gain": null, "bad": {}}
+ROW {"case": "v16s", "seed": 13, "med": {"g16": 15.23, "g16b": 14.61, "g16bs": 14.43}, "gain": null, "bad": {}}
+ROW {"case": "v16f", "seed": 11, "med": {"g16": 101.41, "g16b": 101.39, "g16bs": 101.34}, "gain": null, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"g16": 98.19, "g16b": 98.37, "g16bs": 98.51}, "gain": null, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"g16": 101.2, "g16b": 101.26, "g16bs": 101.58}, "gain": null, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"g16": 18.7, "g16b": 17.25, "g16bs": 16.78}, "gain": null, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"g16": 18.83, "g16b": 17.26, "g16bs": 16.78}, "gain": null, "bad": {}}
+ROW {"case": "v32s", "seed": 13, "med": {"g16": 18.78, "g16b": 17.36, "g16bs": 17.09}, "gain": null, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"g16": 185.3, "g16b": 184.7, "g16bs": 185.26}, "gain": null, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"g16": 181.87, "g16b": 181.41, "g16bs": 181.44}, "gain": null, "bad": {}}
+ROW {"case": "v32f", "seed": 13, "med": {"g16": 182.13, "g16b": 182.69, "g16bs": 182.91}, "gain": null, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "g16,g16bs", "XCASES": "v1f,v1s,v16s,v32s,d1s,v16f", "SEEDS": "11,12"} RETURNCODE 0
+RES okc_attn_vfg16_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_vfg16_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_vfg16bs_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_vfg16bs_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST 0 11 {"g16": [true, ["1.954e-03", "1.954e-03", "0.073"]], "g16bs": [true, ["1.954e-03", "1.954e-03", "0.073"]]}
+TEST 0 12 {"g16": [true, ["5.105e-03", "5.105e-03", "0.137"]], "g16bs": [true, ["5.105e-03", "5.105e-03", "0.137"]]}
+TEST 1 11 {"g16": [true, ["5.922e-03", "6.811e-03", "0.150"]], "g16bs": [true, ["5.922e-03", "6.811e-03", "0.150"]]}
+TEST 1 12 {"g16": [true, ["5.310e-03", "6.399e-03", "0.150"]], "g16bs": [true, ["5.310e-03", "6.399e-03", "0.150"]]}
+TEST 2 11 {"g16": [true, ["7.576e-02", "1.101e-01", "0.150"]], "g16bs": [true, ["7.600e-02", "1.100e-01", "0.150"]]}
+TEST 2 12 {"g16": [true, ["7.704e-02", "1.106e-01", "0.150"]], "g16bs": [true, ["7.784e-02", "1.126e-01", "0.150"]]}
+TEST 3 11 {"g16": [true, ["6.646e-03", "7.294e-03", "0.150"]], "g16bs": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"g16": [true, ["5.865e-03", "6.923e-03", "0.150"]], "g16bs": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"g16": [true, ["5.797e-03", "6.583e-03", "0.150"]], "g16bs": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"g16": [true, ["5.502e-03", "5.882e-03", "0.150"]], "g16bs": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"g16": [true, ["9.338e-02", "1.147e-01", "0.150"]], "g16bs": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 5 12 {"g16": [true, ["8.963e-02", "1.218e-01", "0.150"]], "g16bs": [true, ["8.963e-02", "1.218e-01", "0.150"]]}
+TEST 6 11 {"g16": [true, ["4.671e-03", "5.410e-03", "0.150"]], "g16bs": [true, ["4.671e-03", "5.410e-03", "0.150"]]}
+TEST 6 12 {"g16": [true, ["5.016e-03", "5.865e-03", "0.150"]], "g16bs": [true, ["5.016e-03", "5.865e-03", "0.150"]]}
+TEST 7 11 {"g16": [true, ["8.319e-02", "1.119e-01", "0.150"]], "g16bs": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"g16": [true, ["8.469e-02", "1.158e-01", "0.150"]], "g16bs": [true, ["8.469e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"g16": [true, ["9.361e-02", "1.190e-01", "0.150"]], "g16bs": [true, ["9.530e-02", "1.195e-01", "0.150"]]}
+TEST 8 12 {"g16": [true, ["9.594e-02", "1.224e-01", "0.150"]], "g16bs": [true, ["9.719e-02", "1.248e-01", "0.150"]]}
+TEST 9 11 {"g16": [true, ["8.079e-02", "1.123e-01", "0.150"]], "g16bs": [true, ["8.104e-02", "1.131e-01", "0.150"]]}
+TEST 9 12 {"g16": [true, ["7.594e-02", "1.059e-01", "0.150"]], "g16bs": [true, ["7.687e-02", "1.093e-01", "0.150"]]}
+TEST 10 11 {"g16": [true, ["5.713e-03", "5.735e-03", "0.150"]], "g16bs": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"g16": [true, ["4.862e-03", "5.158e-03", "0.150"]], "g16bs": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"g16": [true, ["4.979e-03", "5.837e-03", "0.150"]], "g16bs": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 11 12 {"g16": [true, ["4.951e-03", "5.279e-03", "0.150"]], "g16bs": [true, ["4.951e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"g16": [true, ["6.485e-02", "1.030e-01", "0.150"]], "g16bs": [true, ["6.588e-02", "1.036e-01", "0.150"]]}
+TEST 12 12 {"g16": [true, ["6.007e-02", "8.164e-02", "0.150"]], "g16bs": [true, ["6.140e-02", "8.421e-02", "0.150"]]}
+TEST 13 11 {"g16": [true, ["7.471e-02", "7.959e-02", "0.150"]], "g16bs": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"g16": [true, ["7.535e-02", "8.532e-02", "0.150"]], "g16bs": [true, ["7.535e-02", "8.532e-02", "0.150"]]}
+TEST 14 11 {"g16": [true, ["3.189e-03", "3.889e-03", "0.122"]], "g16bs": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"g16": [true, ["3.763e-03", "4.240e-03", "0.142"]], "g16bs": [true, ["3.763e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"g16": [true, ["4.559e-02", "5.149e-02", "0.109"]], "g16bs": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST 15 12 {"g16": [true, ["4.791e-02", "5.927e-02", "0.113"]], "g16bs": [true, ["4.791e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"g16": [true, ["3.540e-02", "4.588e-02", "0.101"]], "g16bs": [true, ["3.809e-02", "6.001e-02", "0.101"]]}
+TEST S0 12 {"g16": [true, ["3.412e-02", "4.413e-02", "0.101"]], "g16bs": [true, ["3.489e-02", "4.509e-02", "0.101"]]}
+TEST S1 11 {"g16": [true, ["6.615e-02", "8.740e-02", "0.150"]], "g16bs": [true, ["6.707e-02", "8.902e-02", "0.150"]]}
+TEST S1 12 {"g16": [true, ["6.136e-02", "7.505e-02", "0.150"]], "g16bs": [true, ["6.187e-02", "7.557e-02", "0.150"]]}
+TEST S2 11 {"g16": [true, ["6.626e-02", "9.741e-02", "0.150"]], "g16bs": [true, ["6.929e-02", "9.650e-02", "0.150"]]}
+TEST S2 12 {"g16": [true, ["6.405e-02", "9.984e-02", "0.150"]], "g16bs": [true, ["6.733e-02", "1.070e-01", "0.150"]]}
+TEST S3 11 {"g16": [true, ["6.502e-02", "1.162e-01", "0.150"]], "g16bs": [true, ["6.769e-02", "1.115e-01", "0.150"]]}
+TEST S3 12 {"g16": [true, ["6.529e-02", "1.081e-01", "0.150"]], "g16bs": [true, ["6.778e-02", "1.097e-01", "0.150"]]}
+TEST S4 11 {"g16": [true, ["4.347e-03", "4.347e-03", "0.150"]], "g16bs": [true, ["4.347e-03", "4.347e-03", "0.150"]]}
+TEST S4 12 {"g16": [true, ["4.903e-03", "4.903e-03", "0.150"]], "g16bs": [true, ["4.903e-03", "4.903e-03", "0.150"]]}
+TEST S5 11 {"g16": [true, ["3.944e-02", "7.663e-02", "0.082"]], "g16bs": [true, ["3.944e-02", "7.663e-02", "0.082"]]}
+TEST S5 12 {"g16": [true, ["4.056e-02", "9.847e-02", "0.085"]], "g16bs": [true, ["4.056e-02", "9.847e-02", "0.085"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-a6oi0eJCPcCHVIk7YcEnpT
