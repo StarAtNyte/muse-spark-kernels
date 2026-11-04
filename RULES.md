@@ -20,3 +20,13 @@ These notes govern our kernel work and submissions. The [official challenge rule
 ## Current audit
 
 Some historical scored candidates contain encoded source, and some projection paths use BF16 split reductions. Their published scores are not confirmed eligible. See [the rule audit](research/compliance/2026-11-03-rule-audit.md) and [job inventory](research/compliance/encoded-scored-jobs-2026-11-03.json) before reusing or submitting them. Preserve the experiment history; never submit an encoded or otherwise known noncompliant candidate.
+
+## Organizer clarifications, 2026-11-03/04 (Slack, Justin Wang; supersede the FP32-partials notes above)
+
+- Partial sums (split-K and split-KV, including non-router BF16 projections, attention and NVFP4 MoE) may be held in BF16/FP16, and the combine itself may run in BF16 (e.g. `red.add.bf16x2`), as long as outputs stay within tolerance. The earlier "FP32 until final output" answer is struck.
+- The FP32 residual stream may be held in FP16 between two fused steps inside the decode layer, within tolerance.
+- GPU fast approximations (fast exp, tanh, rsqrt, etc.) are fine for sigmoid, SiLU and norms within tolerance. A cheaper exp is fine for attention softmax, including attention inside prefill and the decode layer. Where SGLang rounds to BF16 mid-computation, keeping FP32 is fine.
+- `prepare` may keep several lossless layouts of the same weights for different shapes.
+- Disqualified: using the router's 0.05 score slack to prefer near-tie experts that the batch already loads (gaming the check), and a clamped linear sigmoid. Not every run within tolerance is accepted: degenerate cases or ones that cannot be reviewed are removed.
+- Ranking takes the median of reruns, not the best lucky draw. Resubmitting identical code for a better draw does not help.
+- Goal reminder: kernels that could plausibly go into SGLang, not extensive per-shape tuning. The 1 MB file limit stays.
