@@ -1,0 +1,154 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iCNwPZJWzGUjJHS1A93Izy
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VARIANTS": "base,tA,tB", "CASES": "d1s,d16s,d32s,v1s,v16s,v32s,d1f,v1f"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.1, "tA": 9.18, "tB": 9.18}, "gain": {"base": 1.0, "tA": 0.991, "tB": 0.991}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 9.28, "tA": 9.06, "tB": 9.2}, "gain": {"base": 1.0, "tA": 1.025, "tB": 1.009}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 12.51, "tA": 15.84, "tB": 12.83}, "gain": {"base": 1.0, "tA": 0.79, "tB": 0.975}, "bad": {}}
+ROW {"case": "d16s", "seed": 12, "med": {"base": 12.48, "tA": 16.06, "tB": 13.04}, "gain": {"base": 1.0, "tA": 0.777, "tB": 0.957}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 14.11, "tA": 18.05, "tB": 14.91}, "gain": {"base": 1.0, "tA": 0.782, "tB": 0.946}, "bad": {}}
+ROW {"case": "d32s", "seed": 12, "med": {"base": 14.03, "tA": 18.38, "tB": 14.75}, "gain": {"base": 1.0, "tA": 0.763, "tB": 0.951}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.66, "tA": 10.62, "tB": 10.62}, "gain": {"base": 1.0, "tA": 1.003, "tB": 1.003}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.59, "tA": 10.74, "tB": 10.66}, "gain": {"base": 1.0, "tA": 0.987, "tB": 0.994}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.37, "tA": 20.0, "tB": 15.52}, "gain": {"base": 1.0, "tA": 0.718, "tB": 0.926}, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"base": 14.5, "tA": 20.1, "tB": 15.52}, "gain": {"base": 1.0, "tA": 0.721, "tB": 0.934}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.96, "tA": 29.52, "tB": 17.92}, "gain": {"base": 1.0, "tA": 0.575, "tB": 0.946}, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"base": 16.94, "tA": 29.47, "tB": 17.82}, "gain": {"base": 1.0, "tA": 0.575, "tB": 0.951}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.04, "tA": 15.15, "tB": 15.41}, "gain": {"base": 1.0, "tA": 0.993, "tB": 0.976}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 15.06, "tA": 15.25, "tB": 15.42}, "gain": {"base": 1.0, "tA": 0.987, "tB": 0.976}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.31, "tA": 17.36, "tB": 17.36}, "gain": {"base": 1.0, "tA": 0.997, "tB": 0.997}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 17.28, "tA": 17.41, "tB": 17.28}, "gain": {"base": 1.0, "tA": 0.993, "tB": 1.0}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"VARIANTS": "base,pf,bf1", "CASES": "d1s,d16s,d32s,v1s,v16s,v32s,d1f,v1f"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 8.8, "pf": 8.8, "bf1": 8.8}, "gain": {"base": 1.0, "pf": 1.0, "bf1": 1.0}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 8.83, "pf": 8.91, "bf1": 8.83}, "gain": {"base": 1.0, "pf": 0.991, "bf1": 1.0}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 12.18, "pf": 12.22, "bf1": 12.16}, "gain": {"base": 1.0, "pf": 0.996, "bf1": 1.001}, "bad": {}}
+ROW {"case": "d16s", "seed": 12, "med": {"base": 12.13, "pf": 12.16, "bf1": 12.03}, "gain": {"base": 1.0, "pf": 0.997, "bf1": 1.008}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 13.94, "pf": 14.14, "bf1": 13.95}, "gain": {"base": 1.0, "pf": 0.985, "bf1": 0.999}, "bad": {}}
+ROW {"case": "d32s", "seed": 12, "med": {"base": 13.98, "pf": 14.3, "bf1": 13.7}, "gain": {"base": 1.0, "pf": 0.978, "bf1": 1.021}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.26, "pf": 10.4, "bf1": 10.4}, "gain": {"base": 1.0, "pf": 0.986, "bf1": 0.986}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.27, "pf": 10.45, "bf1": 10.43}, "gain": {"base": 1.0, "pf": 0.983, "bf1": 0.985}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.11, "pf": 14.18, "bf1": 14.1}, "gain": {"base": 1.0, "pf": 0.995, "bf1": 1.001}, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"base": 14.1, "pf": 14.16, "bf1": 14.26}, "gain": {"base": 1.0, "pf": 0.995, "bf1": 0.989}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.7, "pf": 16.7, "bf1": 16.8}, "gain": {"base": 1.0, "pf": 1.0, "bf1": 0.994}, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"base": 16.53, "pf": 16.86, "bf1": 16.83}, "gain": {"base": 1.0, "pf": 0.98, "bf1": 0.982}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 14.75, "pf": 15.12, "bf1": 15.1}, "gain": {"base": 1.0, "pf": 0.976, "bf1": 0.977}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 14.9, "pf": 15.14, "bf1": 15.2}, "gain": {"base": 1.0, "pf": 0.984, "bf1": 0.98}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 16.99, "pf": 17.81, "bf1": 16.9}, "gain": {"base": 1.0, "pf": 0.954, "bf1": 1.006}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 16.99, "pf": 17.6, "bf1": 16.98}, "gain": {"base": 1.0, "pf": 0.965, "bf1": 1.001}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"VARIANTS": "base,pf,bf1", "PHASE": "sass", "XCASES": "d16s,d32s,v16s,v32s,d1s,v1s"} RETURNCODE 0
+RES okc_attn_slbase_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slbase_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_slpf_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slpf_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_slbf1_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slbf1_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST 0 11 {"base": [true, ["1.954e-03", "1.954e-03", "0.073"]], "pf": [true, ["1.954e-03", "1.954e-03", "0.073"]], "bf1": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"base": [true, ["5.105e-03", "5.105e-03", "0.137"]], "pf": [true, ["5.105e-03", "5.105e-03", "0.137"]], "bf1": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"base": [true, ["5.922e-03", "6.811e-03", "0.150"]], "pf": [true, ["5.922e-03", "6.811e-03", "0.150"]], "bf1": [true, ["8.120e-03", "9.144e-03", "0.150"]]}
+TEST 1 12 {"base": [true, ["5.310e-03", "6.399e-03", "0.150"]], "pf": [true, ["5.310e-03", "6.399e-03", "0.150"]], "bf1": [true, ["7.384e-03", "8.363e-03", "0.150"]]}
+TEST 2 11 {"base": [true, ["7.596e-02", "1.099e-01", "0.150"]], "pf": [true, ["7.598e-02", "1.103e-01", "0.150"]], "bf1": [true, ["7.602e-02", "1.098e-01", "0.150"]]}
+TEST 2 12 {"base": [true, ["7.779e-02", "1.126e-01", "0.150"]], "pf": [true, ["7.782e-02", "1.127e-01", "0.150"]], "bf1": [true, ["7.778e-02", "1.126e-01", "0.150"]]}
+TEST 3 11 {"base": [true, ["6.646e-03", "7.294e-03", "0.150"]], "pf": [true, ["6.646e-03", "7.294e-03", "0.150"]], "bf1": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"base": [true, ["5.865e-03", "6.923e-03", "0.150"]], "pf": [true, ["5.865e-03", "6.923e-03", "0.150"]], "bf1": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"base": [true, ["5.797e-03", "6.583e-03", "0.150"]], "pf": [true, ["5.797e-03", "6.583e-03", "0.150"]], "bf1": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"base": [true, ["5.502e-03", "5.882e-03", "0.150"]], "pf": [true, ["5.502e-03", "5.882e-03", "0.150"]], "bf1": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"base": [true, ["9.338e-02", "1.147e-01", "0.150"]], "pf": [true, ["9.338e-02", "1.147e-01", "0.150"]], "bf1": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 5 12 {"base": [true, ["8.963e-02", "1.218e-01", "0.150"]], "pf": [true, ["8.963e-02", "1.218e-01", "0.150"]], "bf1": [true, ["8.963e-02", "1.218e-01", "0.150"]]}
+TEST 6 11 {"base": [true, ["4.671e-03", "5.410e-03", "0.150"]], "pf": [true, ["4.671e-03", "5.410e-03", "0.150"]], "bf1": [true, ["6.851e-03", "7.643e-03", "0.150"]]}
+TEST 6 12 {"base": [true, ["5.016e-03", "5.865e-03", "0.150"]], "pf": [true, ["5.016e-03", "5.865e-03", "0.150"]], "bf1": [true, ["6.803e-03", "7.697e-03", "0.150"]]}
+TEST 7 11 {"base": [true, ["8.319e-02", "1.119e-01", "0.150"]], "pf": [true, ["8.319e-02", "1.119e-01", "0.150"]], "bf1": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"base": [true, ["8.469e-02", "1.158e-01", "0.150"]], "pf": [true, ["8.469e-02", "1.158e-01", "0.150"]], "bf1": [true, ["8.469e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.549e-02", "1.198e-01", "0.150"]], "pf": [true, ["9.529e-02", "1.193e-01", "0.150"]], "bf1": [true, ["9.531e-02", "1.195e-01", "0.150"]]}
+TEST 8 12 {"base": [true, ["9.717e-02", "1.249e-01", "0.150"]], "pf": [true, ["9.715e-02", "1.248e-01", "0.150"]], "bf1": [true, ["9.714e-02", "1.249e-01", "0.150"]]}
+TEST 9 11 {"base": [true, ["8.106e-02", "1.129e-01", "0.150"]], "pf": [true, ["8.105e-02", "1.129e-01", "0.150"]], "bf1": [true, ["8.110e-02", "1.126e-01", "0.150"]]}
+TEST 9 12 {"base": [true, ["7.693e-02", "1.098e-01", "0.150"]], "pf": [true, ["7.690e-02", "1.096e-01", "0.150"]], "bf1": [true, ["7.694e-02", "1.097e-01", "0.150"]]}
+TEST 10 11 {"base": [true, ["5.713e-03", "5.735e-03", "0.150"]], "pf": [true, ["5.713e-03", "5.735e-03", "0.150"]], "bf1": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"base": [true, ["4.862e-03", "5.158e-03", "0.150"]], "pf": [true, ["4.862e-03", "5.158e-03", "0.150"]], "bf1": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"base": [true, ["4.979e-03", "5.837e-03", "0.150"]], "pf": [true, ["4.979e-03", "5.837e-03", "0.150"]], "bf1": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 11 12 {"base": [true, ["4.951e-03", "5.279e-03", "0.150"]], "pf": [true, ["4.951e-03", "5.279e-03", "0.150"]], "bf1": [true, ["4.951e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"base": [true, ["6.593e-02", "1.041e-01", "0.150"]], "pf": [true, ["6.585e-02", "1.043e-01", "0.150"]], "bf1": [true, ["6.589e-02", "1.036e-01", "0.150"]]}
+TEST 12 12 {"base": [true, ["6.134e-02", "8.373e-02", "0.150"]], "pf": [true, ["6.148e-02", "8.407e-02", "0.150"]], "bf1": [true, ["6.137e-02", "8.331e-02", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.471e-02", "7.959e-02", "0.150"]], "pf": [true, ["7.471e-02", "7.959e-02", "0.150"]], "bf1": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"base": [true, ["7.535e-02", "8.532e-02", "0.150"]], "pf": [true, ["7.535e-02", "8.532e-02", "0.150"]], "bf1": [true, ["7.535e-02", "8.532e-02", "0.150"]]}
+TEST 14 11 {"base": [true, ["3.189e-03", "3.889e-03", "0.122"]], "pf": [true, ["3.189e-03", "3.889e-03", "0.122"]], "bf1": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"base": [true, ["3.763e-03", "4.240e-03", "0.142"]], "pf": [true, ["3.763e-03", "4.240e-03", "0.142"]], "bf1": [true, ["3.763e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"base": [true, ["4.559e-02", "5.149e-02", "0.109"]], "pf": [true, ["4.559e-02", "5.149e-02", "0.109"]], "bf1": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST 15 12 {"base": [true, ["4.791e-02", "5.927e-02", "0.113"]], "pf": [true, ["4.791e-02", "5.927e-02", "0.113"]], "bf1": [true, ["4.791e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"base": [true, ["4.350e-03", "5.328e-03", "0.150"]], "pf": [true, ["4.350e-03", "5.328e-03", "0.150"]], "bf1": [true, ["5.921e-03", "6.623e-03", "0.150"]]}
+TEST S0 12 {"base": [true, ["4.274e-03", "5.111e-03", "0.150"]], "pf": [true, ["4.274e-03", "5.111e-03", "0.150"]], "bf1": [true, ["5.832e-03", "6.470e-03", "0.150"]]}
+TEST S1 11 {"base": [true, ["4.545e-03", "6.214e-03", "0.150"]], "pf": [true, ["4.545e-03", "6.214e-03", "0.150"]], "bf1": [true, ["6.012e-03", "7.566e-03", "0.150"]]}
+TEST S1 12 {"base": [true, ["4.304e-03", "5.197e-03", "0.150"]], "pf": [true, ["4.304e-03", "5.197e-03", "0.150"]], "bf1": [true, ["5.827e-03", "6.655e-03", "0.150"]]}
+TEST S2 11 {"base": [true, ["6.931e-02", "9.637e-02", "0.150"]], "pf": [true, ["6.931e-02", "9.618e-02", "0.150"]], "bf1": [true, ["6.930e-02", "9.634e-02", "0.150"]]}
+TEST S2 12 {"base": [true, ["6.732e-02", "1.071e-01", "0.150"]], "pf": [true, ["6.735e-02", "1.068e-01", "0.150"]], "bf1": [true, ["6.735e-02", "1.070e-01", "0.150"]]}
+TEST S3 11 {"base": [true, ["6.770e-02", "1.117e-01", "0.150"]], "pf": [true, ["6.768e-02", "1.115e-01", "0.150"]], "bf1": [true, ["6.768e-02", "1.116e-01", "0.150"]]}
+TEST S3 12 {"base": [true, ["6.779e-02", "1.098e-01", "0.150"]], "pf": [true, ["6.779e-02", "1.097e-01", "0.150"]], "bf1": [true, ["6.778e-02", "1.097e-01", "0.150"]]}
+TEST S4 11 {"base": [true, ["4.347e-03", "4.347e-03", "0.150"]], "pf": [true, ["4.347e-03", "4.347e-03", "0.150"]], "bf1": [true, ["4.347e-03", "4.347e-03", "0.150"]]}
+TEST S4 12 {"base": [true, ["4.903e-03", "4.903e-03", "0.150"]], "pf": [true, ["4.903e-03", "4.903e-03", "0.150"]], "bf1": [true, ["4.903e-03", "4.903e-03", "0.150"]]}
+TEST S5 11 {"base": [true, ["6.702e-02", "8.879e-02", "0.150"]], "pf": [true, ["6.715e-02", "8.946e-02", "0.150"]], "bf1": [true, ["6.708e-02", "8.894e-02", "0.150"]]}
+TEST S5 12 {"base": [true, ["6.197e-02", "7.538e-02", "0.150"]], "pf": [true, ["6.185e-02", "7.577e-02", "0.150"]], "bf1": [true, ["6.193e-02", "7.510e-02", "0.150"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iCNwPZJWzGUjJHS1A93Izy

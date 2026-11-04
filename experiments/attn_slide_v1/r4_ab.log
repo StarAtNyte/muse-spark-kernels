@@ -1,0 +1,160 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-KVmgjGggpntEFZK97npKSf
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VARIANTS": "base,r8v4,bf1v4,both", "CASES": "d1s,d16s,d32s,v1s,v16s,v32s,d1f,v1f"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.06, "r8v4": 9.06, "bf1v4": 9.25, "both": 9.02}, "gain": {"base": 1.0, "r8v4": 1.0, "bf1v4": 0.979, "both": 1.004}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 9.02, "r8v4": 9.02, "bf1v4": 9.02, "both": 9.02}, "gain": {"base": 1.0, "r8v4": 1.0, "bf1v4": 1.0, "both": 1.0}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 12.37, "r8v4": 12.48, "bf1v4": 12.38, "both": 12.32}, "gain": {"base": 1.0, "r8v4": 0.991, "bf1v4": 0.999, "both": 1.004}, "bad": {}}
+ROW {"case": "d16s", "seed": 12, "med": {"base": 12.34, "r8v4": 12.46, "bf1v4": 12.38, "both": 12.26}, "gain": {"base": 1.0, "r8v4": 0.99, "bf1v4": 0.996, "both": 1.007}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 14.29, "r8v4": 14.26, "bf1v4": 13.84, "both": 13.86}, "gain": {"base": 1.0, "r8v4": 1.002, "bf1v4": 1.032, "both": 1.031}, "bad": {}}
+ROW {"case": "d32s", "seed": 12, "med": {"base": 14.24, "r8v4": 14.43, "bf1v4": 14.06, "both": 14.14}, "gain": {"base": 1.0, "r8v4": 0.987, "bf1v4": 1.013, "both": 1.007}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.67, "r8v4": 10.88, "bf1v4": 10.69, "both": 11.1}, "gain": {"base": 1.0, "r8v4": 0.981, "bf1v4": 0.999, "both": 0.961}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.62, "r8v4": 10.91, "bf1v4": 10.59, "both": 11.01}, "gain": {"base": 1.0, "r8v4": 0.974, "bf1v4": 1.003, "both": 0.965}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.29, "r8v4": 14.75, "bf1v4": 14.24, "both": 14.9}, "gain": {"base": 1.0, "r8v4": 0.969, "bf1v4": 1.003, "both": 0.959}, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"base": 14.66, "r8v4": 15.1, "bf1v4": 14.78, "both": 15.22}, "gain": {"base": 1.0, "r8v4": 0.97, "bf1v4": 0.991, "both": 0.963}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.74, "r8v4": 17.47, "bf1v4": 16.94, "both": 17.36}, "gain": {"base": 1.0, "r8v4": 0.958, "bf1v4": 0.988, "both": 0.964}, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"base": 17.3, "r8v4": 17.58, "bf1v4": 17.1, "both": 17.57}, "gain": {"base": 1.0, "r8v4": 0.984, "bf1v4": 1.011, "both": 0.985}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.2, "r8v4": 15.25, "bf1v4": 15.62, "both": 15.23}, "gain": {"base": 1.0, "r8v4": 0.997, "bf1v4": 0.973, "both": 0.998}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 15.17, "r8v4": 15.33, "bf1v4": 15.6, "both": 15.26}, "gain": {"base": 1.0, "r8v4": 0.99, "bf1v4": 0.972, "both": 0.994}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.44, "r8v4": 18.67, "bf1v4": 17.47, "both": 18.69}, "gain": {"base": 1.0, "r8v4": 0.934, "bf1v4": 0.998, "both": 0.933}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 17.26, "r8v4": 18.78, "bf1v4": 17.52, "both": 18.82}, "gain": {"base": 1.0, "r8v4": 0.919, "bf1v4": 0.985, "both": 0.918}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"VARIANTS": "base,r8v4,bf1v4,both", "CASES": "d1s,d16s,d32s,v1s,v16s,v32s,d1f,v1f", "SEEDS": "13,14"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 13, "med": {"base": 9.12, "r8v4": 9.09, "bf1v4": 9.07, "both": 9.09}, "gain": {"base": 1.0, "r8v4": 1.004, "bf1v4": 1.005, "both": 1.004}, "bad": {}}
+ROW {"case": "d1s", "seed": 14, "med": {"base": 9.12, "r8v4": 9.22, "bf1v4": 9.15, "both": 8.99}, "gain": {"base": 1.0, "r8v4": 0.99, "bf1v4": 0.997, "both": 1.014}, "bad": {}}
+ROW {"case": "d16s", "seed": 13, "med": {"base": 12.27, "r8v4": 12.43, "bf1v4": 12.29, "both": 12.3}, "gain": {"base": 1.0, "r8v4": 0.987, "bf1v4": 0.999, "both": 0.997}, "bad": {}}
+ROW {"case": "d16s", "seed": 14, "med": {"base": 12.38, "r8v4": 12.51, "bf1v4": 12.19, "both": 12.26}, "gain": {"base": 1.0, "r8v4": 0.99, "bf1v4": 1.016, "both": 1.01}, "bad": {}}
+ROW {"case": "d32s", "seed": 13, "med": {"base": 14.42, "r8v4": 14.32, "bf1v4": 13.7, "both": 13.89}, "gain": {"base": 1.0, "r8v4": 1.007, "bf1v4": 1.053, "both": 1.038}, "bad": {}}
+ROW {"case": "d32s", "seed": 14, "med": {"base": 14.34, "r8v4": 14.35, "bf1v4": 13.84, "both": 13.95}, "gain": {"base": 1.0, "r8v4": 0.999, "bf1v4": 1.036, "both": 1.028}, "bad": {}}
+ROW {"case": "v1s", "seed": 13, "med": {"base": 10.69, "r8v4": 10.88, "bf1v4": 10.66, "both": 11.07}, "gain": {"base": 1.0, "r8v4": 0.982, "bf1v4": 1.003, "both": 0.965}, "bad": {}}
+ROW {"case": "v1s", "seed": 14, "med": {"base": 10.59, "r8v4": 10.94, "bf1v4": 10.62, "both": 11.04}, "gain": {"base": 1.0, "r8v4": 0.968, "bf1v4": 0.997, "both": 0.959}, "bad": {}}
+ROW {"case": "v16s", "seed": 13, "med": {"base": 14.53, "r8v4": 14.86, "bf1v4": 14.46, "both": 15.07}, "gain": {"base": 1.0, "r8v4": 0.977, "bf1v4": 1.004, "both": 0.964}, "bad": {}}
+ROW {"case": "v16s", "seed": 14, "med": {"base": 14.58, "r8v4": 14.94, "bf1v4": 14.59, "both": 15.07}, "gain": {"base": 1.0, "r8v4": 0.975, "bf1v4": 0.999, "both": 0.967}, "bad": {}}
+ROW {"case": "v32s", "seed": 13, "med": {"base": 17.12, "r8v4": 17.71, "bf1v4": 17.14, "both": 17.63}, "gain": {"base": 1.0, "r8v4": 0.967, "bf1v4": 0.999, "both": 0.971}, "bad": {}}
+ROW {"case": "v32s", "seed": 14, "med": {"base": 17.07, "r8v4": 17.55, "bf1v4": 17.07, "both": 17.44}, "gain": {"base": 1.0, "r8v4": 0.973, "bf1v4": 1.0, "both": 0.979}, "bad": {}}
+ROW {"case": "d1f", "seed": 13, "med": {"base": 15.04, "r8v4": 15.17, "bf1v4": 15.47, "both": 15.25}, "gain": {"base": 1.0, "r8v4": 0.992, "bf1v4": 0.972, "both": 0.986}, "bad": {}}
+ROW {"case": "d1f", "seed": 14, "med": {"base": 15.2, "r8v4": 15.31, "bf1v4": 15.58, "both": 15.2}, "gain": {"base": 1.0, "r8v4": 0.993, "bf1v4": 0.975, "both": 1.0}, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"base": 17.41, "r8v4": 18.66, "bf1v4": 17.41, "both": 18.72}, "gain": {"base": 1.0, "r8v4": 0.933, "bf1v4": 1.0, "both": 0.93}, "bad": {}}
+ROW {"case": "v1f", "seed": 14, "med": {"base": 17.38, "r8v4": 18.51, "bf1v4": 17.39, "both": 18.54}, "gain": {"base": 1.0, "r8v4": 0.939, "bf1v4": 0.999, "both": 0.937}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"VARIANTS": "base,r8v4,bf1v4,both", "PHASE": "sass", "XCASES": "d16s,d32s,v16s,v32s,d1s,v1s,v1f,d1f"} RETURNCODE 0
+RES okc_attn_slbase_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slbase_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_slr8v4_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slr8v4_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_slbf1v4_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slbf1v4_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_slboth_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_slboth_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST 0 11 {"base": [true, ["1.954e-03", "1.954e-03", "0.073"]], "r8v4": [true, ["1.954e-03", "1.954e-03", "0.073"]], "bf1v4": [true, ["3.279e-03", "3.279e-03", "0.073"]], "both": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"base": [true, ["5.105e-03", "5.105e-03", "0.137"]], "r8v4": [true, ["5.105e-03", "5.105e-03", "0.137"]], "bf1v4": [true, ["5.447e-03", "5.447e-03", "0.137"]], "both": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"base": [true, ["5.922e-03", "6.811e-03", "0.150"]], "r8v4": [true, ["5.922e-03", "6.811e-03", "0.150"]], "bf1v4": [true, ["8.114e-03", "8.879e-03", "0.150"]], "both": [true, ["8.375e-03", "9.198e-03", "0.150"]]}
+TEST 1 12 {"base": [true, ["5.310e-03", "6.399e-03", "0.150"]], "r8v4": [true, ["5.310e-03", "6.399e-03", "0.150"]], "bf1v4": [true, ["7.640e-03", "8.380e-03", "0.150"]], "both": [true, ["7.758e-03", "8.531e-03", "0.150"]]}
+TEST 2 11 {"base": [true, ["7.600e-02", "1.101e-01", "0.150"]], "r8v4": [true, ["7.609e-02", "1.102e-01", "0.150"]], "bf1v4": [true, ["7.603e-02", "1.098e-01", "0.150"]], "both": [true, ["7.599e-02", "1.103e-01", "0.150"]]}
+TEST 2 12 {"base": [true, ["7.777e-02", "1.126e-01", "0.150"]], "r8v4": [true, ["7.785e-02", "1.128e-01", "0.150"]], "bf1v4": [true, ["7.779e-02", "1.128e-01", "0.150"]], "both": [true, ["7.780e-02", "1.128e-01", "0.150"]]}
+TEST 3 11 {"base": [true, ["6.646e-03", "7.294e-03", "0.150"]], "r8v4": [true, ["6.646e-03", "7.294e-03", "0.150"]], "bf1v4": [true, ["6.646e-03", "7.294e-03", "0.150"]], "both": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"base": [true, ["5.865e-03", "6.923e-03", "0.150"]], "r8v4": [true, ["5.865e-03", "6.923e-03", "0.150"]], "bf1v4": [true, ["5.865e-03", "6.923e-03", "0.150"]], "both": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"base": [true, ["5.797e-03", "6.583e-03", "0.150"]], "r8v4": [true, ["5.797e-03", "6.583e-03", "0.150"]], "bf1v4": [true, ["5.797e-03", "6.583e-03", "0.150"]], "both": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"base": [true, ["5.502e-03", "5.882e-03", "0.150"]], "r8v4": [true, ["5.502e-03", "5.882e-03", "0.150"]], "bf1v4": [true, ["5.502e-03", "5.882e-03", "0.150"]], "both": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"base": [true, ["9.338e-02", "1.147e-01", "0.150"]], "r8v4": [true, ["9.338e-02", "1.147e-01", "0.150"]], "bf1v4": [true, ["9.338e-02", "1.147e-01", "0.150"]], "both": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 5 12 {"base": [true, ["8.963e-02", "1.218e-01", "0.150"]], "r8v4": [true, ["8.963e-02", "1.218e-01", "0.150"]], "bf1v4": [true, ["8.963e-02", "1.218e-01", "0.150"]], "both": [true, ["8.963e-02", "1.218e-01", "0.150"]]}
+TEST 6 11 {"base": [true, ["4.671e-03", "5.410e-03", "0.150"]], "r8v4": [true, ["4.671e-03", "5.410e-03", "0.150"]], "bf1v4": [true, ["6.673e-03", "7.419e-03", "0.150"]], "both": [true, ["6.841e-03", "7.360e-03", "0.150"]]}
+TEST 6 12 {"base": [true, ["5.016e-03", "5.865e-03", "0.150"]], "r8v4": [true, ["5.016e-03", "5.865e-03", "0.150"]], "bf1v4": [true, ["7.206e-03", "8.016e-03", "0.150"]], "both": [true, ["7.276e-03", "8.035e-03", "0.150"]]}
+TEST 7 11 {"base": [true, ["8.319e-02", "1.119e-01", "0.150"]], "r8v4": [true, ["8.319e-02", "1.119e-01", "0.150"]], "bf1v4": [true, ["8.319e-02", "1.119e-01", "0.150"]], "both": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"base": [true, ["8.469e-02", "1.158e-01", "0.150"]], "r8v4": [true, ["8.469e-02", "1.158e-01", "0.150"]], "bf1v4": [true, ["8.469e-02", "1.158e-01", "0.150"]], "both": [true, ["8.469e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.530e-02", "1.194e-01", "0.150"]], "r8v4": [true, ["9.542e-02", "1.195e-01", "0.150"]], "bf1v4": [true, ["9.534e-02", "1.195e-01", "0.150"]], "both": [true, ["9.543e-02", "1.195e-01", "0.150"]]}
+TEST 8 12 {"base": [true, ["9.726e-02", "1.249e-01", "0.150"]], "r8v4": [true, ["9.720e-02", "1.251e-01", "0.150"]], "bf1v4": [true, ["9.725e-02", "1.254e-01", "0.150"]], "both": [true, ["9.722e-02", "1.250e-01", "0.150"]]}
+TEST 9 11 {"base": [true, ["8.101e-02", "1.130e-01", "0.150"]], "r8v4": [true, ["8.107e-02", "1.129e-01", "0.150"]], "bf1v4": [true, ["8.107e-02", "1.126e-01", "0.150"]], "both": [true, ["8.102e-02", "1.126e-01", "0.150"]]}
+TEST 9 12 {"base": [true, ["7.687e-02", "1.090e-01", "0.150"]], "r8v4": [true, ["7.683e-02", "1.092e-01", "0.150"]], "bf1v4": [true, ["7.680e-02", "1.093e-01", "0.150"]], "both": [true, ["7.692e-02", "1.093e-01", "0.150"]]}
+TEST 10 11 {"base": [true, ["5.713e-03", "5.735e-03", "0.150"]], "r8v4": [true, ["5.713e-03", "5.735e-03", "0.150"]], "bf1v4": [true, ["5.713e-03", "5.735e-03", "0.150"]], "both": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"base": [true, ["4.862e-03", "5.158e-03", "0.150"]], "r8v4": [true, ["4.862e-03", "5.158e-03", "0.150"]], "bf1v4": [true, ["4.862e-03", "5.158e-03", "0.150"]], "both": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"base": [true, ["4.979e-03", "5.837e-03", "0.150"]], "r8v4": [true, ["4.979e-03", "5.837e-03", "0.150"]], "bf1v4": [true, ["4.979e-03", "5.837e-03", "0.150"]], "both": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 11 12 {"base": [true, ["4.951e-03", "5.279e-03", "0.150"]], "r8v4": [true, ["4.951e-03", "5.279e-03", "0.150"]], "bf1v4": [true, ["4.951e-03", "5.279e-03", "0.150"]], "both": [true, ["4.951e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"base": [true, ["6.589e-02", "1.042e-01", "0.150"]], "r8v4": [true, ["6.599e-02", "1.041e-01", "0.150"]], "bf1v4": [true, ["6.590e-02", "1.044e-01", "0.150"]], "both": [true, ["6.594e-02", "1.037e-01", "0.150"]]}
+TEST 12 12 {"base": [true, ["6.133e-02", "8.324e-02", "0.150"]], "r8v4": [true, ["6.144e-02", "8.374e-02", "0.150"]], "bf1v4": [true, ["6.137e-02", "8.321e-02", "0.150"]], "both": [true, ["6.143e-02", "8.397e-02", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.471e-02", "7.959e-02", "0.150"]], "r8v4": [true, ["7.471e-02", "7.959e-02", "0.150"]], "bf1v4": [true, ["7.471e-02", "7.959e-02", "0.150"]], "both": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"base": [true, ["7.535e-02", "8.532e-02", "0.150"]], "r8v4": [true, ["7.535e-02", "8.532e-02", "0.150"]], "bf1v4": [true, ["7.535e-02", "8.532e-02", "0.150"]], "both": [true, ["7.535e-02", "8.532e-02", "0.150"]]}
+TEST 14 11 {"base": [true, ["3.189e-03", "3.889e-03", "0.122"]], "r8v4": [true, ["3.189e-03", "3.889e-03", "0.122"]], "bf1v4": [true, ["3.189e-03", "3.889e-03", "0.122"]], "both": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"base": [true, ["3.763e-03", "4.240e-03", "0.142"]], "r8v4": [true, ["3.763e-03", "4.240e-03", "0.142"]], "bf1v4": [true, ["3.763e-03", "4.240e-03", "0.142"]], "both": [true, ["3.763e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"base": [true, ["4.559e-02", "5.149e-02", "0.109"]], "r8v4": [true, ["4.559e-02", "5.149e-02", "0.109"]], "bf1v4": [true, ["4.559e-02", "5.149e-02", "0.109"]], "both": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST 15 12 {"base": [true, ["4.791e-02", "5.927e-02", "0.113"]], "r8v4": [true, ["4.791e-02", "5.927e-02", "0.113"]], "bf1v4": [true, ["4.791e-02", "5.927e-02", "0.113"]], "both": [true, ["4.791e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"base": [true, ["4.350e-03", "5.328e-03", "0.150"]], "r8v4": [true, ["4.350e-03", "5.328e-03", "0.150"]], "bf1v4": [true, ["6.016e-03", "6.579e-03", "0.150"]], "both": [true, ["5.898e-03", "6.397e-03", "0.150"]]}
+TEST S0 12 {"base": [true, ["4.274e-03", "5.111e-03", "0.150"]], "r8v4": [true, ["4.274e-03", "5.111e-03", "0.150"]], "bf1v4": [true, ["5.888e-03", "6.697e-03", "0.150"]], "both": [true, ["5.869e-03", "6.625e-03", "0.150"]]}
+TEST S1 11 {"base": [true, ["4.545e-03", "6.214e-03", "0.150"]], "r8v4": [true, ["4.545e-03", "6.214e-03", "0.150"]], "bf1v4": [true, ["6.068e-03", "7.639e-03", "0.150"]], "both": [true, ["6.019e-03", "7.424e-03", "0.150"]]}
+TEST S1 12 {"base": [true, ["4.304e-03", "5.197e-03", "0.150"]], "r8v4": [true, ["4.304e-03", "5.197e-03", "0.150"]], "bf1v4": [true, ["5.871e-03", "6.454e-03", "0.150"]], "both": [true, ["5.874e-03", "6.616e-03", "0.150"]]}
+TEST S2 11 {"base": [true, ["6.929e-02", "9.632e-02", "0.150"]], "r8v4": [true, ["6.931e-02", "9.634e-02", "0.150"]], "bf1v4": [true, ["6.930e-02", "9.632e-02", "0.150"]], "both": [true, ["6.931e-02", "9.631e-02", "0.150"]]}
+TEST S2 12 {"base": [true, ["6.735e-02", "1.071e-01", "0.150"]], "r8v4": [true, ["6.734e-02", "1.070e-01", "0.150"]], "bf1v4": [true, ["6.733e-02", "1.072e-01", "0.150"]], "both": [true, ["6.734e-02", "1.071e-01", "0.150"]]}
+TEST S3 11 {"base": [true, ["6.769e-02", "1.116e-01", "0.150"]], "r8v4": [true, ["6.770e-02", "1.115e-01", "0.150"]], "bf1v4": [true, ["6.769e-02", "1.117e-01", "0.150"]], "both": [true, ["6.770e-02", "1.117e-01", "0.150"]]}
+TEST S3 12 {"base": [true, ["6.779e-02", "1.098e-01", "0.150"]], "r8v4": [true, ["6.779e-02", "1.097e-01", "0.150"]], "bf1v4": [true, ["6.779e-02", "1.098e-01", "0.150"]], "both": [true, ["6.779e-02", "1.098e-01", "0.150"]]}
+TEST S4 11 {"base": [true, ["4.347e-03", "4.347e-03", "0.150"]], "r8v4": [true, ["4.347e-03", "4.347e-03", "0.150"]], "bf1v4": [true, ["4.347e-03", "4.347e-03", "0.150"]], "both": [true, ["4.347e-03", "4.347e-03", "0.150"]]}
+TEST S4 12 {"base": [true, ["4.903e-03", "4.903e-03", "0.150"]], "r8v4": [true, ["4.903e-03", "4.903e-03", "0.150"]], "bf1v4": [true, ["4.903e-03", "4.903e-03", "0.150"]], "both": [true, ["4.903e-03", "4.903e-03", "0.150"]]}
+TEST S5 11 {"base": [true, ["6.690e-02", "8.882e-02", "0.150"]], "r8v4": [true, ["6.713e-02", "8.926e-02", "0.150"]], "bf1v4": [true, ["6.702e-02", "8.856e-02", "0.150"]], "both": [true, ["6.716e-02", "8.929e-02", "0.150"]]}
+TEST S5 12 {"base": [true, ["6.189e-02", "7.576e-02", "0.150"]], "r8v4": [true, ["6.194e-02", "7.532e-02", "0.150"]], "bf1v4": [true, ["6.199e-02", "7.579e-02", "0.150"]], "both": [true, ["6.200e-02", "7.561e-02", "0.150"]]}
+TEST S6 11 {"base": [true, ["3.809e-02", "6.005e-02", "0.101"]], "r8v4": [true, ["3.814e-02", "6.011e-02", "0.101"]], "bf1v4": [true, ["3.816e-02", "6.004e-02", "0.101"]], "both": [true, ["3.812e-02", "6.001e-02", "0.101"]]}
+TEST S6 12 {"base": [true, ["3.492e-02", "4.517e-02", "0.101"]], "r8v4": [true, ["3.497e-02", "4.490e-02", "0.101"]], "bf1v4": [true, ["3.491e-02", "4.521e-02", "0.101"]], "both": [true, ["3.484e-02", "4.450e-02", "0.101"]]}
+TEST S7 11 {"base": [true, ["2.651e-03", "2.651e-03", "0.108"]], "r8v4": [true, ["2.651e-03", "2.651e-03", "0.108"]], "bf1v4": [true, ["2.651e-03", "2.651e-03", "0.108"]], "both": [true, ["2.651e-03", "2.651e-03", "0.108"]]}
+TEST S7 12 {"base": [true, ["2.357e-03", "2.357e-03", "0.087"]], "r8v4": [true, ["2.357e-03", "2.357e-03", "0.087"]], "bf1v4": [true, ["2.357e-03", "2.357e-03", "0.087"]], "both": [true, ["2.357e-03", "2.357e-03", "0.087"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-KVmgjGggpntEFZK97npKSf
