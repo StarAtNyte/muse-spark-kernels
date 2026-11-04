@@ -1,5 +1,5 @@
 # okc: problem=muse_decode_layer
-# decoder_fresh_v1 (2026-11-05): gate split. qkv's q/k/v rows run first; the output-gate rows run after attention as their own sk2 launch, whose weights stream under PDL while attention runs, with sigmoid(gate) * attention fused into its epilogue.
+# decoder_fresh_v1 (2026-11-05): one-pass residual boundary (T > 16): both RMS norms from one fused row reduction of the expanded sums.
 # decoder_stack_v1 (2026-11-05): = decoder_bf16_v1 (rs128 BF16 split reduction at T=128/256, BF16 ybuf + fallbacks, g16b attention). Proj-board BF16 routes and an sk2 L2 weight prefetch were screened in-pipeline and left out (neutral or slower).
 # stack_all1: stack_mf1 (MFIN, no MoE grid barrier) + SC6 (6-bit block scales, WGS MoE builds) + PRF32 + PDL at T=128 (moe-fin bundle; L2 hints at T=1 left out: judge d1 25.7-26.6 us with them vs 24.5-25.8 without).
 # st2l: st1l with OKC_WGSFCI 4 (E374).
@@ -19292,109 +19292,70 @@ def dense(x, w, T, state=None, name=None):
     return _stack_parent_dense(x, w, T, state, name)
 
 
-# ---- decoder_fresh_v1: gate split ------------------------------------------------------------------------------
-# The attention only needs q / k / v (rows 0..1279 of qkv_gate); the output gate (rows 1280..2303) is needed only by
-# the o projection. So the qkv launch streams 1280 rows into a persistent [32, 2304] buffer whose gate columns hold
-# 88.0 (sigmoid = 1.0f exactly), the attention stores rmsnorm(attn), and a gate launch follows it: under PDL its CTAs
-# become resident while attention runs and pre-issue up to GS_P weight stages; after griddepcontrol.wait it multiplies
-# its gate sums (FP32, sigmoid) into the attention output in place. All partials stay FP32 until that single store.
-GS_T = {"s": (1, 16, 32), "f": ()}   # layer kind ("s" sliding, "f" full) -> token counts that take the split
-GS_P = 15                              # gate launch: weight stages issued before griddepcontrol.wait (capped by the ring)
-GS_CFGS = [('gsh_r200', 'qkv_gate', 1280, 16, 2, 1, 4, 2, 1, 1),   # q / k / v rows: 80 CTAs
-           ('gsg_r200', 'qkv_gate', 1024, 16, 2, 1, 4, 2, 1, 1)]   # gate rows: 64 CTAs
-L2PF_HITS = {}   # (kind, T) -> calls that took the split (printed by the A/B driver)
-_GS_EXT = None
+# ---- decoder_fresh_v1: one-pass row boundary (T > 16) ---------------------------------------------------------
+# ns = alpha * s + beta * bf16(b * r_b) with r_b = rsqrt(mean(b^2)). The second norm needs sum(ns^2); with
+# u = alpha * s and v = beta * b it is sum(u^2) + 2 r_b sum(u v) + r_b^2 sum(v^2) (the bf16 rounding of b * r_b is
+# left out of the norm only: ~1e-5 relative). All four FP32 sums come from one tuple reduction, so the row takes one
+# cross-warp reduction instead of two dependent ones. ns and h are then formed exactly as before.
+FR_TUPLE = _gl.constexpr(True)
 
 
-def _gs_source():
-    lines = []
-    for ci, cfg in enumerate(GS_CFGS):
-        _, _, _, R, NT, NWR, WSK, UPW, NACC, CL = cfg
-        for tokr in (8, 16, 32):
-            _, nstage = bfp__sk2_geom(cfg, tokr)
-            mt = 2 if tokr == 32 else 1
-            lines.append(f"if (cfg == {ci} && tokr == {tokr}) {{ launch_sk2<{mt}, {tokr}, {NT}, {NWR}, {WSK}, {UPW}, {nstage}, "
-                         f"true, false, {NACC}, {CL}, __nv_bfloat16>(Ws, x, out, ptab, pmax, base4, M, N, K, dg, dbg); return; }}")
-    src = bfp_SK2_SRC.replace('@@SK2_DISPATCH@@', "\n  ".join(lines)).replace('@@SK2F_DISPATCH@@', '')
-    old = "    OutT* o = out + (size_t)tt * N + cta * R + row;\n"
-    assert src.count(old) == 1
-    # dg > 0: output row stride (the qkv buffer); dg < 0: gate mode, o = o * sigmoid(v) in place (dg is unused
-    # otherwise: SK2_DIAG is 0 in this build)
-    new = r"""    OutT* o = out + (size_t)tt * (dg > 0 ? dg : N) + cta * R + row;
-    if constexpr (sizeof(OutT) == 2) {
-      if (dg < 0) {
-        const uint2 ar = *reinterpret_cast<const uint2*>(o);
-        const __nv_bfloat162 a0 = *reinterpret_cast<const __nv_bfloat162*>(&ar.x), a1 = *reinterpret_cast<const __nv_bfloat162*>(&ar.y);
-        v.x = __low2float(a0) / (1.f + __expf(-v.x));
-        v.y = __high2float(a0) / (1.f + __expf(-v.y));
-        v.z = __low2float(a1) / (1.f + __expf(-v.z));
-        v.w = __high2float(a1) / (1.f + __expf(-v.w));
-      }
-    }
-"""
-    src = src.replace(old, new, 1)
-    return bfp_CUDA_SRC.replace('@@MBAR@@', bfp_MBAR_HELPERS).replace('@@BODY@@', '') + bfp_MAP_SRC + src
+@_glx.jit
+def _fr_add4(a0, a1, a2, a3, b0, b1, b2, b3):
+    return a0 + b0, a1 + b1, a2 + b2, a3 + b3
 
 
-def _gs_ext():
-    global _GS_EXT
-    if _GS_EXT is None:
-        import hashlib
-        source = _gs_source()
-        tag = hashlib.md5(source.encode()).hexdigest()[:12]
-        source = source.replace('sk2_kernel', 'sk2_kernel_gs_' + tag).replace('launch_sk2', 'launch_sk2_gs_' + tag)
-        cpp = bfp_CPP_SRC[bfp_CPP_SRC.index('void sk2('):bfp_CPP_SRC.index('void sk2f(')] + 'void sk2_set_pdl(int64_t n);'
-        _GS_EXT = load_inline('dl_gate_split_' + tag, '#include <torch/extension.h>\n' + cpp, cuda_sources=source,
-                              functions=['sk2', 'sk2_set_pdl'], no_implicit_headers=True,
-                              extra_cuda_cflags=['-O3', '-gencode=arch=compute_90,code=sm_90'], verbose=False)
-    return _GS_EXT
+@_glx.jit
+def _fr_body(Branch, Stream, Out, NewStream, row, c, a, beta, pw, post_w,
+             H: _gl.constexpr, F: _gl.constexpr, POST: _gl.constexpr, TUP: _gl.constexpr):
+    b = _gl.load(Branch + row * F + c, c < F, 0).to(_gl.float32)
+    if POST:
+        b = (b * post_w).to(_gl.bfloat16).to(_gl.float32)
+    s = _gl.load(Stream + row * H + c)
+    u = a * s
+    v = beta * b
+    if TUP:
+        q0, q1, q2, q3 = _gl.reduce((b * b, u * u, u * v, v * v), 0, _fr_add4)
+    else:
+        q0 = _gl.sum(b * b, 0)
+        q1 = _gl.sum(u * u, 0)
+        q2 = _gl.sum(u * v, 0)
+        q3 = _gl.sum(v * v, 0)
+    r = _gl.rsqrt(q0 / H + 1.e-8)
+    ns = u + beta * (b * r).to(_gl.bfloat16).to(_gl.float32)
+    _gl.store(NewStream + row * H + c, ns)
+    r2 = _gl.rsqrt(_gl.maximum(q1 + 2.0 * r * q2 + r * r * q3, 0.0) / H + 1.e-5)
+    _gl.store(Out + row * H + c, ns * r2 * pw)
 
 
-_gs_parent_prepare = prepare
-_gs_parent_kernel_fn = kernel_fn
+@_glx.jit
+def _fr_row_boundary(Branch, Stream, PostW, PreW, Alpha, Beta, Out, NewStream,
+                     H: _gl.constexpr, F: _gl.constexpr, POST: _gl.constexpr, V: _gl.constexpr, NW: _gl.constexpr):
+    _gdc_wait()
+    _gdc_launch()
+    row = _gl.program_id(0)
+    c = _gl.arange(0, H, layout=_gl.BlockedLayout([V], [32], [NW], [0]))
+    a = _gl.load(Alpha + c)
+    beta = _gl.load(Beta + c)
+    pw = _gl.load(PreW + c).to(_gl.float32)
+    post_w = _gl.load(PostW + c).to(_gl.float32)
+    _fr_body(Branch, Stream, Out, NewStream, row, c, a, beta, pw, post_w, H, F, POST, FR_TUPLE)
 
 
-def prepare(weights):
-    st = _gs_parent_prepare(weights)
-    bst = st.get("bfp") if isinstance(st, dict) else None
-    if bst is not None and bst.get("sm90") and st.get("att_ok") and any(GS_T.values()):
-        w = weights["qkv_gate"]
-        ent = []
-        for rows, cfg in ((w[:1280], GS_CFGS[0]), (w[1280:], GS_CFGS[1])):
-            comp = bfp_sk2_compress(rows.to(torch.bfloat16).contiguous())
-            if comp is None:
-                break
-            _, _, n_rows, R, NT, NWR, WSK, UPW, _, _ = cfg
-            tab, pmax = bfp_sk2_table(comp, n_rows, R)
-            ent.append((bfp_sk2_stream(comp["packed"], n_rows, R, NT, NWR, WSK, UPW), tab, pmax, comp["base4"]))
-        if len(ent) == 2:
-            _gs_ext()
-            st["gs"] = {"h": ent[0], "g": ent[1], "buf": torch.full((32, 2304), 88.0, dtype=torch.bfloat16, device=w.device)}
-        torch.cuda.synchronize()
-    return st
+@_glx.jit
+def _fr_row_boundary_pre(Branch, Stream, PostW, PreW, Alpha, Beta, Out, NewStream,
+                         H: _gl.constexpr, F: _gl.constexpr, POST: _gl.constexpr, V: _gl.constexpr, NW: _gl.constexpr):
+    row = _gl.program_id(0)
+    c = _gl.arange(0, H, layout=_gl.BlockedLayout([V], [32], [NW], [0]))
+    pw = _gl.load(PreW + c).to(_gl.float32)
+    a = _gl.load(Alpha + c)
+    beta = _gl.load(Beta + c)
+    post_w = _gl.load(PostW + c).to(_gl.float32)
+    _gdc_wait()
+    _gdc_launch()
+    _fr_body(Branch, Stream, Out, NewStream, row, c, a, beta, pw, post_w, H, F, POST, FR_TUPLE)
 
 
-def kernel_fn(data, state):
-    cfg = data["config"]
-    T = cfg["tokens"]
-    kind = "s" if cfg["window"] > 0 else "f"
-    gs = state.get("gs")
-    if (gs is None or T not in GS_T.get(kind, ()) or cfg["num_q_heads"] * 64 != 1024 or not state["att_ok"]
-            or not _supported7(cfg) or not _att_fits7(data, cfg) or state.get("mm_pick", {}).get((T, "qkv"), True) != "bfp"):
-        return _gs_parent_kernel_fn(data, state)
-    x = data["attn_input"]
-    _glue_bind_context(x)
-    ext, tokr, dummy = _gs_ext(), bfp__sk2_tokr(T), state["bfp"]["dummy"]
-    buf = gs["buf"][:T]
-    Wh, th, ph, bh = gs["h"]
-    ext.sk2_set_pdl(_pcx_val("qkv", T) if _pdl(T) else 0)
-    ext.sk2(Wh, x, buf, th, ph, bh, T, 1280, HIDDEN, 0, tokr, 2304, dummy)
-    try:
-        o_in = _decode_attention7(data, state, buf)
-    except RuntimeError:
-        return _kernel_fn_fa3(data, state)
-    Wg, tg, pg, bg = gs["g"]
-    ext.sk2_set_pdl(((1 << 30) | GS_P) if _pdl(T) else 0)
-    ext.sk2(Wg, x, o_in, tg, pg, bg, T, 1024, HIDDEN, 1, tokr, -1, dummy)
-    L2PF_HITS[(kind, T)] = L2PF_HITS.get((kind, T), 0) + 1
-    return _after_attention(data, state, o_in, None, T)
+# _graft_boundary looks these names up at call time (same signature and launch)
+_graft_row_boundary = _fr_row_boundary
+_graft_row_boundary_pre = _fr_row_boundary_pre
