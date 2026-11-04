@@ -1,0 +1,201 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-LOAcBqKA0cMBL446s21BLU
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,q6,q6off", "CASES": "d16f,d32f,v16f,v32f", "SEEDS": "11,12", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d16f", "seed": 11, "med": {"base": 87.98, "q6": 88.51, "q6off": 88.5}, "gain": {"base": 1.0, "q6": 0.994, "q6off": 0.994}, "bad": {}}
+ROW {"case": "d16f", "seed": 12, "med": {"base": 85.47, "q6": 86.37, "q6off": 85.97}, "gain": {"base": 1.0, "q6": 0.99, "q6off": 0.994}, "bad": {}}
+ROW {"case": "d32f", "seed": 11, "med": {"base": 164.21, "q6": 164.7, "q6off": 165.44}, "gain": {"base": 1.0, "q6": 0.997, "q6off": 0.993}, "bad": {}}
+ROW {"case": "d32f", "seed": 12, "med": {"base": 162.06, "q6": 163.23, "q6off": 162.42}, "gain": {"base": 1.0, "q6": 0.993, "q6off": 0.998}, "bad": {}}
+ROW {"case": "v16f", "seed": 11, "med": {"base": 98.1, "q6": 107.2, "q6off": 106.75}, "gain": {"base": 1.0, "q6": 0.915, "q6off": 0.919}, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 95.92, "q6": 104.1, "q6off": 103.71}, "gain": {"base": 1.0, "q6": 0.921, "q6off": 0.925}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 178.62, "q6": 195.25, "q6off": 194.91}, "gain": {"base": 1.0, "q6": 0.915, "q6off": 0.916}, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 176.08, "q6": 191.81, "q6off": 192.45}, "gain": {"base": 1.0, "q6": 0.918, "q6off": 0.915}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "time", "VARIANTS": "base,q6l1,q4", "CASES": "d16f,d32f,v16f,v32f", "SEEDS": "13,14", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d16f", "seed": 13, "med": {"base": 91.82, "q6l1": 92.9, "q4": 93.15}, "gain": {"base": 1.0, "q6l1": 0.988, "q4": 0.986}, "bad": {}}
+ROW {"case": "d16f", "seed": 14, "med": {"base": 89.81, "q6l1": 90.61, "q4": 90.93}, "gain": {"base": 1.0, "q6l1": 0.991, "q4": 0.988}, "bad": {}}
+ROW {"case": "d32f", "seed": 13, "med": {"base": 169.7, "q6l1": 170.75, "q4": 171.07}, "gain": {"base": 1.0, "q6l1": 0.994, "q4": 0.992}, "bad": {}}
+ROW {"case": "d32f", "seed": 14, "med": {"base": 171.68, "q6l1": 172.72, "q4": 172.75}, "gain": {"base": 1.0, "q6l1": 0.994, "q4": 0.994}, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"base": 101.98, "q4": 110.38}, "gain": {"base": 1.0, "q4": 0.924}, "bad": {"q6l1": "relative L2 error 1.318e-01 > 0.0910343 [bound 0.091: 2.5 x the reference's 0.03"}}
+ROW {"case": "v16f", "seed": 14, "med": {"base": 99.49, "q4": 108.53}, "gain": {"base": 1.0, "q4": 0.917}, "bad": {"q6l1": "relative L2 error 1.191e-01 > 0.0967954 [bound 0.097: 2.5 x the reference's 0.03"}}
+ROW {"case": "v32f", "seed": 13, "med": {"base": 182.82, "q4": 197.86}, "gain": {"base": 1.0, "q4": 0.924}, "bad": {"q6l1": "relative L2 error 9.542e-02 > 0.091042 [bound 0.091: 2.5 x the reference's 0.030"}}
+ROW {"case": "v32f", "seed": 14, "med": {"base": 185.5, "q4": 200.02}, "gain": {"base": 1.0, "q4": 0.927}, "bad": {"q6l1": "relative L2 error 1.060e-01 > 0.09271 [bound 0.093: 2.5 x the reference's 0.031 "}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "q6,q4", "SEEDS": "11,12", "XCASES": "d16f,d32f,v16f,v32f"} RETURNCODE 0
+RES okc_attn_frq6_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frq6_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6600, "region": 1003, "hist_region": {"ISETP": 136, "HFMA2": 128, "FMNMX": 112, "FMUL": 98, "FSEL": 66, "PRMT": 54, "F2FP": 42, "VIADD": 32, "IMAD": 30, "UIADD3": 29, "UISETP": 26, "LOP3": 25, "IADD3": 21, "FFMA": 20, "STS": 17, "USEL": 14, "LDS": 13, "BRA": 12, "SHFL": 12, "MOV": 11, "ULEA": 9, "UMOV": 9, "QGMMA": 8, "WARPGROUP": 8, "SHF": 7, "PLOP3": 7, "SEL": 6, "HADD2": 6, "R2UR": 5, "LDSM": 4, "FADD": 4, "MUFU": 4, "SYNCS": 3, "BAR": 3, "USHF": 3, "UPLOP3": 2, "S2R": 2, "FSETP": 2, "VOTE": 2, "MEMBAR": 2, "FENCE": 2, "VIADDMNMX": 2, "STL": 1, "LDL": 1, "ULOP3": 1, "S2UR": 1, "CALL": 1}}
+RES okc_attn_frq4_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frq4_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6600, "region": 1003, "hist_region": {"ISETP": 136, "HFMA2": 128, "FMNMX": 112, "FMUL": 98, "FSEL": 66, "PRMT": 54, "F2FP": 42, "VIADD": 32, "IMAD": 30, "UIADD3": 29, "UISETP": 26, "LOP3": 25, "IADD3": 21, "FFMA": 20, "STS": 17, "USEL": 14, "LDS": 13, "BRA": 12, "SHFL": 12, "MOV": 11, "ULEA": 9, "UMOV": 9, "QGMMA": 8, "WARPGROUP": 8, "SHF": 7, "PLOP3": 7, "SEL": 6, "HADD2": 6, "R2UR": 5, "LDSM": 4, "FADD": 4, "MUFU": 4, "SYNCS": 3, "BAR": 3, "USHF": 3, "UPLOP3": 2, "S2R": 2, "FSETP": 2, "VOTE": 2, "MEMBAR": 2, "FENCE": 2, "VIADDMNMX": 2, "STL": 1, "LDL": 1, "ULOP3": 1, "S2UR": 1, "CALL": 1}}
+TEST 0 11 {"q6": [true, ["3.279e-03", "3.279e-03", "0.073"]], "q4": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"q6": [true, ["5.447e-03", "5.447e-03", "0.137"]], "q4": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"q6": [true, ["8.059e-03", "8.852e-03", "0.150"]], "q4": [true, ["8.175e-03", "8.884e-03", "0.150"]]}
+TEST 1 12 {"q6": [true, ["7.625e-03", "8.496e-03", "0.150"]], "q4": [true, ["7.725e-03", "8.449e-03", "0.150"]]}
+TEST 2 11 {"q6": [true, ["7.596e-02", "1.097e-01", "0.150"]], "q4": [true, ["7.590e-02", "1.095e-01", "0.150"]]}
+TEST 2 12 {"q6": [true, ["7.781e-02", "1.128e-01", "0.150"]], "q4": [true, ["7.779e-02", "1.125e-01", "0.150"]]}
+TEST 3 11 {"q6": [true, ["6.646e-03", "7.294e-03", "0.150"]], "q4": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"q6": [true, ["5.865e-03", "6.923e-03", "0.150"]], "q4": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"q6": [true, ["5.797e-03", "6.583e-03", "0.150"]], "q4": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"q6": [true, ["5.502e-03", "5.882e-03", "0.150"]], "q4": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"q6": [true, ["9.324e-02", "1.124e-01", "0.150"]], "q4": [true, ["9.393e-02", "1.150e-01", "0.150"]]}
+TEST 5 12 {"q6": [true, ["9.030e-02", "1.229e-01", "0.150"]], "q4": [true, ["9.024e-02", "1.226e-01", "0.150"]]}
+TEST 6 11 {"q6": [true, ["6.659e-03", "7.353e-03", "0.150"]], "q4": [true, ["6.924e-03", "7.890e-03", "0.150"]]}
+TEST 6 12 {"q6": [true, ["7.097e-03", "8.289e-03", "0.150"]], "q4": [true, ["7.056e-03", "8.132e-03", "0.150"]]}
+TEST 7 11 {"q6": [true, ["8.320e-02", "1.119e-01", "0.150"]], "q4": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"q6": [true, ["8.469e-02", "1.158e-01", "0.150"]], "q4": [true, ["8.469e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"q6": [true, ["9.532e-02", "1.195e-01", "0.150"]], "q4": [true, ["9.539e-02", "1.196e-01", "0.150"]]}
+TEST 8 12 {"q6": [true, ["9.729e-02", "1.249e-01", "0.150"]], "q4": [true, ["9.728e-02", "1.248e-01", "0.150"]]}
+TEST 9 11 {"q6": [true, ["8.105e-02", "1.127e-01", "0.150"]], "q4": [true, ["8.103e-02", "1.129e-01", "0.150"]]}
+TEST 9 12 {"q6": [true, ["7.685e-02", "1.095e-01", "0.150"]], "q4": [true, ["7.686e-02", "1.093e-01", "0.150"]]}
+TEST 10 11 {"q6": [true, ["5.713e-03", "5.735e-03", "0.150"]], "q4": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"q6": [true, ["4.862e-03", "5.158e-03", "0.150"]], "q4": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"q6": [true, ["4.979e-03", "5.836e-03", "0.150"]], "q4": [true, ["4.981e-03", "5.841e-03", "0.150"]]}
+TEST 11 12 {"q6": [true, ["4.951e-03", "5.279e-03", "0.150"]], "q4": [true, ["4.940e-03", "5.269e-03", "0.150"]]}
+TEST 12 11 {"q6": [true, ["6.584e-02", "1.040e-01", "0.150"]], "q4": [true, ["6.586e-02", "1.040e-01", "0.150"]]}
+TEST 12 12 {"q6": [true, ["6.134e-02", "8.345e-02", "0.150"]], "q4": [true, ["6.141e-02", "8.380e-02", "0.150"]]}
+TEST 13 11 {"q6": [true, ["7.471e-02", "7.959e-02", "0.150"]], "q4": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"q6": [true, ["7.535e-02", "8.532e-02", "0.150"]], "q4": [true, ["7.535e-02", "8.532e-02", "0.150"]]}
+TEST 14 11 {"q6": [true, ["3.197e-03", "3.889e-03", "0.122"]], "q4": [true, ["3.196e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"q6": [true, ["3.763e-03", "4.240e-03", "0.142"]], "q4": [true, ["3.761e-03", "4.244e-03", "0.142"]]}
+TEST 15 11 {"q6": [true, ["4.559e-02", "5.149e-02", "0.109"]], "q4": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST 15 12 {"q6": [true, ["4.791e-02", "5.927e-02", "0.113"]], "q4": [true, ["4.791e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"q6": [true, ["3.135e-03", "3.906e-03", "0.114"]], "q4": [true, ["3.134e-03", "3.906e-03", "0.114"]]}
+TEST S0 12 {"q6": [true, ["2.956e-03", "3.572e-03", "0.102"]], "q4": [true, ["2.956e-03", "3.574e-03", "0.102"]]}
+TEST S1 11 {"q6": [true, ["3.025e-03", "4.177e-03", "0.111"]], "q4": [true, ["3.025e-03", "4.177e-03", "0.111"]]}
+TEST S1 12 {"q6": [true, ["2.891e-03", "4.216e-03", "0.107"]], "q4": [true, ["2.891e-03", "4.216e-03", "0.107"]]}
+TEST S2 11 {"q6": [true, ["3.917e-02", "8.321e-02", "0.082"]], "q4": [true, ["3.924e-02", "7.474e-02", "0.082"]]}
+TEST S2 12 {"q6": [true, ["4.034e-02", "9.715e-02", "0.085"]], "q4": [true, ["4.094e-02", "9.754e-02", "0.085"]]}
+TEST S3 11 {"q6": [true, ["4.713e-02", "1.071e-01", "0.080"]], "q4": [true, ["4.718e-02", "1.148e-01", "0.080"]]}
+TEST S3 12 {"q6": [true, ["4.818e-02", "1.078e-01", "0.083"]], "q4": [true, ["4.767e-02", "1.057e-01", "0.083"]]}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "q6l1", "SEEDS": "13", "XCASES": "d16f,d32f,v16f,v32f"} RETURNCODE 0
+RES okc_attn_frq6l1_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frq6l1_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6720, "region": 1518, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 51, "VIADD": 48, "IMAD": 47, "UISETP": 35, "FFMA": 32, "LOP3": 28, "STS": 26, "IADD3": 25, "USEL": 21, "SHFL": 20, "MOV": 19, "BRA": 18, "ULEA": 14, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "LDS": 12, "HADD2": 10, "USHF": 9, "SHF": 8, "PLOP3": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VIADDMNMX": 4, "R2UR": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "LEA": 2, "LDL": 2, "S2UR": 2, "CALL": 2, "STL": 1, "UIMAD": 1, "ULDC": 1}}
+TEST 0 13 {"q6l1": [true, ["3.940e-03", "3.940e-03", "0.111"]]}
+TEST 1 13 {"q6l1": [true, ["7.225e-03", "7.258e-03", "0.150"]]}
+TEST 2 13 {"q6l1": [true, ["7.877e-02", "1.207e-01", "0.150"]]}
+TEST 3 13 {"q6l1": [true, ["6.099e-03", "7.748e-03", "0.150"]]}
+TEST 4 13 {"q6l1": [true, ["5.613e-03", "6.282e-03", "0.150"]]}
+TEST 5 13 {"q6l1": [false, "relative L2 error 8.810e-01 > 0.15 [bound 0.150: 2.5 x the reference's 0.094 with FP8 E4M3"]}
+TEST 6 13 {"q6l1": [true, ["7.463e-03", "7.955e-03", "0.150"]]}
+TEST 7 13 {"q6l1": [true, ["7.912e-02", "1.045e-01", "0.150"]]}
+TEST 8 13 {"q6l1": [true, ["9.817e-02", "1.256e-01", "0.150"]]}
+TEST 9 13 {"q6l1": [true, ["8.311e-02", "1.263e-01", "0.150"]]}
+TEST 10 13 {"q6l1": [true, ["6.120e-03", "6.730e-03", "0.150"]]}
+TEST 11 13 {"q6l1": [true, ["5.133e-03", "5.736e-03", "0.150"]]}
+TEST 12 13 {"q6l1": [true, ["6.708e-02", "1.037e-01", "0.150"]]}
+TEST 13 13 {"q6l1": [true, ["7.667e-02", "8.311e-02", "0.150"]]}
+TEST 14 13 {"q6l1": [true, ["3.264e-03", "3.599e-03", "0.113"]]}
+TEST 15 13 {"q6l1": [true, ["4.795e-02", "6.093e-02", "0.113"]]}
+TEST S0 13 {"q6l1": [true, ["3.436e-03", "4.070e-03", "0.127"]]}
+TEST S1 13 {"q6l1": [true, ["3.290e-03", "4.635e-03", "0.124"]]}
+TEST S2 13 {"q6l1": [false, "relative L2 error 1.318e-01 > 0.0910343 [bound 0.091: 2.5 x the reference's 0.030 with FP8"]}
+TEST S3 13 {"q6l1": [false, "relative L2 error 9.542e-02 > 0.091042 [bound 0.091: 2.5 x the reference's 0.030 with FP8 "]}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "time", "VARIANTS": "base,q6,q6l1", "CASES": "d1s,d1f,d16s,d32s,v1s,v1f,v16s,v32s", "SEEDS": "11", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 8.96, "q6": 8.86, "q6l1": 8.86}, "gain": {"base": 1.0, "q6": 1.011, "q6l1": 1.011}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 14.53, "q6": 14.61, "q6l1": 14.72}, "gain": {"base": 1.0, "q6": 0.995, "q6l1": 0.987}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 11.76, "q6": 11.62, "q6l1": 11.73}, "gain": {"base": 1.0, "q6": 1.012, "q6l1": 1.003}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 13.47, "q6": 13.5, "q6l1": 13.47}, "gain": {"base": 1.0, "q6": 0.998, "q6l1": 1.0}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.34, "q6": 10.24, "q6l1": 10.38}, "gain": {"base": 1.0, "q6": 1.009, "q6l1": 0.995}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 16.83, "q6": 17.06, "q6l1": 17.12}, "gain": {"base": 1.0, "q6": 0.987, "q6l1": 0.983}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.14, "q6": 14.02, "q6l1": 14.08}, "gain": {"base": 1.0, "q6": 1.009, "q6l1": 1.005}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.56, "q6": 16.8, "q6l1": 16.8}, "gain": {"base": 1.0, "q6": 0.986, "q6l1": 0.986}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-LOAcBqKA0cMBL446s21BLU
