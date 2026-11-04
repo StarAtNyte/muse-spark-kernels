@@ -1,0 +1,67 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-b7L5ZW695c4cxedL3wHHHM
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base", "CASES": "v16f,v32f", "SEEDS": "11,12,13", "REPS": "20", "OVR": "{\"c0\": {\"ov\": {\"coop\": 0}, \"cases\": [\"v16f\", \"v32f\"]}}"} RETURNCODE 0
+ROW {"case": "v16f", "seed": 11, "med": {"base": 102.0, "c0": 102.16}, "gain": {"base": 1.0, "c0": 0.998}, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 98.29, "c0": 99.12}, "gain": {"base": 1.0, "c0": 0.992}, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"base": 101.66, "c0": 103.28}, "gain": {"base": 1.0, "c0": 0.984}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 185.47, "c0": 185.82}, "gain": {"base": 1.0, "c0": 0.998}, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 182.1, "c0": 182.46}, "gain": {"base": 1.0, "c0": 0.998}, "bad": {}}
+ROW {"case": "v32f", "seed": 13, "med": {"base": 182.86, "c0": 183.82}, "gain": {"base": 1.0, "c0": 0.995}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "stamp", "VARIANTS": "stamp", "CASES": "v16f,v32f", "REPS": "4", "SEEDS": "11", "STAMPOV": "{\"coop\": 0}"} RETURNCODE 0
+STAMPCHK v16f True relative L2 error 3.944e-02 (worst row 7.663e-02) [bound 0.082: 2.5 x the refere
+STAMP {"case": "v16f", "rep": 0, "G": 264, "start": [0.0, 0.0, 0.0, 0.26], "end": [81.15, 86.02, 89.34, 92.16, 98.05], "fin": [89.6, 98.3], "smend": [85.5, 88.58, 90.62, 98.05], "end_nseg1": [89.34, 98.05], "end_nseg2": [89.34, 91.39], "n2": 10, "merge_start": [83.46, 87.04, 93.18], "last_merge_dur": [2.3, 7.94], "seg1_end2": [39.42]}
+STAMP {"case": "v16f", "rep": 1, "G": 264, "start": [0.0, 0.0, 0.0, 0.0], "end": [80.64, 85.25, 88.83, 91.65, 97.79], "fin": [88.83, 97.79], "smend": [82.94, 88.06, 89.86, 97.79], "end_nseg1": [88.83, 97.79], "end_nseg2": [89.6, 90.88], "n2": 10, "merge_start": [82.69, 86.27, 91.39], "last_merge_dur": [2.3, 7.94], "seg1_end2": [40.19]}
+STAMP {"case": "v16f", "rep": 2, "G": 264, "start": [0.0, 0.26, 0.26, 0.26], "end": [80.13, 85.25, 88.58, 91.39, 98.05], "fin": [88.58, 98.05], "smend": [84.99, 88.06, 89.86, 98.05], "end_nseg1": [88.58, 98.05], "end_nseg2": [87.55, 90.37], "n2": 10, "merge_start": [81.92, 86.27, 91.9], "last_merge_dur": [2.3, 7.68], "seg1_end2": [40.7]}
+STAMP {"case": "v16f", "rep": 3, "G": 264, "start": [0.0, 0.0, 0.0, 0.0], "end": [81.41, 84.99, 88.83, 91.39, 97.28], "fin": [89.09, 97.28], "smend": [83.71, 87.81, 90.11, 97.28], "end_nseg1": [89.09, 97.28], "end_nseg2": [86.53, 91.9], "n2": 10, "merge_start": [82.69, 86.53, 92.16], "last_merge_dur": [2.3, 8.45], "seg1_end2": [37.38]}
+STAMPCHK v32f True relative L2 error 4.696e-02 (worst row 1.026e-01) [bound 0.080: 2.5 x the refere
+STAMP {"case": "v32f", "rep": 0, "G": 264, "start": [0.0, 0.0, 0.0, 0.0], "end": [162.3, 165.89, 170.75, 176.13, 181.5], "fin": [170.75, 181.5], "smend": [168.19, 169.47, 172.54, 181.5], "end_nseg1": [170.75, 181.5], "end_nseg2": [171.26, 179.71], "n2": 31, "merge_start": [163.33, 168.45, 176.64], "last_merge_dur": [2.3, 6.91], "seg1_end2": [97.28]}
+STAMP {"case": "v32f", "rep": 1, "G": 264, "start": [0.0, 0.0, 0.26, 0.26], "end": [159.23, 164.86, 170.5, 176.64, 181.76], "fin": [170.5, 182.02], "smend": [167.42, 169.73, 171.78, 181.76], "end_nseg1": [170.5, 181.76], "end_nseg2": [169.98, 180.22], "n2": 31, "merge_start": [161.54, 168.45, 177.41], "last_merge_dur": [2.3, 7.94], "seg1_end2": [97.54]}
+STAMP {"case": "v32f", "rep": 2, "G": 264, "start": [0.0, 0.26, 0.26, 0.26], "end": [159.49, 164.35, 169.73, 175.36, 180.48], "fin": [169.73, 180.48], "smend": [166.14, 168.7, 171.52, 180.48], "end_nseg1": [169.73, 180.48], "end_nseg2": [169.73, 179.2], "n2": 31, "merge_start": [161.79, 167.68, 176.13], "last_merge_dur": [2.3, 7.42], "seg1_end2": [97.02]}
+STAMP {"case": "v32f", "rep": 3, "G": 264, "start": [0.0, 0.0, 0.0, 0.0], "end": [160.26, 164.86, 170.5, 175.87, 182.27], "fin": [170.5, 182.27], "smend": [166.4, 169.47, 172.03, 182.27], "end_nseg1": [170.5, 182.02], "end_nseg2": [170.75, 182.27], "n2": 31, "merge_start": [162.05, 168.45, 177.66], "last_merge_dur": [2.3, 7.68], "seg1_end2": [97.28]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-b7L5ZW695c4cxedL3wHHHM

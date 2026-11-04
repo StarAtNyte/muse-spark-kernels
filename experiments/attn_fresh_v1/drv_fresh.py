@@ -101,7 +101,7 @@ if PHASE == 'stamp':
         for rep in range(REPS):
             dbg = torch.zeros(4096 * 16, dtype=torch.int64, device='cuda')
             flush.sum(); torch.cuda.synchronize()
-            M._launch(d, dbg=dbg); torch.cuda.synchronize()
+            M._launch(d, dbg=dbg, **json.loads(os.environ.get('STAMPOV', '{}'))); torch.cuda.synchronize()
             G = int((dbg.view(-1, 16)[:, 0] > 0).sum())
             t = dbg.view(-1, 16)[:G].cpu().double()
             t0 = t[:, 0].min()
