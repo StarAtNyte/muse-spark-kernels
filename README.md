@@ -21,7 +21,9 @@ to fuse attention and its output merge. All activation-dependent work is inside 
 
 ## Remote validation
 
-MoE submission (2026-11-04): FP32 per-expert storage passed 5/5 in private check at **2.38300×**; scored job `5c2e8be4c4994a50` is pending. [Source and record](experiments/scored_moe_fp32_ybuf_v1/FINDINGS.md).
+MoE submission (2026-11-04): FP32 per-expert storage passed the official scored run at **2.41685×** (95% CI 2.38059–2.45310×), **#127** in the 07:08 UTC snapshot; #50 was 2.5036×. The prior published score was 2.3820×, though the intervals overlap and the targeted local screen did not establish a speedup from this change. [Source and record](experiments/scored_moe_fp32_ybuf_v1/FINDINGS.md).
+
+Decoder experiment (2026-11-04): a Claude Code H200 paired screen of MoE readiness-poll backoff passed six reference cases but measured only **1.0023×** geometric gain; it was not promoted. [Results and logs](experiments/claude_decoder_next_v1/FINDINGS.md).
 
 Projection submission (2026-11-03): the FP32 bucketed candidate passed 9/9 at **1.55635×** and scored job `1f5bfe33160a4deb` passed 9/9 at **1.53881×**. [Source and record](experiments/scored_projection_fp32_bucket_v7/FINDINGS.md).
 

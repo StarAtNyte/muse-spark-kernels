@@ -2,4 +2,4 @@
 
 Source SHA-256 `2c6ebcb747a4e436e84fb1ee80d8dcb6727fde538a62d0fc73803f5b88432b96` matches the checked source byte-for-byte. Private check `ce7e9f4df22a4ee3` passed 5/5 at 2.38300× (95% CI 2.34726–2.41875×). The candidate uses FP32 per-expert WGS storage before normalization and combination, retaining the existing FP32 fixup path. The earlier targeted H200 screen showed no meaningful speed difference from the BF16-storage parent; that does not prove the earlier format was prohibited.
 
-Scored job `5c2e8be4c4994a50` submitted and pending. Passing tests and code inspection do not guarantee final organizer eligibility or all-input correctness.
+Scored job `5c2e8be4c4994a50` passed at **2.4168459×** (95% CI 2.3805932–2.4530986×, 5564.48 µs). At the 2026-11-04 07:08 UTC snapshot it was **#127**, with #50 at 2.5036× and #1 at 2.7642×. The previous published row was 2.3820×; overlapping intervals and the neutral paired local test mean this is not evidence that FP32 storage itself improved performance. Official result and profiles are archived here. Passing tests and code inspection do not guarantee final organizer eligibility or all-input correctness.
