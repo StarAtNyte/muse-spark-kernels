@@ -1,0 +1,73 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-aa0JGxjMIDnCRkG849gi5d
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_mid_v2/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 75s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 0.00e+00
+PREPARED 122.0
+BUILT 207.5
+CHECKS_DONE fails 0 208.2
+ROW {"bs": 1, "seed": 0, "base": 32.56, "l2t0": 34.05, "l4t0": 34.91, "l4t3": 34.74, "r_l2t0": 0.9585, "r_l4t0": 0.9385, "r_l4t3": 0.945}
+ROW {"bs": 1, "seed": 1, "base": 32.0, "l2t0": 34.3, "l4t0": 34.61, "l4t3": 34.06, "r_l2t0": 0.9345, "r_l4t0": 0.9249, "r_l4t3": 0.9398}
+ROW {"bs": 1, "seed": 2, "base": 25.78, "l2t0": 27.5, "l4t0": 27.65, "l4t3": 27.95, "r_l2t0": 0.9394, "r_l4t0": 0.9291, "r_l4t3": 0.9246}
+ROW {"bs": 1, "seed": 3, "base": 26.14, "l2t0": 27.54, "l4t0": 27.7, "l4t3": 28.43, "r_l2t0": 0.9495, "r_l4t0": 0.941, "r_l4t3": 0.9218}
+ROW {"bs": 1, "seed": 4, "base": 32.51, "l2t0": 34.06, "l4t0": 34.38, "l4t3": 34.13, "r_l2t0": 0.9495, "r_l4t0": 0.9433, "r_l4t3": 0.9495}
+ROW {"bs": 1, "seed": 5, "base": 39.33, "l2t0": 40.99, "l4t0": 43.01, "l4t3": 42.77, "r_l2t0": 0.9581, "r_l4t0": 0.9112, "r_l4t3": 0.9191}
+ROW {"bs": 8, "seed": 0, "base": 72.02, "l2t0": 73.18, "l4t0": 74.29, "l8t0": 77.33, "l4t3": 74.38, "r_l2t0": 0.9865, "r_l4t0": 0.9674, "r_l8t0": 0.9337, "r_l4t3": 0.9622}
+ROW {"bs": 8, "seed": 1, "base": 39.74, "l2t0": 40.35, "l4t0": 41.87, "l8t0": 42.85, "l4t3": 42.5, "r_l2t0": 0.9894, "r_l4t0": 0.9503, "r_l8t0": 0.9284, "r_l4t3": 0.9389}
+ROW {"bs": 8, "seed": 2, "base": 71.01, "l2t0": 72.82, "l4t0": 73.98, "l8t0": 77.22, "l4t3": 74.42, "r_l2t0": 0.9778, "r_l4t0": 0.9603, "r_l8t0": 0.9194, "r_l4t3": 0.9601}
+ROW {"bs": 8, "seed": 3, "base": 52.19, "l2t0": 53.34, "l4t0": 55.66, "l8t0": 58.27, "l4t3": 55.55, "r_l2t0": 0.9835, "r_l4t0": 0.9395, "r_l8t0": 0.8992, "r_l4t3": 0.9393}
+ROW {"bs": 8, "seed": 4, "base": 66.19, "l2t0": 65.97, "l4t0": 68.0, "l8t0": 71.26, "l4t3": 68.91, "r_l2t0": 0.9988, "r_l4t0": 0.97, "r_l8t0": 0.9259, "r_l4t3": 0.9576}
+ROW {"bs": 8, "seed": 5, "base": 70.64, "l2t0": 72.99, "l4t0": 74.34, "l8t0": 77.39, "l4t3": 74.1, "r_l2t0": 0.9677, "r_l4t0": 0.952, "r_l8t0": 0.9115, "r_l4t3": 0.9543}
+ROW {"bs": 16, "seed": 0, "base": 96.34, "l2t0": 97.7, "l4t0": 98.5, "l4t3": 99.36, "r_l2t0": 0.9852, "r_l4t0": 0.9797, "r_l4t3": 0.965}
+ROW {"bs": 16, "seed": 1, "base": 66.4, "l2t0": 67.06, "l4t0": 68.75, "l4t3": 67.87, "r_l2t0": 0.9917, "r_l4t0": 0.9642, "r_l4t3": 0.9715}
+ROW {"bs": 16, "seed": 2, "base": 89.87, "l2t0": 91.47, "l4t0": 92.18, "l4t3": 92.58, "r_l2t0": 0.9831, "r_l4t0": 0.9774, "r_l4t3": 0.9718}
+ROW {"bs": 16, "seed": 3, "base": 80.61, "l2t0": 80.62, "l4t0": 82.4, "l4t3": 81.3, "r_l2t0": 1.0034, "r_l4t0": 0.9804, "r_l4t3": 0.9923}
+ROW {"bs": 16, "seed": 4, "base": 80.13, "l2t0": 81.09, "l4t0": 82.11, "l4t3": 81.95, "r_l2t0": 0.9866, "r_l4t0": 0.9697, "r_l4t3": 0.9742}
+ROW {"bs": 16, "seed": 5, "base": 83.36, "l2t0": 84.83, "l4t0": 86.14, "l4t3": 86.69, "r_l2t0": 0.9815, "r_l4t0": 0.9666, "r_l4t3": 0.9659}
+SUMMARY 1 {'r_l2t0': 0.9482, 'r_l4t0': 0.9313, 'r_l4t3': 0.9332} base_us 31.4
+SUMMARY 8 {'r_l2t0': 0.9839, 'r_l4t0': 0.9565, 'r_l8t0': 0.9196, 'r_l4t3': 0.952} base_us 62.0
+SUMMARY 16 {'r_l2t0': 0.9886, 'r_l4t0': 0.973, 'r_l4t3': 0.9734} base_us 82.8
+DONE fails 0 208.6
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-aa0JGxjMIDnCRkG849gi5d
+EXIT 0
