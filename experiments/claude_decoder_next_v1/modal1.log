@@ -1,0 +1,47 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GJ05dfsWXmCsSHbdlPE5go
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/_claude_decoder_ne
+│   xt_v1_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 155s
+[mfab] moe T= 32 prod median   147.6 us  speedup vs barrier twin (twin without SC6) 1.0258 (per seed 1.026 1.024 1.008 1.034)  max|d| 0
+[mfab] moe T=128 prod median   191.5 us  speedup vs barrier twin (twin without SC6) 1.0327 (per seed 1.030 1.011 1.033 1.036)  max|d| 0
+[mfab] moe T=256 prod median   224.2 us  speedup vs barrier twin (twin without SC6) 1.0192 (per seed 1.019 1.012 1.011 1.020)  max|d| 0
+[ 193.7s] candidate build done
+[ 193.7s] PREPARED
+ROW {"i": 0, "case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "spread": "agentic", "seed": 8001}, "T": 32, "ctrl_us": 149.87, "cand_us": 149.66, "ratio_ctrl_over_cand": 1.0014, "min_ctrl": 147.42, "min_cand": 146.91, "ok": {"ctrl": [true, "update relative L2 error 8.563e-03 (worst row 1.807e-02) [bound 0.144]; attention input relative L2 error 6.14"], "cand": [true, "update relative L2 error 8.559e-03 (worst row 1.807e-02) [bound 0.144]; attention input relative L2 error 6.14"]}, "bitwise_same": false}
+ROW {"i": 1, "case": {"batch": 32, "ctx": 80000, "layer": "sliding", "page": 1, "dist": "soft", "spread": "agentic", "seed": 8002}, "T": 32, "ctrl_us": 153.87, "cand_us": 154.82, "ratio_ctrl_over_cand": 0.9939, "min_ctrl": 151.62, "min_cand": 152.29, "ok": {"ctrl": [true, "update relative L2 error 9.635e-03 (worst row 1.865e-02) [bound 0.131]; attention input relative L2 error 6.96"], "cand": [true, "update relative L2 error 9.635e-03 (worst row 1.865e-02) [bound 0.131]; attention input relative L2 error 6.96"]}, "bitwise_same": true}
+ROW {"i": 2, "case": {"batch": 32, "ctx": 80000, "layer": "full", "page": 1, "dist": "soft", "spread": "agentic", "seed": 8003}, "T": 32, "ctrl_us": 324.38, "cand_us": 323.31, "ratio_ctrl_over_cand": 1.0033, "min_ctrl": 320.61, "min_cand": 321.38, "ok": {"ctrl": [true, "update relative L2 error 7.921e-03 (worst row 1.548e-02) [bound 0.150]; attention input relative L2 error 5.91"], "cand": [true, "update relative L2 error 7.921e-03 (worst row 1.548e-02) [bound 0.150]; attention input relative L2 error 5.91"]}, "bitwise_same": true}
+ROW {"i": 3, "case": {"batch": 4, "ctx": 6000, "layer": "sliding", "q_len": 8, "dist": "soft", "seed": 8004}, "T": 32, "ctrl_us": 191.87, "cand_us": 191.07, "ratio_ctrl_over_cand": 1.0042, "min_ctrl": 189.95, "min_cand": 189.15, "ok": {"ctrl": [true, "update relative L2 error 5.872e-02 (worst row 8.324e-02) [bound 0.144]; attention input relative L2 error 3.84"], "cand": [true, "update relative L2 error 5.873e-02 (worst row 8.324e-02) [bound 0.144]; attention input relative L2 error 3.84"]}, "bitwise_same": false}
+ROW {"i": 4, "case": {"batch": 17, "ctx": 20000, "layer": "full", "spread": "mixed", "page": 1, "seed": 8005}, "T": 17, "ctrl_us": 191.49, "cand_us": 190.32, "ratio_ctrl_over_cand": 1.0061, "min_ctrl": 189.25, "min_cand": 188.22, "ok": {"ctrl": [true, "update relative L2 error 7.296e-03 (worst row 1.050e-02) [bound 0.150]; attention input relative L2 error 5.21"], "cand": [true, "update relative L2 error 7.296e-03 (worst row 1.050e-02) [bound 0.150]; attention input relative L2 error 5.21"]}, "bitwise_same": true}
+ROW {"i": 5, "case": {"batch": 24, "ctx": 30000, "layer": "sliding", "spread": "agentic", "page": 1, "seed": 8006}, "T": 24, "ctrl_us": 165.5, "cand_us": 164.69, "ratio_ctrl_over_cand": 1.005, "min_ctrl": 161.89, "min_cand": 161.02, "ok": {"ctrl": [true, "update relative L2 error 7.245e-03 (worst row 9.509e-03) [bound 0.150]; attention input relative L2 error 5.31"], "cand": [true, "update relative L2 error 7.241e-03 (worst row 9.509e-03) [bound 0.150]; attention input relative L2 error 5.31"]}, "bitwise_same": false}
+[ 197.6s] GEOMEAN ratio ctrl/cand 1.0023 n 6
+[ 197.6s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-GJ05dfsWXmCsSHbdlPE5go
