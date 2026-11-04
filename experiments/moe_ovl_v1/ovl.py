@@ -35,3 +35,74 @@ def patch_ovl(a):
            "  if (lane == 0) mbar_arrive1(S.bars + BX_E + prev);\n  if (OKC_WGSX & 8)")
     a = rep(a, old, new)
     return a
+
+# OKC_FIN1 (needs OKC_YBF): the phase-B epilogue writes each route's sum of squares as 256 plain per-warp partials
+# (rows of a 16-row group, shuffled over the 8 row lanes; no atomics) into the free upper half of ybuf; the final pass
+# then reads every route's 256 partials and its BF16 y row together: one L2 round trip and one barrier per token
+def patch_fin1(a):
+    a = rep(a, "#define OKC_DEBUG 0\n#endif\n", "#define OKC_DEBUG 0\n#endif\n#ifndef OKC_FIN1\n#define OKC_FIN1 0\n#endif\n")
+    old = ("        st_keep_f32(p.ybuf + ((size_t)(jst + tk) * HD + n0), d4[h] * w0);\n        st_keep_f32(p.ybuf + ((size_t)(jst + tk) * HD + n0 + 8), d4[2 + h] * w1);\n#endif\n      }\n    }\n")
+    new = old + ("#if OKC_FIN1 & 1\n    {\n      float* ssb = p.ybuf + (size_t)EMAX * HD / 2;\n      float v[2];\n#pragma unroll\n      for (int h = 0; h < 2; ++h) {\n"
+                 "        v[h] = 0.f;\n        if (tok0 + h < cnt) {\n          const float a0 = __bfloat162float(__float2bfloat16(d4[h] * w0)), a1 = __bfloat162float(__float2bfloat16(d4[2 + h] * w1));\n"
+                 "          v[h] = a0 * a0 + a1 * a1;\n        }\n#pragma unroll\n        for (int o = 4; o < 32; o <<= 1) v[h] += __shfl_xor_sync(0xffffffffu, v[h], o);\n      }\n"
+                 "      if (g == 0) {\n#pragma unroll\n        for (int h = 0; h < 2; ++h)\n          if (tok0 + h < cnt) ssb[(size_t)(jst + tok0 + h) * 256 + r16] = v[h];\n      }\n    }\n#endif\n")
+    a = rep(a, old, new)
+    s0 = "      int qv[8];\n#pragma unroll\n      for (int sl = 0; sl < 8; ++sl) qv[sl] = S.pos[tk * 8 + sl];\n      float ps[8];"
+    s1 = "      *reinterpret_cast<uint4*>(p.out + (size_t)tk * HD + tid * 8) = o;\n      CTA_SYNC();  // red is reused by the next token\n"
+    assert a.count(s0) == 1 and a.count(s1) == 1
+    i = a.index(s0); j = a.index(s1) + len(s1)
+    new = r'''#if OKC_FIN1 & 2
+#if !OKC_YBF
+#error "OKC_FIN1 needs OKC_YBF"
+#endif
+      {
+        const float* ssb = p.ybuf + (size_t)EMAX * HD / 2;
+        const int qs = S.pos[tk * 8 + (tid >> 6)];
+        float4 sv = make_float4(0.f, 0.f, 0.f, 0.f);
+        if (qs >= 0) sv = __ldcg(reinterpret_cast<const float4*>(ssb + (size_t)qs * 256) + (tid & 63));
+        int qv[8];
+        float wv[8];
+        uint4 yr[8];
+#pragma unroll
+        for (int sl = 0; sl < 8; ++sl) {
+          qv[sl] = S.pos[tk * 8 + sl];
+          wv[sl] = 0.f;
+          yr[sl] = make_uint4(0u, 0u, 0u, 0u);
+          if (qv[sl] >= 0) {
+            wv[sl] = __ldg(p.topk_w + tk * 8 + sl);
+            yr[sl] = __ldcg(reinterpret_cast<const uint4*>(reinterpret_cast<const __nv_bfloat16*>(p.ybuf) + (size_t)qv[sl] * HD) + tid);
+          }
+        }
+        float s = sv.x + sv.y + sv.z + sv.w;
+#pragma unroll
+        for (int o = 16; o > 0; o >>= 1) s += __shfl_xor_sync(0xffffffffu, s, o);
+        if (lane == 0) red[warp] = s;
+        CTA_SYNC();
+        float acc[8];
+#pragma unroll
+        for (int i = 0; i < 8; ++i) acc[i] = 0.f;
+#pragma unroll
+        for (int sl = 0; sl < 8; ++sl)
+          if (qv[sl] >= 0) {
+            const float r = wv[sl] * rsqrtf((red[2 * sl] + red[2 * sl + 1]) * (1.f / HD) + 1e-8f);
+            const uint32_t* yw = reinterpret_cast<const uint32_t*>(&yr[sl]);
+#pragma unroll
+            for (int i = 0; i < 4; ++i) {
+              const float2 f = __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162*>(&yw[i]));
+              acc[2 * i] += r * f.x; acc[2 * i + 1] += r * f.y;
+            }
+          }
+        uint4 o;
+        uint32_t* ow = reinterpret_cast<uint32_t*>(&o);
+#pragma unroll
+        for (int i = 0; i < 4; ++i) {
+          __nv_bfloat162 v = __floats2bfloat162_rn(acc[2 * i], acc[2 * i + 1]);
+          ow[i] = *reinterpret_cast<uint32_t*>(&v);
+        }
+        *reinterpret_cast<uint4*>(p.out + (size_t)tk * HD + tid * 8) = o;
+        CTA_SYNC();  // red is reused by the next token
+      }
+#else
+'''
+    a = a[:i] + new + a[i:j] + "#endif\n" + a[j:]
+    return a
