@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-k4ibPQPXYI4lYpRVxbdpZd
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,bv,bvnh", "CASES": "d1f,d1s,v1f,v1s", "SEEDS": "11,12,13", "REPS": "30"} RETURNCODE 0
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.07, "bv": 14.61, "bvnh": 15.14}, "gain": {"base": 1.0, "bv": 1.032, "bvnh": 0.996}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 14.98, "bv": 14.62, "bvnh": 15.14}, "gain": {"base": 1.0, "bv": 1.024, "bvnh": 0.989}, "bad": {}}
+ROW {"case": "d1f", "seed": 13, "med": {"base": 15.1, "bv": 14.62, "bvnh": 15.17}, "gain": {"base": 1.0, "bv": 1.033, "bvnh": 0.996}, "bad": {}}
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.09, "bv": 9.09, "bvnh": 9.15}, "gain": {"base": 1.0, "bv": 1.0, "bvnh": 0.993}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 8.99, "bv": 8.99, "bvnh": 8.99}, "gain": {"base": 1.0, "bv": 1.0, "bvnh": 1.0}, "bad": {}}
+ROW {"case": "d1s", "seed": 13, "med": {"base": 9.06, "bv": 9.09, "bvnh": 9.09}, "gain": {"base": 1.0, "bv": 0.996, "bvnh": 0.996}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.09, "bv": 16.82, "bvnh": 16.83}, "gain": {"base": 1.0, "bv": 1.016, "bvnh": 1.015}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 17.09, "bv": 16.82, "bvnh": 16.69}, "gain": {"base": 1.0, "bv": 1.016, "bvnh": 1.024}, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"base": 17.17, "bv": 16.83, "bvnh": 16.85}, "gain": {"base": 1.0, "bv": 1.02, "bvnh": 1.019}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.4, "bv": 10.34, "bvnh": 10.3}, "gain": {"base": 1.0, "bv": 1.006, "bvnh": 1.009}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.35, "bv": 10.3, "bvnh": 10.26}, "gain": {"base": 1.0, "bv": 1.005, "bvnh": 1.009}, "bad": {}}
+ROW {"case": "v1s", "seed": 13, "med": {"base": 10.35, "bv": 10.24, "bvnh": 10.37}, "gain": {"base": 1.0, "bv": 1.011, "bvnh": 0.998}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "base,bvnh", "TESTS": "", "XCASES": "d1f", "SEEDS": "11,12"} RETURNCODE 0
+RES okc_attn_b1fbase_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_b1fbase_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_b1fbvnh_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_b1fbvnh_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST S0 11 {"base": [true, ["2.651e-03", "2.651e-03", "0.108"]], "bvnh": [true, ["6.552e-03", "6.552e-03", "0.108"]]}
+TEST S0 12 {"base": [true, ["2.357e-03", "2.357e-03", "0.087"]], "bvnh": [true, ["7.209e-03", "7.209e-03", "0.087"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-k4ibPQPXYI4lYpRVxbdpZd

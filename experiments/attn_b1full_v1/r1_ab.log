@@ -1,0 +1,41 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JJoPzD3nqSUXnKpneewwzc
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,bfd,bfd4", "CASES": "d1f,d1s,v1f", "SEEDS": "11,12,13", "REPS": "30"} RETURNCODE 0
+ROW {"case": "d1f", "seed": 11, "med": {"base": 15.04, "bfd": 14.66, "bfd4": 15.14}, "gain": {"base": 1.0, "bfd": 1.026, "bfd4": 0.994}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 15.01, "bfd": 14.53, "bfd4": 15.3}, "gain": {"base": 1.0, "bfd": 1.033, "bfd4": 0.981}, "bad": {}}
+ROW {"case": "d1f", "seed": 13, "med": {"base": 15.14, "bfd": 14.66, "bfd4": 15.18}, "gain": {"base": 1.0, "bfd": 1.033, "bfd4": 0.997}, "bad": {}}
+ROW {"case": "d1s", "seed": 11, "med": {"base": 8.99, "bfd": 8.99, "bfd4": 8.96}, "gain": {"base": 1.0, "bfd": 1.0, "bfd4": 1.004}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 9.04, "bfd": 8.94, "bfd4": 8.96}, "gain": {"base": 1.0, "bfd": 1.011, "bfd4": 1.009}, "bad": {}}
+ROW {"case": "d1s", "seed": 13, "med": {"base": 9.14, "bfd": 8.99, "bfd4": 9.18}, "gain": {"base": 1.0, "bfd": 1.016, "bfd4": 0.995}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.17, "bfd": 17.18, "bfd4": 17.28}, "gain": {"base": 1.0, "bfd": 0.999, "bfd4": 0.994}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 17.12, "bfd": 17.06, "bfd4": 17.15}, "gain": {"base": 1.0, "bfd": 1.004, "bfd4": 0.998}, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"base": 17.22, "bfd": 17.22, "bfd4": 17.41}, "gain": {"base": 1.0, "bfd": 1.0, "bfd4": 0.989}, "bad": {}}
+DONE
+
+STDERR:
+
+[modal-client] 2026-11-05T00:20:49+0545 Timed out waiting for final app logs.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JJoPzD3nqSUXnKpneewwzc

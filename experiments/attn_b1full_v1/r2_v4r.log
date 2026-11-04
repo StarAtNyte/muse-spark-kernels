@@ -1,0 +1,88 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JZq4DifJkgtyfVsrQv3oZv
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,v4r", "CASES": "v1f,v1s,v16s,v32s", "SEEDS": "11,12,13", "REPS": "30"} RETURNCODE 0
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.2, "v4r": 16.88}, "gain": {"base": 1.0, "v4r": 1.019}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 17.18, "v4r": 16.77}, "gain": {"base": 1.0, "v4r": 1.025}, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"base": 17.33, "v4r": 16.88}, "gain": {"base": 1.0, "v4r": 1.027}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.62, "v4r": 10.42}, "gain": {"base": 1.0, "v4r": 1.02}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.62, "v4r": 10.3}, "gain": {"base": 1.0, "v4r": 1.031}, "bad": {}}
+ROW {"case": "v1s", "seed": 13, "med": {"base": 10.78, "v4r": 10.54}, "gain": {"base": 1.0, "v4r": 1.023}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.06, "v4r": 14.05}, "gain": {"base": 1.0, "v4r": 1.001}, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"base": 14.4, "v4r": 14.18}, "gain": {"base": 1.0, "v4r": 1.016}, "bad": {}}
+ROW {"case": "v16s", "seed": 13, "med": {"base": 14.45, "v4r": 14.38}, "gain": {"base": 1.0, "v4r": 1.004}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.86, "v4r": 16.8}, "gain": {"base": 1.0, "v4r": 1.004}, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"base": 16.99, "v4r": 16.7}, "gain": {"base": 1.0, "v4r": 1.017}, "bad": {}}
+ROW {"case": "v32s", "seed": 13, "med": {"base": 17.02, "v4r": 16.9}, "gain": {"base": 1.0, "v4r": 1.008}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "base,v4r", "XCASES": "v1f,v1s,v16s,v32s", "SEEDS": "11"} RETURNCODE 0
+RES okc_attn_b1fbase_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_b1fbase_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+RES okc_attn_b1fv4r_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_b1fv4r_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6360, "region": 1487, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "UIADD3": 48, "VIADD": 47, "IMAD": 42, "UISETP": 34, "FFMA": 32, "LOP3": 29, "STS": 26, "IADD3": 25, "USEL": 20, "SHFL": 20, "BRA": 18, "MOV": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "PLOP3": 7, "SHF": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "S2R": 5, "BAR": 5, "ULOP3": 5, "FSETP": 4, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "S2UR": 2, "CALL": 2, "UIMAD": 1, "LDL": 1, "ULDC": 1}}
+TEST 0 11 {"base": [true, ["1.954e-03", "1.954e-03", "0.073"]], "v4r": [true, ["1.954e-03", "1.954e-03", "0.073"]]}
+TEST 1 11 {"base": [true, ["5.922e-03", "6.811e-03", "0.150"]], "v4r": [true, ["5.922e-03", "6.811e-03", "0.150"]]}
+TEST 2 11 {"base": [true, ["7.600e-02", "1.096e-01", "0.150"]], "v4r": [true, ["7.602e-02", "1.098e-01", "0.150"]]}
+TEST 3 11 {"base": [true, ["6.646e-03", "7.294e-03", "0.150"]], "v4r": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 4 11 {"base": [true, ["5.797e-03", "6.583e-03", "0.150"]], "v4r": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 5 11 {"base": [true, ["9.338e-02", "1.147e-01", "0.150"]], "v4r": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 6 11 {"base": [true, ["4.671e-03", "5.410e-03", "0.150"]], "v4r": [true, ["4.671e-03", "5.410e-03", "0.150"]]}
+TEST 7 11 {"base": [true, ["8.319e-02", "1.119e-01", "0.150"]], "v4r": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.531e-02", "1.193e-01", "0.150"]], "v4r": [true, ["9.540e-02", "1.194e-01", "0.150"]]}
+TEST 9 11 {"base": [true, ["8.097e-02", "1.129e-01", "0.150"]], "v4r": [true, ["8.099e-02", "1.127e-01", "0.150"]]}
+TEST 10 11 {"base": [true, ["5.713e-03", "5.735e-03", "0.150"]], "v4r": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 11 11 {"base": [true, ["4.979e-03", "5.837e-03", "0.150"]], "v4r": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 12 11 {"base": [true, ["6.582e-02", "1.035e-01", "0.150"]], "v4r": [true, ["6.586e-02", "1.041e-01", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.471e-02", "7.959e-02", "0.150"]], "v4r": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 14 11 {"base": [true, ["3.189e-03", "3.889e-03", "0.122"]], "v4r": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 15 11 {"base": [true, ["4.559e-02", "5.149e-02", "0.109"]], "v4r": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST S0 11 {"base": [true, ["3.815e-02", "6.012e-02", "0.101"]], "v4r": [true, ["3.823e-02", "6.026e-02", "0.101"]]}
+TEST S1 11 {"base": [true, ["6.725e-02", "8.891e-02", "0.150"]], "v4r": [true, ["6.716e-02", "8.902e-02", "0.150"]]}
+TEST S2 11 {"base": [true, ["6.931e-02", "9.623e-02", "0.150"]], "v4r": [true, ["6.931e-02", "9.630e-02", "0.150"]]}
+TEST S3 11 {"base": [true, ["6.770e-02", "1.117e-01", "0.150"]], "v4r": [true, ["6.768e-02", "1.117e-01", "0.150"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-JZq4DifJkgtyfVsrQv3oZv
