@@ -1,0 +1,40 @@
+✓ checking submission.py on muse_decode_layer  job 54a207d4e3624517
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› running the tests, then timing against SGLang  0:22
+› running the tests, then timing against SGLang  0:08
+› running the tests, then timing against SGLang  0:38
+› running the tests, then timing against SGLang  1:08
+› running the tests, then timing against SGLang  1:38
+› running the tests, then timing against SGLang  2:08
+› running the tests, then timing against SGLang  2:38
+› running the tests, then timing against SGLang  3:08
+› running the tests, then timing against SGLang  3:38
+› running the tests, then timing against SGLang  4:08
+
+ran for 4:22 · queued 0:16
+
+✓ muse_decode_layer  passed  check run, off the board  job 54a207d4e3624517
+
+  2.258×  ━━━━━━━━━╋━━━━━━━━━━────────  faster than SGLang  95%: 2.224–2.292×
+
+  time        10.02 ms
+  tests       13/13 passed
+  profile     profiles/submission.54a207d4e3624517.txt  and .json
+  output      profiles/submission.54a207d4e3624517.log
+
+  CASE                      SGLANG      YOURS   SPEEDUP
+  ────────────────────────────────────────────────────────────────────
+  decode 1 · sliding      172.1 µs    66.9 µs    2.571×   ━━━━━━╋━━━━━
+  decode 1 · full         183.2 µs    73.9 µs    2.479×   ━━━━━━╋━━━━━
+  decode 16 · sliding     264.7 µs   125.6 µs    2.107×   ━━━━━━╋━━━━━
+  decode 16 · full        436.1 µs   202.3 µs    2.156×   ━━━━━━╋━━━━━
+  decode 32 · sliding     256.1 µs   142.8 µs    1.794×   ━━━━━━╋━━━━─
+  decode 32 · full        611.7 µs   299.7 µs    2.041×   ━━━━━━╋━━━━━
+  verify 1 · sliding      264.7 µs   106.0 µs    2.497×   ━━━━━━╋━━━━━
+  verify 1 · full         273.6 µs   108.1 µs    2.531×   ━━━━━━╋━━━━━
+  verify 16 · sliding     519.3 µs   234.4 µs    2.215×   ━━━━━━╋━━━━━
+  verify 16 · full        711.7 µs   321.8 µs    2.212×   ━━━━━━╋━━━━━
+  verify 32 · sliding     729.6 µs   309.7 µs    2.356×   ━━━━━━╋━━━━━
+  verify 32 · full      1,077.1 µs   473.3 µs    2.276×   ━━━━━━╋━━━━━
+  19 of 20 runs left today, 31 of 40 checks on muse_decode_layer
