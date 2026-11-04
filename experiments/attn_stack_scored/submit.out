@@ -1,0 +1,70 @@
+✓ submitted submission.py to muse_attention_decode  job 83c23e15656d416e
+› received
+› running the tests, then timing against SGLang  0:21
+› running the tests, then timing against SGLang  0:09
+› running the tests, then timing against SGLang  0:39
+› running the tests, then timing against SGLang  1:09
+› running the tests, then timing against SGLang  1:39
+› running the tests, then timing against SGLang  2:09
+› running the tests, then timing against SGLang  2:39
+› running the tests, then timing against SGLang  3:09
+› running the tests, then timing against SGLang  3:39
+› running the tests, then timing against SGLang  4:09
+› running the tests, then timing against SGLang  4:39
+› running the tests, then timing against SGLang  5:09
+› running the tests, then timing against SGLang  5:39
+› running the tests, then timing against SGLang  6:09
+› running the tests, then timing against SGLang  6:39
+› running the tests, then timing against SGLang  7:09
+› running the tests, then timing against SGLang  7:39
+› running the tests, then timing against SGLang  8:09
+› running the tests, then timing against SGLang  8:39
+› running the tests, then timing against SGLang  9:09
+› running the tests, then timing against SGLang  9:39
+› running the tests, then timing against SGLang  10:09
+› running the tests, then timing against SGLang  10:39
+› running the tests, then timing against SGLang  11:09
+› running the tests, then timing against SGLang  11:39
+› running the tests, then timing against SGLang  12:09
+› running the tests, then timing against SGLang  12:39
+› running the tests, then timing against SGLang  13:09
+› running the tests, then timing against SGLang  13:39
+› running the tests, then timing against SGLang  14:09
+› running the tests, then timing against SGLang  14:39
+› running the tests, then timing against SGLang  15:09
+› running the tests, then timing against SGLang  15:39
+› running the tests, then timing against SGLang  16:09
+› running the tests, then timing against SGLang  16:39
+› running the tests, then timing against SGLang  17:09
+› running the tests, then timing against SGLang  17:39
+› running the tests, then timing against SGLang  18:09
+› running the tests, then timing against SGLang  18:39
+
+ran for 5:36 · queued 0:21
+
+✓ muse_attention_decode  passed  job 83c23e15656d416e
+
+  2.665×  ━━━━━━━━━╋━━━━━━━━━━━━━─────  faster than SGLang  95%: 2.625–2.722×
+
+  time        1,413.5 µs
+  tests       16/16 passed
+  profile     profiles/submission.83c23e15656d416e.txt  and .json
+  output      profiles/submission.83c23e15656d416e.log
+
+  CASE                    SGLANG      YOURS   SPEEDUP
+  ──────────────────────────────────────────────────────────────────
+  decode 1 · sliding     20.4 µs     5.2 µs    3.928×   ━━━━━━╋━━━━━
+  decode 1 · full        31.4 µs    10.6 µs    2.960×   ━━━━━━╋━━━━━
+  decode 16 · sliding    26.7 µs     8.0 µs    3.354×   ━━━━━━╋━━━━━
+  decode 16 · full      200.4 µs    86.8 µs    2.308×   ━━━━━━╋━━━━━
+  decode 32 · sliding    31.1 µs     9.4 µs    3.315×   ━━━━━━╋━━━━━
+  decode 32 · full      383.9 µs   166.2 µs    2.310×   ━━━━━━╋━━━━━
+  verify 1 · sliding     22.9 µs     6.6 µs    3.475×   ━━━━━━╋━━━━━
+  verify 1 · full        36.3 µs    12.9 µs    2.814×   ━━━━━━╋━━━━━
+  verify 16 · sliding    29.2 µs    10.5 µs    2.795×   ━━━━━━╋━━━━━
+  verify 16 · full      205.2 µs    97.9 µs    2.096×   ━━━━━━╋━━━━━
+  verify 32 · sliding    34.3 µs    12.6 µs    2.711×   ━━━━━━╋━━━━━
+  verify 32 · full      389.4 µs   179.4 µs    2.170×   ━━━━━━╋━━━━━
+
+next  okc leaderboard muse_attention_decode
+  15 of 20 runs left today, 31 of 40 checks on muse_attention_decode

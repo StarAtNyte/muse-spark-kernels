@@ -77,3 +77,4 @@ time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdic
 2026-11-05T03:55Z	muse_bf16_proj	f2357208101148d2	proj_11b_v1	g11 auto-pick (pooler m=1 only)	normal	9/9	1.577x	1.553-1.600	vs parent checks 1.594/1.552	REJECT	within noise
 2026-11-05T04:20Z	muse_decode_layer	modal-only	decoder_t1grid_v1	T=1/8 sk2 grid sweep (rows/CTA, CTAs 96-288, split-K, NACC, ring depth)	normal	modal pass	0.92-1.007x	n/a	qkv 10.7-11.7us regardless of CTA count; at practical floor	REJECT	
 2026-11-05T05:00Z	muse_attention_decode	171dfdd2900f4adb,d835372941034b88	attn_b1full_v1	stack: bv + bx16 (BF16 v4 partials q_len-1 batched, d16s 16 splits)	normal	16/16 x2	2.697x / 2.733x	2.657-2.774	d16s 8.6->7.6, d32s 10.0->9.5us	KEEP	scored submit
+2026-11-05T05:20Z	muse_attention_decode	83c23e15656d416e	attn_stack_scored	SCORED stack bv+bx16	normal	16/16	2.665x	2.625-2.722	checks 2.697/2.733; draws 2.665-2.733	KEEP	board row stays 2.682 (#123); median of 4 draws ~2.69
