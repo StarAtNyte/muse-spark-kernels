@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-wUQsLhWp8BDjs5OF0qpnsr
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_o_v1/modal_
+│   run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 1
+RT12 off: RT12 disabled
+
+STDERR:
+Traceback (most recent call last):
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2906, in _run_ninja_build
+    subprocess.run(
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/w/run/drv.py", line 25, in <module>
+    t1 = time.time(); ost = S._ok_state(w, cfgs); print('OK compile %.0fs' % (time.time() - t1), flush=True)
+                            ^^^^^^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12237, in _ok_state
+    return {"ext": _ok_build(cfgs), "cfgs": list(cfgs), "w": w,
+                   ^^^^^^^^^^^^^^^
+  File "/w/run/sub.py", line 12229, in _ok_build
+    return load_inline("okproj_" + hashlib.sha256(src.encode()).hexdigest()[:12], _OK_CPP, cuda_sources=src,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2295, in load_inline
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2398, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2555, in _write_ninja_file_and_build_library
+    _run_ninja_build(
+  File "/opt/sglang/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2923, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error building extension 'okproj_7167d6103bac': [1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okproj_7167d6103bac -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okproj_7167d6103bac/main.cpp -o main.o 
+FAILED: [code=1] main.o 
+ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okproj_7167d6103bac -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okproj_7167d6103bac/main.cpp -o main.o 
+/root/.cache/torch_extensions/py312_cu130/okproj_7167d6103bac/main.cpp:4:16: error: expected constructor, destructor, or type conversion before ‘(’ token
+    4 | PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+      |                ^
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okproj_7167d6103bac -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -gencode=arch=compute_90a,code=sm_90a -c /root/.cache/torch_extensions/py312_cu130/okproj_7167d6103bac/cuda.cu -o cuda.cuda.o 
+ninja: build stopped: subcommand failed.
+
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-wUQsLhWp8BDjs5OF0qpnsr
