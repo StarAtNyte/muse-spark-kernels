@@ -154,3 +154,21 @@ __device__ __forceinline__ int wgs_bbound(const Smem& S, int nj, int c, int G) {
                  "    while (hi - lo > 1) { const int mid = (lo + hi) >> 1; if (wgs_bbound(S, nj, mid, G) <= s) lo = mid; else hi = mid; }\n    return lo;\n  }\n#endif\n")
     a = rep(a, old, new)
     return a
+
+# OKC_JORD: WGS job-list order (a permutation only; ybuf rows / pos / expert counters do not depend on it, and every
+# CTA computes the same order, so stage ranges and fixup slots stay consistent). 0 = as today (fat jobs by expert id,
+# then skinny by expert id); 1 = ascending n-tiles (skinny first); 2 = descending n-tiles (LPT); 3 = interleaved
+# (largest, smallest, 2nd largest, 2nd smallest, ...)
+def patch_jord(a):
+    a = rep(a, "#define OKC_DEBUG 0\n#endif\n", "#define OKC_DEBUG 0\n#endif\n#ifndef OKC_JORD\n#define OKC_JORD 0\n#endif\n")
+    old = "    if (lane == 0) { S.njF = nfTot; S.njS = nsTot; }\n    __syncwarp();\n#if !OKC_WGS  // (the WGS build has no fat queue)\n"
+    new = ("    if (lane == 0) { S.njF = nfTot; S.njS = nsTot; }\n    __syncwarp();\n#if OKC_WGS && OKC_JORD\n    {\n"
+           "      static_assert(JMAX <= 96, \"JORD: 3 jobs per lane\");\n      const int nj = nfTot + nsTot;\n      int np[3], e3[3], s3[3], c3[3];\n"
+           "#pragma unroll\n      for (int k = 0; k < 3; ++k) { const int f = k * 32 + lane; np[k] = -1; if (f < nj) { e3[k] = S.jE[f]; s3[k] = S.jS[f]; c3[k] = S.jC[f]; } }\n"
+           "      int pos = 0;\n      for (int kk = 1; kk <= FT_T / 8; ++kk) {\n        const int key = (OKC_JORD == 1) ? kk : FT_T / 8 + 1 - kk;\n"
+           "#pragma unroll\n        for (int k = 0; k < 3; ++k) {\n          const int f = k * 32 + lane;\n          const bool m = f < nj && ((c3[k] + 7) >> 3) == key;\n"
+           "          const unsigned bal = __ballot_sync(0xffffffffu, m);\n          if (m) np[k] = pos + __popc(bal & ((1u << lane) - 1u));\n          pos += __popc(bal);\n        }\n      }\n"
+           "#if OKC_JORD == 3\n#pragma unroll\n      for (int k = 0; k < 3; ++k) if (np[k] >= 0) { const int i = np[k]; np[k] = (i < (nj + 1) / 2) ? 2 * i : 2 * (nj - 1 - i) + 1; }\n#endif\n"
+           "      __syncwarp();\n#pragma unroll\n      for (int k = 0; k < 3; ++k) if (np[k] >= 0) { S.jE[np[k]] = e3[k]; S.jS[np[k]] = s3[k]; S.jC[np[k]] = c3[k]; }\n"
+           "      __syncwarp();\n    }\n#endif\n#if !OKC_WGS  // (the WGS build has no fat queue)\n")
+    return rep(a, old, new)
