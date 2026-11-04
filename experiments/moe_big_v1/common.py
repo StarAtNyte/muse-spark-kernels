@@ -178,3 +178,13 @@ def patch_fin(a):
     a = rep(a, L + "          acc[0]", L.replace("          const float4 a = __ldcg(src), b = __ldcg(src + 1);\n",
             "#if OKC_FHOLD\n          const float4 a = ya_[sl], b = yb_[sl]; (void)src;\n#else\n          const float4 a = __ldcg(src), b = __ldcg(src + 1);\n#endif\n") + "          acc[0]")
     return a
+
+def patch_dq(a):
+    """ablations (wrong output): OKC_NODQ = 1-op decode; OKC_NOSCM = no per-weight scale multiply in wgs_seg"""
+    a = rep(a, "#define OKC_DEBUG 0\n#endif\n", "#define OKC_DEBUG 0\n#endif\n#ifndef OKC_NODQ\n#define OKC_NODQ 0\n#endif\n#ifndef OKC_NOSCM\n#define OKC_NOSCM 0\n#endif\n")
+    a = rep(a, "constexpr uint32_t M = 0x81C081C0u;\n  r0 = q & M;",
+            "constexpr uint32_t M = 0x81C081C0u;\n  r0 = q & M;\n#if OKC_NODQ\n  r1 = r0 ^ 0x00400040u; r2 = r0 ^ 0x00800080u; r3 = r0 ^ 0x01000100u; return;\n#endif")
+    old = ("          af[ci % NB][jj][0] = bmul2l(r0, sgp); af[ci % NB][jj][1] = bmul2h(r1, sgp);\n"
+           "          af[ci % NB][jj][2] = bmul2l(r2, sgp); af[ci % NB][jj][3] = bmul2h(r3, sgp);\n")
+    new = ("#if OKC_NOSCM\n          af[ci % NB][jj][0] = r0 ^ sgp; af[ci % NB][jj][1] = r1; af[ci % NB][jj][2] = r2; af[ci % NB][jj][3] = r3;\n#else\n" + old + "#endif\n")
+    return rep(a, old, new)
