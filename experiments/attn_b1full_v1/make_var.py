@@ -197,6 +197,14 @@ def nh(s):
     // warps 2,3 (second key half) hand their state to warps 0,1""", """  if (L == 1 && !BFP) {
     // warps 2,3 (second key half) hand their state to warps 0,1""")
 
+def bxs(s):
+    """bx16 (attn_slide_v1): bf16 partials also in the plain non-speculative q_len-1 builds, d16s at 16 splits."""
+    s = rep(s, "  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 11);",
+               "  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 1 || (MODE & 11) == 11);")
+    s = rep(s, "    (16, 1, True, 1): dict(n_splits=8, coop=0, nc=1),   # H200 paired sweep: 1.029x on 16-request sliding decode",
+               "    (16, 1, True, 1): dict(n_splits=16, coop=0, nc=1),   # with bf16 q_len-1 partials: n 16 beats n 8 by ~9% (attn_slide_v1 r6)")
+    return s
+
 VARIANTS = {
     'base': lambda s: s,
     'stamp': stamps,
@@ -215,6 +223,7 @@ VARIANTS = {
     'bvf': chain(bfd, v4r, fbf),
     'bvnh': chain(bfd, v4r, nh),
     'bvst': chain(bfd, v4r, stamps),
+    'stack': chain(bfd, v4r, bxs),
     'bfdnc': chain(bfd, nc16, tuned('(1, 1, False, 1)', 'nc=16, coop=0, n_splits=252')),
 }
 

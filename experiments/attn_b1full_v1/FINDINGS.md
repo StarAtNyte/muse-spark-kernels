@@ -29,3 +29,9 @@ v1f 13.3 -> 12.8 us; other shapes within noise. Precision: d1f error 2.7e-3 -> 4
   that does not wait on L2 atomics (e.g. a DSMEM pre-reduce without cluster launch cost) or a finalize warmed in the i-cache.
 Recheck (comment-only copy submission_bv_r2.py) 1c022f61098a41af: 2.665x [2.625, 2.714]; d1f 10.3, v1f 12.7 us. Both checks reproduce the
 B=1 full gains (d1f -0.8..-0.9 us, v1f -0.5..-0.6 us). The board-level gain (+0.5..+0.8% vs the 2.652x parent check) is inside the CI.
+
+## Stack (bv + bx16 plain q_len-1 bf16 partials, d16s at 16 splits): submission_stack.py
+Modal r6_stack.log, all 12 shapes + 16 tests, paired vs g16b: d16s 1.018-1.051, d32s 0.994-1.03, d1f 1.019-1.056, v1f 1.018-1.025,
+v1s 1.014-1.02, rest 0.99-1.01; all tests pass (sliding q1 errors up ~1.4x, far inside bounds).
+No other hot 8-byte reds remain (the v2.bf16x2 left is in cluster_multi, unreachable from _plan).
+Judge: 171dfdd2900f4adb 2.697x [2.657, 2.756]; comment-only copy d835372941034b88 2.733x [2.692, 2.774]. bv scored 2.682x.

@@ -1,6 +1,6 @@
 # okc: problem=muse_attention_decode
 # Adapted from vjeux/okc-2026 (Apache-2.0), exact public scored attention entry source.
-# attn_b1full_v1: bf16 v4.bf16x2 split partials for q_len 8 and the one-request q_len-1 full-layer builds.
+# attn_b1full_v1 stack: bf16 v4.bf16x2 split partials (q_len 8, one-request q_len-1 full, plain q_len-1 builds = attn_slide_v1 bx16).
 """Gated attention decode for Muse Spark Open: one fused CUDA kernel per call.
 
 Algorithm
@@ -1027,7 +1027,7 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
   // MODE | 4 = a build for grids whose every split holds at most one tile (the host checks): the tile loop,
   // the in-loop copies and the first-tile tests fold at compile time (scout's once-path census, s1 / vs1)
   constexpr bool ONE = !FLAT && (MODE & 4) != 0;
-  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 11);   // bf16 split-KV partials (per-request q_len 8 kernels)
+  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 1 || (MODE & 11) == 11);   // bf16 split-KV partials (per-request q_len 8 kernels)
   const bool M_CL = !FLAT && ((MODE & 3) == 0 ? p.cs > 1 : (MODE & 3) == 2);
   const bool M_COOP = (MODE & 3) == 0 ? p.coop != 0 : (MODE & 3) == 3;
   constexpr int NT = Cfg<L, FLAT>::NT;
@@ -3048,7 +3048,7 @@ def _cached(cache, key, make):
 _TUNED = {
     (32, 8, True, 1): dict(n_splits=4, nc=1, coop=1),
     (1, 1, False, 1): dict(nc=8, coop=1, n_splits=252),
-    (16, 1, True, 1): dict(n_splits=8, coop=0, nc=1),   # H200 paired sweep: 1.029x on 16-request sliding decode
+    (16, 1, True, 1): dict(n_splits=16, coop=0, nc=1),   # with bf16 q_len-1 partials: n 16 beats n 8 by ~9% (attn_slide_v1 r6)
 }
 
 
@@ -3058,7 +3058,7 @@ def _build(tag="", flags=()):
     from torch.utils.cpp_extension import load_inline
 
     return load_inline(
-        name=f"okc_attn_b1fbv{tag}_90a",
+        name=f"okc_attn_b1fstack{tag}_90a",
         cpp_sources=CPP_SRC,
         cuda_sources=CUDA_SRC,
         functions=["run"],

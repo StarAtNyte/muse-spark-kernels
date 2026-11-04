@@ -1,0 +1,83 @@
+okc run af4f8d1bedd24c9f on muse_attention_decode
+submission  /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/attn_b1full_v1/submission.py
+status      ok
+passed      true
+speedup     2.681897524301811
+speedup_ci  [2.641669061437284 2.722125987166338]
+score_us    1404.3415029366179
+tests       16/16 passed
+
+scored shapes (µs; speed of light is the reference's bound)
+case                                                         sglang      yours  speedup        sol  
+batch=1 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 1 page=1      20.26       4.96   4.087x       0.11  
+batch=1 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 1 page=1      31.39      10.64   2.949x       4.27  
+batch=16 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 16 page=1 spread=agentic      27.09       8.45   3.204x       1.65  
+batch=16 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 16 page=1 spread=agentic     199.70      86.29   2.314x      63.18  
+batch=32 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 32 page=1 spread=agentic      32.05      10.45   3.067x       3.29  
+batch=32 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 32 page=1 spread=agentic     382.90     166.25   2.303x     126.35  
+batch=1 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 1 page=1 q_len=8      22.86       6.28   3.640x       0.12  
+batch=1 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 1 page=1 q_len=8      35.84      12.65   2.832x       4.28  
+batch=16 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 16 page=1 q_len=8 spread=agentic      29.10       9.96   2.922x       1.86  
+batch=16 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 16 page=1 q_len=8 spread=agentic     205.30      98.36   2.087x      63.39  
+batch=32 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 32 page=1 q_len=8 spread=agentic      34.19      12.41   2.755x       3.72  
+batch=32 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 32 page=1 q_len=8 spread=agentic     388.42     179.61   2.163x     126.78  
+
+profile 0: batch=1 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 1 page=1
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, false, 13>((an...       4.3 µs 100.0%      1
+total                                                              4.3 µs
+
+profile 1: batch=1 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 1 page=1
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, false, 11>((an...       9.2 µs 100.0%      1
+total                                                              9.2 µs
+
+profile 2: batch=16 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 16 page=1 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, false, 1>((ano...       7.4 µs 100.0%      1
+total                                                              7.4 µs
+
+profile 3: batch=16 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 16 page=1 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, true, 0>((anon...      86.5 µs 100.0%      1
+total                                                             86.5 µs
+
+profile 4: batch=32 ctx=80000 dist=soft heads=tp8 layer=sliding load=decode 32 page=1 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, false, 1>((ano...       9.2 µs 100.0%      1
+total                                                              9.2 µs
+
+profile 5: batch=32 ctx=80000 dist=coherent heads=tp8 layer=full load=decode 32 page=1 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<1, true, 0>((anon...     164.6 µs 100.0%      1
+total                                                            164.6 µs
+
+profile 6: batch=1 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 1 page=1 q_len=8
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, false, 15>((an...       5.6 µs 100.0%      1
+total                                                              5.6 µs
+
+profile 7: batch=1 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 1 page=1 q_len=8
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, false, 11>((an...      11.9 µs 100.0%      1
+total                                                             11.9 µs
+
+profile 8: batch=16 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 16 page=1 q_len=8 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, false, 3>((ano...       9.5 µs 100.0%      1
+total                                                              9.5 µs
+
+profile 9: batch=16 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 16 page=1 q_len=8 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, true, 0>((anon...      96.1 µs 100.0%      1
+total                                                             96.1 µs
+
+profile 10: batch=32 ctx=80000 dist=soft heads=tp8 layer=sliding load=verify 32 page=1 q_len=8 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, false, 3>((ano...      12.2 µs 100.0%      1
+total                                                             12.2 µs
+
+profile 11: batch=32 ctx=80000 dist=coherent heads=tp8 layer=full load=verify 32 page=1 q_len=8 spread=agentic
+kernel                                                           GPU time  share  calls
+void (anonymous namespace)::attn_kernel<8, true, 0>((anon...     180.0 µs 100.0%      1
+total                                                            180.0 µs
