@@ -1,0 +1,169 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-c8ViVSOjA77rOPG1vuZ4IR
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/proj_router_v1/m
+│   odal_run.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+RT12 off: RT12 disabled
+PREP rq thread started at 5s
+PREP rq32 thread started at 5s
+BUILD pw57_flush 63.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   11.62 us   0.54 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.39 us   0.85 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   11.74 us   1.43 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.02 us   1.68 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.58 us two_node 5.09 us overhead 4.06 us
+PREP flush+fixed done at 70s
+lt qkv_gate m128 heur 20928.00 best 2:66.15.1.0.0.2.35.0.6 19136.00 (653 tried, 2.6s)
+lt pooler m128 heur 29088.00 best 3:66.15.1.0.0.6.35.0.5 23392.00 (980 tried, 5.5s)
+lt unpooler m128 heur 23616.00 best 2:66.18.1.0.0.0.35.0.5 22272.00 (719 tried, 7.5s)
+gv qkv_gate m8 v12 12768.00 best 1.1.1.2.16.8.1.1.2.1 6922.51 (ref 1.1.1.2.16.8.1.1.2.1 6922.51)
+  v12:12768.00 1.1.1.2.16.8.1.1.2.1:6922.51 1.1.2.1.8.16.1.1.0.1:10277.11 1.1.1.1.16.8.1.1.2.8193:8439.43 1.1.2.1.4.16.2.1.0.0:10664.51 1.1.2.1.4.16.2.1.0.1:9996.59 1.1.2.1.4.8.4.1.0.1:13829.97
+gv qkv_gate m32 v12 13696.00 best 1.4.1.1.4.16.2.1.2.1 12293.69 (ref v12 13696.00)
+  v12:13696.00 1.4.2.1.8.16.1.1.2.0:14092.06 1.4.2.1.8.16.1.1.2.1:13899.59 1.4.2.1.4.16.2.1.2.0:13269.35 1.4.2.1.4.16.2.1.2.1:13783.97 1.4.2.2.4.16.2.1.2.1:14905.43 1.4.1.1.4.8.4.1.2.0:18479.68 1.4.1.1.4.8.4.1.2.1:19087.31 1.4.2.1.4.8.4.1.2.1:18683.43 1.4.1.1.4.16.2.1.2.1:12293.69
+gv o m8 v12 5216.00 best 1.1.2.1.8.2.1.1.0.1 3868.46 (ref 1.1.2.1.8.2.1.1.0.1 3868.46)
+  v12:5216.00 1.1.2.1.8.2.1.1.0.1:3868.46 1.1.2.1.8.2.1.1.0.0:4025.60 1.1.2.2.4.4.1.1.0.1:4697.36 1.1.2.1.4.4.1.1.0.1:4875.31
+gv o m16 v12 5184.00 best 1.2.2.1.8.2.1.1.0.1 3966.68 (ref 1.2.2.1.8.2.1.1.0.1 3966.68)
+  v12:5184.00 1.2.2.1.8.2.1.1.0.1:3966.68 1.2.2.1.8.2.1.1.0.0:4041.72 1.2.2.1.8.2.1.1.2.1:7162.84 1.2.2.2.4.4.1.1.0.1:4981.16 1.2.2.2.4.4.1.1.2.1:4916.32 1.2.1.1.4.4.1.1.2.1:4610.73
+gv pooler m8 v12 19008.00 best 1.1.1.2.16.8.1.1.0.3 11130.30 (ref 1.1.1.2.16.8.1.1.0.3 11130.30)
+  v12:19008.00 1.1.1.2.16.8.1.1.0.3:11130.30 1.1.2.2.8.16.1.1.0.1:13014.13 1.1.2.2.8.16.1.1.0.0:13014.27 1.1.2.1.8.16.1.1.0.1:12934.40
+gv pooler m16 v12 19200.00 best 1.2.2.2.8.16.1.1.0.1 11509.29 (ref 1.2.2.2.8.16.1.1.0.1 11509.29)
+  v12:19200.00 1.2.2.2.8.16.1.1.0.1:11509.29 1.2.2.2.8.16.1.1.0.0:13350.50 1.2.2.1.8.16.1.1.2.1:13929.00 1.2.2.1.8.16.1.1.0.1:16441.70
+PAIR ov 4.06 clamped to 4.05 (times 8.10/8.38)
+gv unpooler m8 v12 6240.00 best 1.1.2.1.16.4.1.1.0.1 1787.72 (ref 1.1.2.1.16.4.1.1.0.1 1787.72)
+  v12:6240.00 1.1.2.1.16.4.1.1.0.1:1787.72 1.1.2.1.16.4.1.1.0.0:3781.20 1.1.2.1.8.2.4.1.0.1:3874.19 1.1.2.1.8.4.2.1.0.1:5287.91 1.1.2.1.16.4.1.1.2.1:2923.54
+PREP r6 done in 94s
+PREP rq thread ready at 72s (bake starts at 94s)
+BAKE rq pooler esc2 slots max=3 ok
+BAKE pooler m=128 r6 23.62 at 94s
+BAKE pooler m=128 rq:d2s5hze 21.51 (ratio 1.1364 vs r6 23.62) at 94s
+BAKE pooler m=128 rq:d2s5hzwP 20.26 (ratio 1.0801 vs rq:d2s5hze 21.51) at 94s
+BAKE pooler m=128 rq:s4s5hzw 20.84 (ratio 1.0593 vs rq:d2s5hze 21.51) at 94s
+BAKE pooler m=128 rq:s4s5hzeEH 21.88 (ratio 0.9991 vs rq:d2s5hze 21.51) at 94s
+BAKE pooler m=128 rq:d2s6hze 21.84 (ratio 0.9964 vs rq:d2s5hze 21.51) at 94s
+PICK pooler m=128 rq:d2s5hzwP 19.92 (ref rq:d2s5hze 21.51)
+PICK pooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0801)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 19.33 at 94s
+BAKE qkv_gate m=128 rq:d2s5hze 14.83 (ratio 1.3209 vs r6 19.33) at 94s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.56 (ratio 1.0552 vs rq:d2s5hze 14.83) at 94s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.80 (ratio 1.0287 vs rq:d2s5hze 14.83) at 94s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.28 (ratio 0.9949 vs rq:d2s5hze 14.83) at 94s
+BAKE qkv_gate m=128 rq:d2s6hze 16.52 (ratio 0.9779 vs rq:d2s5hze 14.83) at 94s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.05 (ref rq:d2s5hze 14.83)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0552)
+BAKE rq unpooler esc2 slots max=3 ok
+BAKE unpooler m=128 r6 22.30 at 94s
+BAKE unpooler m=128 rq:d2s5hze 21.22 (ratio 1.1113 vs r6 22.30) at 94s
+BAKE unpooler m=128 rq:d2s5hzwP 20.24 (ratio 1.0579 vs rq:d2s5hze 21.22) at 94s
+BAKE unpooler m=128 rq:s4s5hzw 20.75 (ratio 1.0380 vs rq:d2s5hze 21.22) at 94s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.60 (ratio 0.9953 vs rq:d2s5hze 21.22) at 94s
+BAKE unpooler m=128 rq:s4s5hze 21.78 (ratio 0.9915 vs rq:d2s5hze 21.22) at 94s
+BAKE unpooler m=128 rq:d2s6hze 21.29 (ratio 1.0068 vs rq:d2s5hze 21.22) at 94s
+PICK unpooler m=128 rq:d2s5hzwP 20.06 (ref rq:d2s5hze 21.22)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0579)
+PREP phase rq done at 94s
+BAKE qkv_gate m=8 r6 13.09 (ref)
+BAKE qkv_gate m=8 q144k16 15.01 (ref r6 13.09)
+PICK qkv_gate m=8 r6 13.09 (ref r6 13.09)
+BAKE unpooler m=8 r6 8.26 (ref)
+BAKE unpooler m=8 uk-s4z 8.42 (ref r6 8.26)
+BAKE unpooler m=8 uk-s4x 7.90 (ref r6 8.26)
+BAKE unpooler m=8 uk-s4w4x 8.10 (ref r6 8.26)
+PICK unpooler m=8 uk-s4x 7.90 (ref uk-s4x 7.90)
+PROBE p1alt unpooler m=8 uk-s4x 7.97 r6=8.19 delta=-0.22
+PREP phase gx done at 94s
+PREP rq32 thread ready at 72s
+PREP rq32 bake starts at 94s
+BAKE pooler m=16 r6 17.66 at 94s
+BAKE pooler m=16 rq:t16s5hze-k4 19.12 (ratio 0.9205 vs r6 17.66) at 94s
+BAKE pooler m=16 rq:t16s4hze-k4 19.38 (ratio 0.9081 vs r6 17.66) at 94s
+BAKE pooler m=16 rq:t16s6hze-k4 18.96 (ratio 0.9333 vs r6 17.66) at 94s
+BAKE pooler m=16 rq:t16s7hze-k4 19.19 (ratio 0.9055 vs r6 17.66) at 95s
+BAKE pooler m=16 rq:h16s5hze2-k3 20.58 (ratio 0.8600 vs r6 17.66) at 95s
+BAKE pooler m=16 rq:h16s5hze2-k5 29.89 (ratio 0.5930 vs r6 17.66) at 95s
+PICK pooler m=16 r6 17.66 (ref r6 17.66)
+BAKE qkv_gate m=32 r6 17.89 at 95s
+BAKE rq32 qkv_gate esc2 ks=7 slots max=3 ok
+PICK qkv_gate m=32 rq:t32s6hzw-k7 (forced: NT=32 cursor, resident -0.70..-1.38 us, bake 12.94 vs r6 17.89)
+BAKE o m=16 r6 9.31 at 95s
+BAKE o m=16 rq:t16s5hze-k2 10.84 (ratio 0.8443 vs r6 9.31) at 95s
+BAKE o m=16 rq:t16s6hze-k2 10.77 (ratio 0.8525 vs r6 9.31) at 95s
+BAKE o m=16 rq:t16s5ze-k2 11.06 (ratio 0.8187 vs r6 9.31) at 95s
+BAKE o m=16 rq:h16s5hze2-k2 10.39 (ratio 0.9054 vs r6 9.31) at 95s
+PICK o m=16 r6 9.31 (ref r6 9.31)
+PREP phase rq32 done at 95s
+PREP phase router done at 95s
+PREP done in 95s
+compact qkv m=128: compact 19.36 us, dispatcher 17.66 us -> dispatcher
+PREP parent done 99s
+RR compile 4s
+FIXED one-node graph 5.15 us
+ROW {"m": 1, "cfg": [1, 8, 4, 33], "fails": 0, "base_us": 3.728, "cand_us": 4.656, "ratio": 1.246, "msg": "relative L2 error 2.794e-06 (worst row 2.794e-06)"}
+ROW {"m": 1, "cfg": [1, 8, 6, 32], "fails": 0, "base_us": 3.776, "cand_us": 4.512, "ratio": 1.191, "msg": "relative L2 error 2.827e-06 (worst row 2.827e-06)"}
+ROW {"m": 1, "cfg": [2, 8, 4, 66], "fails": 0, "base_us": 3.776, "cand_us": 4.848, "ratio": 1.288, "msg": "relative L2 error 2.767e-06 (worst row 2.767e-06)"}
+ROW {"m": 1, "cfg": [1, 8, 8, 16], "fails": 0, "base_us": 3.808, "cand_us": 4.512, "ratio": 1.209, "msg": "relative L2 error 3.038e-06 (worst row 3.038e-06)"}
+ROW {"m": 8, "cfg": [1, 8, 4, 33], "fails": 0, "base_us": 4.032, "cand_us": 4.736, "ratio": 1.183, "msg": "relative L2 error 2.517e-06 (worst row 2.896e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 8, "cfg": [1, 8, 6, 32], "fails": 0, "base_us": 4.032, "cand_us": 4.672, "ratio": 1.151, "msg": "relative L2 error 2.531e-06 (worst row 2.862e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 8, "cfg": [2, 8, 4, 66], "fails": 0, "base_us": 4.0, "cand_us": 5.136, "ratio": 1.29, "msg": "relative L2 error 2.494e-06 (worst row 2.854e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 8, "cfg": [1, 8, 8, 16], "fails": 0, "base_us": 4.016, "cand_us": 4.64, "ratio": 1.147, "msg": "relative L2 error 2.681e-06 (worst row 3.043e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 16, "cfg": [1, 16, 4, 33], "fails": 0, "base_us": 4.288, "cand_us": 4.736, "ratio": 1.116, "msg": "relative L2 error 2.497e-06 (worst row 2.893e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 16, "cfg": [1, 16, 6, 32], "fails": 0, "base_us": 4.304, "cand_us": 4.672, "ratio": 1.098, "msg": "relative L2 error 2.509e-06 (worst row 2.873e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 16, "cfg": [2, 16, 4, 66], "fails": 0, "base_us": 4.256, "cand_us": 5.312, "ratio": 1.249, "msg": "relative L2 error 2.459e-06 (worst row 2.827e-06); 2 probe rows exact to 2.5e-06"}
+ROW {"m": 32, "cfg": [1, 32, 4, 33], "fails": 0, "base_us": 4.768, "cand_us": 5.216, "ratio": 1.084, "msg": "relative L2 error 2.490e-06 (worst row 2.896e-06); 5 probe rows exact to 2.7e-06"}
+ROW {"m": 32, "cfg": [1, 32, 6, 32], "fails": 0, "base_us": 4.768, "cand_us": 5.248, "ratio": 1.077, "msg": "relative L2 error 2.498e-06 (worst row 2.874e-06); 5 probe rows exact to 2.7e-06"}
+ROW {"m": 32, "cfg": [2, 32, 4, 66], "fails": 0, "base_us": 4.832, "cand_us": 5.936, "ratio": 1.224, "msg": "relative L2 error 2.452e-06 (worst row 2.836e-06); 5 probe rows exact to 2.7e-06"}
+ROW {"m": 32, "cfg": [2, 32, 4, 64], "fails": 0, "base_us": 4.8, "cand_us": 6.08, "ratio": 1.258, "msg": "relative L2 error 2.451e-06 (worst row 2.836e-06); 5 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [1, 64, 6, 16], "fails": 0, "base_us": 5.76, "cand_us": 5.792, "ratio": 1.0, "msg": "relative L2 error 2.652e-06 (worst row 3.051e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [1, 128, 4, 33], "fails": 0, "base_us": 5.808, "cand_us": 6.784, "ratio": 1.163, "msg": "relative L2 error 2.481e-06 (worst row 2.907e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [2, 128, 4, 66], "fails": 0, "base_us": 5.792, "cand_us": 9.024, "ratio": 1.556, "msg": "relative L2 error 2.445e-06 (worst row 2.836e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [2, 64, 4, 33], "fails": 0, "base_us": 5.824, "cand_us": 6.88, "ratio": 1.18, "msg": "relative L2 error 2.481e-06 (worst row 2.895e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [2, 128, 4, 64], "fails": 0, "base_us": 5.824, "cand_us": 9.44, "ratio": 1.619, "msg": "relative L2 error 2.446e-06 (worst row 2.837e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 128, "cfg": [4, 128, 2, 128], "fails": 0, "base_us": 5.776, "cand_us": 14.528, "ratio": 2.518, "msg": "relative L2 error 2.437e-06 (worst row 2.832e-06); 17 probe rows exact to 2.7e-06"}
+ROW {"m": 256, "cfg": [1, 64, 6, 8], "fails": 0, "base_us": 6.944, "cand_us": 7.616, "ratio": 1.095, "msg": "relative L2 error 3.247e-06 (worst row 3.963e-06); 32 probe rows exact to 2.8e-06"}
+ROW {"m": 256, "cfg": [1, 256, 4, 33], "fails": 0, "base_us": 7.04, "cand_us": 9.264, "ratio": 1.326, "msg": "relative L2 error 2.489e-06 (worst row 3.096e-06); 32 probe rows exact to 2.8e-06"}
+ROW {"m": 256, "cfg": [2, 128, 4, 33], "fails": 0, "base_us": 6.992, "cand_us": 9.328, "ratio": 1.337, "msg": "relative L2 error 2.489e-06 (worst row 3.096e-06); 32 probe rows exact to 2.8e-06"}
+ROW {"m": 256, "cfg": [2, 256, 3, 66], "fails": 0, "base_us": 6.96, "cand_us": 13.984, "ratio": 2.012, "msg": "relative L2 error 2.452e-06 (worst row 3.041e-06); 32 probe rows exact to 2.8e-06"}
+ROW {"m": 256, "cfg": [1, 128, 4, 16], "fails": 0, "base_us": 6.992, "cand_us": 7.392, "ratio": 1.061, "msg": "relative L2 error 2.655e-06 (worst row 3.305e-06); 32 probe rows exact to 2.8e-06"}
+ROW {"m": 256, "cfg": [2, 64, 4, 16], "fails": 0, "base_us": 6.976, "cand_us": 7.648, "ratio": 1.091, "msg": "relative L2 error 2.654e-06 (worst row 3.303e-06); 32 probe rows exact to 2.8e-06"}
+DONE 104s
+
+STDERR:
+[okc] tune qkv_gate m=1: cgemv=12.58 sk2=13.12 torch=18.14 -> cgemv
+[okc] tune o m=1: cgemv=8.58 sk2=9.22 torch=10.34 -> cgemv
+[okc] tune pooler m=1: cgemv=17.34 sk2=18.05 torch=25.44 -> cgemv
+[okc] tune unpooler m=1: cgemv=7.2 sgemv=7.39 sk2=7.87 torch=10.69 -> cgemv
+[okc] tune router m=1: rgemv=7.36 sk2=8.29 torch=19.23 -> rgemv
+[okc] tune qkv_gate m=16: sk2=13.12 torch=17.82 -> sk2
+[okc] tune unpooler m=16: sk2=17.76 torch=22.3 -> sk2
+[okc] tune o m=32: sk2=9.38 torch=10.34 -> sk2
+[okc] tune pooler m=32: sk2=18.78 torch=25.76 -> sk2
+[okc] tune unpooler m=32: sk2=18.72 torch=22.59 -> sk2
+[okc] tune router m=128: rk=9.7 wide=12.32 gemm=13.5 torch=20.9 -> rk
+[okc] tune router m=256: rk=10.53 wide=13.25 gemm=17.28 torch=22.34 -> rk
+[okc] disabled: []
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-c8ViVSOjA77rOPG1vuZ4IR
