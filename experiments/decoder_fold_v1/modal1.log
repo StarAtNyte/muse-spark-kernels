@@ -1,0 +1,93 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-pM4m7HuRu2kmJJX07nMWsW
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_fold_v1/
+│   modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[  24.2s] mc4 built 22.6
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 52s
+[mfab] moe T= 32 prod median   147.2 us  speedup vs barrier twin (twin without SC6) 1.0243 (per seed 1.023 1.024 1.024 1.029)  max|d| 0
+[mfab] moe T=128 prod median   192.2 us  speedup vs barrier twin (twin without SC6) 1.0283 (per seed 1.024 1.015 1.029 1.028)  max|d| 0
+[mfab] moe T=256 prod median   223.6 us  speedup vs barrier twin (twin without SC6) 1.0157 (per seed 1.019 1.008 1.012 1.016)  max|d| 0
+[  97.0s] PREPARED 72.7 s
+ROW {"T": 32, "layer": "sliding", "seed": 9301, "med_us": {"base": 148.05, "mc2": 159.17, "mc4": 172.03}, "base_over_var": {"base": 1.0, "mc2": 0.9261, "mc4": 0.86}, "ok": {"base": [true, "update relative L2 error 9.164e-03 (worst row 2.231e-02) [bo"], "mc2": [true, "update relative L2 error 9.164e-03 (worst row 2.231e-02) [bo"], "mc4": [true, "update relative L2 error 9.164e-03 (worst row 2.231e-02) [bo"]}}
+PROF 32 sliding base {"void okc::moe_fused<false>(okc::Params)": 78.04, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.71, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, tr": 16.37, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.91, "void (anonymous namespace)::attn_kernel<": 13.05, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.6}
+PROF 32 sliding mc2 {"void okc::moe_fused<false>(okc::Params)": 77.33, "void sk2_kernel_mc2_8b0566000ccb<2, 32, ": 24.17, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 22.1, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, tr": 16.56, "void (anonymous namespace)::attn_kernel<": 14.97, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.76}
+PROF 32 sliding mc4 {"void okc::moe_fused<false>(okc::Params)": 78.16, "void sk2_kernel_mc4_01f2450d7bbb<2, 32, ": 36.1, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.73, "void (anonymous namespace)::attn_kernel<": 17.44, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, tr": 16.13, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.73}
+ROW {"T": 32, "layer": "sliding", "seed": 9401, "med_us": {"base": 175.86, "mc2": 187.14, "mc4": 200.22}, "base_over_var": {"base": 1.0, "mc2": 0.9395, "mc4": 0.8771}, "ok": {"base": [true, "update relative L2 error 9.623e-03 (worst row 1.671e-02) [bo"], "mc2": [true, "update relative L2 error 9.623e-03 (worst row 1.671e-02) [bo"], "mc4": [true, "update relative L2 error 9.623e-03 (worst row 1.671e-02) [bo"]}}
+ROW {"T": 16, "layer": "sliding", "seed": 9302, "med_us": {"base": 133.22, "mc2": 144.19, "mc4": 156.91}, "base_over_var": {"base": 1.0, "mc2": 0.9248, "mc4": 0.8492}, "ok": {"base": [true, "update relative L2 error 7.511e-03 (worst row 9.834e-03) [bo"], "mc2": [true, "update relative L2 error 7.511e-03 (worst row 9.834e-03) [bo"], "mc4": [true, "update relative L2 error 7.511e-03 (worst row 9.834e-03) [bo"]}}
+PROF 16 sliding base {"void okc::moe_fused<false>(okc::Params)": 65.76, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, tr": 19.12, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, tr": 14.28, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, tr": 10.53, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, tr": 10.51, "void (anonymous namespace)::attn_kernel<": 9.23}
+PROF 16 sliding mc2 {"void okc::moe_fused<false>(okc::Params)": 71.61, "void sk2_kernel_mc2_8b0566000ccb<1, 16, ": 23.8, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, tr": 20.72, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, tr": 15.97, "void (anonymous namespace)::attn_kernel<": 12.72, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, tr": 11.56}
+PROF 16 sliding mc4 {"void okc::moe_fused<false>(okc::Params)": 68.6, "void sk2_kernel_mc4_01f2450d7bbb<1, 16, ": 35.11, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, tr": 19.97, "void (anonymous namespace)::attn_kernel<": 16.02, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, tr": 15.28, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, tr": 10.97}
+ROW {"T": 16, "layer": "sliding", "seed": 9402, "med_us": {"base": 145.94, "mc2": 157.25, "mc4": 170.22}, "base_over_var": {"base": 1.0, "mc2": 0.9275, "mc4": 0.8592}, "ok": {"base": [true, "update relative L2 error 7.388e-03 (worst row 8.690e-03) [bo"], "mc2": [true, "update relative L2 error 7.392e-03 (worst row 8.690e-03) [bo"], "mc4": [true, "update relative L2 error 7.390e-03 (worst row 8.690e-03) [bo"]}}
+ROW {"T": 32, "layer": "full", "seed": 9303, "med_us": {"base": 301.89, "mc2": 313.15, "mc4": 324.08}, "base_over_var": {"base": 1.0, "mc2": 0.9628, "mc4": 0.9315}, "ok": {"base": [true, "update relative L2 error 7.952e-03 (worst row 1.196e-02) [bo"], "mc2": [true, "update relative L2 error 7.952e-03 (worst row 1.196e-02) [bo"], "mc4": [true, "update relative L2 error 7.952e-03 (worst row 1.196e-02) [bo"]}}
+ROW {"T": 32, "layer": "full", "seed": 9403, "med_us": {"base": 307.86, "mc2": 318.7, "mc4": 330.5}, "base_over_var": {"base": 1.0, "mc2": 0.9662, "mc4": 0.932}, "ok": {"base": [true, "update relative L2 error 7.962e-03 (worst row 1.077e-02) [bo"], "mc2": [true, "update relative L2 error 7.962e-03 (worst row 1.077e-02) [bo"], "mc4": [true, "update relative L2 error 7.962e-03 (worst row 1.077e-02) [bo"]}}
+ROW {"T": 16, "layer": "full", "seed": 9304, "med_us": {"base": 206.56, "mc2": 218.05, "mc4": 228.9}, "base_over_var": {"base": 1.0, "mc2": 0.9477, "mc4": 0.9019}, "ok": {"base": [true, "update relative L2 error 7.698e-03 (worst row 9.226e-03) [bo"], "mc2": [true, "update relative L2 error 7.698e-03 (worst row 9.226e-03) [bo"], "mc4": [true, "update relative L2 error 7.698e-03 (worst row 9.226e-03) [bo"]}}
+ROW {"T": 16, "layer": "full", "seed": 9404, "med_us": {"base": 219.3, "mc2": 229.63, "mc4": 241.15}, "base_over_var": {"base": 1.0, "mc2": 0.9543, "mc4": 0.9089}, "ok": {"base": [true, "update relative L2 error 9.087e-03 (worst row 1.974e-02) [bo"], "mc2": [true, "update relative L2 error 9.087e-03 (worst row 1.974e-02) [bo"], "mc4": [true, "update relative L2 error 9.087e-03 (worst row 1.974e-02) [bo"]}}
+ROW {"T": 1, "layer": "sliding", "seed": 9305, "med_us": {"base": 76.21, "mc2": 75.63, "mc4": 76.13}, "base_over_var": {"base": 1.0, "mc2": 1.0085, "mc4": 1.0044}, "ok": {"base": [true, "update relative L2 error 6.925e-03 (worst row 6.925e-03) [bo"], "mc2": [true, "update relative L2 error 6.925e-03 (worst row 6.925e-03) [bo"], "mc4": [true, "update relative L2 error 6.925e-03 (worst row 6.925e-03) [bo"]}}
+ROW {"T": 8, "layer": "sliding", "seed": 9306, "med_us": {"base": 112.62, "mc2": 112.74, "mc4": 112.91}, "base_over_var": {"base": 1.0, "mc2": 0.9969, "mc4": 0.9999}, "ok": {"base": [true, "update relative L2 error 4.817e-02 (worst row 6.843e-02) [bo"], "mc2": [true, "update relative L2 error 4.817e-02 (worst row 6.843e-02) [bo"], "mc4": [true, "update relative L2 error 4.818e-02 (worst row 6.843e-02) [bo"]}}
+ROW {"T": 128, "layer": "sliding", "seed": 9307, "med_us": {"base": 232.93, "mc2": 232.78, "mc4": 232.88}, "base_over_var": {"base": 1.0, "mc2": 1.0009, "mc4": 1.0006}, "ok": {"base": [true, "update relative L2 error 5.761e-02 (worst row 9.998e-02) [bo"], "mc2": [true, "update relative L2 error 5.761e-02 (worst row 9.998e-02) [bo"], "mc4": [true, "update relative L2 error 5.761e-02 (worst row 9.998e-02) [bo"]}}
+GM (32, 'sliding', 'base') 1.0 [1.0, 1.0]
+GM (32, 'sliding', 'mc2') 0.9328 [0.9261, 0.9395]
+GM (32, 'sliding', 'mc4') 0.8685 [0.86, 0.8771]
+GM (16, 'sliding', 'base') 1.0 [1.0, 1.0]
+GM (16, 'sliding', 'mc2') 0.9261 [0.9248, 0.9275]
+GM (16, 'sliding', 'mc4') 0.8542 [0.8492, 0.8592]
+GM (32, 'full', 'base') 1.0 [1.0, 1.0]
+GM (32, 'full', 'mc2') 0.9645 [0.9628, 0.9662]
+GM (32, 'full', 'mc4') 0.9317 [0.9315, 0.932]
+GM (16, 'full', 'base') 1.0 [1.0, 1.0]
+GM (16, 'full', 'mc2') 0.951 [0.9477, 0.9543]
+GM (16, 'full', 'mc4') 0.9054 [0.9019, 0.9089]
+GM (1, 'sliding', 'base') 1.0 [1.0]
+GM (1, 'sliding', 'mc2') 1.0085 [1.0085]
+GM (1, 'sliding', 'mc4') 1.0044 [1.0044]
+GM (8, 'sliding', 'base') 1.0 [1.0]
+GM (8, 'sliding', 'mc2') 0.9969 [0.9969]
+GM (8, 'sliding', 'mc4') 0.9999 [0.9999]
+GM (128, 'sliding', 'base') 1.0 [1.0]
+GM (128, 'sliding', 'mc2') 1.0009 [1.0009]
+GM (128, 'sliding', 'mc4') 1.0006 [1.0006]
+[ 103.5s] timing done
+TESTS mc2 13 / 13
+TESTS mc4 4 / 4
+[ 106.0s] DONE
+
+STDERR:
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:49 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:35:50 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-pM4m7HuRu2kmJJX07nMWsW

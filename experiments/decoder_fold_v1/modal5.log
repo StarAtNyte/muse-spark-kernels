@@ -1,0 +1,85 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iZC6hRo4GheTKYdgQphINj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_fold_v1/
+│   modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[  21.3s] fold ext built 19.9
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 21s
+[mfab] moe T= 32 prod median   146.9 us  speedup vs barrier twin (twin without SC6) 1.0286 (per seed 1.029 1.027 1.020 1.039)  max|d| 0
+[mfab] moe T=128 prod median   191.8 us  speedup vs barrier twin (twin without SC6) 1.0266 (per seed 1.027 1.016 1.026 1.030)  max|d| 0
+[mfab] moe T=256 prod median   224.2 us  speedup vs barrier twin (twin without SC6) 1.0181 (per seed 1.018 1.008 1.015 1.018)  max|d| 0
+[  43.3s] PREPARED 22.0 s
+[  43.3s] tuned compose_graft_enabled {1: True, 8: True, 16: True, 32: True, 128: True, 256: True}
+ROW {"T": 32, "layer": "sliding", "seed": 9301, "med_us": {"base": 147.9, "fold_un": 149.78, "fold": 154.46}, "base_over_var": {"base": 1.0, "fold_un": 0.9882, "fold": 0.9599}, "ok": {"base": [true, "update relative L2 error 9.164e-03 (worst row 2.231e-02) [bo"], "fold_un": [true, "update relative L2 error 9.164e-03 (worst row 2.231e-02) [bo"], "fold": [true, "update relative L2 error 9.162e-03 (worst row 2.226e-02) [bo"]}}
+PROF 32 sliding base {"void okc::moe_fused<false>(okc::Params)": 77.87, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.86, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, tr": 16.1, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.92, "void (anonymous namespace)::attn_kernel<": 13.01, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.14}
+PROF 32 sliding fold_un {"void okc::moe_fused<false>(okc::Params)": 77.71, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.78, "void sk2_kernel_fold_a41baa89caa5<2, 32,": 21.58, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.76, "void (anonymous namespace)::attn_kernel<": 12.68, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.02}
+PROF 32 sliding fold {"void okc::moe_fused<false>(okc::Params)": 78.21, "void sk2_kernel_fold_a41baa89caa5<2, 32,": 44.09, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 28.0, "void (anonymous namespace)::attn_kernel<": 12.69, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.3, "_sl_tile_route": 5.33}
+ROW {"T": 32, "layer": "sliding", "seed": 9401, "med_us": {"base": 175.39, "fold_un": 178.67, "fold": 182.24}, "base_over_var": {"base": 1.0, "fold_un": 0.9776, "fold": 0.9603}, "ok": {"base": [true, "update relative L2 error 9.623e-03 (worst row 1.671e-02) [bo"], "fold_un": [true, "update relative L2 error 9.623e-03 (worst row 1.671e-02) [bo"], "fold": [true, "update relative L2 error 9.624e-03 (worst row 1.671e-02) [bo"]}}
+PROF 32 sliding base {"void okc::moe_fused<false>(okc::Params)": 104.61, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.52, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, tr": 16.02, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.47, "void (anonymous namespace)::attn_kernel<": 12.53, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.15}
+PROF 32 sliding fold_un {"void okc::moe_fused<false>(okc::Params)": 105.44, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 21.84, "void sk2_kernel_fold_a41baa89caa5<2, 32,": 21.04, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, tr": 14.93, "void (anonymous namespace)::attn_kernel<": 13.11, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.48}
+PROF 32 sliding fold {"void okc::moe_fused<false>(okc::Params)": 106.0, "void sk2_kernel_fold_a41baa89caa5<2, 32,": 43.76, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, tr": 28.39, "void (anonymous namespace)::attn_kernel<": 12.66, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, tr": 12.28, "_sl_tile_route": 5.59}
+ROW {"T": 32, "layer": "full", "seed": 9302, "med_us": {"base": 326.94, "fold_un": 329.58, "fold": 333.33}, "base_over_var": {"base": 1.0, "fold_un": 0.9922, "fold": 0.9792}, "ok": {"base": [true, "update relative L2 error 7.851e-03 (worst row 9.688e-03) [bo"], "fold_un": [true, "update relative L2 error 7.850e-03 (worst row 9.667e-03) [bo"], "fold": [true, "update relative L2 error 7.850e-03 (worst row 9.667e-03) [bo"]}}
+ROW {"T": 32, "layer": "full", "seed": 9402, "med_us": {"base": 320.53, "fold_un": 323.68, "fold": 327.54}, "base_over_var": {"base": 1.0, "fold_un": 0.9894, "fold": 0.9791}, "ok": {"base": [true, "update relative L2 error 7.792e-03 (worst row 1.009e-02) [bo"], "fold_un": [true, "update relative L2 error 7.788e-03 (worst row 1.009e-02) [bo"], "fold": [true, "update relative L2 error 7.788e-03 (worst row 1.009e-02) [bo"]}}
+ROW {"T": 16, "layer": "sliding", "seed": 9303, "med_us": {"base": 140.06, "fold_un": 140.37, "fold": 140.37}, "base_over_var": {"base": 1.0, "fold_un": 0.996, "fold": 0.9999}, "ok": {"base": [true, "update relative L2 error 9.256e-03 (worst row 1.491e-02) [bo"], "fold_un": [true, "update relative L2 error 9.256e-03 (worst row 1.491e-02) [bo"], "fold": [true, "update relative L2 error 9.256e-03 (worst row 1.491e-02) [bo"]}}
+ROW {"T": 16, "layer": "sliding", "seed": 9403, "med_us": {"base": 126.32, "fold_un": 126.0, "fold": 126.46}, "base_over_var": {"base": 1.0, "fold_un": 1.0032, "fold": 0.9969}, "ok": {"base": [true, "update relative L2 error 8.862e-03 (worst row 1.487e-02) [bo"], "fold_un": [true, "update relative L2 error 8.862e-03 (worst row 1.487e-02) [bo"], "fold": [true, "update relative L2 error 8.862e-03 (worst row 1.487e-02) [bo"]}}
+ROW {"T": 8, "layer": "sliding", "seed": 9304, "med_us": {"base": 140.56, "fold_un": 140.24, "fold": 141.28}, "base_over_var": {"base": 1.0, "fold_un": 1.0034, "fold": 0.9975}, "ok": {"base": [true, "update relative L2 error 4.955e-02 (worst row 7.722e-02) [bo"], "fold_un": [true, "update relative L2 error 4.953e-02 (worst row 7.722e-02) [bo"], "fold": [true, "update relative L2 error 4.953e-02 (worst row 7.722e-02) [bo"]}}
+ROW {"T": 128, "layer": "sliding", "seed": 9305, "med_us": {"base": 251.36, "fold_un": 251.66, "fold": 252.06}, "base_over_var": {"base": 1.0, "fold_un": 0.9998, "fold": 0.9975}, "ok": {"base": [true, "update relative L2 error 5.914e-02 (worst row 8.907e-02) [bo"], "fold_un": [true, "update relative L2 error 5.914e-02 (worst row 8.907e-02) [bo"], "fold": [true, "update relative L2 error 5.914e-02 (worst row 8.907e-02) [bo"]}}
+GM (32, 'sliding', 'base') 1.0 [1.0, 1.0]
+GM (32, 'sliding', 'fold_un') 0.9829 [0.9882, 0.9776]
+GM (32, 'sliding', 'fold') 0.9601 [0.9599, 0.9603]
+GM (32, 'full', 'base') 1.0 [1.0, 1.0]
+GM (32, 'full', 'fold_un') 0.9908 [0.9922, 0.9894]
+GM (32, 'full', 'fold') 0.9791 [0.9792, 0.9791]
+GM (16, 'sliding', 'base') 1.0 [1.0, 1.0]
+GM (16, 'sliding', 'fold_un') 0.9996 [0.996, 1.0032]
+GM (16, 'sliding', 'fold') 0.9984 [0.9999, 0.9969]
+GM (8, 'sliding', 'base') 1.0 [1.0]
+GM (8, 'sliding', 'fold_un') 1.0034 [1.0034]
+GM (8, 'sliding', 'fold') 0.9975 [0.9975]
+GM (128, 'sliding', 'base') 1.0 [1.0]
+GM (128, 'sliding', 'fold_un') 0.9998 [0.9998]
+GM (128, 'sliding', 'fold') 0.9975 [0.9975]
+[  48.8s] timing done
+TESTS fold 13 / 13
+TESTS fold_un 13 / 13
+[  50.9s] DONE
+
+STDERR:
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:44:55 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-iZC6hRo4GheTKYdgQphINj
