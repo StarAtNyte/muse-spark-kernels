@@ -1,0 +1,93 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-o757V4JIpL6hTXZJMCh3Sl
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/claude_moe_fp32_
+│   opt_v1/run_modal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+LOADED 0.8
+WARM [('-DOKC_NW=16', '-DOKC_FAST1=0', '-DOKC_EPI4=0', '-DOKC_WGS=1', '-DOKC_PRMTSC=1', '-DOKC_SC6W=1'), ('-DOKC_NW=16', '-DOKC_FAST1=0', '-DOKC_EPI4=0', '-DOKC_WGS=1', '-DOKC_WGSNS=4', '-DOKC_WGSXR=32', '-DOKC_PRMTSC=1', '-DOKC_SC6W=1')]
+[mfab] modules built at 82s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+PARENT_PREPARED 128.2
+WARM_DONE 128.2
+[mfab] modules built at 0s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 7.02e-06
+[ps] bs 32: main  {'OKC_WGSNS': 4, 'OKC_WGSXR': 32} regs [96, 0, 0, 96, 0, 0] rel vs base 0.00e+00
+CAND_PREPARED 128.6
+CAND_PS32_DEFS ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_WGSNS=4', '-DOKC_WGSXR=32']
+CAND_ATTRS [96, 0, 0, 96, 0, 0] PARENT_MAIN_ATTRS [96, 0, 0, 96, 0, 0]
+EMPTY_GRAPH_US 3.14
+CHECK {"bs": 4, "seed": 1, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.550e-03 (worst row 2.622e-03)"}
+CHECK {"bs": 33, "seed": 2, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.556e-03 (worst row 2.684e-03)"}
+CHECK {"bs": 257, "seed": 3, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.548e-03 (worst row 2.760e-03)"}
+CHECK {"bs": 128, "seed": 4, "dist": "skewed", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.545e-03 (worst row 2.693e-03)"}
+CHECK {"bs": 1, "seed": 5, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": false, "msg": "relative L2 error 2.409e-03 (worst row 2.409e-03)"}
+CHECK {"bs": 32, "seed": 11, "dist": "skewed", "cand_ok": true, "parent_ok": true, "bitwise_equal": false, "msg": "relative L2 error 2.549e-03 (worst row 2.662e-03)"}
+CHECK {"bs": 32, "seed": 12, "dist": "skewed", "cand_ok": true, "parent_ok": true, "bitwise_equal": false, "msg": "relative L2 error 2.551e-03 (worst row 2.734e-03)"}
+CHECK {"bs": 32, "seed": 13, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.552e-03 (worst row 2.745e-03)"}
+CHECK {"bs": 31, "seed": 14, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.540e-03 (worst row 2.679e-03)"}
+CHECK {"bs": 30, "seed": 15, "dist": "skewed", "cand_ok": true, "parent_ok": true, "bitwise_equal": false, "msg": "relative L2 error 2.525e-03 (worst row 2.659e-03)"}
+CHECK {"bs": 17, "seed": 16, "dist": "skewed", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.553e-03 (worst row 2.740e-03)"}
+CHECK {"bs": 24, "seed": 17, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.555e-03 (worst row 2.672e-03)"}
+CHECK {"bs": 32, "seed": 18, "dist": "normal", "cand_ok": true, "parent_ok": true, "bitwise_equal": true, "msg": "relative L2 error 2.534e-03 (worst row 2.652e-03)"}
+ROW {"bs": 32, "seed": 419, "parent_us": 117.06, "cand_us": 119.04, "paired_med": 0.9814, "paired_q25": 0.971, "paired_q75": 0.9908, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 32, "seed": 7919, "parent_us": 133.23, "cand_us": 133.79, "paired_med": 0.995, "paired_q25": 0.9907, "paired_q75": 0.9998, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 32, "seed": 15241, "parent_us": 126.46, "cand_us": 128.46, "paired_med": 0.9848, "paired_q25": 0.9808, "paired_q75": 0.9898, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 32, "seed": 3, "parent_us": 78.59, "cand_us": 81.38, "paired_med": 0.9697, "paired_q25": 0.9525, "paired_q75": 0.9796, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 32, "seed": 77, "parent_us": 129.33, "cand_us": 130.37, "paired_med": 0.9909, "paired_q25": 0.9862, "paired_q75": 0.9968, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 32, "seed": 1001, "parent_us": 110.98, "cand_us": 113.7, "paired_med": 0.9811, "paired_q25": 0.9671, "paired_q75": 0.9923, "ok_after": true, "same_graph_path": false}
+ROW {"bs": 16, "seed": 101, "parent_us": 87.46, "cand_us": 87.1, "paired_med": 1.004, "paired_q25": 0.9916, "paired_q75": 1.0146, "ok_after": true, "same_graph_path": true}
+ROW {"bs": 16, "seed": 202, "parent_us": 94.26, "cand_us": 94.21, "paired_med": 0.9997, "paired_q25": 0.9959, "paired_q75": 1.0061, "ok_after": true, "same_graph_path": true}
+ROW {"bs": 256, "seed": 505, "parent_us": 211.63, "cand_us": 211.74, "paired_med": 0.9961, "paired_q25": 0.9911, "paired_q75": 1.0123, "ok_after": true, "same_graph_path": true}
+ROW {"bs": 256, "seed": 606, "parent_us": 194.22, "cand_us": 193.82, "paired_med": 0.9998, "paired_q25": 0.9961, "paired_q75": 1.0063, "ok_after": true, "same_graph_path": true}
+ROW {"bs": 128, "seed": 404, "parent_us": 186.62, "cand_us": 186.45, "paired_med": 1.0029, "paired_q25": 0.9929, "paired_q75": 1.0095, "ok_after": true, "same_graph_path": true}
+PER_BS {"32": 0.9838, "16": 1.0018, "256": 0.9979, "128": 1.0029}
+ALLOK True ELAPSED 130.1
+DONE
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-o757V4JIpL6hTXZJMCh3Sl
