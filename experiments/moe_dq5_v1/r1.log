@@ -1,0 +1,140 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-B6KBuiUWmpBtcB8kkWK5i0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_dq5_v1/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 75s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 1.07e-10
+PREPARED parent 119.9
+[mfab] modules built at 53s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [159, 0, 0, 159, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [159, 0, 0, 159, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [155, 0, 0, 155, 0, 0] rel vs base 2.14e-10
+PREPARED cand 216.7 DQ5 in TINY True
+BUILT 8 289.0
+SASS parent 1 {'LOP3': 832, 'SHF': 492, 'IMAD.SHL': 286, 'IMAD.WIDE': 194, 'IMAD': 1562, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 252, 'total': 8192}
+SASS cand 1 {'LOP3': 832, 'SHF': 226, 'IMAD.SHL': 40, 'IMAD.WIDE': 438, 'IMAD': 1762, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 246, 'total': 8192}
+SASS dq6 1 {'LOP3': 832, 'SHF': 352, 'IMAD.SHL': 40, 'IMAD.WIDE': 316, 'IMAD': 1662, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 250, 'total': 8192}
+SASS dq7ctl 1 {'LOP3': 832, 'SHF': 492, 'IMAD.SHL': 286, 'IMAD.WIDE': 194, 'IMAD': 1562, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 252, 'total': 8192}
+SASS parent 8 {'LOP3': 826, 'SHF': 458, 'IMAD.SHL': 300, 'IMAD.WIDE': 168, 'IMAD': 1504, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 226, 'total': 8192}
+SASS cand 8 {'LOP3': 826, 'SHF': 206, 'IMAD.SHL': 42, 'IMAD.WIDE': 412, 'IMAD': 1788, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 220, 'total': 8192}
+SASS dq6 8 {'LOP3': 826, 'SHF': 332, 'IMAD.SHL': 44, 'IMAD.WIDE': 292, 'IMAD': 1680, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 224, 'total': 8192}
+SASS dq7ctl 8 {'LOP3': 826, 'SHF': 458, 'IMAD.SHL': 300, 'IMAD.WIDE': 168, 'IMAD': 1504, 'HMUL2': 512, 'HMMA': 128, 'PRMT': 84, 'LDS': 226, 'total': 8192}
+CHECK {"bs": 4, "dist": "normal", "seed": 11, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.512e-03 (worst row 2.541e-03)", "pmsg": "relative L2 error 2.513e-03 (worst row 2.541e-03)"}
+CHECK {"bs": 4, "dist": "normal", "seed": 1234, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.575e-03 (worst row 2.650e-03)", "pmsg": "relative L2 error 2.575e-03 (worst row 2.650e-03)"}
+CHECK {"bs": 33, "dist": "normal", "seed": 12, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.537e-03 (worst row 2.655e-03)", "pmsg": "relative L2 error 2.537e-03 (worst row 2.655e-03)"}
+CHECK {"bs": 33, "dist": "normal", "seed": 1235, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.566e-03 (worst row 2.753e-03)", "pmsg": "relative L2 error 2.566e-03 (worst row 2.753e-03)"}
+CHECK {"bs": 257, "dist": "normal", "seed": 13, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.556e-03 (worst row 2.768e-03)", "pmsg": "relative L2 error 2.556e-03 (worst row 2.768e-03)"}
+CHECK {"bs": 257, "dist": "normal", "seed": 1236, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.555e-03 (worst row 2.764e-03)", "pmsg": "relative L2 error 2.555e-03 (worst row 2.764e-03)"}
+CHECK {"bs": 128, "dist": "skewed", "seed": 14, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.559e-03 (worst row 2.737e-03)", "pmsg": "relative L2 error 2.559e-03 (worst row 2.737e-03)"}
+CHECK {"bs": 128, "dist": "skewed", "seed": 1237, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.541e-03 (worst row 2.809e-03)", "pmsg": "relative L2 error 2.541e-03 (worst row 2.809e-03)"}
+CHECK {"bs": 1, "dist": "normal", "seed": 15, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.612e-03 (worst row 2.612e-03)", "pmsg": "relative L2 error 2.612e-03 (worst row 2.612e-03)"}
+CHECK {"bs": 1, "dist": "normal", "seed": 1238, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": false, "msg": "relative L2 error 2.688e-03 (worst row 2.688e-03)", "pmsg": "relative L2 error 2.688e-03 (worst row 2.688e-03)"}
+CHECK {"bs": 2, "dist": "normal", "seed": 16, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.631e-03 (worst row 2.687e-03)", "pmsg": "relative L2 error 2.631e-03 (worst row 2.687e-03)"}
+CHECK {"bs": 2, "dist": "normal", "seed": 1239, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.612e-03 (worst row 2.627e-03)", "pmsg": "relative L2 error 2.612e-03 (worst row 2.627e-03)"}
+CHECK {"bs": 3, "dist": "normal", "seed": 17, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.568e-03 (worst row 2.614e-03)", "pmsg": "relative L2 error 2.568e-03 (worst row 2.614e-03)"}
+CHECK {"bs": 3, "dist": "normal", "seed": 1240, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.553e-03 (worst row 2.597e-03)", "pmsg": "relative L2 error 2.553e-03 (worst row 2.597e-03)"}
+CHECK {"bs": 5, "dist": "normal", "seed": 18, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.569e-03 (worst row 2.618e-03)", "pmsg": "relative L2 error 2.569e-03 (worst row 2.618e-03)"}
+CHECK {"bs": 5, "dist": "normal", "seed": 1241, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.526e-03 (worst row 2.556e-03)", "pmsg": "relative L2 error 2.526e-03 (worst row 2.556e-03)"}
+CHECK {"bs": 6, "dist": "normal", "seed": 19, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.560e-03 (worst row 2.623e-03)", "pmsg": "relative L2 error 2.560e-03 (worst row 2.623e-03)"}
+CHECK {"bs": 6, "dist": "normal", "seed": 1242, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.556e-03 (worst row 2.610e-03)", "pmsg": "relative L2 error 2.556e-03 (worst row 2.610e-03)"}
+CHECK {"bs": 7, "dist": "normal", "seed": 20, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.528e-03 (worst row 2.604e-03)", "pmsg": "relative L2 error 2.527e-03 (worst row 2.604e-03)"}
+CHECK {"bs": 7, "dist": "normal", "seed": 1243, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.540e-03 (worst row 2.590e-03)", "pmsg": "relative L2 error 2.540e-03 (worst row 2.590e-03)"}
+CHECK {"bs": 8, "dist": "normal", "seed": 21, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.499e-03 (worst row 2.645e-03)", "pmsg": "relative L2 error 2.499e-03 (worst row 2.645e-03)"}
+CHECK {"bs": 8, "dist": "normal", "seed": 1244, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": false, "msg": "relative L2 error 2.551e-03 (worst row 2.639e-03)", "pmsg": "relative L2 error 2.551e-03 (worst row 2.639e-03)"}
+CHECK {"bs": 16, "dist": "normal", "seed": 22, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.570e-03 (worst row 2.740e-03)", "pmsg": "relative L2 error 2.570e-03 (worst row 2.740e-03)"}
+CHECK {"bs": 16, "dist": "normal", "seed": 1245, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.566e-03 (worst row 2.708e-03)", "pmsg": "relative L2 error 2.566e-03 (worst row 2.708e-03)"}
+CHECK {"bs": 32, "dist": "normal", "seed": 23, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.524e-03 (worst row 2.725e-03)", "pmsg": "relative L2 error 2.524e-03 (worst row 2.725e-03)"}
+CHECK {"bs": 32, "dist": "normal", "seed": 1246, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.546e-03 (worst row 2.690e-03)", "pmsg": "relative L2 error 2.546e-03 (worst row 2.690e-03)"}
+CHECK {"bs": 128, "dist": "normal", "seed": 24, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.556e-03 (worst row 2.816e-03)", "pmsg": "relative L2 error 2.556e-03 (worst row 2.816e-03)"}
+CHECK {"bs": 128, "dist": "normal", "seed": 1247, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.551e-03 (worst row 2.725e-03)", "pmsg": "relative L2 error 2.551e-03 (worst row 2.725e-03)"}
+CHECK {"bs": 256, "dist": "normal", "seed": 25, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.555e-03 (worst row 2.765e-03)", "pmsg": "relative L2 error 2.555e-03 (worst row 2.765e-03)"}
+CHECK {"bs": 256, "dist": "normal", "seed": 1248, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.551e-03 (worst row 2.774e-03)", "pmsg": "relative L2 error 2.551e-03 (worst row 2.774e-03)"}
+CHECK {"bs": 1, "dist": "skewed", "seed": 26, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.560e-03 (worst row 2.560e-03)", "pmsg": "relative L2 error 2.560e-03 (worst row 2.560e-03)"}
+CHECK {"bs": 1, "dist": "skewed", "seed": 1249, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": true, "msg": "relative L2 error 2.637e-03 (worst row 2.637e-03)", "pmsg": "relative L2 error 2.637e-03 (worst row 2.637e-03)"}
+CHECK {"bs": 4, "dist": "skewed", "seed": 27, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.511e-03 (worst row 2.555e-03)", "pmsg": "relative L2 error 2.511e-03 (worst row 2.555e-03)"}
+CHECK {"bs": 4, "dist": "skewed", "seed": 1250, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": true, "msg": "relative L2 error 2.562e-03 (worst row 2.625e-03)", "pmsg": "relative L2 error 2.562e-03 (worst row 2.625e-03)"}
+CHECK {"bs": 8, "dist": "skewed", "seed": 28, "ok": true, "parent_ok": true, "bit_eq_parent": true, "cand_rep_eq": false, "msg": "relative L2 error 2.525e-03 (worst row 2.643e-03)", "pmsg": "relative L2 error 2.525e-03 (worst row 2.643e-03)"}
+CHECK {"bs": 8, "dist": "skewed", "seed": 1251, "ok": true, "parent_ok": true, "bit_eq_parent": false, "cand_rep_eq": false, "msg": "relative L2 error 2.516e-03 (worst row 2.606e-03)", "pmsg": "relative L2 error 2.516e-03 (worst row 2.606e-03)"}
+VCHECK cand 1 True bit_eq_parent False relative L2 error 2.440e-03 (worst row 2.440e-03)
+VCHECK dq6 1 True bit_eq_parent True relative L2 error 2.440e-03 (worst row 2.440e-03)
+VCHECK dq7ctl 1 True bit_eq_parent True relative L2 error 2.440e-03 (worst row 2.440e-03)
+VCHECK cand 4 True bit_eq_parent True relative L2 error 2.574e-03 (worst row 2.609e-03)
+VCHECK dq6 4 True bit_eq_parent False relative L2 error 2.574e-03 (worst row 2.609e-03)
+VCHECK dq7ctl 4 True bit_eq_parent False relative L2 error 2.574e-03 (worst row 2.609e-03)
+VCHECK cand 8 True bit_eq_parent False relative L2 error 2.526e-03 (worst row 2.650e-03)
+VCHECK dq6 8 True bit_eq_parent False relative L2 error 2.526e-03 (worst row 2.650e-03)
+VCHECK dq7ctl 8 True bit_eq_parent True relative L2 error 2.526e-03 (worst row 2.650e-03)
+ALLOK_CORRECT True 294.9
+EMPTY_US 3.23
+ROW {"bs": 1, "seed": 9131, "D": 2, "parent": 23.42, "cand": 25.74, "dq6": 24.4, "dq7ctl": 22.98, "nodq": 21.97, "r_cand": 0.9094, "r_dq6": 0.9567, "r_dq7ctl": 1.0126, "r_nodq": 1.0723}
+ROW {"bs": 4, "seed": 9524, "D": 5, "parent": 43.34, "cand": 50.08, "dq6": 46.45, "dq7ctl": 42.86, "nodq": 42.46, "r_cand": 0.8616, "r_dq6": 0.9257, "r_dq7ctl": 1.0056, "r_nodq": 1.0154}
+ROW {"bs": 8, "seed": 10048, "D": 5, "parent": 44.54, "cand": 49.41, "dq6": 45.47, "dq7ctl": 43.94, "nodq": 43.98, "r_cand": 0.8967, "r_dq6": 0.9629, "r_dq7ctl": 1.0087, "r_nodq": 0.9982}
+ROW {"bs": 1, "seed": 9132, "D": 3, "parent": 29.09, "cand": 33.78, "dq6": 31.7, "dq7ctl": 29.74, "nodq": 29.09, "r_cand": 0.862, "r_dq6": 0.9206, "r_dq7ctl": 0.9763, "r_nodq": 1.0055}
+ROW {"bs": 4, "seed": 9525, "D": 7, "parent": 55.71, "cand": 66.0, "dq6": 61.04, "dq7ctl": 55.95, "nodq": 55.23, "r_cand": 0.8462, "r_dq6": 0.9178, "r_dq7ctl": 0.9991, "r_nodq": 1.0139}
+ROW {"bs": 8, "seed": 10049, "D": 8, "parent": 62.18, "cand": 71.41, "dq6": 65.89, "dq7ctl": 61.71, "nodq": 63.17, "r_cand": 0.8664, "r_dq6": 0.9371, "r_dq7ctl": 1.0103, "r_nodq": 0.9803}
+ROW {"bs": 1, "seed": 9133, "D": 3, "parent": 29.33, "cand": 33.54, "dq6": 31.62, "dq7ctl": 29.25, "nodq": 28.45, "r_cand": 0.8749, "r_dq6": 0.9263, "r_dq7ctl": 1.0049, "r_nodq": 1.0421}
+ROW {"bs": 4, "seed": 9526, "D": 5, "parent": 42.64, "cand": 49.79, "dq6": 46.4, "dq7ctl": 42.72, "nodq": 42.72, "r_cand": 0.8553, "r_dq6": 0.9191, "r_dq7ctl": 0.9959, "r_nodq": 1.003}
+ROW {"bs": 8, "seed": 10050, "D": 5, "parent": 44.08, "cand": 50.13, "dq6": 46.61, "dq7ctl": 44.7, "nodq": 44.4, "r_cand": 0.8786, "r_dq6": 0.9521, "r_dq7ctl": 0.9946, "r_nodq": 0.9943}
+ROW {"bs": 1, "seed": 9134, "D": 3, "parent": 29.6, "cand": 33.57, "dq6": 31.54, "dq7ctl": 29.68, "nodq": 28.69, "r_cand": 0.8774, "r_dq6": 0.9301, "r_dq7ctl": 1.0005, "r_nodq": 1.0293}
+ROW {"bs": 4, "seed": 9527, "D": 4, "parent": 36.24, "cand": 41.87, "dq6": 39.04, "dq7ctl": 35.86, "nodq": 35.33, "r_cand": 0.8657, "r_dq6": 0.9295, "r_dq7ctl": 1.0093, "r_nodq": 1.0323}
+ROW {"bs": 8, "seed": 10051, "D": 6, "parent": 50.18, "cand": 58.03, "dq6": 53.3, "dq7ctl": 50.29, "nodq": 50.35, "r_cand": 0.8598, "r_dq6": 0.9354, "r_dq7ctl": 0.9918, "r_nodq": 0.9958}
+ROW {"bs": 1, "seed": 9135, "D": 2, "parent": 23.28, "cand": 25.63, "dq6": 24.29, "dq7ctl": 22.99, "nodq": 22.03, "r_cand": 0.9095, "r_dq6": 0.9577, "r_dq7ctl": 1.0085, "r_nodq": 1.0516}
+ROW {"bs": 4, "seed": 9528, "D": 6, "parent": 48.83, "cand": 57.84, "dq6": 53.54, "dq7ctl": 48.67, "nodq": 48.5, "r_cand": 0.8469, "r_dq6": 0.9139, "r_dq7ctl": 1.0033, "r_nodq": 1.0151}
+ROW {"bs": 8, "seed": 10052, "D": 7, "parent": 55.25, "cand": 64.14, "dq6": 59.38, "dq7ctl": 55.62, "nodq": 57.04, "r_cand": 0.8618, "r_dq6": 0.9316, "r_dq7ctl": 0.9898, "r_nodq": 0.9763}
+ROW {"bs": 16, "seed": 11596, "D": 14, "parent": 100.98, "cand": 100.82, "r_cand": 0.9997}
+ROW {"bs": 32, "seed": 13692, "D": 19, "parent": 138.43, "cand": 137.82, "r_cand": 1.0007}
+ROW {"bs": 16, "seed": 11597, "D": 12, "parent": 88.69, "cand": 88.66, "r_cand": 1.0016}
+ROW {"bs": 32, "seed": 13693, "D": 14, "parent": 107.82, "cand": 107.62, "r_cand": 1.0007}
+SUMMARY 1 {'r_cand': 0.8864, 'r_dq6': 0.9381, 'r_dq7ctl': 1.0005, 'r_nodq': 1.0399} {'D': 2.6, 'parent': 26.94, 'cand': 30.45, 'dq6': 28.71, 'dq7ctl': 26.93, 'nodq': 26.05}
+SUMMARY 4 {'r_cand': 0.8551, 'r_dq6': 0.9212, 'r_dq7ctl': 1.0026, 'r_nodq': 1.0159} {'D': 5.4, 'parent': 45.35, 'cand': 53.12, 'dq6': 49.29, 'dq7ctl': 45.21, 'nodq': 44.85}
+SUMMARY 8 {'r_cand': 0.8726, 'r_dq6': 0.9437, 'r_dq7ctl': 0.999, 'r_nodq': 0.9889} {'D': 6.2, 'parent': 51.25, 'cand': 58.62, 'dq6': 54.13, 'dq7ctl': 51.25, 'nodq': 51.79}
+SUMMARY 16 {'r_cand': 1.0006} {'D': 13, 'parent': 94.84, 'cand': 94.74}
+SUMMARY 32 {'r_cand': 1.0007} {'D': 16.5, 'parent': 123.12, 'cand': 122.72}
+ALLOK True ELAPSED 295.5
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-B6KBuiUWmpBtcB8kkWK5i0
