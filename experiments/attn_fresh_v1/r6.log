@@ -1,0 +1,201 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-XmApFN8WDSPmi6lYEX8Tzu
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+=========
+=
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,xr,xrA", "CASES": "d16f,d32f,v16f,v32f", "SEEDS": "11,12", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d16f", "seed": 11, "med": {"base": 91.9, "xr": 91.6, "xrA": 92.13}, "gain": {"base": 1.0, "xr": 1.003, "xrA": 0.998}, "bad": {}}
+ROW {"case": "d16f", "seed": 12, "med": {"base": 89.02, "xr": 88.91, "xrA": 89.09}, "gain": {"base": 1.0, "xr": 1.001, "xrA": 0.999}, "bad": {}}
+ROW {"case": "d32f", "seed": 11, "med": {"base": 171.18, "xr": 170.7, "xrA": 172.03}, "gain": {"base": 1.0, "xr": 1.003, "xrA": 0.995}, "bad": {}}
+ROW {"case": "d32f", "seed": 12, "med": {"base": 169.25, "xr": 169.36, "xrA": 170.21}, "gain": {"base": 1.0, "xr": 0.999, "xrA": 0.994}, "bad": {}}
+ROW {"case": "v16f", "seed": 11, "med": {"base": 102.0, "xr": 164.74, "xrA": 165.34}, "gain": {"base": 1.0, "xr": 0.619, "xrA": 0.617}, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 99.12, "xr": 159.46, "xrA": 159.1}, "gain": {"base": 1.0, "xr": 0.622, "xrA": 0.623}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 185.46, "xr": 310.48, "xrA": 307.82}, "gain": {"base": 1.0, "xr": 0.597, "xrA": 0.602}, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 182.29, "xr": 304.75, "xrA": 304.75}, "gain": {"base": 1.0, "xr": 0.598, "xrA": 0.598}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "time", "VARIANTS": "base,xrA,xrB", "CASES": "d16f,d32f,v16f,v32f", "SEEDS": "13,14", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d16f", "seed": 13, "med": {"base": 91.6, "xrA": 92.53, "xrB": 93.38}, "gain": {"base": 1.0, "xrA": 0.99, "xrB": 0.981}, "bad": {}}
+ROW {"case": "d16f", "seed": 14, "med": {"base": 89.58, "xrA": 90.16, "xrB": 90.88}, "gain": {"base": 1.0, "xrA": 0.994, "xrB": 0.986}, "bad": {}}
+ROW {"case": "d32f", "seed": 13, "med": {"base": 169.74, "xrA": 169.47, "xrB": 171.22}, "gain": {"base": 1.0, "xrA": 1.002, "xrB": 0.991}, "bad": {}}
+ROW {"case": "d32f", "seed": 14, "med": {"base": 171.2, "xrA": 172.24, "xrB": 172.67}, "gain": {"base": 1.0, "xrA": 0.994, "xrB": 0.991}, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"base": 101.97, "xrA": 164.93, "xrB": 166.8}, "gain": {"base": 1.0, "xrA": 0.618, "xrB": 0.611}, "bad": {}}
+ROW {"case": "v16f", "seed": 14, "med": {"base": 100.03, "xrA": 162.27, "xrB": 165.57}, "gain": {"base": 1.0, "xrA": 0.616, "xrB": 0.604}, "bad": {}}
+ROW {"case": "v32f", "seed": 13, "med": {"base": 182.34, "xrA": 304.91, "xrB": 307.73}, "gain": {"base": 1.0, "xrA": 0.598, "xrB": 0.593}, "bad": {}}
+ROW {"case": "v32f", "seed": 14, "med": {"base": 185.5, "xrA": 306.66, "xrB": 306.94}, "gain": {"base": 1.0, "xrA": 0.605, "xrB": 0.604}, "bad": {}}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "xr,xrA", "SEEDS": "11,12", "XCASES": "d16f,d32f,v16f,v32f"} RETURNCODE 0
+RES okc_attn_frxr_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:136 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frxr_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6616, "region": 1651, "hist_region": {"ISETP": 227, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "VIADD": 79, "PRMT": 79, "LDL": 78, "IMAD": 66, "F2FP": 64, "IADD3": 37, "STL": 35, "LOP3": 32, "FFMA": 32, "R2UR": 29, "STS": 26, "MOV": 20, "SHFL": 20, "BRA": 18, "SEL": 16, "BSYNC": 16, "BSSY": 15, "WARPGROUP": 13, "QGMMA": 12, "LDS": 12, "VIMNMX": 10, "HADD2": 10, "SHF": 8, "S2R": 7, "LEA": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "BAR": 5, "FSETP": 4, "ULDC": 3, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "UMOV": 3, "CALL": 2, "UIADD3": 2, "ULOP3": 2, "PLOP3": 2, "USHF": 1}}
+RES okc_attn_frxrA_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:136 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frxrA_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6616, "region": 1651, "hist_region": {"ISETP": 227, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "VIADD": 79, "PRMT": 79, "LDL": 78, "IMAD": 66, "F2FP": 64, "IADD3": 37, "STL": 35, "LOP3": 32, "FFMA": 32, "R2UR": 29, "STS": 26, "MOV": 20, "SHFL": 20, "BRA": 18, "SEL": 16, "BSYNC": 16, "BSSY": 15, "WARPGROUP": 13, "QGMMA": 12, "LDS": 12, "VIMNMX": 10, "HADD2": 10, "SHF": 8, "S2R": 7, "LEA": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "BAR": 5, "FSETP": 4, "ULDC": 3, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "UMOV": 3, "CALL": 2, "UIADD3": 2, "ULOP3": 2, "PLOP3": 2, "USHF": 1}}
+TEST 0 11 {"xr": [true, ["3.279e-03", "3.279e-03", "0.073"]], "xrA": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"xr": [true, ["5.447e-03", "5.447e-03", "0.137"]], "xrA": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"xr": [true, ["8.212e-03", "9.299e-03", "0.150"]], "xrA": [true, ["8.325e-03", "9.173e-03", "0.150"]]}
+TEST 1 12 {"xr": [true, ["7.671e-03", "8.401e-03", "0.150"]], "xrA": [true, ["7.671e-03", "8.372e-03", "0.150"]]}
+TEST 2 11 {"xr": [true, ["7.601e-02", "1.101e-01", "0.150"]], "xrA": [true, ["7.601e-02", "1.100e-01", "0.150"]]}
+TEST 2 12 {"xr": [true, ["7.781e-02", "1.125e-01", "0.150"]], "xrA": [true, ["7.776e-02", "1.127e-01", "0.150"]]}
+TEST 3 11 {"xr": [true, ["6.646e-03", "7.294e-03", "0.150"]], "xrA": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"xr": [true, ["5.865e-03", "6.923e-03", "0.150"]], "xrA": [true, ["5.861e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"xr": [true, ["5.797e-03", "6.583e-03", "0.150"]], "xrA": [true, ["5.800e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"xr": [true, ["5.502e-03", "5.882e-03", "0.150"]], "xrA": [true, ["5.502e-03", "5.885e-03", "0.150"]]}
+TEST 5 11 {"xr": [true, ["9.338e-02", "1.147e-01", "0.150"]], "xrA": [true, ["9.445e-02", "1.161e-01", "0.150"]]}
+TEST 5 12 {"xr": [true, ["8.963e-02", "1.218e-01", "0.150"]], "xrA": [true, ["9.062e-02", "1.274e-01", "0.150"]]}
+TEST 6 11 {"xr": [true, ["6.652e-03", "7.264e-03", "0.150"]], "xrA": [true, ["7.075e-03", "7.552e-03", "0.150"]]}
+TEST 6 12 {"xr": [true, ["7.209e-03", "7.837e-03", "0.150"]], "xrA": [true, ["7.095e-03", "7.950e-03", "0.150"]]}
+TEST 7 11 {"xr": [true, ["8.319e-02", "1.119e-01", "0.150"]], "xrA": [true, ["8.293e-02", "1.131e-01", "0.150"]]}
+TEST 7 12 {"xr": [true, ["8.469e-02", "1.158e-01", "0.150"]], "xrA": [true, ["8.439e-02", "1.168e-01", "0.150"]]}
+TEST 8 11 {"xr": [true, ["9.538e-02", "1.194e-01", "0.150"]], "xrA": [true, ["9.546e-02", "1.196e-01", "0.150"]]}
+TEST 8 12 {"xr": [true, ["9.722e-02", "1.249e-01", "0.150"]], "xrA": [true, ["9.709e-02", "1.248e-01", "0.150"]]}
+TEST 9 11 {"xr": [true, ["8.107e-02", "1.126e-01", "0.150"]], "xrA": [true, ["8.104e-02", "1.125e-01", "0.150"]]}
+TEST 9 12 {"xr": [true, ["7.691e-02", "1.095e-01", "0.150"]], "xrA": [true, ["7.683e-02", "1.093e-01", "0.150"]]}
+TEST 10 11 {"xr": [true, ["5.713e-03", "5.735e-03", "0.150"]], "xrA": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"xr": [true, ["4.862e-03", "5.158e-03", "0.150"]], "xrA": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"xr": [true, ["4.979e-03", "5.837e-03", "0.150"]], "xrA": [true, ["4.983e-03", "5.841e-03", "0.150"]]}
+TEST 11 12 {"xr": [true, ["4.951e-03", "5.279e-03", "0.150"]], "xrA": [true, ["4.941e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"xr": [true, ["6.590e-02", "1.039e-01", "0.150"]], "xrA": [true, ["6.582e-02", "1.038e-01", "0.150"]]}
+TEST 12 12 {"xr": [true, ["6.136e-02", "8.426e-02", "0.150"]], "xrA": [true, ["6.138e-02", "8.333e-02", "0.150"]]}
+TEST 13 11 {"xr": [true, ["7.471e-02", "7.959e-02", "0.150"]], "xrA": [true, ["7.464e-02", "7.929e-02", "0.150"]]}
+TEST 13 12 {"xr": [true, ["7.535e-02", "8.532e-02", "0.150"]], "xrA": [true, ["7.529e-02", "8.354e-02", "0.150"]]}
+TEST 14 11 {"xr": [true, ["3.189e-03", "3.889e-03", "0.122"]], "xrA": [true, ["3.192e-03", "3.896e-03", "0.122"]]}
+TEST 14 12 {"xr": [true, ["3.763e-03", "4.240e-03", "0.142"]], "xrA": [true, ["3.762e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"xr": [true, ["4.559e-02", "5.149e-02", "0.109"]], "xrA": [true, ["4.566e-02", "5.079e-02", "0.109"]]}
+TEST 15 12 {"xr": [true, ["4.791e-02", "5.927e-02", "0.113"]], "xrA": [true, ["4.813e-02", "5.835e-02", "0.113"]]}
+TEST S0 11 {"xr": [true, ["3.135e-03", "3.900e-03", "0.114"]], "xrA": [true, ["3.133e-03", "3.894e-03", "0.114"]]}
+TEST S0 12 {"xr": [true, ["2.957e-03", "3.552e-03", "0.102"]], "xrA": [true, ["2.958e-03", "3.567e-03", "0.102"]]}
+TEST S1 11 {"xr": [true, ["3.028e-03", "4.177e-03", "0.111"]], "xrA": [true, ["3.026e-03", "4.179e-03", "0.111"]]}
+TEST S1 12 {"xr": [true, ["2.891e-03", "4.214e-03", "0.107"]], "xrA": [true, ["2.892e-03", "4.217e-03", "0.107"]]}
+TEST S2 11 {"xr": [true, ["3.944e-02", "7.663e-02", "0.082"]], "xrA": [true, ["3.927e-02", "8.221e-02", "0.082"]]}
+TEST S2 12 {"xr": [true, ["4.056e-02", "9.847e-02", "0.085"]], "xrA": [true, ["4.046e-02", "9.627e-02", "0.085"]]}
+TEST S3 11 {"xr": [true, ["4.696e-02", "1.026e-01", "0.080"]], "xrA": [true, ["4.728e-02", "1.121e-01", "0.080"]]}
+TEST S3 12 {"xr": [true, ["4.783e-02", "9.944e-02", "0.083"]], "xrA": [true, ["4.826e-02", "1.079e-01", "0.083"]]}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "sass", "VARIANTS": "xrB", "SEEDS": "13", "XCASES": "d16f,d32f,v16f,v32f"} RETURNCODE 0
+RES okc_attn_frxrB_90a _7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:136 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_frxrB_90a u_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6616, "region": 1651, "hist_region": {"ISETP": 227, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "VIADD": 79, "PRMT": 79, "LDL": 78, "IMAD": 66, "F2FP": 64, "IADD3": 37, "STL": 35, "LOP3": 32, "FFMA": 32, "R2UR": 29, "STS": 26, "MOV": 20, "SHFL": 20, "BRA": 18, "SEL": 16, "BSYNC": 16, "BSSY": 15, "WARPGROUP": 13, "QGMMA": 12, "LDS": 12, "VIMNMX": 10, "HADD2": 10, "SHF": 8, "S2R": 7, "LEA": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "BAR": 5, "FSETP": 4, "ULDC": 3, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "UMOV": 3, "CALL": 2, "UIADD3": 2, "ULOP3": 2, "PLOP3": 2, "USHF": 1}}
+TEST 0 13 {"xrB": [true, ["3.940e-03", "3.940e-03", "0.111"]]}
+TEST 1 13 {"xrB": [true, ["6.970e-03", "7.241e-03", "0.150"]]}
+TEST 2 13 {"xrB": [true, ["7.884e-02", "1.204e-01", "0.150"]]}
+TEST 3 13 {"xrB": [true, ["6.093e-03", "7.749e-03", "0.150"]]}
+TEST 4 13 {"xrB": [true, ["5.611e-03", "6.282e-03", "0.150"]]}
+TEST 5 13 {"xrB": [true, ["9.464e-02", "1.166e-01", "0.150"]]}
+TEST 6 13 {"xrB": [true, ["7.845e-03", "8.715e-03", "0.150"]]}
+TEST 7 13 {"xrB": [true, ["7.856e-02", "1.088e-01", "0.150"]]}
+TEST 8 13 {"xrB": [true, ["9.814e-02", "1.258e-01", "0.150"]]}
+TEST 9 13 {"xrB": [true, ["8.296e-02", "1.264e-01", "0.150"]]}
+TEST 10 13 {"xrB": [true, ["6.123e-03", "6.734e-03", "0.150"]]}
+TEST 11 13 {"xrB": [true, ["5.128e-03", "5.724e-03", "0.150"]]}
+TEST 12 13 {"xrB": [true, ["6.708e-02", "1.033e-01", "0.150"]]}
+TEST 13 13 {"xrB": [true, ["7.621e-02", "8.293e-02", "0.150"]]}
+TEST 14 13 {"xrB": [true, ["3.264e-03", "3.600e-03", "0.113"]]}
+TEST 15 13 {"xrB": [true, ["4.801e-02", "5.972e-02", "0.113"]]}
+TEST S0 13 {"xrB": [true, ["3.438e-03", "4.073e-03", "0.127"]]}
+TEST S1 13 {"xrB": [true, ["3.291e-03", "4.639e-03", "0.124"]]}
+TEST S2 13 {"xrB": [true, ["4.086e-02", "8.785e-02", "0.091"]]}
+TEST S3 13 {"xrB": [true, ["5.004e-02", "1.042e-01", "0.091"]]}
+DONE
+
+STDERR:
+
+ENV {"PHASE": "time", "VARIANTS": "base,xrA", "CASES": "d1s,d1f,d16s,d32s,v1s,v1f,v16s,v32s", "SEEDS": "11", "REPS": "20"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 11, "med": {"base": 9.15, "xrA": 9.07}, "gain": {"base": 1.0, "xrA": 1.009}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 14.96, "xrA": 14.75}, "gain": {"base": 1.0, "xrA": 1.014}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 11.82, "xrA": 11.87}, "gain": {"base": 1.0, "xrA": 0.996}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 14.11, "xrA": 13.55}, "gain": {"base": 1.0, "xrA": 1.041}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.53, "xrA": 10.53}, "gain": {"base": 1.0, "xrA": 1.0}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 17.02, "xrA": 16.94}, "gain": {"base": 1.0, "xrA": 1.005}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.3, "xrA": 14.02}, "gain": {"base": 1.0, "xrA": 1.021}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.82, "xrA": 16.77}, "gain": {"base": 1.0, "xrA": 1.003}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-XmApFN8WDSPmi6lYEX8Tzu

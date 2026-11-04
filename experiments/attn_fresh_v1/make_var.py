@@ -438,6 +438,40 @@ __device__ __forceinline__ int fdiv_i(int x, int d) {{''')
 V.update({'q6': pool2(6), 'q6off': pool2(6, off=True), 'q6l1': pool2(6, l8=False), 'q4': pool2(4)})
 V.update({'pool4': pool(4), 'pool6': pool(6), 'pool8': pool(8), 'stamppool6': lambda s: pool(6)(stamps(s))})
 
+
+# ---------------- cross-request run-ahead: the flat producer continues its stage ring into the next segment ----------------
+def xr(segk=None):
+    def f(s):
+        s = rep(s, '''  int pnseg, pchunk;''', '''  int pnseg, pchunk;
+  float xsb[(F && L == 1) ? 64 * 18 : 1];   // flat q_len 1: the key-half hand-off of the merge (off the stage ring)''')
+        s = rep(s, '''                                        const bool skip_init_ = false) {''', '''                                        const bool skip_init_ = false, const bool last_ = true) {''')
+        s = rep(s, '''        cp_wait<0>();
+        __syncthreads();   // matches the consumers' end-of-segment barrier''', '''        if (last_) {   // (flat: earlier segments run ahead into the next one's tiles; only the CTA's last one drains)
+          cp_wait<0>();
+          __syncthreads();   // matches the consumers' end-of-segment barrier
+        }''')
+        s = rep(s, '''   __syncthreads();                   // shared memory is reused by the next segment
+  }
+  return true;''', '''   if (!FLAT || last_) __syncthreads(); else csync<WS, NT>();   // shared memory is reused by the next segment
+  }
+  return true;''')
+        s = rep(s, '''    float* xs = reinterpret_cast<float*>(S.k) + ((warp & 1) * 32 + lane) * 18;''',
+                '''    float* xs = (FLAT ? S.xsb : reinterpret_cast<float*>(S.k)) + ((warp & 1) * 32 + lane) * 18;''')
+        s = rep(s, '''  if constexpr (L == 1 && Cfg<L, FLAT>::WS) {
+    if (threadIdx.x == 32) {''', '''  if constexpr (Cfg<L, FLAT>::WS) {
+    if (threadIdx.x == 32) {''')
+        s = rep(s, '''        segment<L, FLAT, R>(p, S, b, pair, s0 == lo, s0, s1, seq, n_keys, vc - fdiv_i(vc, p.nc) * p.nc, 0,
+                            0, 0,
+                            L == 1 && Cfg<L, FLAT>::WS && k == 0);''', '''        segment<L, FLAT, R>(p, S, b, pair, s0 == lo, s0, s1, seq, n_keys, vc - fdiv_i(vc, p.nc) * p.nc, 0,
+                            tb, 0,
+                            Cfg<L, FLAT>::WS, k == nseg - 1);''')
+        if segk:
+            s = rep(s, 'constexpr int SEGKF = (L == 8) ? 600 : 400;', f'constexpr int SEGKF = (L == 8) ? {segk[1]} : {segk[0]};', 2)
+            s = rep(s, 'constexpr int SEGK = (L == 8) ? 600 : 400;', f'constexpr int SEGK = (L == 8) ? {segk[1]} : {segk[0]};')
+        return s
+    return f
+V.update({'xr': xr(), 'xrA': xr((200, 300)), 'xrB': xr((50, 100)), 'stampxr': lambda s: xr()(stamps(s))})
+
 if __name__ == "__main__":
     import sys
     for tag in (sys.argv[1:] or V):
