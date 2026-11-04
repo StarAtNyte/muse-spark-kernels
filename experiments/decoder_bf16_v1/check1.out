@@ -1,0 +1,41 @@
+✓ checking experiments/decoder_bf16_v1/submission.py on muse_decode_layer  job a35a072442514f38
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› queued for a GPU  0:12
+› queued for a GPU  0:18
+› running the tests, then timing against SGLang  0:34
+› running the tests, then timing against SGLang  0:26
+› running the tests, then timing against SGLang  0:56
+› running the tests, then timing against SGLang  1:26
+› running the tests, then timing against SGLang  1:57
+› running the tests, then timing against SGLang  2:27
+› running the tests, then timing against SGLang  2:56
+› running the tests, then timing against SGLang  3:26
+› running the tests, then timing against SGLang  3:56
+
+ran for 4:11 · queued 0:33
+
+✓ muse_decode_layer  passed  check run, off the board  job a35a072442514f38
+
+  2.242×  ━━━━━━━━━╋━━━━━━━━━━────────  faster than SGLang  95%: 2.209–2.276×
+
+  time        10.09 ms
+  tests       13/13 passed
+  profile     experiments/decoder_bf16_v1/profiles/submission.a35a072442514f38.txt  and .json
+  output      experiments/decoder_bf16_v1/profiles/submission.a35a072442514f38.log
+
+  CASE                      SGLANG      YOURS   SPEEDUP
+  ────────────────────────────────────────────────────────────────────
+  decode 1 · sliding      172.2 µs    66.1 µs    2.603×   ━━━━━━╋━━━━━
+  decode 1 · full         182.9 µs    73.5 µs    2.489×   ━━━━━━╋━━━━━
+  decode 16 · sliding     267.1 µs   129.7 µs    2.059×   ━━━━━━╋━━━━━
+  decode 16 · full        430.5 µs   199.2 µs    2.162×   ━━━━━━╋━━━━━
+  decode 32 · sliding     266.3 µs   150.2 µs    1.773×   ━━━━━━╋━━━━─
+  decode 32 · full        636.9 µs   309.2 µs    2.060×   ━━━━━━╋━━━━━
+  verify 1 · sliding      260.4 µs   103.5 µs    2.516×   ━━━━━━╋━━━━━
+  verify 1 · full         283.2 µs   118.6 µs    2.387×   ━━━━━━╋━━━━━
+  verify 16 · sliding     534.0 µs   243.1 µs    2.196×   ━━━━━━╋━━━━━
+  verify 16 · full        715.7 µs   330.0 µs    2.169×   ━━━━━━╋━━━━━
+  verify 32 · sliding     721.1 µs   311.2 µs    2.317×   ━━━━━━╋━━━━━
+  verify 32 · full      1,100.6 µs   485.7 µs    2.266×   ━━━━━━╋━━━━━
+  20 of 20 runs left today, 37 of 40 checks on muse_decode_layer

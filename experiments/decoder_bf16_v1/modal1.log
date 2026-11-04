@@ -1,0 +1,176 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-f845EOWtD6OYDRH0JIgtOk
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_bf16_v1/
+│   modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 37s
+[mfab] moe T= 32 prod median   145.8 us  speedup vs barrier twin (twin without SC6) 1.0273 (per seed 1.027 1.027 1.016 1.031)  max|d| 0
+[mfab] moe T=128 prod median   190.8 us  speedup vs barrier twin (twin without SC6) 1.0300 (per seed 1.020 1.013 1.031 1.030)  max|d| 0
+[mfab] moe T=256 prod median   221.4 us  speedup vs barrier twin (twin without SC6) 1.0185 (per seed 1.018 1.009 1.014 1.019)  max|d| 0
+[  38.9s] PREPARED par
+PREP rq thread started at 0s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 119s
+BUILD pw57_flush 50.5s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   12.54 us   0.50 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    8.16 us   0.77 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.38 us   1.35 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.69 us   1.57 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 5.23 us two_node 6.05 us overhead 4.42 us
+PREP rq thread ready at 81s (bake starts at 170s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 20.99 at 170s
+BAKE qkv_gate m=128 rq:d2s5hze 15.29 (ratio 1.4003 vs r6 20.99) at 170s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.89 (ratio 1.0470 vs rq:d2s5hze 15.29) at 170s
+BAKE qkv_gate m=128 rq:s4s5hzw 16.13 (ratio 1.0095 vs rq:d2s5hze 15.29) at 170s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.69 (ratio 0.9894 vs rq:d2s5hze 15.29) at 170s
+BAKE qkv_gate m=128 rq:d2s6hze 16.91 (ratio 0.9596 vs rq:d2s5hze 15.29) at 170s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.60 (ref rq:d2s5hze 15.29)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0470)
+BAKE qkv_gate m=256 r6 23.17 at 170s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 21.45 (ratio 1.0874 vs r6 23.17) at 170s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 21.54 (ratio 1.0219 vs rq:n256s5m1hzmEH 21.45) at 170s
+PICK qkv_gate m=256 rq:n256s5m1hzm 20.99 (ref rq:n256s5m1hzmEH 21.45)
+BAKE rq unpooler esc2 slots max=4 ok
+BAKE unpooler m=128 r6 24.00 at 170s
+BAKE unpooler m=128 rq:d2s5hze 20.90 (ratio 1.1424 vs r6 24.00) at 170s
+BAKE unpooler m=128 rq:d2s5hzwP 20.85 (ratio 1.0499 vs rq:d2s5hze 20.90) at 170s
+BAKE unpooler m=128 rq:s4s5hzw 20.99 (ratio 1.0260 vs rq:d2s5hze 20.90) at 170s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.59 (ratio 1.0050 vs rq:d2s5hze 20.90) at 170s
+BAKE unpooler m=128 rq:s4s5hze 21.85 (ratio 1.0045 vs rq:d2s5hze 20.90) at 170s
+BAKE unpooler m=128 rq:d2s6hze 22.02 (ratio 0.9825 vs rq:d2s5hze 20.90) at 170s
+PICK unpooler m=128 rq:d2s5hzwP 19.90 (ref rq:d2s5hze 20.90)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0499)
+BAKE unpooler m=256 r6 28.00 at 170s
+PICK unpooler m=256 r6 28.00 (ref r6 28.00)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 170s
+[mfab] layer prepare done at 170s
+[mfab] moe T= 32 prod median   145.3 us  speedup vs barrier twin (twin without SC6) 1.0209 (per seed 1.021 1.027 1.017 1.015)  max|d| 0
+[mfab] moe T=128 prod median   189.8 us  speedup vs barrier twin (twin without SC6) 1.0311 (per seed 1.027 1.026 1.034 1.031)  max|d| 0
+[mfab] moe T=256 prod median   220.2 us  speedup vs barrier twin (twin without SC6) 1.0204 (per seed 1.022 1.014 1.014 1.020)  max|d| 0
+[ 209.7s] PREPARED cand
+RQ picks B [('qkv', 128), ('qkv', 256), ('un', 128)]
+AB T1s {"A": 76.11, "B": 75.3, "ratio": 1.0019, "okA": [true, "update relative L2 error 1.307e-02 (worst row 1.307e-02) [bound 0.150]; attention input relative L2 error 1.050e-02 (worst row 1.050e-02) [bound 0.149]"], "okB": [true, "update relative L2 error 1.307e-02 (worst row 1.307e-02) [bound 0.150]; attention input relative L2 error 1.050e-02 (worst row 1.050e-02) [bound 0.149]"]}
+AB T1f {"A": 82.9, "B": 81.42, "ratio": 1.0205, "okA": [true, "update relative L2 error 6.511e-03 (worst row 6.511e-03) [bound 0.150]; attention input relative L2 error 4.784e-03 (worst row 4.784e-03) [bound 0.092]"], "okB": [true, "update relative L2 error 6.511e-03 (worst row 6.511e-03) [bound 0.150]; attention input relative L2 error 4.784e-03 (worst row 4.784e-03) [bound 0.092]"]}
+AB T16s {"A": 131.84, "B": 130.93, "ratio": 1.005, "okA": [true, "update relative L2 error 8.165e-03 (worst row 1.401e-02) [bound 0.130]; attention input relative L2 error 5.943e-03 (worst row 8.763e-03) [bound 0.084]"], "okB": [true, "update relative L2 error 8.165e-03 (worst row 1.401e-02) [bound 0.130]; attention input relative L2 error 5.943e-03 (worst row 8.763e-03) [bound 0.084]"]}
+AB T16f {"A": 204.26, "B": 204.53, "ratio": 0.9992, "okA": [true, "update relative L2 error 7.770e-03 (worst row 9.175e-03) [bound 0.147]; attention input relative L2 error 5.734e-03 (worst row 7.046e-03) [bound 0.094]"], "okB": [true, "update relative L2 error 7.773e-03 (worst row 9.171e-03) [bound 0.147]; attention input relative L2 error 5.734e-03 (worst row 7.046e-03) [bound 0.094]"]}
+AB T32s {"A": 159.44, "B": 159.66, "ratio": 0.998, "okA": [true, "update relative L2 error 1.078e-02 (worst row 2.856e-02) [bound 0.142]; attention input relative L2 error 7.452e-03 (worst row 1.869e-02) [bound 0.093]"], "okB": [true, "update relative L2 error 1.078e-02 (worst row 2.856e-02) [bound 0.142]; attention input relative L2 error 7.452e-03 (worst row 1.869e-02) [bound 0.093]"]}
+AB T32f {"A": 307.71, "B": 308.19, "ratio": 0.9983, "okA": [true, "update relative L2 error 8.698e-03 (worst row 1.509e-02) [bound 0.150]; attention input relative L2 error 5.990e-03 (worst row 9.003e-03) [bound 0.094]"], "okB": [true, "update relative L2 error 8.698e-03 (worst row 1.509e-02) [bound 0.150]; attention input relative L2 error 5.990e-03 (worst row 9.003e-03) [bound 0.094]"]}
+AB T8s {"A": 125.09, "B": 125.62, "ratio": 0.9946, "okA": [true, "update relative L2 error 5.279e-02 (worst row 7.478e-02) [bound 0.129]; attention input relative L2 error 3.407e-02 (worst row 3.865e-02) [bound 0.083]"], "okB": [true, "update relative L2 error 5.279e-02 (worst row 7.478e-02) [bound 0.129]; attention input relative L2 error 3.407e-02 (worst row 3.865e-02) [bound 0.083]"]}
+AB T8f {"A": 125.84, "B": 125.94, "ratio": 0.9961, "okA": [true, "update relative L2 error 6.691e-02 (worst row 7.932e-02) [bound 0.150]; attention input relative L2 error 4.382e-02 (worst row 5.358e-02) [bound 0.106]"], "okB": [true, "update relative L2 error 6.691e-02 (worst row 7.932e-02) [bound 0.150]; attention input relative L2 error 4.382e-02 (worst row 5.358e-02) [bound 0.106]"]}
+AB T128s {"A": 254.85, "B": 248.98, "ratio": 1.0259, "okA": [true, "update relative L2 error 6.435e-02 (worst row 9.492e-02) [bound 0.150]; attention input relative L2 error 4.193e-02 (worst row 6.088e-02) [bound 0.102]"], "okB": [true, "update relative L2 error 6.457e-02 (worst row 8.722e-02) [bound 0.150]; attention input relative L2 error 4.211e-02 (worst row 6.115e-02) [bound 0.102]"]}
+AB T128f {"A": 325.47, "B": 320.34, "ratio": 1.0172, "okA": [true, "update relative L2 error 6.647e-02 (worst row 1.076e-01) [bound 0.150]; attention input relative L2 error 4.307e-02 (worst row 6.272e-02) [bound 0.105]"], "okB": [true, "update relative L2 error 6.758e-02 (worst row 1.123e-01) [bound 0.150]; attention input relative L2 error 4.375e-02 (worst row 6.627e-02) [bound 0.105]"]}
+AB T256s {"A": 319.44, "B": 317.23, "ratio": 1.0068, "okA": [true, "update relative L2 error 6.030e-02 (worst row 8.848e-02) [bound 0.145]; attention input relative L2 error 3.926e-02 (worst row 6.022e-02) [bound 0.095]"], "okB": [true, "update relative L2 error 6.087e-02 (worst row 9.224e-02) [bound 0.146]; attention input relative L2 error 3.964e-02 (worst row 6.544e-02) [bound 0.095]"]}
+AB T256f {"A": 480.1, "B": 475.7, "ratio": 1.0063, "okA": [true, "update relative L2 error 6.584e-02 (worst row 1.058e-01) [bound 0.150]; attention input relative L2 error 4.313e-02 (worst row 7.877e-02) [bound 0.104]"], "okB": [true, "update relative L2 error 6.626e-02 (worst row 1.187e-01) [bound 0.150]; attention input relative L2 error 4.335e-02 (worst row 9.021e-02) [bound 0.104]"]}
+AB T1s {"A": 75.82, "B": 76.05, "ratio": 0.9962, "okA": [true, "update relative L2 error 7.191e-03 (worst row 7.191e-03) [bound 0.138]; attention input relative L2 error 5.260e-03 (worst row 5.260e-03) [bound 0.085]"], "okB": [true, "update relative L2 error 7.206e-03 (worst row 7.206e-03) [bound 0.138]; attention input relative L2 error 5.289e-03 (worst row 5.289e-03) [bound 0.085]"]}
+AB T1f {"A": 83.17, "B": 81.7, "ratio": 1.013, "okA": [true, "update relative L2 error 5.685e-03 (worst row 5.685e-03) [bound 0.100]; attention input relative L2 error 4.243e-03 (worst row 4.243e-03) [bound 0.054]"], "okB": [true, "update relative L2 error 5.674e-03 (worst row 5.674e-03) [bound 0.100]; attention input relative L2 error 4.232e-03 (worst row 4.232e-03) [bound 0.054]"]}
+AB T16s {"A": 114.43, "B": 114.96, "ratio": 1.0004, "okA": [true, "update relative L2 error 7.773e-03 (worst row 1.202e-02) [bound 0.135]; attention input relative L2 error 5.494e-03 (worst row 7.672e-03) [bound 0.083]"], "okB": [true, "update relative L2 error 7.773e-03 (worst row 1.202e-02) [bound 0.135]; attention input relative L2 error 5.495e-03 (worst row 7.672e-03) [bound 0.083]"]}
+AB T16f {"A": 222.59, "B": 222.14, "ratio": 1.0014, "okA": [true, "update relative L2 error 7.512e-03 (worst row 8.831e-03) [bound 0.146]; attention input relative L2 error 5.443e-03 (worst row 7.457e-03) [bound 0.090]"], "okB": [true, "update relative L2 error 7.511e-03 (worst row 8.832e-03) [bound 0.146]; attention input relative L2 error 5.443e-03 (worst row 7.457e-03) [bound 0.090]"]}
+AB T32s {"A": 159.79, "B": 159.92, "ratio": 1.0009, "okA": [true, "update relative L2 error 7.348e-03 (worst row 1.051e-02) [bound 0.149]; attention input relative L2 error 5.556e-03 (worst row 6.892e-03) [bound 0.096]"], "okB": [true, "update relative L2 error 7.346e-03 (worst row 1.051e-02) [bound 0.149]; attention input relative L2 error 5.556e-03 (worst row 6.892e-03) [bound 0.096]"]}
+AB T32f {"A": 308.83, "B": 308.06, "ratio": 1.0027, "okA": [true, "update relative L2 error 7.606e-03 (worst row 9.089e-03) [bound 0.141]; attention input relative L2 error 5.728e-03 (worst row 7.635e-03) [bound 0.090]"], "okB": [true, "update relative L2 error 7.606e-03 (worst row 9.089e-03) [bound 0.141]; attention input relative L2 error 5.728e-03 (worst row 7.635e-03) [bound 0.090]"]}
+AB T8s {"A": 105.09, "B": 105.1, "ratio": 0.9967, "okA": [true, "update relative L2 error 5.689e-02 (worst row 6.610e-02) [bound 0.147]; attention input relative L2 error 3.795e-02 (worst row 4.458e-02) [bound 0.098]"], "okB": [true, "update relative L2 error 5.689e-02 (worst row 6.610e-02) [bound 0.147]; attention input relative L2 error 3.794e-02 (worst row 4.458e-02) [bound 0.098]"]}
+AB T8f {"A": 133.06, "B": 132.02, "ratio": 1.0046, "okA": [true, "update relative L2 error 7.047e-02 (worst row 8.861e-02) [bound 0.150]; attention input relative L2 error 4.773e-02 (worst row 6.451e-02) [bound 0.118]"], "okB": [true, "update relative L2 error 7.047e-02 (worst row 8.861e-02) [bound 0.150]; attention input relative L2 error 4.773e-02 (worst row 6.451e-02) [bound 0.118]"]}
+AB T128s {"A": 251.94, "B": 245.63, "ratio": 1.0253, "okA": [true, "update relative L2 error 5.553e-02 (worst row 9.911e-02) [bound 0.131]; attention input relative L2 error 3.639e-02 (worst row 6.854e-02) [bound 0.086]"], "okB": [true, "update relative L2 error 5.675e-02 (worst row 9.453e-02) [bound 0.130]; attention input relative L2 error 3.735e-02 (worst row 6.057e-02) [bound 0.086]"]}
+AB T128f {"A": 358.96, "B": 353.5, "ratio": 1.0146, "okA": [true, "update relative L2 error 6.569e-02 (worst row 9.484e-02) [bound 0.150]; attention input relative L2 error 4.327e-02 (worst row 5.903e-02) [bound 0.105]"], "okB": [true, "update relative L2 error 6.650e-02 (worst row 9.493e-02) [bound 0.150]; attention input relative L2 error 4.386e-02 (worst row 6.293e-02) [bound 0.105]"]}
+AB T256s {"A": 297.57, "B": 295.7, "ratio": 1.0051, "okA": [true, "update relative L2 error 6.204e-02 (worst row 9.875e-02) [bound 0.150]; attention input relative L2 error 4.062e-02 (worst row 6.415e-02) [bound 0.099]"], "okB": [true, "update relative L2 error 6.341e-02 (worst row 1.032e-01) [bound 0.150]; attention input relative L2 error 4.153e-02 (worst row 6.909e-02) [bound 0.099]"]}
+AB T256f {"A": 485.5, "B": 486.45, "ratio": 0.9995, "okA": [true, "update relative L2 error 6.373e-02 (worst row 9.542e-02) [bound 0.150]; attention input relative L2 error 4.183e-02 (worst row 7.050e-02) [bound 0.100]"], "okB": [true, "update relative L2 error 6.530e-02 (worst row 1.041e-01) [bound 0.150]; attention input relative L2 error 4.275e-02 (worst row 7.619e-02) [bound 0.100]"]}
+GM T1s 0.999 [1.0019, 0.9962]
+GM T1f 1.0168 [1.0205, 1.013]
+GM T16s 1.0027 [1.005, 1.0004]
+GM T16f 1.0003 [0.9992, 1.0014]
+GM T32s 0.9995 [0.998, 1.0009]
+GM T32f 1.0005 [0.9983, 1.0027]
+GM T8s 0.9956 [0.9946, 0.9967]
+GM T8f 1.0003 [0.9961, 1.0046]
+GM T128s 1.0256 [1.0259, 1.0253]
+GM T128f 1.0159 [1.0172, 1.0146]
+GM T256s 1.006 [1.0068, 1.0051]
+GM T256f 1.0029 [1.0063, 0.9995]
+GM all 1.0054
+TEST A 0 11 True update relative L2 error 6.436e-03 (worst row 6.436e-03) [bound 0.084]; attention input relative L2 error 5.181e-03 (worst row 5.181e-03) [bound 0.056]
+TEST A 0 777 True update relative L2 error 1.724e-02 (worst row 1.724e-02) [bound 0.120]; attention input relative L2 error 1.079e-02 (worst row 1.079e-02) [bound 0.072]
+TEST A 1 12 True update relative L2 error 7.648e-03 (worst row 7.648e-03) [bound 0.150]; attention input relative L2 error 5.624e-03 (worst row 5.624e-03) [bound 0.103]
+TEST A 1 778 True update relative L2 error 7.581e-03 (worst row 7.581e-03) [bound 0.124]; attention input relative L2 error 6.138e-03 (worst row 6.138e-03) [bound 0.089]
+TEST A 2 13 True update relative L2 error 8.391e-03 (worst row 9.242e-03) [bound 0.150]; attention input relative L2 error 6.174e-03 (worst row 6.858e-03) [bound 0.125]
+TEST A 2 779 True update relative L2 error 7.590e-03 (worst row 8.514e-03) [bound 0.150]; attention input relative L2 error 5.763e-03 (worst row 6.530e-03) [bound 0.103]
+TEST A 3 14 True update relative L2 error 6.667e-03 (worst row 8.625e-03) [bound 0.150]; attention input relative L2 error 4.727e-03 (worst row 5.641e-03) [bound 0.114]
+TEST A 3 780 True update relative L2 error 6.968e-03 (worst row 8.265e-03) [bound 0.150]; attention input relative L2 error 4.871e-03 (worst row 5.591e-03) [bound 0.100]
+TEST A 4 15 True update relative L2 error 6.400e-02 (worst row 1.073e-01) [bound 0.150]; attention input relative L2 error 3.491e-02 (worst row 5.434e-02) [bound 0.084]
+TEST A 4 781 True update relative L2 error 6.582e-02 (worst row 9.546e-02) [bound 0.150]; attention input relative L2 error 3.538e-02 (worst row 4.914e-02) [bound 0.088]
+TEST A 5 16 True update relative L2 error 6.882e-02 (worst row 1.080e-01) [bound 0.150]; attention input relative L2 error 4.454e-02 (worst row 7.436e-02) [bound 0.111]
+TEST A 5 782 True update relative L2 error 6.790e-02 (worst row 1.184e-01) [bound 0.150]; attention input relative L2 error 4.530e-02 (worst row 8.265e-02) [bound 0.113]
+TEST A 6 17 True update relative L2 error 7.101e-03 (worst row 9.596e-03) [bound 0.150]; attention input relative L2 error 5.105e-03 (worst row 7.206e-03) [bound 0.111]
+TEST A 6 783 True update relative L2 error 7.094e-03 (worst row 9.878e-03) [bound 0.150]; attention input relative L2 error 4.976e-03 (worst row 7.081e-03) [bound 0.109]
+TEST A 7 18 True update relative L2 error 7.262e-02 (worst row 1.209e-01) [bound 0.150]; attention input relative L2 error 4.854e-02 (worst row 8.672e-02) [bound 0.119]
+TEST A 7 784 True update relative L2 error 7.620e-02 (worst row 1.114e-01) [bound 0.150]; attention input relative L2 error 5.024e-02 (worst row 7.250e-02) [bound 0.126]
+TEST A 8 19 True update relative L2 error 7.636e-02 (worst row 9.289e-02) [bound 0.150]; attention input relative L2 error 5.213e-02 (worst row 6.544e-02) [bound 0.125]
+TEST A 8 785 True update relative L2 error 7.606e-02 (worst row 8.973e-02) [bound 0.150]; attention input relative L2 error 5.145e-02 (worst row 6.382e-02) [bound 0.137]
+TEST A 9 20 True update relative L2 error 6.904e-02 (worst row 9.872e-02) [bound 0.150]; attention input relative L2 error 4.536e-02 (worst row 7.043e-02) [bound 0.110]
+TEST A 9 786 True update relative L2 error 7.293e-02 (worst row 1.050e-01) [bound 0.150]; attention input relative L2 error 4.930e-02 (worst row 7.370e-02) [bound 0.124]
+TEST A 10 21 True update relative L2 error 7.135e-03 (worst row 7.135e-03) [bound 0.150]; attention input relative L2 error 5.779e-03 (worst row 5.779e-03) [bound 0.112]
+TEST A 10 787 True update relative L2 error 7.509e-03 (worst row 7.509e-03) [bound 0.144]; attention input relative L2 error 5.692e-03 (worst row 5.692e-03) [bound 0.093]
+TEST A 11 22 True update relative L2 error 5.874e-02 (worst row 8.275e-02) [bound 0.144]; attention input relative L2 error 3.823e-02 (worst row 5.184e-02) [bound 0.093]
+TEST A 11 788 True update relative L2 error 5.675e-02 (worst row 8.500e-02) [bound 0.136]; attention input relative L2 error 3.734e-02 (worst row 5.385e-02) [bound 0.089]
+TEST A 12 23 True update relative L2 error 8.993e-03 (worst row 1.461e-02) [bound 0.150]; attention input relative L2 error 6.659e-03 (worst row 1.040e-02) [bound 0.101]
+TEST A 12 789 True update relative L2 error 7.699e-03 (worst row 9.075e-03) [bound 0.142]; attention input relative L2 error 5.750e-03 (worst row 6.850e-03) [bound 0.093]
+TESTS A 26 / 26
+TEST B 0 11 True update relative L2 error 6.439e-03 (worst row 6.439e-03) [bound 0.084]; attention input relative L2 error 5.179e-03 (worst row 5.179e-03) [bound 0.056]
+TEST B 0 777 True update relative L2 error 1.724e-02 (worst row 1.724e-02) [bound 0.120]; attention input relative L2 error 1.079e-02 (worst row 1.079e-02) [bound 0.072]
+TEST B 1 12 True update relative L2 error 7.648e-03 (worst row 7.648e-03) [bound 0.150]; attention input relative L2 error 5.624e-03 (worst row 5.624e-03) [bound 0.103]
+TEST B 1 778 True update relative L2 error 7.581e-03 (worst row 7.581e-03) [bound 0.124]; attention input relative L2 error 6.138e-03 (worst row 6.138e-03) [bound 0.089]
+TEST B 2 13 True update relative L2 error 8.391e-03 (worst row 9.242e-03) [bound 0.150]; attention input relative L2 error 6.174e-03 (worst row 6.858e-03) [bound 0.125]
+TEST B 2 779 True update relative L2 error 7.590e-03 (worst row 8.514e-03) [bound 0.150]; attention input relative L2 error 5.763e-03 (worst row 6.530e-03) [bound 0.103]
+TEST B 3 14 True update relative L2 error 6.665e-03 (worst row 8.625e-03) [bound 0.150]; attention input relative L2 error 4.726e-03 (worst row 5.641e-03) [bound 0.114]
+TEST B 3 780 True update relative L2 error 6.968e-03 (worst row 8.265e-03) [bound 0.150]; attention input relative L2 error 4.871e-03 (worst row 5.591e-03) [bound 0.100]
+TEST B 4 15 True update relative L2 error 6.397e-02 (worst row 1.064e-01) [bound 0.150]; attention input relative L2 error 3.488e-02 (worst row 5.427e-02) [bound 0.084]
+TEST B 4 781 True update relative L2 error 6.592e-02 (worst row 9.512e-02) [bound 0.150]; attention input relative L2 error 3.543e-02 (worst row 4.904e-02) [bound 0.088]
+TEST B 5 16 True update relative L2 error 6.884e-02 (worst row 1.081e-01) [bound 0.150]; attention input relative L2 error 4.455e-02 (worst row 7.440e-02) [bound 0.111]
+TEST B 5 782 True update relative L2 error 6.790e-02 (worst row 1.185e-01) [bound 0.150]; attention input relative L2 error 4.531e-02 (worst row 8.269e-02) [bound 0.113]
+TEST B 6 17 True update relative L2 error 7.199e-03 (worst row 9.596e-03) [bound 0.150]; attention input relative L2 error 5.158e-03 (worst row 7.252e-03) [bound 0.111]
+TEST B 6 783 True update relative L2 error 7.200e-03 (worst row 9.932e-03) [bound 0.150]; attention input relative L2 error 5.033e-03 (worst row 7.112e-03) [bound 0.109]
+TEST B 7 18 True update relative L2 error 7.262e-02 (worst row 1.209e-01) [bound 0.150]; attention input relative L2 error 4.854e-02 (worst row 8.672e-02) [bound 0.119]
+TEST B 7 784 True update relative L2 error 7.620e-02 (worst row 1.114e-01) [bound 0.150]; attention input relative L2 error 5.024e-02 (worst row 7.250e-02) [bound 0.126]
+TEST B 8 19 True update relative L2 error 7.636e-02 (worst row 9.289e-02) [bound 0.150]; attention input relative L2 error 5.213e-02 (worst row 6.544e-02) [bound 0.125]
+TEST B 8 785 True update relative L2 error 7.606e-02 (worst row 8.973e-02) [bound 0.150]; attention input relative L2 error 5.145e-02 (worst row 6.382e-02) [bound 0.137]
+TEST B 9 20 True update relative L2 error 6.904e-02 (worst row 9.872e-02) [bound 0.150]; attention input relative L2 error 4.536e-02 (worst row 7.043e-02) [bound 0.110]
+TEST B 9 786 True update relative L2 error 7.293e-02 (worst row 1.050e-01) [bound 0.150]; attention input relative L2 error 4.930e-02 (worst row 7.370e-02) [bound 0.124]
+TEST B 10 21 True update relative L2 error 7.135e-03 (worst row 7.135e-03) [bound 0.150]; attention input relative L2 error 5.779e-03 (worst row 5.779e-03) [bound 0.112]
+TEST B 10 787 True update relative L2 error 7.509e-03 (worst row 7.509e-03) [bound 0.144]; attention input relative L2 error 5.692e-03 (worst row 5.692e-03) [bound 0.093]
+TEST B 11 22 True update relative L2 error 5.874e-02 (worst row 8.275e-02) [bound 0.144]; attention input relative L2 error 3.823e-02 (worst row 5.184e-02) [bound 0.093]
+TEST B 11 788 True update relative L2 error 5.675e-02 (worst row 8.500e-02) [bound 0.136]; attention input relative L2 error 3.734e-02 (worst row 5.385e-02) [bound 0.089]
+TEST B 12 23 True update relative L2 error 8.997e-03 (worst row 1.461e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.040e-02) [bound 0.101]
+TEST B 12 789 True update relative L2 error 7.699e-03 (worst row 9.075e-03) [bound 0.142]; attention input relative L2 error 5.750e-03 (worst row 6.850e-03) [bound 0.093]
+TESTS B 26 / 26
+[ 224.8s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-f845EOWtD6OYDRH0JIgtOk

@@ -1,0 +1,221 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-tlxQq59cTvwmbHm3k9ndZS
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_bf16_v1/
+│   modal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 70s
+[mfab] moe T= 32 prod median   145.4 us  speedup vs barrier twin (twin without SC6) 1.0225 (per seed 1.022 1.022 1.015 1.030)  max|d| 0
+[mfab] moe T=128 prod median   189.7 us  speedup vs barrier twin (twin without SC6) 1.0308 (per seed 1.024 1.014 1.031 1.033)  max|d| 0
+[mfab] moe T=256 prod median   220.9 us  speedup vs barrier twin (twin without SC6) 1.0151 (per seed 1.015 1.013 1.010 1.022)  max|d| 0
+[  71.8s] PREPARED par
+PREP rq thread started at 0s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 79s
+BUILD pw57_flush 0.2s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   12.42 us   0.51 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    8.00 us   0.79 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   11.78 us   1.42 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.43 us   1.61 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 4.96 us two_node 5.86 us overhead 4.06 us
+PREP rq thread ready at 1s (bake starts at 79s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 20.64 at 79s
+BAKE qkv_gate m=128 rq:d2s5hze 14.70 (ratio 1.4474 vs r6 20.64) at 79s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.61 (ratio 1.0742 vs rq:d2s5hze 14.70) at 79s
+BAKE qkv_gate m=128 rq:s4s5hzw 15.88 (ratio 1.0300 vs rq:d2s5hze 14.70) at 79s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 16.07 (ratio 1.0398 vs rq:d2s5hze 14.70) at 79s
+BAKE qkv_gate m=128 rq:d2s6hze 17.28 (ratio 0.9555 vs rq:d2s5hze 14.70) at 79s
+PICK qkv_gate m=128 rq:d2s5hzwP 13.69 (ref rq:d2s5hze 14.70)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0742)
+BAKE qkv_gate m=256 r6 23.17 at 79s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 22.05 (ratio 1.0782 vs r6 23.17) at 79s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 22.11 (ratio 0.9855 vs rq:n256s5m1hzmEH 22.05) at 79s
+PICK qkv_gate m=256 rq:n256s5m1hzmEH 22.05 (ref rq:n256s5m1hzmEH 22.05)
+BAKE rq unpooler esc2 slots max=4 ok
+BAKE unpooler m=128 r6 23.71 at 79s
+BAKE unpooler m=128 rq:d2s5hze 21.45 (ratio 1.1430 vs r6 23.71) at 79s
+BAKE unpooler m=128 rq:d2s5hzwP 20.88 (ratio 1.0511 vs rq:d2s5hze 21.45) at 79s
+BAKE unpooler m=128 rq:s4s5hzw 21.36 (ratio 1.0202 vs rq:d2s5hze 21.45) at 79s
+BAKE unpooler m=128 rq:s4s5hzeEH 22.39 (ratio 0.9888 vs rq:d2s5hze 21.45) at 79s
+BAKE unpooler m=128 rq:s4s5hze 21.90 (ratio 1.0054 vs rq:d2s5hze 21.45) at 79s
+BAKE unpooler m=128 rq:d2s6hze 21.90 (ratio 0.9964 vs rq:d2s5hze 21.45) at 79s
+PICK unpooler m=128 rq:d2s5hzwP 20.40 (ref rq:d2s5hze 21.45)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0511)
+BAKE unpooler m=256 r6 28.06 at 79s
+PICK unpooler m=256 r6 28.06 (ref r6 28.06)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 79s
+[mfab] layer prepare done at 79s
+[mfab] moe T= 32 prod median   144.7 us  speedup vs barrier twin (twin without SC6) 1.0229 (per seed 1.024 1.023 1.003 1.017)  max|d| 0
+[mfab] moe T=128 prod median   188.9 us  speedup vs barrier twin (twin without SC6) 1.0314 (per seed 1.031 1.026 1.031 1.033)  max|d| 0
+[mfab] moe T=256 prod median   220.7 us  speedup vs barrier twin (twin without SC6) 1.0198 (per seed 1.020 1.018 1.016 1.021)  max|d| 0
+[ 152.0s] PREPARED cand
+PREP rq thread started at 0s
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[rq] layer prepare done at 60s
+BUILD pw57_flush 0.0s
+FLUSH_VALIDATE probes 6.30 MB and 16.78 MB; cold must be <= 3.35 TB/s (pick on the larger probe)
+FLUSH_VALIDATE warm(no flush)     6.30 MB   11.42 us   0.55 TB/s
+FLUSH_VALIDATE read/128MB         6.30 MB    7.87 us   0.80 TB/s  COLD ok
+FLUSH_VALIDATE warm(no flush)    16.78 MB   12.10 us   1.39 TB/s
+FLUSH_VALIDATE read/128MB        16.78 MB   10.50 us   1.60 TB/s  COLD ok
+FLUSH_PICK read/128 ok
+FIXED_COST one_node 5.09 us two_node 6.42 us overhead 3.76 us
+PREP rq thread ready at 0s (bake starts at 60s)
+BAKE rq qkv_gate esc2 slots max=3 ok
+BAKE qkv_gate m=128 r6 21.02 at 60s
+BAKE qkv_gate m=128 rq:d2s5hze 15.31 (ratio 1.4002 vs r6 21.02) at 60s
+BAKE qkv_gate m=128 rq:d2s5hzwP 15.85 (ratio 1.0517 vs rq:d2s5hze 15.31) at 60s
+BAKE qkv_gate m=128 rq:s4s5hzw 16.19 (ratio 1.0335 vs rq:d2s5hze 15.31) at 60s
+BAKE qkv_gate m=128 rq:s4s5hzeEH 17.01 (ratio 0.9630 vs rq:d2s5hze 15.31) at 60s
+BAKE qkv_gate m=128 rq:d2s6hze 17.16 (ratio 0.9641 vs rq:d2s5hze 15.31) at 60s
+PICK qkv_gate m=128 rq:d2s5hzwP 14.56 (ref rq:d2s5hze 15.31)
+PICK qkv_gate m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0517)
+BAKE qkv_gate m=256 r6 23.26 at 60s
+BAKE qkv_gate m=256 rq:n256s5m1hzmEH 21.31 (ratio 1.0993 vs r6 23.26) at 60s
+BAKE qkv_gate m=256 rq:n256s5m1hzm 21.88 (ratio 0.9947 vs rq:n256s5m1hzmEH 21.31) at 60s
+PICK qkv_gate m=256 rq:n256s5m1hzmEH 21.31 (ref rq:n256s5m1hzmEH 21.31)
+BAKE rq unpooler esc2 slots max=4 ok
+BAKE unpooler m=128 r6 23.71 at 60s
+BAKE unpooler m=128 rq:d2s5hze 21.74 (ratio 1.1113 vs r6 23.71) at 60s
+BAKE unpooler m=128 rq:d2s5hzwP 21.07 (ratio 1.0405 vs rq:d2s5hze 21.74) at 60s
+BAKE unpooler m=128 rq:s4s5hzw 21.94 (ratio 0.9962 vs rq:d2s5hze 21.74) at 60s
+BAKE unpooler m=128 rq:s4s5hzeEH 21.85 (ratio 0.9974 vs rq:d2s5hze 21.74) at 60s
+BAKE unpooler m=128 rq:s4s5hze 21.77 (ratio 1.0054 vs rq:d2s5hze 21.74) at 60s
+BAKE unpooler m=128 rq:d2s6hze 22.26 (ratio 0.9860 vs rq:d2s5hze 21.74) at 60s
+PICK unpooler m=128 rq:d2s5hzwP 20.89 (ref rq:d2s5hze 21.74)
+PICK unpooler m=128 rq:d2s5hzwP (forced: cursor + short apply, resident -0.26/-0.13/-0.32 us, bake ratio 1.0405)
+BAKE unpooler m=256 r6 28.38 at 60s
+PICK unpooler m=256 r6 28.38 (ref r6 28.38)
+[rq] picks [('qkv', 128), ('qkv', 256), ('un', 128)] (baked [('qkv_gate', 128), ('qkv_gate', 256), ('unpooler', 128)]) at 60s
+[mfab] layer prepare done at 60s
+[mfab] moe T= 32 prod median   145.4 us  speedup vs barrier twin (twin without SC6) 1.0199 (per seed 1.020 1.029 1.006 1.019)  max|d| 0
+[mfab] moe T=128 prod median   189.6 us  speedup vs barrier twin (twin without SC6) 1.0315 (per seed 1.032 1.023 1.029 1.033)  max|d| 0
+[mfab] moe T=256 prod median   220.1 us  speedup vs barrier twin (twin without SC6) 1.0237 (per seed 1.024 1.019 1.018 1.025)  max|d| 0
+[ 212.7s] PREPARED varC
+RQ picks B [('qkv', 128), ('qkv', 256), ('un', 128)]
+AB T1s {"A": {"us": 75.92, "r": 1.0, "ok": true}, "B": {"us": 75.63, "r": 1.0051, "ok": true}, "C": {"us": 75.65, "r": 1.008, "ok": true}}
+AB T1f {"A": {"us": 82.4, "r": 1.0, "ok": true}, "B": {"us": 81.97, "r": 1.0061, "ok": true}, "C": {"us": 82.67, "r": 0.9942, "ok": true}}
+AB T16s {"A": {"us": 131.46, "r": 1.0, "ok": true}, "B": {"us": 130.93, "r": 1.0076, "ok": true}, "C": {"us": 130.82, "r": 1.0045, "ok": true}}
+AB T16f {"A": {"us": 204.42, "r": 1.0, "ok": true}, "B": {"us": 203.89, "r": 1.0027, "ok": true}, "C": {"us": 204.14, "r": 1.0011, "ok": true}}
+AB T32s {"A": {"us": 159.97, "r": 1.0, "ok": true}, "B": {"us": 159.92, "r": 0.9999, "ok": true}, "C": {"us": 159.58, "r": 1.0008, "ok": true}}
+AB T32f {"A": {"us": 307.71, "r": 1.0, "ok": true}, "B": {"us": 307.84, "r": 0.9992, "ok": true}, "C": {"us": 308.72, "r": 0.9967, "ok": true}}
+AB T8s {"A": {"us": 124.98, "r": 1.0, "ok": true}, "B": {"us": 125.6, "r": 0.9949, "ok": true}, "C": {"us": 124.94, "r": 0.999, "ok": true}}
+AB T8f {"A": {"us": 126.34, "r": 1.0, "ok": true}, "B": {"us": 125.12, "r": 1.0105, "ok": true}, "C": {"us": 126.58, "r": 0.9989, "ok": true}}
+AB T128s {"A": {"us": 255.18, "r": 1.0, "ok": true}, "B": {"us": 248.94, "r": 1.0247, "ok": true}, "C": {"us": 248.06, "r": 1.0278, "ok": true}}
+AB T128f {"A": {"us": 324.93, "r": 1.0, "ok": true}, "B": {"us": 317.87, "r": 1.02, "ok": true}, "C": {"us": 320.1, "r": 1.0144, "ok": true}}
+AB T256s {"A": {"us": 318.91, "r": 1.0, "ok": true}, "B": {"us": 314.75, "r": 1.0141, "ok": true}, "C": {"us": 316.32, "r": 1.0087, "ok": true}}
+AB T256f {"A": {"us": 479.84, "r": 1.0, "ok": true}, "B": {"us": 471.89, "r": 1.0164, "ok": true}, "C": {"us": 471.63, "r": 1.0143, "ok": true}}
+AB T1s {"A": {"us": 76.1, "r": 1.0, "ok": true}, "B": {"us": 75.76, "r": 1.0032, "ok": true}, "C": {"us": 75.28, "r": 1.0148, "ok": true}}
+AB T1f {"A": {"us": 82.13, "r": 1.0, "ok": true}, "B": {"us": 81.95, "r": 1.0029, "ok": true}, "C": {"us": 82.35, "r": 1.0033, "ok": true}}
+AB T16s {"A": {"us": 115.01, "r": 1.0, "ok": true}, "B": {"us": 114.85, "r": 1.0015, "ok": true}, "C": {"us": 114.48, "r": 1.006, "ok": true}}
+AB T16f {"A": {"us": 223.18, "r": 1.0, "ok": true}, "B": {"us": 221.79, "r": 1.008, "ok": true}, "C": {"us": 222.48, "r": 1.0028, "ok": true}}
+AB T32s {"A": {"us": 159.04, "r": 1.0, "ok": true}, "B": {"us": 159.07, "r": 1.002, "ok": true}, "C": {"us": 160.02, "r": 0.996, "ok": true}}
+AB T32f {"A": {"us": 307.65, "r": 1.0, "ok": true}, "B": {"us": 306.91, "r": 1.0025, "ok": true}, "C": {"us": 308.66, "r": 0.9975, "ok": true}}
+AB T8s {"A": {"us": 105.06, "r": 1.0, "ok": true}, "B": {"us": 105.09, "r": 0.9988, "ok": true}, "C": {"us": 105.28, "r": 0.9988, "ok": true}}
+AB T8f {"A": {"us": 132.85, "r": 1.0, "ok": true}, "B": {"us": 131.66, "r": 1.0093, "ok": true}, "C": {"us": 132.32, "r": 1.0061, "ok": true}}
+AB T128s {"A": {"us": 251.09, "r": 1.0, "ok": true}, "B": {"us": 244.27, "r": 1.0285, "ok": true}, "C": {"us": 244.7, "r": 1.0253, "ok": true}}
+AB T128f {"A": {"us": 359.78, "r": 1.0, "ok": true}, "B": {"us": 352.02, "r": 1.0234, "ok": true}, "C": {"us": 354.69, "r": 1.014, "ok": true}}
+AB T256s {"A": {"us": 296.35, "r": 1.0, "ok": true}, "B": {"us": 294.0, "r": 1.0104, "ok": true}, "C": {"us": 293.42, "r": 1.0095, "ok": true}}
+AB T256f {"A": {"us": 486.48, "r": 1.0, "ok": true}, "B": {"us": 477.76, "r": 1.0187, "ok": true}, "C": {"us": 485.28, "r": 1.004, "ok": true}}
+GM ('T1s', 'A') 1.0 [1.0, 1.0]
+GM ('T1s', 'B') 1.0041 [1.0051, 1.0032]
+GM ('T1s', 'C') 1.0114 [1.008, 1.0148]
+GM ('T1f', 'A') 1.0 [1.0, 1.0]
+GM ('T1f', 'B') 1.0045 [1.0061, 1.0029]
+GM ('T1f', 'C') 0.9988 [0.9942, 1.0033]
+GM ('T16s', 'A') 1.0 [1.0, 1.0]
+GM ('T16s', 'B') 1.0045 [1.0076, 1.0015]
+GM ('T16s', 'C') 1.0053 [1.0045, 1.006]
+GM ('T16f', 'A') 1.0 [1.0, 1.0]
+GM ('T16f', 'B') 1.0053 [1.0027, 1.008]
+GM ('T16f', 'C') 1.002 [1.0011, 1.0028]
+GM ('T32s', 'A') 1.0 [1.0, 1.0]
+GM ('T32s', 'B') 1.001 [0.9999, 1.002]
+GM ('T32s', 'C') 0.9984 [1.0008, 0.996]
+GM ('T32f', 'A') 1.0 [1.0, 1.0]
+GM ('T32f', 'B') 1.0008 [0.9992, 1.0025]
+GM ('T32f', 'C') 0.9971 [0.9967, 0.9975]
+GM ('T8s', 'A') 1.0 [1.0, 1.0]
+GM ('T8s', 'B') 0.9968 [0.9949, 0.9988]
+GM ('T8s', 'C') 0.9989 [0.999, 0.9988]
+GM ('T8f', 'A') 1.0 [1.0, 1.0]
+GM ('T8f', 'B') 1.0099 [1.0105, 1.0093]
+GM ('T8f', 'C') 1.0025 [0.9989, 1.0061]
+GM ('T128s', 'A') 1.0 [1.0, 1.0]
+GM ('T128s', 'B') 1.0266 [1.0247, 1.0285]
+GM ('T128s', 'C') 1.0266 [1.0278, 1.0253]
+GM ('T128f', 'A') 1.0 [1.0, 1.0]
+GM ('T128f', 'B') 1.0217 [1.02, 1.0234]
+GM ('T128f', 'C') 1.0142 [1.0144, 1.014]
+GM ('T256s', 'A') 1.0 [1.0, 1.0]
+GM ('T256s', 'B') 1.0123 [1.0141, 1.0104]
+GM ('T256s', 'C') 1.0091 [1.0087, 1.0095]
+GM ('T256f', 'A') 1.0 [1.0, 1.0]
+GM ('T256f', 'B') 1.0176 [1.0164, 1.0187]
+GM ('T256f', 'C') 1.0091 [1.0143, 1.004]
+GM all A 1.0
+GM all B 1.0087
+GM all C 1.0061
+TEST B 0 11 True update relative L2 error 6.439e-03 (worst row 6.439e-03) [bound 0.084]; attention input relative L2 error 5.179e-03 (worst row 5.179e-03) [bound 0.056]
+TEST B 0 777 True update relative L2 error 1.724e-02 (worst row 1.724e-02) [bound 0.120]; attention input relative L2 error 1.079e-02 (worst row 1.079e-02) [bound 0.072]
+TEST B 1 12 True update relative L2 error 7.648e-03 (worst row 7.648e-03) [bound 0.150]; attention input relative L2 error 5.624e-03 (worst row 5.624e-03) [bound 0.103]
+TEST B 1 778 True update relative L2 error 7.581e-03 (worst row 7.581e-03) [bound 0.124]; attention input relative L2 error 6.138e-03 (worst row 6.138e-03) [bound 0.089]
+TEST B 2 13 True update relative L2 error 8.391e-03 (worst row 9.242e-03) [bound 0.150]; attention input relative L2 error 6.174e-03 (worst row 6.858e-03) [bound 0.125]
+TEST B 2 779 True update relative L2 error 7.590e-03 (worst row 8.514e-03) [bound 0.150]; attention input relative L2 error 5.763e-03 (worst row 6.530e-03) [bound 0.103]
+TEST B 3 14 True update relative L2 error 6.667e-03 (worst row 8.625e-03) [bound 0.150]; attention input relative L2 error 4.727e-03 (worst row 5.641e-03) [bound 0.114]
+TEST B 3 780 True update relative L2 error 6.958e-03 (worst row 8.265e-03) [bound 0.150]; attention input relative L2 error 4.861e-03 (worst row 5.591e-03) [bound 0.100]
+TEST B 4 15 True update relative L2 error 6.425e-02 (worst row 1.063e-01) [bound 0.150]; attention input relative L2 error 3.501e-02 (worst row 5.460e-02) [bound 0.084]
+TEST B 4 781 True update relative L2 error 6.624e-02 (worst row 9.469e-02) [bound 0.150]; attention input relative L2 error 3.556e-02 (worst row 4.933e-02) [bound 0.088]
+TEST B 5 16 True update relative L2 error 6.966e-02 (worst row 1.078e-01) [bound 0.150]; attention input relative L2 error 4.511e-02 (worst row 7.415e-02) [bound 0.111]
+TEST B 5 782 True update relative L2 error 6.822e-02 (worst row 1.195e-01) [bound 0.150]; attention input relative L2 error 4.552e-02 (worst row 8.341e-02) [bound 0.113]
+TEST B 6 17 True update relative L2 error 7.199e-03 (worst row 9.596e-03) [bound 0.150]; attention input relative L2 error 5.158e-03 (worst row 7.252e-03) [bound 0.111]
+TEST B 6 783 True update relative L2 error 7.199e-03 (worst row 9.932e-03) [bound 0.150]; attention input relative L2 error 5.034e-03 (worst row 7.130e-03) [bound 0.109]
+TEST B 7 18 True update relative L2 error 7.328e-02 (worst row 1.209e-01) [bound 0.150]; attention input relative L2 error 4.903e-02 (worst row 8.682e-02) [bound 0.119]
+TEST B 7 784 True update relative L2 error 7.696e-02 (worst row 1.124e-01) [bound 0.150]; attention input relative L2 error 5.073e-02 (worst row 7.299e-02) [bound 0.126]
+TEST B 8 19 True update relative L2 error 7.719e-02 (worst row 9.403e-02) [bound 0.150]; attention input relative L2 error 5.281e-02 (worst row 6.814e-02) [bound 0.125]
+TEST B 8 785 True update relative L2 error 7.763e-02 (worst row 8.790e-02) [bound 0.150]; attention input relative L2 error 5.246e-02 (worst row 6.247e-02) [bound 0.137]
+TEST B 9 20 True update relative L2 error 6.963e-02 (worst row 9.842e-02) [bound 0.150]; attention input relative L2 error 4.574e-02 (worst row 7.018e-02) [bound 0.110]
+TEST B 9 786 True update relative L2 error 7.335e-02 (worst row 1.066e-01) [bound 0.150]; attention input relative L2 error 4.960e-02 (worst row 7.485e-02) [bound 0.124]
+TEST B 10 21 True update relative L2 error 7.135e-03 (worst row 7.135e-03) [bound 0.150]; attention input relative L2 error 5.779e-03 (worst row 5.779e-03) [bound 0.112]
+TEST B 10 787 True update relative L2 error 7.509e-03 (worst row 7.509e-03) [bound 0.144]; attention input relative L2 error 5.692e-03 (worst row 5.692e-03) [bound 0.093]
+TEST B 11 22 True update relative L2 error 5.973e-02 (worst row 8.357e-02) [bound 0.144]; attention input relative L2 error 3.886e-02 (worst row 5.246e-02) [bound 0.093]
+TEST B 11 788 True update relative L2 error 5.735e-02 (worst row 8.647e-02) [bound 0.136]; attention input relative L2 error 3.769e-02 (worst row 5.440e-02) [bound 0.089]
+TEST B 12 23 True update relative L2 error 8.994e-03 (worst row 1.461e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.040e-02) [bound 0.101]
+TEST B 12 789 True update relative L2 error 7.699e-03 (worst row 9.075e-03) [bound 0.142]; attention input relative L2 error 5.750e-03 (worst row 6.850e-03) [bound 0.093]
+TESTS B 26 / 26
+TESTS C 26 / 26
+[ 230.4s] DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-tlxQq59cTvwmbHm3k9ndZS
