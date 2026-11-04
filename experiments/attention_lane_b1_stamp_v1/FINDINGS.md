@@ -1,0 +1,7 @@
+# Attention batch-one sliding latency diagnostic
+
+Completed prior unfinished stamp diagnostic on the readable attention baseline (`attention_readable_fp32_path_v1`) using the public judge image on H200, with 8 cold-L2 graph replays for each of decode-1 and verify-1, one input seed. Base outputs passed reference checks. Instrumented variant is diagnostic only and was not submitted.
+
+Event medians including graph/event overhead: decode 8.96 µs, verify 10.70 µs; tiny-kernel control 5.46/5.44 µs. Within the instrumented kernel, median CTA timing relative to the first CTA start was: initial page-index wait 0.74/0.83 µs, initial K/V copies issued 0.99/1.10 µs, first tile acquired 1.52/1.89 µs, post-softmax merge start 2.08/2.70 µs, and post-atomic/barrier point 3.25/5.07 µs (decode/verify). The post-barrier phase including final output ends at a last-CTA maximum of ~4.00/5.90 µs. Bracketed CTA spans are ~4.00/5.84 µs.
+
+Interpretation: the critical last-CTA/barrier and merge/finalization path is a substantial share of this latency, especially for verify; this motivates inspecting merge synchronization and final-store distribution, not spending more effort on already-rejected exponent approximations. Instrumentation changes register pressure/scheduling and timing distributions, and the eight-replay, single-seed results are exploratory, not an additive timing decomposition or a proven improvement. Stamped sources are generated with `experiments/attention_b1lat_v1/make_variants.py`; raw log `modal.log` and driver are preserved here.
