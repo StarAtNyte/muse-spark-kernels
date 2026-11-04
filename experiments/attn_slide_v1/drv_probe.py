@@ -38,7 +38,7 @@ for vn in os.environ.get('VARIANTS', 'probe').split(','):
             ev.append(t1(g0)); dbg.zero_(); t1(gs)
             a = dbg.view(-1, 16).cpu(); st.append(a[a[:, 0] > 0])
         rows = {}
-        for k in (0, 1, 2, 3, 4, 5, 6, 8, 7):
+        for k in (0, 1, 2, 3, 4, 9, 10, 11, 12, 13, 5, 6, 8, 7):
             mins, meds, maxs = [], [], []
             for live in st:
                 v = live[:, k]; v = v[v > 0]
@@ -48,7 +48,7 @@ for vn in os.environ.get('VARIANTS', 'probe').split(','):
             if mins: rows[k] = [round(statistics.median(x), 2) for x in (mins, meds, maxs)]
         # per-CTA phase durations (median CTA, median rep)
         dur = {}
-        for a_, b_ in ((0, 1), (1, 3), (3, 4), (4, 5), (5, 6), (6, 7)):
+        for a_, b_ in ((0, 1), (1, 3), (3, 4), (4, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 5), (4, 5), (5, 6), (6, 7)):
             vals = []
             for l in st:
                 m = (l[:, a_] > 0) & (l[:, b_] > 0)
