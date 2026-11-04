@@ -1,0 +1,28 @@
+group n | routes min/med/max | distinct min/med/max | max_cnt min/med/max | frac_routes_gt64 min/med/max | n_experts_gt64 min/med/max | fat_jobs min/med/max | skinny_jobs min/med/max | extra_jobs_dup_weights min/med/max | frac_weight_loads_redundant min/med/max | hypothesis_formula_w_times_1_minus_1_over_r min/med/max | fat_units_A min/med/max | weight_GB_unique min/med/max
+decoder T128 full alt-router 12 | 181/192/229 | 15/18.5/23 | 37/43.5/58 | 0/0/0 | 0/0/0 | 5/7.5/11 | 9/10.5/16 | 0/0/0 | 0/0/0 | 0/0/0 | 160/240/352 | 0.425/0.524/0.651
+decoder T128 full default 4 | 158/161/169 | 18/18.5/21 | 40/43.5/45 | 0/0/0 | 0/0/0 | 6/6/7 | 12/12/15 | 0/0/0 | 0/0/0 | 0/0/0 | 192/192/224 | 0.51/0.524/0.595
+decoder T128 sliding alt-router 12 | 166/197/226 | 15/18.5/24 | 33/42.5/64 | 0/0/0 | 0/0/0 | 5/7/9 | 8/12/16 | 0/0/0 | 0/0/0 | 0/0/0 | 160/224/288 | 0.425/0.524/0.679
+decoder T128 sliding default 4 | 163/168/175 | 15/17/21 | 31/42/48 | 0/0/0 | 0/0/0 | 5/6/8 | 10/10/15 | 0/0/0 | 0/0/0 | 0/0/0 | 160/192/256 | 0.425/0.481/0.595
+decoder T256 full alt-router 12 | 342/380/458 | 18/21/27 | 68/85.5/111 | 0.183/0.387/0.538 | 1/2/2 | 8/13/15 | 7/11.5/16 | 1/2/2 | 0.0455/0.0835/0.1 | 0.0914/0.194/0.269 | 256/416/480 | 0.51/0.595/0.764
+decoder T256 full default 4 | 339/344/350 | 20/20/22 | 81/83/86 | 0.45/0.468/0.481 | 2/2/2 | 11/12/12 | 10/10.5/12 | 2/2/2 | 0.0833/0.0909/0.0909 | 0.225/0.234/0.24 | 352/384/384 | 0.566/0.566/0.623
+decoder T256 sliding alt-router 12 | 350/410/456 | 15/23.5/27 | 78/92.5/121 | 0.214/0.393/0.631 | 1/2/3 | 8/12/16 | 7/12/19 | 1/2/3 | 0.0476/0.0784/0.118 | 0.107/0.196/0.316 | 256/384/512 | 0.425/0.665/0.764
+decoder T256 sliding default 4 | 339/348/355 | 20/21.5/23 | 75/85.5/93 | 0.218/0.254/0.501 | 1/1/2 | 9/11.5/12 | 9/12/14 | 1/1/2 | 0.0417/0.0456/0.087 | 0.109/0.127/0.251 | 288/368/384 | 0.566/0.609/0.651
+moe_w4a16 bs128 normal 16 | 152/172/270 | 18/22.5/26 | 26/40.5/112 | 0/0/0.494 | 0/0/1 | 4/5/10 | 10/17/20 | 0/0/1 | 0/0/0.0526 | 0/0/0.247 | 128/160/320 | 0.51/0.637/0.736
+moe_w4a16 bs128 skewed 16 | 204/318/467 | 3/4/7 | 91/126/128 | 0.446/0.885/1 | 1/3/4 | 4/6/9 | 0/0/2 | 1/3/4 | 0.25/0.4/0.5 | 0.223/0.443/0.5 | 128/192/288 | 0.0849/0.113/0.198
+moe_w4a16 bs256 normal 16 | 316/354/542 | 20/24/27 | 49/78.5/225 | 0/0.24/0.716 | 0/1/3 | 11/13/17 | 8/11.5/16 | 0/1/5 | 0/0.0393/0.179 | 0/0.12/0.447 | 352/416/544 | 0.566/0.679/0.764
+moe_w4a16 bs256 skewed 16 | 408/640/925 | 3/4/8 | 190/252/256 | 0.912/0.997/1 | 2/3/4 | 8/11/17 | 0/0/2 | 5/8/11 | 0.5/0.667/0.75 | 0.57/0.695/0.75 | 256/352/544 | 0.0849/0.113/0.227
+
+extra (duplicate-weight) jobs: full-64 chunks vs partial remainder chunks; modeled bytes and peak-bandwidth equivalent, not measured HBM traffic or a latency bound
+group n | runs with any extra | extra full-chunk jobs (sum) | extra remainder jobs (sum) | remainder tokens median | extra MB/run med,max | us@4.8TB/s med,max
+decoder T128 full alt-router 12 | 0 | 0 | 0 | - | 0.0,0.0 | 0.0,0.0
+decoder T128 full default 4 | 0 | 0 | 0 | - | 0.0,0.0 | 0.0,0.0
+decoder T128 sliding alt-router 12 | 0 | 0 | 0 | - | 0.0,0.0 | 0.0,0.0
+decoder T128 sliding default 4 | 0 | 0 | 0 | - | 0.0,0.0 | 0.0,0.0
+decoder T256 full alt-router 12 | 12 | 0 | 22 | 15.0 | 56.6,56.6 | 11.8,11.8
+decoder T256 full default 4 | 4 | 0 | 8 | 17.0 | 56.6,56.6 | 11.8,11.8
+decoder T256 sliding alt-router 12 | 12 | 0 | 24 | 14.0 | 56.6,84.9 | 11.8,17.7
+decoder T256 sliding default 4 | 4 | 0 | 5 | 24 | 28.3,56.6 | 5.9,11.8
+moe_w4a16 bs128 normal 16 | 4 | 0 | 4 | 34.5 | 0.0,28.3 | 0.0,5.9
+moe_w4a16 bs128 skewed 16 | 16 | 8 | 34 | 38.5 | 84.9,113.2 | 17.7,23.6
+moe_w4a16 bs256 normal 16 | 12 | 7 | 16 | 18.5 | 28.3,141.6 | 5.9,29.5
+moe_w4a16 bs256 skewed 16 | 16 | 76 | 48 | 44.0 | 226.5,311.4 | 47.2,64.9
