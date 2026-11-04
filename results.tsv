@@ -72,3 +72,4 @@ time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdic
 2026-11-05T02:20Z	muse_moe_w4a16	modal-only	moe_ovl_v1 r7	job-list order: skinny-first, LPT, interleaved	normal	modal pass	0.984-1.000x	n/a	order irrelevant within static stream-K	REJECT	MoE lane closed for freeze
 2026-11-05T02:25Z	muse_attention_decode	af4f8d1bedd24c9f	attn_b1full_v1	SCORED bv	normal	16/16	2.682x	2.642-2.722	new best	KEEP	
 2026-11-05T02:25Z	muse_decode_layer	643515fbfd0e4810	decoder_stack_v1	SCORED stack	normal	13/13	2.266x	2.232-2.300	new best	KEEP	
+2026-11-05T02:55Z	muse_decode_layer	5b66ad0aedec47dc,768e3cf813a84c11	decoder_stack_v2	port attention bv merge into decoder stack	normal	13/13 x2	2.258x / 2.248x	2.214-2.292	same mean as stack_v1	REJECT	B=1 attention gain too small in layer
