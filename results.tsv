@@ -93,3 +93,4 @@ time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdic
 2026-11-05T10:40Z	muse_moe_w4a16	1e5b946bdca14e27	moe_bs16main_v1	bs16 on WGS MAIN build instead of MID (judge-only pick)	normal	5/5	2.352x	2.317-2.387	decode-16 98.2 vs 90-95us	REJECT	MID is right for bs16
 2026-11-05T11:05Z	muse_bf16_proj	modal-only	proj_fresh_v1	route sweep: 6 cells swapped to chenwainuo	normal	modal 9/9	0.983x	n/a	sweep wins came from pruning-off prepare; not in real file	REJECT	keep _TABLE
 2026-11-05T11:25Z	muse_bf16_proj	modal-only	proj_fresh_v1	persistent wave-balanced m=1 GEMV (cgemvp)	normal	modal 50/50	1.01-1.14x slower	n/a	m=1 wave tail costs ~0; loads-in-flight bound	REJECT	
+2026-11-05T11:45Z	muse_bf16_proj	none	proj_fresh_v1	idea 5 wave quantization at m=128/256	normal	n/a	n/a	n/a	all tiled cells run 128 tiles on 132 SMs: no wave tail; split capped ~0.4%	NO-RUN	premise wrong
