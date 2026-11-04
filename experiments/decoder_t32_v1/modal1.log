@@ -1,0 +1,95 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-S3JQCyzu9DsppUh1F5eftz
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_t32_v1/m
+│   odal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 92s
+[mfab] moe T= 32 prod median   147.1 us  speedup vs barrier twin (twin without SC6) 1.0206 (per seed 1.022 1.021 1.016 1.016)  max|d| 0
+[mfab] moe T=128 prod median   192.7 us  speedup vs barrier twin (twin without SC6) 1.0249 (per seed 1.019 1.014 1.027 1.025)  max|d| 0
+[mfab] moe T=256 prod median   225.2 us  speedup vs barrier twin (twin without SC6) 1.0123 (per seed 1.013 1.009 1.004 1.012)  max|d| 0
+[  94.2s] PREPARED 93.1 s
+[  94.2s] mm_pick {"(1, 'qkv')": 'bfp', "(1, 'o')": 'bfp', "(1, 'pr')": 'bfpf', "(1, 'un')": 'bfp', "(2, 'qkv')": 'bfp', "(2, 'o')": 'bfp', "(2, 'pr')": 'bfpf', "(2, 'un')": 'bfp', "(4, 'qkv')": 'bfp', "(4, 'o')": 'bfp', "(4, 'pr')": 'bfpf', "(4, 'un')": False, "(8, 'qkv')": 'bfp', "(8, 'o')": 'bfp', "(8, 'pr')": 'bfpf', "(8, 'un')": 'bfp', "(16, 'qkv')": 'bfp', "(16, 'o')": 'bfp', "(16, 'pr')": 'bfpf', "(16, 'un')": 'bfp', "(32, 'qkv')": 'bfp', "(32, 'o')": 'bfp', "(32, 'pr')": 'bfpf', "(32, 'un')": 'bfp', "(64, 'qkv')": True, "(64, 'o')": True, "(64, 'pr')": False, "(64, 'un')": False, "(128, 'qkv')": True, "(128, 'o')": True, "(128, 'pr')": True, "(128, 'un')": True, "(256, 'qkv')": True, "(256, 'o')": True, "(256, 'pr')": True, "(256, 'un')": True}
+[  94.2s] choice {"('qkv_gate', 16)": ('sk2',), "('o', 16)": ('sk2',), "('pooler', 16)": ('sk2',), "('unpooler', 16)": ('sk2',), "('router', 16)": ('sk2',), "('qkv_gate', 32)": ('sk2',), "('o', 32)": ('sk2',), "('pooler', 32)": ('sk2',), "('unpooler', 32)": ('sk2',), "('router', 32)": ('sk2',), "('qkv_gate', 8)": ('sk2',), "('o', 8)": ('sk2',), "('pooler', 8)": ('sk2',), "('unpooler', 8)": ('sk2',), "('router', 8)": ('sk2',)}
+[  94.2s] sk2 names ['o16t_r68', 'o32h_r100', 'o32t_r100', 'o8h_r88', 'pooler', 'pooler16t_r192', 'pooler32_r144', 'pooler32b_r200', 'pooler8h_r72', 'qkv16_r176', 'qkv16t_r200', 'qkv32_r208', 'qkv32n2_r208', 'qkv8_r176', 'router', 'slice8_r192', 'unpooler16h_r100', 'unpooler16t_r72', 'unpooler32_r144', 'unpooler32b_r200', 'unpooler32c_r144']
+[  94.2s] PCX_CFG {}
+ROW {"T": 16, "layer": "sliding", "med_us": {"base": 132.21, "o16t": 133.2, "qkv16t": 132.5, "un16t": 132.83, "all3": 134.03, "unf_p16t": 134.27, "unf_p32": 133.71}, "base_over_var": {"base": 1.0, "o16t": 0.9928, "qkv16t": 0.9994, "un16t": 0.9964, "all3": 0.9877, "unf_p16t": 0.9853, "unf_p32": 0.9878}, "ok": {"base": [true, "update relative L2 error 7.602e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "o16t": [true, "update relative L2 error 7.596e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "qkv16t": [true, "update relative L2 error 7.601e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "un16t": [true, "update relative L2 error 7.602e-03 (worst row 9.718e-03) [bound 0.140]; attentio"], "all3": [true, "update relative L2 error 7.591e-03 (worst row 9.718e-03) [bound 0.140]; attentio"], "unf_p16t": [true, "update relative L2 error 7.600e-03 (worst row 9.652e-03) [bound 0.140]; attentio"], "unf_p32": [true, "update relative L2 error 7.595e-03 (worst row 9.635e-03) [bound 0.140]; attentio"]}}
+PROF 16 sliding base {"void okc::moe_fused<false>(okc::Params)": 68.51, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 19.9, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.38, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.34, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 10.97, "void (anonymous namespace)::attn_kernel<1, fal": 9.64, "void glue_cluster_boundary<4, 32, true, false,": 4.97, "_sl_tile_route": 4.68, "void glue_cluster_boundary<4, 32, false, false": 4.04}
+PROF 16 sliding o16t {"void okc::moe_fused<false>(okc::Params)": 68.9, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 19.75, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.3, "void sk2_kernel<1, 16, 2, 2, 1, 4, 3, true, fa": 11.45, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.3, "void (anonymous namespace)::attn_kernel<1, fal": 9.81, "void glue_cluster_boundary<4, 32, true, false,": 5.08, "void glue_cluster_boundary<4, 32, false, false": 5.02, "_sl_tile_route": 4.67}
+PROF 16 sliding qkv16t {"void okc::moe_fused<false>(okc::Params)": 69.39, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 20.14, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.09, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.23, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 10.68, "void (anonymous namespace)::attn_kernel<1, fal": 9.62, "_sl_tile_route": 4.82, "void glue_cluster_boundary<4, 32, true, false,": 4.62, "void glue_cluster_boundary<4, 32, false, false": 4.0}
+PROF 16 sliding un16t {"void okc::moe_fused<false>(okc::Params)": 68.91, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 20.06, "void sk2_kernel<1, 16, 2, 2, 2, 2, 3, true, fa": 16.12, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.52, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 10.84, "void (anonymous namespace)::attn_kernel<1, fal": 9.65, "_sl_tile_route": 4.8, "void glue_cluster_boundary<4, 32, false, false": 4.11, "void glue_cluster_boundary<4, 32, true, false,": 3.89}
+PROF 16 sliding all3 {"void okc::moe_fused<false>(okc::Params)": 69.23, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 20.22, "void sk2_kernel<1, 16, 2, 2, 2, 2, 3, true, fa": 15.98, "void sk2_kernel<1, 16, 2, 2, 1, 4, 3, true, fa": 11.58, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.18, "void (anonymous namespace)::attn_kernel<1, fal": 9.96, "void glue_cluster_boundary<4, 32, false, false": 5.06, "_sl_tile_route": 4.55, "void glue_cluster_boundary<4, 32, true, false,": 3.94}
+PROF 16 sliding unf_p16t {"void okc::moe_fused<false>(okc::Params)": 67.46, "void sk2_kernel<1, 16, 2, 2, 2, 4, 4, true, fa": 17.26, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.07, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.47, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.1, "void (anonymous namespace)::attn_kernel<1, fal": 9.84, "void glue_cluster_boundary<4, 32, false, false": 5.95, "void sk2_kernel<1, 16, 1, 1, 8, 1, 6, false, t": 5.91, "void glue_cluster_boundary<4, 32, true, false,": 4.88, "_sl_tile_route": 3.18}
+PROF 16 sliding unf_p32 {"void okc::moe_fused<false>(okc::Params)": 67.6, "void sk2_kernel<1, 16, 2, 2, 2, 2, 7, true, fa": 17.26, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.38, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.69, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.02, "void (anonymous namespace)::attn_kernel<1, fal": 9.8, "void sk2_kernel<1, 16, 1, 1, 8, 1, 6, false, t": 5.81, "void glue_cluster_boundary<4, 32, false, false": 5.59, "void glue_cluster_boundary<4, 32, true, false,": 4.58, "_sl_tile_route": 3.36}
+ROW {"T": 32, "layer": "sliding", "med_us": {"base": 167.31, "qkvn2": 167.46, "un32b": 166.75, "un32c": 168.7, "un16t": 170.03, "o32t": 168.27, "o16t": 169.52, "unf_p32": 168.13, "unf_p32b": 167.6}, "base_over_var": {"base": 1.0, "qkvn2": 1.0013, "un32b": 1.0054, "un32c": 0.9909, "un16t": 0.9881, "o32t": 0.9974, "o16t": 0.9879, "unf_p32": 0.9948, "unf_p32b": 0.9976}, "ok": {"base": [true, "update relative L2 error 9.671e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "qkvn2": [true, "update relative L2 error 9.678e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "un32b": [true, "update relative L2 error 9.671e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "un32c": [true, "update relative L2 error 9.670e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "un16t": [true, "update relative L2 error 9.670e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "o32t": [true, "update relative L2 error 9.674e-03 (worst row 2.062e-02) [bound 0.121]; attentio"], "o16t": [true, "update relative L2 error 9.677e-03 (worst row 2.062e-02) [bound 0.121]; attentio"], "unf_p32": [true, "update relative L2 error 9.677e-03 (worst row 2.061e-02) [bound 0.121]; attentio"], "unf_p32b": [true, "update relative L2 error 9.675e-03 (worst row 2.061e-02) [bound 0.121]; attentio"]}}
+PROF 32 sliding base {"void okc::moe_fused<false>(okc::Params)": 101.84, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 23.11, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 17.24, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 15.75, "void (anonymous namespace)::attn_kernel<1, fal": 13.65, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 13.02, "_graft_row_boundary_pre": 10.23, "_sl_tile_route": 5.79}
+PROF 32 sliding qkvn2 {"void okc::moe_fused<false>(okc::Params)": 97.07, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 22.24, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.04, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.73, "void (anonymous namespace)::attn_kernel<1, fal": 12.93, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.65, "_graft_row_boundary_pre": 9.83, "_sl_tile_route": 5.63}
+PROF 32 sliding un32b {"void okc::moe_fused<false>(okc::Params)": 96.78, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 21.81, "void sk2_kernel<2, 32, 4, 2, 2, 2, 4, true, fa": 16.18, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.89, "void (anonymous namespace)::attn_kernel<1, fal": 12.92, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.73, "_graft_row_boundary_pre": 10.56, "_sl_tile_route": 5.29}
+PROF 32 sliding un32c {"void okc::moe_fused<false>(okc::Params)": 96.54, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 22.38, "void sk2_kernel<2, 32, 2, 2, 2, 2, 5, true, fa": 17.79, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.6, "void (anonymous namespace)::attn_kernel<1, fal": 12.95, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.78, "_graft_row_boundary_pre": 9.34, "_sl_tile_route": 5.55}
+PROF 32 sliding un16t {"void okc::moe_fused<false>(okc::Params)": 96.64, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 21.7, "void sk2_kernel<2, 32, 2, 2, 2, 2, 2, true, fa": 18.82, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.57, "void (anonymous namespace)::attn_kernel<1, fal": 12.68, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.23, "_graft_row_boundary_pre": 8.93, "_sl_tile_route": 5.49}
+PROF 32 sliding o32t {"void okc::moe_fused<false>(okc::Params)": 97.36, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 22.58, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.11, "void sk2_kernel<2, 32, 2, 2, 1, 4, 3, true, fa": 15.08, "void (anonymous namespace)::attn_kernel<1, fal": 12.68, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.1, "_graft_row_boundary_pre": 10.51, "_sl_tile_route": 5.74}
+PROF 32 sliding o16t {"void okc::moe_fused<false>(okc::Params)": 96.8, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 22.05, "void sk2_kernel<2, 32, 2, 2, 1, 4, 2, true, fa": 16.72, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.5, "void (anonymous namespace)::attn_kernel<1, fal": 13.53, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.35, "_graft_row_boundary_pre": 10.32, "_sl_tile_route": 5.54}
+PROF 32 sliding unf_p32 {"void okc::moe_fused<false>(okc::Params)": 95.57, "void sk2_kernel<2, 32, 2, 2, 2, 2, 5, true, fa": 18.07, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.24, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.39, "void (anonymous namespace)::attn_kernel<1, fal": 12.51, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.31, "_graft_row_boundary_pre": 9.4, "void sk2_kernel<2, 32, 1, 1, 8, 1, 4, false, t": 5.75, "_sl_tile_route": 3.64}
+PROF 32 sliding unf_p32b {"void okc::moe_fused<false>(okc::Params)": 94.85, "void sk2_kernel<2, 32, 2, 2, 2, 2, 7, true, fa": 18.17, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.33, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.99, "void (anonymous namespace)::attn_kernel<1, fal": 13.14, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.23, "_graft_row_boundary_pre": 9.35, "void sk2_kernel<2, 32, 1, 1, 8, 1, 4, false, t": 6.8, "_sl_tile_route": 3.84}
+ROW {"T": 16, "layer": "full", "med_us": {"base": 213.3, "o16t": 213.84, "qkv16t": 213.74, "un16t": 214.56, "all3": 215.7, "unf_p16t": 213.92, "unf_p32": 214.96}, "base_over_var": {"base": 1.0, "o16t": 0.9981, "qkv16t": 0.9998, "un16t": 0.9967, "all3": 0.9899, "unf_p16t": 0.9973, "unf_p32": 0.9925}, "ok": {"base": [true, "update relative L2 error 8.713e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "o16t": [true, "update relative L2 error 8.710e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "qkv16t": [true, "update relative L2 error 8.697e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "un16t": [true, "update relative L2 error 8.713e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "all3": [true, "update relative L2 error 8.700e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "unf_p16t": [true, "update relative L2 error 8.714e-03 (worst row 1.432e-02) [bound 0.141]; attentio"], "unf_p32": [true, "update relative L2 error 8.709e-03 (worst row 1.428e-02) [bound 0.141]; attentio"]}}
+ROW {"T": 32, "layer": "full", "med_us": {"base": 324.99, "qkvn2": 324.48, "un32b": 324.93, "un32c": 326.69, "un16t": 328.24, "o32t": 325.34, "o16t": 326.46, "unf_p32": 325.26, "unf_p32b": 325.81}, "base_over_var": {"base": 1.0, "qkvn2": 0.9996, "un32b": 1.0021, "un32c": 0.9936, "un16t": 0.9898, "o32t": 0.9976, "o16t": 0.9972, "unf_p32": 0.9987, "unf_p32b": 0.9973}, "ok": {"base": [true, "update relative L2 error 7.651e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "qkvn2": [true, "update relative L2 error 7.665e-03 (worst row 8.469e-03) [bound 0.150]; attentio"], "un32b": [true, "update relative L2 error 7.651e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "un32c": [true, "update relative L2 error 7.651e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "un16t": [true, "update relative L2 error 7.651e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "o32t": [true, "update relative L2 error 7.649e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "o16t": [true, "update relative L2 error 7.649e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "unf_p32": [true, "update relative L2 error 7.652e-03 (worst row 8.515e-03) [bound 0.150]; attentio"], "unf_p32b": [true, "update relative L2 error 7.652e-03 (worst row 8.515e-03) [bound 0.150]; attentio"]}}
+[ 101.2s] DONE
+
+STDERR:
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:01 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:13:02 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-S3JQCyzu9DsppUh1F5eftz

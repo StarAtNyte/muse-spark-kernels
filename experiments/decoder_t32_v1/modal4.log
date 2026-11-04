@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-R7NYhycu9Jm3lx9CnQ6cSI
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/decoder_t32_v1/m
+│   odal_runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 204s
+[mfab] moe T= 32 prod median   147.4 us  speedup vs barrier twin (twin without SC6) 1.0222 (per seed 1.033 1.022 1.018 1.022)  max|d| 0
+[mfab] moe T=128 prod median   193.0 us  speedup vs barrier twin (twin without SC6) 1.0278 (per seed 1.028 1.009 1.029 1.026)  max|d| 0
+[mfab] moe T=256 prod median   223.6 us  speedup vs barrier twin (twin without SC6) 1.0170 (per seed 1.017 1.012 1.010 1.018)  max|d| 0
+[ 205.5s] PREPARED 204.3 s
+[ 205.5s] mm_pick {"(1, 'qkv')": 'bfp', "(1, 'o')": 'bfp', "(1, 'pr')": 'bfpf', "(1, 'un')": 'bfp', "(2, 'qkv')": 'bfp', "(2, 'o')": 'bfp', "(2, 'pr')": 'bfpf', "(2, 'un')": False, "(4, 'qkv')": 'bfp', "(4, 'o')": 'bfp', "(4, 'pr')": 'bfpf', "(4, 'un')": False, "(8, 'qkv')": 'bfp', "(8, 'o')": 'bfp', "(8, 'pr')": 'bfpf', "(8, 'un')": 'bfp', "(16, 'qkv')": 'bfp', "(16, 'o')": 'bfp', "(16, 'pr')": 'bfpf', "(16, 'un')": 'bfp', "(32, 'qkv')": 'bfp', "(32, 'o')": 'bfp', "(32, 'pr')": 'bfpf', "(32, 'un')": 'bfp', "(64, 'qkv')": True, "(64, 'o')": False, "(64, 'pr')": True, "(64, 'un')": True, "(128, 'qkv')": True, "(128, 'o')": True, "(128, 'pr')": True, "(128, 'un')": True, "(256, 'qkv')": True, "(256, 'o')": True, "(256, 'pr')": True, "(256, 'un')": True}
+[ 205.5s] choice {"('qkv_gate', 16)": ('sk2',), "('o', 16)": ('sk2',), "('pooler', 16)": ('sk2',), "('unpooler', 16)": ('sk2',), "('router', 16)": ('sk2',), "('qkv_gate', 32)": ('sk2',), "('o', 32)": ('sk2',), "('pooler', 32)": ('sk2',), "('unpooler', 32)": ('sk2',), "('router', 32)": ('sk2',), "('qkv_gate', 8)": ('sk2',), "('o', 8)": ('sk2',), "('pooler', 8)": ('sk2',), "('unpooler', 8)": ('sk2',), "('router', 8)": ('sk2',)}
+[ 205.5s] sk2 names ['o16t_r68', 'o32h_r100', 'o32t_r100', 'o8h_r88', 'pooler', 'pooler16t_r192', 'pooler32_r144', 'pooler32b_r200', 'pooler8h_r72', 'qkv16_r176', 'qkv16r_r100', 'qkv16r_r200', 'qkv16t_r200', 'qkv32_r208', 'qkv32n2_r208', 'qkv8_r176', 'qkv8r_r100', 'qkvc2_r100', 'qkvc2_r200', 'router', 'slice8_r192', 'unpooler16h_r100', 'unpooler16t_r72', 'unpooler32_r144', 'unpooler32b_r200', 'unpooler32c_r144']
+[ 205.5s] PCX_CFG {}
+[ 205.5s] qkvbig configs [(64, 36, 128, 3, 8, 539, 5), (64, 36, 128, 3, 8, 6683, 5), (64, 36, 256, 3, 4, 219, 5)]
+ROW {"T": 16, "layer": "sliding", "med_us": {"base": 131.42, "qb0": 146.96, "qb1": 143.15, "qb2": 170.42}, "base_over_var": {"base": 1.0, "qb0": 0.8958, "qb1": 0.9201, "qb2": 0.7734}, "ok": {"base": [true, "update relative L2 error 7.602e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "qb0": [true, "update relative L2 error 7.621e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "qb1": [true, "update relative L2 error 7.621e-03 (worst row 9.717e-03) [bound 0.140]; attentio"], "qb2": [true, "update relative L2 error 7.621e-03 (worst row 9.717e-03) [bound 0.140]; attentio"]}}
+NOTE qkv kernel is the first in the graph
+PROF 16 sliding base {"void okc::moe_fused<false>(okc::Params)": 68.07, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 19.83, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.19, "void sk2_kernel<1, 16, 3, 1, 4, 2, 5, true, fa": 11.27, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.23, "void (anonymous namespace)::attn_kernel<1, fal": 9.59, "_sl_tile_route": 4.66, "void glue_cluster_boundary<4, 32, true, false,": 4.6, "void glue_cluster_boundary<4, 32, false, false": 4.22}
+PROF 16 sliding qb0 {"void okc::moe_fused<false>(okc::Params)": 67.8, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 12": 25.04, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 20.09, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.5, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.16, "void (anonymous namespace)::attn_kernel<1, fal": 9.56, "_sl_tile_route": 4.58, "void glue_cluster_boundary<4, 32, true, false,": 4.32, "void glue_cluster_boundary<4, 32, false, false": 4.07}
+PROF 16 sliding qb1 {"void okc::moe_fused<false>(okc::Params)": 64.95, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 12": 25.22, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 19.63, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 14.68, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.68, "void (anonymous namespace)::attn_kernel<1, fal": 10.01, "_sl_tile_route": 4.62, "void glue_cluster_boundary<4, 32, true, false,": 4.61, "void glue_cluster_boundary<4, 32, false, false": 3.94}
+PROF 16 sliding qb2 {"void okc::moe_fused<false>(okc::Params)": 68.51, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 25": 47.89, "void sk2_kernel<1, 16, 4, 1, 8, 1, 5, true, fa": 19.95, "void sk2_kernel<1, 16, 4, 1, 4, 1, 5, true, fa": 15.19, "void sk2_kernel<1, 16, 4, 1, 4, 1, 4, true, fa": 11.07, "void (anonymous namespace)::attn_kernel<1, fal": 9.42, "void glue_cluster_boundary<4, 32, true, false,": 4.65, "_sl_tile_route": 4.61, "void glue_cluster_boundary<4, 32, false, false": 4.12}
+ROW {"T": 32, "layer": "sliding", "med_us": {"base": 168.16, "qb0": 178.98, "qb1": 172.86, "qb2": 201.94}, "base_over_var": {"base": 1.0, "qb0": 0.9362, "qb1": 0.9702, "qb2": 0.8298}, "ok": {"base": [true, "update relative L2 error 9.670e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "qb0": [true, "update relative L2 error 9.657e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "qb1": [true, "update relative L2 error 9.657e-03 (worst row 2.059e-02) [bound 0.121]; attentio"], "qb2": [true, "update relative L2 error 9.657e-03 (worst row 2.059e-02) [bound 0.121]; attentio"]}}
+NOTE qkv kernel is the first in the graph
+PROF 32 sliding base {"void okc::moe_fused<false>(okc::Params)": 97.65, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 21.9, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 15.94, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 14.54, "void (anonymous namespace)::attn_kernel<1, fal": 12.87, "void sk2_kernel<2, 32, 3, 1, 4, 2, 4, true, fa": 12.64, "_graft_row_boundary_pre": 9.66, "_sl_tile_route": 5.6}
+PROF 32 sliding qb0 {"void okc::moe_fused<false>(okc::Params)": 97.72, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 12": 23.67, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 21.45, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.12, "void (anonymous namespace)::attn_kernel<1, fal": 11.5, "_graft_row_boundary_pre": 9.63, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 7.81, "_sl_tile_route": 5.55}
+PROF 32 sliding qb1 {"void okc::moe_fused<false>(okc::Params)": 91.42, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 12": 23.28, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 20.68, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 15.24, "void (anonymous namespace)::attn_kernel<1, fal": 11.7, "_graft_row_boundary_pre": 9.45, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 8.1, "_sl_tile_route": 5.65}
+PROF 32 sliding qb2 {"void okc::moe_fused<false>(okc::Params)": 97.14, "void qb_4d509bcf5bddaa48::qb_kernel<64, 36, 25": 45.95, "void sk2_kernel<2, 32, 4, 1, 8, 1, 3, true, fa": 21.83, "void sk2_kernel<2, 32, 4, 2, 2, 2, 3, true, fa": 16.68, "void (anonymous namespace)::attn_kernel<1, fal": 11.36, "_graft_row_boundary_pre": 9.65, "void sk2_kernel<2, 32, 2, 2, 2, 2, 3, true, fa": 7.88, "_sl_tile_route": 5.55}
+ROW {"T": 16, "layer": "full", "med_us": {"base": 213.55, "qb0": 228.83, "qb1": 223.9, "qb2": 252.26}, "base_over_var": {"base": 1.0, "qb0": 0.934, "qb1": 0.9529, "qb2": 0.8467}, "ok": {"base": [true, "update relative L2 error 8.713e-03 (worst row 1.430e-02) [bound 0.141]; attentio"], "qb0": [true, "update relative L2 error 8.734e-03 (worst row 1.447e-02) [bound 0.141]; attentio"], "qb1": [true, "update relative L2 error 8.733e-03 (worst row 1.447e-02) [bound 0.141]; attentio"], "qb2": [true, "update relative L2 error 8.733e-03 (worst row 1.447e-02) [bound 0.141]; attentio"]}}
+ROW {"T": 32, "layer": "full", "med_us": {"base": 324.14, "qb0": 337.17, "qb1": 332.51, "qb2": 359.38}, "base_over_var": {"base": 1.0, "qb0": 0.9621, "qb1": 0.9753, "qb2": 0.9009}, "ok": {"base": [true, "update relative L2 error 7.651e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "qb0": [true, "update relative L2 error 7.630e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "qb1": [true, "update relative L2 error 7.630e-03 (worst row 8.524e-03) [bound 0.150]; attentio"], "qb2": [true, "update relative L2 error 7.628e-03 (worst row 8.524e-03) [bound 0.150]; attentio"]}}
+[ 210.6s] DONE
+
+STDERR:
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:15 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-04 17:26:16 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-R7NYhycu9Jm3lx9CnQ6cSI
