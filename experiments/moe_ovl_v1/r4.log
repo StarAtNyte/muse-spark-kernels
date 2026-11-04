@@ -1,0 +1,107 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-eimeNDXuqPPAafNtuzGnyQ
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_big_v1/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 65s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.14e-10
+PREPARED 169.4
+BS 256 2563 s2 min/med/max 149.8 173.8 181.0 s3 223.7 245.5 252.7 s5max 258.8
+  rep-to-rep corr s3: 0.931 0.92  s2: 0.965  corr(s3,s2) 0.938  corr(dB,costB) 0.117  corr(s2,costA) 0.103
+  per-rep s3 spread [31.2, 29.4, 31.0, 31.5, 30.2, 29.2, 31.0, 34.6]  spin(us) med/max 19.28 28.29
+  per-CTA s3 rep std med 1.98  CTA-mean s3 spread 29.1
+  cta  91 s2 181.0 s3 252.7 dB 71.7 cB 6650 cA 15392 spin 18.95 hB [63, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [131, 0, 0, 0, 0, 0, 0, 0]
+  cta  89 s2 173.6 s3 251.9 dB 78.3 cB 6550 cA 15280 spin 28.29 hB [62, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [130, 0, 0, 0, 0, 0, 0, 0]
+  cta 110 s2 177.4 s3 251.9 dB 74.5 cB 6650 cA 15392 spin 20.98 hB [63, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [131, 0, 0, 0, 0, 0, 0, 0]
+  cta 111 s2 177.2 s3 251.4 dB 74.2 cB 6550 cA 15280 spin 20.66 hB [62, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [130, 0, 0, 0, 0, 0, 0, 0]
+  cta 115 s2 177.4 s3 250.9 dB 73.5 cB 6550 cA 15280 spin 23.03 hB [62, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [130, 0, 0, 0, 0, 0, 0, 0]
+  cta 108 s2 171.0 s3 250.9 dB 79.9 cB 6550 cA 15168 spin 27.88 hB [62, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [129, 0, 0, 0, 0, 0, 0, 0]
+  cta   1 s2 156.4 s3 227.1 dB 70.7 cB 6474 cA 15304 spin 12.22 hB [0, 0, 0, 0, 0, 0, 0, 36] uB 3 hA [0, 0, 0, 0, 0, 0, 0, 72]
+  cta   6 s2 153.1 s3 226.8 dB 73.7 cB 6474 cA 15384 spin 20.49 hB [0, 0, 0, 0, 0, 0, 0, 36] uB 3 hA [0, 0, 0, 0, 0, 0, 0, 72]
+  cta   4 s2 149.8 s3 226.6 dB 76.8 cB 6474 cA 15177 spin 20.43 hB [0, 0, 0, 0, 0, 0, 0, 36] uB 3 hA [0, 0, 0, 0, 0, 0, 0, 71]
+  cta  10 s2 150.5 s3 223.7 dB 73.2 cB 6648 cA 15384 spin 16.84 hB [0, 0, 0, 0, 0, 0, 0, 37] uB 3 hA [0, 0, 0, 0, 0, 0, 0, 72]
+BS 256 2561 s2 min/med/max 140.0 149.5 164.6 s3 211.5 218.4 228.4 s5max 234.8
+  rep-to-rep corr s3: 0.795 0.797  s2: 0.975  corr(s3,s2) 0.927  corr(dB,costB) 0.128  corr(s2,costA) 0.096
+  per-rep s3 spread [21.8, 18.7, 19.2, 18.2, 24.3, 22.8, 20.7, 24.8]  spin(us) med/max 16.78 29.8
+  per-CTA s3 rep std med 2.14  CTA-mean s3 spread 16.7
+  cta 120 s2 162.3 s3 228.4 dB 66.0 cB 5850 cA 13856 spin 18.36 hB [55, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [118, 0, 0, 0, 0, 0, 0, 0]
+  cta 109 s2 164.6 s3 228.1 dB 63.5 cB 5780 cA 13856 spin 14.97 hB [55, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [118, 0, 0, 0, 0, 0, 0, 0]
+  cta  96 s2 163.3 s3 227.8 dB 64.5 cB 5750 cA 13968 spin 14.08 hB [54, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [119, 0, 0, 0, 0, 0, 0, 0]
+  cta  94 s2 157.7 s3 227.6 dB 69.9 cB 5750 cA 13856 spin 23.51 hB [54, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [118, 0, 0, 0, 0, 0, 0, 0]
+  cta 108 s2 158.7 s3 227.6 dB 68.9 cB 5750 cA 13936 spin 22.14 hB [54, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [118, 0, 0, 0, 0, 0, 0, 0]
+  cta 101 s2 163.3 s3 227.3 dB 64.0 cB 5850 cA 13968 spin 15.02 hB [55, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [119, 0, 0, 0, 0, 0, 0, 0]
+  cta  18 s2 146.9 s3 212.5 dB 65.5 cB 5682 cA 13905 spin 13.15 hB [0, 0, 0, 0, 0, 38, 0, 0] uB 3 hA [0, 0, 0, 0, 0, 73, 0, 0]
+  cta  16 s2 142.6 s3 212.2 dB 69.6 cB 5682 cA 13905 spin 18.23 hB [0, 0, 0, 0, 0, 38, 0, 0] uB 3 hA [0, 0, 0, 0, 0, 73, 0, 0]
+  cta  28 s2 141.1 s3 212.0 dB 70.9 cB 5778 cA 13877 spin 16.80 hB [0, 0, 0, 0, 0, 0, 0, 32] uB 3 hA [0, 0, 0, 73, 0, 0, 0, 9]
+  cta  35 s2 140.0 s3 211.5 dB 71.4 cB 5793 cA 13855 spin 20.16 hB [0, 0, 0, 27, 0, 0, 0, 13] uB 3 hA [0, 0, 0, 0, 0, 0, 0, 65]
+BS 128 1281 s2 min/med/max 122.1 143.9 148.7 s3 188.7 204.3 208.4 s5max 213.5
+  rep-to-rep corr s3: 0.786 0.81  s2: 0.953  corr(s3,s2) 0.872  corr(dB,costB) 0.126  corr(s2,costA) 0.178
+  per-rep s3 spread [21.5, 22.0, 23.3, 21.5, 23.3, 21.0, 23.3, 23.0]  spin(us) med/max 16.5 31.79
+  per-CTA s3 rep std med 1.87  CTA-mean s3 spread 19.0
+  cta  88 s2 148.7 s3 208.4 dB 59.6 cB 5280 cA 12320 spin 17.73 hB [50, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta 105 s2 145.7 s3 208.4 dB 62.7 cB 5350 cA 12320 spin 16.50 hB [50, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta 116 s2 146.9 s3 208.1 dB 61.2 cB 5280 cA 12320 spin 15.95 hB [50, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta  90 s2 147.5 s3 207.9 dB 60.4 cB 5280 cA 12320 spin 15.99 hB [50, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta 113 s2 143.6 s3 207.9 dB 64.3 cB 5380 cA 12400 spin 20.16 hB [51, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta 101 s2 145.7 s3 207.9 dB 62.2 cB 5280 cA 12320 spin 18.43 hB [50, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [105, 0, 0, 0, 0, 0, 0, 0]
+  cta   6 s2 122.1 s3 190.7 dB 68.6 cB 5348 cA 12164 spin 22.73 hB [0, 17, 0, 0, 25, 0, 0, 0] uB 4 hA [0, 0, 0, 0, 68, 0, 0, 0]
+  cta   4 s2 127.5 s3 189.7 dB 62.2 cB 5226 cA 12337 spin 18.18 hB [0, 0, 0, 0, 38, 0, 0, 0] uB 3 hA [0, 0, 0, 0, 69, 0, 0, 0]
+  cta   1 s2 127.2 s3 189.4 dB 62.2 cB 5358 cA 12337 spin 14.39 hB [0, 0, 0, 0, 39, 0, 0, 0] uB 3 hA [0, 0, 0, 0, 69, 0, 0, 0]
+  cta   0 s2 122.1 s3 188.7 dB 66.6 cB 5226 cA 12164 spin 15.82 hB [0, 0, 0, 0, 38, 0, 0, 0] uB 3 hA [0, 0, 0, 0, 68, 0, 0, 0]
+BS 128 1284 s2 min/med/max 138.0 157.2 161.5 s3 208.4 223.7 227.6 s5max 232.2
+  rep-to-rep corr s3: 0.872 0.764  s2: 0.961  corr(s3,s2) 0.9  corr(dB,costB) 0.228  corr(s2,costA) 0.108
+  per-rep s3 spread [23.8, 23.3, 21.2, 18.7, 20.2, 21.8, 20.7, 26.6]  spin(us) med/max 17.01 29.32
+  per-CTA s3 rep std med 1.76  CTA-mean s3 spread 19.2
+  cta 116 s2 160.5 s3 227.6 dB 67.1 cB 5880 cA 13520 spin 20.25 hB [56, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [115, 0, 0, 0, 0, 0, 0, 0]
+  cta  34 s2 160.0 s3 227.1 dB 67.1 cB 5880 cA 13520 spin 15.70 hB [56, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [115, 0, 0, 0, 0, 0, 0, 0]
+  cta  32 s2 158.0 s3 226.8 dB 68.9 cB 5880 cA 13488 spin 20.41 hB [56, 0, 0, 0, 0, 0, 0, 0] uB 4 hA [114, 0, 0, 0, 0, 0, 0, 0]
+  cta 111 s2 155.4 s3 226.6 dB 71.2 cB 5950 cA 13408 spin 22.96 hB [56, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [114, 0, 0, 0, 0, 0, 0, 0]
+  cta  29 s2 159.0 s3 226.6 dB 67.6 cB 5950 cA 13520 spin 17.53 hB [56, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [115, 0, 0, 0, 0, 0, 0, 0]
+  cta  81 s2 158.7 s3 226.3 dB 67.6 cB 5850 cA 13408 spin 20.78 hB [55, 0, 0, 0, 0, 0, 0, 0] uB 5 hA [114, 0, 0, 0, 0, 0, 0, 0]
+  cta  14 s2 141.3 s3 212.7 dB 71.4 cB 5896 cA 13535 spin 15.54 hB [0, 0, 0, 0, 0, 39, 0, 0] uB 4 hA [0, 0, 0, 0, 0, 71, 0, 0]
+  cta  11 s2 143.4 s3 209.9 dB 66.6 cB 5826 cA 13535 spin 11.74 hB [0, 0, 0, 0, 0, 39, 0, 0] uB 3 hA [0, 0, 0, 0, 0, 71, 0, 0]
+  cta  15 s2 138.8 s3 209.4 dB 70.7 cB 5826 cA 13430 spin 20.58 hB [0, 0, 0, 0, 0, 39, 0, 0] uB 3 hA [0, 0, 0, 0, 0, 70, 0, 0]
+  cta  13 s2 138.0 s3 208.4 dB 70.4 cB 5826 cA 13350 spin 16.34 hB [0, 0, 0, 0, 0, 39, 0, 0] uB 3 hA [0, 0, 0, 0, 0, 70, 0, 0]
+DONE 169.5
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-eimeNDXuqPPAafNtuzGnyQ

@@ -106,3 +106,51 @@ def patch_fin1(a):
 '''
     a = a[:i] + new + a[i:j] + "#endif\n" + a[j:]
     return a
+
+# OKC_BOFF (lambda in percent, integer; 0 = off): phase-B stream-K boundaries offset by each CTA's predicted phase-A lateness.
+# The A ranges equalize the A cost table, but measured A stage times by n-tiles are flatter (OKC_WGST, r4: fat CTAs
+# end A 20-30 us before skinny ones, deterministically). B boundary c sits at the uniform position minus lambda x the
+# true-cost deviation of the A prefix [0, a_c): early-finishing CTAs take more B. Every boundary is a pure function of
+# c (all CTAs agree); the fixup-slot owner of a split B unit is found by binary search over c.
+def patch_boff(a, T="112, 122, 130, 138, 146, 163, 168, 173"):
+    a = rep(a, "#define OKC_DEBUG 0\n#endif\n", "#define OKC_DEBUG 0\n#endif\n#ifndef OKC_BOFF\n#define OKC_BOFF 0\n#endif\n#ifndef OKC_WGST\n#define OKC_WGST " + T + "\n#endif\n")
+    a = rep(a, "  uint32_t wtotB;     // WGS: phase-B total cost\n", "  uint32_t wtotB;     // WGS: phase-B total cost\n  int wcpT[JMAX + 1]; // BOFF: phase-A true-cost prefix per job\n  uint32_t wtotT;\n")
+    a = rep(a, "constexpr unsigned long long WGS_PA = wgs_pack8(WGS_CA), WGS_PB = wgs_pack8(WGS_CB);",
+            "constexpr int WGS_CT[8] = {OKC_WGST};\nconstexpr unsigned long long WGS_PA = wgs_pack8(WGS_CA), WGS_PB = wgs_pack8(WGS_CB), WGS_PT = wgs_pack8(WGS_CT);")
+    a = rep(a, "  uint32_t acc = 0, accB = 0;\n  for (int j = 0; j < nj; ++j) {\n    S.wcp[j] = (int)acc; S.wcpB[j] = (int)accB;\n",
+            "  uint32_t acc = 0, accB = 0, accT = 0;\n  for (int j = 0; j < nj; ++j) {\n    S.wcp[j] = (int)acc; S.wcpB[j] = (int)accB; S.wcpT[j] = (int)accT;\n"
+            "    accT += ((uint32_t)((WGS_PT >> (8 * (((S.jC[j] + 7) >> 3) - 1))) & 255ull) * 16u + OKC_WGSU) << 5;\n")
+    a = rep(a, "  S.wcp[nj] = (int)acc; S.wcpB[nj] = (int)accB;\n  S.wtot = acc; S.wtotB = accB;\n",
+            "  S.wcp[nj] = (int)acc; S.wcpB[nj] = (int)accB; S.wcpT[nj] = (int)accT;\n  S.wtot = acc; S.wtotB = accB; S.wtotT = accT;\n")
+    helpers = r'''
+#if OKC_BOFF
+// true cost of phase-A stages [0, g) (the unit cost sits before its stage 0, as in wgs_stage_at)
+__device__ __forceinline__ float wgs_ftrue(const Smem& S, int nj, int g) {
+  const int j = g >> 9;
+  if (j >= nj) return (float)S.wtotT;
+  const int r = g & 511, un = r >> 4, st = r & 15;
+  const uint32_t cs = (uint32_t)((WGS_PT >> (8 * (((S.jC[j] + 7) >> 3) - 1))) & 255ull), U = (uint32_t)OKC_WGSU;
+  return (float)((uint32_t)S.wcpT[j] + (uint32_t)un * (16u * cs + U) + (st ? U + (uint32_t)st * cs : 0u));
+}
+// phase-B boundary of CTA c (first stage of its B range)
+__device__ __forceinline__ int wgs_bbound(const Smem& S, int nj, int c, int G) {
+  if (c <= 0) return 0;
+  if (c >= G) return nj << 8;
+  const int ac = wgs_stage_at(S, nj, 0, S.wtot * (uint32_t)c / (uint32_t)G);
+  const float fc = (float)c / (float)G;
+  float x = fc * (float)S.wtotB - (0.01f * (float)(OKC_BOFF)) * (wgs_ftrue(S, nj, ac) - fc * (float)S.wtotT);
+  x = fminf(fmaxf(x, 0.f), (float)S.wtotB - 1.f);
+  return wgs_stage_at(S, nj, 1, (uint32_t)x);
+}
+#endif
+'''
+    anchor = "// this CTA's stage ranges (stream-K over 256-row units x 16 stages), one thread: the producers stream the same\n"
+    a = rep(a, anchor, helpers + anchor)
+    a = rep(a, "  wgs_range(S, nj, 1, blockIdx.x, gridDim.x, S.wgr[2], S.wgr[3]);\n",
+            "#if OKC_BOFF\n  S.wgr[2] = wgs_bbound(S, nj, blockIdx.x, gridDim.x);\n  S.wgr[3] = max(S.wgr[2], wgs_bbound(S, nj, blockIdx.x + 1, gridDim.x));\n#else\n"
+            "  wgs_range(S, nj, 1, blockIdx.x, gridDim.x, S.wgr[2], S.wgr[3]);\n#endif\n")
+    old = "__device__ __forceinline__ int wgs_cta_of(const Smem& S, int pb, int s, int G) {\n"
+    new = old + ("#if OKC_BOFF\n  if (pb) {  // largest c with bbound(c) <= s\n    const int nj = S.njF + S.njS;\n    int lo = 0, hi = G;\n"
+                 "    while (hi - lo > 1) { const int mid = (lo + hi) >> 1; if (wgs_bbound(S, nj, mid, G) <= s) lo = mid; else hi = mid; }\n    return lo;\n  }\n#endif\n")
+    a = rep(a, old, new)
+    return a
