@@ -1,0 +1,56 @@
+✓ checking experiments/proj_bf16_v1/submission.py on muse_bf16_proj  job 83717ae6863a4dfc
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› queued for a GPU  0:21
+› queued for a GPU  0:09
+› running the tests, then timing against SGLang  0:40
+› running the tests, then timing against SGLang  0:20
+› running the tests, then timing against SGLang  0:50
+› running the tests, then timing against SGLang  1:20
+› running the tests, then timing against SGLang  1:50
+› running the tests, then timing against SGLang  2:20
+
+ran for 2:11 · queued 0:39
+
+✓ muse_bf16_proj  passed  check run, off the board  job 83717ae6863a4dfc
+
+  1.594×  ━━━━━━━━━╋━━━━━━────────────  faster than SGLang  95%: 1.570–1.618×
+
+  time        3,030.0 µs
+  tests       9/9 passed
+  profile     experiments/proj_bf16_v1/profiles/submission.83717ae6863a4dfc.txt  and .json
+  output      experiments/proj_bf16_v1/profiles/submission.83717ae6863a4dfc.log
+
+  CASE                    SGLANG     YOURS   SPEEDUP
+  ─────────────────────────────────────────────────────────────────
+  decode 1 · qkv_gate    14.1 µs    8.7 µs    1.626×   ━━━━━━╋━━━──
+  decode 1 · o            7.1 µs    5.3 µs    1.336×   ━━━━━━╋━━───
+  decode 1 · pooler      21.8 µs   13.3 µs    1.639×   ━━━━━━╋━━━──
+  decode 1 · unpooler     7.1 µs    3.4 µs    2.098×   ━━━━━━╋━━━━━
+  decode 1 · router      10.2 µs    3.3 µs    3.106×   ━━━━━━╋━━━━━
+  decode 16 · qkv_gate   14.0 µs    9.5 µs    1.472×   ━━━━━━╋━━───
+  decode 16 · o           6.7 µs    5.4 µs    1.247×   ━━━━━━╋━────
+  decode 16 · pooler     21.7 µs   14.3 µs    1.525×   ━━━━━━╋━━━──
+  decode 16 · unpooler   18.5 µs   13.4 µs    1.378×   ━━━━━━╋━━───
+  decode 16 · router     15.0 µs    4.0 µs    3.699×   ━━━━━━╋━━━━━
+  decode 32 · qkv_gate   14.6 µs   10.3 µs    1.417×   ━━━━━━╋━━───
+  decode 32 · o           6.9 µs    5.7 µs    1.212×   ━━━━━━╋━────
+  decode 32 · pooler     22.2 µs   15.0 µs    1.482×   ━━━━━━╋━━───
+  decode 32 · unpooler   18.8 µs   14.5 µs    1.290×   ━━━━━━╋━────
+  decode 32 · router     15.0 µs    4.9 µs    3.081×   ━━━━━━╋━━━━━
+  verify 1 · qkv_gate    14.3 µs    9.1 µs    1.564×   ━━━━━━╋━━━──
+  verify 1 · o            6.5 µs    5.0 µs    1.295×   ━━━━━━╋━────
+  verify 1 · pooler      21.6 µs   14.0 µs    1.549×   ━━━━━━╋━━━──
+  verify 1 · unpooler     7.2 µs    4.4 µs    1.653×   ━━━━━━╋━━━──
+  verify 1 · router      26.2 µs    4.2 µs    6.283×   ━━━━━━╋━━━━━
+  verify 16 · qkv_gate   17.2 µs   12.1 µs    1.415×   ━━━━━━╋━━───
+  verify 16 · o           7.7 µs    7.0 µs    1.105×   ━━━━━━╋─────
+  verify 16 · pooler     25.7 µs   17.5 µs    1.465×   ━━━━━━╋━━───
+  verify 16 · unpooler   19.8 µs   17.2 µs    1.155×   ━━━━━━╋─────
+  verify 16 · router     16.4 µs    6.1 µs    2.696×   ━━━━━━╋━━━━━
+  verify 32 · qkv_gate   19.7 µs   18.4 µs    1.072×   ━━━━━━╋─────
+  verify 32 · o           9.4 µs    8.8 µs    1.070×   ━━━━━━╋─────
+  verify 32 · pooler     29.3 µs   24.3 µs    1.204×   ━━━━━━╋━────
+  verify 32 · unpooler   24.6 µs   23.3 µs    1.058×   ━━━━━━┼─────
+  verify 32 · router     17.5 µs    6.8 µs    2.563×   ━━━━━━╋━━━━━
+  20 of 20 runs left today, 37 of 40 checks on muse_bf16_proj
