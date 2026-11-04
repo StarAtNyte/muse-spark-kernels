@@ -1,4 +1,5 @@
 # okc: problem=muse_bf16_proj
+# + proj_bf16_v1 (2026-11-05): BF16 split-K partials and BF16 combines restored per the organizer clarification of 2026-11-03/04 (rs128/rs32 rq backend, forced unpooler m=8 BF16 atomic split, BF16-output cuBLAS fallbacks); the compact FP32 QKV m=128 route is kept only if it beats the dispatcher at prepare time.
 # + per-thread primary CUDA context bind around kernel_fn (team keell0renz, 2026-10-31: a state first called from a fresh OS thread failed cuTensorMapEncodeTiled 201 at m 16/32; pattern from alygg77 / Matsvei)
 # + v6 (team keell0renz, E330+): every m in 2..384 that is not one of the scored 1 / 8 / 16 / 32 / 128 / 256 gets a per-(layer, m) route built and validated in prepare() (pinned kernels called with the real m, rq plans with TMA zero-fill, cuBLAS on the K-major weight, the m=256 cuBLASLt pin); the scored m take exactly the v5 path
 # + router m=128 rk K-split 16 (grid 128, was 12) from the S sweep (team keell0renz)
@@ -2203,7 +2204,7 @@ int64_t gvregs(int64_t inst, torch::Tensor W, torch::Tensor W2, torch::Tensor x,
         ("router", 32): "2.4.2.1.4.2.16.1.0.0",
     }
     # pw52: the proven pick per gx group (unpooler m1/m8 = uk-s4x); every other gx group's proven pick is r6 (no gx pick).
-    FORCE_GX = {("unpooler", 8)}
+    FORCE_GX = {("unpooler", 8)}  # BF16 atomic split reduction (allowed within tolerance, organizer 2026-11-03/04)
     PROVEN_GX = {("unpooler", 1): "uk-s4x", ("unpooler", 8): "uk-s4x",
                  ("router", 8): "rk-s16w8x", ("router", 16): "rk-s16w8z", ("router", 32): "rk-s8z"}
     # pw52: the proven pick per rq32 group (pw49s's judge run); a group missing here was picked as r6 (no rq path).
@@ -2341,6 +2342,7 @@ int64_t gvregs(int64_t inst, torch::Tensor W, torch::Tensor W2, torch::Tensor x,
                               ("uk-s4w4", "unpooler", (1, 1, 4, 4, 4, 1, 0, 4), "x")):    # 256 CTAs x 128 thr
         for _c in _vs:
             GRD.append((_nm + _c, _ly, (1, 8), _g, 1 | {"z": _ZF, "x": _XZ}[_c]))
+    # BF16 atomic split reductions are allowed within tolerance (organizer 2026-11-03/04): every layer bakes them.
     GXP += GRD
 
     # wf_qkv2: qkv_gate m=1/m=8 SM-coverage bake. The incumbent has no gv bake for these buckets (r6's own v12 bake picks
@@ -6237,7 +6239,7 @@ int64_t rqrun(int64_t v, torch::Tensor W, torch::Tensor x, torch::Tensor out, to
     RQBAKE = {128: [], 256: []}  # wf_jsweep: o m=128 (s4s5hz 13.06 vs r6 11.17) and all m=256 (n256* 30.8-31.9 vs r6
     # 27.7-28.1) lost by >1.9 us on the judge -> dropped, r6 serves them (unchanged picks, 3 fewer instances to compile)
     RQLAYERS = ("pooler", "qkv_gate", "unpooler", "o")
-    RQ = True
+    RQ = True  # rs128/rs32 combine split BF16 partials (allowed within tolerance)
     _rqthr = []
 
 
@@ -11339,7 +11341,7 @@ import torch as _v6_torch
 # pin on the layouts of the real m. Each candidate is validated (rel L2 vs an fp32 / fp64 reference, the probe rows, normal and
 # outlier inputs) at EVERY m it serves and timed (cold-L2 graph replays) at a few m of its range against the default; a
 # candidate that does not beat the default by V6_GAIN stays out, so a bad pick can only cost the default's speed.
-V6_ON = True
+V6_ON = False  # avoid the exhaustive per-token-count routing table
 V6_BUDGET_S = 60.0   # timing + validation budget of the route build (v5's prepare is ~72 s; the limit is 300 s)
 V6_GAIN = 0.97       # a candidate must run in under 97% of the default's time at that m (cold-L2 graph replays) to earn the route
 V6_REPS = 14
@@ -11565,11 +11567,19 @@ def prepare(weights):
 def kernel_fn(data, state):
     cfg = data["config"]
     name = _TABLE.get(f"{cfg['layer']}:{cfg['m']}")
-    if name is None:  # off the scored token counts: the v6 route when prepare() found one, else the v5 default
-        route = state.get("routes", {}).get((cfg["layer"], cfg["m"]))
-        if route is not None:
-            return _v6_call(route, data, state)
-        name = _DEFAULT
+    if name is None:
+        # General bucket rules: use already-prepared kernels that support nearby sizes.
+        m, layer = cfg["m"], cfg["layer"]
+        if layer == "router" and 1 < m < 32:
+            name = "nb"
+        elif layer == "router" and 32 < m < 256:
+            name = "vjeux"
+        elif layer in ("qkv_gate", "unpooler") and 8 < m < 32:
+            name = "vjeux"
+        elif layer in ("o", "pooler") and 16 < m < 32:
+            name = "vjeux"
+        else:
+            name = _DEFAULT
     if name == "ag" and not _K["ag"]["has"](state["ag"], (cfg["layer"], cfg["m"])):
         name = _DEFAULT
     return _K[name]["kernel_fn"](data, state[name])
@@ -11627,3 +11637,396 @@ _ctx_parent_kernel_fn = kernel_fn
 def kernel_fn(data, state):
     _ctx_bind(data["x"])
     return _ctx_parent_kernel_fn(data, state)
+
+
+# Compact FP32-reduction QKV backend, transferred from the decoder.
+import torch
+import hashlib
+from torch.utils.cpp_extension import load_inline
+def tt_v14_qkv_qbig_mma(n):
+    regs = ','.join((f'%{i}' for i in range(n // 2)))
+    outs = ','.join((f'"+f"(a[{i}])' for i in range(n // 2)))
+    return f'__device__ __forceinline__ void q_mma_{n}(float* a,uint64_t x,uint64_t w) {{\n      asm volatile("wgmma.mma_async.sync.aligned.m64n{n}k16.f32.bf16.bf16 {{{regs}}}, %{n // 2}, %{n // 2 + 1}, 1, 1, 1, 0, 0;" : {outs} : "l"(x),"l"(w));\n    }}'
+tt_v14_qkv_QKVBIG_CUDA = r'''
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <cuda_bf16.h>
+#include <stdint.h>
+#include <algorithm>
+#define QD __device__ __forceinline__
+QD uint32_t q_addr(const void* p) {return (uint32_t)__cvta_generic_to_shared(p);}
+QD void q_init(uint32_t p,int n) {asm volatile("mbarrier.init.shared::cta.b64 [%0],%1;"::"r"(p),"r"(n):"memory");}
+QD void q_expect(uint32_t p,int n) {asm volatile("mbarrier.arrive.expect_tx.shared::cta.b64 _,[%0],%1;"::"r"(p),"r"(n):"memory");}
+QD void q_wait(uint32_t p,int phase) {
+  asm volatile("{.reg .pred p; L: mbarrier.try_wait.parity.acquire.cluster.shared::cta.b64 p,[%0],%1; @!p bra L;}"::"r"(p),"r"(phase):"memory");
+}
+QD void q_sync() {asm volatile("barrier.cluster.arrive.release.aligned; barrier.cluster.wait.acquire.aligned;":::"memory");}
+QD uint32_t q_map(uint32_t p,int rank) {uint32_t d;asm("mapa.shared::cluster.u32 %0,%1,%2;":"=r"(d):"r"(p),"r"(rank));return d;}
+QD void q_push(uint32_t p,float4 v,uint32_t b) {
+  asm volatile("st.async.shared::cluster.mbarrier::complete_tx::bytes.v4.f32 [%0],{%1,%2,%3,%4},[%5];"::"r"(p),"f"(v.x),"f"(v.y),"f"(v.z),"f"(v.w),"r"(b):"memory");
+}
+QD uint64_t q_desc(uint32_t p) {return uint64_t((p&0x3ffff)>>4)|(uint64_t(64)<<32)|(uint64_t(1)<<62);}
+QD uint64_t q_time() {uint64_t t;asm volatile("mov.u64 %0, %%globaltimer;":"=l"(t)::"memory");return t;}
+QD void q_tma(uint32_t p,const void* tm,int k,int r,uint32_t b,uint64_t policy) {
+  asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes.L2::cache_hint [%0],[%1,{%2,%3}],[%4],%5;"::"r"(p),"l"(tm),"r"(k),"r"(r),"r"(b),"l"(policy):"memory");
+}
+QD void q_tma3(uint32_t p,const void* tm,int k,int r,uint32_t b,uint64_t policy) {
+  asm volatile("cp.async.bulk.tensor.3d.shared::cluster.global.mbarrier::complete_tx::bytes.L2::cache_hint [%0],[%1,{0,%2,%3}],[%4],%5;"::"r"(p),"l"(tm),"r"(k/64),"r"(r),"r"(b),"l"(policy):"memory");
+}
+@@MMA@@
+template<int NR,int G,int TM,int S,int ST,int PIPE,int RED,bool PROFILE>
+__global__ __launch_bounds__((PIPE&2)?256:128) void qb_kernel(const __grid_constant__ CUtensorMap tw,
+    const __grid_constant__ CUtensorMap tx,__nv_bfloat16* out,int m,unsigned long long* stamps) {
+  constexpr int KT=(PIPE&32)?2:1, LR=(2304+G-1)/G, WB=NR*128, XB=TM*128, SB=KT*(WB+XB);
+  constexpr int NV=NR*TM/4, OWN=RED>=4?((NV/128+S-1)/S)*128:((PIPE&16)?(NV+S-1)/S:((NV+128*S-1)/(128*S))*128);
+  constexpr int RB=ST*SB+ST*16, RECV=RED==3?0:RB+16;
+  extern __shared__ __align__(1024) unsigned char sm[];
+  const int tid=threadIdx.x, lane=tid&31, rank=blockIdx.x%S, group=blockIdx.x/S;
+  const int tok=blockIdx.y*TM, row=group*2304/G, rows=(group+1)*2304/G-row;
+  const int kb=(128/KT)*rank/S, nkb=(128/KT)*(rank+1)/S-kb, own=RED>=4?((NV/128+S-1-rank)/S)*128:min(OWN,NV-rank*OWN);
+  const uint32_t base=q_addr(sm), bars=base+ST*SB, empty=bars+ST*8, rb=base+RB;
+  uint64_t begin=0, stream_end=0;
+  if constexpr(PROFILE) begin=q_time();
+  if constexpr(LR<NR) {
+    for(int i=tid;i<ST*(NR-LR)*32;i+=blockDim.x) {
+      int stage=i/((NR-LR)*32), j=i%((NR-LR)*32);
+      ((uint32_t*)(sm+stage*SB+LR*128))[j]=0;
+    }
+    asm volatile("fence.proxy.async.shared::cta;":::"memory");
+    __syncthreads();
+  }
+  uint64_t pw,px;
+  asm volatile("createpolicy.fractional.L2::evict_first.b64 %0, 1.0;":"=l"(pw));
+  asm volatile("createpolicy.fractional.L2::evict_last.b64 %0, 1.0;":"=l"(px));
+  auto tma=[&](uint32_t p,const void* tm,int k,int r,uint32_t b,uint64_t policy) {
+    if constexpr(PIPE&2048)q_tma3(p,tm,k,r,b,policy);else q_tma(p,tm,k,r,b,policy);
+  };
+  if constexpr(PIPE&4096)asm volatile("createpolicy.fractional.L2::evict_normal.b64 %0, 1.0;":"=l"(pw));
+  auto load=[&](int i) {
+    const int stage=i%ST;
+    q_expect(bars+stage*8,KT*(LR*128+XB));
+    if constexpr(KT==2)tma(base+stage*SB,&tw,0,(group*128+(kb+i)*KT)*NR,bars+stage*8,pw);
+    else tma(base+stage*SB,&tw,(kb+i)*64,group*LR,bars+stage*8,pw);
+#pragma unroll
+    for(int q=0;q<KT;q++)tma(base+stage*SB+KT*WB+q*XB,&tx,((kb+i)*KT+q)*64,tok,bars+stage*8,px);
+  };
+  if(tid==((PIPE&2)?128:0)) {
+#pragma unroll
+    for(int i=0;i<ST;i++) {q_init(bars+i*8,1);if constexpr(PIPE&2)q_init(empty+i*8,4);}
+    if constexpr(S>1) q_init(rb,1);
+    asm volatile("fence.proxy.async.shared::cta;":::"memory");
+    if constexpr(S>1 && RED<4) {q_expect(rb,(S-1)*own*16);asm volatile("fence.mbarrier_init.release.cluster;":::"memory");}
+#pragma unroll
+    for(int i=0;i<ST;i++) if(i<nkb)load(i);
+  }
+  __syncthreads();
+  if constexpr(S>1 && RED>=4) {
+    if(tid==((PIPE&2)?128:0)) {
+      q_expect(rb,(S-1)*own*16);
+      asm volatile("fence.mbarrier_init.release.cluster;":::"memory");
+    }
+    __syncthreads();
+  }
+  if constexpr(S>1 && RED!=3) asm volatile("barrier.cluster.arrive.relaxed.aligned;":::"memory");
+  if constexpr(PIPE&2) {
+    if(tid>=128) {
+      if(tid==128) for(int i=ST;i<nkb;i++) {q_wait(empty+(i%ST)*8,((i/ST)-1)&1);load(i);}
+      if constexpr(S>1) {
+        if constexpr(RED==3) asm volatile("barrier.cluster.arrive.release.aligned;":::"memory");
+        asm volatile("barrier.cluster.wait.acquire.aligned;":::"memory");
+        if constexpr(RED==1 || RED==3) q_sync();
+      }
+      return;
+    }
+  }
+  float a[(TM/64)*(NR/2)];
+#pragma unroll
+  for(int h=0;h<TM/64;h++)
+#pragma unroll
+    for(int j=0;j<NR/2;j++) asm volatile("mov.b32 %0, 0;":"=f"(a[h*(NR/2)+j]));
+if constexpr(PIPE&64) asm volatile("wgmma.fence.sync.aligned;":::"memory");
+#pragma unroll 1
+  for(int i=0;i<nkb;i++) {
+    const int stage=i%ST;
+    q_wait(bars+stage*8,(i/ST)&1);
+#pragma unroll
+    for(int h=0;h<TM/64;h++)
+#pragma unroll
+      for(int j=0;j<NR/2;j++) if constexpr(!(PIPE&128)) asm volatile("":"+f"(a[h*(NR/2)+j])::"memory");
+    if constexpr(!(PIPE&64)) asm volatile("wgmma.fence.sync.aligned;":::"memory");
+#pragma unroll
+    for(int k=0;k<4*KT;k++) {
+      if constexpr(PIPE&8) {
+        uint64_t dx=q_desc(base+stage*SB+KT*WB+(k/4)*XB+(k%4)*32),dw=q_desc(base+stage*SB+(k/4)*WB+(k%4)*32);
+        @@SWAP@@
+      } else {
+#pragma unroll
+        for(int h=0;h<TM/64;h++) {
+          uint64_t dx=q_desc(base+stage*SB+KT*WB+(k/4)*XB+h*8192+(k%4)*32),dw=q_desc(base+stage*SB+(k/4)*WB+(k%4)*32);
+          @@CALL@@
+        }
+      }
+    }
+    asm volatile("wgmma.commit_group.sync.aligned;":::"memory");
+    if constexpr(PIPE&1) asm volatile("wgmma.wait_group.sync.aligned %0;"::"n"(((PIPE>>8)&7)?((PIPE>>8)&7):1):"memory");
+    else asm volatile("wgmma.wait_group.sync.aligned 0;":::"memory");
+#pragma unroll
+    for(int h=0;h<TM/64;h++)
+#pragma unroll
+      for(int j=0;j<NR/2;j++) if constexpr(!(PIPE&128)) asm volatile("":"+f"(a[h*(NR/2)+j])::"memory");
+    int done=i-((PIPE&1)?(((PIPE>>8)&7)?((PIPE>>8)&7):1):0);
+    if(done>=0 && done+ST<nkb) {
+      if constexpr(PIPE&2) {if(lane==0)asm volatile("mbarrier.arrive.shared::cta.b64 _,[%0];"::"r"(empty+(done%ST)*8):"memory");}
+      else if(tid==0)load(done+ST);
+    }
+  }
+  asm volatile("wgmma.wait_group.sync.aligned 0;":::"memory");
+  if constexpr(PROFILE) stream_end=q_time();
+  auto emit=[&](int v,float4 z) {
+    int t=v%128, j=(v/128)%(NR/8), h=(v/128)/(NR/8);
+    int rr=h*64+(t/32)*16+(t%32)/4, cc=j*8+(t%4)*2;
+    float vv[4]={z.x,z.y,z.z,z.w};
+#pragma unroll
+    for(int c=0;c<4;c++) {
+      int tr,wc;
+      if constexpr(PIPE&8) {tr=tok+(v/128)*8+(t%4)*2+(c&1);wc=(t/32)*16+(t%32)/4+(c/2)*8;}
+      else {tr=tok+rr+(c/2)*8;wc=cc+(c&1);}
+      if(tr<m && wc<rows)out[tr*2304+row+wc]=__float2bfloat16_rn(vv[c]);
+    }
+  };
+  if constexpr(S==1) {
+#pragma unroll
+    for(int h=0;h<TM/64;h++)
+#pragma unroll
+      for(int j=0;j<NR/8;j++)emit((h*(NR/8)+j)*128+tid,make_float4(a[h*(NR/2)+j*4],a[h*(NR/2)+j*4+1],a[h*(NR/2)+j*4+2],a[h*(NR/2)+j*4+3]));
+  } else if constexpr(RED>=4) {
+    static_assert(NR==64 && (PIPE&8));
+    asm volatile("barrier.cluster.wait.acquire.aligned;":::"memory");
+#pragma unroll
+    for(int j=0;j<TM/8;j++) {
+      int dst=j%S,local=(j/S)*128+tid,slot=rank-(rank>dst);
+      if(dst!=rank) q_push(q_map(base+RECV+(slot*OWN+local)*16,dst),
+        make_float4(a[4*j],a[4*j+1],a[4*j+2],a[4*j+3]),q_map(rb,dst));
+    }
+    q_wait(rb,0);
+#pragma unroll
+    for(int j=0;j<TM/8;j++) if(j%S==rank) {
+      float4 sum=make_float4(0,0,0,0);
+#pragma unroll
+      for(int r=0;r<S;r++) {
+        float4 z=r==rank?make_float4(a[4*j],a[4*j+1],a[4*j+2],a[4*j+3]):
+          *(float4*)(sm+RECV+((r-(r>rank))*OWN+(j/S)*128+tid)*16);
+        sum.x+=z.x;sum.y+=z.y;sum.z+=z.z;sum.w+=z.w;
+      }
+      if constexpr(RED==4) emit(j*128+tid,sum);
+      else {
+        a[4*j]=sum.x;a[4*j+1]=sum.y;a[4*j+2]=sum.z;a[4*j+3]=sum.w;
+      }
+    }
+    if constexpr(RED==5) {
+      asm volatile("bar.sync 1,128;":::"memory");
+#pragma unroll
+      for(int j=0;j<TM/8;j++) if(j%S==rank) {
+        __nv_bfloat162 lo=__floats2bfloat162_rn(a[4*j],a[4*j+1]),hi=__floats2bfloat162_rn(a[4*j+2],a[4*j+3]);
+        int rr=(tid/32)*16+((tid%16)/8)*8,cc=8*j+tid%8;
+        asm volatile("stmatrix.sync.aligned.m8n8.x2.trans.shared.b16 [%0],{%1,%2};"::
+          "r"(base+2*(cc*72+rr)),"r"(*(uint32_t*)&lo),"r"(*(uint32_t*)&hi):"memory");
+      }
+      asm volatile("bar.sync 1,128;":::"memory");
+      for(int q=tid;q<(own/128)*64;q+=128) {
+        int token=(rank+(q/64)*S)*8+(q/8)%8,rr=(q%8)*8;
+        if(tok+token<m) *(uint4*)(out+(tok+token)*2304+row+rr)=*(uint4*)((__nv_bfloat16*)sm+token*72+rr);
+      }
+    }
+  } else {
+    if constexpr(RED==3) asm volatile("barrier.cluster.arrive.release.aligned;":::"memory");
+    asm volatile("barrier.cluster.wait.acquire.aligned;":::"memory");
+#pragma unroll
+    for(int h=0;h<TM/64;h++)
+#pragma unroll
+      for(int j=0;j<NR/8;j++) {
+        int v=(h*(NR/8)+j)*128+tid,dst=v/OWN,local=v%OWN;
+        float4 z=make_float4(a[h*(NR/2)+j*4],a[h*(NR/2)+j*4+1],a[h*(NR/2)+j*4+2],a[h*(NR/2)+j*4+3]);
+        uint32_t p=base+RECV+(rank*OWN+local)*16;
+        if(dst==rank)*(float4*)(sm+RECV+(rank*OWN+local)*16)=z;
+        else q_push(q_map(p,dst),z,q_map(rb,dst));
+      }
+    if constexpr(PIPE&2) asm volatile("bar.sync 1, 128;":::"memory");else __syncthreads();
+    q_wait(rb,0);
+    for(int t=tid;t<own;t+=128) {
+      float4 sum=make_float4(0,0,0,0);
+#pragma unroll
+      for(int r=0;r<S;r++) {
+        float4 z=*(float4*)(sm+RECV+(r*OWN+t)*16);
+        sum.x+=z.x;sum.y+=z.y;sum.z+=z.z;sum.w+=z.w;
+      }
+      emit(rank*OWN+t,sum);
+    }
+    if constexpr(RED==1 || RED==3) q_sync();
+  }
+  if constexpr(PROFILE) if(lane==0) {
+    unsigned smid;asm volatile("mov.u32 %0, %%smid;":"=r"(smid));
+    int idx=((blockIdx.y*gridDim.x+blockIdx.x)*4+tid/32)*4;
+    stamps[idx]=smid;stamps[idx+1]=begin;stamps[idx+2]=stream_end;stamps[idx+3]=q_time();
+  }
+}
+using QEncode=decltype(&cuTensorMapEncodeTiled);
+int q_tensor_map(CUtensorMap* tm,int64_t p,int inner,int rows,int box,bool map3) {
+  static QEncode encode=nullptr;
+  if(!encode){cudaDriverEntryPointQueryResult q;cudaGetDriverEntryPointByVersion("cuTensorMapEncodeTiled",(void**)&encode,12000,cudaEnableDefault,&q);if(!encode)return -100;}
+  if(map3) {
+    uint64_t dims[3]={64,(uint64_t)inner/64,(uint64_t)rows},stride[2]={128,(uint64_t)inner*2};
+    uint32_t box3[3]={64,1,(uint32_t)box},es[3]={1,1,1};
+    return int(encode(tm,CU_TENSOR_MAP_DATA_TYPE_BFLOAT16,3,(void*)p,dims,stride,box3,es,CU_TENSOR_MAP_INTERLEAVE_NONE,
+      CU_TENSOR_MAP_SWIZZLE_128B,CU_TENSOR_MAP_L2_PROMOTION_L2_256B,CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE));
+  }
+  uint64_t dims[2]={(uint64_t)inner,(uint64_t)rows},stride[1]={(uint64_t)inner*2};uint32_t b[2]={64,(uint32_t)box},es[2]={1,1};
+  return int(encode(tm,CU_TENSOR_MAP_DATA_TYPE_BFLOAT16,2,(void*)p,dims,stride,b,es,CU_TENSOR_MAP_INTERLEAVE_NONE,
+    CU_TENSOR_MAP_SWIZZLE_128B,CU_TENSOR_MAP_L2_PROMOTION_L2_256B,CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE));
+}
+template<int NR,int G,int TM,int S,int ST,int PIPE,int RED,bool PROFILE>
+int qb_launch_t(int64_t w,int64_t x,int64_t out,int m,int64_t stream,int query,int64_t stats) {
+  constexpr int LR=(2304+G-1)/G,NV=NR*TM/4,OWN=RED>=4?((NV/128+S-1)/S)*128:((PIPE&16)?(NV+S-1)/S:((NV+128*S-1)/(128*S))*128);
+  constexpr int KT=(PIPE&32)?2:1;
+  constexpr int bytes=ST*KT*(NR+TM)*128+ST*16+16+(S>1 && RED!=3?(RED>=4?S-1:S)*OWN*16:0);
+  auto fn=qb_kernel<NR,G,TM,S,ST,PIPE,RED,PROFILE>;
+  static bool ready=false;
+  if(!ready){cudaError_t e=cudaFuncSetAttribute(fn,cudaFuncAttributeMaxDynamicSharedMemorySize,bytes);if(e!=cudaSuccess)return -(int)e;
+    e=cudaFuncSetAttribute(fn,cudaFuncAttributeNonPortableClusterSizeAllowed,1);if(e!=cudaSuccess)return -(int)e;ready=true;}
+  if(query==2){cudaFuncAttributes fa;cudaFuncGetAttributes(&fa,fn);return fa.numRegs*1000+fa.localSizeBytes;}
+  cudaLaunchConfig_t cfg={};cfg.gridDim=dim3(G*S,(m+TM-1)/TM);cfg.blockDim=dim3((PIPE&2)?256:128);cfg.dynamicSmemBytes=bytes;cfg.stream=(cudaStream_t)stream;
+  cudaLaunchAttribute attr={};attr.id=cudaLaunchAttributeClusterDimension;attr.val.clusterDim={S,1,1};if(S>1){cfg.attrs=&attr;cfg.numAttrs=1;}
+  if(query==1){int v=0;cudaError_t e=S>1?cudaOccupancyMaxActiveClusters(&v,fn,&cfg):cudaOccupancyMaxActiveBlocksPerMultiprocessor(&v,fn,cfg.blockDim.x,bytes);return e==cudaSuccess?v:-(int)e;}
+  CUtensorMap tw,tx;int e=q_tensor_map(&tw,w,KT==2?64:8192,KT==2?G*128*NR:G*LR,KT==2?KT*NR:LR,PIPE&2048);if(e)return e;e=q_tensor_map(&tx,x,8192,m,TM,PIPE&2048);if(e)return e;
+  return int(cudaLaunchKernelEx(&cfg,fn,tw,tx,(__nv_bfloat16*)out,m,(unsigned long long*)stats));
+}
+int qb_launch(int id,int64_t w,int64_t x,int64_t out,int m,int64_t stream,int query,int64_t stats) {
+  switch(id){@@CASES@@ default:return -99;}
+}
+'''
+def tt_v14_qkv_build_qkv(configs, profile=False):
+    ns = sorted({c[0] for c in configs} | {c[2] for c in configs if c[5] & 8})
+    source = tt_v14_qkv_QKVBIG_CUDA.replace('@@MMA@@', '\n'.join((tt_v14_qkv_qbig_mma(n) for n in ns)))
+    source = source.replace('@@CALL@@', ' '.join((f'if constexpr(NR=={n})q_mma_{n}(a+h*(NR/2),dx,dw);' for n in ns)))
+    source = source.replace('@@SWAP@@', ' '.join((f'if constexpr(TM=={n})q_mma_{n}(a,dw,dx);' for n in ns)))
+    source = source.replace('@@CASES@@', '\n'.join((f"case {i}: return qb_launch_t<{','.join(map(str, c))},{str(profile).lower()}>(w,x,out,m,stream,query,stats);" for i, c in enumerate(configs))))
+    digest = hashlib.sha256(source.encode()).hexdigest()[:16]
+    namespace = 'qb_' + digest
+    begin = source.index('#define QD')
+    args = 'int id,int64_t w,int64_t x,int64_t out,int m,int64_t stream,int query,int64_t stats'
+    source = source[:begin] + f'namespace {namespace} {{\n' + source[begin:] + f'\n}}\nint qb_launch({args}) {{return {namespace}::qb_launch(id,w,x,out,m,stream,query,stats);}}'
+    cpp = '#include <pybind11/pybind11.h>\n#include <stdint.h>\nint qb_launch(int,int64_t,int64_t,int64_t,int,int64_t,int,int64_t);'
+    return load_inline('qbig_' + hashlib.sha256(source.encode()).hexdigest()[:16], cpp, cuda_sources=source, functions=['qb_launch'], no_implicit_headers=True, with_pytorch_error_handling=False, verbose=False, extra_cuda_cflags=['-O3', '-std=c++20', '-gencode=arch=compute_90a,code=sm_90a', '--ptxas-options=-v'])
+def tt_v14_qkv_qbig_pack(w, groups, kt=1):
+    rows = (2304 + groups - 1) // groups
+    if kt == 2:
+        return w.view(groups, rows, 128, 64).permute(0, 2, 1, 3).contiguous().reshape(-1, 64)
+    if 2304 % groups == 0:
+        return w.contiguous()
+    out = torch.zeros((groups, rows, 8192), dtype=torch.bfloat16, device=w.device)
+    for g in range(groups):
+        lo, hi = (g * 2304 // groups, (g + 1) * 2304 // groups)
+        out[g, :hi - lo].copy_(w[lo:hi])
+    return out.reshape(-1, 8192)
+def tt_v14_qkv_prepare_qbig_candidates(weights, configs, profile=False):
+    w = weights['qkv_gate']
+    return {'ext': tt_v14_qkv_build_qkv(configs, profile), 'configs': list(configs), 'packed': {(g, kt): tt_v14_qkv_qbig_pack(w, g, kt) for g, kt in {(c[1], 2 if c[5] & 32 else 1) for c in configs}}, 'device': w.device}
+def tt_v14_qkv_run_qbig_candidate(x, st, index, stats=None, query=0):
+    out = torch.empty((x.shape[0], 2304), dtype=torch.bfloat16, device=x.device)
+    cfg = st['configs'][index]
+    rc = st['ext'].qb_launch(index, st['packed'][cfg[1], 2 if cfg[5] & 32 else 1].data_ptr(), x.data_ptr(), out.data_ptr(), x.shape[0], torch.cuda.current_stream().cuda_stream, query, stats.data_ptr() if stats is not None else 0)
+    if query:
+        return rc
+    if rc:
+        raise RuntimeError(f'qkv launch {cfg} failed: {rc}')
+    return out
+tt_v14_qkv_EXPERIMENT_CONFIGS = [(64, 36, 128, 3, 8, 539, 5)]
+tt_v14_qkv_ENABLED_ROUTES = {128: 0}
+def tt_v14_qkv_prepare_qkvbig(weights: dict) -> dict:
+    w = weights.get('qkv_gate')
+    if w is None or w.shape != (2304, 8192) or w.dtype != torch.bfloat16 or (not w.is_cuda):
+        return {'routes': {}}
+    if torch.cuda.get_device_capability(w.device) != (9, 0) or 'H200' not in torch.cuda.get_device_name(w.device):
+        return {'routes': {}}
+    if not tt_v14_qkv_ENABLED_ROUTES:
+        return {'routes': {}}
+    state = tt_v14_qkv_prepare_qbig_candidates(weights, tt_v14_qkv_EXPERIMENT_CONFIGS)
+    state['routes'] = dict(tt_v14_qkv_ENABLED_ROUTES)
+    for m, index in state['routes'].items():
+        x = torch.zeros((m, 8192), device=w.device, dtype=torch.bfloat16)
+        tt_v14_qkv_run_qbig_candidate(x, state, index)
+    torch.cuda.synchronize(w.device)
+    return state
+def tt_v14_qkv_run_qkvbig(x: torch.Tensor, layer: str, n: int, st: dict) -> torch.Tensor | None:
+    if layer != 'qkv_gate' or n != 2304 or x.ndim != 2 or (x.shape[1] != 8192):
+        return None
+    index = st.get('routes', {}).get(x.shape[0])
+    if index is None or not x.is_cuda or x.dtype != torch.bfloat16 or (not x.is_contiguous()):
+        return None
+    if x.device != st['device'] or x.data_ptr() % 16:
+        return None
+    return tt_v14_qkv_run_qbig_candidate(x, st, index)
+
+
+_compact_proj_prepare = prepare
+def prepare(weights):
+    st = _compact_proj_prepare(weights)
+    try:
+        st["compact_qkv"] = tt_v14_qkv_prepare_qkvbig(weights)
+    except Exception as exc:
+        print("compact qkv unavailable:", repr(exc)[:180], flush=True)
+        st["compact_qkv"] = {"routes": {}}
+    _compact_qkv_pick(st, weights)
+    return st
+
+
+
+def _compact_qkv_time(fn, reps=30):
+    """median cold-L2 CUDA-graph replay time (us) of fn()"""
+    fn()
+    torch.cuda.synchronize()
+    g = torch.cuda.CUDAGraph()
+    with torch.cuda.graph(g):
+        fn()
+    flush = torch.empty(64 << 20, dtype=torch.float32, device="cuda")
+    times = []
+    for _ in range(reps):
+        flush.zero_()
+        start, end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+        start.record()
+        g.replay()
+        end.record()
+        torch.cuda.synchronize()
+        times.append(start.elapsed_time(end) * 1e3)
+    del g, flush
+    return sorted(times)[len(times) // 2]
+
+
+def _compact_qkv_pick(st, weights):
+    """Keep a compact-QKV route only where it beats the dispatcher's own pick (BF16 split reductions now compete)."""
+    routes = st["compact_qkv"].get("routes", {})
+    for m in list(routes):
+        try:
+            x = torch.randn((m, 8192), device=weights["qkv_gate"].device).to(torch.bfloat16)
+            data = {"x": x, "config": {"m": m, "n": 2304, "k": 8192, "layer": "qkv_gate"}}
+            t_compact = _compact_qkv_time(lambda: tt_v14_qkv_run_qkvbig(x, "qkv_gate", 2304, st["compact_qkv"]))
+            t_base = _compact_qkv_time(lambda: _compact_proj_kernel(data, st))
+            keep = t_compact < 0.98 * t_base
+            print("compact qkv m=%d: compact %.2f us, dispatcher %.2f us -> %s"
+                  % (m, t_compact, t_base, "compact" if keep else "dispatcher"), flush=True)
+            if not keep:
+                del routes[m]
+        except Exception as exc:  # noqa: BLE001  (timing failure: keep the dispatcher)
+            print("compact qkv pick failed:", repr(exc)[:180], flush=True)
+            routes.pop(m, None)
+        torch.cuda.empty_cache()
+
+_compact_proj_kernel = kernel_fn
+def kernel_fn(data, state):
+    _ctx_bind(data["x"])
+    cfg = data["config"]
+    if cfg["layer"] == "qkv_gate":
+        result = tt_v14_qkv_run_qkvbig(data["x"], cfg["layer"], cfg["n"], state["compact_qkv"])
+        if result is not None:
+            return result
+    return _compact_proj_kernel(data, state)

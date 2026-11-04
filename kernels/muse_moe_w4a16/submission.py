@@ -2170,7 +2170,7 @@ __device__ void wgs_gather(const Params& p, Smem& S) {
 struct WgsPend { int kind, u, slot, nst; };
 template <bool PB>
 #if !OKC_B4FIN
-#define OKC_YBF 1   // ybf: WGS ybuf in bf16
+#define OKC_YBF 0   // preserve FP32 per-expert output for final combination
 #else
 #define OKC_YBF 0
 #endif
