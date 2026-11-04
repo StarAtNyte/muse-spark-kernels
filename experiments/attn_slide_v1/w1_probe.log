@@ -1,0 +1,56 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-IDZXhB2bTtXrGN37rla1J3
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"VARIANTS": "probe8", "CASES": "v16s,v32s", "OVR": "{\"v16s\":{\"n_splits\":16,\"coop\":1,\"nc\":1},\"v32s\":{\"n_splits\":8,\"coop\":1,\"nc\":1}}"} RETURNCODE 0
+ROW {"v": "probe8", "ovr": {"n_splits": 16, "coop": 1, "nc": 1}, "case": "v16s", "ok": true, "ev": 15.328, "ncta": 256, "stamps": {"0": [0.0, 0.13, 0.29], "1": [0.99, 1.18, 1.47], "2": [1.47, 1.73, 2.05], "3": [2.37, 3.07, 4.32], "4": [4.22, 5.28, 7.07], "9": [4.26, 5.38, 7.14], "10": [4.45, 5.6, 7.55], "11": [4.51, 5.66, 7.62], "12": [4.77, 5.98, 8.16], "13": [4.86, 6.08, 8.26], "5": [4.99, 6.24, 8.42], "6": [8.1, 9.09, 10.18], "7": [8.8, 9.79, 10.94]}, "dur": {"0-1": 1.06, "1-3": 1.89, "3-4": 2.24, "4-9": 0.1, "9-10": 0.22, "10-11": 0.06, "11-12": 0.32, "12-13": 0.06, "13-5": 0.13, "4-5": 0.96, "5-6": 2.5, "6-7": 0.7}}
+ROW {"v": "probe8", "ovr": {"n_splits": 8, "coop": 1, "nc": 1}, "case": "v32s", "ok": true, "ev": 18.304, "ncta": 256, "stamps": {"0": [0.0, 0.13, 0.22], "1": [1.09, 1.28, 1.6], "2": [1.57, 2.08, 2.43], "3": [2.46, 3.58, 4.8], "4": [5.12, 7.97, 9.76], "9": [5.18, 8.03, 9.82], "10": [5.38, 8.26, 10.02], "11": [5.44, 8.35, 10.08], "12": [5.95, 8.74, 10.34], "13": [6.02, 8.8, 10.4], "5": [6.18, 8.99, 10.53], "6": [10.43, 11.39, 12.7], "7": [11.17, 12.35, 13.79]}, "dur": {"0-1": 1.15, "1-3": 2.27, "3-4": 4.48, "4-9": 0.06, "9-10": 0.22, "10-11": 0.06, "11-12": 0.32, "12-13": 0.1, "13-5": 0.13, "4-5": 0.93, "5-6": 2.3, "6-7": 0.83}}
+DONE
+
+STDERR:
+
+ENV {"VARIANTS": "probe8", "CASES": "v16s,v32s"} RETURNCODE 0
+ROW {"v": "probe8", "ovr": {}, "case": "v16s", "ok": true, "ev": 15.296, "ncta": 128, "stamps": {"0": [0.0, 0.1, 0.19], "1": [1.02, 1.12, 1.31], "2": [1.5, 1.6, 1.79], "3": [2.4, 2.53, 3.23], "4": [4.9, 6.18, 6.53], "9": [4.96, 6.24, 6.59], "10": [5.15, 6.43, 6.78], "11": [5.22, 6.5, 6.85], "12": [5.7, 6.78, 7.1], "13": [5.79, 6.85, 7.17], "5": [5.92, 6.98, 7.3], "6": [8.67, 8.9, 9.06], "7": [9.25, 9.7, 10.18]}, "dur": {"0-1": 0.99, "1-3": 1.41, "3-4": 3.65, "4-9": 0.06, "9-10": 0.19, "10-11": 0.06, "11-12": 0.26, "12-13": 0.06, "13-5": 0.13, "4-5": 0.8, "5-6": 1.92, "6-7": 0.8}}
+ROW {"v": "probe8", "ovr": {}, "case": "v32s", "ok": true, "ev": 18.432, "ncta": 128, "stamps": {"0": [0.0, 0.1, 0.16], "1": [1.02, 1.15, 1.44], "2": [1.54, 1.66, 1.92], "3": [2.43, 2.62, 3.39], "4": [7.87, 10.02, 10.5], "9": [7.94, 10.08, 10.56], "10": [8.13, 10.27, 10.75], "11": [8.19, 10.34, 10.82], "12": [8.7, 10.59, 11.07], "13": [8.77, 10.66, 11.14], "5": [8.93, 10.82, 11.3], "6": [12.32, 12.51, 12.9], "7": [13.02, 13.38, 13.89]}, "dur": {"0-1": 1.06, "1-3": 1.44, "3-4": 7.42, "4-9": 0.06, "9-10": 0.19, "10-11": 0.06, "11-12": 0.26, "12-13": 0.06, "13-5": 0.13, "4-5": 0.8, "5-6": 1.73, "6-7": 0.83}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-IDZXhB2bTtXrGN37rla1J3

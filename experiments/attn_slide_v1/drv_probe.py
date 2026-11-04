@@ -31,14 +31,15 @@ for vn in os.environ.get('VARIANTS', 'probe').split(','):
     for cn in os.environ.get('CASES', 'd1s,d16s,d32s,v1s,v16s,v32s').split(','):
         d = R.generate_input(**SPEC[cn], seed=11)
         dbg = torch.zeros(8192 * 16, dtype=torch.int64, device='cuda')
-        o = S._launch(d, dbg=dbg); torch.cuda.synchronize(); ok, msg = R.check_implementation(d, R.collect(d, o))
-        g0 = graph(lambda: S.kernel_fn(d)); gs = graph(lambda: S._launch(d, dbg=dbg))
+        ovr = json.loads(os.environ.get('OVR', '{}')).get(cn, {})
+        o = S._launch(d, dbg=dbg, **ovr); torch.cuda.synchronize(); ok, msg = R.check_implementation(d, R.collect(d, o))
+        g0 = graph(lambda: S.kernel_fn(d)); gs = graph(lambda: S._launch(d, dbg=dbg, **ovr))
         ev, st = [], []
         for rep in range(15):
             ev.append(t1(g0)); dbg.zero_(); t1(gs)
             a = dbg.view(-1, 16).cpu(); st.append(a[a[:, 0] > 0])
         rows = {}
-        for k in (0, 1, 2, 3, 4, 9, 10, 11, 12, 13, 5, 6, 8, 7):
+        for k in (0, 1, 2, 3, 4, 10, 11, 12, 9, 5, 6, 8, 7):
             mins, meds, maxs = [], [], []
             for live in st:
                 v = live[:, k]; v = v[v > 0]
@@ -48,12 +49,12 @@ for vn in os.environ.get('VARIANTS', 'probe').split(','):
             if mins: rows[k] = [round(statistics.median(x), 2) for x in (mins, meds, maxs)]
         # per-CTA phase durations (median CTA, median rep)
         dur = {}
-        for a_, b_ in ((0, 1), (1, 3), (3, 4), (4, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 5), (4, 5), (5, 6), (6, 7)):
+        for a_, b_ in ((0, 1), (1, 3), (3, 4), (10, 11), (11, 12), (4, 5), (5, 9), (9, 6), (5, 6), (6, 7)):
             vals = []
             for l in st:
                 m = (l[:, a_] > 0) & (l[:, b_] > 0)
                 if m.any(): vals.append(((l[m][:, b_] - l[m][:, a_]).double() / 1000).median().item())
             if vals: dur[f'{a_}-{b_}'] = round(statistics.median(vals), 2)
-        print('ROW', json.dumps(dict(v=vn, case=cn, ok=ok, ev=round(statistics.median(ev), 3), ncta=len(st[-1]),
+        print('ROW', json.dumps(dict(v=vn, ovr=ovr, case=cn, ok=ok, ev=round(statistics.median(ev), 3), ncta=len(st[-1]),
               stamps=rows, dur=dur)), flush=True)
 print('DONE', flush=True)
