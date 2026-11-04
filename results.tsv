@@ -74,3 +74,4 @@ time	problem	job_id	branch	idea	type	correct	speedup	ci95	per_shape_notes	verdic
 2026-11-05T02:25Z	muse_decode_layer	643515fbfd0e4810	decoder_stack_v1	SCORED stack	normal	13/13	2.266x	2.232-2.300	new best	KEEP	
 2026-11-05T02:55Z	muse_decode_layer	5b66ad0aedec47dc,768e3cf813a84c11	decoder_stack_v2	port attention bv merge into decoder stack	normal	13/13 x2	2.258x / 2.248x	2.214-2.292	same mean as stack_v1	REJECT	B=1 attention gain too small in layer
 2026-11-05T03:40Z	muse_bf16_proj	modal-only	proj_11b_v1	11-bit lossless BF16 codec (byte + 3-bit exp class, escapes)	WILD	modal pass	pooler m1 1.03x; m>=8 0.6-0.84x	n/a	entropy 10.46b; 1.35% escapes eat half the 8% saving	REJECT	12-bit codec stays
+2026-11-05T03:55Z	muse_bf16_proj	f2357208101148d2	proj_11b_v1	g11 auto-pick (pooler m=1 only)	normal	9/9	1.577x	1.553-1.600	vs parent checks 1.594/1.552	REJECT	within noise
