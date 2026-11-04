@@ -1,0 +1,93 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Q0Lf6EnDKbfclDx4zYn3Pn
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_big_v1/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 94s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.19e-07
+PREPARED 141.5
+BUILT 141.5
+EMPTY_US 2.98
+CHECK 33 normal base (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal early (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal u160 (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal u40 (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal s09 (True, 'relative L2 error 2.536e-03 (worst row 2.722e-03)')
+CHECK 33 normal s115 (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 128 skewed base (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed early (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed u160 (True, 'relative L2 error 2.537e-03 (worst row 2.709e-03)')
+CHECK 128 skewed u40 (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed s09 (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed s115 (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 257 normal base (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal early (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal u160 (True, 'relative L2 error 2.547e-03 (worst row 2.763e-03)')
+CHECK 257 normal u40 (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal s09 (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal s115 (True, 'relative L2 error 2.546e-03 (worst row 2.761e-03)')
+CHECK 256 normal base (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal early (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal u160 (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal u40 (True, 'relative L2 error 2.556e-03 (worst row 2.771e-03)')
+CHECK 256 normal s09 (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal s115 (True, 'relative L2 error 2.556e-03 (worst row 2.771e-03)')
+ROW {"bs": 128, "seed": 5041754901133868307, "D": 26, "dup": 0, "base": 188.82, "early": 189.26, "u160": 189.18, "u40": 187.31, "s09": 193.94, "s115": 188.91, "r_early": 0.9945, "r_u160": 0.9952, "r_u40": 1.0061, "r_s09": 0.9674, "r_s115": 0.9986}
+ROW {"bs": 128, "seed": 1281, "D": 25, "dup": 0, "base": 181.86, "early": 183.17, "u160": 182.22, "u40": 182.53, "s09": 184.5, "s115": 183.47, "r_early": 0.9935, "r_u160": 0.9994, "r_u40": 0.9955, "r_s09": 0.9884, "r_s115": 0.9937}
+ROW {"bs": 128, "seed": 1282, "D": 22, "dup": 1, "base": 171.52, "early": 173.66, "u160": 172.32, "u40": 171.06, "s09": 178.38, "s115": 169.52, "r_early": 0.9868, "r_u160": 0.9938, "r_u40": 1.0023, "r_s09": 0.9608, "r_s115": 1.0107}
+ROW {"bs": 128, "seed": 1284, "D": 28, "dup": 0, "base": 196.62, "early": 198.91, "u160": 196.53, "u40": 196.98, "s09": 197.01, "s115": 197.65, "r_early": 0.9907, "r_u160": 1.0006, "r_u40": 0.9964, "r_s09": 0.9986, "r_s115": 0.9969}
+ROW {"bs": 128, "seed": 1286, "D": 23, "dup": 0, "base": 169.28, "early": 171.2, "u160": 169.7, "u40": 169.17, "s09": 172.43, "s115": 169.44, "r_early": 0.9886, "r_u160": 0.9989, "r_u40": 1.0004, "r_s09": 0.9796, "r_s115": 0.9936}
+ROW {"bs": 256, "seed": 5041887071557145533, "D": 28, "dup": 0, "base": 207.84, "early": 209.79, "u160": 210.42, "u40": 208.83, "s09": 210.54, "s115": 209.74, "r_early": 0.9906, "r_u160": 0.988, "r_u40": 0.9933, "r_s09": 0.9882, "r_s115": 0.99}
+ROW {"bs": 256, "seed": 2561, "D": 26, "dup": 0, "base": 201.02, "early": 201.81, "u160": 201.9, "u40": 200.7, "s09": 203.95, "s115": 202.83, "r_early": 0.9942, "r_u160": 0.9952, "r_u40": 1.0022, "r_s09": 0.9865, "r_s115": 0.9908}
+ROW {"bs": 256, "seed": 2563, "D": 28, "dup": 2, "base": 220.88, "early": 222.82, "u160": 220.3, "u40": 220.0, "s09": 224.85, "s115": 222.62, "r_early": 0.9937, "r_u160": 1.0029, "r_u40": 1.0061, "r_s09": 0.9871, "r_s115": 0.9917}
+ROW {"bs": 256, "seed": 2564, "D": 20, "dup": 2, "base": 184.46, "early": 185.41, "u160": 185.12, "u40": 184.45, "s09": 185.07, "s115": 185.14, "r_early": 0.995, "r_u160": 0.9966, "r_u40": 0.999, "r_s09": 0.9965, "r_s115": 0.9953}
+ROW {"bs": 256, "seed": 2566, "D": 27, "dup": 0, "base": 208.05, "early": 210.24, "u160": 208.74, "u40": 207.78, "s09": 210.7, "s115": 208.7, "r_early": 0.989, "r_u160": 0.9959, "r_u40": 0.9983, "r_s09": 0.9849, "r_s115": 0.994}
+ROW {"bs": 32, "seed": 321, "D": 16, "dup": 0, "base": 123.5, "early": 123.74, "u160": 122.77, "u40": 122.46, "s09": 123.23, "s115": 120.62, "r_early": 0.9948, "r_u160": 1.003, "r_u40": 1.0027, "r_s09": 1.0003, "r_s115": 1.0212}
+ROW {"bs": 32, "seed": 322, "D": 13, "dup": 0, "base": 104.64, "early": 105.62, "u160": 104.03, "u40": 104.91, "s09": 104.13, "s115": 104.54, "r_early": 0.9915, "r_u160": 1.0081, "r_u40": 0.9958, "r_s09": 1.0021, "r_s115": 0.9985}
+ROW {"bs": 32, "seed": 323, "D": 16, "dup": 0, "base": 122.59, "early": 123.78, "u160": 122.37, "u40": 121.79, "s09": 122.77, "s115": 120.42, "r_early": 0.9864, "r_u160": 0.9987, "r_u40": 1.0077, "r_s09": 0.9926, "r_s115": 1.0217}
+SUMMARY 32 {'r_early': 0.9909, 'r_u160': 1.0033, 'r_u40': 1.0021, 'r_s09': 0.9983, 'r_s115': 1.0137} base_us 116.9
+SUMMARY 128 {'r_early': 0.9908, 'r_u160': 0.9976, 'r_u40': 1.0001, 'r_s09': 0.9789, 'r_s115': 0.9987} base_us 181.6
+SUMMARY 256 {'r_early': 0.9925, 'r_u160': 0.9957, 'r_u40': 0.9998, 'r_s09': 0.9886, 'r_s115': 0.9924} base_us 204.5
+DONE 143.0
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-Q0Lf6EnDKbfclDx4zYn3Pn

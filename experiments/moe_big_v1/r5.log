@@ -1,0 +1,93 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-VMmBk6cRrGSxl4cL3UqUrb
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/check
+│   s.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/moe_big_v1/run_m
+│   odal.py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/nvfp4
+│   .py
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/kernels/muse_moe_w4a16/refer
+│   ence.py
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+STDOUT:
+[mfab] modules built at 92s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [149, 0, 0, 149, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {} regs [151, 0, 0, 151, 0, 0] rel vs base 2.19e-07
+PREPARED 137.9
+BUILT 137.9
+ATTR base [96, 0, 0, 96, 0, 0]
+ATTR ybf [96, 0, 0, 96, 0, 0]
+ATTR hold [96, 0, 0, 96, 0, 0]
+ATTR ctl [96, 0, 0, 96, 0, 0]
+ATTR nofin [96, 0, 0, 96, 0, 0]
+EMPTY_US 3.2
+CHECK 33 normal base (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal ybf (True, 'relative L2 error 3.245e-03 (worst row 3.424e-03)')
+CHECK 33 normal hold (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 33 normal ctl (True, 'relative L2 error 2.537e-03 (worst row 2.722e-03)')
+CHECK 128 skewed base (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed ybf (True, 'relative L2 error 3.223e-03 (worst row 3.445e-03)')
+CHECK 128 skewed hold (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 128 skewed ctl (True, 'relative L2 error 2.537e-03 (worst row 2.703e-03)')
+CHECK 257 normal base (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal ybf (True, 'relative L2 error 3.256e-03 (worst row 3.437e-03)')
+CHECK 257 normal hold (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 257 normal ctl (True, 'relative L2 error 2.546e-03 (worst row 2.748e-03)')
+CHECK 256 normal base (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal ybf (True, 'relative L2 error 3.246e-03 (worst row 3.462e-03)')
+CHECK 256 normal hold (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 256 normal ctl (True, 'relative L2 error 2.556e-03 (worst row 2.768e-03)')
+CHECK 64 normal base (True, 'relative L2 error 2.560e-03 (worst row 2.741e-03)')
+CHECK 64 normal ybf (True, 'relative L2 error 3.244e-03 (worst row 3.471e-03)')
+CHECK 64 normal hold (True, 'relative L2 error 2.560e-03 (worst row 2.741e-03)')
+CHECK 64 normal ctl (True, 'relative L2 error 2.560e-03 (worst row 2.741e-03)')
+ROW {"bs": 128, "seed": 5041754901133868307, "D": 26, "base": 188.94, "ybf": 189.46, "hold": 188.85, "ctl": 189.52, "nofin": 185.15, "r_ybf": 0.999, "r_hold": 0.9991, "r_ctl": 0.9978, "r_nofin": 1.0215}
+ROW {"bs": 128, "seed": 1281, "D": 25, "base": 185.09, "ybf": 184.43, "hold": 183.33, "ctl": 183.25, "nofin": 179.73, "r_ybf": 1.0086, "r_hold": 1.0045, "r_ctl": 1.0097, "r_nofin": 1.03}
+ROW {"bs": 128, "seed": 1282, "D": 22, "base": 174.58, "ybf": 174.98, "hold": 173.38, "ctl": 173.39, "nofin": 169.94, "r_ybf": 0.9978, "r_hold": 1.0027, "r_ctl": 1.006, "r_nofin": 1.0266}
+ROW {"bs": 128, "seed": 1284, "D": 28, "base": 198.93, "ybf": 199.81, "hold": 198.83, "ctl": 199.42, "nofin": 196.53, "r_ybf": 0.9967, "r_hold": 1.0003, "r_ctl": 0.9988, "r_nofin": 1.0135}
+ROW {"bs": 128, "seed": 1286, "D": 23, "base": 170.18, "ybf": 171.39, "hold": 170.77, "ctl": 170.11, "nofin": 166.66, "r_ybf": 0.9944, "r_hold": 0.997, "r_ctl": 1.0008, "r_nofin": 1.0201}
+ROW {"bs": 256, "seed": 5041887071557145533, "D": 28, "base": 210.1, "ybf": 209.84, "hold": 209.57, "ctl": 210.4, "nofin": 204.9, "r_ybf": 1.0018, "r_hold": 1.0031, "r_ctl": 0.999, "r_nofin": 1.0248}
+ROW {"bs": 256, "seed": 2561, "D": 26, "base": 201.89, "ybf": 201.73, "hold": 201.86, "ctl": 201.58, "nofin": 196.32, "r_ybf": 1.0002, "r_hold": 1.0025, "r_ctl": 1.0005, "r_nofin": 1.0282}
+ROW {"bs": 256, "seed": 2563, "D": 28, "base": 223.02, "ybf": 223.55, "hold": 222.99, "ctl": 224.48, "nofin": 217.34, "r_ybf": 1.0004, "r_hold": 1.0041, "r_ctl": 0.9979, "r_nofin": 1.0269}
+ROW {"bs": 256, "seed": 2564, "D": 20, "base": 186.06, "ybf": 185.17, "hold": 184.64, "ctl": 185.6, "nofin": 178.82, "r_ybf": 1.0054, "r_hold": 1.0083, "r_ctl": 1.0049, "r_nofin": 1.0409}
+ROW {"bs": 256, "seed": 2566, "D": 27, "base": 210.62, "ybf": 209.84, "hold": 209.65, "ctl": 210.58, "nofin": 204.93, "r_ybf": 1.0077, "r_hold": 1.0037, "r_ctl": 1.0022, "r_nofin": 1.0262}
+ROW {"bs": 32, "seed": 321, "D": 16, "base": 123.54, "ybf": 124.21, "hold": 123.01, "ctl": 124.58, "nofin": 120.78, "r_ybf": 0.9953, "r_hold": 1.0076, "r_ctl": 0.991, "r_nofin": 1.0243}
+ROW {"bs": 32, "seed": 323, "D": 16, "base": 124.38, "ybf": 124.46, "hold": 123.73, "ctl": 124.96, "nofin": 120.77, "r_ybf": 1.0009, "r_hold": 1.0062, "r_ctl": 0.9967, "r_nofin": 1.0284}
+SUMMARY 32 {'r_ybf': 0.9981, 'r_hold': 1.0069, 'r_ctl': 0.9938, 'r_nofin': 1.0263} base_us 124.0
+SUMMARY 128 {'r_ybf': 0.9993, 'r_hold': 1.0007, 'r_ctl': 1.0026, 'r_nofin': 1.0223} base_us 183.5
+SUMMARY 256 {'r_ybf': 1.0031, 'r_hold': 1.0043, 'r_ctl': 1.0009, 'r_nofin': 1.0294} base_us 206.3
+DONE 139.0
+
+STDERR:
+/opt/sglang/lib/python3.12/site-packages/torch/cuda/graphs.py:630: UserWarning: The CUDA Graph is empty. This usually means that the graph was attempted to be captured on wrong device or stream. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CUDAGraph.cpp:249.)
+  super().capture_end_pre()
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-VMmBk6cRrGSxl4cL3UqUrb
