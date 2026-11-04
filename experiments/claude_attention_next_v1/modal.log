@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-opF3ZCW2VqQUaSgVZiIEcg
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/experiments/claude_attention
+│   _next_v1/runner.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+RETURNCODE 0
+ROW {"case": "verify 32 full seed101", "ours": 182.304, "cand": 183.104, "cand_gain": 0.99563, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full seed101", "ours": 100.64, "cand": 100.432, "cand_gain": 1.00207, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 sliding seed101", "ours": 18.768, "cand": 18.8, "cand_gain": 0.9983, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 full seed101", "ours": 170.048, "cand": 169.872, "cand_gain": 1.00104, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full seed2027", "ours": 183.28, "cand": 183.808, "cand_gain": 0.99713, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full seed2027", "ours": 102.224, "cand": 102.48, "cand_gain": 0.9975, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 sliding seed2027", "ours": 18.688, "cand": 18.704, "cand_gain": 0.99914, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 full seed2027", "ours": 170.608, "cand": 170.672, "cand_gain": 0.99963, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 full seed4093", "ours": 186.16, "cand": 185.904, "cand_gain": 1.00138, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 16 full seed4093", "ours": 99.968, "cand": 99.696, "cand_gain": 1.00273, "ok": {"ours": true, "cand": true}}
+ROW {"case": "verify 32 sliding seed4093", "ours": 18.784, "cand": 18.688, "cand_gain": 1.00514, "ok": {"ours": true, "cand": true}}
+ROW {"case": "decode 32 full seed4093", "ours": 171.264, "cand": 170.96, "cand_gain": 1.00178, "ok": {"ours": true, "cand": true}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-opF3ZCW2VqQUaSgVZiIEcg
