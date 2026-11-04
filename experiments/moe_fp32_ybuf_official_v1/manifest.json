@@ -1,0 +1,22 @@
+{
+  "name": "moe_fp32_ybuf_official_v1",
+  "problem": "muse_moe_w4a16",
+  "hypothesis": "Retain completed per-expert WGS values in FP32 before normalization and combination; validate all MoE shapes.",
+  "sha256": "2c6ebcb747a4e436e84fb1ee80d8dcb6727fde538a62d0fc73803f5b88432b96",
+  "created_at": 1793774165.5377944,
+  "decision": "archive_only",
+  "limits_before": {
+    "scored": {
+      "per_day": 20,
+      "used": 0,
+      "left": 20
+    },
+    "checks": {
+      "per_day": 40,
+      "used": 0,
+      "left": 40
+    }
+  },
+  "status": "received",
+  "job_id": "ce7e9f4df22a4ee3"
+}
