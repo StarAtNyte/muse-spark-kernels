@@ -35,3 +35,13 @@ Modal r6_stack.log, all 12 shapes + 16 tests, paired vs g16b: d16s 1.018-1.051, 
 v1s 1.014-1.02, rest 0.99-1.01; all tests pass (sliding q1 errors up ~1.4x, far inside bounds).
 No other hot 8-byte reds remain (the v2.bf16x2 left is in cluster_multi, unreachable from _plan).
 Judge: 171dfdd2900f4adb 2.697x [2.657, 2.756]; comment-only copy d835372941034b88 2.733x [2.692, 2.774]. bv scored 2.682x.
+
+## Stack2 attempts on B=1 sliding (r7_s2.log, paired vs submission_stack.py, 12 shapes x 2 seeds + 16 tests, all correct)
+- (1) d1s still used FP32 partials (spec non-coop builds, MODE 9/13). s2a = bf16 v4.bf16x2 there: d1s 0.982-1.004, v1s 1.011-1.017
+  (v1s unaffected by the code: noise), d16s 1.007-1.024, rest 0.99-1.00. Load geomean (judge stack times x Modal ratios): +0.07%.
+- (2) There is no __threadfence on the ticket path (gpu_fence() is compiled out); the ~0.6 us is the atom.acq_rel waiting for the
+  CTA's reds. s2c = atom.release + fence.acq_rel.gpu only in the last CTA (valid release/acquire pattern): d1s 0.95-0.97,
+  d16s/d32s 0.965-0.975. Rejected.
+- (3) s2b = nc-1 last-CTA finalize run dry (loads/stores predicated off) while page indices are in flight, to warm the i-cache:
+  d1s 0.99-1.00, v1s 0.985-0.995, v16s 0.97-0.98. Rejected.
+Nothing reached the 0.7% bar: no stack2 file, no okc checks.

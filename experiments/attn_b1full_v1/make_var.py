@@ -205,6 +205,39 @@ def bxs(s):
                "    (16, 1, True, 1): dict(n_splits=16, coop=0, nc=1),   # with bf16 q_len-1 partials: n 16 beats n 8 by ~9% (attn_slide_v1 r6)")
     return s
 
+def bfs(s):
+    """bf16 partials also in the one-request q_len-1 non-cooperative speculative builds (d1s)."""
+    return rep(s, "  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 1 || (MODE & 11) == 11);",
+                  "  constexpr bool BFP = !FLAT && (L == 8 || (MODE & 11) == 1 || (MODE & 11) == 9 || (MODE & 11) == 11);")
+
+def warm(s):
+    """Run the nc-1 last-CTA finalize dry (no loads / stores) while the page indices are in flight: warm i-cache."""
+    s = rep(s, """      xa[u] = acc_ld4<BF>(p, acc, 0);
+      xb[u] = acc_ld4<BF>(p, acc, 1);
+      lc[u] = __ldcg(p.ws_l + (bp * L + j) * 16 + hh);
+      graw[u] = *reinterpret_cast<const uint4*>(p.qkv + (ix_t)(b * L + j) * p.ld_qkv + (p.Hq + 2 * p.Hkv) * 64 + (16 * pair + hh) * 64 + part * 8);""",
+    """      if (!dry) {
+        xa[u] = acc_ld4<BF>(p, acc, 0);
+        xb[u] = acc_ld4<BF>(p, acc, 1);
+        lc[u] = __ldcg(p.ws_l + (bp * L + j) * 16 + hh);
+        graw[u] = *reinterpret_cast<const uint4*>(p.qkv + (ix_t)(b * L + j) * p.ld_qkv + (p.Hq + 2 * p.Hkv) * 64 + (16 * pair + hh) * 64 + part * 8);
+      } else {
+        xa[u] = make_float4(0.f, 0.f, 0.f, 0.f); xb[u] = xa[u]; lc[u] = 0.f; graw[u] = make_uint4(0u, 0u, 0u, 0u);
+      }""")
+    s = rep(s, """  if (M_CL) cluster_finish<L>(p, S, b, pair, n_keys, chunk, true);
+""", """  if (M_CL) cluster_finish<L>(p, S, b, pair, n_keys, chunk, true);
+  if (!FLAT && !M_CL && !M_COOP && p.nc == 1) fin_nc1<L, NT, BFP>(p, b, pair, bp, 1.f, 1);
+""")
+    return s
+
+def relt(s):
+    """Non-cooperative ticket: atom.release (no acquire); only the last CTA issues fence.acq_rel before its reads."""
+    return rep(s, """    asm volatile("atom.acq_rel.gpu.global.add.s32 %0, [%1], %2;\\n" : "=r"(old) : "l"(p.ws_cnt + bp), "r"(mine) : "memory");
+    
+    S.flag = (old + mine == n_keys);""", """    asm volatile("atom.release.gpu.global.add.s32 %0, [%1], %2;\\n" : "=r"(old) : "l"(p.ws_cnt + bp), "r"(mine) : "memory");
+    if (old + mine == n_keys) asm volatile("fence.acq_rel.gpu;" ::: "memory");
+    S.flag = (old + mine == n_keys);""")
+
 VARIANTS = {
     'base': lambda s: s,
     'stamp': stamps,
@@ -224,6 +257,9 @@ VARIANTS = {
     'bvnh': chain(bfd, v4r, nh),
     'bvst': chain(bfd, v4r, stamps),
     'stack': chain(bfd, v4r, bxs),
+    's2a': chain(bfd, v4r, bxs, bfs),
+    's2b': chain(bfd, v4r, bxs, bfs, warm),
+    's2c': chain(bfd, v4r, bxs, bfs, warm, relt),
     'bfdnc': chain(bfd, nc16, tuned('(1, 1, False, 1)', 'nc=16, coop=0, n_splits=252')),
 }
 
