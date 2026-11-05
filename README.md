@@ -131,7 +131,7 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Whole decoder layer | 2.2746×† | #163 / 1,292 | 2.3888× | 2.5762× | 998254ccce534559 |
 | Prefill layer | 1.9321× | #70 / 888 | 1.9453× | 2.1471× | f3b10ea957e04ea6 |
 
-Overall rank is **#163 of 2,004**. Ranks and cutoffs were refreshed on **2026-11-05 at 04:00 UTC**, after the feature freeze. †Repeat draw of identical kernel code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Remaining gaps to #50: projections +0.77%, attention +3.11%, MoE +4.32%, decoder +5.02%, prefill +0.68%.
+Overall rank is **#163 of 2,004**. Ranks and cutoffs were refreshed on **2026-11-05 at 03:52 UTC**, after the feature freeze. †Repeat draw of identical kernel code, not an implementation change. Prefill is a separate board and does not count toward overall rank. Remaining gaps to #50: projections +0.77%, attention +3.11%, MoE +4.32%, decoder +5.02%, prefill +0.68%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
