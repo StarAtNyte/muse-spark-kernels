@@ -1,20 +1,20 @@
 # okc: problem=muse_decode_layer
-# decoder_stack_v1 (2026-11-05): = decoder_bf16_v1 (rs128 BF16 split reduction at T=128/256, BF16 ybuf + fallbacks, g16b attention). Proj-board BF16 routes and an sk2 L2 weight prefetch were screened in-pipeline and left out (neutral or slower).
-# stack_all1: stack_mf1 (MFIN, no MoE grid barrier) + SC6 (6-bit block scales, WGS MoE builds) + PRF32 + PDL at T=128 (moe-fin bundle; L2 hints at T=1 left out: judge d1 25.7-26.6 us with them vs 24.5-25.8 without).
-# st2l: st1l with OKC_WGSFCI 4 (E374).
-# st1l: ybfl.py + OKC_WGSFCI 5 + weight-ring pacing at M <= 64 (E372).
-# ybfl: cepil_u160.py + WGS ybuf in bf16 (epilogue store + final-pass reads; harness/make_ybf.py).
-# cepil_u160: pcx_h1 + in-layer MoE per-unit stream-K cost U = 160 (A) / 140 (B), zhebrak SK_CEPI (harness/make_cepi.py --layer).
-# pcx_h1: pre-wait control of the sk2 kernels: hoist (harness/make_pcx.py; team keell0renz; base stack_all1_snap1)
-# + alygg77/okc-muse-spark-kernels kernels/muse_decode_layer.py (Apache-2.0, commit 6cae49a); header below is theirs. Patched by team keell0renz: trig, rq, atrig0, rtrig8, pf4.
-# bt_sc6: lossless 6-bit block scales in the layer's WGS MoE builds (T >= 17), moe-scale SC6 via harness/make_bt_sc6.py.
-# stack_df1: data-flag A->B hand-off in the MoE MID build (T = 9..16), harness/make_dl_df.py (moe-small E173).
-# + chenwainuo/okc muse_bf16_proj rs128 GEMVs (Apache-2.0) at T = 128 / 256 for qkv and T = 128 for the unpooler (team keell0renz).
-# Portions (the per-thread CUDA-context bind helper; cuBLASLt plan pins) follow code posted by Matsvei (kernarc user
-# 'matvey') on agents.kernarc.com; OKC submissions are licensed under the Apache License 2.0 (llms.txt), and that
-# attribution is retained here.
-# Portions Copyright vjeux, from https://github.com/vjeux/okc-2026 (commit f35a41e), licensed under the Apache License 2.0.
-# Submitted by alygg77 under the Apache License 2.0 with this notice retained.
+#
+# Licensed under the Apache License 2.0 (OKC kernel-track submissions are Apache-2.0).
+#
+# Credits (other teams' published work this file builds on; their notices are retained):
+#   - alygg77, github.com/alygg77/okc-muse-spark-kernels, kernels/muse_decode_layer.py (Apache-2.0, commit 6cae49a):
+#     the decode-layer base this file started from. Submitted by alygg77 under the Apache License 2.0 with this
+#     notice retained.
+#   - Portions Copyright vjeux, from https://github.com/vjeux/okc-2026 (commit f35a41e), licensed under the Apache
+#     License 2.0: the glue base and _graft_after_attention.
+#   - chenwainuo, github.com/chenwainuo/okc, muse_bf16_proj/submission.py @ 3d418e1 (Apache-2.0): the rs128 split-K
+#     GEMVs used at T = 128 / 256 (qkv) and T = 128 (unpooler).
+#   - zhebrak: the per-unit stream-K cost model of the MoE builds (SK_CEPI).
+#   - Matsvei (kernarc user 'matvey', agents.kernarc.com; Apache-2.0): the per-thread CUDA-context bind helper and
+#     the cuBLASLt plan pins follow code posted there.
+#   - Nathen Fernandes (MIT): the compact T = 128 o-projection route (OLAYER_CUDA).
+# Integration and patches by team keell0renz.
 """Muse Spark decode layer: one CUDA-graph-capturable kernel_fn.
 
 Pipeline (one decode step, T = batch * q_len tokens)
@@ -48,12 +48,35 @@ Precision: BF16 weights stay BF16 (or bf16_proj's lossless 12-bit encoding
 with exact escape correction); NVFP4 experts stay NVFP4; norms apply
 (1 + w) formed in FP32 at use; FP8 queries / FP8 KV cache as SGLang;
 softmax P in f16, or e4m3 where SGLang's FA3 rounds it to e4m3 too;
-FP32 accumulation throughout; activations BF16 wherever SGLang keeps BF16.
+activations BF16 wherever SGLang keeps BF16 (see "Precision choices" below).
 
 Selection: prepare() times each backend per (token count, matrix) and the
-expert kernels per token count, on the judge's own GPU with synthetic
+expert kernels per token count, on the GPU it runs on, with synthetic
 activations (it reads only weights, never data), then fixes the choices;
 untuned token counts take the next tuned bucket's.
+
+Fusion boundaries: one launch per stage at most, chained with Programmatic Dependent Launch (each kernel's
+weight loads overlap its producer's tail; it waits with griddepcontrol.wait before reading producer data).
+Residual add, residual gate and the following RMSNorm are fused into the projection epilogues or a single
+boundary kernel; the pooler and the FP32 router share one launch at T <= 8; the expert kernel fuses the
+gate/up GEMM, SiLU-and-mul, the down GEMM and the top-8 weighted sum.
+
+Precision choices (within the problem tolerances and the organizer clarifications of 2026-11-03/04):
+split-K / split-KV partials and their combine may be BF16 (the T = 128 / 256 rs128 GEMVs and the MoE
+y-buffer use BF16 partials); everything else accumulates in FP32. The router runs in FP32 on an exact FP32
+copy of its input (hi + lo BF16 split of the router weight, FP32 accumulate). Attention P is f16, or e4m3
+where SGLang's FA3 FP8 path rounds it to e4m3 too; QK and PV accumulate in FP32. Norms and sigmoid/SiLU
+use fast GPU intrinsics.
+
+Layering: the file grew by stacking measured improvements, and each later block wraps the previous one
+(`_parent = prepare; def prepare(weights): st = _parent(weights); ...`). The final call chain is, outermost
+first: compact T = 128 qkv/o routes (with a prepare-time numeric self-test) -> rs128 split-K GEMVs (rq) ->
+T <= 8 chain pin -> b1x / gle fused pooler + FP32 router glue -> native FP32 router extension -> FP32 router
+-> CUDA-context bind -> sliding-tile / sliding-cluster boundary kernels -> compose policy tuner (complete-chain
+timing per T) -> pinned bf16_proj picks -> vjeux graft (cuBLASLt plans, cluster boundary) -> base pipeline
+above. `prepare`, `_after_attention`, `dense` and `kernel_fn` are rebound at each layer; every layer falls
+through to its parent for the token counts it does not handle. They are kept as separate layers (not
+flattened) because each one was A/B-timed in this order.
 
 OKC rules: one Python file; native CUDA only via
 torch.utils.cpp_extension.load_inline; CUDA-graph capturable (no host syncs
@@ -91,7 +114,6 @@ ROUTER_MULT = 0.1767766952966369  # router logit scale (1 / sqrt(32))
 LOG2E = 1.4426950408889634
 
 _TUNE_LOG = False
-FORCE_PBMAX = None  # override the tuner's pbmax (no consumer; key kept for state shape)
 # Programmatic Dependent Launch for this file's Triton glue: each kernel launches
 # while its producer drains and waits (griddepcontrol.wait) right before its
 # first read of producer data; weights and older inputs load before the wait.
@@ -142,7 +164,6 @@ namespace {
 #define OKC_TMAPG 1     // producer mode: page indices by TMA (one copy per tile) instead of per-thread loads
 #define OKC_XHALFPV 0   // (probe) q_len 1: half the PV work, to see whether the q1 flat loop is consumer-bound
 #define OKC_XNOWAIT 0   // (probe) per-request loop: no wait for the tile's copies (garbage), the compute-bound tile time
-#define OKC_MRGDBG 0    // (debug builds) phase marks around the merge's fence (columns precl1 / cl2)
 #define OKC_MERGE2 1    // last-CTA merges: one acq_rel atomic after the CTA barrier instead of per-thread fences
 #define OKC_MERGE3 1    // cooperative merges: one acq_rel barrier arrive after the CTA barrier instead of per-thread fences
 #define OKC_IDXFIRST 1  // per-request kernels: K/V issued once the page indices land (not after the q rows too)
@@ -200,7 +221,6 @@ namespace {
 #define OKC_NOXCH1 0    // q_len 1, workspace merge: no smem exchange of the two key halves (both reduce; measured slower)
 #define OKC_PVSPLIT 1   // q8 PV: each half issued as soon as its P is packed; 1: waited at the tile end (no ptxas C7515
                         // wgmma serialization: nothing in flight across the loop edge), 2: at the next tile's top
-#define OKC_QKZ 0       // q8 QK^T: first wgmma with write-only accumulators (not needed for C7515; QKZ=0 vf32 -0.4%)
 #define OKC_INV2 1      // per-tile invariants: hk / wsub / hi_all as lane-0 broadcasts, vld_off1 as vld_off0 ^ 32
 #define OKC_OZF 1       // q8: fence the O / row-sum zero init before the tile loop (scout: the C7515 trigger)
 #define OKC_XP_ARRALL 1 // every consumer thread arrives on the stage-empty barriers (compute-sanitizer racecheck clean; the one-lane
@@ -806,7 +826,7 @@ __device__ __forceinline__ void acc_zero4(const Params& p, float* a, int h) {
 }
 
 // Cluster mode, several clusters per request (Params::ncl > 1): add this CTA's reduced slice into the global
-// workspace; the last cluster to arrive sums the copies back into RB/RL and finalizes. Out of line: no scored shape
+// workspace; the last cluster to arrive sums the copies back into RB/RL and finalizes. Out of line: no tuned shape
 // uses it, and keeping it out of the one-cluster epilogue keeps that code contiguous (cold instruction fetch).
 template <int L, typename SM>
 __device__ __noinline__ bool cluster_multi(const Params& p, SM& S, const int CS, const int rank, const int RPC,
@@ -887,11 +907,9 @@ __device__ __forceinline__ void cluster_finish(const Params& p, SM& S, const int
   float* RB = PL + 1024;
   float* RL = RB + RPC * 64;
   constexpr int REGION = L * 16 * 64 + 1024;   // emulation: per-CTA scratch floats (PB, then PL at +L*16*64)
-  if (OKC_CLDBG) DBG(7);
   cl_sync(p, 1);
   DBG(4);
   long long dbgc0 = 0;
-  if (OKC_CLDBG) asm volatile("mov.u64 %0, %%clock64;" : "=l"(dbgc0));
   const int row0 = rank * RPC;
   if constexpr (L == 1) {   // compact reduction (this code runs once per launch from a cold instruction cache, so it is kept short):
       // (row, slot) items -- 16 float4 slots of o and one for l -- times the CS peers; CS consecutive lanes load
@@ -985,22 +1003,18 @@ __device__ __forceinline__ void cluster_finish(const Params& p, SM& S, const int
     asm volatile("mov.u64 %0, %%clock64;" : "=l"(c1));
     if (p.dbg && threadIdx.x == 0) p.dbg[(blockIdx.x + gridDim.x * (blockIdx.y + gridDim.y * blockIdx.z)) * DBGSTRIDE + 11] = c1 - dbgc0;
   }
-  if (OKC_CLDBG) DBG(8);
   DBG(14);
   cl_sync(p, 2);   // peers are done reading this CTA's partial
   cl_done(p);
   DBG(6);
 
   bool fin = true;
-  if (OKC_CLDBG) DBG(9);
   if (p.ncl > 1) {
     fin = cluster_multi<L>(p, S, CS, rank, RPC, row0, bp, RB, RL);
   }
   if (fin) {
     // rmsnorm * sigmoid(gate) for the slice: 16 threads per row, 4 dims each
-    if (OKC_CLDBG) DBG(10);
     long long dbgc2 = 0;
-    if (OKC_CLDBG) asm volatile("mov.u64 %0, %%clock64;" : "=l"(dbgc2));
     const float vscale = S.scl[1];
     for (int eb = tid - (tid & 31); eb < RPC * 16; eb += NT) {   // warp-uniform trip count (shuffles below)
       const int e = eb + (tid & 31);
@@ -2275,13 +2289,11 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
       const uint64_t kd = ((uint64_t)((1024 >> 4) | (1u << 30)) << 32) | kl;
       const uint64_t kd2 = ((uint64_t)((1024 >> 4) | (1u << 30)) << 32) | (kl + 2u);
       const uint64_t qd2 = ((uint64_t)((512 >> 4) | (2u << 30)) << 32) | (qlo0 + 2u);
-      if constexpr (OKC_QKZ) wgmma_m64n64k32_e4m3_ss_z(s, qdesc0, kd);
-      else wgmma_m64n64k32_e4m3_ss(s, qdesc0, kd, 0);
+      wgmma_m64n64k32_e4m3_ss(s, qdesc0, kd, 0);
       wgmma_m64n64k32_e4m3_ss(s, qd2, kd2, 1);
     } else if constexpr (PV8 && OKC_QSS) {
       const uint32_t qaddr = smem_u32(S.q8s) + hk * 4096;
-      if constexpr (OKC_QKZ) wgmma_m64n64k32_e4m3_ss_z(s, desc_sw64(qaddr), desc_sw128(kaddr));
-      else wgmma_m64n64k32_e4m3_ss(s, desc_sw64(qaddr), desc_sw128(kaddr), 0);
+      wgmma_m64n64k32_e4m3_ss(s, desc_sw64(qaddr), desc_sw128(kaddr), 0);
       wgmma_m64n64k32_e4m3_ss(s, desc_sw64(qaddr + 32), desc_sw128(kaddr + 32), 1);
     } else {
       wgmma_m64n64k32_e4m3(s, qa8[0][0], qa8[0][1], qa8[0][2], qa8[0][3], desc_sw128(kaddr), 0);
@@ -2357,7 +2369,6 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
         *reinterpret_cast<uint4*>(V16t + hd * 8192 + ckey * 128 + (((fc + 1) ^ (ckey & 7)) << 4)) =
             make_uint4(cvt2(vb.z), cvt2(vb.z >> 16), cvt2(vb.w), cvt2(vb.w >> 16));
       }
-      if (OKC_PVW) fence_proxy_async();   // V16 written with st.shared, read by the PV wgmma
     }
     if constexpr (PTR) {
     } else if (LSYNC || LSYNCN) {   // (OKC_LATESYNC / N: fence + barrier just before the PV)
@@ -2824,7 +2835,6 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
     if (tig == 0) red_f32(p.ws_l + ((bp * p.nc + copy) * L + j) * 16 + hh, lsum * f);
   }
   }
-  if (OKC_MRGDBG) DBG(7);   // (debug: reds issued)
   // OKC_MERGE2 (last-CTA finalizes): no per-thread fences; one acq_rel atomic by thread 0 after the CTA barrier
   // releases every thread's reds (cumulativity through bar.sync, as CUTLASS's semaphore release) and acquires the
   // others' for the last CTA's reads
@@ -2833,7 +2843,6 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
   // OKC_MERGE3: the same for the cooperative grids (the barrier's arrive is an acq_rel atomic after a CTA barrier)
   if (!((MRG2 && mode1) || (OKC_MERGE3 && !mode1))) gpu_fence();
   csync<WS, NT>();
-  if (OKC_MRGDBG) DBG(6);   // (debug: every thread's reds performed)
   if ((FLAT && (L == 8 || OKC_FLATCOOP1C)) && M_COOP) {
     // flat cooperative mode: every request is finalized after all CTAs have merged all their segments
     DBG(4);
@@ -2854,8 +2863,7 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
       // OKC_SENSE2: the flag was read in the prologue (it can only flip after every split has arrived)
       int* flag = p.ws_cnt + 24576 + bp;
       int sense;
-      if (OKC_SENSE2) sense = S.sense;
-      else asm volatile("ld.acquire.gpu.global.s32 %0, [%1];\n" : "=r"(sense) : "l"(flag) : "memory");
+      asm volatile("ld.acquire.gpu.global.s32 %0, [%1];\n" : "=r"(sense) : "l"(flag) : "memory");
       const int mine = end - start;
       int old;   // acq_rel: the last arrival synchronizes with every earlier one, then releases the flag
       asm volatile("atom.acq_rel.gpu.global.add.s32 %0, [%1], %2;\n" : "=r"(old) : "l"(p.ws_cnt + bp), "r"(mine) : "memory");
@@ -3834,7 +3842,7 @@ def _num_sms7(device):
     return _NUM_SMS7[key]
 
 
-# per-shape launch overrides measured on the judge's H200: (batch, q_len, sliding, kv pairs) -> plan fields
+# per-shape launch overrides measured on H200: (batch, q_len, sliding, kv pairs) -> plan fields
 _TUNED7 = {
     # (Oct 26 14:16-14:21, podbench_multi 15 rounds x2: b32 q8 sliding at 4 splits per request -- 128 CTAs, one per SM --
     # 16.10 -> 15.50 us; 3 splits +13%, 5 +10.6%, 6 +3.1%: since the faster per-request q8 loop (LATESYNCN, QKFIRST))
@@ -3887,7 +3895,7 @@ def _plan7(B, pairs, L, window, max_pages, P, device):
         # last-CTA 12.6-12.9, one copy 15.2, two 14.0, eight 12.9-13.2; the flat kernel 13.6)
         return dict(n_splits=n, flat=0, cs=0, ncl=1, nc=max(1, min(n, 4)), coop=0)
     if L == 1 and reqs < 24:
-        # judge timings: plain split-KV with one tile per CTA and a single workspace copy beats clusters here
+        # H200 timings: plain split-KV with one tile per CTA and a single workspace copy beats clusters here
         # (Oct 25 21:36, after the cheaper merges: b1 33 splits (one tile each) 6.6 -> 6.5 us vs 32, b16 16 splits
         # 9.4 -> 9.2 us vs 12)
         n = max(1, min(tiles, target // reqs))
@@ -7276,7 +7284,6 @@ def _wgs_on():
 # used where the tuner finds them faster than cuBLAS or the Triton split-K.
 # The CUDA template strings and their generators below are kept verbatim.
 # ---------------------------------------------------------------------------
-bfp__SK2_DELAY = int(os.environ.get("SK2_DELAY_ESC", "0"))  # debug only: delay (ns) of escape warp 0 + ring spin-limit trap
 
 
 bfp_CUDA_SRC = r"""
@@ -9067,7 +9074,7 @@ bfp_TMA_TU = {}  # (layer, mtk) -> 0 / 1 (which translation unit instantiates it
 
 
 # alternative skinny configs (more splits -> fewer x bytes per CTA); the prepare()-time autotuner times them
-# against the default config and cuBLAS on every scored shape
+# against the default config and cuBLAS on every tuned shape
 bfp_TMA_ALT = {("pooler", 8): (8, 16, 1, 4), ("pooler", 16): (8, 16, 1, 4), ("unpooler", 1): (8, 4, 1, 4),
            ("unpooler", 8): (8, 4, 1, 4), ("unpooler", 16): (4, 16, 1, 4), ("o", 16): (4, 16, 1, 4),
            ("o", 32): (4, 16, 1, 4)}
@@ -9117,8 +9124,6 @@ bfp_GEMM_CONFIGS = {  # (layer, bn) -> (nwg, splits, stages); grid = (N / (64 nw
 }
 
 
-bfp_DIAG_LAYERS = ()
-bfp_GEMM_DIAG = False   # diagnostic: also time gemm90 variants (TMA-2D A vs contiguous pre-swizzled A) on m 65..256
 
 
 def bfp_swizzle_tiles(w, bm):
@@ -9136,7 +9141,7 @@ def bfp__gemm_src(sm90):
     for (layer, bn), (nwg, splits, stages) in sorted(bfp_GEMM_CONFIGS.items()):
         f32 = layer == "router"
         ot = "float" if f32 else "__nv_bfloat16"
-        for a_s in ((0, 1) if (not f32 and bfp_GEMM_DIAG) else (0,)):
+        for a_s in (0,):
             lines.append(f"if (nwg == {nwg} && bn == {bn} && out_f32 == {str(f32).lower()} && as == {a_s}) "
                          f"{{ launch_gemm90<{nwg}, {bn}, {stages}, {str(bool(a_s)).lower()}, {ot}>(W, Wst, x, out, ws, counters, M, N, Kp, Kx, splits); return; }}")
     bns = sorted({bn for (_, bn) in bfp_GEMM_CONFIGS})
@@ -9449,11 +9454,11 @@ def bfp__get_ext():
         cuda_src = (common + defs + bfp__tma_srcs(sm90) + bfp_MAP_SRC + bfp__gemm_src(sm90) + bfp__wide_src(sm90) + bfp__sk2_src(sm90)
                     + bfp__gq_src(sm90))
         bfp__ext = load_inline(
-            name=f"dl_okc_bf16proj_v86y4_{arch}" + (f"_dly{bfp__SK2_DELAY}" if bfp__SK2_DELAY else ""),
+            name=f"dl_okc_bf16proj_v86y4_{arch}",
             cpp_sources="#include <torch/extension.h>\n" + bfp_CPP_SRC,
             cuda_sources=cuda_src,
             functions=["skinny_tma_a", "gemm90", "wide", "sk2", "gq", "sk2f", "sk2_set_pdl"],
-            extra_cuda_cflags=["-O3", f"-gencode=arch=compute_{arch},code=sm_{arch}"] + ([f"-DSK2_DELAY_ESC={bfp__SK2_DELAY}"] if bfp__SK2_DELAY else []),
+            extra_cuda_cflags=["-O3", f"-gencode=arch=compute_{arch},code=sm_{arch}"],
             no_implicit_headers=True,
             verbose=False,
         )
@@ -9870,8 +9875,6 @@ def bfp_prepare(weights):
     for (lname, tok, nz), (nwg, splits, stages) in bfp_WIDE_CONFIGS.items():
         gemm_floats = max(gemm_floats, nz * (bfp_w_rows[lname] // (64 * nwg)) * splits * (nwg * 64) * tok)
     state["mid_ws_shared"] = torch.empty(gemm_floats, dtype=torch.float32, device=dev)
-    if bfp_GEMM_DIAG:
-        state["ws_shared_diag"] = torch.empty(4 * 1024 * 1024, dtype=torch.float32, device=dev)
     for name, w in weights.items():
         if name == "router":
             hi = w.to(torch.bfloat16)
@@ -9946,13 +9949,6 @@ def bfp_prepare(weights):
     state["sm90"] = sm90_
     state["old_paths"] = old_paths
     bfp_sk2_prepare(weights, state)
-    if bfp_GEMM_DIAG and state["sm90"]:
-        state["wtile"], state["diag_cnt"] = {}, {}
-        for layer in bfp_DIAG_LAYERS:
-            state["wtile"][layer] = bfp_swizzle_tiles(state["raw"][layer], 128)
-            for a_s in (0, 1):
-                for sp_ in sorted({bfp_GEMM_CONFIGS[(layer, 128)][1], bfp_GEMM_CONFIGS[(layer, 256)][1], 1}):
-                    state["diag_cnt"][(layer, a_s, sp_)] = torch.zeros(bfp_w_rows[layer] // 16, dtype=torch.int32, device=dev)
     bfp__selftest(weights, state)
     bfp__autotune(weights, state)
     torch.cuda.empty_cache()
@@ -10123,7 +10119,7 @@ def bfp__candidates(layer, m, state):
 
 
 bfp_AUTOTUNE = True
-bfp_TUNE_M = (1, 16, 32, 8, 128, 256)   # the scored token counts
+bfp_TUNE_M = (1, 16, 32, 8, 128, 256)   # the tuned token counts
 
 
 def bfp__autotune(weights, state):
@@ -10180,7 +10176,7 @@ def bfp__autotune(weights, state):
 
 
 def bfp__nearby_choice(layer, m, state):
-    """An untuned m takes the choice tuned for the scored m of its bucket (1 | 2-8 | 9-16 | 17-32 | 33-128 |
+    """An untuned m takes the choice tuned for the representative m of its bucket (1 | 2-8 | 9-16 | 17-32 | 33-128 |
     129-256): every implementation handles any m of its bucket."""
     tm = 1 if m <= 1 else 8 if m <= 8 else 16 if m <= 16 else 32 if m <= 32 else 128 if m <= 128 else 256 if m <= 256 else 0
     if not tm:
@@ -10198,17 +10194,7 @@ def bfp_kernel_fn(data, state):
     cfg = data["config"]
     layer, m, n, k = cfg["layer"], cfg["m"], cfg["n"], cfg["k"]
     choice = state.get("choice", {}).get((layer, m)) or bfp__nearby_choice(layer, m, state) or bfp__static_choice(layer, m, state)
-    out = bfp__run(choice, x, layer, m, n, k, state)
-    if bfp_GEMM_DIAG:
-        bfp__diag(x, layer, m, n, k, state, choice)
-    return out
-
-
-def bfp__diag(x, layer, m, n, k, state, choice):
-    """Extra kernels for the judge's per-kernel profile (outputs discarded)."""
-    if choice[0] == "skinny" and m == 1 and layer in ("o", "unpooler") and state["comp"][layer]:
-        for dg in (1, 2, 3):   # same kernel without epilogue / x loads / compute
-            bfp__run_skinny(x, layer, m, n, k, state, choice[1], choice[2], dg)
+    return bfp__run(choice, x, layer, m, n, k, state)
 
 
 def _bfp_prepare(weights, st):
@@ -10951,7 +10937,7 @@ def _pexp_norm_sum(x_ptr, w_ptr, s_ptr, out_ptr, ids_ptr, TOPK: tl.constexpr, H:
                    BLOCK_H: tl.constexpr):
     """post-expert norm (weight first) * routing weight, summed over slots. Same kernel as SGLang's
     fused_post_expert_norm_weighted_sum (Apache 2.0), called directly: its wrapper falls back to a chain of
-    ~8 torch ops below 32 tokens, which costs 39-43 us on the judge instead of ~6."""
+    ~8 torch ops below 32 tokens, which costs 39-43 us on H200 instead of ~6."""
     tok = tl.program_id(0)
     offs = tl.arange(0, BLOCK_H)
     mask = offs < H
@@ -11067,7 +11053,7 @@ def _marlin_experts(x, topk_weights, topk_ids, state):
 
 def _graph_time(fn, flush, reps=9):
     """Median graph-replay time with a cold L2. The flush is a READ sweep: zeroing a buffer leaves ~120 MB of
-    dirty lines to write back, which inflates the next kernel by 15-25% (measured on the judge's H200) and not
+    dirty lines to write back, which inflates the next kernel by 15-25% (measured on H200) and not
     evenly across kernels, so it would skew every choice below."""
     fn()
     torch.cuda.synchronize()
@@ -11092,9 +11078,11 @@ _FLUSH_SINK = None
 
 
 def _calib_bias(st, dev, g, log=False):
-    """Give the 32 local experts a skewed bias so that synthetic routing matches the judge's busiest-range load:
-    ~1.6 local routes per token and ~15.7 distinct local experts at 32 tokens (reference statistics). Two
-    parameters (skew width, bias size) found by a torch simulation of the real router; no input data involved."""
+    """Warm-up routing for autotune timing only: skew the 32 local experts' bias so that synthetic
+    activations load the local range like the input contract's busiest 32-expert range does (~1.6 local
+    routes per token, ~15.7 distinct local experts at 32 tokens). Two parameters (skew width, bias size)
+    come from a torch simulation of the real router; no input data is involved. The caller restores the
+    original bias before prepare() returns."""
     router = st["pr"][D_EXPERT:].float()  # [256 hi; 256 lo] rows of width HIDDEN
     router = router[:N_EXPERTS] + router[N_EXPERTS:]
     gc = torch.Generator(device=dev).manual_seed(987654321)
@@ -11139,8 +11127,8 @@ def _tune(st, log=False):
     flush = torch.zeros(int(60e6), dtype=torch.float32, device=dev)  # 240 MB, read-swept between replays
     _FLUSH_SINK = torch.zeros((), dtype=torch.float32, device=dev)
     g = torch.Generator(device=dev).manual_seed(12345)
-    # Synthetic routing is uniform over all 256 experts, but the judge picks each input's local range as the
-    # busiest one: ~1.6 local routes per token (2.6 at T=1) over few distinct experts. Calibrate a skewed bias
+    # Synthetic routing is uniform over all 256 experts, but the input contract sets local_start to the
+    # busiest 32-expert range: ~1.6 local routes per token (2.6 at T=1) over few distinct experts. Calibrate a skewed bias
     # on the local experts (torch-side simulation with the real router weights) so the tuned load is realistic.
     bias0 = st["bias"].clone()
     _calib_bias(st, dev, g, log)
@@ -11152,7 +11140,7 @@ def _tune(st, log=False):
         data = {"stream": torch.randn(T, HIDDEN, generator=g, device=dev),
                 "local_start": torch.zeros(1, dtype=torch.int32, device=dev)}
         o_in = (torch.randn(T, 1024, generator=g, device=dev) * 0.1).to(torch.bfloat16)
-        if T <= 4:  # redraw until the token(s) route to about as many local experts as the judge's inputs do
+        if T <= 4:  # redraw until the token(s) route to about as many local experts as the busiest range does
             want = max(2, int(round(2.57 * T / 1.0)) if T == 1 else 2 * T)
             for _ in range(40):
                 _o, _s, _ids = _after_attention(data, st, o_in, None, T)
@@ -11225,7 +11213,7 @@ def _tune(st, log=False):
             else:
                 st["marlin_cfg"].pop(T, None)
         # my own MoE kernel (FP16 expert input) is offered only where neither SGLang's Marlin nor the moe agent's
-        # kernel is available (never on the judge image): both beat it everywhere, and SGLang keeps BF16 there
+        # kernel is available (never in the SGLang image): both beat it everywhere, and SGLang keeps BF16 there
         cands = [c for c in ("marlin", "agent") if (c != "marlin" or st["bank"] is not None)
                  and (c != "agent" or st["ma_ok"])]
         for moe in cands:
@@ -11262,9 +11250,8 @@ def _tune(st, log=False):
         if log:
             print(f"T{T}/{nloc}r{ndis}e " + " ".join(msg), flush=True)
     st["bias"].copy_(bias0)
-    # The megakernel comparison used to live here; it never won, so pbmax is
-    # always 0 unless FORCE_PBMAX overrides it. The state key is kept.
-    st["pbmax"] = 0 if FORCE_PBMAX is None else FORCE_PBMAX
+    # pbmax 0: the multi-kernel pipeline (the persistent megakernel never won). The state key is kept.
+    st["pbmax"] = 0
     if log:
         print("tune: pbmax", st["pbmax"], "moe", st["moe_pick"], "gluev2", st["gluev2"], flush=True)
     del flush
@@ -11537,8 +11524,8 @@ def _kernel_fn_fa3(data, state):
 def kernel_fn(data, state):
     cfg = data["config"]
     B, L, T = cfg["batch"], cfg["q_len"], cfg["tokens"]
-    # q_len 1 only: on the kv_scale = 1/64 test their q_len 8 path's query scaling rounds coarser than FA3
-    # (conformance test 9: hidden/stream 1.41x SGLang's error), so FA3 keeps every q_len 8 shape.
+    # q_len 1 only: at kv_scale = 1/64 their q_len 8 path's query scaling rounds coarser than FA3
+    # (hidden/stream error 1.41x SGLang's), so FA3 keeps every q_len 8 shape.
     # q_len 8: their kernel on full layers, and on sliding only for a single request, where fusing QK-norm, RoPE,
     # the cache write and the norm-gate into one launch beats FA3 + my two glue kernels by 5.6% in-layer;
     # at B >= 16 sliding FA3 still matches or wins (16x8 -1.2%, 32x8 +0.8%), below my 4% bar for q_len 8.
@@ -12293,7 +12280,7 @@ def _graft_route(POOLED, LOGITS, ALL, BIAS, GPRE, IDS, WTS, XOUT, LS, LIDS, SPLI
         tl.store(WTS + t * 8 + k8, wv)
 
 
-# ---- cuBLASLt picks (our lima Lt wrapper, CUDA 13 ABI of the judge image) ----
+# ---- cuBLASLt picks (our lima Lt wrapper, CUDA 13 ABI of the SGLang image) ----
 _GP, _GI, _GSZ = _C.c_void_p, _C.c_int, _C.c_size_t
 
 
@@ -15488,7 +15475,8 @@ def prepare(weights):
         data={'stream':torch.randn(T,HIDDEN,device=st['qkv'].device,generator=gen),
               'local_start':torch.zeros(1,device=st['qkv'].device,dtype=torch.int32)}
         o_in=(.1*torch.randn(T,1024,device=st['qkv'].device,generator=gen)).to(torch.bfloat16)
-        # Synthetic only: route to its busiest EP range to avoid benchmarking idle experts.
+        # Warm-up routing for autotune timing only: local_start = the busiest 32-expert range of the
+        # synthetic routing (as the input contract defines it), so the timed experts are not idle.
         ids=_after_attention(data,st,o_in,None,T)[2]
         counts=torch.bincount(ids.flatten().long()//32,minlength=8)
         data['local_start'].fill_(32*int(counts.argmax()))
@@ -16396,7 +16384,6 @@ def _router_fp32_gemv(x, state):
 GLE_T = {1: True}   # T = 8 keeps 0389's b1
 GLE_FRT = True      # T <= 8: the fused pooler + FP32 router kernel (else 0389's split pooler / FP32 GEMV)
 GLE_ILV = 1         # its 4 FP32 router stages interleave the pooler stream: 1 last slot of each period, 2 first slot after the PDL pre-issue, 0 off
-GLE_CAPTURE = None   # diagnostics: a dict receives this call's pooler / router outputs and partials
 GLE_RC = {1: 8}   # T -> NCH: NCH * T extra route programs (no wait) form the carry, 8192 / (NCH * T) columns x T tokens each
 _GLE_EXT = None
 
@@ -16868,8 +16855,6 @@ def _gle_after_attention(data, state, o_in, gate, T):
     else:         # 0389's T <= 8 split: BF16 pooler (bf16_proj sk2), FP32 router GEMV, here on the two rows per token
         pooled = _bfp_gemm(state, "pool", uv, 2 * T, D_EXPERT, HIDDEN)
         logits = _router_fp32_gemv(uvf, state)
-    if GLE_CAPTURE is not None:
-        GLE_CAPTURE.update(logits=logits, pooled=pooled, part=part, P=P)
     ids = torch.empty((T, 8), device=dev, dtype=torch.int32)
     lids = torch.empty((T, 8), device=dev, dtype=torch.int32)
     wts = torch.empty((T, 8), **f32)
@@ -17075,7 +17060,7 @@ path is validated like every second-bake path and timed against r6's pick (BAKE 
 against r6 on pooler m=1 and m=16, alternated.
 pw29: pw23 plus wgmma router paths at m = 128 / 256 (rwk, its own sm_90a extension), baked against pw23's rs / rp / rv
 paths and r6's cuBLASLt path.
-pw31 (scored merge): pw27h (P1: flag-zeroed split-K router m = 8/16/32 and unpooler m <= 8 on r6's gv, rr6 at router
+pw31 (merge): pw27h (P1: flag-zeroed split-K router m = 8/16/32 and unpooler m <= 8 on r6's gv, rr6 at router
 m = 1) + pw29h (wgmma split-K router m = 128 / 256 with self-zeroing); the two regions are disjoint (3-way merge on pw23).
 pw34 = pw33 + rs128 (audits/m128-plan.md): pw23 unchanged plus a swap-AB register-A split-K wgmma kernel for m exactly 128 / 256 on the
 pooler, qkv_gate, unpooler and o layers: 128 W rows x all tokens per CTA, two math warpgroups decode the lossless 12-bit
@@ -17138,7 +17123,7 @@ during r6's phase; BAKE / PICK lines time it against r6's own path per (layer, m
     _EYE = {}
     FLUSH_MB = 128  # >= 2x L2 (50 MB on the H100/H200)
     FLUSH_BLOCKS, FLUSH_THREADS = 1056, 256
-    HBM_RATE_TBPS = 3.35  # a cold probe must not beat this (judge_sim.HBM_RATE_TBPS)
+    HBM_RATE_TBPS = 3.35  # a cold probe must not beat this HBM rate
     PROBE_BYTES = 6_300_032
     DISCRIM_BYTES = 16 << 20  # the probe the flush is validated on (6.3 MB is latency-bound and cannot discriminate)
     PAIRS = 8  # timed pairs per (candidate, baseline) comparison
@@ -17172,7 +17157,7 @@ __global__ void probe_read_kernel(const uint4* __restrict__ p, long n4, float* o
   if ((a & b & c & d) == 0xFFFFFFFFu) out[0] = 1.0f;
 }
 
-// empty kernel for the graph fixed-cost measurement (132 CTAs, like the judge's probe graph).
+// empty kernel for the graph fixed-cost measurement (132 CTAs).
 __global__ void nop_kernel(float* p) {
   if (threadIdx.x == 1024) p[0] = 1.0f;
 }
@@ -17214,7 +17199,7 @@ void nop(torch::Tensor out, int64_t blocks, int64_t threads);
         def __call__(self):
             self.ext.flush_read(self.buf, self.sink, FLUSH_BLOCKS, FLUSH_THREADS)
     _FL = [None]  # the flusher
-    _OV = [0.0]   # graph fixed cost (us): the judge's 2*one_node - two_node
+    _OV = [0.0]   # graph fixed cost (us): 2*one_node - two_node
     _LAST = [None]  # (ratio, base_med, cand_med, ov) of the last paired comparison, for the BAKE lines
     def _flush():
         if _FL[0] is None:
@@ -17298,7 +17283,7 @@ void nop(torch::Tensor out, int64_t blocks, int64_t threads);
             print("PAIR ov %.2f clamped to %.2f (times %.2f/%.2f)" % (ov, lim, statistics.median(ta),
                                                                      statistics.median(tb)), flush=True)
             ov = max(0.0, lim)
-        r = [(b - ov) / max(a - ov, 1e-3) for a, b in zip(ta, tb)]  # (base-ov)/(cand-ov), the judge's r
+        r = [(b - ov) / max(a - ov, 1e-3) for a, b in zip(ta, tb)]  # (base-ov)/(cand-ov): fixed-cost-corrected speed ratio
         pr = [math.sqrt(r[i] * r[i + 1]) for i in range(0, len(r) - 1, 2)]
         return statistics.median(pr), statistics.median(tb), statistics.median(ta), ov
     def _time_us(fn, x, out, flush, sink, it=15, base=None):
@@ -17338,14 +17323,14 @@ void nop(torch::Tensor out, int64_t blocks, int64_t threads);
                             "m2s3m1z", "m2s4m1z", "m2s3m1zEH", "m2s4m1zEH", "m2s3m1hzEH", "m2s4m1hzEH",
                             "m2s3m1hzi", "m2s4m1hzi")}
     RQI = {v[0]: i for i, v in enumerate(RQV)}
-    RQTOL = {1: 4e-3, 2: 5e-3, 3: 6e-3, 4: 6e-3, 5: 7e-3, 6: 7e-3, 7: 8e-3, 8: 8e-3, 9: 8e-3}  # judge 1e-2 (rows 5x)
+    RQTOL = {1: 4e-3, 2: 5e-3, 3: 6e-3, 4: 6e-3, 5: 7e-3, 6: 7e-3, 7: 8e-3, 8: 8e-3, 9: 8e-3}  # 5x tighter than the 1e-2 output tolerance
     RQKS = {"pooler": 4, "unpooler": 2, "o": 2, "qkv_gate": 7}  # one-wave KS grid: N/128 x KS <= 132
     RQPROD = ["s4s5z", "s4s5hz", "s4s5hze", "d2s5hze", "n256s4hz", "n256s5hz", "n256s5z", "s4s5zEH", "s4s5hzEH"]
     RQI = {v[0]: i for i, v in enumerate(RQV)}
     RQCUR = set(("s4s5zw", "s4s5hzw", "d2s5hzwP", "s4s5hzwP", "t32s5hzw", "t32s6hzw", "t32s5zw", "h32s5hzw", "h32s4hzw",
                               "t32s5hzwE", "t32s6hzwE", "t32s5hzwi",
                               "t16s4hzw", "t16s5hzw", "h16s5hzw2", "t16s5hzwi"))  # variants that need the FL bit 20 cursor array
-    RQTOL = {1: 4e-3, 2: 5e-3, 3: 6e-3, 4: 6e-3, 5: 7e-3, 6: 7e-3, 7: 8e-3, 8: 8e-3, 9: 8e-3}  # judge 1e-2 (rows 5x)
+    RQTOL = {1: 4e-3, 2: 5e-3, 3: 6e-3, 4: 6e-3, 5: 7e-3, 6: 7e-3, 7: 8e-3, 8: 8e-3, 9: 8e-3}  # 5x tighter than the 1e-2 output tolerance
     RQCU = r"""
 #include <torch/extension.h>
 #include <ATen/cuda/CUDAContext.h>
@@ -18624,131 +18609,6 @@ def _rq_gemm(state, name, x, T):
 
 
 
-# ---------------------------------------------------------------- MFIN: paired in-prepare timing of the MoE kernel (moe-fin, E300+)
-MFAB_LAYER = True
-MFAB_LAYER_SEEDS = 4
-MFAB_LAYER_REPS = 24
-
-
-def _mf_gen_input(bs, seed, dev):
-    """Same distribution as the task's generate_input (busiest-GPU relabel); local experts are 0..31."""
-    gen = torch.Generator(device=dev).manual_seed(seed)
-    x = torch.randn((bs, 4096), generator=gen, device=dev).to(torch.bfloat16)
-    scores = torch.rand((bs, 256), generator=gen, device=dev)
-    z = torch.randn((256,), generator=gen, device=dev)
-    u = torch.rand((256,), generator=gen, device=dev).clamp(min=1e-12)
-    scores = scores + 0.03 * z / (-u.log()).sqrt()
-    routed = scores.topk(8, dim=-1)
-    ids = routed.indices
-    pairs = torch.bincount((ids // 32).flatten(), minlength=8)
-    ids = (ids - 32 * pairs.argmax()) % 256
-    return x, ids.to(torch.int32).contiguous(), (routed.values / routed.values.sum(-1, keepdim=True)).float().contiguous()
-
-
-def _mf_cases(sfx):
-    main = tuple(_main_defines(sfx))
-    return [(32, tuple(MOE_DEFINES) + ("-DOKC_B4FIN=1",)), (128, main), (256, main)]
-
-
-def _mf_start_base_builds(weights):
-    """Compile the barrier twins (-DOKC_MFIN=0) of the builds the A/B times, on a CPU thread, while the layer prepares."""
-    def run():
-        try:
-            sfx = _MA_SFX_IF_PRMT if (_MA_PRMT_SCALES and _ma_scales_prmt_exact(weights["w13_sf"], weights["w2_sf"])) else ()
-            if not sfx:
-                return
-            off = ("-DOKC_SC6OFF=1",) if ("_sc6_ok" in globals() and SC6_WGS and _wgs_on() and _sc6_ok(weights["w13_sf"], weights["w2_sf"])) else ()
-            for _, defs in _mf_cases(sfx):
-                _ma_ext(tuple(defs) + ("-DOKC_MFIN=0",) + off + tuple(sfx))
-        except Exception as ex:
-            print(f"[mfab] base build failed: {str(ex)[-400:]}", flush=True)
-    th = threading.Thread(target=run, daemon=True)
-    th.start()
-    return th
-
-
-def _mf_ns_weights(st, weights):
-    """The plain-scale WGS weight copies (state weights are SC6-packed when SC6 applies): the barrier twin reads these."""
-    I = H = 4096
-    rb = torch.arange(I // 8, device=weights["w13"].device)
-    g = torch.arange(8, device=weights["w13"].device)
-    rowsA = torch.stack((8 * rb[:, None] + g[None, :], I + 8 * rb[:, None] + g[None, :]), 1).reshape(-1)
-    rowsB = torch.arange(H, device=weights["w13"].device)
-    return st["ma_w"][:12] + [torch.cat([_wgs_copy(weights["w13"][e].view(torch.uint8), weights["w13_sf"][e], _kperm_rows(rowsA), False) for e in range(32)]),
-                              torch.cat([_wgs_copy(weights["w2"][e].view(torch.uint8), weights["w2_sf"][e], rowsB, False) for e in range(32)])]
-
-
-def _mf_ab(st, t0, weights):
-    dev = torch.device("cuda")
-    sfx = tuple(st["ma_sfx"])
-    sc6 = bool(globals().get("_MA_SC6W", False))
-    w_ns = _mf_ns_weights(st, weights) if sc6 else st["ma_w"]
-    if not sfx:
-        print("[mfab] no PRMT scales: the MAIN build is the non-WGS fallback, nothing to compare", flush=True)
-        return
-    flush = torch.empty(64 * 1024 * 1024, dtype=torch.int32, device=dev)
-    for bs, defs in _mf_cases(sfx):
-        prod = _ma_ext(tuple(defs) + sfx)
-        base = _ma_ext(tuple(defs) + ("-DOKC_MFIN=0",) + (("-DOKC_SC6OFF=1",) if sc6 else ()) + sfx)
-        ratios, meds, maxd = [], [], 0.0
-        for seed in range(MFAB_LAYER_SEEDS):
-            x, ids, tw = _mf_gen_input(bs, 777 + 13 * seed + bs, dev)
-            outs = {n: torch.empty((bs, 4096), dtype=torch.bfloat16, device=dev) for n in ("base", "prod")}
-            graphs = {}
-            for n, ext in (("base", base), ("prod", prod)):
-                def fn(n=n, ext=ext):
-                    ext.okc_run(w_ns if n == "base" else st["ma_w"], st["ma_scratch"], x, ids, tw, outs[n], 0, 32, st["nsm"])
-                s = torch.cuda.Stream()
-                s.wait_stream(torch.cuda.current_stream())
-                with torch.cuda.stream(s):
-                    for _ in range(3):
-                        fn()
-                torch.cuda.current_stream().wait_stream(s)
-                g = torch.cuda.CUDAGraph()
-                with torch.cuda.graph(g):
-                    fn()
-                graphs[n] = g
-            torch.cuda.synchronize()
-            maxd = max(maxd, float((outs["prod"].float() - outs["base"].float()).abs().max()))
-            ts = {"base": [], "prod": []}
-            for r in range(MFAB_LAYER_REPS):
-                for n in (("base", "prod") if r % 2 == 0 else ("prod", "base")):
-                    flush.add_(1)
-                    e0, e1 = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
-                    e0.record()
-                    graphs[n].replay()
-                    e1.record()
-                    torch.cuda.synchronize()
-                    ts[n].append(e0.elapsed_time(e1) * 1000.0)
-            pr = sorted(a / b for a, b in zip(ts["base"], ts["prod"]))
-            ratios.append(pr[len(pr) // 2])
-            meds.append(sorted(ts["prod"])[len(ts["prod"]) // 2])
-        rs = sorted(ratios)
-        print(f"[mfab] moe T={bs:3d} prod median {sorted(meds)[len(meds) // 2]:7.1f} us  speedup vs barrier twin ({'twin without SC6' if sc6 else 'same weights'}) {rs[len(rs) // 2]:.4f} "
-              f"(per seed {' '.join(f'{v:.3f}' for v in ratios)})  max|d| {maxd:.4g}", flush=True)
-
-
-_mfin_prior_prepare = prepare
-
-
-def prepare(weights):
-    t0 = _rq_time.time()
-    th = _mf_start_base_builds(weights) if MFAB_LAYER else None
-    st = _mfin_prior_prepare(weights)
-    print(f"[mfab] layer prepare done at {_rq_time.time() - t0:.0f}s", flush=True)
-    if MFAB_LAYER and th is not None:
-        th.join(timeout=max(1.0, 195.0 - (_rq_time.time() - t0)))
-        if _rq_time.time() - t0 < 205.0 and not th.is_alive():
-            try:
-                _mf_ab(st, t0, weights)
-            except Exception as ex:  # diagnostics must never break the run
-                print(f"[mfab] A/B failed: {str(ex)[-400:]}", flush=True)
-        else:
-            print(f"[mfab] skipped at {_rq_time.time() - t0:.0f}s", flush=True)
-        torch.cuda.synchronize()
-    return st
-
-
 # Screened stack: compact T=128 QKV and O projection routes from our prior
 # decoder winner, grafted onto the current decoder implementation.
 import hashlib
@@ -19272,11 +19132,37 @@ def run_olayer_candidate(x,st,index) -> torch.Tensor:
 # Stack the measured T128 output-projection route onto the integrated decoder.
 
 
+def _compact_route_ok(run, w, k, seed):
+    """prepare()-time numeric check of a compact T = 128 projection route against an FP32 torch matmul of the
+    same BF16 weight (not timed). False on any error or a mismatch beyond BF16 output rounding."""
+    try:
+        g = torch.Generator(device=w.device).manual_seed(seed)
+        x = (torch.randn(128, k, generator=g, device=w.device) * 0.1).to(torch.bfloat16)
+        y = run(x)
+        if y is None:
+            return False
+        ref = x.float() @ w.float().t()
+        err = (y.reshape(ref.shape).float() - ref).abs().max().item()
+        torch.cuda.synchronize()
+        return err <= 1e-2 * ref.abs().max().item() + 1e-3
+    except Exception as ex:  # noqa: BLE001
+        print("compact route check failed:", repr(ex)[:160], flush=True)
+        return False
+
+
 _stack_parent_prepare = prepare
 def prepare(weights):
     st = _stack_parent_prepare(weights)
     st["qkv_compact"] = tt_v14_qkv_prepare_qkvbig(weights)
     st["compact_o"] = prepare_olayer_candidates(weights, [(128, 128, 4, 3, 1, 1)])
+    # The compact routes replace the T = 128 qkv / o projections; keep them only if they match the reference.
+    if not _compact_route_ok(lambda x: tt_v14_qkv_run_qkvbig(x, "qkv_gate", 2304, st["qkv_compact"]),
+                             weights["qkv_gate"], HIDDEN, 7101):
+        print("compact qkv route disabled (self-test)", flush=True)
+        st["qkv_compact"] = {"routes": {}}
+    if not _compact_route_ok(lambda x: run_olayer_candidate(x, st["compact_o"], 0), weights["o"], Q_DIM, 7102):
+        print("compact o route disabled (self-test)", flush=True)
+        st["compact_o"] = None
     return st
 
 _stack_parent_dense = dense
@@ -19289,4 +19175,3 @@ def dense(x, w, T, state=None, name=None):
             and T == 128 and tuple(w.shape) == (8192, 1024) and x.is_contiguous()):
         return run_olayer_candidate(x, state["compact_o"], 0).view(1, T, 8192), 1
     return _stack_parent_dense(x, w, T, state, name)
-# (second judge draw)
