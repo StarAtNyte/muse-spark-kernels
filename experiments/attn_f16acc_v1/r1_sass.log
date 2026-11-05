@@ -1,0 +1,108 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-1Nb1ZwiVLp3y3Ohi8QB8lx
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "sass", "SEEDS": "11,12", "XCASES": "v16f,v1f,v16s,d16f"} RETURNCODE 0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE: REG:111 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE: REG:109 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE: REG:87 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE: REG:119 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE: REG:127 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6344, "region": 1490, "hist_region": {"ISETP": 202, "HFMA2": 192, "FMNMX": 186, "FMUL": 150, "FSEL": 100, "PRMT": 79, "F2FP": 64, "VIADD": 49, "IMAD": 45, "UIADD3": 44, "FFMA": 32, "UISETP": 31, "LOP3": 28, "STS": 26, "IADD3": 23, "MOV": 20, "SHFL": 20, "BRA": 18, "USEL": 17, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "ULEA": 12, "LDS": 12, "HADD2": 10, "SHF": 8, "PLOP3": 7, "SEL": 6, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "BAR": 5, "ULOP3": 5, "S2R": 4, "FSETP": 4, "VIADDMNMX": 3, "R2UR": 3, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "USHF": 3, "LEA": 2, "LDL": 2, "S2UR": 2, "CALL": 2, "STL": 1, "UIMAD": 1, "ULDC": 1}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE {"total": 2312, "region": 327, "hist_region": {"ISETP": 68, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "CS2R": 18, "VIADD": 17, "PRMT": 17, "IMAD": 10, "FMUL": 10, "UMOV": 6, "IADD3": 6, "LOP3": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "LDS": 4, "SHFL": 4, "VIMNMX": 3, "SEL": 3, "WARPGROUP": 3, "LDSM": 2, "STSM": 2, "SHF": 2, "FSETP": 2, "HADD2": 2, "STS": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "BAR": 1}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE {"total": 2600, "region": 330, "hist_region": {"ISETP": 69, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "CS2R": 18, "PRMT": 17, "VIADD": 14, "FMUL": 10, "IADD3": 9, "IMAD": 9, "UMOV": 6, "LOP3": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "LDS": 4, "SHFL": 4, "VIMNMX": 3, "SEL": 3, "WARPGROUP": 3, "SHF": 3, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "STS": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "BAR": 1, "LDC": 1}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE {"total": 2912, "region": 639, "hist_region": {"ISETP": 89, "IMAD": 67, "FMUL": 48, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 28, "SHF": 23, "VIADD": 22, "BRA": 21, "PRMT": 21, "F2FP": 21, "LOP3": 17, "LEA": 13, "LDGSTS": 13, "FFMA": 10, "STS": 9, "UIADD3": 8, "MOV": 8, "SHFL": 8, "UMOV": 7, "SEL": 5, "QGMMA": 4, "VIMNMX": 4, "BSSY": 4, "USHF": 4, "BSYNC": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "S2R": 1, "LDGDEPBAR": 1, "ULEA": 1, "LDC": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE {"total": 3200, "region": 655, "hist_region": {"ISETP": 89, "IMAD": 71, "FMUL": 48, "FMNMX": 42, "LDS": 37, "IADD3": 35, "FSEL": 34, "HFMA2": 32, "LOP3": 26, "LEA": 23, "BRA": 21, "SHF": 21, "PRMT": 21, "F2FP": 21, "VIADD": 19, "LDGSTS": 13, "FFMA": 10, "STS": 9, "SHFL": 8, "UMOV": 7, "UIADD3": 6, "MOV": 5, "SEL": 5, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "S2R": 1, "LDGDEPBAR": 1, "ULEA": 1, "LDC": 1, "VOTE": 1, "BAR": 1, "USHF": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE {"total": 2280, "region": 335, "hist_region": {"ISETP": 70, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "CS2R": 18, "PRMT": 17, "VIADD": 16, "IMAD": 14, "FMUL": 10, "IADD3": 7, "UMOV": 6, "LOP3": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "SEL": 4, "LDS": 4, "SHFL": 4, "VIMNMX": 3, "WARPGROUP": 3, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "LEA": 1, "VIADDMNMX": 1, "STS": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "SHF": 1, "BAR": 1}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE {"total": 2520, "region": 345, "hist_region": {"ISETP": 70, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "IMAD": 18, "CS2R": 18, "PRMT": 17, "VIADD": 14, "FMUL": 10, "IADD3": 9, "LOP3": 8, "UMOV": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "SEL": 4, "LDS": 4, "SHFL": 4, "VIMNMX": 3, "WARPGROUP": 3, "LEA": 2, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "SHF": 2, "STS": 1, "VIADDMNMX": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "BAR": 1, "LDC": 1}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE {"total": 2832, "region": 627, "hist_region": {"ISETP": 88, "IMAD": 64, "FMUL": 48, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 27, "VIADD": 25, "BRA": 21, "PRMT": 21, "F2FP": 21, "SHF": 19, "LEA": 18, "LOP3": 15, "LDGSTS": 13, "UIADD3": 10, "FFMA": 10, "STS": 9, "SHFL": 8, "UMOV": 6, "QGMMA": 4, "VIMNMX": 4, "BSSY": 4, "BSYNC": 4, "SEL": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "USHF": 3, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "LDC": 1, "LDGDEPBAR": 1, "ULEA": 1, "MOV": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE {"total": 3096, "region": 627, "hist_region": {"ISETP": 85, "IMAD": 52, "FMUL": 48, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 28, "LEA": 22, "VIADD": 22, "BRA": 21, "PRMT": 21, "F2FP": 21, "SHF": 20, "UIADD3": 15, "LOP3": 14, "LDGSTS": 13, "FFMA": 10, "STS": 9, "UMOV": 8, "SHFL": 8, "MOV": 5, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "UISETP": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "USHF": 3, "WARPGROUP": 3, "USEL": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "ULEA": 2, "SEL": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "LDGDEPBAR": 1, "VOTE": 1, "BAR": 1}}
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE: REG:80 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE: REG:79 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a 7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE: REG:101 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE: REG:113 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE: REG:85 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE: REG:80 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE: REG:106 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16acc_90a _7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE: REG:105 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE {"total": 6384, "region": 1488, "hist_region": {"ISETP": 204, "HFMA2": 192, "FMNMX": 186, "FSEL": 100, "PRMT": 79, "F2FP": 67, "HMUL2": 54, "IMAD": 52, "VIADD": 50, "UIADD3": 47, "FMUL": 42, "UISETP": 35, "FFMA": 32, "LOP3": 31, "IADD3": 30, "STS": 26, "MOV": 21, "USEL": 21, "SHFL": 20, "BRA": 18, "ULEA": 14, "UMOV": 14, "WARPGROUP": 13, "QGMMA": 12, "LDS": 12, "SHF": 10, "HADD2": 10, "USHF": 9, "SEL": 7, "VIADDMNMX": 7, "R2UR": 7, "PLOP3": 7, "LDSM": 6, "FADD": 6, "MUFU": 6, "SYNCS": 5, "BAR": 5, "ULOP3": 5, "LEA": 4, "FSETP": 4, "S2R": 3, "VOTE": 3, "MEMBAR": 3, "FENCE": 3, "S2UR": 2, "CALL": 2, "UIMAD": 1, "ULDC": 1}}
+SASS okc_attn_decode_f16acc_90a _51be136d11attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE {"total": 2344, "region": 332, "hist_region": {"ISETP": 71, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "PRMT": 17, "VIADD": 16, "IMAD": 12, "IADD3": 10, "FMUL": 10, "CS2R": 9, "LOP3": 7, "UMOV": 6, "FFMA": 6, "SEL": 5, "QGMMA": 4, "R2UR": 4, "LDS": 4, "SHFL": 4, "SHF": 3, "VIMNMX": 3, "WARPGROUP": 3, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "LEA": 1, "STS": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "BAR": 1}}
+SASS okc_attn_decode_f16acc_90a _51be136d11attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE {"total": 2616, "region": 338, "hist_region": {"ISETP": 71, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "PRMT": 17, "IMAD": 16, "VIADD": 13, "IADD3": 11, "FMUL": 10, "LOP3": 9, "CS2R": 9, "UMOV": 6, "FFMA": 6, "SEL": 5, "QGMMA": 4, "R2UR": 4, "LDS": 4, "SHFL": 4, "SHF": 3, "VIMNMX": 3, "WARPGROUP": 3, "LDSM": 2, "STSM": 2, "ULDC": 2, "FSETP": 2, "HADD2": 2, "LEA": 1, "STS": 1, "BRA": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "BAR": 1, "USHF": 1}}
+SASS okc_attn_decode_f16acc_90a _51be136d11attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE {"total": 2920, "region": 624, "hist_region": {"ISETP": 89, "IMAD": 72, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 31, "VIADD": 22, "F2FP": 22, "BRA": 21, "PRMT": 21, "SHF": 20, "HMUL2": 18, "LOP3": 17, "LEA": 14, "LDGSTS": 13, "FMUL": 12, "FFMA": 10, "STS": 9, "UIADD3": 8, "UMOV": 8, "SHFL": 8, "SEL": 5, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "MOV": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "USHF": 3, "WARPGROUP": 3, "ULOP3": 3, "LDC": 2, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "S2R": 1, "LDGDEPBAR": 1, "ULEA": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE {"total": 3288, "region": 644, "hist_region": {"ISETP": 89, "IMAD": 73, "FMNMX": 42, "LDS": 37, "IADD3": 37, "FSEL": 34, "HFMA2": 32, "LOP3": 27, "SHF": 23, "VIADD": 22, "PRMT": 22, "F2FP": 22, "BRA": 21, "LEA": 18, "HMUL2": 18, "LDGSTS": 13, "FMUL": 12, "FFMA": 10, "STS": 9, "SHFL": 8, "UIADD3": 6, "UMOV": 6, "MOV": 5, "SEL": 5, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "USHF": 3, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "S2R": 1, "LDGDEPBAR": 1, "ULEA": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE {"total": 2296, "region": 326, "hist_region": {"ISETP": 70, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "VIADD": 18, "PRMT": 17, "IMAD": 10, "FMUL": 10, "CS2R": 9, "LOP3": 7, "UMOV": 6, "IADD3": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "SEL": 4, "LDS": 4, "SHFL": 4, "VIMNMX": 3, "WARPGROUP": 3, "LEA": 2, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "STS": 1, "VIADDMNMX": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "SHF": 1, "BAR": 1}}
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE {"total": 2544, "region": 332, "hist_region": {"ISETP": 70, "FMNMX": 36, "FSEL": 34, "HFMA2": 32, "F2FP": 20, "PRMT": 17, "IMAD": 14, "VIADD": 13, "FMUL": 10, "IADD3": 9, "CS2R": 9, "LOP3": 7, "UMOV": 6, "FFMA": 6, "QGMMA": 4, "R2UR": 4, "SEL": 4, "LDS": 4, "SHFL": 4, "SHF": 3, "LEA": 3, "VIMNMX": 3, "WARPGROUP": 3, "LDSM": 2, "STSM": 2, "FSETP": 2, "HADD2": 2, "STS": 1, "VIADDMNMX": 1, "BRA": 1, "ULDC": 1, "MEMBAR": 1, "FENCE": 1, "MOV": 1, "BAR": 1, "LDC": 1}}
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE {"total": 2832, "region": 606, "hist_region": {"ISETP": 88, "IMAD": 63, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 28, "VIADD": 23, "F2FP": 22, "BRA": 21, "PRMT": 21, "LEA": 18, "HMUL2": 18, "SHF": 17, "LOP3": 14, "LDGSTS": 13, "FMUL": 12, "UIADD3": 10, "FFMA": 10, "STS": 9, "SHFL": 8, "UMOV": 6, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "SEL": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "MOV": 3, "USHF": 3, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "LDC": 1, "LDGDEPBAR": 1, "ULEA": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+SASS okc_attn_decode_f16acc_90a u_51be136d11attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE {"total": 3088, "region": 607, "hist_region": {"ISETP": 88, "IMAD": 56, "FMNMX": 42, "LDS": 37, "FSEL": 34, "HFMA2": 32, "IADD3": 31, "VIADD": 22, "F2FP": 22, "BRA": 21, "PRMT": 21, "LEA": 19, "SHF": 19, "HMUL2": 18, "LOP3": 14, "LDGSTS": 13, "FMUL": 12, "UIADD3": 10, "FFMA": 10, "STS": 9, "SHFL": 8, "UMOV": 6, "MOV": 6, "QGMMA": 4, "BSSY": 4, "BSYNC": 4, "SEL": 4, "FSETP": 4, "HADD2": 4, "FADD": 4, "VIMNMX": 3, "USHF": 3, "WARPGROUP": 3, "ULOP3": 3, "MEMBAR": 2, "FENCE": 2, "LDSM": 2, "STSM": 2, "MUFU": 2, "LDC": 1, "LDGDEPBAR": 1, "ULEA": 1, "VOTE": 1, "BAR": 1, "UISETP": 1, "USEL": 1}}
+TEST 0 11 {"base": [true, ["3.279e-03", "3.279e-03", "0.073"]], "f16": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"base": [true, ["5.447e-03", "5.447e-03", "0.137"]], "f16": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"base": [true, ["8.125e-03", "8.984e-03", "0.150"]], "f16": [true, ["8.248e-03", "9.121e-03", "0.150"]]}
+TEST 1 12 {"base": [true, ["7.620e-03", "8.400e-03", "0.150"]], "f16": [true, ["7.479e-03", "8.311e-03", "0.150"]]}
+TEST 2 11 {"base": [true, ["7.602e-02", "1.101e-01", "0.150"]], "f16": [true, ["7.593e-02", "1.097e-01", "0.150"]]}
+TEST 2 12 {"base": [true, ["7.783e-02", "1.129e-01", "0.150"]], "f16": [true, ["7.779e-02", "1.127e-01", "0.150"]]}
+TEST 3 11 {"base": [true, ["6.646e-03", "7.294e-03", "0.150"]], "f16": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"base": [true, ["5.865e-03", "6.923e-03", "0.150"]], "f16": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"base": [true, ["5.797e-03", "6.583e-03", "0.150"]], "f16": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"base": [true, ["5.502e-03", "5.882e-03", "0.150"]], "f16": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"base": [true, ["9.338e-02", "1.147e-01", "0.150"]], "f16": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 5 12 {"base": [true, ["8.963e-02", "1.218e-01", "0.150"]], "f16": [true, ["8.963e-02", "1.218e-01", "0.150"]]}
+TEST 6 11 {"base": [true, ["6.881e-03", "7.982e-03", "0.150"]], "f16": [true, ["6.659e-03", "7.427e-03", "0.150"]]}
+TEST 6 12 {"base": [true, ["7.210e-03", "7.804e-03", "0.150"]], "f16": [true, ["7.146e-03", "7.830e-03", "0.150"]]}
+TEST 7 11 {"base": [true, ["8.319e-02", "1.119e-01", "0.150"]], "f16": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"base": [true, ["8.469e-02", "1.158e-01", "0.150"]], "f16": [true, ["8.470e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.542e-02", "1.195e-01", "0.150"]], "f16": [true, ["9.539e-02", "1.196e-01", "0.150"]]}
+TEST 8 12 {"base": [true, ["9.733e-02", "1.249e-01", "0.150"]], "f16": [true, ["9.719e-02", "1.249e-01", "0.150"]]}
+TEST 9 11 {"base": [true, ["8.095e-02", "1.125e-01", "0.150"]], "f16": [true, ["8.098e-02", "1.129e-01", "0.150"]]}
+TEST 9 12 {"base": [true, ["7.681e-02", "1.093e-01", "0.150"]], "f16": [true, ["7.694e-02", "1.093e-01", "0.150"]]}
+TEST 10 11 {"base": [true, ["5.713e-03", "5.735e-03", "0.150"]], "f16": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"base": [true, ["4.862e-03", "5.158e-03", "0.150"]], "f16": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"base": [true, ["4.979e-03", "5.837e-03", "0.150"]], "f16": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 11 12 {"base": [true, ["4.951e-03", "5.279e-03", "0.150"]], "f16": [true, ["4.951e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"base": [true, ["6.593e-02", "1.036e-01", "0.150"]], "f16": [true, ["6.596e-02", "1.041e-01", "0.150"]]}
+TEST 12 12 {"base": [true, ["6.132e-02", "8.398e-02", "0.150"]], "f16": [true, ["6.135e-02", "8.360e-02", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.471e-02", "7.959e-02", "0.150"]], "f16": [true, ["7.470e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"base": [true, ["7.535e-02", "8.532e-02", "0.150"]], "f16": [true, ["7.536e-02", "8.534e-02", "0.150"]]}
+TEST 14 11 {"base": [true, ["3.189e-03", "3.889e-03", "0.122"]], "f16": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"base": [true, ["3.763e-03", "4.240e-03", "0.142"]], "f16": [true, ["3.763e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"base": [true, ["4.559e-02", "5.149e-02", "0.109"]], "f16": [true, ["4.559e-02", "5.148e-02", "0.109"]]}
+TEST 15 12 {"base": [true, ["4.791e-02", "5.927e-02", "0.113"]], "f16": [true, ["4.792e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"base": [true, ["3.944e-02", "7.663e-02", "0.082"]], "f16": [true, ["3.948e-02", "7.658e-02", "0.082"]]}
+TEST S0 12 {"base": [true, ["4.056e-02", "9.847e-02", "0.085"]], "f16": [true, ["4.060e-02", "9.845e-02", "0.085"]]}
+TEST S1 11 {"base": [true, ["3.805e-02", "5.982e-02", "0.101"]], "f16": [true, ["3.819e-02", "6.027e-02", "0.101"]]}
+TEST S1 12 {"base": [true, ["3.492e-02", "4.484e-02", "0.101"]], "f16": [true, ["3.495e-02", "4.510e-02", "0.101"]]}
+TEST S2 11 {"base": [true, ["6.930e-02", "9.620e-02", "0.150"]], "f16": [true, ["6.931e-02", "9.614e-02", "0.150"]]}
+TEST S2 12 {"base": [true, ["6.735e-02", "1.069e-01", "0.150"]], "f16": [true, ["6.734e-02", "1.071e-01", "0.150"]]}
+TEST S3 11 {"base": [true, ["3.135e-03", "3.900e-03", "0.114"]], "f16": [true, ["3.135e-03", "3.900e-03", "0.114"]]}
+TEST S3 12 {"base": [true, ["2.957e-03", "3.552e-03", "0.102"]], "f16": [true, ["2.957e-03", "3.552e-03", "0.102"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-1Nb1ZwiVLp3y3Ohi8QB8lx

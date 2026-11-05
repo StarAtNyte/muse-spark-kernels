@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-FARaXj1yZP2RAQiV2DGAiU
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,qk", "SEEDS": "15,16,17", "REPS": "24", "CASES": "d1s,d1f,d16s,d16f,d32s,d32f,v1s,v1f,v16s,v16f,v32s,v32f"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 15, "med": {"base": 8.9, "qk": 9.04}, "gain": {"base": 1.0, "qk": 0.984}, "bad": {}}
+ROW {"case": "d1s", "seed": 16, "med": {"base": 9.06, "qk": 9.06}, "gain": {"base": 1.0, "qk": 1.0}, "bad": {}}
+ROW {"case": "d1s", "seed": 17, "med": {"base": 8.9, "qk": 9.12}, "gain": {"base": 1.0, "qk": 0.975}, "bad": {}}
+ROW {"case": "d1f", "seed": 15, "med": {"base": 14.56, "qk": 14.59}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "d1f", "seed": 16, "med": {"base": 14.69, "qk": 14.69}, "gain": {"base": 1.0, "qk": 1.0}, "bad": {}}
+ROW {"case": "d1f", "seed": 17, "med": {"base": 14.72, "qk": 14.75}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "d16s", "seed": 15, "med": {"base": 11.92, "qk": 11.76}, "gain": {"base": 1.0, "qk": 1.014}, "bad": {}}
+ROW {"case": "d16s", "seed": 16, "med": {"base": 11.87, "qk": 11.66}, "gain": {"base": 1.0, "qk": 1.018}, "bad": {}}
+ROW {"case": "d16s", "seed": 17, "med": {"base": 12.03, "qk": 11.7}, "gain": {"base": 1.0, "qk": 1.029}, "bad": {}}
+ROW {"case": "d16f", "seed": 15, "med": {"base": 89.7, "qk": 89.84}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "d16f", "seed": 16, "med": {"base": 90.5, "qk": 90.72}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "d16f", "seed": 17, "med": {"base": 90.43, "qk": 90.72}, "gain": {"base": 1.0, "qk": 0.997}, "bad": {}}
+ROW {"case": "d32s", "seed": 15, "med": {"base": 13.92, "qk": 13.76}, "gain": {"base": 1.0, "qk": 1.012}, "bad": {}}
+ROW {"case": "d32s", "seed": 16, "med": {"base": 13.7, "qk": 13.73}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "d32s", "seed": 17, "med": {"base": 13.7, "qk": 13.92}, "gain": {"base": 1.0, "qk": 0.984}, "bad": {}}
+ROW {"case": "d32f", "seed": 15, "med": {"base": 167.89, "qk": 168.59}, "gain": {"base": 1.0, "qk": 0.996}, "bad": {}}
+ROW {"case": "d32f", "seed": 16, "med": {"base": 169.71, "qk": 169.74}, "gain": {"base": 1.0, "qk": 1.0}, "bad": {}}
+ROW {"case": "d32f", "seed": 17, "med": {"base": 170.46, "qk": 170.86}, "gain": {"base": 1.0, "qk": 0.998}, "bad": {}}
+ROW {"case": "v1s", "seed": 15, "med": {"base": 10.46, "qk": 10.56}, "gain": {"base": 1.0, "qk": 0.991}, "bad": {}}
+ROW {"case": "v1s", "seed": 16, "med": {"base": 10.46, "qk": 10.43}, "gain": {"base": 1.0, "qk": 1.003}, "bad": {}}
+ROW {"case": "v1s", "seed": 17, "med": {"base": 10.4, "qk": 10.4}, "gain": {"base": 1.0, "qk": 1.0}, "bad": {}}
+ROW {"case": "v1f", "seed": 15, "med": {"base": 16.85, "qk": 16.21}, "gain": {"base": 1.0, "qk": 1.039}, "bad": {}}
+ROW {"case": "v1f", "seed": 16, "med": {"base": 16.83, "qk": 16.06}, "gain": {"base": 1.0, "qk": 1.048}, "bad": {}}
+ROW {"case": "v1f", "seed": 17, "med": {"base": 16.94, "qk": 16.14}, "gain": {"base": 1.0, "qk": 1.05}, "bad": {}}
+ROW {"case": "v16s", "seed": 15, "med": {"base": 14.14, "qk": 13.76}, "gain": {"base": 1.0, "qk": 1.028}, "bad": {}}
+ROW {"case": "v16s", "seed": 16, "med": {"base": 13.87, "qk": 13.71}, "gain": {"base": 1.0, "qk": 1.012}, "bad": {}}
+ROW {"case": "v16s", "seed": 17, "med": {"base": 13.82, "qk": 13.6}, "gain": {"base": 1.0, "qk": 1.016}, "bad": {}}
+ROW {"case": "v16f", "seed": 15, "med": {"base": 100.26, "qk": 97.84}, "gain": {"base": 1.0, "qk": 1.025}, "bad": {}}
+ROW {"case": "v16f", "seed": 16, "med": {"base": 101.02, "qk": 98.88}, "gain": {"base": 1.0, "qk": 1.022}, "bad": {}}
+ROW {"case": "v16f", "seed": 17, "med": {"base": 100.22, "qk": 98.14}, "gain": {"base": 1.0, "qk": 1.021}, "bad": {}}
+ROW {"case": "v32s", "seed": 15, "med": {"base": 16.69, "qk": 16.08}, "gain": {"base": 1.0, "qk": 1.038}, "bad": {}}
+ROW {"case": "v32s", "seed": 16, "med": {"base": 16.67, "qk": 16.05}, "gain": {"base": 1.0, "qk": 1.039}, "bad": {}}
+ROW {"case": "v32s", "seed": 17, "med": {"base": 16.7, "qk": 16.0}, "gain": {"base": 1.0, "qk": 1.044}, "bad": {}}
+ROW {"case": "v32f", "seed": 15, "med": {"base": 182.91, "qk": 180.06}, "gain": {"base": 1.0, "qk": 1.016}, "bad": {}}
+ROW {"case": "v32f", "seed": 16, "med": {"base": 184.26, "qk": 181.31}, "gain": {"base": 1.0, "qk": 1.016}, "bad": {}}
+ROW {"case": "v32f", "seed": 17, "med": {"base": 184.91, "qk": 181.62}, "gain": {"base": 1.0, "qk": 1.018}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-FARaXj1yZP2RAQiV2DGAiU

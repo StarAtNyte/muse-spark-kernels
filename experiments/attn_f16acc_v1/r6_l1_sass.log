@@ -1,0 +1,70 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-UMjmOmIkcv4e0nNPshw9MV
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "sass", "VARIANTS": "base,qk", "KPAT": "attn_kernelILi1E", "TESTS": "0", "SEEDS": "11", "XCASES": "d1s"} RETURNCODE 0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE: REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE: REG:118 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE: REG:124 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE {"total": 3408, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE {"total": 2048, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE {"total": 2016, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE {"total": 2704, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE {"total": 2640, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE {"total": 1840, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE {"total": 2128, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE {"total": 2568, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_90a u_51be136d11attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE {"total": 2816, "region": 0, "hist_region": {}}
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE: REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a 7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE: REG:118 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE: REG:124 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_f16qk_90a _7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE {"total": 3408, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a _51be136d11attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE {"total": 2048, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a _51be136d11attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE {"total": 2016, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a _51be136d11attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE {"total": 2704, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE {"total": 2640, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE {"total": 1840, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE {"total": 2128, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE {"total": 2568, "region": 0, "hist_region": {}}
+SASS okc_attn_decode_f16qk_90a u_51be136d11attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE {"total": 2816, "region": 0, "hist_region": {}}
+TEST 0 11 {"base": [true, ["3.279e-03", "3.279e-03", "0.073"]], "qk": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST S0 11 {"base": [true, ["4.347e-03", "4.347e-03", "0.150"]], "qk": [true, ["4.347e-03", "4.347e-03", "0.150"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-UMjmOmIkcv4e0nNPshw9MV
