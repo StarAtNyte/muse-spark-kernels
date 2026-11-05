@@ -1,0 +1,172 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-sjmZSEmQYwhtHZIXWaekjh
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "both", "VARIANTS": "base,clean", "BASE": "base", "SEEDS": "11,12", "REPS": "40", "CASES": "d1s,d1f,d16s,d16f,d32s,d32f,v1s,v1f,v16s,v16f,v32s,v32f", "XCASES": "v16f,v1f,d1f,d32s"} RETURNCODE 0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE: REG:111 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE: REG:109 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE: REG:94 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE: REG:119 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE: REG:127 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi8ELb0ELi2EEEvNS_6ParamsE: REG:111 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE: REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a 0b177e6611attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE: REG:118 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE: REG:124 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_b1fstack_90a _0b177e6611attn_kernelILi1ELb0ELi2EEEvNS_6ParamsE: REG:117 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0E total 6360 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:3,REDG:10,LDGSTS:42,BAR:21,MUFU:115,BRA:180
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi15 total 2312 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:23,BAR:10,MUFU:30,BRA:63
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi13 total 2616 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:22,BAR:10,MUFU:64,BRA:56
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi11 total 2912 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:43,BAR:10,MUFU:32,BRA:106
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi9E total 3224 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:42,BAR:10,MUFU:66,BRA:98
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi7E total 2280 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:23,BAR:9,MUFU:30,BRA:56
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi5E total 2544 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:22,BAR:9,MUFU:64,BRA:49
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi3E total 2832 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:43,BAR:9,MUFU:32,BRA:99
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi1E total 3112 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:42,BAR:9,MUFU:66,BRA:92
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi8ELb0ELi2E total 3376 HGMMA:0,HMMA:0,RED:0,ATOM:1,ATOMG:0,REDG:10,LDGSTS:53,BAR:14,MUFU:27,BRA:135
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb1ELi0E total 3408 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:38,BAR:15,MUFU:60,BRA:133
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi15 total 2048 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:32,BAR:11,MUFU:38,BRA:75
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi13 total 2032 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:31,BAR:11,MUFU:54,BRA:68
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi11 total 2704 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:68,BAR:11,MUFU:39,BRA:125
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi9E total 2656 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:67,BAR:11,MUFU:55,BRA:117
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi7E total 1840 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:32,BAR:10,MUFU:38,BRA:62
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi5E total 2152 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:31,BAR:10,MUFU:54,BRA:63
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi3E total 2568 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:68,BAR:10,MUFU:39,BRA:120
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi1E total 2832 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:67,BAR:10,MUFU:55,BRA:113
+SASS okc_attn_b1fstack_90a _ZN39_GLOBAL__N__68561826_7_cuda_cu_0b177e6611attn_kernelILi1ELb0ELi2E total 3360 HGMMA:0,HMMA:32,RED:0,ATOM:1,ATOMG:0,REDG:10,LDGSTS:78,BAR:15,MUFU:34,BRA:167
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE: REG:80 STACK:8 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi8ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi8ELb0ELi13EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi8ELb0ELi11EEEvNS_6ParamsE: REG:111 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi9EEEvNS_6ParamsE: REG:109 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi7EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi5EEEvNS_6ParamsE: REG:87 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi3EEEvNS_6ParamsE: REG:119 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi8ELb0ELi1EEEvNS_6ParamsE: REG:127 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb1ELi0EEEvNS_6ParamsE: REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi1ELb0ELi15EEEvNS_6ParamsE: REG:84 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi1ELb0ELi13EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a 51be136d11attn_kernelILi1ELb0ELi11EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi9EEEvNS_6ParamsE: REG:118 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi7EEEvNS_6ParamsE: REG:96 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi5EEEvNS_6ParamsE: REG:88 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi3EEEvNS_6ParamsE: REG:124 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+RES okc_attn_decode_90a _51be136d11attn_kernelILi1ELb0ELi1EEEvNS_6ParamsE: REG:123 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:704 TEXTURE:0 SURFACE:0 SAMPLER:0
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb1ELi0E total 6344 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:3,REDG:10,LDGSTS:42,BAR:21,MUFU:115,BRA:179
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi15 total 2312 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:23,BAR:10,MUFU:30,BRA:63
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi13 total 2600 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:22,BAR:10,MUFU:64,BRA:55
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi11 total 2912 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:43,BAR:10,MUFU:32,BRA:106
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi9E total 3200 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:42,BAR:10,MUFU:66,BRA:97
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi7E total 2280 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:23,BAR:9,MUFU:30,BRA:56
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi5E total 2520 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:22,BAR:9,MUFU:64,BRA:48
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi3E total 2832 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:43,BAR:9,MUFU:32,BRA:99
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi8ELb0ELi1E total 3096 HGMMA:0,HMMA:0,RED:0,ATOM:0,ATOMG:1,REDG:6,LDGSTS:42,BAR:9,MUFU:66,BRA:91
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb1ELi0E total 3408 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:38,BAR:15,MUFU:60,BRA:133
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi15 total 2048 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:32,BAR:11,MUFU:38,BRA:75
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi13 total 2016 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:31,BAR:11,MUFU:54,BRA:67
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi11 total 2704 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:68,BAR:11,MUFU:39,BRA:125
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi9E total 2640 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:67,BAR:11,MUFU:55,BRA:116
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi7E total 1840 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:32,BAR:10,MUFU:38,BRA:62
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi5E total 2128 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:31,BAR:10,MUFU:54,BRA:60
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi3E total 2568 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:5,LDGSTS:68,BAR:10,MUFU:39,BRA:120
+SASS okc_attn_decode_90a _ZN39_GLOBAL__N__037cb12e_7_cuda_cu_51be136d11attn_kernelILi1ELb0ELi1E total 2816 HGMMA:0,HMMA:32,RED:0,ATOM:0,ATOMG:1,REDG:3,LDGSTS:67,BAR:10,MUFU:55,BRA:112
+TEST 0 11 {"base": [true, ["3.279e-03", "3.279e-03", "0.073"]], "clean": [true, ["3.279e-03", "3.279e-03", "0.073"]]}
+TEST 0 12 {"base": [true, ["5.447e-03", "5.447e-03", "0.137"]], "clean": [true, ["5.447e-03", "5.447e-03", "0.137"]]}
+TEST 1 11 {"base": [true, ["8.001e-03", "9.044e-03", "0.150"]], "clean": [true, ["8.172e-03", "8.701e-03", "0.150"]]}
+TEST 1 12 {"base": [true, ["7.420e-03", "8.151e-03", "0.150"]], "clean": [true, ["7.780e-03", "8.522e-03", "0.150"]]}
+TEST 2 11 {"base": [true, ["7.600e-02", "1.099e-01", "0.150"]], "clean": [true, ["7.602e-02", "1.096e-01", "0.150"]]}
+TEST 2 12 {"base": [true, ["7.780e-02", "1.123e-01", "0.150"]], "clean": [true, ["7.780e-02", "1.126e-01", "0.150"]]}
+TEST 3 11 {"base": [true, ["6.646e-03", "7.294e-03", "0.150"]], "clean": [true, ["6.646e-03", "7.294e-03", "0.150"]]}
+TEST 3 12 {"base": [true, ["5.865e-03", "6.923e-03", "0.150"]], "clean": [true, ["5.865e-03", "6.923e-03", "0.150"]]}
+TEST 4 11 {"base": [true, ["5.797e-03", "6.583e-03", "0.150"]], "clean": [true, ["5.797e-03", "6.583e-03", "0.150"]]}
+TEST 4 12 {"base": [true, ["5.502e-03", "5.882e-03", "0.150"]], "clean": [true, ["5.502e-03", "5.882e-03", "0.150"]]}
+TEST 5 11 {"base": [true, ["9.338e-02", "1.147e-01", "0.150"]], "clean": [true, ["9.338e-02", "1.147e-01", "0.150"]]}
+TEST 5 12 {"base": [true, ["8.963e-02", "1.218e-01", "0.150"]], "clean": [true, ["8.963e-02", "1.218e-01", "0.150"]]}
+TEST 6 11 {"base": [true, ["6.930e-03", "7.716e-03", "0.150"]], "clean": [true, ["6.558e-03", "7.659e-03", "0.150"]]}
+TEST 6 12 {"base": [true, ["7.273e-03", "7.941e-03", "0.150"]], "clean": [true, ["7.175e-03", "8.211e-03", "0.150"]]}
+TEST 7 11 {"base": [true, ["8.319e-02", "1.119e-01", "0.150"]], "clean": [true, ["8.319e-02", "1.119e-01", "0.150"]]}
+TEST 7 12 {"base": [true, ["8.469e-02", "1.158e-01", "0.150"]], "clean": [true, ["8.469e-02", "1.158e-01", "0.150"]]}
+TEST 8 11 {"base": [true, ["9.533e-02", "1.197e-01", "0.150"]], "clean": [true, ["9.540e-02", "1.196e-01", "0.150"]]}
+TEST 8 12 {"base": [true, ["9.719e-02", "1.250e-01", "0.150"]], "clean": [true, ["9.720e-02", "1.250e-01", "0.150"]]}
+TEST 9 11 {"base": [true, ["8.097e-02", "1.128e-01", "0.150"]], "clean": [true, ["8.101e-02", "1.126e-01", "0.150"]]}
+TEST 9 12 {"base": [true, ["7.680e-02", "1.093e-01", "0.150"]], "clean": [true, ["7.681e-02", "1.091e-01", "0.150"]]}
+TEST 10 11 {"base": [true, ["5.713e-03", "5.735e-03", "0.150"]], "clean": [true, ["5.713e-03", "5.735e-03", "0.150"]]}
+TEST 10 12 {"base": [true, ["4.862e-03", "5.158e-03", "0.150"]], "clean": [true, ["4.862e-03", "5.158e-03", "0.150"]]}
+TEST 11 11 {"base": [true, ["4.979e-03", "5.837e-03", "0.150"]], "clean": [true, ["4.979e-03", "5.837e-03", "0.150"]]}
+TEST 11 12 {"base": [true, ["4.951e-03", "5.279e-03", "0.150"]], "clean": [true, ["4.951e-03", "5.279e-03", "0.150"]]}
+TEST 12 11 {"base": [true, ["6.578e-02", "1.037e-01", "0.150"]], "clean": [true, ["6.590e-02", "1.037e-01", "0.150"]]}
+TEST 12 12 {"base": [true, ["6.139e-02", "8.359e-02", "0.150"]], "clean": [true, ["6.130e-02", "8.331e-02", "0.150"]]}
+TEST 13 11 {"base": [true, ["7.471e-02", "7.959e-02", "0.150"]], "clean": [true, ["7.471e-02", "7.959e-02", "0.150"]]}
+TEST 13 12 {"base": [true, ["7.535e-02", "8.532e-02", "0.150"]], "clean": [true, ["7.535e-02", "8.532e-02", "0.150"]]}
+TEST 14 11 {"base": [true, ["3.189e-03", "3.889e-03", "0.122"]], "clean": [true, ["3.189e-03", "3.889e-03", "0.122"]]}
+TEST 14 12 {"base": [true, ["3.763e-03", "4.240e-03", "0.142"]], "clean": [true, ["3.763e-03", "4.240e-03", "0.142"]]}
+TEST 15 11 {"base": [true, ["4.559e-02", "5.149e-02", "0.109"]], "clean": [true, ["4.559e-02", "5.149e-02", "0.109"]]}
+TEST 15 12 {"base": [true, ["4.791e-02", "5.927e-02", "0.113"]], "clean": [true, ["4.791e-02", "5.927e-02", "0.113"]]}
+TEST S0 11 {"base": [true, ["3.944e-02", "7.663e-02", "0.082"]], "clean": [true, ["3.944e-02", "7.663e-02", "0.082"]]}
+TEST S0 12 {"base": [true, ["4.056e-02", "9.847e-02", "0.085"]], "clean": [true, ["4.056e-02", "9.847e-02", "0.085"]]}
+TEST S1 11 {"base": [true, ["3.816e-02", "6.047e-02", "0.101"]], "clean": [true, ["3.810e-02", "5.969e-02", "0.101"]]}
+TEST S1 12 {"base": [true, ["3.487e-02", "4.500e-02", "0.101"]], "clean": [true, ["3.485e-02", "4.478e-02", "0.101"]]}
+TEST S2 11 {"base": [true, ["4.806e-03", "4.806e-03", "0.108"]], "clean": [true, ["4.422e-03", "4.422e-03", "0.108"]]}
+TEST S2 12 {"base": [true, ["5.799e-03", "5.799e-03", "0.087"]], "clean": [true, ["4.829e-03", "4.829e-03", "0.087"]]}
+TEST S3 11 {"base": [true, ["6.024e-03", "7.311e-03", "0.150"]], "clean": [true, ["6.030e-03", "7.708e-03", "0.150"]]}
+TEST S3 12 {"base": [true, ["5.867e-03", "6.487e-03", "0.150"]], "clean": [true, ["5.778e-03", "6.249e-03", "0.150"]]}
+ROW {"case": "d1s", "seed": 11, "med": {"base": 8.74, "clean": 8.9}, "gain": {"base": 1.0, "clean": 0.982}, "bad": {}}
+ROW {"case": "d1s", "seed": 12, "med": {"base": 8.86, "clean": 8.83}, "gain": {"base": 1.0, "clean": 1.004}, "bad": {}}
+ROW {"case": "d1f", "seed": 11, "med": {"base": 14.48, "clean": 14.4}, "gain": {"base": 1.0, "clean": 1.006}, "bad": {}}
+ROW {"case": "d1f", "seed": 12, "med": {"base": 14.53, "clean": 14.34}, "gain": {"base": 1.0, "clean": 1.013}, "bad": {}}
+ROW {"case": "d16s", "seed": 11, "med": {"base": 11.52, "clean": 11.55}, "gain": {"base": 1.0, "clean": 0.997}, "bad": {}}
+ROW {"case": "d16s", "seed": 12, "med": {"base": 11.66, "clean": 11.68}, "gain": {"base": 1.0, "clean": 0.999}, "bad": {}}
+ROW {"case": "d16f", "seed": 11, "med": {"base": 88.02, "clean": 88.03}, "gain": {"base": 1.0, "clean": 1.0}, "bad": {}}
+ROW {"case": "d16f", "seed": 12, "med": {"base": 85.68, "clean": 85.55}, "gain": {"base": 1.0, "clean": 1.001}, "bad": {}}
+ROW {"case": "d32s", "seed": 11, "med": {"base": 13.5, "clean": 13.44}, "gain": {"base": 1.0, "clean": 1.005}, "bad": {}}
+ROW {"case": "d32s", "seed": 12, "med": {"base": 13.5, "clean": 13.52}, "gain": {"base": 1.0, "clean": 0.999}, "bad": {}}
+ROW {"case": "d32f", "seed": 11, "med": {"base": 164.32, "clean": 164.45}, "gain": {"base": 1.0, "clean": 0.999}, "bad": {}}
+ROW {"case": "d32f", "seed": 12, "med": {"base": 162.34, "clean": 162.38}, "gain": {"base": 1.0, "clean": 1.0}, "bad": {}}
+ROW {"case": "v1s", "seed": 11, "med": {"base": 10.21, "clean": 10.18}, "gain": {"base": 1.0, "clean": 1.003}, "bad": {}}
+ROW {"case": "v1s", "seed": 12, "med": {"base": 10.18, "clean": 10.02}, "gain": {"base": 1.0, "clean": 1.016}, "bad": {}}
+ROW {"case": "v1f", "seed": 11, "med": {"base": 16.64, "clean": 16.69}, "gain": {"base": 1.0, "clean": 0.997}, "bad": {}}
+ROW {"case": "v1f", "seed": 12, "med": {"base": 16.64, "clean": 16.61}, "gain": {"base": 1.0, "clean": 1.002}, "bad": {}}
+ROW {"case": "v16s", "seed": 11, "med": {"base": 14.0, "clean": 13.94}, "gain": {"base": 1.0, "clean": 1.005}, "bad": {}}
+ROW {"case": "v16s", "seed": 12, "med": {"base": 13.89, "clean": 13.92}, "gain": {"base": 1.0, "clean": 0.998}, "bad": {}}
+ROW {"case": "v16f", "seed": 11, "med": {"base": 97.76, "clean": 98.27}, "gain": {"base": 1.0, "clean": 0.995}, "bad": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 95.2, "clean": 95.7}, "gain": {"base": 1.0, "clean": 0.995}, "bad": {}}
+ROW {"case": "v32s", "seed": 11, "med": {"base": 16.61, "clean": 16.54}, "gain": {"base": 1.0, "clean": 1.004}, "bad": {}}
+ROW {"case": "v32s", "seed": 12, "med": {"base": 16.45, "clean": 16.48}, "gain": {"base": 1.0, "clean": 0.998}, "bad": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 177.95, "clean": 178.96}, "gain": {"base": 1.0, "clean": 0.994}, "bad": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 176.66, "clean": 177.76}, "gain": {"base": 1.0, "clean": 0.994}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-sjmZSEmQYwhtHZIXWaekjh
