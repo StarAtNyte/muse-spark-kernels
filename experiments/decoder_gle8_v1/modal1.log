@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-5dfUVeffJCz1K6nFDK1WAu
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 164s
+[mfab] moe T= 32 prod median   147.2 us  speedup vs barrier twin (twin without SC6) 1.0246 (per seed 1.024 1.022 1.025 1.034)  max|d| 0
+[mfab] moe T=128 prod median   192.2 us  speedup vs barrier twin (twin without SC6) 1.0263 (per seed 1.022 1.019 1.026 1.027)  max|d| 0
+[mfab] moe T=256 prod median   224.1 us  speedup vs barrier twin (twin without SC6) 1.0182 (per seed 1.020 1.015 1.007 1.018)  max|d| 0
+PREPARED 173.8
+TEST {"i": 0, "T": 1, "v": "c1", "ok": true, "gle": 1, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 1, "T": 1, "v": "c1", "ok": true, "gle": 1, "msg": "update relative L2 error 7.500e-03 (worst row 7.500e-03) [bound 0.133]; attention input relative L2 error 5.235e-03 (worst row 5.235e-03) [bound 0.077]"}
+TEST {"i": 2, "T": 8, "v": "ctrl", "ok": true, "gle": 0, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 2, "T": 8, "v": "c1", "ok": true, "gle": 1, "msg": "update relative L2 error 8.161e-03 (worst row 9.739e-03) [bound 0.150]; attention input relative L2 error 5.942e-03 (worst row 7.169e-03) [bound 0.112]"}
+TEST {"i": 2, "T": 8, "v": "c2", "ok": true, "gle": 1, "msg": "update relative L2 error 8.161e-03 (worst row 9.739e-03) [bound 0.150]; attention input relative L2 error 5.942e-03 (worst row 7.169e-03) [bound 0.112]"}
+TEST {"i": 3, "T": 9, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 6.678e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 4, "T": 24, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 5, "T": 40, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 6.979e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.631e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 6, "T": 33, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 7, "T": 16, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 8, "T": 8, "v": "ctrl", "ok": true, "gle": 0, "msg": "update relative L2 error 8.360e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.818e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 8, "T": 8, "v": "c1", "ok": true, "gle": 1, "msg": "update relative L2 error 8.351e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.810e-02 (worst row 7.565e-02) [bound 0.145]"}
+TEST {"i": 8, "T": 8, "v": "c2", "ok": true, "gle": 1, "msg": "update relative L2 error 8.351e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.810e-02 (worst row 7.565e-02) [bound 0.145]"}
+TEST {"i": 9, "T": 32, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 10, "T": 1, "v": "c1", "ok": true, "gle": 1, "msg": "update relative L2 error 8.083e-03 (worst row 8.083e-03) [bound 0.150]; attention input relative L2 error 5.781e-03 (worst row 5.781e-03) [bound 0.093]"}
+TEST {"i": 11, "T": 32, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 6.587e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.201e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 12, "T": 16, "v": "c1", "ok": true, "gle": 0, "msg": "update relative L2 error 9.370e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.301e-02) [bound 0.099]"}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 126.66, "c1": 139.36, "c2": 137.7, "gain": {"c1": 0.9088, "c2": 0.9198}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 105.82, "c1": 118.67, "c2": 116.8, "gain": {"c1": 0.8917, "c2": 0.906}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4003, "ctrl": 119.62, "c1": 132.64, "c2": 130.94, "gain": {"c1": 0.9018, "c2": 0.9135}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 119.89, "c1": 132.35, "c2": 130.7, "gain": {"c1": 0.9058, "c2": 0.9172}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 106.43, "c1": 119.89, "c2": 117.86, "gain": {"c1": 0.8878, "c2": 0.9031}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4003, "ctrl": 133.5, "c1": 146.96, "c2": 144.11, "gain": {"c1": 0.9084, "c2": 0.9264}, "ok": {"ctrl": true, "c1": true, "c2": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 75.94, "c1": 75.58, "gain": {"c1": 1.0047}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 75.81, "c1": 76.11, "gain": {"c1": 0.996}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 83.1, "c1": 82.66, "gain": {"c1": 1.0054}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 89.66, "c1": 89.5, "gain": {"c1": 1.0018}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 127.87, "c1": 127.39, "gain": {"c1": 1.0038}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 139.94, "c1": 139.92, "gain": {"c1": 1.0001}, "ok": {"ctrl": true, "c1": true}, "msg": {}}
+DONE 181.6
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-5dfUVeffJCz1K6nFDK1WAu

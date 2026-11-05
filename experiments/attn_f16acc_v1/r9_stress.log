@@ -1,0 +1,44 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-qYYa16QWj6cgyHspD03mrU
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "sass", "VARIANTS": "base,qk,qko", "KPAT": "none", "TESTS": "", "SEEDS": "11,12", "XCASES": "X1,X2,X3,X4,X5,X6"} RETURNCODE 0
+TEST S0 11 {"base": [true, ["4.697e-02", "1.039e-01", "0.080"]], "qk": [false, "output contains NaN or Inf [bound 0.080: 2.5 x the reference's 0.026 with FP8 E4M3 queries"], "qko": [true, ["4.696e-02", "1.030e-01", "0.080"]]}
+TEST S0 12 {"base": [true, ["4.784e-02", "9.937e-02", "0.083"]], "qk": [false, "output contains NaN or Inf [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries"], "qko": [true, ["4.791e-02", "9.982e-02", "0.083"]]}
+TEST S1 11 {"base": [true, ["1.288e-02", "2.043e-02", "0.044"]], "qk": [false, "output contains NaN or Inf [bound 0.044: 2.5 x the reference's 0.012 with FP8 E4M3 queries"], "qko": [true, ["1.283e-02", "1.984e-02", "0.044"]]}
+TEST S1 12 {"base": [true, ["1.084e-02", "1.695e-02", "0.038"]], "qk": [false, "output contains NaN or Inf [bound 0.038: 2.5 x the reference's 0.009 with FP8 E4M3 queries"], "qko": [true, ["1.082e-02", "1.674e-02", "0.038"]]}
+TEST S2 11 {"base": [true, ["6.932e-02", "9.618e-02", "0.150"]], "qk": [false, "output contains NaN or Inf [bound 0.150: 2.5 x the reference's 0.064 with FP8 E4M3 queries"], "qko": [true, ["6.934e-02", "9.665e-02", "0.150"]]}
+TEST S2 12 {"base": [true, ["6.739e-02", "1.069e-01", "0.150"]], "qk": [false, "output contains NaN or Inf [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries"], "qko": [true, ["6.748e-02", "1.076e-01", "0.150"]]}
+TEST S3 11 {"base": [true, ["7.430e-02", "1.016e-01", "0.150"]], "qk": [false, "output contains NaN or Inf [bound 0.150: 2.5 x the reference's 0.070 with FP8 E4M3 queries"], "qko": [true, ["7.410e-02", "1.009e-01", "0.150"]]}
+TEST S3 12 {"base": [true, ["7.346e-02", "9.404e-02", "0.150"]], "qk": [false, "output contains NaN or Inf [bound 0.150: 2.5 x the reference's 0.069 with FP8 E4M3 queries"], "qko": [true, ["7.365e-02", "9.380e-02", "0.150"]]}
+TEST S4 11 {"base": [true, ["5.944e-02", "1.316e-01", "0.083"]], "qk": [false, "output contains NaN or Inf [bound 0.083: 2.5 x the reference's 0.027 with FP8 E4M3 queries"], "qko": [true, ["5.939e-02", "1.316e-01", "0.083"]]}
+TEST S4 12 {"base": [true, ["6.035e-02", "1.584e-01", "0.081"]], "qk": [false, "output contains NaN or Inf [bound 0.081: 2.5 x the reference's 0.026 with FP8 E4M3 queries"], "qko": [true, ["6.043e-02", "1.584e-01", "0.081"]]}
+TEST S5 11 {"base": [true, ["4.696e-02", "1.026e-01", "0.080"]], "qk": [true, ["4.705e-02", "1.031e-01", "0.080"]], "qko": [true, ["4.688e-02", "1.030e-01", "0.080"]]}
+TEST S5 12 {"base": [true, ["4.783e-02", "9.944e-02", "0.083"]], "qk": [true, ["4.811e-02", "1.002e-01", "0.083"]], "qko": [true, ["4.790e-02", "9.994e-02", "0.083"]]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-qYYa16QWj6cgyHspD03mrU

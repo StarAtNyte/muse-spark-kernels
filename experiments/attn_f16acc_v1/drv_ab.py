@@ -88,6 +88,15 @@ TESTS = [
     dict(batch=4, ctx=80000, heads='tp8', layer='full', spread='mixed', dist='coherent', page=1),
     dict(batch=2, ctx=20000, heads='dp', layer='full', q_len=8, dist='coherent'),
 ]
+# stress cases: smallest test kv_scale (1/64) with coherent values, the longest contexts and the largest flat shares
+for nm, c in dict(X1=dict(batch=32, ctx=80000, layer='full', q_len=8, dist='coherent', spread='agentic'),
+                  X2=dict(batch=1, ctx=1048576, layer='full', q_len=8, dist='coherent', spread='fixed'),
+                  X3=dict(batch=16, ctx=80000, layer='sliding', q_len=8, dist='coherent', spread='agentic'),
+                  X4=dict(batch=4, ctx=80000, layer='full', q_len=8, dist='soft', spread='mixed'),
+                  X5=dict(batch=64, ctx=80000, layer='full', q_len=8, dist='coherent', spread='agentic'),
+                  X6=dict(batch=32, ctx=80000, layer='full', q_len=8, dist='coherent', spread='agentic', ks=1.0)).items():
+    ks = c.pop('ks', 0.015625)
+    SPEC[nm] = dict(heads='tp8', page=1, kv_scale=ks, **c)
 SEEDS = [int(s) for s in os.environ.get('SEEDS', '11,12').split(',')]
 REPS = int(os.environ.get('REPS', '20'))
 if PHASE == 'sass':

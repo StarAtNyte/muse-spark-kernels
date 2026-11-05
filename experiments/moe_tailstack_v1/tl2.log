@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lZBo4tneWaGe87VUqn5CTj
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[mfab] modules built at 75s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [145, 0, 0, 145, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [145, 0, 0, 145, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {'OKC_DF': 1} regs [148, 0, 0, 148, 0, 0] rel vs base 1.07e-10
+TL {"bs": 1, "seed": 7919, "tfin": 0, "extra": [], "B_done": [17.92, 19.2, 19.46], "joined": [17.92, 19.2, 19.46], "ready": [20.35, 20.48, 20.61], "final": [20.99, 20.99, 20.99]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": [], "B_done": [18.18, 19.33, 19.58], "joined": [18.18, 19.33, 19.58], "ready": [20.74, 20.74, 20.74], "final": [22.27, 22.27, 22.27]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFW=64"], "B_done": [18.43, 19.71, 19.97], "joined": [18.43, 19.71, 19.97], "ready": [21.12, 21.12, 21.12], "final": [23.3, 23.3, 23.3]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFR=1"], "B_done": [18.05, 19.33, 19.46], "joined": [18.05, 19.33, 19.46], "ready": [20.74, 20.74, 20.74], "final": [21.76, 21.76, 21.76]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFW=64", "-DOKC_TFR=1"], "B_done": [17.92, 19.2, 19.33], "joined": [17.92, 19.2, 19.46], "ready": [20.48, 20.74, 20.74], "final": [22.53, 22.53, 22.53]}
+TL {"bs": 1, "seed": 7919, "tfin": 0, "extra": [], "B_done": [17.92, 19.2, 19.46], "joined": [17.92, 19.2, 19.46], "ready": [20.22, 20.48, 20.74], "final": [20.86, 20.86, 21.12]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": [], "B_done": [18.3, 19.46, 19.71], "joined": [18.3, 19.46, 19.71], "ready": [20.86, 20.86, 20.86], "final": [22.4, 22.4, 22.4]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFW=64"], "B_done": [18.3, 19.46, 19.84], "joined": [18.3, 19.58, 19.84], "ready": [20.99, 20.99, 21.12], "final": [22.91, 22.91, 22.91]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFR=1"], "B_done": [18.18, 19.46, 19.71], "joined": [18.18, 19.46, 19.71], "ready": [20.86, 20.99, 20.99], "final": [21.76, 21.76, 21.76]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "extra": ["-DOKC_TFW=64", "-DOKC_TFR=1"], "B_done": [18.18, 19.46, 19.71], "joined": [18.3, 19.46, 19.71], "ready": [20.99, 20.99, 20.99], "final": [22.91, 23.04, 23.04]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 0, "extra": [], "B_done": [67.58, 69.38, 71.42], "joined": [67.71, 69.5, 71.94], "ready": [72.83, 72.96, 73.22], "final": [73.73, 73.73, 73.98]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": [], "B_done": [67.46, 69.25, 71.68], "joined": [67.58, 69.38, 71.68], "ready": [69.38, 72.7, 73.22], "final": [71.42, 73.47, 73.98]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFW=64"], "B_done": [67.58, 69.38, 71.68], "joined": [67.71, 69.76, 72.32], "ready": [70.4, 73.34, 73.6], "final": [72.32, 74.11, 74.24]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFR=1"], "B_done": [67.84, 69.63, 71.42], "joined": [67.97, 70.02, 72.7], "ready": [70.02, 73.73, 73.86], "final": [71.94, 74.37, 74.62]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFW=64", "-DOKC_TFR=1"], "B_done": [67.71, 69.38, 71.42], "joined": [67.97, 69.5, 71.94], "ready": [70.02, 72.83, 73.34], "final": [71.94, 73.73, 74.24]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 0, "extra": [], "B_done": [67.33, 68.86, 70.78], "joined": [67.33, 69.25, 71.42], "ready": [72.19, 72.19, 72.45], "final": [72.96, 72.96, 73.22]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": [], "B_done": [67.07, 68.86, 71.42], "joined": [67.2, 68.99, 71.68], "ready": [69.76, 73.09, 73.09], "final": [71.81, 73.98, 74.11]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFW=64"], "B_done": [67.84, 69.76, 72.32], "joined": [67.84, 70.02, 73.09], "ready": [70.78, 73.98, 74.11], "final": [72.7, 74.75, 75.01]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFR=1"], "B_done": [67.84, 69.38, 71.55], "joined": [67.84, 69.5, 71.94], "ready": [70.02, 72.96, 73.09], "final": [71.55, 73.6, 73.98]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "extra": ["-DOKC_TFW=64", "-DOKC_TFR=1"], "B_done": [68.35, 69.89, 71.68], "joined": [68.35, 70.27, 72.45], "ready": [70.53, 73.47, 73.73], "final": [72.58, 74.24, 74.37]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lZBo4tneWaGe87VUqn5CTj

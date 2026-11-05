@@ -1,0 +1,80 @@
+✓ Initialized. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-pWBb2bHDrCXfIYXuTNpTgP
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {"PHASE": "time", "VARIANTS": "base,qko", "SEEDS": "13,14,15,16", "REPS": "20", "CASES": "d1s,d1f,d16s,d16f,d32s,d32f,v1s,v1f,v16s,v16f,v32s,v32f"} RETURNCODE 0
+ROW {"case": "d1s", "seed": 13, "med": {"base": 8.91, "qko": 8.86}, "gain": {"base": 1.0, "qko": 1.005}, "bad": {}}
+ROW {"case": "d1s", "seed": 14, "med": {"base": 8.85, "qko": 8.83}, "gain": {"base": 1.0, "qko": 1.002}, "bad": {}}
+ROW {"case": "d1s", "seed": 15, "med": {"base": 8.77, "qko": 8.96}, "gain": {"base": 1.0, "qko": 0.979}, "bad": {}}
+ROW {"case": "d1s", "seed": 16, "med": {"base": 8.96, "qko": 8.96}, "gain": {"base": 1.0, "qko": 1.0}, "bad": {}}
+ROW {"case": "d1f", "seed": 13, "med": {"base": 14.43, "qko": 14.5}, "gain": {"base": 1.0, "qko": 0.996}, "bad": {}}
+ROW {"case": "d1f", "seed": 14, "med": {"base": 14.43, "qko": 14.43}, "gain": {"base": 1.0, "qko": 1.0}, "bad": {}}
+ROW {"case": "d1f", "seed": 15, "med": {"base": 14.37, "qko": 14.45}, "gain": {"base": 1.0, "qko": 0.994}, "bad": {}}
+ROW {"case": "d1f", "seed": 16, "med": {"base": 14.35, "qko": 14.46}, "gain": {"base": 1.0, "qko": 0.992}, "bad": {}}
+ROW {"case": "d16s", "seed": 13, "med": {"base": 11.52, "qko": 11.58}, "gain": {"base": 1.0, "qko": 0.994}, "bad": {}}
+ROW {"case": "d16s", "seed": 14, "med": {"base": 11.66, "qko": 11.54}, "gain": {"base": 1.0, "qko": 1.011}, "bad": {}}
+ROW {"case": "d16s", "seed": 15, "med": {"base": 11.57, "qko": 11.57}, "gain": {"base": 1.0, "qko": 1.0}, "bad": {}}
+ROW {"case": "d16s", "seed": 16, "med": {"base": 11.7, "qko": 11.62}, "gain": {"base": 1.0, "qko": 1.007}, "bad": {}}
+ROW {"case": "d16f", "seed": 13, "med": {"base": 91.47, "qko": 91.79}, "gain": {"base": 1.0, "qko": 0.997}, "bad": {}}
+ROW {"case": "d16f", "seed": 14, "med": {"base": 89.18, "qko": 89.33}, "gain": {"base": 1.0, "qko": 0.998}, "bad": {}}
+ROW {"case": "d16f", "seed": 15, "med": {"base": 89.22, "qko": 89.84}, "gain": {"base": 1.0, "qko": 0.993}, "bad": {}}
+ROW {"case": "d16f", "seed": 16, "med": {"base": 90.77, "qko": 90.98}, "gain": {"base": 1.0, "qko": 0.998}, "bad": {}}
+ROW {"case": "d32s", "seed": 13, "med": {"base": 13.6, "qko": 13.52}, "gain": {"base": 1.0, "qko": 1.006}, "bad": {}}
+ROW {"case": "d32s", "seed": 14, "med": {"base": 13.55, "qko": 13.55}, "gain": {"base": 1.0, "qko": 1.0}, "bad": {}}
+ROW {"case": "d32s", "seed": 15, "med": {"base": 13.6, "qko": 13.73}, "gain": {"base": 1.0, "qko": 0.991}, "bad": {}}
+ROW {"case": "d32s", "seed": 16, "med": {"base": 13.5, "qko": 13.6}, "gain": {"base": 1.0, "qko": 0.993}, "bad": {}}
+ROW {"case": "d32f", "seed": 13, "med": {"base": 169.71, "qko": 170.16}, "gain": {"base": 1.0, "qko": 0.997}, "bad": {}}
+ROW {"case": "d32f", "seed": 14, "med": {"base": 171.38, "qko": 171.54}, "gain": {"base": 1.0, "qko": 0.999}, "bad": {}}
+ROW {"case": "d32f", "seed": 15, "med": {"base": 168.02, "qko": 168.11}, "gain": {"base": 1.0, "qko": 0.999}, "bad": {}}
+ROW {"case": "d32f", "seed": 16, "med": {"base": 169.55, "qko": 170.05}, "gain": {"base": 1.0, "qko": 0.997}, "bad": {}}
+ROW {"case": "v1s", "seed": 13, "med": {"base": 10.11, "qko": 10.34}, "gain": {"base": 1.0, "qko": 0.978}, "bad": {}}
+ROW {"case": "v1s", "seed": 14, "med": {"base": 10.29, "qko": 10.3}, "gain": {"base": 1.0, "qko": 0.998}, "bad": {}}
+ROW {"case": "v1s", "seed": 15, "med": {"base": 10.08, "qko": 10.3}, "gain": {"base": 1.0, "qko": 0.978}, "bad": {}}
+ROW {"case": "v1s", "seed": 16, "med": {"base": 10.13, "qko": 10.34}, "gain": {"base": 1.0, "qko": 0.98}, "bad": {}}
+ROW {"case": "v1f", "seed": 13, "med": {"base": 16.66, "qko": 16.54}, "gain": {"base": 1.0, "qko": 1.007}, "bad": {}}
+ROW {"case": "v1f", "seed": 14, "med": {"base": 16.77, "qko": 16.61}, "gain": {"base": 1.0, "qko": 1.01}, "bad": {}}
+ROW {"case": "v1f", "seed": 15, "med": {"base": 16.66, "qko": 16.56}, "gain": {"base": 1.0, "qko": 1.006}, "bad": {}}
+ROW {"case": "v1f", "seed": 16, "med": {"base": 16.74, "qko": 16.66}, "gain": {"base": 1.0, "qko": 1.005}, "bad": {}}
+ROW {"case": "v16s", "seed": 13, "med": {"base": 13.98, "qko": 13.68}, "gain": {"base": 1.0, "qko": 1.022}, "bad": {}}
+ROW {"case": "v16s", "seed": 14, "med": {"base": 14.02, "qko": 13.76}, "gain": {"base": 1.0, "qko": 1.019}, "bad": {}}
+ROW {"case": "v16s", "seed": 15, "med": {"base": 13.97, "qko": 13.57}, "gain": {"base": 1.0, "qko": 1.029}, "bad": {}}
+ROW {"case": "v16s", "seed": 16, "med": {"base": 14.0, "qko": 13.7}, "gain": {"base": 1.0, "qko": 1.022}, "bad": {}}
+ROW {"case": "v16f", "seed": 13, "med": {"base": 102.48, "qko": 100.51}, "gain": {"base": 1.0, "qko": 1.02}, "bad": {}}
+ROW {"case": "v16f", "seed": 14, "med": {"base": 100.56, "qko": 98.37}, "gain": {"base": 1.0, "qko": 1.022}, "bad": {}}
+ROW {"case": "v16f", "seed": 15, "med": {"base": 100.82, "qko": 98.9}, "gain": {"base": 1.0, "qko": 1.019}, "bad": {}}
+ROW {"case": "v16f", "seed": 16, "med": {"base": 101.44, "qko": 98.77}, "gain": {"base": 1.0, "qko": 1.027}, "bad": {}}
+ROW {"case": "v32s", "seed": 13, "med": {"base": 16.86, "qko": 16.05}, "gain": {"base": 1.0, "qko": 1.051}, "bad": {}}
+ROW {"case": "v32s", "seed": 14, "med": {"base": 16.61, "qko": 16.19}, "gain": {"base": 1.0, "qko": 1.026}, "bad": {}}
+ROW {"case": "v32s", "seed": 15, "med": {"base": 16.64, "qko": 16.0}, "gain": {"base": 1.0, "qko": 1.04}, "bad": {}}
+ROW {"case": "v32s", "seed": 16, "med": {"base": 16.77, "qko": 15.9}, "gain": {"base": 1.0, "qko": 1.054}, "bad": {}}
+ROW {"case": "v32f", "seed": 13, "med": {"base": 183.33, "qko": 181.14}, "gain": {"base": 1.0, "qko": 1.012}, "bad": {}}
+ROW {"case": "v32f", "seed": 14, "med": {"base": 185.66, "qko": 182.38}, "gain": {"base": 1.0, "qko": 1.018}, "bad": {}}
+ROW {"case": "v32f", "seed": 15, "med": {"base": 182.34, "qko": 180.53}, "gain": {"base": 1.0, "qko": 1.01}, "bad": {}}
+ROW {"case": "v32f", "seed": 16, "med": {"base": 184.22, "qko": 181.9}, "gain": {"base": 1.0, "qko": 1.013}, "bad": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/whitestjohn0/main/ap-pWBb2bHDrCXfIYXuTNpTgP

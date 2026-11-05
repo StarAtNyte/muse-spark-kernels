@@ -1,0 +1,74 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hCa6uNZpMLR4hMgp5xRUE6
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 170s
+[mfab] moe T= 32 prod median   146.2 us  speedup vs barrier twin (twin without SC6) 1.0268 (per seed 1.027 1.024 1.014 1.027)  max|d| 0
+[mfab] moe T=128 prod median   190.6 us  speedup vs barrier twin (twin without SC6) 1.0274 (per seed 1.020 1.020 1.027 1.034)  max|d| 0
+[mfab] moe T=256 prod median   221.8 us  speedup vs barrier twin (twin without SC6) 1.0157 (per seed 1.016 1.015 1.012 1.018)  max|d| 0
+PREPARED 180.7
+PROF ctrl sliding median_us 126.2
+  K     0.00    9.60  void sk2_kernel_narrow_1858d55769b5<1, 8, 3, 1, 4, 2, 5, true, false, 2, 1, __nv_bfloat16,
+  K     8.03    8.93  void (anonymous namespace)::attn_kernel<8, false, 15>((anonymous namespace)::Params)
+  K    11.23    9.54  void sk2_kernel<1, 8, 4, 1, 4, 1, 4, true, false, 2, 1, __nv_bfloat16, true, false>(CUtens
+  K    19.68    4.29  void glue_cluster_boundary<4, 32, false, false, true, true>(GlueArgs)
+  K    21.73   20.00  void sk2_kernel_gled8a62ca62c63<1, 8, 4, 1, 8, 1, 6, true, false, 2, 1, __nv_bfloat16, tru
+  K    37.86    5.89  _sl_tile_route
+  K    39.43   77.83  void okc::moe_fused<false>(okc::Params)
+  K   115.91    4.77  void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false, 2, 1, __nv_bfloat16, true, false>(CUtens
+  K   118.92    3.65  _sl_cluster_finish
+PROF c1 sliding median_us 140.0
+  K     0.00   10.72  void sk2_kernel_narrow_1858d55769b5<1, 8, 3, 1, 4, 2, 5, true, false, 2, 1, __nv_bfloat16,
+  K     9.44    8.38  void (anonymous namespace)::attn_kernel<8, false, 15>((anonymous namespace)::Params)
+  K    11.52   10.50  void sk2_kernel_gled8a62ca62c63<1, 8, 4, 1, 4, 1, 4, true, false, 2, 1, __nv_bfloat16, tru
+  K    20.64   28.03  void sk2_kernel_gled8a62ca62c63<1, 16, 4, 1, 8, 1, 5, true, false, 2, 1, __nv_bfloat16, fa
+  K    45.38   11.33  _gle_route
+  K    56.80   71.97  void okc::moe_fused<false>(okc::Params)
+  K   127.52    4.58  void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false, 2, 1, __nv_bfloat16, true, false>(CUtens
+  K   130.43    3.55  _sl_cluster_finish
+PROF c8 sliding median_us 137.2
+  K     0.00   10.27  void sk2_kernel_narrow_1858d55769b5<1, 8, 3, 1, 4, 2, 5, true, false, 2, 1, __nv_bfloat16,
+  K     8.83    8.06  void (anonymous namespace)::attn_kernel<8, false, 15>((anonymous namespace)::Params)
+  K    11.04   10.14  void sk2_kernel_gled8a62ca62c63<1, 8, 4, 1, 4, 1, 4, true, false, 2, 1, __nv_bfloat16, tru
+  K    19.68   28.03  void sk2_kernel_gled8a62ca62c63<1, 16, 4, 1, 8, 1, 5, true, false, 2, 1, __nv_bfloat16, fa
+  K    45.02    9.12  _gle_route
+  K    54.27   74.59  void okc::moe_fused<false>(okc::Params)
+  K   127.52    4.67  void sk2_kernel<1, 8, 1, 1, 8, 2, 4, true, false, 2, 1, __nv_bfloat16, true, false>(CUtens
+  K   130.53    3.62  _sl_cluster_finish
+DONE
+
+STDERR:
+USDT:2026-11-03 15:27:52 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-03 15:27:52 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-03 15:27:52 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-03 15:27:52 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-11-03 15:27:54 31:31 SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-11-03 15:27:54 31:31 SyncActivityProfilerHandler.cpp:46] profiler_stop
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-hCa6uNZpMLR4hMgp5xRUE6

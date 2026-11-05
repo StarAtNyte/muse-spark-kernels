@@ -1,0 +1,17 @@
+✓ checking submission.py on muse_attention_decode  job 1cfc248ce0ee45a3
+  a check run: the same tests and timing, kept off the board and out of your attempts
+› received
+› running the tests, then timing against SGLang  0:12
+› running the tests, then timing against SGLang  0:18
+
+ran for 0:31 · queued 0:16
+
+✗ muse_attention_decode  failed the tests  check run, off the board  job 1cfc248ce0ee45a3
+
+  tests       0/16 passed
+  first fail  batch=1 ctx=10 heads=tp8 layer=sliding  AttributeError: 'str'
+              object has no attribute 'decode'
+  output      profiles/submission.1cfc248ce0ee45a3.log
+
+next  okc show muse_attention_decode
+  18 of 20 runs left today, 37 of 40 checks on muse_attention_decode

@@ -28,12 +28,10 @@ Design
     the split counts and workspace copies per regime are rules on (requests x KV pairs, q_len, layer
     kind) in _plan(), measured on H200.
 * Math. q_len 1: QK^T and PV on FP16 mma.sync with FP32 accumulators (P in FP16, K and V converted
-  exactly from E4M3). q_len 8: QK^T and PV are FP8 wgmmas (E4M3 x E4M3) with FP16 accumulators (half the
-  registers of FP32; the exp2 rounds the scores to f16 anyway); P goes straight to E4M3 bytes by a
-  linear (Mitchell) exp2 evaluated in f16x2, and the per-tile V^T copy in shared memory carries 8 extra
-  rows of E4M3 ones, so the softmax row sums come out of the same wgmma from the same P bytes. P <= 2^8
-  under the lazy offset bounds each split's FP16 sums, and o and its row sum share the rounding, which
-  the normalization divides out.
+  exactly from E4M3). q_len 8: QK^T is an FP8 wgmma (E4M3 x E4M3) with FP16 accumulators (the exp2 below
+  rounds the scores to f16 anyway); PV is an FP8 wgmma with FP32 accumulators; P goes straight to E4M3 bytes
+  by a linear (Mitchell) exp2 evaluated in f16x2, and the per-tile V^T copy in shared memory carries 8
+  extra rows of E4M3 ones, so the softmax row sums come out of the same wgmma from the same P bytes.
   Softmax uses a lazily updated per-row offset instead of a running max (QK-norm bounds the logits).
 * Merge. Each split rescales its partial (o, l) to a fixed reference 2^0 and adds it into a persistent
   workspace with red.add atomics: BF16 (red.add.v4.bf16x2) for the per-request q_len 8 builds and the
@@ -405,34 +403,6 @@ __device__ __forceinline__ float2 score_max(const uint32_t* sh, int r0, int n) {
     hi = __hmax2(hi, *reinterpret_cast<const __half2*>(&sh[r0 + r + 1]));
   }
   return make_float2(fmaxf(__low2float(lo), __high2float(lo)), fmaxf(__low2float(hi), __high2float(hi)));
-}
-// FP16-accumulator form of the PV wgmma: 18 f16x2 registers, register i holding FP32 elements 2i, 2i+1 of
-// the form above (o[t] rows g / g+8 at 2t / 2t+1, then the row sums at 16 / 17): half the registers
-__device__ __forceinline__ void wgmma_m64n72k32_e4m3_f16(uint32_t* d, const uint32_t* a, uint64_t desc) {
-  asm volatile(
-      "{\n"
-      "wgmma.mma_async.sync.aligned.m64n72k32.f16.e4m3.e4m3 "
-      "{%0, %1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12, %13, %14, %15, %16, %17}, "
-      "{%18, %19, %20, %21}, %22, 1, 1, 1;\n}\n"
-      : "+r"(d[0]), "+r"(d[1]), "+r"(d[2]), "+r"(d[3]), "+r"(d[4]), "+r"(d[5]), "+r"(d[6]), "+r"(d[7]),
-        "+r"(d[8]), "+r"(d[9]), "+r"(d[10]), "+r"(d[11]), "+r"(d[12]), "+r"(d[13]), "+r"(d[14]), "+r"(d[15]),
-        "+r"(d[16]), "+r"(d[17])
-      : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]), "l"(desc));
-}
-constexpr int PV_REGS = 18;   // f16x2 accumulator registers of the PV wgmma (64 dims + row sums, 2 rows)
-__device__ __forceinline__ void pv_fence(uint32_t* d) {
-#pragma unroll
-  for (int e = 0; e < PV_REGS; ++e) asm volatile("" : "+r"(d[e])::"memory");
-}
-// rescale both rows of the PV state (even registers: row g, odd: row g + 8)
-__device__ __forceinline__ void pv_scale(uint32_t* d, float alo, float ahi) {
-  const __half2 lo = __float2half2_rn(alo), hi = __float2half2_rn(ahi);
-#pragma unroll
-  for (int e = 0; e < PV_REGS; ++e) {
-    __half2 x = *reinterpret_cast<__half2*>(&d[e]);
-    x = __hmul2(x, (e & 1) ? hi : lo);
-    d[e] = *reinterpret_cast<uint32_t*>(&x);
-  }
 }
 // floor(x / d) for 0 <= x < 2^24 and 1 <= d < 2^24 through the float reciprocal (one correction step):
 // ~8 instructions instead of the ~20 of an integer division, which matters in once-per-launch (cold) code
@@ -1503,15 +1473,14 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
   const __half2 lin_a = __float2half2_rn(ssc * (8.f / 126.f));   // (flat q8 linear exp2 slope)
   // the lazy-max test on raw scores against (offset + 8) / ssc (ssc > 0), updated with the offset
   float thr[2] = {0.f, 0.f};
-  // PV state (o and the row sums) in FP16 accumulators (see wgmma_m64n72k32_e4m3_f16); softmax offsets and the
-  // merge stay FP32
-  uint32_t pv[PV_REGS];
-#pragma unroll
-  for (int e = 0; e < PV_REGS; ++e) pv[e] = 0u;
+  float lacc[4] = {0.f, 0.f, 0.f, 0.f};
   bool first = true;
-  // the zero init stays before the loop: ptxas had sunk these moves into the first QK^T
-  // wgmma's pipeline stage (warning C7515: every wgmma of the kernel serialized)
-  pv_fence(pv);
+     // the zero init stays before the loop: ptxas had sunk these moves into the first QK^T
+    float* oz = &o[0][0][0];   // wgmma's pipeline stage (warning C7515: every wgmma of the kernel serialized)
+#pragma unroll
+    for (int e = 0; e < 32; ++e) reg_fence(oz[e]);
+#pragma unroll
+    for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
 
   const int ckey = tid >> 2, cq = tid & 3;   // V conversion: key, two 16-byte chunks
   // FP8 PV: the per-CTA kernels (the flat kernel's register budget serializes its wgmmas: measured slower)
@@ -1618,11 +1587,15 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
     }
     if constexpr (FLAT) {
       // the previous tile's PV (committed before this QK^T) is done: its P registers are free for the transpose
-      // below (the flat kernel's 104-register consumers spilled there) and the PV state is settled
+      // below (the flat kernel's 104-register consumers spilled there) and o / lacc are settled
       wgmma_wait<1>();
 #pragma unroll
       for (int e = 0; e < 8; ++e) asm volatile("" : "+r"(pa[e >> 2][e & 3]));
-      pv_fence(pv);
+      float* od0 = &o[0][0][0];
+#pragma unroll
+      for (int e = 0; e < 32; ++e) reg_fence(od0[e]);
+#pragma unroll
+      for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
     }
     uint8_t* V16t = V16 + 0;   // PV reads it asynchronously: double buffer
     // this head's V^T for this tile (PV reads it asynchronously: double buffer per stream)
@@ -1726,7 +1699,9 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
         const float nlo = lin_snap(fmaxf(mlo, cr[0])), nhi = lin_snap(fmaxf(mhi, cr[1]));
         const float alo = ex2(cr[0] - nlo), ahi = ex2(cr[1] - nhi);
         // (the previous tile's PV wgmma completed at this tile's wgmma wait)
-pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
+#pragma unroll
+        for (int t = 0; t < 8; ++t) { o[0][t][0] *= alo; o[0][t][1] *= alo; o[0][t][2] *= ahi; o[0][t][3] *= ahi; }
+        lacc[0] *= alo; lacc[1] *= alo; lacc[2] *= ahi; lacc[3] *= ahi;   // (FP8 PV: the row sums live here too)
         cr[0] = nlo; cr[1] = nhi;
         dlo = nlo; dhi = nhi;
 
@@ -1763,13 +1738,19 @@ pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
             const float hhi = quad_max(h.y) * ssc;
             const float nlo = lin_snap(fmaxf(hlo, cr[0])), nhi = lin_snap(fmaxf(hhi, cr[1]));
             const float alo = ex2(cr[0] - nlo), ahi = ex2(cr[1] - nhi);
-pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
+#pragma unroll
+            for (int t = 0; t < 8; ++t) { o[0][t][0] *= alo; o[0][t][1] *= alo; o[0][t][2] *= ahi; o[0][t][3] *= ahi; }
+            lacc[0] *= alo; lacc[1] *= alo; lacc[2] *= ahi; lacc[3] *= ahi;
             cr[0] = nlo; cr[1] = nhi;
             dlo = nlo; dhi = nhi;
             pack2();
           }
         }
-        pv_fence(pv);
+        float* odk = &o[0][0][0];
+#pragma unroll
+        for (int e = 0; e < 32; ++e) reg_fence(odk[e]);
+#pragma unroll
+        for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
 #pragma unroll
         for (int e = 0; e < 8; ++e) asm volatile("" : "+r"(pa[e >> 2][e & 3]));
         if constexpr (LSYNC) {   // every warp's V^T for this tile written (and visible to the async proxy)
@@ -1778,8 +1759,8 @@ pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
         }
         wgmma_fence();
 
-          wgmma_m64n72k32_e4m3_f16(pv, pa[0], vdesc_c);
-          wgmma_m64n72k32_e4m3_f16(pv, pa[1], vdesc_c + 2);
+          wgmma_m64n72k32_e4m3(odk, lacc, pa[0], vdesc_c);
+          wgmma_m64n72k32_e4m3(odk, lacc, pa[1], vdesc_c + 2);
 
         wgmma_commit();
       }
@@ -1815,9 +1796,15 @@ pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
               const float alo = ex2(cr[0] - nlo), ahi = ex2(cr[1] - nhi);
               if ((kk == 1)) {   // (a PV wgmma may still accumulate into o)
                 wgmma_wait<0>();
-                pv_fence(pv);
+                float* odw = &o[0][0][0];
+#pragma unroll
+                for (int e = 0; e < 32; ++e) reg_fence(odw[e]);
+#pragma unroll
+                for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
               }
-pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
+#pragma unroll
+              for (int t = 0; t < 8; ++t) { o[0][t][0] *= alo; o[0][t][1] *= alo; o[0][t][2] *= ahi; o[0][t][3] *= ahi; }
+              lacc[0] *= alo; lacc[1] *= alo; lacc[2] *= ahi; lacc[3] *= ahi;
               cr[0] = nlo; cr[1] = nhi;
               dlo = nlo; dhi = nhi;
               rchk = false;
@@ -1826,25 +1813,36 @@ pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
         }
         }   // (pack / check loop)
            // each half of P goes to the tensor cores as soon as it is packed
+          float* od = &o[0][0][0];
           if constexpr (LSYNCN) {   // every warp's V^T for this tile written (and visible to the async proxy)
             if (kk == 0) {
               fence_proxy_async();
               wgsync(wgi);
             }
           }
-          if (kk == 0) pv_fence(pv);
+          if (kk == 0) {
+#pragma unroll
+            for (int e = 0; e < 32; ++e) reg_fence(od[e]);
+#pragma unroll
+            for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
+          }
 #pragma unroll
           for (int e = 0; e < 4; ++e) asm volatile("" : "+r"(pa[kk][e]));
           wgmma_fence();
-          wgmma_m64n72k32_e4m3_f16(pv, pa[kk], vdesc_c + 2 * kk);
+          wgmma_m64n72k32_e4m3(od, lacc, pa[kk], vdesc_c + 2 * kk);
 
           wgmma_commit();
 
       }
 
+      float* od = &o[0][0][0];
+
            // done before the next tile (no wgmma in flight across the loop edge)
           wgmma_wait<0>();
-          pv_fence(pv);
+#pragma unroll
+          for (int e = 0; e < 32; ++e) reg_fence(od[e]);
+#pragma unroll
+          for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
 #pragma unroll
           for (int e = 0; e < 8; ++e) asm volatile("" : "+r"(pa[e >> 2][e & 3]));
 
@@ -1862,19 +1860,18 @@ pv_scale(pv, alo, ahi);   // (the row sums live in pv too)
 #pragma unroll
     for (int e = 0; e < 8; ++e) asm volatile("" : "+r"(pa[e >> 2][e & 3]));
 
-  pv_fence(pv);
-  // FP16 PV state -> the FP32 (o, l) of the merge
+  {
+    float* od = &o[0][0][0];
 #pragma unroll
-  for (int t = 0; t < 8; ++t) {
-    const float2 lo = __half22float2(*reinterpret_cast<const __half2*>(&pv[2 * t]));
-    const float2 hi = __half22float2(*reinterpret_cast<const __half2*>(&pv[2 * t + 1]));
-    o[0][t][0] = lo.x; o[0][t][1] = lo.y; o[0][t][2] = hi.x; o[0][t][3] = hi.y;
+    for (int e = 0; e < 32; ++e) reg_fence(od[e]);
+#pragma unroll
+    for (int e = 0; e < 4; ++e) reg_fence(lacc[e]);
   }
+
   m_r[0] = first ? -INFINITY : cr[0];
   m_r[1] = first ? -INFINITY : cr[1];
-  // every lane of the quad holds the full row sum; the epilogue quad-sums
-  l_r[0] = 0.25f * __low2float(*reinterpret_cast<const __half2*>(&pv[16]));
-  l_r[1] = 0.25f * __low2float(*reinterpret_cast<const __half2*>(&pv[17]));
+  l_r[0] = 0.25f * lacc[0];   // every lane of the quad holds the full row sum; the epilogue quad-sums
+  l_r[1] = 0.25f * lacc[2];
 
   }
 

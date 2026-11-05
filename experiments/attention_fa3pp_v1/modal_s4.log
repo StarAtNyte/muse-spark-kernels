@@ -1,0 +1,1072 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ocori7WhUU1rtOmKpowsW0
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_base__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_base__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(555): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2354): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2425): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2425): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2425): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2426): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(2427): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(665): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(555): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(535): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1723): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1592): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1602): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1602): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1645): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1645): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1664): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(1664): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2659
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 2795
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(29): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (2 * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (2 * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(29): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (2 * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (2 * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(45): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(126): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(127): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(164): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(256): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(260): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_base__90a/cuda.cu(393): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_base__90a.so
+RES okc_attn_fa3pp_base__90a REG:80 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_ctl__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_ctl__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2604): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2675): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2675): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2675): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2676): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(2677): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(683): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(553): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1972): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1913): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1913): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1610): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1620): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1620): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1663): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(1663): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(48): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(129): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(130): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(167): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(259): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(263): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_ctl__90a/cuda.cu(411): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_ctl__90a.so
+RES okc_attn_fa3pp_ctl__90a REG:80 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_m1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_m1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2604): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2676): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(2677): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(683): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(553): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1972): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1913): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1913): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1610): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1620): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1620): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1663): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(1663): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(48): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(129): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(130): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(167): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(259): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(263): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_m1s8__90a/cuda.cu(411): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_m1s8__90a.so
+RES okc_attn_fa3pp_m1s8__90a REG:168 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_pp1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_pp1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2604): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2676): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(2677): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(683): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(553): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1972): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1913): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1913): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1610): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1620): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1620): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1663): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(1663): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(48): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(129): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(130): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(167): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(259): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(263): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_pp1s8__90a/cuda.cu(411): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_pp1s8__90a.so
+RES okc_attn_fa3pp_pp1s8__90a REG:168 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_np2s4__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_np2s4__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2604): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2675): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2675): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2675): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2676): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(2677): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(683): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(553): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1972): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1913): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1913): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1610): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1620): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1620): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1663): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(1663): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(48): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(129): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(130): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(167): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(259): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(263): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np2s4__90a/cuda.cu(411): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+ptxas warning : Local memory used for function '_ZN39_GLOBAL__N__22b7d612_7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE', size of stack frame: 16 bytes
+ptxas warning : Registers are spilled to local memory in function '_ZN39_GLOBAL__N__22b7d612_7_cuda_cu_0b177e6611attn_kernelILi8ELb1ELi0EEEvNS_6ParamsE', 16 bytes spill stores, 16 bytes spill loads
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_np2s4__90a.so
+RES okc_attn_fa3pp_np2s4__90a REG:80 STACK:16 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+[1/3] ccache c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_np1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/main.cpp -o main.o 
+[2/3] ccache /usr/local/cuda/bin/nvcc -MD -MF cuda.cuda.o.d -DTORCH_EXTENSION_NAME=okc_attn_fa3pp_np1s8__90a -DTORCH_API_INCLUDE_EXTENSION_H -isystem /opt/sglang/lib/python3.12/site-packages/torch/include -isystem /opt/sglang/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -gencode=arch=compute_90a,code=sm_90a --expt-relaxed-constexpr -Xptxas=-warn-spills,-warn-lmem-usage -std=c++20 -c /root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu -o cuda.cuda.o 
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2604): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_rank" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_par" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                      ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2675): warning #177-D: variable "w0g_gen" was declared but never referenced
+    int w0g_rank = 2, w0g_par = 0, w0g_gen = 0;
+                                   ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2676): warning #177-D: variable "w0_smid" was declared but never referenced
+    unsigned w0_smid = 0;
+             ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(2677): warning #177-D: variable "w0_rank" was declared but never referenced
+    int w0_rank = 0;
+        ^
+          detected during instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(683): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(573): warning #607-D: this pragma must immediately precede a statement
+  #pragma unroll 1
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(553): warning #177-D: variable "IDX_SLOTS" was declared but never referenced
+    constexpr int IDX_SLOTS = 2 * STAGES;
+                  ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1972): warning #177-D: variable "V16t" was declared but never referenced
+      uint8_t* V16t = V16 + 0;
+               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1913): warning #177-D: variable "i_cur" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+        ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1913): warning #177-D: variable "cnt2" was declared but never referenced
+    int i_cur = 0, cnt2 = 0;
+                   ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1610): warning #177-D: variable "thr" was declared but never referenced
+    float thr[2] = {0.f, 0.f};
+          ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1620): warning #177-D: variable "ckey" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+              ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1620): warning #177-D: variable "cq" was declared but never referenced
+    const int ckey = tid >> 2, cq = tid & 3;
+                               ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1663): warning #177-D: variable "i_lo" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+             ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(1663): warning #177-D: variable "i_span" was declared but never referenced
+    uint32_t i_lo = 0, i_span = 0;
+                       ^
+          detected during:
+            instantiation of "void <unnamed>::attn_kernel<L,FLAT,MODE>(<unnamed>::Params) [with L=1, FLAT=false, MODE=2]" at line 2909
+            instantiation of "void launch<L>(const <unnamed>::Params &, dim3, cudaStream_t, int, __nv_bool) [with L=1]" at line 3045
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=8, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(30): warning #177-D: member "<unnamed>::Cfg<L, F>::BASEREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int BASEREGS = (65536 / (MINB * NTX)) / 8 * 8 > 255 ? 248 : (65536 / (MINB * NTX)) / 8 * 8;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(31): warning #177-D: member "<unnamed>::Cfg<L, F>::PREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int PREGS = (L == 1) ? 56 : 32;
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(32): warning #177-D: member "<unnamed>::Cfg<L, F>::CREGS [with L=1, F=false]" was declared but never referenced
+    static constexpr int CREGS = ((BASEREGS * NTX - PREGS * NP) / (NT > 0 ? NT : 1)) / 8 * 8 > 248
+                         ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(48): warning #177-D: variable "<unnamed>::IDX_SLOTS" was declared but never referenced
+  constexpr int IDX_SLOTS = 2 * STAGES;
+                ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(129): warning #177-D: function "<unnamed>::bar_sync_n" was declared but never referenced
+                            void bar_sync_n(int id, int n) { asm volatile("bar.sync %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(130): warning #177-D: function "<unnamed>::bar_arrive_n" was declared but never referenced
+                            void bar_arrive_n(int id, int n) { asm volatile("bar.arrive %0, %1;\n" ::"r"(id), "r"(n) : "memory"); }
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(167): warning #177-D: function "<unnamed>::ex2h2" was declared but never referenced
+                            uint32_t ex2h2(float lo, float hi) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(259): warning #177-D: function "<unnamed>::desc_sw128" was declared but never referenced
+                            uint64_t desc_sw128(uint32_t addr) {
+                                     ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(263): warning #177-D: function "<unnamed>::wgmma_m64n64k32_e4m3" was declared but never referenced
+                            void wgmma_m64n64k32_e4m3(float* d, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+                                 ^
+
+/root/.cache/torch_extensions/py312_cu130/okc_attn_fa3pp_np1s8__90a/cuda.cu(411): warning #177-D: function "<unnamed>::cl_gid" was declared but never referenced
+                            int cl_gid(const Params& p) {
+                                ^
+
+[3/3] ccache c++ main.o cuda.cuda.o -shared -L/opt/sglang/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o okc_attn_fa3pp_np1s8__90a.so
+RES okc_attn_fa3pp_np1s8__90a REG:168 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:720 TEXTURE:0 SURFACE:0 SAMPLER:0
+TEST {"case": "t2f", "seed": 11, "res": {"base": [true, "relative L2 error 9.362e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 9.362e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 9.344e-02 (worst row 1.123e-01) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 9.344e-02 (worst row 1.123e-01) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 9.362e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 9.344e-02 (worst row 1.123e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2f", "seed": 12, "res": {"base": [true, "relative L2 error 9.079e-02 (worst row 1.310e-01) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 9.079e-02 (worst row 1.310e-01) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 9.082e-02 (worst row 1.304e-01) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 9.082e-02 (worst row 1.304e-01) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 9.079e-02 (worst row 1.310e-01) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 9.082e-02 (worst row 1.304e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 11, "res": {"base": [true, "relative L2 error 8.221e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 8.221e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 8.261e-02 (worst row 1.137e-01) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 8.261e-02 (worst row 1.137e-01) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 8.221e-02 (worst row 1.121e-01) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 8.261e-02 (worst row 1.137e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t4e", "seed": 12, "res": {"base": [true, "relative L2 error 8.401e-02 (worst row 1.150e-01) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 8.401e-02 (worst row 1.150e-01) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 8.392e-02 (worst row 1.138e-01) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 8.392e-02 (worst row 1.138e-01) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 8.401e-02 (worst row 1.150e-01) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 8.392e-02 (worst row 1.138e-01) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2ds", "seed": 11, "res": {"base": [true, "relative L2 error 7.229e-02 (worst row 7.844e-02) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 7.229e-02 (worst row 7.844e-02) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 7.231e-02 (worst row 7.757e-02) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 7.231e-02 (worst row 7.757e-02) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 7.229e-02 (worst row 7.844e-02) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 7.231e-02 (worst row 7.757e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2ds", "seed": 12, "res": {"base": [true, "relative L2 error 7.232e-02 (worst row 8.036e-02) [bound 0.150: 2.5 x "], "ctl": [true, "relative L2 error 7.232e-02 (worst row 8.036e-02) [bound 0.150: 2.5 x "], "m1s8": [true, "relative L2 error 7.243e-02 (worst row 8.090e-02) [bound 0.150: 2.5 x "], "pp1s8": [true, "relative L2 error 7.243e-02 (worst row 8.090e-02) [bound 0.150: 2.5 x "], "np2s4": [true, "relative L2 error 7.232e-02 (worst row 8.036e-02) [bound 0.150: 2.5 x "], "np1s8": [true, "relative L2 error 7.243e-02 (worst row 8.090e-02) [bound 0.150: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 11, "res": {"base": [true, "relative L2 error 3.866e-02 (worst row 4.499e-02) [bound 0.109: 2.5 x "], "ctl": [true, "relative L2 error 3.866e-02 (worst row 4.499e-02) [bound 0.109: 2.5 x "], "m1s8": [true, "relative L2 error 3.936e-02 (worst row 4.690e-02) [bound 0.109: 2.5 x "], "pp1s8": [true, "relative L2 error 3.936e-02 (worst row 4.690e-02) [bound 0.109: 2.5 x "], "np2s4": [true, "relative L2 error 3.866e-02 (worst row 4.499e-02) [bound 0.109: 2.5 x "], "np1s8": [true, "relative L2 error 3.936e-02 (worst row 4.690e-02) [bound 0.109: 2.5 x "]}}
+TEST {"case": "t2dc", "seed": 12, "res": {"base": [true, "relative L2 error 4.034e-02 (worst row 5.158e-02) [bound 0.113: 2.5 x "], "ctl": [true, "relative L2 error 4.034e-02 (worst row 5.158e-02) [bound 0.113: 2.5 x "], "m1s8": [true, "relative L2 error 4.087e-02 (worst row 5.186e-02) [bound 0.113: 2.5 x "], "pp1s8": [true, "relative L2 error 4.087e-02 (worst row 5.186e-02) [bound 0.113: 2.5 x "], "np2s4": [true, "relative L2 error 4.034e-02 (worst row 5.158e-02) [bound 0.113: 2.5 x "], "np1s8": [true, "relative L2 error 4.087e-02 (worst row 5.186e-02) [bound 0.113: 2.5 x "]}}
+ROW {"case": "v16f", "seed": 11, "med": {"base": 100.66, "ctl": 100.72, "m1s8": 121.17, "pp1s8": 134.0, "np2s4": 104.26, "np1s8": 123.94}, "gain": {"base": 1.0, "ctl": 0.999, "m1s8": 0.831, "pp1s8": 0.751, "np2s4": 0.965, "np1s8": 0.812}, "ok": {"base": true, "ctl": true, "m1s8": true, "pp1s8": true, "np2s4": true, "np1s8": true}, "msg": {}}
+ROW {"case": "v16f", "seed": 12, "med": {"base": 98.29, "ctl": 97.9, "m1s8": 117.68, "pp1s8": 132.13, "np2s4": 101.2, "np1s8": 120.9}, "gain": {"base": 1.0, "ctl": 1.004, "m1s8": 0.835, "pp1s8": 0.744, "np2s4": 0.971, "np1s8": 0.813}, "ok": {"base": true, "ctl": true, "m1s8": true, "pp1s8": true, "np2s4": true, "np1s8": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 11, "med": {"base": 182.18, "ctl": 182.1, "m1s8": 224.08, "pp1s8": 240.29, "np2s4": 187.78, "np1s8": 228.9}, "gain": {"base": 1.0, "ctl": 1.0, "m1s8": 0.813, "pp1s8": 0.758, "np2s4": 0.97, "np1s8": 0.796}, "ok": {"base": true, "ctl": true, "m1s8": true, "pp1s8": true, "np2s4": true, "np1s8": true}, "msg": {}}
+ROW {"case": "v32f", "seed": 12, "med": {"base": 180.54, "ctl": 180.1, "m1s8": 224.03, "pp1s8": 240.74, "np2s4": 186.18, "np1s8": 228.45}, "gain": {"base": 1.0, "ctl": 1.002, "m1s8": 0.806, "pp1s8": 0.75, "np2s4": 0.97, "np1s8": 0.79}, "ok": {"base": true, "ctl": true, "m1s8": true, "pp1s8": true, "np2s4": true, "np1s8": true}, "msg": {}}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-ocori7WhUU1rtOmKpowsW0

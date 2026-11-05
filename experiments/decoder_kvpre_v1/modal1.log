@@ -1,0 +1,77 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-um6ZvlnVmnPkKyS0WNQ6Ik
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 165s
+[mfab] moe T= 32 prod median   147.9 us  speedup vs barrier twin (twin without SC6) 1.0281 (per seed 1.028 1.017 1.031 1.024)  max|d| 0
+[mfab] moe T=128 prod median   191.7 us  speedup vs barrier twin (twin without SC6) 1.0253 (per seed 1.022 1.022 1.026 1.025)  max|d| 0
+[mfab] moe T=256 prod median   224.7 us  speedup vs barrier twin (twin without SC6) 1.0140 (per seed 1.014 1.013 1.009 1.020)  max|d| 0
+PREPARED 175.7
+TEST {"i": 0, "v": "kv", "ok": true, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 1, "v": "kv", "ok": true, "msg": "update relative L2 error 7.566e-03 (worst row 7.566e-03) [bound 0.133]; attention input relative L2 error 5.268e-03 (worst row 5.268e-03) [bound 0.077]"}
+TEST {"i": 2, "v": "kv", "ok": true, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 3, "v": "kv", "ok": true, "msg": "update relative L2 error 6.678e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 4, "v": "kv", "ok": true, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 5, "v": "kv", "ok": true, "msg": "update relative L2 error 6.979e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.631e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 6, "v": "kv", "ok": true, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 7, "v": "kv", "ok": true, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 8, "v": "kv", "ok": true, "msg": "update relative L2 error 8.360e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.818e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 9, "v": "kv", "ok": true, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 10, "v": "kv", "ok": true, "msg": "update relative L2 error 8.083e-03 (worst row 8.083e-03) [bound 0.150]; attention input relative L2 error 5.781e-03 (worst row 5.781e-03) [bound 0.093]"}
+TEST {"i": 11, "v": "kv", "ok": true, "msg": "update relative L2 error 6.588e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.202e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 12, "v": "kv", "ok": true, "msg": "update relative L2 error 9.369e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.301e-02) [bound 0.099]"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 83.47, "kv": 83.44, "gain": 1.0004, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 75.5, "kv": 76.11, "gain": 0.992, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 89.58, "kv": 89.81, "gain": 0.9975, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 83.1, "kv": 83.17, "gain": 0.9992, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 139.82, "kv": 140.8, "gain": 0.9931, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 132.38, "kv": 133.01, "gain": 0.9953, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 223.81, "kv": 223.07, "gain": 1.0033, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 207.04, "kv": 207.18, "gain": 0.9993, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 161.6, "kv": 162.42, "gain": 0.995, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 154.53, "kv": 155.12, "gain": 0.9962, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 306.94, "kv": 305.95, "gain": 1.0032, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 303.5, "kv": 302.83, "gain": 1.0022, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 141.12, "kv": 141.31, "gain": 0.9986, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 119.71, "kv": 119.52, "gain": 1.0016, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 107.44, "kv": 108.86, "gain": 0.9869, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 126.93, "kv": 128.45, "gain": 0.9882, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 247.41, "kv": 248.83, "gain": 0.9943, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 269.36, "kv": 271.54, "gain": 0.992, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 335.86, "kv": 336.98, "gain": 0.9967, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 331.79, "kv": 332.35, "gain": 0.9983, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 309.36, "kv": 310.0, "gain": 0.9979, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 301.17, "kv": 301.97, "gain": 0.9974, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 476.18, "kv": 476.08, "gain": 1.0002, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 484.29, "kv": 483.42, "gain": 1.0018, "ok": {"ctrl": true, "kv": true}, "msg": {}}
+DONE 185.2
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-um6ZvlnVmnPkKyS0WNQ6Ik

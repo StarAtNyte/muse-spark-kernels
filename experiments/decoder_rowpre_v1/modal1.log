@@ -1,0 +1,116 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lSdJ3xtiCfrjUg6F4onx3i
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[sc6] scales ok -> wgs sc6 True
+[sc6] regs/local/smem (<false>, <true>) -DOKC_WGS=1 [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (<false>, <true>) -DOKC_B4FIN=1 [96, 8, 0, 96, 8, 0]
+[mfab] layer prepare done at 147s
+[mfab] moe T= 32 prod median   146.0 us  speedup vs barrier twin (twin without SC6) 1.0270 (per seed 1.024 1.030 1.027 1.027)  max|d| 0
+[mfab] moe T=128 prod median   190.5 us  speedup vs barrier twin (twin without SC6) 1.0396 (per seed 1.024 1.027 1.040 1.040)  max|d| 0
+[mfab] moe T=256 prod median   222.3 us  speedup vs barrier twin (twin without SC6) 1.0113 (per seed 1.011 1.011 1.006 1.026)  max|d| 0
+PREPARED 156.6
+TEST {"i": 0, "v": "w16", "ok": true, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 0, "v": "w8", "ok": true, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 0, "v": "spre", "ok": true, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 0, "v": "bigpre", "ok": true, "msg": "update relative L2 error 5.526e-03 (worst row 5.526e-03) [bound 0.089]; attention input relative L2 error 4.735e-03 (worst row 4.735e-03) [bound 0.062]"}
+TEST {"i": 1, "v": "w16", "ok": true, "msg": "update relative L2 error 7.500e-03 (worst row 7.500e-03) [bound 0.133]; attention input relative L2 error 5.235e-03 (worst row 5.235e-03) [bound 0.077]"}
+TEST {"i": 1, "v": "w8", "ok": true, "msg": "update relative L2 error 7.500e-03 (worst row 7.500e-03) [bound 0.133]; attention input relative L2 error 5.235e-03 (worst row 5.235e-03) [bound 0.077]"}
+TEST {"i": 1, "v": "spre", "ok": true, "msg": "update relative L2 error 7.566e-03 (worst row 7.566e-03) [bound 0.133]; attention input relative L2 error 5.268e-03 (worst row 5.268e-03) [bound 0.077]"}
+TEST {"i": 1, "v": "bigpre", "ok": true, "msg": "update relative L2 error 7.500e-03 (worst row 7.500e-03) [bound 0.133]; attention input relative L2 error 5.235e-03 (worst row 5.235e-03) [bound 0.077]"}
+TEST {"i": 2, "v": "w16", "ok": true, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 2, "v": "w8", "ok": true, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 2, "v": "spre", "ok": true, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 2, "v": "bigpre", "ok": true, "msg": "update relative L2 error 8.449e-03 (worst row 1.001e-02) [bound 0.150]; attention input relative L2 error 6.091e-03 (worst row 7.401e-03) [bound 0.112]"}
+TEST {"i": 3, "v": "w16", "ok": true, "msg": "update relative L2 error 6.678e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 3, "v": "w8", "ok": true, "msg": "update relative L2 error 6.678e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 3, "v": "spre", "ok": true, "msg": "update relative L2 error 6.684e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 3, "v": "bigpre", "ok": true, "msg": "update relative L2 error 6.678e-03 (worst row 8.235e-03) [bound 0.150]; attention input relative L2 error 5.108e-03 (worst row 6.769e-03) [bound 0.112]"}
+TEST {"i": 4, "v": "w16", "ok": true, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 4, "v": "w8", "ok": true, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 4, "v": "spre", "ok": true, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 4, "v": "bigpre", "ok": true, "msg": "update relative L2 error 6.675e-02 (worst row 1.045e-01) [bound 0.150]; attention input relative L2 error 3.513e-02 (worst row 5.011e-02) [bound 0.089]"}
+TEST {"i": 5, "v": "w16", "ok": true, "msg": "update relative L2 error 6.979e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.631e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 5, "v": "w8", "ok": true, "msg": "update relative L2 error 6.979e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.631e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 5, "v": "spre", "ok": true, "msg": "update relative L2 error 6.980e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.632e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 5, "v": "bigpre", "ok": true, "msg": "update relative L2 error 6.979e-02 (worst row 1.043e-01) [bound 0.150]; attention input relative L2 error 4.631e-02 (worst row 7.283e-02) [bound 0.118]"}
+TEST {"i": 6, "v": "w16", "ok": true, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 6, "v": "w8", "ok": true, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 6, "v": "spre", "ok": true, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 6, "v": "bigpre", "ok": true, "msg": "update relative L2 error 7.449e-03 (worst row 1.108e-02) [bound 0.150]; attention input relative L2 error 5.327e-03 (worst row 8.455e-03) [bound 0.117]"}
+TEST {"i": 7, "v": "w16", "ok": true, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 7, "v": "w8", "ok": true, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 7, "v": "spre", "ok": true, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 7, "v": "bigpre", "ok": true, "msg": "update relative L2 error 6.725e-02 (worst row 9.464e-02) [bound 0.150]; attention input relative L2 error 4.580e-02 (worst row 6.993e-02) [bound 0.114]"}
+TEST {"i": 8, "v": "w16", "ok": true, "msg": "update relative L2 error 8.360e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.818e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 8, "v": "w8", "ok": true, "msg": "update relative L2 error 8.361e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.818e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 8, "v": "spre", "ok": true, "msg": "update relative L2 error 8.359e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.817e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 8, "v": "bigpre", "ok": true, "msg": "update relative L2 error 8.361e-02 (worst row 1.051e-01) [bound 0.150]; attention input relative L2 error 5.818e-02 (worst row 7.563e-02) [bound 0.145]"}
+TEST {"i": 9, "v": "w16", "ok": true, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 9, "v": "w8", "ok": true, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 9, "v": "spre", "ok": true, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 9, "v": "bigpre", "ok": true, "msg": "update relative L2 error 7.255e-02 (worst row 1.139e-01) [bound 0.150]; attention input relative L2 error 4.792e-02 (worst row 6.910e-02) [bound 0.117]"}
+TEST {"i": 10, "v": "w16", "ok": true, "msg": "update relative L2 error 8.083e-03 (worst row 8.083e-03) [bound 0.150]; attention input relative L2 error 5.781e-03 (worst row 5.781e-03) [bound 0.093]"}
+TEST {"i": 10, "v": "w8", "ok": true, "msg": "update relative L2 error 8.116e-03 (worst row 8.116e-03) [bound 0.150]; attention input relative L2 error 5.823e-03 (worst row 5.823e-03) [bound 0.093]"}
+TEST {"i": 10, "v": "spre", "ok": true, "msg": "update relative L2 error 8.083e-03 (worst row 8.083e-03) [bound 0.150]; attention input relative L2 error 5.781e-03 (worst row 5.781e-03) [bound 0.093]"}
+TEST {"i": 10, "v": "bigpre", "ok": true, "msg": "update relative L2 error 8.083e-03 (worst row 8.083e-03) [bound 0.150]; attention input relative L2 error 5.781e-03 (worst row 5.781e-03) [bound 0.093]"}
+TEST {"i": 11, "v": "w16", "ok": true, "msg": "update relative L2 error 6.587e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.201e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 11, "v": "w8", "ok": true, "msg": "update relative L2 error 6.587e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.201e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 11, "v": "spre", "ok": true, "msg": "update relative L2 error 6.587e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.201e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 11, "v": "bigpre", "ok": true, "msg": "update relative L2 error 6.587e-02 (worst row 9.340e-02) [bound 0.150]; attention input relative L2 error 4.201e-02 (worst row 5.729e-02) [bound 0.103]"}
+TEST {"i": 12, "v": "w16", "ok": true, "msg": "update relative L2 error 9.373e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.663e-03 (worst row 1.301e-02) [bound 0.099]"}
+TEST {"i": 12, "v": "w8", "ok": true, "msg": "update relative L2 error 9.370e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.301e-02) [bound 0.099]"}
+TEST {"i": 12, "v": "spre", "ok": true, "msg": "update relative L2 error 9.370e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.301e-02) [bound 0.099]"}
+TEST {"i": 12, "v": "bigpre", "ok": true, "msg": "update relative L2 error 9.370e-03 (worst row 2.028e-02) [bound 0.150]; attention input relative L2 error 6.661e-03 (worst row 1.301e-02) [bound 0.099]"}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 82.74, "dup": 82.9, "w16": 82.96, "w8": 83.12, "spre": 82.58, "bigpre": 82.74, "gain": {"dup": 0.9981, "w16": 0.9973, "w8": 0.9954, "spre": 1.0019, "bigpre": 1.0}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 75.73, "dup": 75.39, "w16": 75.12, "w8": 75.09, "spre": 75.41, "bigpre": 75.63, "gain": {"dup": 1.0045, "w16": 1.0081, "w8": 1.0085, "spre": 1.0042, "bigpre": 1.0013}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 88.85, "dup": 89.17, "w16": 88.61, "w8": 89.1, "spre": 89.14, "bigpre": 88.94, "gain": {"dup": 0.9964, "w16": 1.0027, "w8": 0.9971, "spre": 0.9968, "bigpre": 0.9989}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 82.29, "dup": 81.81, "w16": 81.78, "w8": 82.35, "spre": 82.51, "bigpre": 81.94, "gain": {"dup": 1.0059, "w16": 1.0063, "w8": 0.9992, "spre": 0.9973, "bigpre": 1.0043}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 138.93, "dup": 139.06, "w16": 138.66, "w8": 138.58, "spre": 138.35, "bigpre": 138.94, "gain": {"dup": 0.9991, "w16": 1.002, "w8": 1.0025, "spre": 1.0042, "bigpre": 0.9999}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 131.25, "dup": 130.83, "w16": 130.64, "w8": 130.43, "spre": 131.49, "bigpre": 130.77, "gain": {"dup": 1.0032, "w16": 1.0047, "w8": 1.0063, "spre": 0.9982, "bigpre": 1.0037}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 219.66, "dup": 220.53, "w16": 220.51, "w8": 220.48, "spre": 219.42, "bigpre": 220.61, "gain": {"dup": 0.9961, "w16": 0.9962, "w8": 0.9963, "spre": 1.0011, "bigpre": 0.9957}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 204.13, "dup": 204.3, "w16": 204.08, "w8": 204.16, "spre": 203.78, "bigpre": 204.32, "gain": {"dup": 0.9991, "w16": 1.0002, "w8": 0.9998, "spre": 1.0017, "bigpre": 0.9991}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4001, "ctrl": 160.91, "dup": 166.48, "w16": 162.21, "w8": 162.93, "spre": 159.81, "bigpre": 160.72, "gain": {"dup": 0.9666, "w16": 0.992, "w8": 0.9876, "spre": 1.0069, "bigpre": 1.0012}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "sliding"}, "seed": 4002, "ctrl": 154.5, "dup": 159.46, "w16": 155.94, "w8": 156.5, "spre": 153.81, "bigpre": 154.1, "gain": {"dup": 0.9689, "w16": 0.9908, "w8": 0.9872, "spre": 1.0045, "bigpre": 1.0026}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4001, "ctrl": 301.94, "dup": 306.7, "w16": 304.06, "w8": 303.9, "spre": 302.18, "bigpre": 301.65, "gain": {"dup": 0.9845, "w16": 0.993, "w8": 0.9935, "spre": 0.9992, "bigpre": 1.001}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 1, "layer": "full"}, "seed": 4002, "ctrl": 296.98, "dup": 303.18, "w16": 299.7, "w8": 300.03, "spre": 297.26, "bigpre": 297.78, "gain": {"dup": 0.9795, "w16": 0.9909, "w8": 0.9898, "spre": 0.999, "bigpre": 0.9973}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 140.19, "dup": 139.1, "w16": 138.85, "w8": 139.2, "spre": 139.28, "bigpre": 139.95, "gain": {"dup": 1.0078, "w16": 1.0097, "w8": 1.0071, "spre": 1.0065, "bigpre": 1.0017}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 118.46, "dup": 118.54, "w16": 118.62, "w8": 118.83, "spre": 118.51, "bigpre": 118.66, "gain": {"dup": 0.9993, "w16": 0.9987, "w8": 0.9969, "spre": 0.9996, "bigpre": 0.9984}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 106.46, "dup": 106.38, "w16": 106.19, "w8": 106.4, "spre": 106.3, "bigpre": 106.43, "gain": {"dup": 1.0008, "w16": 1.0026, "w8": 1.0006, "spre": 1.0015, "bigpre": 1.0003}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 1, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 126.14, "dup": 126.0, "w16": 126.08, "w8": 126.34, "spre": 126.43, "bigpre": 126.35, "gain": {"dup": 1.0011, "w16": 1.0005, "w8": 0.9985, "spre": 0.9977, "bigpre": 0.9984}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 245.41, "dup": 252.48, "w16": 244.82, "w8": 245.28, "spre": 245.6, "bigpre": 246.42, "gain": {"dup": 0.972, "w16": 1.0024, "w8": 1.0005, "spre": 0.9992, "bigpre": 0.9959}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 268.62, "dup": 276.1, "w16": 268.83, "w8": 269.39, "spre": 268.43, "bigpre": 269.65, "gain": {"dup": 0.9729, "w16": 0.9992, "w8": 0.9971, "spre": 1.0007, "bigpre": 0.9962}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 331.73, "dup": 339.09, "w16": 331.78, "w8": 332.08, "spre": 331.34, "bigpre": 332.88, "gain": {"dup": 0.9783, "w16": 0.9999, "w8": 0.9989, "spre": 1.0012, "bigpre": 0.9965}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 16, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 327.31, "dup": 333.86, "w16": 326.9, "w8": 326.96, "spre": 327.3, "bigpre": 327.38, "gain": {"dup": 0.9804, "w16": 1.0013, "w8": 1.0011, "spre": 1.0, "bigpre": 0.9998}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4001, "ctrl": 308.0, "dup": 318.67, "w16": 308.48, "w8": 308.96, "spre": 308.0, "bigpre": 311.38, "gain": {"dup": 0.9665, "w16": 0.9984, "w8": 0.9969, "spre": 1.0, "bigpre": 0.9892}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "sliding"}, "seed": 4002, "ctrl": 300.78, "dup": 310.85, "w16": 300.11, "w8": 299.98, "spre": 300.53, "bigpre": 303.04, "gain": {"dup": 0.9676, "w16": 1.0022, "w8": 1.0027, "spre": 1.0009, "bigpre": 0.9926}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4001, "ctrl": 467.9, "dup": 479.12, "w16": 467.55, "w8": 467.09, "spre": 467.14, "bigpre": 470.35, "gain": {"dup": 0.9766, "w16": 1.0008, "w8": 1.0017, "spre": 1.0016, "bigpre": 0.9948}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+ROW {"case": {"batch": 32, "q_len": 8, "layer": "full"}, "seed": 4002, "ctrl": 476.27, "dup": 485.94, "w16": 475.25, "w8": 475.7, "spre": 475.71, "bigpre": 479.12, "gain": {"dup": 0.9801, "w16": 1.0022, "w8": 1.0012, "spre": 1.0012, "bigpre": 0.9941}, "ok": {"ctrl": true, "dup": true, "w16": true, "w8": true, "spre": true, "bigpre": true}, "msg": {}}
+DONE 186.7
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-lSdJ3xtiCfrjUg6F4onx3i

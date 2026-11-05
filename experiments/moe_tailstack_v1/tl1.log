@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/baptinjean20/main/ap-6h6GHDzoFGZvhyjRylSAs5
+✓ Created objects.
+├── ✓ Uploaded 
+│   /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal/run_judge_image_lo
+│   ng.py
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/kernels
+├── ✓ Uploaded /home/nitiz/Projects/Self/Challenges/muse-spark/dev/modal
+└── ✓ Created Function run.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+ENV {} RETURNCODE 0
+[mfab] modules built at 70s
+[mfab] regs/local/smem (<false>, <true>) ['-DOKC_WGS=1'] [96, 0, 0, 96, 0, 0]
+[sc6] scales ok=True wgs=True skinny=False
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=16', '-DOKC_WGS=1', '-DOKC_SC6W=1'] [96, 0, 0, 96, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [145, 0, 0, 145, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1'] [145, 0, 0, 145, 0, 0]
+[sc6] regs/local/smem (moe_fused<false>, <true>) ['-DOKC_NW=8', '-DOKC_TINY=1', '-DOKC_SPLIT=1'] [149, 0, 0, 149, 0, 0]
+[ps] bs 8: tiny2 t2_wsi {'OKC_DF': 1} regs [148, 0, 0, 148, 0, 0] rel vs base 2.14e-10
+TL {"bs": 1, "seed": 7919, "tfin": 0, "start": [0.0, 0.0, 0.26], "routed": [2.05, 2.3, 2.3], "A_done": [10.75, 12.03, 12.29], "B_done": [17.79, 19.07, 19.2], "joined": [17.79, 19.07, 19.33], "ready": [20.1, 20.35, 20.48], "final": [20.61, 20.74, 20.99]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.3, 2.3], "A_done": [11.01, 12.29, 12.8], "B_done": [18.05, 19.2, 19.46], "joined": [18.05, 19.2, 19.46], "ready": [20.61, 20.61, 20.74], "final": [22.27, 22.27, 22.27]}
+TL {"bs": 1, "seed": 7919, "tfin": 0, "start": [0.0, 0.26, 0.26], "routed": [2.05, 2.3, 2.3], "A_done": [10.75, 12.03, 12.42], "B_done": [17.79, 18.94, 19.2], "joined": [17.92, 19.07, 19.2], "ready": [20.22, 20.22, 20.48], "final": [20.74, 20.74, 20.99]}
+TL {"bs": 1, "seed": 7919, "tfin": 1, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.3, 2.3], "A_done": [11.01, 12.29, 12.8], "B_done": [17.92, 19.2, 19.46], "joined": [18.18, 19.2, 19.46], "ready": [20.61, 20.74, 20.74], "final": [22.27, 22.27, 22.27]}
+TL {"bs": 1, "seed": 5041226219440759413, "tfin": 0, "start": [0.0, 0.26, 0.26], "routed": [2.18, 2.3, 2.3], "A_done": [15.1, 16.51, 16.9], "B_done": [24.45, 26.24, 26.5], "joined": [24.58, 26.24, 26.5], "ready": [27.26, 27.52, 27.78], "final": [28.03, 28.03, 28.29]}
+TL {"bs": 1, "seed": 5041226219440759413, "tfin": 1, "start": [0.0, 0.0, 0.26], "routed": [2.05, 2.3, 2.3], "A_done": [15.62, 16.77, 17.15], "B_done": [24.58, 25.86, 26.11], "joined": [24.58, 25.86, 26.11], "ready": [27.14, 27.14, 27.39], "final": [28.93, 28.93, 28.93]}
+TL {"bs": 1, "seed": 5041226219440759413, "tfin": 0, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.3, 2.3], "A_done": [15.36, 16.51, 16.9], "B_done": [24.32, 25.6, 25.86], "joined": [24.32, 25.6, 25.98], "ready": [26.88, 26.88, 27.14], "final": [27.39, 27.39, 27.65]}
+TL {"bs": 1, "seed": 5041226219440759413, "tfin": 1, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.3, 2.3], "A_done": [15.36, 16.64, 17.15], "B_done": [24.58, 25.86, 26.24], "joined": [24.7, 25.98, 26.24], "ready": [27.39, 27.52, 27.52], "final": [29.06, 29.06, 29.06]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 0, "start": [0.0, 0.0, 0.26], "routed": [2.3, 2.3, 2.43], "A_done": [43.01, 44.42, 46.08], "B_done": [66.3, 67.58, 69.38], "joined": [66.3, 67.58, 69.38], "ready": [70.14, 70.27, 70.53], "final": [71.04, 71.04, 71.3]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.43, 2.56], "A_done": [44.16, 46.08, 47.74], "B_done": [67.46, 69.12, 70.91], "joined": [67.58, 69.25, 70.91], "ready": [69.38, 72.32, 72.45], "final": [71.42, 73.22, 73.47]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 0, "start": [0.0, 0.26, 0.26], "routed": [2.3, 2.3, 2.56], "A_done": [42.62, 44.42, 45.95], "B_done": [66.3, 67.97, 70.14], "joined": [66.43, 68.35, 70.27], "ready": [71.04, 71.42, 71.42], "final": [72.06, 72.19, 72.32]}
+TL {"bs": 8, "seed": 5041622730710591082, "tfin": 1, "start": [0.0, 0.13, 0.26], "routed": [2.3, 2.3, 2.56], "A_done": [44.03, 45.57, 47.62], "B_done": [67.2, 68.86, 71.04], "joined": [67.2, 69.12, 71.04], "ready": [69.25, 72.45, 72.45], "final": [71.3, 73.47, 73.47]}
+DONE
+
+STDERR:
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/baptinjean20/main/ap-6h6GHDzoFGZvhyjRylSAs5
