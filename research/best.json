@@ -20,23 +20,23 @@
     }
   },
   "muse_attention_decode": {
-    "experiment": "attn_clean_v1",
-    "job_id": "174165f078494944",
-    "sha256": "985cdb9fe971a54040f27fc81c42e035044f8c25888399afec4608cbe01d33a2",
-    "speedup": 2.73,
+    "experiment": "attn_f16qk_v1",
+    "job_id": "526e460298bb4883",
+    "sha256": "8b57cf10502ab7284dfbedd32734f51e876f0439a0732fac7aeac2c791aced57",
+    "speedup": 2.7436,
     "speedup_ci": [
-      2.689,
-      2.784
+      2.702,
+      2.785
     ],
     "tests": 16,
     "timed_cases": 12,
     "public_submission": "6f2b2edf215d4ea3",
     "readable": true,
-    "note": "cleaned readable source; same kernels as previous best",
+    "note": "cleaned source + FP16 QK accumulation in q_len-8 builds (PV FP32); stress-tested at kv_scale 1/64",
     "previous_best": {
-      "experiment": "attn_b1full_v1",
-      "job_id": "af4f8d1bedd24c9f",
-      "speedup": 2.682
+      "experiment": "attn_clean_v1",
+      "job_id": "174165f078494944",
+      "speedup": 2.73
     }
   },
   "muse_decode_layer": {

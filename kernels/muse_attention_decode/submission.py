@@ -27,8 +27,9 @@ Design
       (verified in the kernel; a miss reruns with the real length);
     the split counts and workspace copies per regime are rules on (requests x KV pairs, q_len, layer
     kind) in _plan(), measured on H200.
-* Math. QK^T runs on FP8 tensor cores (E4M3 x E4M3, FP32 accumulate). q_len 1: PV on FP16 mma.sync
-  (P in FP16, V converted exactly from E4M3). q_len 8: PV is an FP8 wgmma; P goes straight to E4M3 bytes
+* Math. q_len 1: QK^T and PV on FP16 mma.sync with FP32 accumulators (P in FP16, K and V converted
+  exactly from E4M3). q_len 8: QK^T is an FP8 wgmma (E4M3 x E4M3) with FP16 accumulators (the exp2 below
+  rounds the scores to f16 anyway); PV is an FP8 wgmma with FP32 accumulators; P goes straight to E4M3 bytes
   by a linear (Mitchell) exp2 evaluated in f16x2, and the per-tile V^T copy in shared memory carries 8
   extra rows of E4M3 ones, so the softmax row sums come out of the same wgmma from the same P bytes.
   Softmax uses a lazily updated per-row offset instead of a running max (QK-norm bounds the logits).
@@ -379,6 +380,31 @@ __device__ __forceinline__ void wgmma_m64n72k32_e4m3(float* d, float* e, const u
         "+f"(e[0]), "+f"(e[1]), "+f"(e[2]), "+f"(e[3])
       : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]), "l"(desc));
 }
+// FP16-accumulator form of the QK^T wgmma above: 16 f16x2 registers, register i holding FP32 elements 2i, 2i+1
+// (score 4 nt + 2 hf + e in register 2 nt + hf, half e: even registers row g, odd row g + 8). The linear exp2
+// rounds the scores to f16 anyway, so the f16 accumulators drop only those conversions. No overflow: the q8 query
+// tile is the RMS-normalized query (|q| ~ 8) and |k| <= 448 * 8 in E4M3, so |score| <= ~28.7k < 65504.
+__device__ __forceinline__ void wgmma_m64n64k32_e4m3_ss_f16(uint32_t* d, uint64_t da, uint64_t db, int scale_d) {
+  asm volatile(
+      "{\n.reg .pred p;\nsetp.ne.b32 p, %18, 0;\n"
+      "wgmma.mma_async.sync.aligned.m64n64k32.f16.e4m3.e4m3 "
+      "{%0, %1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12, %13, %14, %15}, "
+      "%16, %17, p, 1, 1;\n}\n"
+      : "+r"(d[0]), "+r"(d[1]), "+r"(d[2]), "+r"(d[3]), "+r"(d[4]), "+r"(d[5]), "+r"(d[6]), "+r"(d[7]),
+        "+r"(d[8]), "+r"(d[9]), "+r"(d[10]), "+r"(d[11]), "+r"(d[12]), "+r"(d[13]), "+r"(d[14]), "+r"(d[15])
+      : "l"(da), "l"(db), "r"(scale_d));
+}
+constexpr int QK_REGS = 16;   // f16x2 score registers of the QK^T wgmma
+// per-thread maxima of rows g (even registers) and g + 8 (odd) over score registers [r0, r0 + n)
+__device__ __forceinline__ float2 score_max(const uint32_t* sh, int r0, int n) {
+  __half2 lo = __half2half2(__ushort_as_half((unsigned short)0xFC00u)), hi = lo;   // -inf
+#pragma unroll
+  for (int r = 0; r < n; r += 2) {
+    lo = __hmax2(lo, *reinterpret_cast<const __half2*>(&sh[r0 + r]));
+    hi = __hmax2(hi, *reinterpret_cast<const __half2*>(&sh[r0 + r + 1]));
+  }
+  return make_float2(fmaxf(__low2float(lo), __high2float(lo)), fmaxf(__low2float(hi), __high2float(hi)));
+}
 // floor(x / d) for 0 <= x < 2^24 and 1 <= d < 2^24 through the float reciprocal (one correction step):
 // ~8 instructions instead of the ~20 of an integer division, which matters in once-per-launch (cold) code
 __device__ __forceinline__ int fdiv_i(int x, int d) {
@@ -426,12 +452,13 @@ __device__ __forceinline__ void tfor(int tid, F&& f) {
 // linearly in between (the mean bias cancels: the row sums come from the same bytes via the PV ones column).
 // t = sat((8 (x + 7)) / 126) clamps to bytes [0, 126] (0 .. 448, never the 0x7f NaN); x = s * ssc - d.
 __device__ __forceinline__ uint32_t h2u(__half2 h) { return *reinterpret_cast<uint32_t*>(&h); }
-// f16 path: four raw scores, row bias b (f16x2), shared slope a (f16x2) -> four e4m3 bytes (x0 low)
-__device__ __forceinline__ uint32_t lin4h(float x0, float x1, float x2, float x3, __half2 a, __half2 b) {
+// f16 path: two f16x2 registers of raw scores (x0, x1) and (x2, x3), row bias b (f16x2), shared slope a (f16x2)
+// -> four e4m3 bytes (x0 low)
+__device__ __forceinline__ uint32_t lin4hh(uint32_t x01, uint32_t x23, __half2 a, __half2 b) {
   const __half2 c126 = __half2half2(__ushort_as_half((unsigned short)0x57E0u));   // 126
   const __half2 c1024 = __half2half2(__ushort_as_half((unsigned short)0x6400u));  // 1024: ulp 1
-  const __half2 t01 = __hfma2_sat(__floats2half2_rn(x0, x1), a, b);
-  const __half2 t23 = __hfma2_sat(__floats2half2_rn(x2, x3), a, b);
+  const __half2 t01 = __hfma2_sat(*reinterpret_cast<const __half2*>(&x01), a, b);
+  const __half2 t23 = __hfma2_sat(*reinterpret_cast<const __half2*>(&x23), a, b);
   const uint32_t h01 = h2u(__hfma2(t01, c126, c1024)), h23 = h2u(__hfma2(t23, c126, c1024));
   return prmt(h01, h23, 0x6420u);
 }
@@ -1542,7 +1569,7 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
 
     const int st = st_c;
 
-    float s[32];
+    uint32_t s[QK_REGS];   // f16x2 scores (see wgmma_m64n64k32_e4m3_ss_f16)
     wgmma_fence();
 
       const uint32_t kl = klo0 + (uint32_t)(st * (STAGE_BYTES >> 4));
@@ -1550,8 +1577,8 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
       const uint64_t kd2 = ((uint64_t)((1024 >> 4) | (1u << 30)) << 32) | (kl + 2u);
       const uint64_t qd2 = ((uint64_t)((512 >> 4) | (2u << 30)) << 32) | (qlo0 + 2u);
 
-       wgmma_m64n64k32_e4m3_ss(s, qdesc0, kd, 0);
-      wgmma_m64n64k32_e4m3_ss(s, qd2, kd2, 1);
+      wgmma_m64n64k32_e4m3_ss_f16(s, qdesc0, kd, 0);
+      wgmma_m64n64k32_e4m3_ss_f16(s, qd2, kd2, 1);
 
     wgmma_commit();
     if constexpr (!WS) {   // the copies for tile i + STAGES - 1
@@ -1609,7 +1636,7 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
     } else wgsync(wgi);   // this head's V16 / V^T ready
     wgmma_wait<0>();
 #pragma unroll
-    for (int e = 0; e < 32; ++e) reg_fence(s[e]);
+    for (int e = 0; e < QK_REGS; ++e) asm volatile("" : "+r"(s[e])::"memory");
 
 #pragma unroll
       for (int e = 0; e < 8; ++e) asm volatile("" : "+r"(pa[e >> 2][e & 3]));
@@ -1632,7 +1659,8 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
 #pragma unroll
           for (int e = 0; e < 2; ++e) {
             const int pos = t0 + 8 * nt + 2 * tig + e;
-            if (pos < vlo || pos > vhi) s[4 * nt + 2 * hf + e] = -INFINITY;
+            if (pos < vlo || pos > vhi)   // -inf into half e of register 2 nt + hf
+              s[2 * nt + hf] = e ? (s[2 * nt + hf] & 0x0000FFFFu) | 0xFC000000u : (s[2 * nt + hf] & 0xFFFF0000u) | 0xFC00u;
           }
       }
     }
@@ -1643,11 +1671,9 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
     const bool chk = PCHK && !first;
     float mlo = -INFINITY, mhi = -INFINITY;
     if (!chk) {
-#pragma unroll
-    for (int nt = 0; nt < 8; ++nt) {
-      mlo = fmaxf(mlo, fmaxf(s[4 * nt], s[4 * nt + 1]));
-      mhi = fmaxf(mhi, fmaxf(s[4 * nt + 2], s[4 * nt + 3]));
-    }
+      const float2 m = score_max(s, 0, QK_REGS);
+      mlo = m.x;
+      mhi = m.y;
     }
     // the threshold check needs no row reduction: any element past the offset + 8 shows in its own thread's
     // partial max; only the (rare) offset move and the first tile reduce over the row's quad
@@ -1692,11 +1718,11 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
 #pragma unroll
           const __half2 blo = lin_bias(dlo), bhi = lin_bias(dhi);
           for (int kk = 0; kk < 2; ++kk) {
-            const float* sv = s + 16 * kk;
-            pa[kk][0] = lin4h(sv[0], sv[1], sv[4], sv[5], lin_a, blo);
-            pa[kk][1] = lin4h(sv[2], sv[3], sv[6], sv[7], lin_a, bhi);
-            pa[kk][2] = lin4h(sv[8], sv[9], sv[12], sv[13], lin_a, blo);
-            pa[kk][3] = lin4h(sv[10], sv[11], sv[14], sv[15], lin_a, bhi);
+            const uint32_t* sv = s + 8 * kk;
+            pa[kk][0] = lin4hh(sv[0], sv[2], lin_a, blo);
+            pa[kk][1] = lin4hh(sv[1], sv[3], lin_a, bhi);
+            pa[kk][2] = lin4hh(sv[4], sv[6], lin_a, blo);
+            pa[kk][3] = lin4hh(sv[5], sv[7], lin_a, bhi);
           }
         };
         pack2();
@@ -1708,14 +1734,9 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
           if (__any_sync(0xffffffffu, ov != 0u)) {
             // rare: offsets up to the tile's row maxima, state rescaled (no PV of this tile issued yet; the previous
             // tile's finished at its end), both halves repacked (P <= 1 afterwards: one pass)
-            float hlo = -INFINITY, hhi = -INFINITY;
-#pragma unroll
-            for (int nt = 0; nt < 8; ++nt) {
-              hlo = fmaxf(hlo, fmaxf(s[4 * nt], s[4 * nt + 1]));
-              hhi = fmaxf(hhi, fmaxf(s[4 * nt + 2], s[4 * nt + 3]));
-            }
-            hlo = quad_max(hlo) * ssc;
-            hhi = quad_max(hhi) * ssc;
+            const float2 h = score_max(s, 0, QK_REGS);
+            const float hlo = quad_max(h.x) * ssc;
+            const float hhi = quad_max(h.y) * ssc;
             const float nlo = lin_snap(fmaxf(hlo, cr[0])), nhi = lin_snap(fmaxf(hhi, cr[1]));
             const float alo = ex2(cr[0] - nlo), ahi = ex2(cr[1] - nhi);
 #pragma unroll
@@ -1746,17 +1767,17 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
       }
 #pragma unroll
       for (int kk = 0; kk < (PK2 ? 0 : 2); ++kk) {
-        const float* sv = s + 16 * kk;
+        const uint32_t* sv = s + 8 * kk;
         bool rchk = chk;   // one retry at most: after the offset move every finite P is <= 1 (NaN / garbage scores
                            // would otherwise retrigger the check forever: a value-perturbing test hung)
 #pragma unroll 1
         for (;;) {   // (repeated once after a rare offset move; otherwise a single pass)
         {   // linear exp2 straight to e4m3 bytes (as the flat q_len 8 pack)
           const __half2 blo = lin_bias(dlo), bhi = lin_bias(dhi);
-          pa[kk][0] = lin4h(sv[0], sv[1], sv[4], sv[5], lin_a, blo);
-          pa[kk][1] = lin4h(sv[2], sv[3], sv[6], sv[7], lin_a, bhi);
-          pa[kk][2] = lin4h(sv[8], sv[9], sv[12], sv[13], lin_a, blo);
-          pa[kk][3] = lin4h(sv[10], sv[11], sv[14], sv[15], lin_a, bhi);
+          pa[kk][0] = lin4hh(sv[0], sv[2], lin_a, blo);
+          pa[kk][1] = lin4hh(sv[1], sv[3], lin_a, bhi);
+          pa[kk][2] = lin4hh(sv[4], sv[6], lin_a, blo);
+          pa[kk][3] = lin4hh(sv[5], sv[7], lin_a, bhi);
         }
         if constexpr (!PCHK) break;
         else {
@@ -1769,10 +1790,9 @@ __device__ __forceinline__ bool segment(const Params& p, Smem<L, FLAT>& S, const
             {
               // rare: a score of this half passed its row's offset + 8: offsets up to the half's row maxima,
               // state rescaled (half 0's PV wgmma finished first), this half repacked
-              float hlo = fmaxf(fmaxf(fmaxf(sv[0], sv[1]), fmaxf(sv[4], sv[5])), fmaxf(fmaxf(sv[8], sv[9]), fmaxf(sv[12], sv[13])));
-              float hhi = fmaxf(fmaxf(fmaxf(sv[2], sv[3]), fmaxf(sv[6], sv[7])), fmaxf(fmaxf(sv[10], sv[11]), fmaxf(sv[14], sv[15])));
-              hlo = quad_max(hlo) * ssc;
-              hhi = quad_max(hhi) * ssc;
+              const float2 h = score_max(s, 8 * kk, QK_REGS / 2);
+              const float hlo = quad_max(h.x) * ssc;
+              const float hhi = quad_max(h.y) * ssc;
               const float nlo = fmaxf(hlo, cr[0]), nhi = fmaxf(hhi, cr[1]);
               const float alo = ex2(cr[0] - nlo), ahi = ex2(cr[1] - nhi);
               if ((kk == 1)) {   // (a PV wgmma may still accumulate into o)

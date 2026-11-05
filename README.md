@@ -106,7 +106,7 @@ Attention follow-up: VP2 three-block job `cba8e99746cb4aac` passed at 2.63778× 
 
 Attention VP2 launch-bound update (2026-11-02): the two-block variant passed 16/16 and scored **2.64939×** (95% CI 2.60965–2.68913) in job `6f2b2edf215d4ea3`, up from 2.6328× and rank #166 to #137 across snapshots. The local targeted screen improved 0.6–1.1%; separate scored-run variation prevents attributing the entire board gain to the change. The exact scored source is promoted; [measurements and profiles](experiments/attention_vp2_lb2_v1/FINDINGS.md) are preserved.
 
-The current board scores are **1.5919×** for projections, **2.7295×** for
+The current board scores are **1.5919×** for projections, **2.7436×** for
 attention, **2.4168×** for MoE, **2.2746×** for the whole decoder, and
 **1.9321×** for prefill. The cleaned sources scored 2.730× (attention), 2.264×
 (decoder), 2.384× (MoE) and 1.582× (projections) on 2026-11-05, within run-to-run
@@ -126,12 +126,12 @@ Private checks have a separate daily quota from leaderboard submissions.
 | Problem | Public score | Rank | Top-50 cutoff | #1 score | Public job |
 |---|---:|---:|---:|---:|---|
 | Projections | 1.5919×† | #98 / 1,739 | 1.6043× | 1.7277× | 5a25cd13386a47ee (earlier source) |
-| Attention | 2.7295× | #81 / 1,368 | 2.7986× | 3.3389× | 174165f078494944 (cleaned source) |
+| Attention | 2.7436× | #76 / 1,368 | 2.7986× | 3.3389× | 526e460298bb4883 (cleaned source + FP16 QK) |
 | MoE | 2.4168× | #147 / 1,420 | 2.5213× | 2.7877× | 5c2e8be4c4994a50 (earlier source) |
 | Whole decoder layer | 2.2746×† | #165 / 1,294 | 2.3943× | 2.5772× | 998254ccce534559 (earlier source) |
 | Prefill layer | 1.9321× | #71 / 888 | 1.9465× | 2.1471× | f3b10ea957e04ea6 |
 
-Overall rank is **#165 of 2,007**. Ranks and cutoffs were refreshed on **2026-11-05 at 04:50 UTC**. †Repeat draw of identical kernel code, not an implementation change. The board keeps each team's best run; organizers rank on the median of reruns. Prefill is a separate board and does not count toward overall rank. Remaining gaps to #50: projections +0.78%, attention +2.53%, MoE +4.32%, decoder +5.26%, prefill +0.74%.
+Overall rank is **#165 of 2,007**. Ranks and cutoffs were refreshed on **2026-11-05 at 04:50 UTC**. †Repeat draw of identical kernel code, not an implementation change. The board keeps each team's best run; organizers rank on the median of reruns. Prefill is a separate board and does not count toward overall rank. Remaining gaps to #50: projections +0.78%, attention +2.00%, MoE +4.32%, decoder +5.26%, prefill +0.74%.
 
 Recent prefill research: [Humming shape-tuning screen](experiments/humming_prefill_shape_tuning_v1/README.md) tested six H200 schedules; none beat our existing routed-expert component. Raw measurements and configurations are preserved with the experiment.
 
@@ -152,7 +152,7 @@ These are published milestones; current ranks refer to the snapshot above. Inter
 | Problem | Published score progression | Main technique | Best scored source | Current rank |
 |---|---|---|---|---:|
 | Projections | 1.1743x → 1.5177x → 1.5346x → 1.5395x → **1.5853x** → 1.5919x† | Shape-specific BF16 GEMV/GEMM routes, pooler split-K, high/low router split; 12-bit BF16 codec (check 1.594x). | `experiments/proj_clean_v1/submission.py` | #98 |
-| Attention | 1.1305x → 2.5806x → 2.6177x → 2.6328x → 2.6494x → 2.682x → 2.7143x† → **2.7295x** | Split-KV with atomic merge, FP16 scores with linear exp2 to e4m3 (g16), BF16 vector reductions, batch-1 full-context plan. | `experiments/attn_clean_v1/submission.py` | #81 |
+| Attention | 1.1305x → 2.5806x → 2.6177x → 2.6328x → 2.6494x → 2.682x → 2.7143x† → 2.7295x → **2.7436x** | Split-KV with atomic merge, FP16 scores with linear exp2 to e4m3 (g16), BF16 vector reductions, batch-1 full-context plan. | `experiments/attn_f16qk_v1/submission.py` | #76 |
 | MoE | 1.1465x → 2.3263x → 2.3290x → 2.3820x → **2.4168x** | Persistent WGS stream-K wgmma experts, per-M builds, FP32 per-expert storage. | `experiments/moe_clean_v1/submission.py` | #147 |
 | Whole decoder | 1.0962x → 1.7469x → 2.0746x → 2.0926x → 2.2603x → 2.266x → **2.2746x**† | Stacked attention, projection and routed-expert improvements. | `experiments/decoder_clean_v1/submission.py` | #165 |
 | Prefill layer | 1.7874x → 1.8092x → **1.9321x** | Integrated attention, GEMM-plan and MoE stack. | `experiments/prefill_keell0renz_compare_v1/submission.py` | #71 |
