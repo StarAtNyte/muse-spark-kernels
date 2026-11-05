@@ -3,6 +3,13 @@
 Measured H200 facts, negative results and credits for third-party Apache-2.0 kernels. History lives in `research/ENGINEERING.md`, `research/H200-LOWER-BOUNDS.md`, `research/FLOORS-2026-10-29.md` and the `research/*AUDIT*.md` files.
 
 ## Credits
+Third-party code used in our submissions (licenses retained in each file header):
+- chenwainuo, github.com/chenwainuo/okc, muse_bf16_proj/submission.py @ 3d418e1 (Apache-2.0): proj backend `_make_chenwainuo`; decoder rs128 split-K GEMVs.
+- vjeux, github.com/vjeux/okc-2026 @ f35a41e (Apache-2.0): proj backend `_make_vjeux` (muse_bf16_proj.py); decoder glue base and attention lineage.
+- Nathen Fernandes, github.com/NathenFernandes/muse-bf16-proj submission.py @ 7385e5d (MIT): proj backend `_make_nb` (routertail_small, ol_projection); decoder compact T=128 o route.
+- alygg77, github.com/alygg77/okc-muse-spark-kernels (Apache-2.0, decoder base commit 6cae49a): proj backend `_make_ag` (pinned cuBLASLt plans, ctypes wrapper); decoder base file.
+- Matsvei (kernarc user 'matvey', agents.kernarc.com): per-thread CUDA-context bind helper and cuBLASLt plan pins (via alygg77).
+- zhebrak: MoE per-unit stream-K cost model (SK_CEPI) in the decoder.
 
 ## Facts and negative results
 - 2026-11-03 standings: decode #166 (2.260x vs #1 2.490x), MoE #239 (2.382x vs 2.764x), attention #155 (2.649x vs 3.339x), proj #61 (1.592x vs 1.694x), prefill #49.
