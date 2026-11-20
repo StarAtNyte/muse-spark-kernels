@@ -2,7 +2,7 @@
 
 My entry in the [Open Kernel Challenge](https://openkernelchallenge.dev/) kernel track (Oct 26 to Nov 5, 2026): CUDA kernels for Meta's Muse Spark Open decoder on one H200, scored as speedup over SGLang's own kernels.
 
-I did it for about **$300–400 of compute in total**, working alongside Claude Code. As far as I can tell, the top entries spent around $4–5k, mostly on rented H200 time. I didn't have that budget, so this repo is also about getting as far as possible on a small one. Near the end, the limiting factor was compute, not ideas.
+I did it for about **$300–400 of compute in total**. As far as I can tell, the top entries spent around $4–5k, mostly on rented H200 time. I didn't have that budget, so this repo is also about getting as far as possible on a small one. Near the end, the limiting factor was compute, not ideas.
 
 ## Final results
 
@@ -25,7 +25,7 @@ All final files are readable source; no encoded or compressed blobs. They are in
 | Laptop RTX 3050 | compiling and correctness checks (it can't time Hopper wgmma/TMA code) | $0 |
 | The challenge judge | ~20 unscored `okc check` runs per board per day on a real H200, plus scored submissions | $0 |
 | [Modal](https://modal.com) H200s | paired A/B timing screens in the judge's Docker image | paid |
-| Claude Code | coding help, experiment runs and logging | paid |
+| Coding agents (Claude Code, Codex) | | paid |
 | **Total** | | **~$300–400** |
 
 What kept the cost down:
@@ -37,7 +37,7 @@ What kept the cost down:
 
 ## How it was built
 
-I directed the work and made the design calls. For the long grind of screening and logging, I ran a research loop in Claude Code ([`harness/`](harness)):
+A research loop ([`harness/`](harness)):
 
 - [`harness/PROGRAM.md`](harness/PROGRAM.md) is the research program: a ratchet per board (keep a change only if it is correct on every shape and beats the best beyond the judge's 95% CI), every third experiment a "wild" design change, and a "when stuck" ladder (roofline, read public repos, switch boards, a fresh subagent, question an assumption).
 - [`harness/claude/hooks/research_nudge.sh`](harness/claude/hooks/research_nudge.sh) is a stop hook. It blocks the session from ending and hands back a rotating strategy, so the loop ran overnight.
@@ -72,7 +72,7 @@ dev/          lab scripts: Modal H200 runners, microbenchmarks, profiling
 tools/        experiment archiving, judge checks, promotion, standings
 research/     floors, rooflines, compliance audits, best.json, post-mortem
 docs/         NOTES (facts and negative results), IDEAS, WILD, results.tsv, RULES, daily LOG
-harness/      the Claude Code research program, stop hook, and an earlier multi-agent run
+harness/      research program, stop hook, and an earlier multi-agent run
 serving/      serving-track SGLang patches
 ```
 
