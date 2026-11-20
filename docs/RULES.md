@@ -1,6 +1,6 @@
 # Muse Spark challenge rules and organizer clarifications
 
-These notes govern our kernel work and submissions. The [official challenge rules](https://openkernelchallenge.dev/rules#kernels-restrictions), each problem's `TASK.md`, and subsequent organizer guidance are authoritative. Recheck them when guidance changes. The serving track has separate [notes](serving/RULES.md).
+These notes govern our kernel work and submissions. The [official challenge rules](https://openkernelchallenge.dev/rules#kernels-restrictions), each problem's `TASK.md`, and subsequent organizer guidance are authoritative. Recheck them when guidance changes. The serving track has separate [notes](../serving/RULES.md).
 
 ## Source and submission
 
@@ -19,7 +19,7 @@ These notes govern our kernel work and submissions. The [official challenge rule
 
 ## Current audit
 
-Some historical scored candidates contain encoded source, and some projection paths use BF16 split reductions. Their published scores are not confirmed eligible. See [the rule audit](research/compliance/2026-11-03-rule-audit.md) and [job inventory](research/compliance/encoded-scored-jobs-2026-11-03.json) before reusing or submitting them. Preserve the experiment history; never submit an encoded or otherwise known noncompliant candidate.
+Some historical scored candidates contain encoded source, and some projection paths use BF16 split reductions. Their published scores are not confirmed eligible. See [the rule audit](../research/compliance/2026-11-03-rule-audit.md) and [job inventory](../research/compliance/encoded-scored-jobs-2026-11-03.json) before reusing or submitting them. Preserve the experiment history; never submit an encoded or otherwise known noncompliant candidate.
 
 ## Organizer clarifications, 2026-11-03/04 (Slack, Justin Wang; supersede the FP32-partials notes above)
 

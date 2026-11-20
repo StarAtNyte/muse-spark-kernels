@@ -13,14 +13,14 @@ Four upstream source files were submitted unchanged and have completed official 
 | BF16 projections | 1.58528× (1.56150–1.60905) | 1.5853× | `e5cae4f990be4df2` | Same score within noise. |
 | Prefill layer | 1.93214× (1.90316–1.96113) | 1.9321× | `f3b10ea957e04ea6` | Same score within noise. |
 
-The attention source passed a private full check at 2.61654× (95% CI 2.57729–2.65579), overlapping the 2.6328× incumbent. It has not been submitted for scoring. Its TMA bulk-reduction merge was also tested in paired Modal H200 runs: full-attention q_len=8 B16/B32 was neutral (0.9966–1.0008×); slight q_len=1 sliding signals were mixed across seeds. Removing the cluster dry pass did not produce a repeatable gain. These results and source/licensing records are in [`attention_keell0renz_compare_v1`](../experiments/attention_keell0renz_compare_v1/), [`attention_keell0renz_bulk_v1`](../experiments/attention_keell0renz_bulk_v1/), and [`attention_keell0renz_drycluster_remove_v1`](../experiments/attention_keell0renz_drycluster_remove_v1/).
+The attention source passed a private full check at 2.61654× (95% CI 2.57729–2.65579), overlapping the 2.6328× incumbent. It has not been submitted for scoring. Its TMA bulk-reduction merge was also tested in paired Modal H200 runs: full-attention q_len=8 B16/B32 was neutral (0.9966–1.0008×); slight q_len=1 sliding signals were mixed across seeds. Removing the cluster dry pass did not produce a repeatable gain. These results and source/licensing records are in [`attention_keell0renz_compare_v1`](../experiments/attention_keell0renz_compare_v1), [`attention_keell0renz_bulk_v1`](../experiments/attention_keell0renz_bulk_v1), and [`attention_keell0renz_drycluster_remove_v1`](../experiments/attention_keell0renz_drycluster_remove_v1).
 
 The exact source archives and judge profiles are in:
 
-- [`decode_keell0renz_compare_v1`](../experiments/scored_decode_keell0renz_compare_v1/)
-- [`moe_keell0renz_compare_v1`](../experiments/scored_moe_keell0renz_compare_v1/)
-- [`bf16_keell0renz_compare_v1`](../experiments/scored_bf16_keell0renz_compare_v1/)
-- [`prefill_keell0renz_compare_v1`](../experiments/scored_prefill_keell0renz_compare_v1/)
+- [`decode_keell0renz_compare_v1`](../experiments/scored_decode_keell0renz_compare_v1)
+- [`moe_keell0renz_compare_v1`](../experiments/scored_moe_keell0renz_compare_v1)
+- [`bf16_keell0renz_compare_v1`](../experiments/scored_bf16_keell0renz_compare_v1)
+- [`prefill_keell0renz_compare_v1`](../experiments/scored_prefill_keell0renz_compare_v1)
 
 ## What transfers
 
